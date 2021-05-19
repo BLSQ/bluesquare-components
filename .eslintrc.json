@@ -73,14 +73,14 @@
         ]
       }
     ],
-    "react/jsx-indent": [
-      "error",
-      4
-    ],
-    "react/jsx-indent-props": [
-      "error",
-      4
-    ],
+    // "react/jsx-indent": [
+    //   "error",
+    //   4
+    // ],
+    // "react/jsx-indent-props": [
+    //   "error",
+    //   4
+    // ],
     "react/no-access-state-in-setstate": "off",
     "react/no-array-index-key": "warn",
     "react/no-unused-prop-types": "warn",

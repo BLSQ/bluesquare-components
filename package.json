@@ -24,13 +24,6 @@
     "url": "https://github.com/BLSQ/bluesquare-components/issues"
   },
   "homepage": "https://github.com/BLSQ/bluesquare-components#readme",
-  "dependencies": {
-    "@material-ui/core": "^4.11.4",
-    "classnames": "^2.3.1",
-    "prop-types": "^15.7.2",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
-  },
   "devDependencies": {
     "@babel/cli": "^7.14.3",
     "@babel/core": "^7.13.10",
@@ -45,5 +38,12 @@
     "webpack": "^5.27.0",
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.2"
+  },
+  "peerDependencies": {
+    "@material-ui/core": "^4.11.4",
+    "classnames": "^2.3.1",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   }
 }

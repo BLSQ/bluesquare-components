@@ -7,16 +7,21 @@ run `npm run build && npm pack` (webpack) ot `npm run compile && npm pack` (Babe
 
 In your application's `package.json`, add:
 ```json
-"bluesquare-components":"file:/local/path/to/bluesquare-components-[version].tgz"
+"bluesquare-components":"file:/local/path/to/bluesquare-components-<version>.tgz"
 ```
 
 run `npm i`
 
-## Depend on the repository
+## Depend on the repository 
 
 In your application's `package.json`, add:
 ```json
-"bluesquare-components":"git://github.com/BLSQ/bluesquare-components.git"
+"bluesquare-components":"git://github.com/BLSQ/bluesquare-components#<branch>"
+```
+
+Be careful as the command below will work locally but cause authetication failure when run in Docker: 
+```json
+"bluesquare-components":"git://github.com/BLSQ/bluesquare-components.git#<commit-ish>"
 ```
 
 run `npm i`
@@ -25,7 +30,6 @@ run `npm i`
 
 When depending on a local version, you will have to modify your Dockerfile to copy the .tgz file into the container
 
-When depending on the repo, you will have to pass credentials or the container won't be able to clone the repo.
 
 ## Publishing on npm?
 

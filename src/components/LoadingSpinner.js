@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { withStyles } from '@material-ui/core';
 
@@ -35,25 +35,23 @@ const styles = () => ({
     },
 });
 
-class LoadingSpinner extends Component {
-    render() {
-        const { classes, size, transparent, fixed, padding } = this.props;
-        return (
-            <div
-                style={{
-                    padding,
-                }}
-                className={classNames(
-                    fixed && classes.rootFixed,
-                    !fixed && classes.root,
-                    transparent && classes.rootTransparent,
-                )}
-            >
-                <CircularProgress size={size} />
-            </div>
-        );
-    }
-}
+const LoadingSpinner = props => {
+    const { classes, size, transparent, fixed, padding } = props;
+    return (
+        <div
+            style={{
+                padding,
+            }}
+            className={classNames(
+                fixed && classes.rootFixed,
+                !fixed && classes.root,
+                transparent && classes.rootTransparent,
+            )}
+        >
+            <CircularProgress size={size} />
+        </div>
+    );
+};
 LoadingSpinner.defaultProps = {
     size: 40,
     transparent: false,

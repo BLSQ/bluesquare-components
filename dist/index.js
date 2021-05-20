@@ -143,7 +143,7 @@ Object.defineProperty(exports, "IconButton", {
     return _IconButton.IconButton;
   }
 });
-exports.IasoUiConstants = exports.SnackBar = exports.IasoFilters = exports.IasoCustomTableTranslations = exports.IasoChipColors = void 0;
+exports.IasoUiConstants = exports.SnackBar = exports.IasoCustomTableTranslations = exports.IasoChipColors = void 0;
 
 var _LoadingSpinner = require("./LoadingSpinner");
 
@@ -174,10 +174,6 @@ exports.IasoChipColors = IasoChipColors;
 var IasoCustomTableTranslations = _interopRequireWildcard(require("./constants/iaso/customTableTranslations"));
 
 exports.IasoCustomTableTranslations = IasoCustomTableTranslations;
-
-var IasoFilters = _interopRequireWildcard(require("./constants/iaso/filters"));
-
-exports.IasoFilters = IasoFilters;
 
 var SnackBar = _interopRequireWildcard(require("./constants/iaso/snackBars"));
 

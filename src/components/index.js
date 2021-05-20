@@ -12,7 +12,6 @@ import { XmlSvg } from './svg/XmlSvgComponent';
 import * as IasoChipColors from './constants/iaso/chipColors';
 // TODO check if exporting translation lessages makes sense
 import * as IasoCustomTableTranslations from './constants/iaso/customTableTranslations';
-import * as IasoFilters from './constants/iaso/filters';
 // TODO check if individual snackbars can still be imported
 import * as SnackBar from './constants/iaso/snackBars';
 import * as IasoUiConstants from './constants/iaso/uiConstants';
@@ -43,7 +42,6 @@ export {
     XmlSvg,
     IasoChipColors,
     IasoCustomTableTranslations,
-    IasoFilters,
     SnackBar,
     IasoUiConstants,
     injectIntl,

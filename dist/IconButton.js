@@ -37,15 +37,15 @@ var _GetApp = _interopRequireDefault(require("@material-ui/icons/GetApp"));
 
 var _RestoreFromTrash = _interopRequireDefault(require("@material-ui/icons/RestoreFromTrash"));
 
-var _XmlSvgComponent = _interopRequireDefault(require("./svg/XmlSvgComponent"));
+var _XmlSvgComponent = require("./svg/XmlSvgComponent");
 
-var _DHIS2SvgComponent = _interopRequireDefault(require("./svg/DHIS2SvgComponent"));
+var _DHIS2SvgComponent = require("./svg/DHIS2SvgComponent");
 
-var _OrgUnitSvgComponent = _interopRequireDefault(require("./svg/OrgUnitSvgComponent"));
+var _OrgUnitSvgComponent = require("./svg/OrgUnitSvgComponent");
 
-var _ExcellSvgComponent = _interopRequireDefault(require("./svg/ExcellSvgComponent"));
+var _ExcellSvgComponent = require("./svg/ExcellSvgComponent");
 
-var _common = _interopRequireDefault(require("./styles/iaso/common"));
+var _common = require("./styles/iaso/common");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -66,21 +66,21 @@ var ICON_VARIANTS = {
   edit: _Edit["default"],
   history: _History["default"],
   map: _Map["default"],
-  xml: _XmlSvgComponent["default"],
-  dhis: _DHIS2SvgComponent["default"],
-  orgUnit: _OrgUnitSvgComponent["default"],
+  xml: _XmlSvgComponent.XmlSvg,
+  dhis: _DHIS2SvgComponent.DHIS2Svg,
+  orgUnit: _OrgUnitSvgComponent.OrgUnitSvg,
   refresh: _CachedRounded["default"],
   stop: _StopRounded["default"],
-  xls: _ExcellSvgComponent["default"],
+  xls: _ExcellSvgComponent.ExcellSvg,
   download: _GetApp["default"]
 };
 
 var styles = function styles(theme) {
-  return _objectSpread(_objectSpread({}, (0, _common["default"])(theme)), {}, {
+  return _objectSpread(_objectSpread({}, (0, _common.commonStyles)(theme)), {}, {
     white: {
       color: 'white'
     },
-    popperFixed: _objectSpread(_objectSpread({}, (0, _common["default"])(theme).popperFixed), {}, {
+    popperFixed: _objectSpread(_objectSpread({}, (0, _common.commonStyles)(theme).popperFixed), {}, {
       marginTop: theme.spacing(1)
     })
   });

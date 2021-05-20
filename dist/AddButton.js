@@ -13,7 +13,7 @@ var _Add = _interopRequireDefault(require("@material-ui/icons/Add"));
 
 var _core = require("@material-ui/core");
 
-var _common = _interopRequireDefault(require("./styles/iaso/common"));
+var _common = require("./styles/iaso/common");
 
 var _useSafeIntl = require("./utils/useSafeIntl");
 
@@ -31,7 +31,7 @@ var defaultMessage = {
 };
 
 var styles = function styles(theme) {
-  return _objectSpread({}, (0, _common["default"])(theme));
+  return _objectSpread({}, (0, _common.commonStyles)(theme));
 };
 
 function AddButtonComponent(_ref) {

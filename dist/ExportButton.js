@@ -13,7 +13,7 @@ var _CallMade = _interopRequireDefault(require("@material-ui/icons/CallMade"));
 
 var _core = require("@material-ui/core");
 
-var _common = _interopRequireDefault(require("./styles/iaso/common"));
+var _common = require("./styles/iaso/common");
 
 var _injectIntl = require("./utils/injectIntl");
 
@@ -26,7 +26,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var styles = function styles(theme) {
-  return _objectSpread(_objectSpread({}, (0, _common["default"])(theme)), {}, {
+  return _objectSpread(_objectSpread({}, (0, _common.commonStyles)(theme)), {}, {
     button: {
       marginLeft: theme.spacing(2),
       '& svg, & i': {

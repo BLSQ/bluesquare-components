@@ -1,5 +1,3 @@
-import React from 'react';
-import ReactDom from 'react-dom';
-import App from './App';
+import * as library from './components';
 
-ReactDom.render(<App />, document.getElementById('app'));
+export default library;

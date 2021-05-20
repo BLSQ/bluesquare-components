@@ -5,15 +5,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.commonStyles = void 0;
 
-var _map = _interopRequireDefault(require("./map"));
+var _map = require("./map");
 
-var _reactTable = _interopRequireDefault(require("./reactTable"));
+var _reactTable = require("./reactTable");
 
-var _innerDrawer = _interopRequireDefault(require("./innerDrawer"));
+var _innerDrawer = require("./innerDrawer");
 
 var _uiConstants = require("../../constants/iaso/uiConstants");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -22,7 +20,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var commonStyles = function commonStyles(theme) {
-  return _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, (0, _map["default"])(theme)), (0, _innerDrawer["default"])(theme)), (0, _reactTable["default"])(theme)), {}, {
+  return _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, (0, _map.mapStyles)(theme)), (0, _innerDrawer.innerDrawerStyles)(theme)), (0, _reactTable.reactTableStyles)(theme)), {}, {
     containerFullHeight: {
       width: '100%',
       height: "calc(100vh - ".concat(_uiConstants.MENU_HEIGHT_WITH_TABS, "px)"),

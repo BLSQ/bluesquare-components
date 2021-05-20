@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Add from '@material-ui/icons/Add';
 import { withStyles, Button } from '@material-ui/core';
 
-import commonStyles from './styles/iaso/common';
+import { commonStyles } from './styles/iaso/common';
 import { useSafeIntl } from './utils/useSafeIntl';
 
 const defaultMessage = {

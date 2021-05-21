@@ -1,5 +1,3 @@
-
-
 FROM scratch
 
 WORKDIR /bluesquare-components

@@ -13,7 +13,7 @@
         "fix-lint": "prettier-eslint \"./src/**/*.js\" --lint-different  --write",
         "show-lint-problems": "eslint \"./src/**/*.js\"",
         "clean": "rm -rf dist",
-        "compile": "npm run clean && NODE_ENV=production babel src/components --out-dir dist --copy-files --ignore __tests__,spec.js,test.js",
+        "compile": "npm run clean && NODE_ENV=production babel src --out-dir dist --copy-files --ignore __tests__,spec.js,test.js",
         "build": "npm run clean && webpack --mode=production"
     },
     "repository": {

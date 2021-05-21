@@ -10,7 +10,11 @@ module.exports = {
     output: {
         path: path.join(__dirname, '/dist'),
         filename: 'index.js',
-        library: { name: 'bluesquare-components', type: 'var',export:'default' },
+        library: {
+            name: 'bluesquare-components',
+            type: 'var',
+            export: 'default',
+        },
         libraryTarget: 'umd',
         globalObject: 'this',
     },

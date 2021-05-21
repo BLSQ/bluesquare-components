@@ -16,7 +16,7 @@ run `npm i`
 
 In your application's `package.json`, add:
 ```json
-"bluesquare-components":"git://github.com/BLSQ/bluesquare-components#<branch>"
+"bluesquare-components":"git://github.com/BLSQ/bluesquare-components"
 ```
 
 Be careful as the command below will work locally but cause authetication failure when run in Docker: 
@@ -26,11 +26,23 @@ Be careful as the command below will work locally but cause authetication failur
 
 run `npm i`
 
-## Docker issues
+## With Docker
 
-When depending on a local version, you will have to modify your Dockerfile to copy the .tgz file into the container
+To depend on the repo, run `npm run compile` and push the `dist` folder, then depend on the library as mentioned above.
+
+To depend on a local version of the library:
+
+- Run `npm run build-local`
+- Build an image from the Dockerfile: `docker build --tag <library-name> .`
+- Modify your `package.json`: 
+```json
+"bluesquare-components":"file:path/to/compiled_file.tgz"
+```
+- In your project, run `npm i`
+- Modify your project's Dockerfile to have a [multi staged build](https://stackoverflow.com/questions/57910644/docker-multistage-how-to-copy-built-files-between-stages) in order to be able to copy the .tgz file in your container.
+- Build your projects Docker image and start the container.
 
 
 ## Publishing on npm?
 
-Is coming soon.
+Coming soon.

@@ -177,6 +177,8 @@ class DynamicTabs extends Component {
             maxItems,
             displayCounts,
             counts,
+            addMessage,
+            deleteMessage,
         } = this.props;
         const { tabIndex, tabsWidth } = this.state;
         const itemsList = JSON.parse(params[paramKey]);

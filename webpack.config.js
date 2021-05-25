@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const deps = require("./package.json").dependencies;
 
 module.exports = {
-    entry: './src/index.js',
+    entry: './index.js',
     // Where files should be sent once they are bundled
     output: {
         path: path.join(__dirname, '/dist'),

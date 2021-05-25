@@ -15,7 +15,7 @@
         "clean": "rm -rf dist",
         "compile": "npm run clean && NODE_ENV=production babel src --out-dir dist --copy-files --ignore __tests__,spec.js,test.js",
         "serve": "npm run clean && webpack --mode=production ",
-        "build-local": "npm run serve && npm pack"
+        "build-local": "npm run compile && npm pack"
     },
     "repository": {
         "type": "git",
@@ -27,9 +27,7 @@
     },
     "homepage": "https://github.com/BLSQ/bluesquare-components#readme",
     "dependencies": {
-        "react": "^16.8.6",
-        "react-dom": "^16.0.0",
-        "react-router": "^3.0.0"
+
     },
     "devDependencies": {
         "@babel/cli": "^7.14.3",
@@ -70,6 +68,9 @@
         "color": "^3.1.2",
         "moment": "^2.20.1",
         "prop-types": "^15.7.2",
-        "react-intl": "^5.10.16"
+        "react-intl": "^5.10.16",
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6",
+        "react-router": "^3.0.0"
     }
 }

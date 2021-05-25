@@ -1,9 +1,13 @@
 # bluesquare-components
 A library of UI components to be used in [Bluesquare](https://www.bluesquarehub.com) apps.
 
+## Making changes
+
+If you make additions or changes to the library, run `npm run compile` and commit the updated `/dist` folder before pushing.
+
 ## Depend on it locally
 
-run `npm run build && npm pack` (webpack) ot `npm run compile && npm pack` (Babel) to generate a tgz file.
+run `npm run build-local` to generate a tgz file.
 
 In your application's `package.json`, add:
 ```json

@@ -21,7 +21,7 @@ var _color = _interopRequireDefault(require("color"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _icons = require("@material-ui/icons");
+var _Message = require("../types/Message");
 
 var _common = require("../styles/iaso/common");
 
@@ -356,8 +356,8 @@ DynamicTabs.propTypes = {
   onTabsDeleted: _propTypes["default"].func,
   displayCounts: _propTypes["default"].bool,
   counts: _propTypes["default"].array,
-  deleteMessage: _icons.Message.isRequired,
-  addMessage: _icons.Message.isRequired
+  deleteMessage: _Message.Message.isRequired,
+  addMessage: _Message.Message.isRequired
 };
 var styledDynamicTabs = (0, _core.withStyles)(styles)(DynamicTabs);
 exports.DynamicTabs = styledDynamicTabs;

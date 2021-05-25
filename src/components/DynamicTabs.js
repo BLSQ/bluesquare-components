@@ -7,7 +7,7 @@ import Color from 'color';
 
 import PropTypes from 'prop-types';
 
-import { Message } from '@material-ui/icons';
+import { Message } from '../types/Message';
 import { commonStyles } from '../styles/iaso/common';
 import { formatThousand } from '../utils';
 // import MESSAGES from './messages';

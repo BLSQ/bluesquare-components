@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { withStyles, Tabs, Tab, IconButton, Tooltip } from '@material-ui/core';
 import { FormattedMessage } from 'react-intl';
 import Add from '@material-ui/icons/Add';
@@ -8,7 +8,7 @@ import Color from 'color';
 import PropTypes from 'prop-types';
 
 import { Message } from '@material-ui/icons';
-import commonStyles from '../styles/iaso/common';
+import { commonStyles } from '../styles/iaso/common';
 import { formatThousand } from '../utils';
 // import MESSAGES from './messages';
 

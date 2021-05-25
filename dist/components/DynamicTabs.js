@@ -23,7 +23,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _icons = require("@material-ui/icons");
 
-var _common = _interopRequireDefault(require("../styles/iaso/common"));
+var _common = require("../styles/iaso/common");
 
 var _utils = require("../utils");
 
@@ -73,8 +73,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 // import MESSAGES from './messages';
 var styles = function styles(theme) {
-  return _objectSpread(_objectSpread({}, (0, _common["default"])(theme)), {}, {
-    tabs: _objectSpread(_objectSpread({}, (0, _common["default"])(theme).tabs), {}, {
+  return _objectSpread(_objectSpread({}, (0, _common.commonStyles)(theme)), {}, {
+    tabs: _objectSpread(_objectSpread({}, (0, _common.commonStyles)(theme).tabs), {}, {
       paddingRight: 0
     }),
     mainContainer: {

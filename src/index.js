@@ -28,13 +28,8 @@ import { DownloadButton } from './components/DownloadButton';
 import { ExportButton } from './components/ExportButton';
 import { IconButton } from './components/IconButton';
 import { DynamicTabs } from './components/DynamicTabs';
-import { Message } from './types/Message';
 
 export * from './utils';
-
-// types
-
-export { Message };
 
 export {
     LoadingSpinner,

@@ -7,7 +7,6 @@ import Color from 'color';
 
 import PropTypes from 'prop-types';
 
-import { Message } from '../types/Message';
 import { commonStyles } from '../styles/iaso/common';
 import { formatThousand } from '../utils';
 // import MESSAGES from './messages';
@@ -321,8 +320,8 @@ DynamicTabs.propTypes = {
     onTabsDeleted: PropTypes.func,
     displayCounts: PropTypes.bool,
     counts: PropTypes.array,
-    deleteMessage: Message.isRequired,
-    addMessage: Message.isRequired,
+    deleteMessage: PropTypes.object.isRequired,
+    addMessage: PropTypes.object.isRequired,
 };
 
 const styledDynamicTabs = withStyles(styles)(DynamicTabs);

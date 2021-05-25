@@ -21,8 +21,6 @@ var _color = _interopRequireDefault(require("color"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _Message = require("../types/Message");
-
 var _common = require("../styles/iaso/common");
 
 var _utils = require("../utils");
@@ -356,8 +354,8 @@ DynamicTabs.propTypes = {
   onTabsDeleted: _propTypes["default"].func,
   displayCounts: _propTypes["default"].bool,
   counts: _propTypes["default"].array,
-  deleteMessage: _Message.Message.isRequired,
-  addMessage: _Message.Message.isRequired
+  deleteMessage: _propTypes["default"].object.isRequired,
+  addMessage: _propTypes["default"].object.isRequired
 };
 var styledDynamicTabs = (0, _core.withStyles)(styles)(DynamicTabs);
 exports.DynamicTabs = styledDynamicTabs;

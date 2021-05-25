@@ -33,7 +33,8 @@ var _exportNames = {
   DownloadButton: true,
   ExportButton: true,
   IconButton: true,
-  DynamicTabs: true
+  DynamicTabs: true,
+  Message: true
 };
 Object.defineProperty(exports, "LoadingSpinner", {
   enumerable: true,
@@ -179,6 +180,12 @@ Object.defineProperty(exports, "DynamicTabs", {
     return _DynamicTabs.DynamicTabs;
   }
 });
+Object.defineProperty(exports, "Message", {
+  enumerable: true,
+  get: function get() {
+    return _Message.Message;
+  }
+});
 exports.IasoUiConstants = exports.SnackBar = exports.IasoCustomTableTranslations = exports.IasoChipColors = void 0;
 
 var _LoadingSpinner = require("./components/LoadingSpinner");
@@ -244,6 +251,8 @@ var _ExportButton = require("./components/ExportButton");
 var _IconButton = require("./components/IconButton");
 
 var _DynamicTabs = require("./components/DynamicTabs");
+
+var _Message = require("./types/Message");
 
 var _utils = require("./utils");
 

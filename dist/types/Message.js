@@ -12,7 +12,6 @@ var Message = function Message(id, defaultMessage) {
 
   this.id = id;
   this.defaultMessage = defaultMessage;
-  return this;
 };
 
 exports.Message = Message;

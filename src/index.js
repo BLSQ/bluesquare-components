@@ -10,7 +10,7 @@ import { TextSvg } from './svg/TextSvgComponent';
 import { WordSvg } from './svg/WordSvgComponent';
 import { XmlSvg } from './svg/XmlSvgComponent';
 import * as IasoChipColors from './constants/iaso/chipColors';
-// TODO check if exporting translation lessages makes sense
+// TODO check if exporting translation messages makes sense
 import * as IasoCustomTableTranslations from './constants/iaso/customTableTranslations';
 // TODO check if individual snackbars can still be imported
 import * as SnackBar from './constants/iaso/snackBars';
@@ -27,6 +27,9 @@ import { AddButton } from './components/AddButton';
 import { DownloadButton } from './components/DownloadButton';
 import { ExportButton } from './components/ExportButton';
 import { IconButton } from './components/IconButton';
+import { DynamicTabs } from './components/DynamicTabs';
+
+export * from './utils';
 
 export {
     LoadingSpinner,
@@ -56,4 +59,5 @@ export {
     DownloadButton,
     ExportButton,
     IconButton,
+    DynamicTabs,
 };

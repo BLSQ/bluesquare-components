@@ -14,7 +14,7 @@ In your application's `package.json`, add:
 "bluesquare-components":"file:/local/path/to/bluesquare-components-<version>.tgz"
 ```
 
-run `npm i`
+run `npm i`, or `npm update bluesquare-components` to update to the latest version on the repo.
 
 ## Depend on the repository 
 
@@ -28,7 +28,7 @@ Be careful as the command below will work locally but cause authetication failur
 "bluesquare-components":"git://github.com/BLSQ/bluesquare-components.git#<commit-ish>"
 ```
 
-run `npm i`
+run `npm i` to install
 
 ## With Docker
 
@@ -45,6 +45,14 @@ To depend on a local version of the library:
 - In your project, run `npm i`
 - Modify your project's Dockerfile to have a [multi staged build](https://stackoverflow.com/questions/57910644/docker-multistage-how-to-copy-built-files-between-stages) in order to be able to copy the .tgz file in your container.
 - Build your projects Docker image and start the container.
+
+To update the dependency:
+
+- Run `npm run build-local`
+- Build an image from the Dockerfile: `docker build --tag <library-name> .`
+- In your project, run `npm update bluesquare-components`
+- Update your project's Docker image
+- Start the container
 
 
 ## Publishing on npm?

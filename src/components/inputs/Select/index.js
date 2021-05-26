@@ -57,12 +57,6 @@ const SelectComponent = ({
                     options={options}
                     noResultsText={noResultsText}
                     onChange={newValue => {
-                        console.log(
-                            'SELECT Component',
-                            keyValue,
-                            'new value',
-                            newValue,
-                        );
                         onChange(keyValue, newValue);
                     }}
                 />

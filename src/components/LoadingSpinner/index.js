@@ -60,11 +60,20 @@ LoadingSpinner.defaultProps = {
 };
 
 LoadingSpinner.propTypes = {
-    classes: PropTypes.object.isRequired,
+    /**
+     * Adjust the size of the spinner
+     */
     size: PropTypes.number,
+    /**
+     * I don't know what that does
+     */
     transparent: PropTypes.bool,
     fixed: PropTypes.bool,
+    /**
+     * add padding
+     */
     padding: PropTypes.number,
+    classes: PropTypes.object.isRequired,
 };
 
 const styledSpinner = withStyles(styles)(LoadingSpinner);

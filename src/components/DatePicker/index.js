@@ -10,8 +10,8 @@ import {
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
-import { commonStyles } from '../styles/iaso/common';
-import { useSafeIntl } from '../utils/useSafeIntl';
+import { commonStyles } from '../../styles/iaso/common';
+import { useSafeIntl } from '../../utils/useSafeIntl';
 // import MESSAGES from '../messages';
 
 const useStyles = makeStyles(theme => ({
@@ -79,10 +79,25 @@ DatePicker.defaultProps = {
 };
 
 DatePicker.propTypes = {
+    /**
+     * A placeholder. Required
+     */
     placeholder: PropTypes.string.isRequired,
+    /**
+     * OnChange function. Required
+     */
     onChange: PropTypes.func.isRequired,
+    /**
+     * The date to initialize the DatePicker with
+     */
     currentDate: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    /**
+     * Toggles the CSS for error state
+     */
     hasError: PropTypes.bool.isRequired,
+    /**
+     * A message object to use with react-intl. Displays when hovering over the clear icon
+     */
     clearMessage: PropTypes.object.isRequired,
 };
 

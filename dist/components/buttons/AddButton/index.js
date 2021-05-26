@@ -13,9 +13,9 @@ var _Add = _interopRequireDefault(require("@material-ui/icons/Add"));
 
 var _core = require("@material-ui/core");
 
-var _common = require("../styles/iaso/common");
+var _common = require("../../../styles/iaso/common");
 
-var _useSafeIntl = require("../utils/useSafeIntl");
+var _useSafeIntl = require("../../../utils/useSafeIntl");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 

@@ -183,7 +183,7 @@ exports.IasoUiConstants = exports.SnackBar = exports.IasoCustomTableTranslations
 
 var _LoadingSpinner = require("./components/LoadingSpinner");
 
-var _TopBar = require("./components/TopBar");
+var _TopBar = require("./components/nav/TopBar");
 
 var _CsvSvgComponent = require("./svg/CsvSvgComponent");
 
@@ -235,15 +235,15 @@ var _mapPopup = require("./styles/iaso/mapPopup");
 
 var _reactTable = require("./styles/iaso/reactTable");
 
-var _AddButton = require("./components/AddButton");
+var _AddButton = require("./components/buttons/AddButton");
 
-var _DownloadButton = require("./components/DownloadButton");
+var _DownloadButton = require("./components/buttons/DownloadButton");
 
-var _ExportButton = require("./components/ExportButton");
+var _ExportButton = require("./components/buttons/ExportButton");
 
-var _IconButton = require("./components/IconButton");
+var _IconButton = require("./components/buttons/IconButton");
 
-var _DynamicTabs = require("./components/DynamicTabs");
+var _DynamicTabs = require("./components/nav/DynamicTabs");
 
 var _utils = require("./utils");
 

@@ -1,5 +1,5 @@
 import { LoadingSpinner } from './components/LoadingSpinner';
-import { TopBar } from './components/TopBar';
+import { TopBar } from './components/nav/TopBar';
 import { CsvSvg } from './svg/CsvSvgComponent';
 import { DHIS2Svg } from './svg/DHIS2SvgComponent';
 import { ExcellSvg } from './svg/ExcellSvgComponent';
@@ -23,11 +23,11 @@ import { innerDrawerStyles } from './styles/iaso/innerDrawer';
 import { mapStyles } from './styles/iaso/map';
 import { mapPopupStyles } from './styles/iaso/mapPopup';
 import { reactTableStyles } from './styles/iaso/reactTable';
-import { AddButton } from './components/AddButton';
-import { DownloadButton } from './components/DownloadButton';
-import { ExportButton } from './components/ExportButton';
-import { IconButton } from './components/IconButton';
-import { DynamicTabs } from './components/DynamicTabs';
+import { AddButton } from './components/buttons/AddButton';
+import { DownloadButton } from './components/buttons/DownloadButton';
+import { ExportButton } from './components/buttons/ExportButton';
+import { IconButton } from './components/buttons/IconButton';
+import { DynamicTabs } from './components/nav/DynamicTabs';
 
 export * from './utils';
 

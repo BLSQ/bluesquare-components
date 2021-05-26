@@ -13,9 +13,9 @@ var _CallMade = _interopRequireDefault(require("@material-ui/icons/CallMade"));
 
 var _core = require("@material-ui/core");
 
-var _common = require("../styles/iaso/common");
+var _common = require("../../../styles/iaso/common");
 
-var _injectIntl = require("../utils/injectIntl");
+var _injectIntl = require("../../../utils/injectIntl");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 

@@ -37,15 +37,15 @@ var _GetApp = _interopRequireDefault(require("@material-ui/icons/GetApp"));
 
 var _RestoreFromTrash = _interopRequireDefault(require("@material-ui/icons/RestoreFromTrash"));
 
-var _XmlSvgComponent = require("../svg/XmlSvgComponent");
+var _XmlSvgComponent = require("../../../svg/XmlSvgComponent");
 
-var _DHIS2SvgComponent = require("../svg/DHIS2SvgComponent");
+var _DHIS2SvgComponent = require("../../../svg/DHIS2SvgComponent");
 
-var _OrgUnitSvgComponent = require("../svg/OrgUnitSvgComponent");
+var _OrgUnitSvgComponent = require("../../../svg/OrgUnitSvgComponent");
 
-var _ExcellSvgComponent = require("../svg/ExcellSvgComponent");
+var _ExcellSvgComponent = require("../../../svg/ExcellSvgComponent");
 
-var _common = require("../styles/iaso/common");
+var _common = require("../../../styles/iaso/common");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 

@@ -21,9 +21,9 @@ var _color = _interopRequireDefault(require("color"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _common = require("../styles/iaso/common");
+var _common = require("../../../styles/iaso/common");
 
-var _utils = require("../utils");
+var _utils = require("../../../utils");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 

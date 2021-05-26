@@ -7,8 +7,8 @@ import Color from 'color';
 
 import PropTypes from 'prop-types';
 
-import { commonStyles } from '../styles/iaso/common';
-import { formatThousand } from '../utils';
+import { commonStyles } from '../../../styles/iaso/common';
+import { formatThousand } from '../../../utils';
 // import MESSAGES from './messages';
 
 const styles = theme => ({

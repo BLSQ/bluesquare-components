@@ -28,6 +28,9 @@ import { DownloadButton } from './components/buttons/DownloadButton';
 import { ExportButton } from './components/buttons/ExportButton';
 import { IconButton } from './components/buttons/IconButton';
 import { DynamicTabs } from './components/nav/DynamicTabs';
+import { InnerDrawer } from './components/nav/InnerDrawer';
+import { DatePicker } from './components/DatePicker';
+import { Select } from './components/inputs/Select';
 
 export * from './utils';
 
@@ -60,4 +63,7 @@ export {
     ExportButton,
     IconButton,
     DynamicTabs,
+    InnerDrawer,
+    DatePicker,
+    Select,
 };

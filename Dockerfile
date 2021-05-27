@@ -2,4 +2,4 @@ FROM scratch
 
 WORKDIR /bluesquare-components
 
-COPY . /bluesquare-components
+COPY ./lib /bluesquare-components/lib

@@ -38,6 +38,8 @@ var _exportNames = {
   DatePicker: true,
   Select: true,
   TextInput: true,
+  PasswordInput: true,
+  NumberInput: true,
   ErrorBoundary: true
 };
 Object.defineProperty(exports, "LoadingSpinner", {
@@ -208,6 +210,18 @@ Object.defineProperty(exports, "TextInput", {
     return _TextInput.TextInput;
   }
 });
+Object.defineProperty(exports, "PasswordInput", {
+  enumerable: true,
+  get: function get() {
+    return _PasswordInput.PasswordInput;
+  }
+});
+Object.defineProperty(exports, "NumberInput", {
+  enumerable: true,
+  get: function get() {
+    return _NumberInput.NumberInput;
+  }
+});
 Object.defineProperty(exports, "ErrorBoundary", {
   enumerable: true,
   get: function get() {
@@ -287,6 +301,10 @@ var _DatePicker = require("./components/DatePicker");
 var _Select = require("./components/inputs/Select");
 
 var _TextInput = require("./components/inputs/TextInput");
+
+var _PasswordInput = require("./components/inputs/PasswordInput");
+
+var _NumberInput = require("./components/inputs/NumberInput");
 
 var _ErrorBoundary = require("./components/ErrorBoundary");
 

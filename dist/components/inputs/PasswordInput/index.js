@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.TextInput = void 0;
+exports.PasswordInput = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -11,13 +11,17 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _core = require("@material-ui/core");
 
+var _Edit = _interopRequireDefault(require("@material-ui/icons/Edit"));
+
 var _FormControl = require("../FormControl");
 
 var _InputLabel = require("../InputLabel");
 
+var _IconButton = require("../../buttons/IconButton");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var TextInput = function TextInput(_ref) {
+var PasswordInput = function PasswordInput(_ref) {
   var keyValue = _ref.keyValue,
       label = _ref.label,
       withMarginTop = _ref.withMarginTop,
@@ -26,7 +30,11 @@ var TextInput = function TextInput(_ref) {
       value = _ref.value,
       disabled = _ref.disabled,
       _onChange = _ref.onChange,
-      multiline = _ref.multiline;
+      multiline = _ref.multiline,
+      onClick = _ref.onClick,
+      displayPassword = _ref.displayPassword,
+      tooltipMessage = _ref.tooltipMessage,
+      classNames = _ref.classNames;
   var hasErrors = errors.length > 1;
   return /*#__PURE__*/_react["default"].createElement(_FormControl.FormControl, {
     withMarginTop: withMarginTop,
@@ -36,34 +44,50 @@ var TextInput = function TextInput(_ref) {
     label: label,
     required: required,
     error: hasErrors,
-    shrink: value !== ''
+    shrink: !value
   }), /*#__PURE__*/_react["default"].createElement(_core.OutlinedInput, {
     size: "small",
     multiline: multiline,
     disabled: disabled,
     id: "input-text-".concat(keyValue),
-    value: value // type={type === 'password' && displayPassword ? 'text' : type}
-    ,
-    type: "text",
+    value: value,
+    type: displayPassword ? 'text' : 'password',
     onChange: function onChange(event) {
       return _onChange(event.target.value);
     },
-    error: hasErrors // className={type === 'password' ? classes.passwordInput : ''}
-
-  }));
+    error: hasErrors,
+    className: classNames.passwordInput
+  }), /*#__PURE__*/_react["default"].createElement(_core.Tooltip, {
+    className: classNames.displayPassword,
+    disableFocusListener: disabled,
+    disableHoverListener: disabled,
+    disableTouchListener: disabled,
+    placement: "bottom",
+    title: tooltipMessage
+  }, /*#__PURE__*/_react["default"].createElement("span", null, /*#__PURE__*/_react["default"].createElement(_IconButton.IconButton, {
+    color: displayPassword ? 'primary' : 'inherit',
+    onClick: onClick
+  }, /*#__PURE__*/_react["default"].createElement(_Edit["default"], null)))));
 };
 
-exports.TextInput = TextInput;
-TextInput.defaultProps = {
+exports.PasswordInput = PasswordInput;
+PasswordInput.defaultProps = {
   value: '',
   errors: [],
   withMarginTop: true,
   multiline: false,
   disabled: false,
   required: false,
-  onChange: function onChange() {}
+  onChange: function onChange() {},
+  onClick: function onClick() {},
+  displayPassword: false,
+  tooltipMessage: 'Display password',
+  classNames: {
+    passwordInput: '',
+    displayPassword: ''
+  }
 };
-TextInput.propTypes = {
+PasswordInput.propTypes = {
   withMarginTop: _propTypes["default"].bool,
   errors: _propTypes["default"].arrayOf(_propTypes["default"].string),
   keyValue: _propTypes["default"].string.isRequired,
@@ -72,5 +96,9 @@ TextInput.propTypes = {
   disabled: _propTypes["default"].bool,
   multiline: _propTypes["default"].bool,
   value: _propTypes["default"].string,
-  onChange: _propTypes["default"].func
+  onChange: _propTypes["default"].func,
+  onClick: _propTypes["default"].func,
+  displayPassword: _propTypes["default"].bool,
+  tooltipMessage: _propTypes["default"].string,
+  classNames: _propTypes["default"].object
 };

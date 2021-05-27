@@ -31,31 +31,10 @@ const TextInput = ({
                 disabled={disabled}
                 id={`input-text-${keyValue}`}
                 value={value}
-                // type={type === 'password' && displayPassword ? 'text' : type}
                 type="text"
-                onChange={event => onChange(keyValue, event.target.value)}
+                onChange={event => onChange(event.target.value)}
                 error={hasErrors}
-                // className={type === 'password' ? classes.passwordInput : ''}
             />
-            {/* {type === 'password' && (
-            <Tooltip
-                className={classes.displayPassword}
-                disableFocusListener={disabled}
-                disableHoverListener={disabled}
-                disableTouchListener={disabled}
-                placement="bottom"
-                title={formatMessage(MESSAGES.displayPassword)}
-            >
-                <span>
-                    <IconButton
-                        color={displayPassword ? 'primary' : 'inherit'}
-                        onClick={() => this.toggleDisplayPassword()}
-                    >
-                        <Edit />
-                    </IconButton>
-                </span>
-            </Tooltip>
-        )} */}
         </FormControl>
     );
 };

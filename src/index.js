@@ -31,6 +31,8 @@ import { DynamicTabs } from './components/nav/DynamicTabs';
 import { InnerDrawer } from './components/nav/InnerDrawer';
 import { DatePicker } from './components/DatePicker';
 import { Select } from './components/inputs/Select';
+import { TextInput } from './components/inputs/TextInput';
+import { ErrorBoundary } from './components/ErrorBoundary';
 
 export * from './utils';
 
@@ -66,4 +68,6 @@ export {
     InnerDrawer,
     DatePicker,
     Select,
+    ErrorBoundary,
+    TextInput,
 };

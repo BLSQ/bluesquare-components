@@ -24,7 +24,7 @@ Default.args = {
         // eslint-disable-next-line no-console
         console.log('Click', value);
     },
-    currentDate: '04/05/2021',
+    currentDate: '05/04/2021',
     hasError: false,
     clearMessage: { id: 'clearMessage', defaultMessage: 'Clear' },
 };

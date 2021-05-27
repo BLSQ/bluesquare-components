@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { RadioGroup, FormControlLabel } from '@material-ui/core';
 
-const Radio = ({ options, keyValue, onChange, value }) => (
+const Radio = ({ options, name, onChange, value }) => (
     <RadioGroup
-        name={keyValue}
+        name={name}
         value={value}
         onChange={event => onChange(event.target.value)}
     >
@@ -26,7 +26,7 @@ Radio.defaultProps = {
 };
 Radio.propTypes = {
     options: PropTypes.array,
-    keyValue: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     onChange: PropTypes.func,
     value: PropTypes.any,
 };

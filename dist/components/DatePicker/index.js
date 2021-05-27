@@ -17,9 +17,9 @@ var _core = require("@material-ui/core");
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _common = require("../styles/iaso/common");
+var _common = require("../../styles/iaso/common");
 
-var _useSafeIntl = require("../utils/useSafeIntl");
+var _useSafeIntl = require("../../utils/useSafeIntl");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -117,9 +117,28 @@ DatePicker.defaultProps = {
   currentDate: null
 };
 DatePicker.propTypes = {
+  /**
+   * A placeholder. Required
+   */
   placeholder: _propTypes["default"].string.isRequired,
+
+  /**
+   * OnChange function. Required
+   */
   onChange: _propTypes["default"].func.isRequired,
+
+  /**
+   * The date to initialize the DatePicker with
+   */
   currentDate: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].object]),
+
+  /**
+   * Toggles the CSS for error state
+   */
   hasError: _propTypes["default"].bool.isRequired,
+
+  /**
+   * A message object to use with react-intl. Displays when hovering over the clear icon
+   */
   clearMessage: _propTypes["default"].object.isRequired
 };

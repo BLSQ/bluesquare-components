@@ -36,7 +36,9 @@ var _exportNames = {
   DynamicTabs: true,
   InnerDrawer: true,
   DatePicker: true,
-  Select: true
+  Select: true,
+  TextInput: true,
+  ErrorBoundary: true
 };
 Object.defineProperty(exports, "LoadingSpinner", {
   enumerable: true,
@@ -200,6 +202,18 @@ Object.defineProperty(exports, "Select", {
     return _Select.Select;
   }
 });
+Object.defineProperty(exports, "TextInput", {
+  enumerable: true,
+  get: function get() {
+    return _TextInput.TextInput;
+  }
+});
+Object.defineProperty(exports, "ErrorBoundary", {
+  enumerable: true,
+  get: function get() {
+    return _ErrorBoundary.ErrorBoundary;
+  }
+});
 exports.IasoUiConstants = exports.SnackBar = exports.IasoCustomTableTranslations = exports.IasoChipColors = void 0;
 
 var _LoadingSpinner = require("./components/LoadingSpinner");
@@ -271,6 +285,10 @@ var _InnerDrawer = require("./components/nav/InnerDrawer");
 var _DatePicker = require("./components/DatePicker");
 
 var _Select = require("./components/inputs/Select");
+
+var _TextInput = require("./components/inputs/TextInput");
+
+var _ErrorBoundary = require("./components/ErrorBoundary");
 
 var _utils = require("./utils");
 

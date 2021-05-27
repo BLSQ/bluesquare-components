@@ -89,8 +89,6 @@ var SelectComponent = function SelectComponent(_ref) {
     options: options,
     noResultsText: noResultsText,
     onChange: function onChange(newValue) {
-      console.log('SELECT Component', keyValue, 'new value', newValue);
-
       _onChange(keyValue, newValue);
     }
   })));

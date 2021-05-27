@@ -57,7 +57,7 @@ const SelectComponent = ({
                     options={options}
                     noResultsText={noResultsText}
                     onChange={newValue => {
-                        onChange(keyValue, newValue);
+                        onChange(newValue);
                     }}
                 />
             </div>

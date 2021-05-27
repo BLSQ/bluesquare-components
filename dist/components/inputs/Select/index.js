@@ -89,7 +89,7 @@ var SelectComponent = function SelectComponent(_ref) {
     options: options,
     noResultsText: noResultsText,
     onChange: function onChange(newValue) {
-      _onChange(keyValue, newValue);
+      _onChange(newValue);
     }
   })));
 };

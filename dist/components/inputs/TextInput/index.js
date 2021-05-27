@@ -42,14 +42,12 @@ var TextInput = function TextInput(_ref) {
     multiline: multiline,
     disabled: disabled,
     id: "input-text-".concat(keyValue),
-    value: value // type={type === 'password' && displayPassword ? 'text' : type}
-    ,
+    value: value,
     type: "text",
     onChange: function onChange(event) {
       return _onChange(event.target.value);
     },
-    error: hasErrors // className={type === 'password' ? classes.passwordInput : ''}
-
+    error: hasErrors
   }));
 };
 

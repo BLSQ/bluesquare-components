@@ -30,10 +30,14 @@ import { IconButton } from './components/buttons/IconButton';
 import { DynamicTabs } from './components/nav/DynamicTabs';
 import { InnerDrawer } from './components/nav/InnerDrawer';
 import { DatePicker } from './components/DatePicker';
+import { ArrayFieldInput } from './components/inputs/ArrayFieldInput';
+import { Checkbox } from './components/inputs/Checkbox';
+import { NumberInput } from './components/inputs/NumberInput';
+import { PasswordInput } from './components/inputs/PasswordInput';
+import { Radio } from './components/inputs/Radio';
+import { SearchInput } from './components/inputs/SearchInput';
 import { Select } from './components/inputs/Select';
 import { TextInput } from './components/inputs/TextInput';
-import { PasswordInput } from './components/inputs/PasswordInput';
-import { NumberInput } from './components/inputs/NumberInput';
 import { ErrorBoundary } from './components/ErrorBoundary';
 
 export * from './utils';
@@ -74,4 +78,8 @@ export {
     TextInput,
     PasswordInput,
     NumberInput,
+    ArrayFieldInput,
+    SearchInput,
+    Checkbox,
+    Radio,
 };

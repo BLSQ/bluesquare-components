@@ -16,6 +16,7 @@
         "compile": "npm run clean && NODE_ENV=production babel src --out-dir dist --copy-files --ignore __tests__,spec.js,test.js",
         "serve": "npm run clean && webpack --mode=production ",
         "build-local": "npm run compile && npm pack",
+        "build-local-image": "npm run compile && npm pack && docker build --tag blsq .",
         "storybook": "start-storybook -p 6006",
         "build-storybook": "build-storybook"
     },

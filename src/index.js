@@ -32,6 +32,8 @@ import { InnerDrawer } from './components/nav/InnerDrawer';
 import { DatePicker } from './components/DatePicker';
 import { Select } from './components/inputs/Select';
 import { TextInput } from './components/inputs/TextInput';
+import { PasswordInput } from './components/inputs/PasswordInput';
+import { NumberInput } from './components/inputs/NumberInput';
 import { ErrorBoundary } from './components/ErrorBoundary';
 
 export * from './utils';
@@ -70,4 +72,6 @@ export {
     Select,
     ErrorBoundary,
     TextInput,
+    PasswordInput,
+    NumberInput,
 };

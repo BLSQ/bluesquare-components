@@ -4,6 +4,7 @@ import CallMade from '@material-ui/icons/CallMade';
 import { withStyles, Button } from '@material-ui/core';
 import { commonStyles } from '../../../styles/iaso/common';
 import { injectIntl } from '../../../utils/injectIntl';
+import { MESSAGES } from './messages';
 
 const styles = theme => ({
     ...commonStyles(theme),
@@ -14,11 +15,6 @@ const styles = theme => ({
         },
     },
 });
-
-const defaultMessage = {
-    id: 'iaso.label.export',
-    defaultMessage: 'Export',
-};
 
 // TODO refactor to useSafeIntl instead?
 function ExportButtonComponent({
@@ -45,7 +41,7 @@ function ExportButtonComponent({
     );
 }
 ExportButtonComponent.defaultProps = {
-    message: defaultMessage,
+    message: MESSAGES.export,
     isDisabled: false,
 };
 ExportButtonComponent.propTypes = {

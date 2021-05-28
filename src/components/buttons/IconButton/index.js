@@ -129,7 +129,7 @@ IconButtonComponent.propTypes = {
     disabled: PropTypes.bool,
     icon: PropTypes.oneOf(Object.keys(ICON_VARIANTS)).isRequired,
     color: PropTypes.string,
-    tooltipMessage: PropTypes.object.isRequired, // TODO: make a message prop type
+    tooltipMessage: PropTypes.object.isRequired, // TODO: refactor IASO to pass the translation directly
 };
 
 const styledIconButton = withStyles(styles)(IconButtonComponent);

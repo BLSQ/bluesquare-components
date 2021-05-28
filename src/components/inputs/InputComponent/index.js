@@ -65,7 +65,7 @@ class InputComponent extends Component {
             labelText =
                 labelString !== ''
                     ? labelString
-                    : formatMessage(label || MESSAGES[keyValue]); // TODO: move in label component?
+                    : formatMessage(label || MESSAGES[keyValue]);
         }
         const inputValue =
             value === null || typeof value === 'undefined' ? '' : value;

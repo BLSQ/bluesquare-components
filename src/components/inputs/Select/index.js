@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Select from 'react-select';
 import { FormControl } from '../FormControl';
 import { InputLabel } from '../InputLabel';
+import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { MESSAGES } from './messages';
 
 const SelectComponent = ({
     value,
@@ -21,10 +23,11 @@ const SelectComponent = ({
     isFocused,
     searchable,
     required,
-    noResultsText,
+    // noResultsText,
 }) => {
     const [selectInputValue, setSelectInputValue] = useState('');
     const hasErrors = errors.length > 0;
+    const intl = useSafeIntl();
 
     return (
         <FormControl withMarginTop={withMarginTop} errors={errors}>
@@ -55,7 +58,7 @@ const SelectComponent = ({
                     onBlur={onBlur}
                     onFocus={onFocus}
                     options={options}
-                    noResultsText={noResultsText}
+                    noResultsText={intl.formatMessage(MESSAGES.noOptions)}
                     onChange={newValue => {
                         onChange(newValue);
                     }}
@@ -81,7 +84,7 @@ SelectComponent.defaultProps = {
     onBlur: () => {},
     onFocus: () => {},
     // TODO use library translations
-    noResultsText: '',
+    // noResultsText: '',
 };
 
 SelectComponent.propTypes = {
@@ -98,7 +101,7 @@ SelectComponent.propTypes = {
     value: PropTypes.any,
     onBlur: PropTypes.func,
     onFocus: PropTypes.func,
-    noResultsText: PropTypes.string,
+    // noResultsText: PropTypes.string,
     options: PropTypes.array,
     classNames: PropTypes.arrayOf(PropTypes.string),
     onChange: PropTypes.func,

@@ -17,6 +17,10 @@ var _FormControl = require("../FormControl");
 
 var _InputLabel = require("../InputLabel");
 
+var _useSafeIntl = require("../../../utils/useSafeIntl");
+
+var _messages = require("./messages");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -51,8 +55,7 @@ var SelectComponent = function SelectComponent(_ref) {
       clearable = _ref.clearable,
       isFocused = _ref.isFocused,
       searchable = _ref.searchable,
-      required = _ref.required,
-      noResultsText = _ref.noResultsText;
+      required = _ref.required;
 
   var _useState = (0, _react.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
@@ -60,6 +63,7 @@ var SelectComponent = function SelectComponent(_ref) {
       setSelectInputValue = _useState2[1];
 
   var hasErrors = errors.length > 0;
+  var intl = (0, _useSafeIntl.useSafeIntl)();
   return /*#__PURE__*/_react["default"].createElement(_FormControl.FormControl, {
     withMarginTop: withMarginTop,
     errors: errors
@@ -87,7 +91,7 @@ var SelectComponent = function SelectComponent(_ref) {
     onBlur: onBlur,
     onFocus: onFocus,
     options: options,
-    noResultsText: noResultsText,
+    noResultsText: intl.formatMessage(_messages.MESSAGES.noOptions),
     onChange: function onChange(newValue) {
       _onChange(newValue);
     }
@@ -109,9 +113,9 @@ SelectComponent.defaultProps = {
   onChange: function onChange() {},
   options: [],
   onBlur: function onBlur() {},
-  onFocus: function onFocus() {},
-  // TODO use library translations
-  noResultsText: ''
+  onFocus: function onFocus() {} // TODO use library translations
+  // noResultsText: '',
+
 };
 SelectComponent.propTypes = {
   withMarginTop: _propTypes["default"].bool,
@@ -127,7 +131,7 @@ SelectComponent.propTypes = {
   value: _propTypes["default"].any,
   onBlur: _propTypes["default"].func,
   onFocus: _propTypes["default"].func,
-  noResultsText: _propTypes["default"].string,
+  // noResultsText: PropTypes.string,
   options: _propTypes["default"].array,
   classNames: _propTypes["default"].arrayOf(_propTypes["default"].string),
   onChange: _propTypes["default"].func

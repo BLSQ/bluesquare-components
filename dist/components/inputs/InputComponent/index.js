@@ -111,7 +111,7 @@ var InputComponent = /*#__PURE__*/function (_Component) {
       var labelText;
 
       if (type !== 'radio') {
-        labelText = labelString !== '' ? labelString : formatMessage(label || MESSAGES[keyValue]); // TODO: move in label component?
+        labelText = labelString !== '' ? labelString : formatMessage(label || MESSAGES[keyValue]);
       }
 
       var inputValue = value === null || typeof value === 'undefined' ? '' : value;

@@ -17,7 +17,9 @@ var _FormControl = require("../FormControl");
 
 var _InputLabel = require("../InputLabel");
 
-var _IconButton = require("../../buttons/IconButton");
+var _useSafeIntl = require("../../../utils/useSafeIntl");
+
+var _messages = require("./messages");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -33,9 +35,9 @@ var PasswordInput = function PasswordInput(_ref) {
       multiline = _ref.multiline,
       onClick = _ref.onClick,
       displayPassword = _ref.displayPassword,
-      tooltipMessage = _ref.tooltipMessage,
       classNames = _ref.classNames;
   var hasErrors = errors.length > 1;
+  var intl = (0, _useSafeIntl.useSafeIntl)();
   return /*#__PURE__*/_react["default"].createElement(_FormControl.FormControl, {
     withMarginTop: withMarginTop,
     errors: errors
@@ -44,7 +46,7 @@ var PasswordInput = function PasswordInput(_ref) {
     label: label,
     required: required,
     error: hasErrors,
-    shrink: !value
+    shrink: value !== ''
   }), /*#__PURE__*/_react["default"].createElement(_core.OutlinedInput, {
     size: "small",
     multiline: multiline,
@@ -63,8 +65,8 @@ var PasswordInput = function PasswordInput(_ref) {
     disableHoverListener: disabled,
     disableTouchListener: disabled,
     placement: "bottom",
-    title: tooltipMessage
-  }, /*#__PURE__*/_react["default"].createElement("span", null, /*#__PURE__*/_react["default"].createElement(_IconButton.IconButton, {
+    title: intl.formatMessage(_messages.MESSAGES.displayPassword)
+  }, /*#__PURE__*/_react["default"].createElement("span", null, /*#__PURE__*/_react["default"].createElement(_core.IconButton, {
     color: displayPassword ? 'primary' : 'inherit',
     onClick: onClick
   }, /*#__PURE__*/_react["default"].createElement(_Edit["default"], null)))));
@@ -81,7 +83,7 @@ PasswordInput.defaultProps = {
   onChange: function onChange() {},
   onClick: function onClick() {},
   displayPassword: false,
-  tooltipMessage: 'Display password',
+  // tooltipMessage: 'Display password',
   classNames: {
     passwordInput: '',
     displayPassword: ''
@@ -99,6 +101,6 @@ PasswordInput.propTypes = {
   onChange: _propTypes["default"].func,
   onClick: _propTypes["default"].func,
   displayPassword: _propTypes["default"].bool,
-  tooltipMessage: _propTypes["default"].string,
+  // tooltipMessage: PropTypes.string,
   classNames: _propTypes["default"].object
 };

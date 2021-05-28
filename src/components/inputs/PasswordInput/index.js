@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { OutlinedInput, Tooltip } from '@material-ui/core';
+import { OutlinedInput, Tooltip, IconButton } from '@material-ui/core';
 import Edit from '@material-ui/icons/Edit';
 import { FormControl } from '../FormControl';
 import { InputLabel } from '../InputLabel';
-import { IconButton } from '../../buttons/IconButton';
+import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { MESSAGES } from './messages';
 
 const PasswordInput = ({
     keyValue,
@@ -18,10 +19,11 @@ const PasswordInput = ({
     multiline,
     onClick,
     displayPassword,
-    tooltipMessage,
+    // tooltipMessage,
     classNames,
 }) => {
     const hasErrors = errors.length > 1;
+    const intl = useSafeIntl();
     return (
         <FormControl withMarginTop={withMarginTop} errors={errors}>
             <InputLabel
@@ -29,7 +31,7 @@ const PasswordInput = ({
                 label={label}
                 required={required}
                 error={hasErrors}
-                shrink={!value}
+                shrink={value !== ''}
             />
             <OutlinedInput
                 size="small"
@@ -48,7 +50,7 @@ const PasswordInput = ({
                 disableHoverListener={disabled}
                 disableTouchListener={disabled}
                 placement="bottom"
-                title={tooltipMessage}
+                title={intl.formatMessage(MESSAGES.displayPassword)}
             >
                 <span>
                     <IconButton
@@ -73,7 +75,7 @@ PasswordInput.defaultProps = {
     onChange: () => {},
     onClick: () => {},
     displayPassword: false,
-    tooltipMessage: 'Display password',
+    // tooltipMessage: 'Display password',
     classNames: {
         passwordInput: '',
         displayPassword: '',
@@ -92,7 +94,7 @@ PasswordInput.propTypes = {
     onChange: PropTypes.func,
     onClick: PropTypes.func,
     displayPassword: PropTypes.bool,
-    tooltipMessage: PropTypes.string,
+    // tooltipMessage: PropTypes.string,
     classNames: PropTypes.object,
 };
 

@@ -5,11 +5,7 @@ import { withStyles, Button } from '@material-ui/core';
 
 import { commonStyles } from '../../../styles/iaso/common';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
-
-const defaultMessage = {
-    id: 'iaso.label.create',
-    defaultMessage: 'Create',
-};
+import { MESSAGES } from './messages';
 
 const styles = theme => ({
     ...commonStyles(theme),
@@ -30,7 +26,7 @@ function AddButtonComponent({ classes, onClick, message }) {
     );
 }
 AddButtonComponent.defaultProps = {
-    message: defaultMessage,
+    message: MESSAGES.create,
 };
 AddButtonComponent.propTypes = {
     classes: PropTypes.object.isRequired,

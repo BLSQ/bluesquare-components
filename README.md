@@ -11,10 +11,12 @@ run `npm run build-local` to generate a tgz file.
 
 In your application's `package.json`, add:
 ```json
-"bluesquare-components":"file:/local/path/to/bluesquare-components-<version>.tgz"
+"bluesquare-components":"file:/local/path/to/lib/bluesquare-components-<version>.tgz"
 ```
 
-run `npm i`, or `npm update bluesquare-components` to update to the latest version on the repo.
+Note that the .tgz file should be in a `/lib` folder
+
+run `npm i`, or `npm update bluesquare-components` to update to the latest version if it's already installed.
 
 ## Depend on the repository 
 
@@ -28,7 +30,7 @@ Be careful as the command below will work locally but cause authetication failur
 "bluesquare-components":"git://github.com/BLSQ/bluesquare-components.git#<commit-ish>"
 ```
 
-run `npm i` to install
+run `npm i` to install, or `npm update bluesquare-components` to update to the latest version if you already depend on the package.
 
 ## With Docker
 
@@ -40,7 +42,7 @@ To depend on a local version of the library:
 - Build an image from the Dockerfile: `docker build --tag <library-name> .`
 - Modify your `package.json`: 
 ```json
-"bluesquare-components":"file:path/to/compiled_file.tgz"
+"bluesquare-components":"file:path/to/lib/compiled_file.tgz"
 ```
 - In your project, run `npm i`
 - Modify your project's Dockerfile to have a [multi staged build](https://stackoverflow.com/questions/57910644/docker-multistage-how-to-copy-built-files-between-stages) in order to be able to copy the .tgz file in your container.

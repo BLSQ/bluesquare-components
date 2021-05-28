@@ -11,8 +11,6 @@ var _grey = _interopRequireDefault(require("@material-ui/core/colors/grey"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 var styles = function styles(theme) {
   return {
     select: {
@@ -91,45 +89,6 @@ var styles = function styles(theme) {
       '& .Select-control': {
         borderColor: "".concat(theme.palette.error.main, " !important")
       }
-    },
-    icon: {
-      right: theme.spacing(2)
-    },
-    search: _defineProperty({
-      position: 'relative',
-      borderRadius: theme.shape.borderRadius,
-      marginLeft: 0,
-      width: '100%'
-    }, theme.breakpoints.up('sm'), {
-      marginLeft: theme.spacing(1),
-      width: 'auto'
-    }),
-    searchIcon: {
-      width: theme.spacing(7),
-      height: '100%',
-      position: 'absolute',
-      right: 0,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      cursor: 'pointer',
-      outline: 'none',
-      boxShadow: 'none'
-    },
-    inputRoot: {
-      color: 'inherit'
-    },
-    inputInput: {
-      paddingRight: theme.spacing(7),
-      width: '100%'
-    },
-    displayPassword: {
-      position: 'absolute',
-      top: 4,
-      right: theme.spacing(2)
-    },
-    passwordInput: {
-      paddingRight: theme.spacing(8)
     }
   };
 };

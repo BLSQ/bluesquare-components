@@ -17,6 +17,8 @@ var _common = require("../../../styles/iaso/common");
 
 var _injectIntl = require("../../../utils/injectIntl");
 
+var _messages = require("./messages");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
@@ -34,12 +36,8 @@ var styles = function styles(theme) {
       }
     }
   });
-};
-
-var defaultMessage = {
-  id: 'iaso.label.export',
-  defaultMessage: 'Export'
 }; // TODO refactor to useSafeIntl instead?
+
 
 function ExportButtonComponent(_ref) {
   var classes = _ref.classes,
@@ -63,7 +61,7 @@ function ExportButtonComponent(_ref) {
 }
 
 ExportButtonComponent.defaultProps = {
-  message: defaultMessage,
+  message: _messages.MESSAGES["export"],
   isDisabled: false
 };
 ExportButtonComponent.propTypes = {

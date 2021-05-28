@@ -13,6 +13,8 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _reactSelect = _interopRequireDefault(require("react-select"));
 
+var _core = require("@material-ui/core");
+
 var _FormControl = require("../FormControl");
 
 var _InputLabel = require("../InputLabel");
@@ -20,6 +22,8 @@ var _InputLabel = require("../InputLabel");
 var _useSafeIntl = require("../../../utils/useSafeIntl");
 
 var _messages = require("./messages");
+
+var _styles = require("./styles");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -46,16 +50,16 @@ var SelectComponent = function SelectComponent(_ref) {
       errors = _ref.errors,
       _onChange = _ref.onChange,
       options = _ref.options,
-      onBlur = _ref.onBlur,
-      onFocus = _ref.onFocus,
-      classNames = _ref.classNames,
+      _onBlur = _ref.onBlur,
+      _onFocus = _ref.onFocus,
       withMarginTop = _ref.withMarginTop,
       multi = _ref.multi,
       disabled = _ref.disabled,
       clearable = _ref.clearable,
       isFocused = _ref.isFocused,
       searchable = _ref.searchable,
-      required = _ref.required;
+      required = _ref.required,
+      classes = _ref.classes;
 
   var _useState = (0, _react.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
@@ -63,7 +67,14 @@ var SelectComponent = function SelectComponent(_ref) {
       setSelectInputValue = _useState2[1];
 
   var hasErrors = errors.length > 0;
+  var classNames = hasErrors ? [classes.select, classes.selectError] : [classes.select];
   var intl = (0, _useSafeIntl.useSafeIntl)();
+
+  var _useState3 = (0, _react.useState)(isFocused),
+      _useState4 = _slicedToArray(_useState3, 2),
+      focus = _useState4[0],
+      setFocus = _useState4[1];
+
   return /*#__PURE__*/_react["default"].createElement(_FormControl.FormControl, {
     withMarginTop: withMarginTop,
     errors: errors
@@ -71,7 +82,7 @@ var SelectComponent = function SelectComponent(_ref) {
     htmlFor: "input-select-".concat(keyValue),
     label: label,
     shrink: value !== undefined && value !== null || selectInputValue !== '',
-    isFocused: isFocused,
+    isFocused: focus,
     required: required,
     error: hasErrors
   }), /*#__PURE__*/_react["default"].createElement("div", {
@@ -88,8 +99,16 @@ var SelectComponent = function SelectComponent(_ref) {
     name: keyValue,
     value: value,
     placeholder: "",
-    onBlur: onBlur,
-    onFocus: onFocus,
+    onBlur: function onBlur() {
+      setFocus(false);
+
+      _onBlur();
+    },
+    onFocus: function onFocus() {
+      setFocus(true);
+
+      _onFocus();
+    },
     options: options,
     noResultsText: intl.formatMessage(_messages.MESSAGES.noOptions),
     onChange: function onChange(newValue) {
@@ -98,7 +117,6 @@ var SelectComponent = function SelectComponent(_ref) {
   })));
 };
 
-exports.Select = SelectComponent;
 SelectComponent.defaultProps = {
   value: undefined,
   errors: [],
@@ -108,7 +126,6 @@ SelectComponent.defaultProps = {
   clearable: true,
   isFocused: false,
   required: false,
-  classNames: [],
   searchable: true,
   onChange: function onChange() {},
   options: [],
@@ -133,6 +150,8 @@ SelectComponent.propTypes = {
   onFocus: _propTypes["default"].func,
   // noResultsText: PropTypes.string,
   options: _propTypes["default"].array,
-  classNames: _propTypes["default"].arrayOf(_propTypes["default"].string),
-  onChange: _propTypes["default"].func
+  onChange: _propTypes["default"].func,
+  classes: _propTypes["default"].object.isRequired
 };
+var styledSelectComponent = (0, _core.withStyles)(_styles.styles)(SelectComponent);
+exports.Select = styledSelectComponent;

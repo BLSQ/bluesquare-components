@@ -17,6 +17,8 @@ var _FormControl = require("../FormControl");
 
 var _InputLabel = require("../InputLabel");
 
+var _styles = require("./styles");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var SearchInput = function SearchInput(_ref) {
@@ -69,7 +71,6 @@ var SearchInput = function SearchInput(_ref) {
   }, /*#__PURE__*/_react["default"].createElement(_Search["default"], null)));
 };
 
-exports.SearchInput = SearchInput;
 SearchInput.defaultProps = {
   value: '',
   withMarginTop: true,
@@ -77,11 +78,6 @@ SearchInput.defaultProps = {
   required: false,
   onEnterPressed: function onEnterPressed() {},
   onChange: function onChange() {},
-  classes: {
-    inputRoot: '',
-    inputInput: '',
-    searchIcon: ''
-  },
   isFocused: false,
   uid: ''
 };
@@ -94,7 +90,9 @@ SearchInput.propTypes = {
   value: _propTypes["default"].string,
   onEnterPressed: _propTypes["default"].func,
   onChange: _propTypes["default"].func,
-  classes: _propTypes["default"].object,
   isFocused: _propTypes["default"].bool,
-  uid: _propTypes["default"].string
+  uid: _propTypes["default"].string,
+  classes: _propTypes["default"].object.isRequired
 };
+var styledSearchInput = (0, _core.withStyles)(_styles.styles)(SearchInput);
+exports.SearchInput = styledSearchInput;

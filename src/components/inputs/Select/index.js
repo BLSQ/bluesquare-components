@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
+import { withStyles } from '@material-ui/core';
 import { FormControl } from '../FormControl';
 import { InputLabel } from '../InputLabel';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { MESSAGES } from './messages';
+import { styles } from './styles';
 
 const SelectComponent = ({
     value,
@@ -15,7 +17,6 @@ const SelectComponent = ({
     options,
     onBlur,
     onFocus,
-    classNames,
     withMarginTop,
     multi,
     disabled,
@@ -23,11 +24,16 @@ const SelectComponent = ({
     isFocused,
     searchable,
     required,
+    classes,
     // noResultsText,
 }) => {
     const [selectInputValue, setSelectInputValue] = useState('');
     const hasErrors = errors.length > 0;
+    const classNames = hasErrors
+        ? [classes.select, classes.selectError]
+        : [classes.select];
     const intl = useSafeIntl();
+    const [focus, setFocus] = useState(isFocused);
 
     return (
         <FormControl withMarginTop={withMarginTop} errors={errors}>
@@ -38,7 +44,7 @@ const SelectComponent = ({
                     (value !== undefined && value !== null) ||
                     selectInputValue !== ''
                 }
-                isFocused={isFocused}
+                isFocused={focus}
                 required={required}
                 error={hasErrors}
             />
@@ -55,8 +61,14 @@ const SelectComponent = ({
                     name={keyValue}
                     value={value}
                     placeholder=""
-                    onBlur={onBlur}
-                    onFocus={onFocus}
+                    onBlur={() => {
+                        setFocus(false);
+                        onBlur();
+                    }}
+                    onFocus={() => {
+                        setFocus(true);
+                        onFocus();
+                    }}
                     options={options}
                     noResultsText={intl.formatMessage(MESSAGES.noOptions)}
                     onChange={newValue => {
@@ -77,7 +89,6 @@ SelectComponent.defaultProps = {
     clearable: true,
     isFocused: false,
     required: false,
-    classNames: [],
     searchable: true,
     onChange: () => {},
     options: [],
@@ -103,8 +114,9 @@ SelectComponent.propTypes = {
     onFocus: PropTypes.func,
     // noResultsText: PropTypes.string,
     options: PropTypes.array,
-    classNames: PropTypes.arrayOf(PropTypes.string),
     onChange: PropTypes.func,
+    classes: PropTypes.object.isRequired,
 };
 
-export { SelectComponent as Select };
+const styledSelectComponent = withStyles(styles)(SelectComponent);
+export { styledSelectComponent as Select };

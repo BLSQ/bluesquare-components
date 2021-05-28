@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { OutlinedInput, Tooltip, IconButton } from '@material-ui/core';
+import {
+    OutlinedInput,
+    Tooltip,
+    IconButton,
+    withStyles,
+} from '@material-ui/core';
 import Edit from '@material-ui/icons/Edit';
 import { FormControl } from '../FormControl';
 import { InputLabel } from '../InputLabel';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { MESSAGES } from './messages';
+import { styles } from './styles';
 
 const PasswordInput = ({
     keyValue,
@@ -17,13 +23,13 @@ const PasswordInput = ({
     disabled,
     onChange,
     multiline,
-    onClick,
     displayPassword,
-    // tooltipMessage,
-    classNames,
+    classes,
 }) => {
     const hasErrors = errors.length > 1;
+    const [showPassword, setShowPassword] = useState(displayPassword);
     const intl = useSafeIntl();
+
     return (
         <FormControl withMarginTop={withMarginTop} errors={errors}>
             <InputLabel
@@ -39,13 +45,13 @@ const PasswordInput = ({
                 disabled={disabled}
                 id={`input-text-${keyValue}`}
                 value={value}
-                type={displayPassword ? 'text' : 'password'}
+                type={showPassword ? 'text' : 'password'}
                 onChange={event => onChange(event.target.value)}
                 error={hasErrors}
-                className={classNames.passwordInput}
+                className={classes.passwordInput}
             />
             <Tooltip
-                className={classNames.displayPassword}
+                className={classes.displayPassword}
                 disableFocusListener={disabled}
                 disableHoverListener={disabled}
                 disableTouchListener={disabled}
@@ -54,8 +60,10 @@ const PasswordInput = ({
             >
                 <span>
                     <IconButton
-                        color={displayPassword ? 'primary' : 'inherit'}
-                        onClick={onClick}
+                        color={showPassword ? 'primary' : 'inherit'}
+                        onClick={() => {
+                            setShowPassword(isShowing => !isShowing);
+                        }}
                     >
                         <Edit />
                     </IconButton>
@@ -73,13 +81,7 @@ PasswordInput.defaultProps = {
     disabled: false,
     required: false,
     onChange: () => {},
-    onClick: () => {},
     displayPassword: false,
-    // tooltipMessage: 'Display password',
-    classNames: {
-        passwordInput: '',
-        displayPassword: '',
-    },
 };
 
 PasswordInput.propTypes = {
@@ -92,10 +94,11 @@ PasswordInput.propTypes = {
     multiline: PropTypes.bool,
     value: PropTypes.string,
     onChange: PropTypes.func,
-    onClick: PropTypes.func,
     displayPassword: PropTypes.bool,
     // tooltipMessage: PropTypes.string,
-    classNames: PropTypes.object,
+    classes: PropTypes.object.isRequired,
 };
 
-export { PasswordInput };
+const styledPasswordInput = withStyles(styles)(PasswordInput);
+
+export { styledPasswordInput as PasswordInput };

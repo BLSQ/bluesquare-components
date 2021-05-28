@@ -42,6 +42,7 @@ import { TextInput } from './components/inputs/TextInput';
 import { ErrorBoundary } from './components/ErrorBoundary';
 
 export * from './utils';
+export * from './utils/intlUtils';
 
 export {
     LoadingSpinner,

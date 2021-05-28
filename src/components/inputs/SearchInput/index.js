@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { OutlinedInput } from '@material-ui/core';
+import { OutlinedInput, withStyles } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import { FormControl } from '../FormControl';
 import { InputLabel } from '../InputLabel';
+import { styles } from './styles';
 
 const SearchInput = ({
     withMarginTop,
@@ -12,7 +13,6 @@ const SearchInput = ({
     keyValue,
     disabled,
     value,
-    // errors,
     onEnterPressed,
     onChange,
     classes,
@@ -62,11 +62,7 @@ SearchInput.defaultProps = {
     required: false,
     onEnterPressed: () => {},
     onChange: () => {},
-    classes: {
-        inputRoot: '',
-        inputInput: '',
-        searchIcon: '',
-    },
+
     isFocused: false,
     uid: '',
 };
@@ -80,8 +76,10 @@ SearchInput.propTypes = {
     value: PropTypes.string,
     onEnterPressed: PropTypes.func,
     onChange: PropTypes.func,
-    classes: PropTypes.object,
     isFocused: PropTypes.bool,
     uid: PropTypes.string,
+    classes: PropTypes.object.isRequired,
 };
-export { SearchInput };
+
+const styledSearchInput = withStyles(styles)(SearchInput);
+export { styledSearchInput as SearchInput };

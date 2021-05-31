@@ -9,7 +9,7 @@ var _reactIntl = require("react-intl");
 
 var MESSAGES = (0, _reactIntl.defineMessages)({
   search: {
-    id: 'blsq.table.label.textSearch',
+    id: 'blsq.table.label.search',
     defaultMessage: 'Search'
   },
   close: {

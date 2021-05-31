@@ -2,7 +2,7 @@ import { defineMessages } from 'react-intl';
 
 const MESSAGES = defineMessages({
     search: {
-        id: 'blsq.table.label.textSearch',
+        id: 'blsq.table.label.search',
         defaultMessage: 'Search',
     },
     close: {

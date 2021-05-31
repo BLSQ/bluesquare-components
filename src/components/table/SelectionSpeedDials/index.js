@@ -33,7 +33,6 @@ const SelectionSpeedDials = ({
                 onOpen={handleOpen}
                 open={open}
                 direction="up"
-                actionMessage={actionMessage}
             >
                 {activeAction.map(action => (
                     <SpeedDialAction

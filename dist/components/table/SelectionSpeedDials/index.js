@@ -66,8 +66,7 @@ var SelectionSpeedDials = function SelectionSpeedDials(_ref) {
     icon: /*#__PURE__*/_react["default"].createElement(_CheckBox["default"], null),
     onOpen: handleOpen,
     open: open,
-    direction: "up",
-    actionMessage: actionMessage
+    direction: "up"
   }, activeAction.map(function (action) {
     return /*#__PURE__*/_react["default"].createElement(_lab.SpeedDialAction, {
       key: action.label,

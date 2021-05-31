@@ -25,7 +25,7 @@ var _messages = _interopRequireDefault(require("./messages"));
 
 var _injectIntl = require("../../../utils/injectIntl");
 
-var _styles = _interopRequireDefault(require("./styles"));
+var _styles = require("./styles");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -194,5 +194,5 @@ ColumnsSelectDrawer.propTypes = {
   minColumns: _propTypes["default"].number,
   intl: _propTypes["default"].object.isRequired
 };
-var styledAndTranslated = (0, _core.withStyles)(_styles["default"])((0, _injectIntl.injectIntl)(ColumnsSelectDrawer));
+var styledAndTranslated = (0, _core.withStyles)(_styles.styles)((0, _injectIntl.injectIntl)(ColumnsSelectDrawer));
 exports.ColumnsSelectDrawer = styledAndTranslated;

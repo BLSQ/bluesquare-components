@@ -22,7 +22,7 @@ import BlockPlaceholder from '../../BlockPlaceholder';
 
 import MESSAGES from './messages';
 import { injectIntl } from '../../../utils/injectIntl';
-import styles from './styles';
+import { styles } from './styles';
 
 const filterResults = (searchString, options) => {
     let displayedOptions = [...options];

@@ -20,7 +20,7 @@ import {
 import { formatThousand } from '../../../utils';
 import { SelectionSpeedDials } from '../SelectionSpeedDials';
 import { MESSAGES, customTableTranslations } from './messages';
-import injectIntl from '../../../utils/injectIntl';
+import { injectIntl } from '../../../utils/injectIntl';
 import { styles } from './styles';
 
 /**

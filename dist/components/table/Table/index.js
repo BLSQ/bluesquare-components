@@ -31,7 +31,7 @@ var _SelectionSpeedDials = require("../SelectionSpeedDials");
 
 var _messages = require("./messages");
 
-var _injectIntl = _interopRequireDefault(require("../../../utils/injectIntl"));
+var _injectIntl = require("../../../utils/injectIntl");
 
 var _styles = require("./styles");
 
@@ -373,5 +373,5 @@ Table.propTypes = {
   watchToRender: _propTypes["default"].any,
   selectionActionMessage: _propTypes["default"].string
 };
-var styledAndTranslated = (0, _core.withStyles)(_styles.styles)((0, _injectIntl["default"])((0, _reactRouter.withRouter)(Table)));
+var styledAndTranslated = (0, _core.withStyles)(_styles.styles)((0, _injectIntl.injectIntl)((0, _reactRouter.withRouter)(Table)));
 exports.Table = styledAndTranslated;

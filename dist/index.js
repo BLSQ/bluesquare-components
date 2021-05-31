@@ -18,7 +18,6 @@ var _exportNames = {
   WordSvg: true,
   XmlSvg: true,
   IasoChipColors: true,
-  IasoCustomTableTranslations: true,
   SnackBar: true,
   IasoUiConstants: true,
   injectIntl: true,
@@ -45,7 +44,16 @@ var _exportNames = {
   SearchInput: true,
   Select: true,
   TextInput: true,
-  ErrorBoundary: true
+  ErrorBoundary: true,
+  BlockPlaceholder: true,
+  Filters: true,
+  ColumnsSelectDrawer: true,
+  ColumnText: true,
+  HeaderRowIcon: true,
+  InfoHeader: true,
+  SelectionSpeedDials: true,
+  TableFilters: true,
+  Table: true
 };
 Object.defineProperty(exports, "LoadingSpinner", {
   enumerable: true,
@@ -263,7 +271,61 @@ Object.defineProperty(exports, "ErrorBoundary", {
     return _ErrorBoundary.ErrorBoundary;
   }
 });
-exports.IasoUiConstants = exports.SnackBar = exports.IasoCustomTableTranslations = exports.IasoChipColors = void 0;
+Object.defineProperty(exports, "BlockPlaceholder", {
+  enumerable: true,
+  get: function get() {
+    return _BlockPlaceholder.BlockPlaceholder;
+  }
+});
+Object.defineProperty(exports, "Filters", {
+  enumerable: true,
+  get: function get() {
+    return _Filters.Filters;
+  }
+});
+Object.defineProperty(exports, "ColumnsSelectDrawer", {
+  enumerable: true,
+  get: function get() {
+    return _ColumnsSelectDrawer.ColumnsSelectDrawer;
+  }
+});
+Object.defineProperty(exports, "ColumnText", {
+  enumerable: true,
+  get: function get() {
+    return _ColumnText.ColumnText;
+  }
+});
+Object.defineProperty(exports, "HeaderRowIcon", {
+  enumerable: true,
+  get: function get() {
+    return _HeaderRowIcon.HeaderRowIcon;
+  }
+});
+Object.defineProperty(exports, "InfoHeader", {
+  enumerable: true,
+  get: function get() {
+    return _InfoHeader.InfoHeader;
+  }
+});
+Object.defineProperty(exports, "SelectionSpeedDials", {
+  enumerable: true,
+  get: function get() {
+    return _SelectionSpeedDials.SelectionSpeedDials;
+  }
+});
+Object.defineProperty(exports, "TableFilters", {
+  enumerable: true,
+  get: function get() {
+    return _TableFilters.TableFilters;
+  }
+});
+Object.defineProperty(exports, "Table", {
+  enumerable: true,
+  get: function get() {
+    return _Table.Table;
+  }
+});
+exports.IasoUiConstants = exports.SnackBar = exports.IasoChipColors = void 0;
 
 var _LoadingSpinner = require("./components/LoadingSpinner");
 
@@ -290,10 +352,6 @@ var _XmlSvgComponent = require("./svg/XmlSvgComponent");
 var IasoChipColors = _interopRequireWildcard(require("./constants/iaso/chipColors"));
 
 exports.IasoChipColors = IasoChipColors;
-
-var IasoCustomTableTranslations = _interopRequireWildcard(require("./constants/iaso/customTableTranslations"));
-
-exports.IasoCustomTableTranslations = IasoCustomTableTranslations;
 
 var SnackBar = _interopRequireWildcard(require("./constants/iaso/snackBars"));
 
@@ -353,6 +411,24 @@ var _TextInput = require("./components/inputs/TextInput");
 
 var _ErrorBoundary = require("./components/ErrorBoundary");
 
+var _BlockPlaceholder = require("./components/BlockPlaceholder");
+
+var _Filters = require("./components/filters/Filters");
+
+var _ColumnsSelectDrawer = require("./components/table/ColumnsSelectDrawer");
+
+var _ColumnText = require("./components/table/ColumnText");
+
+var _HeaderRowIcon = require("./components/table/HeaderRowIcon");
+
+var _InfoHeader = require("./components/table/InfoHeader");
+
+var _SelectionSpeedDials = require("./components/table/SelectionSpeedDials");
+
+var _TableFilters = require("./components/table/TableFilters");
+
+var _Table = require("./components/table/Table");
+
 var _utils = require("./utils");
 
 Object.keys(_utils).forEach(function (key) {
@@ -377,6 +453,34 @@ Object.keys(_intlUtils).forEach(function (key) {
     enumerable: true,
     get: function get() {
       return _intlUtils[key];
+    }
+  });
+});
+
+var _tableUtils = require("./utils/tableUtils");
+
+Object.keys(_tableUtils).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  if (key in exports && exports[key] === _tableUtils[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _tableUtils[key];
+    }
+  });
+});
+
+var _fetchData = require("./utils/fetchData");
+
+Object.keys(_fetchData).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  if (key in exports && exports[key] === _fetchData[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _fetchData[key];
     }
   });
 });

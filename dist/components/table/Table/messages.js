@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.customTableTranslations = void 0;
+exports.MESSAGES = exports.customTableTranslations = void 0;
 
 var _reactIntl = require("react-intl");
 
@@ -35,8 +35,25 @@ var MESSAGES = (0, _reactIntl.defineMessages)({
   rowsText: {
     defaultMessage: 'results',
     id: 'table.results'
+  },
+  selectionAction: {
+    defaultMessage: 'With',
+    id: 'table.labels.selectionAction'
+  },
+  results: {
+    id: 'iaso.label.resultsLower',
+    defaultMessage: 'result(s)'
+  },
+  selection: {
+    id: 'iaso.label.selection',
+    defaultMessage: 'Selection'
+  },
+  selected: {
+    id: 'iaso.label.selected',
+    defaultMessage: 'selected'
   }
 });
+exports.MESSAGES = MESSAGES;
 
 var customTableTranslations = function customTableTranslations(formatMessage) {
   return {

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { Grid, Button, withStyles, Box } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
-import { Filters } from '../../Filters/Filters';
+import { Filters } from '../../filters/Filters';
 
 import { styles } from './styles';
 

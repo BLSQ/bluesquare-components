@@ -52,7 +52,8 @@ var MESSAGES = (0, _reactIntl.defineMessages)({
     id: 'iaso.label.selected',
     defaultMessage: 'selected'
   }
-});
+}); // TODO move thi sto a place that makes more sense
+
 exports.MESSAGES = MESSAGES;
 
 var customTableTranslations = function customTableTranslations(formatMessage) {

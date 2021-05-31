@@ -44,7 +44,7 @@ const getTableUrl = (
     return url;
 };
 
-export default getTableUrl;
+export { getTableUrl };
 
 const getOrderValue = obj => (!obj.desc ? obj.id : `-${obj.id}`);
 

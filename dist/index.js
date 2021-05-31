@@ -53,7 +53,8 @@ var _exportNames = {
   InfoHeader: true,
   SelectionSpeedDials: true,
   TableFilters: true,
-  Table: true
+  Table: true,
+  customTableTranslations: true
 };
 Object.defineProperty(exports, "LoadingSpinner", {
   enumerable: true,
@@ -325,6 +326,12 @@ Object.defineProperty(exports, "Table", {
     return _Table.Table;
   }
 });
+Object.defineProperty(exports, "customTableTranslations", {
+  enumerable: true,
+  get: function get() {
+    return _messages.customTableTranslations;
+  }
+});
 exports.IasoUiConstants = exports.SnackBar = exports.IasoChipColors = void 0;
 
 var _LoadingSpinner = require("./components/LoadingSpinner");
@@ -360,6 +367,17 @@ exports.SnackBar = SnackBar;
 var IasoUiConstants = _interopRequireWildcard(require("./constants/iaso/uiConstants"));
 
 exports.IasoUiConstants = IasoUiConstants;
+Object.keys(IasoUiConstants).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  if (key in exports && exports[key] === IasoUiConstants[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return IasoUiConstants[key];
+    }
+  });
+});
 
 var _injectIntl = require("./utils/injectIntl");
 
@@ -428,6 +446,8 @@ var _SelectionSpeedDials = require("./components/table/SelectionSpeedDials");
 var _TableFilters = require("./components/table/TableFilters");
 
 var _Table = require("./components/table/Table");
+
+var _messages = require("./components/table/Table/messages");
 
 var _utils = require("./utils");
 

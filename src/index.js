@@ -47,11 +47,13 @@ import { InfoHeader } from './components/table/InfoHeader';
 import { SelectionSpeedDials } from './components/table/SelectionSpeedDials';
 import { TableFilters } from './components/table/TableFilters';
 import { Table } from './components/table/Table';
+import { customTableTranslations } from './components/table/Table/messages';
 
 export * from './utils';
 export * from './utils/intlUtils';
 export * from './utils/tableUtils';
 export * from './utils/fetchData';
+export * from './constants/iaso/uiConstants';
 
 export {
     LoadingSpinner,
@@ -102,4 +104,5 @@ export {
     SelectionSpeedDials,
     TableFilters,
     Table,
+    customTableTranslations,
 };

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getColumnsHeadersInfos = exports.tableInitialResult = exports.getTableParams = exports.getParamsKey = exports.setTableSelection = exports.selectionInitialState = exports.defaultSelectionActions = exports.getSimplifiedColumns = exports.getOrderArray = exports.getSort = exports["default"] = void 0;
+exports.getColumnsHeadersInfos = exports.tableInitialResult = exports.getTableParams = exports.getParamsKey = exports.setTableSelection = exports.selectionInitialState = exports.defaultSelectionActions = exports.getSimplifiedColumns = exports.getOrderArray = exports.getSort = exports.getTableUrl = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -72,8 +72,7 @@ var getTableUrl = function getTableUrl(urlKey, params) {
   return url;
 };
 
-var _default = getTableUrl;
-exports["default"] = _default;
+exports.getTableUrl = getTableUrl;
 
 var getOrderValue = function getOrderValue(obj) {
   return !obj.desc ? obj.id : "-".concat(obj.id);

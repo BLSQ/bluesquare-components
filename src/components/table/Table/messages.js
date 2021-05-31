@@ -47,6 +47,7 @@ const MESSAGES = defineMessages({
     },
 });
 
+// TODO move thi sto a place that makes more sense
 const customTableTranslations = formatMessage => ({
     previousText: formatMessage(MESSAGES.previousText),
     nextText: formatMessage(MESSAGES.nextText),

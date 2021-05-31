@@ -15,7 +15,7 @@ var _core = require("@material-ui/core");
 
 var _Search = _interopRequireDefault(require("@material-ui/icons/Search"));
 
-var _Filters = require("../../Filters/Filters");
+var _Filters = require("../../filters/Filters");
 
 var _styles = require("./styles");
 

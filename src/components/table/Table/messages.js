@@ -29,6 +29,22 @@ const MESSAGES = defineMessages({
         defaultMessage: 'results',
         id: 'table.results',
     },
+    selectionAction: {
+        defaultMessage: 'With',
+        id: 'table.labels.selectionAction',
+    },
+    results: {
+        id: 'iaso.label.resultsLower',
+        defaultMessage: 'result(s)',
+    },
+    selection: {
+        id: 'iaso.label.selection',
+        defaultMessage: 'Selection',
+    },
+    selected: {
+        id: 'iaso.label.selected',
+        defaultMessage: 'selected',
+    },
 });
 
 const customTableTranslations = formatMessage => ({
@@ -41,3 +57,5 @@ const customTableTranslations = formatMessage => ({
     rowsText: formatMessage(MESSAGES.rowsText),
 });
 export { customTableTranslations };
+
+export { MESSAGES };

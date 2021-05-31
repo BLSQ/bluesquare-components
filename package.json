@@ -72,6 +72,7 @@
     "peerDependencies": {
         "@material-ui/core": "^4.11.4",
         "@material-ui/icons": "^4.2.1",
+        "@material-ui/lab": "^4.0.0-alpha.48",
         "@material-ui/pickers": "^3.2.10",
         "classnames": "^2.3.1",
         "color": "^3.1.2",
@@ -79,8 +80,10 @@
         "prop-types": "^15.7.2",
         "react": "^16.8.6",
         "react-dom": "^16.8.6",
+        "react-intersection-observer": "^8.26.1",
         "react-intl": "^5.10.16",
         "react-router": "^3.0.0",
-        "react-select": "~1.2.1"
+        "react-select": "~1.2.1",
+        "react-table": "6.8.2"
     }
 }

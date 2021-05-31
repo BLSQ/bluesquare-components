@@ -10,8 +10,6 @@ import { TextSvg } from './svg/TextSvgComponent';
 import { WordSvg } from './svg/WordSvgComponent';
 import { XmlSvg } from './svg/XmlSvgComponent';
 import * as IasoChipColors from './constants/iaso/chipColors';
-// TODO check if exporting translation messages makes sense
-import * as IasoCustomTableTranslations from './constants/iaso/customTableTranslations';
 // TODO check if individual snackbars can still be imported
 import * as SnackBar from './constants/iaso/snackBars';
 import * as IasoUiConstants from './constants/iaso/uiConstants';
@@ -40,9 +38,20 @@ import { SearchInput } from './components/inputs/SearchInput';
 import { Select } from './components/inputs/Select';
 import { TextInput } from './components/inputs/TextInput';
 import { ErrorBoundary } from './components/ErrorBoundary';
+import { BlockPlaceholder } from './components/BlockPlaceholder';
+import { Filters } from './components/filters/Filters';
+import { ColumnsSelectDrawer } from './components/table/ColumnsSelectDrawer';
+import { ColumnText } from './components/table/ColumnText';
+import { HeaderRowIcon } from './components/table/HeaderRowIcon';
+import { InfoHeader } from './components/table/InfoHeader';
+import { SelectionSpeedDials } from './components/table/SelectionSpeedDials';
+import { TableFilters } from './components/table/TableFilters';
+import { Table } from './components/table/Table';
 
 export * from './utils';
 export * from './utils/intlUtils';
+export * from './utils/tableUtils';
+export * from './utils/fetchData';
 
 export {
     LoadingSpinner,
@@ -57,7 +66,6 @@ export {
     WordSvg,
     XmlSvg,
     IasoChipColors,
-    IasoCustomTableTranslations,
     SnackBar,
     IasoUiConstants,
     injectIntl,
@@ -85,4 +93,13 @@ export {
     Checkbox,
     Radio,
     theme,
+    BlockPlaceholder,
+    Filters,
+    ColumnsSelectDrawer,
+    ColumnText,
+    HeaderRowIcon,
+    InfoHeader,
+    SelectionSpeedDials,
+    TableFilters,
+    Table,
 };

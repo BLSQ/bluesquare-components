@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { IntlProvider } from 'react-intl';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
@@ -9,10 +9,25 @@ export default {
     component: DatePicker,
 };
 
+const CURRENT_DATE = '12/04/2021';
+
+const Wrapper = props => {
+    const [value, setValue] = useState(CURRENT_DATE);
+    const args = {
+        ...props,
+        currentDate: value,
+        onChange: newValue => setValue(newValue),
+    };
+    useEffect(() => {
+        setValue(props.currentDate);
+    }, [props.currentDate]);
+    return <DatePicker {...args} />;
+};
+
 const Template = args => (
     <MuiPickersUtilsProvider utils={MomentUtils}>
         <IntlProvider locale="en" messages={{}}>
-            <DatePicker {...args} />
+            <Wrapper {...args} />
         </IntlProvider>
     </MuiPickersUtilsProvider>
 );
@@ -24,7 +39,7 @@ Default.args = {
         // eslint-disable-next-line no-console
         console.log('Click', value);
     },
-    currentDate: '05/04/2021',
+    currentDate: CURRENT_DATE,
     hasError: false,
     clearMessage: { id: 'clearMessage', defaultMessage: 'Clear' },
 };

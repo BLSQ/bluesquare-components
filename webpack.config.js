@@ -1,6 +1,6 @@
 const path = require('path');
 // const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 // const deps = require("./package.json").dependencies;
 
@@ -18,12 +18,10 @@ module.exports = {
         libraryTarget: 'umd',
         globalObject: 'this',
     },
-    // webpack 5 comes with devServer which loads in development mode
-    // devServer: {
-    //     port: 3001,
-    //     watchContentBase: true,
-    // },
-    // Rules of how webpack will take our files, complie & bundle them for the browser
+    stories: [
+        '../src/**/*.stories.mdx',
+        '../src/**/*.stories.@(js|jsx|ts|tsx)',
+    ],
     module: {
         rules: [
             {
@@ -35,29 +33,29 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+                use: [
+                    // MiniCssExtractPlugin.loader,
+                    'css-loader',
+                ],
+            },
+            {
+                test: /\.svg$/,
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        query: {
+                            presets: ['airbnb'],
+                        },
+                    },
+                    {
+                        loader: 'react-svg-loader',
+                        query: {
+                            jsx: true,
+                        },
+                    },
+                ],
             },
         ],
     },
-    plugins: [
-        // new ModuleFederationPlugin({
-        //   name: 'test_app',
-        //   library: { type: 'var', name: 'test_app' },
-        //   filename: 'remoteEntry.js',
-        //   exposes: {
-        //     './TestApp': './src/App',
-        //   },
-        //   remotes: {
-        //     'iaso_root': 'iaso_root',
-        //   },
-        //   shared: []
-        //   // shared: {
-        //   //   ...deps,
-        //   //   react: { singleton: true, eager: true, requiredVersion: deps.react },
-        //   //   "react-dom": { singleton: true, eager: true, requiredVersion: deps["react-dom"] }
-        //   // }
-        // }),
-        // new HtmlWebpackPlugin({ template: './src/index.html' }),
-        new MiniCssExtractPlugin(),
-    ],
+    // plugins: [new MiniCssExtractPlugin()],
 };

@@ -8,7 +8,7 @@ import { Filters } from '../../filters/Filters';
 
 import { styles } from './styles';
 
-import MESSAGES from './messages';
+import { MESSAGES } from './messages';
 
 const TableFilters = ({
     params,

@@ -5,6 +5,7 @@ import { Select } from '../../inputs/Select';
 import { NumberInput } from '../../inputs/NumberInput';
 import { SearchInput } from '../../inputs/SearchInput';
 import { Checkbox } from '../../inputs/Checkbox';
+import { injectIntl } from '../../../utils/injectIntl';
 
 class Filters extends React.Component {
     onChange(urlKey, value, callback) {
@@ -65,6 +66,7 @@ class Filters extends React.Component {
     }
 
     render() {
+        const { intl } = this.props;
         const { filters, params, onEnterPressed } = this.props;
         if (!filters) {
             return null;
@@ -99,7 +101,7 @@ class Filters extends React.Component {
                                         }
                                         value={filterValue}
                                         type="number"
-                                        label={filter.label}
+                                        label={intl.formatMessage(filter.label)}
                                     />
                                 )}
                                 {filter.type === 'select' && (
@@ -118,7 +120,7 @@ class Filters extends React.Component {
                                         value={filterValue}
                                         type="select"
                                         options={filter.options}
-                                        label={filter.label}
+                                        label={intl.formatMessage(filter.label)}
                                         labelString={filter.labelString}
                                         isSearchable={filter.isSearchable}
                                     />
@@ -139,7 +141,8 @@ class Filters extends React.Component {
                                         }
                                         value={filterValue}
                                         type="search"
-                                        label={filter.label}
+                                        // This should be a string as opposed to former InputComponent, which took an object
+                                        label={intl.formatMessage(filter.label)}
                                         onEnterPressed={onEnterPressed}
                                     />
                                 )}
@@ -164,7 +167,7 @@ class Filters extends React.Component {
                                                 filter.checkedIfNull)
                                         }
                                         type="checkbox"
-                                        label={filter.label}
+                                        label={intl.formatMessage(filter.label)}
                                     />
                                 )}
                             </Fragment>
@@ -184,14 +187,17 @@ Filters.defaultProps = {
 };
 
 Filters.propTypes = {
-    // Used to come from redux
     filters: PropTypes.array.isRequired,
-    // Used to come from redux
     params: PropTypes.object.isRequired,
+    // Used to come from redux
     redirectTo: PropTypes.func,
     baseUrl: PropTypes.string,
     onEnterPressed: PropTypes.func,
     onFilterChanged: PropTypes.func,
+    // The use of intl here is to maintain compatibility with Iaso codebase.
+    intl: PropTypes.object.isRequired,
 };
 
-export { Filters };
+const translatedFilters = injectIntl(Filters);
+
+export { translatedFilters as Filters };

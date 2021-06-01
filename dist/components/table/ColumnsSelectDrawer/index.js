@@ -21,7 +21,7 @@ var _IconButton = require("../../buttons/IconButton");
 
 var _BlockPlaceholder = _interopRequireDefault(require("../../BlockPlaceholder"));
 
-var _messages = _interopRequireDefault(require("./messages"));
+var _messages = require("./messages");
 
 var _injectIntl = require("../../../utils/injectIntl");
 
@@ -124,7 +124,7 @@ var ColumnsSelectDrawer = function ColumnsSelectDrawer(_ref) {
     onClick: toggleDrawer(true),
     icon: "filter-list",
     color: "white",
-    tooltipMessage: _messages["default"].columnSelectTooltip
+    tooltipMessage: _messages.MESSAGES.columnSelectTooltip
   }), /*#__PURE__*/_react["default"].createElement(_core.Drawer, {
     anchor: "right",
     open: state.open,
@@ -134,7 +134,7 @@ var ColumnsSelectDrawer = function ColumnsSelectDrawer(_ref) {
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: classes.toolbar
   }, /*#__PURE__*/_react["default"].createElement(_core.Tooltip, {
-    title: formatMessage(_messages["default"].close)
+    title: formatMessage(_messages.MESSAGES.close)
   }, /*#__PURE__*/_react["default"].createElement(_core.IconButton, {
     onClick: toggleDrawer(false)
   }, /*#__PURE__*/_react["default"].createElement(_ArrowBack["default"], null))), /*#__PURE__*/_react["default"].createElement("div", {
@@ -143,13 +143,13 @@ var ColumnsSelectDrawer = function ColumnsSelectDrawer(_ref) {
     value: state.searchString,
     onChange: handleSearch(),
     className: classes.input,
-    placeholder: formatMessage(_messages["default"].search),
+    placeholder: formatMessage(_messages.MESSAGES.search),
     inputProps: {
-      'aria-label': formatMessage(_messages["default"].search),
+      'aria-label': formatMessage(_messages.MESSAGES.search),
       className: classes.input
     }
   })), state.searchString !== '' && /*#__PURE__*/_react["default"].createElement(_core.Tooltip, {
-    title: formatMessage(_messages["default"].resetSearch)
+    title: formatMessage(_messages.MESSAGES.resetSearch)
   }, /*#__PURE__*/_react["default"].createElement(_core.IconButton, {
     onClick: handleSearch(true)
   }, /*#__PURE__*/_react["default"].createElement(_Close["default"], null)))), /*#__PURE__*/_react["default"].createElement(_core.Divider, null), /*#__PURE__*/_react["default"].createElement("div", {

@@ -19,7 +19,7 @@ var _Filters = require("../../filters/Filters");
 
 var _styles = require("./styles");
 
-var _messages = _interopRequireDefault(require("./messages"));
+var _messages = require("./messages");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -116,7 +116,7 @@ var TableFilters = function TableFilters(_ref) {
     }
   }, /*#__PURE__*/_react["default"].createElement(_Search["default"], {
     className: classes.buttonIcon
-  }), /*#__PURE__*/_react["default"].createElement(_reactIntl.FormattedMessage, _messages["default"].search))));
+  }), /*#__PURE__*/_react["default"].createElement(_reactIntl.FormattedMessage, _messages.MESSAGES.search))));
 };
 
 TableFilters.defaultProps = {

@@ -20,7 +20,7 @@ import ArrowBack from '@material-ui/icons/ArrowBack';
 import { IconButton as IconButtonComponent } from '../../buttons/IconButton';
 import BlockPlaceholder from '../../BlockPlaceholder';
 
-import MESSAGES from './messages';
+import { MESSAGES } from './messages';
 import { injectIntl } from '../../../utils/injectIntl';
 import { styles } from './styles';
 

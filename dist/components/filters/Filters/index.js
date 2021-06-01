@@ -19,6 +19,8 @@ var _SearchInput = require("../../inputs/SearchInput");
 
 var _Checkbox = require("../../inputs/Checkbox");
 
+var _injectIntl = require("../../../utils/injectIntl");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -143,6 +145,7 @@ var Filters = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this = this;
 
+      var intl = this.props.intl;
       var _this$props4 = this.props,
           filters = _this$props4.filters,
           params = _this$props4.params,
@@ -173,7 +176,7 @@ var Filters = /*#__PURE__*/function (_React$Component) {
             },
             value: filterValue,
             type: "number",
-            label: filter.label
+            label: intl.formatMessage(filter.label)
           }), filter.type === 'select' && /*#__PURE__*/_react["default"].createElement(_Select.Select, {
             multi: filter.isMultiSelect,
             clearable: filter.isClearable,
@@ -185,7 +188,7 @@ var Filters = /*#__PURE__*/function (_React$Component) {
             value: filterValue,
             type: "select",
             options: filter.options,
-            label: filter.label,
+            label: intl.formatMessage(filter.label),
             labelString: filter.labelString,
             isSearchable: filter.isSearchable
           }), filter.type === 'search' && /*#__PURE__*/_react["default"].createElement(_SearchInput.SearchInput, {
@@ -196,8 +199,9 @@ var Filters = /*#__PURE__*/function (_React$Component) {
               return _this.onSearchChange(key, value, true, filter.callback);
             },
             value: filterValue,
-            type: "search",
-            label: filter.label,
+            type: "search" // This should be a string as opposed to former InputComponent, which took an object
+            ,
+            label: intl.formatMessage(filter.label),
             onEnterPressed: onEnterPressed
           }), filter.type === 'checkbox' &&
           /*#__PURE__*/
@@ -210,7 +214,7 @@ var Filters = /*#__PURE__*/function (_React$Component) {
             },
             value: _this.props.params[filter.urlKey] === 'true' || _this.props.params[filter.urlKey] === undefined && filter.checkedIfNull,
             type: "checkbox",
-            label: filter.label
+            label: intl.formatMessage(filter.label)
           }));
         }
 
@@ -222,7 +226,6 @@ var Filters = /*#__PURE__*/function (_React$Component) {
   return Filters;
 }(_react["default"].Component);
 
-exports.Filters = Filters;
 Filters.defaultProps = {
   baseUrl: '',
   onEnterPressed: function onEnterPressed() {
@@ -234,12 +237,15 @@ Filters.defaultProps = {
   redirectTo: function redirectTo() {}
 };
 Filters.propTypes = {
-  // Used to come from redux
   filters: _propTypes["default"].array.isRequired,
-  // Used to come from redux
   params: _propTypes["default"].object.isRequired,
+  // Used to come from redux
   redirectTo: _propTypes["default"].func,
   baseUrl: _propTypes["default"].string,
   onEnterPressed: _propTypes["default"].func,
-  onFilterChanged: _propTypes["default"].func
+  onFilterChanged: _propTypes["default"].func,
+  // The use of intl here is to maintain compatibility with Iaso codebase.
+  intl: _propTypes["default"].object.isRequired
 };
+var translatedFilters = (0, _injectIntl.injectIntl)(Filters);
+exports.Filters = translatedFilters;

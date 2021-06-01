@@ -16,7 +16,7 @@ import * as IasoUiConstants from './constants/iaso/uiConstants';
 import { injectIntl } from './utils/injectIntl';
 import { patchIntl } from './utils/patchIntl';
 import { useSafeIntl } from './utils/useSafeIntl';
-import { theme } from './styles/iaso/theme';
+import { theme, rawTheme } from './styles/iaso/theme';
 import { commonStyles } from './styles/iaso/common';
 import { innerDrawerStyles } from './styles/iaso/innerDrawer';
 import { mapStyles } from './styles/iaso/map';
@@ -95,6 +95,7 @@ export {
     Checkbox,
     Radio,
     theme,
+    rawTheme,
     BlockPlaceholder,
     Filters,
     ColumnsSelectDrawer,

@@ -1,6 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-const theme = createMuiTheme({
+const rawTheme = {
     typography: {
         useNextVariants: true,
     },
@@ -35,6 +35,8 @@ const theme = createMuiTheme({
             background: 'rgba(#4caf50, 0.2)',
         },
     },
-});
+};
 
-export { theme };
+const theme = createMuiTheme(rawTheme);
+
+export { theme, rawTheme };

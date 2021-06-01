@@ -3,11 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.theme = void 0;
+exports.rawTheme = exports.theme = void 0;
 
 var _styles = require("@material-ui/core/styles");
 
-var theme = (0, _styles.createMuiTheme)({
+var rawTheme = {
   typography: {
     useNextVariants: true
   },
@@ -42,5 +42,7 @@ var theme = (0, _styles.createMuiTheme)({
       background: 'rgba(#4caf50, 0.2)'
     }
   }
-});
+};
+exports.rawTheme = rawTheme;
+var theme = (0, _styles.createMuiTheme)(rawTheme);
 exports.theme = theme;

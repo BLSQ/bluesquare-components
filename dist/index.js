@@ -24,6 +24,7 @@ var _exportNames = {
   patchIntl: true,
   useSafeIntl: true,
   theme: true,
+  rawTheme: true,
   commonStyles: true,
   innerDrawerStyles: true,
   mapStyles: true,
@@ -144,6 +145,12 @@ Object.defineProperty(exports, "theme", {
   enumerable: true,
   get: function get() {
     return _theme.theme;
+  }
+});
+Object.defineProperty(exports, "rawTheme", {
+  enumerable: true,
+  get: function get() {
+    return _theme.rawTheme;
   }
 });
 Object.defineProperty(exports, "commonStyles", {

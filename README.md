@@ -5,6 +5,22 @@ A library of UI components to be used in [Bluesquare](https://www.bluesquarehub.
 
 If you make additions or changes to the library, run `npm run compile` and commit the updated `/dist` folder before pushing.
 
+## Translations
+
+Some components have built-in translations (Frenh and English), e.g. when hovering over an icon, that use `react-intl`. You can import the json files in your project from the node_modules and merge them with your own, e.g:
+
+```javascript
+import fr from 'src/myTranslations'; 
+import en from 'src/myTranslations'; 
+import frLibrary from '../node_modules/bluesquare-components/dist/locale/fr.json';
+import enLibrary from '../node_modules/bluesquare-components/dist/locale/en.json';
+
+const messages = {
+    fr: { ...fr, ...frLibrary },
+    en: { ...en, ...enLibrary },
+};
+```
+
 ## Depend on it locally
 
 run `npm run build-local` to generate a tgz file.
@@ -25,18 +41,18 @@ In your application's `package.json`, add:
 "bluesquare-components":"git://github.com/BLSQ/bluesquare-components"
 ```
 
+run `npm i` to install, or `npm update bluesquare-components` to update to the latest version if you already depend on the package.
+
 Be careful as the command below will work locally but cause authetication failure when run in Docker: 
 ```json
 "bluesquare-components":"git://github.com/BLSQ/bluesquare-components.git#<commit-ish>"
 ```
 
-run `npm i` to install, or `npm update bluesquare-components` to update to the latest version if you already depend on the package.
-
 ## With Docker
 
 To depend on the repo, run `npm run compile` and push the `dist` folder, then depend on the library as mentioned above.
 
-To depend on a local version of the library:
+To depend on a local version of the library (if you need it inside the container):
 
 - Run `npm run build-local`
 - Build an image from the Dockerfile: `docker build --tag <library-name> .`

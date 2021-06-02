@@ -22,12 +22,13 @@ CheckboxComponent.defaultProps = {
     value: false,
     disabled: false,
     onChange: () => {},
+    label: '',
 };
 
 CheckboxComponent.propTypes = {
     value: PropTypes.bool,
     disabled: PropTypes.bool,
-    label: PropTypes.string.isRequired,
+    label: PropTypes.string,
     onChange: PropTypes.func,
 };
 export { CheckboxComponent as Checkbox };

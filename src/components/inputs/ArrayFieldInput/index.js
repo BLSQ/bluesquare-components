@@ -150,6 +150,7 @@ class ArrayFieldInput extends Component {
 }
 ArrayFieldInput.defaultProps = {
     fieldList: [],
+    label: '',
 };
 // TODO type/document classes prop
 ArrayFieldInput.propTypes = {
@@ -157,7 +158,7 @@ ArrayFieldInput.propTypes = {
     baseId: PropTypes.string.isRequired,
     updateList: PropTypes.func.isRequired,
     classes: PropTypes.object.isRequired,
-    label: PropTypes.string.isRequired,
+    label: PropTypes.string,
 };
 
 const styledArrayFieldInput = withStyles(styles)(ArrayFieldInput);

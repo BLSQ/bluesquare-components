@@ -63,12 +63,13 @@ function InputLabelComponent(_ref) {
 InputLabelComponent.defaultProps = {
   isFocused: false,
   shrink: true,
-  error: false
+  error: false,
+  label: ''
 };
 InputLabelComponent.propTypes = {
   classes: _propTypes["default"].object.isRequired,
   htmlFor: _propTypes["default"].string.isRequired,
-  label: _propTypes["default"].string.isRequired,
+  label: _propTypes["default"].string,
   required: _propTypes["default"].bool.isRequired,
   isFocused: _propTypes["default"].bool,
   shrink: _propTypes["default"].bool,

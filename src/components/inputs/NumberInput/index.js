@@ -88,13 +88,14 @@ NumberInput.defaultProps = {
     disabled: false,
     required: false,
     onChange: () => {},
+    label: '',
 };
 
 NumberInput.propTypes = {
     withMarginTop: PropTypes.bool,
     errors: PropTypes.arrayOf(PropTypes.string),
     keyValue: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
+    label: PropTypes.string,
     required: PropTypes.bool,
     disabled: PropTypes.bool,
     multiline: PropTypes.bool,

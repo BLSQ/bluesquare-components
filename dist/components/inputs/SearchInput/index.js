@@ -79,12 +79,13 @@ SearchInput.defaultProps = {
   onEnterPressed: function onEnterPressed() {},
   onChange: function onChange() {},
   isFocused: false,
-  uid: ''
+  uid: '',
+  label: ''
 };
 SearchInput.propTypes = {
   withMarginTop: _propTypes["default"].bool,
   keyValue: _propTypes["default"].string.isRequired,
-  label: _propTypes["default"].string.isRequired,
+  label: _propTypes["default"].string,
   required: _propTypes["default"].bool,
   disabled: _propTypes["default"].bool,
   value: _propTypes["default"].string,

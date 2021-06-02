@@ -59,13 +59,14 @@ TextInput.defaultProps = {
   multiline: false,
   disabled: false,
   required: false,
-  onChange: function onChange() {}
+  onChange: function onChange() {},
+  label: ''
 };
 TextInput.propTypes = {
   withMarginTop: _propTypes["default"].bool,
   errors: _propTypes["default"].arrayOf(_propTypes["default"].string),
   keyValue: _propTypes["default"].string.isRequired,
-  label: _propTypes["default"].string.isRequired,
+  label: _propTypes["default"].string,
   required: _propTypes["default"].bool,
   disabled: _propTypes["default"].bool,
   multiline: _propTypes["default"].bool,

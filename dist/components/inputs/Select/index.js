@@ -130,7 +130,8 @@ SelectComponent.defaultProps = {
   onChange: function onChange() {},
   options: [],
   onBlur: function onBlur() {},
-  onFocus: function onFocus() {} // TODO use library translations
+  onFocus: function onFocus() {},
+  label: '' // TODO use library translations
   // noResultsText: '',
 
 };
@@ -138,7 +139,7 @@ SelectComponent.propTypes = {
   withMarginTop: _propTypes["default"].bool,
   errors: _propTypes["default"].arrayOf(_propTypes["default"].string),
   keyValue: _propTypes["default"].string.isRequired,
-  label: _propTypes["default"].string.isRequired,
+  label: _propTypes["default"].string,
   required: _propTypes["default"].bool,
   disabled: _propTypes["default"].bool,
   searchable: _propTypes["default"].bool,

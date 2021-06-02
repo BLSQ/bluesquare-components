@@ -65,12 +65,13 @@ SearchInput.defaultProps = {
 
     isFocused: false,
     uid: '',
+    label: '',
 };
 
 SearchInput.propTypes = {
     withMarginTop: PropTypes.bool,
     keyValue: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
+    label: PropTypes.string,
     required: PropTypes.bool,
     disabled: PropTypes.bool,
     value: PropTypes.string,

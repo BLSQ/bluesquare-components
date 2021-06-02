@@ -37,11 +37,12 @@ exports.Checkbox = CheckboxComponent;
 CheckboxComponent.defaultProps = {
   value: false,
   disabled: false,
-  onChange: function onChange() {}
+  onChange: function onChange() {},
+  label: ''
 };
 CheckboxComponent.propTypes = {
   value: _propTypes["default"].bool,
   disabled: _propTypes["default"].bool,
-  label: _propTypes["default"].string.isRequired,
+  label: _propTypes["default"].string,
   onChange: _propTypes["default"].func
 };

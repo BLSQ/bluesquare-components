@@ -216,7 +216,8 @@ var ArrayFieldInput = /*#__PURE__*/function (_Component) {
 }(_react.Component);
 
 ArrayFieldInput.defaultProps = {
-  fieldList: []
+  fieldList: [],
+  label: ''
 }; // TODO type/document classes prop
 
 ArrayFieldInput.propTypes = {
@@ -224,7 +225,7 @@ ArrayFieldInput.propTypes = {
   baseId: _propTypes["default"].string.isRequired,
   updateList: _propTypes["default"].func.isRequired,
   classes: _propTypes["default"].object.isRequired,
-  label: _propTypes["default"].string.isRequired
+  label: _propTypes["default"].string
 };
 var styledArrayFieldInput = (0, _core.withStyles)(styles)(ArrayFieldInput);
 exports.ArrayFieldInput = styledArrayFieldInput;

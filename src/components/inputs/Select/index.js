@@ -94,6 +94,7 @@ SelectComponent.defaultProps = {
     options: [],
     onBlur: () => {},
     onFocus: () => {},
+    label: '',
     // TODO use library translations
     // noResultsText: '',
 };
@@ -102,7 +103,7 @@ SelectComponent.propTypes = {
     withMarginTop: PropTypes.bool,
     errors: PropTypes.arrayOf(PropTypes.string),
     keyValue: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
+    label: PropTypes.string,
     required: PropTypes.bool,
     disabled: PropTypes.bool,
     searchable: PropTypes.bool,

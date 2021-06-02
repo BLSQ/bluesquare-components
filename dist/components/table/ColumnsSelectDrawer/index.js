@@ -19,7 +19,7 @@ var _ArrowBack = _interopRequireDefault(require("@material-ui/icons/ArrowBack"))
 
 var _IconButton = require("../../buttons/IconButton");
 
-var _BlockPlaceholder = _interopRequireDefault(require("../../BlockPlaceholder"));
+var _BlockPlaceholder = require("../../BlockPlaceholder");
 
 var _messages = require("./messages");
 
@@ -177,9 +177,9 @@ var ColumnsSelectDrawer = function ColumnsSelectDrawer(_ref) {
         className: classes["switch"]
       }), /*#__PURE__*/_react["default"].createElement(_core.ListItemText, {
         primary: o.label || o.key
-      })), !inView && /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_BlockPlaceholder["default"], {
+      })), !inView && /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_BlockPlaceholder.BlockPlaceholder, {
         width: "30px"
-      }), /*#__PURE__*/_react["default"].createElement(_BlockPlaceholder["default"], null))));
+      }), /*#__PURE__*/_react["default"].createElement(_BlockPlaceholder.BlockPlaceholder, null))));
     });
   }))))));
 };

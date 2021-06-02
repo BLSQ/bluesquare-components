@@ -55,7 +55,11 @@ var _exportNames = {
   SelectionSpeedDials: true,
   TableFilters: true,
   Table: true,
-  customTableTranslations: true
+  customTableTranslations: true,
+  LinkProvider: true,
+  LinkContext: true,
+  withLink: true,
+  useLink: true
 };
 Object.defineProperty(exports, "LoadingSpinner", {
   enumerable: true,
@@ -339,6 +343,30 @@ Object.defineProperty(exports, "customTableTranslations", {
     return _messages.customTableTranslations;
   }
 });
+Object.defineProperty(exports, "LinkProvider", {
+  enumerable: true,
+  get: function get() {
+    return _LinkProvider.LinkProvider;
+  }
+});
+Object.defineProperty(exports, "LinkContext", {
+  enumerable: true,
+  get: function get() {
+    return _LinkProvider.LinkContext;
+  }
+});
+Object.defineProperty(exports, "withLink", {
+  enumerable: true,
+  get: function get() {
+    return _LinkProvider.withLink;
+  }
+});
+Object.defineProperty(exports, "useLink", {
+  enumerable: true,
+  get: function get() {
+    return _LinkProvider.useLink;
+  }
+});
 exports.IasoUiConstants = exports.SnackBar = exports.IasoChipColors = void 0;
 
 var _LoadingSpinner = require("./components/LoadingSpinner");
@@ -455,6 +483,8 @@ var _TableFilters = require("./components/table/TableFilters");
 var _Table = require("./components/table/Table");
 
 var _messages = require("./components/table/Table/messages");
+
+var _LinkProvider = require("./components/LinkProvider");
 
 var _utils = require("./utils");
 

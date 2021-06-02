@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
+// import { Link } from 'react-router';
 import { FormattedMessage } from 'react-intl';
 import { withStyles, IconButton, Tooltip } from '@material-ui/core';
 import Delete from '@material-ui/icons/Delete';
@@ -21,6 +21,7 @@ import { OrgUnitSvg } from '../../../svg/OrgUnitSvgComponent';
 import { ExcellSvg } from '../../../svg/ExcellSvgComponent';
 
 import { commonStyles } from '../../../styles/iaso/common';
+import { useLink } from '../../LinkProvider';
 
 const ICON_VARIANTS = {
     delete: Delete,
@@ -92,6 +93,7 @@ function IconButtonComponent({
             'IconButtonComponent needs either the onClick or the url property',
         );
     }
+    const Link = useLink();
     const icon = ICON_VARIANTS[iconName];
     return (
         <Tooltip

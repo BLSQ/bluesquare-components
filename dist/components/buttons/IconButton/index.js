@@ -9,8 +9,6 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _reactRouter = require("react-router");
-
 var _reactIntl = require("react-intl");
 
 var _core = require("@material-ui/core");
@@ -46,6 +44,8 @@ var _OrgUnitSvgComponent = require("../../../svg/OrgUnitSvgComponent");
 var _ExcellSvgComponent = require("../../../svg/ExcellSvgComponent");
 
 var _common = require("../../../styles/iaso/common");
+
+var _LinkProvider = require("../../LinkProvider");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -130,6 +130,7 @@ function IconButtonComponent(_ref2) {
     console.error('IconButtonComponent needs either the onClick or the url property');
   }
 
+  var Link = (0, _LinkProvider.useLink)();
   var icon = ICON_VARIANTS[iconName];
   return /*#__PURE__*/_react["default"].createElement(_core.Tooltip, {
     classes: {
@@ -143,7 +144,7 @@ function IconButtonComponent(_ref2) {
   }, /*#__PURE__*/_react["default"].createElement("span", null, /*#__PURE__*/_react["default"].createElement(_core.IconButton, {
     disabled: disabled,
     onClick: onClick
-  }, url ? /*#__PURE__*/_react["default"].createElement(_reactRouter.Link, {
+  }, url ? /*#__PURE__*/_react["default"].createElement(Link, {
     to: url,
     className: classes.linkButton
   }, /*#__PURE__*/_react["default"].createElement(ButtonIcon, {

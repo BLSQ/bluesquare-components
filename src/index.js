@@ -48,6 +48,12 @@ import { SelectionSpeedDials } from './components/table/SelectionSpeedDials';
 import { TableFilters } from './components/table/TableFilters';
 import { Table } from './components/table/Table';
 import { customTableTranslations } from './components/table/Table/messages';
+import {
+    LinkProvider,
+    LinkContext,
+    withLink,
+    useLink,
+} from './components/LinkProvider';
 
 export * from './utils';
 export * from './utils/intlUtils';
@@ -106,4 +112,8 @@ export {
     TableFilters,
     Table,
     customTableTranslations,
+    LinkProvider,
+    LinkContext,
+    withLink,
+    useLink,
 };

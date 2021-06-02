@@ -17,8 +17,6 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _reactTable = _interopRequireWildcard(require("react-table"));
 
-var _reactRouter = require("react-router");
-
 var _isEqual = _interopRequireDefault(require("lodash/isEqual"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
@@ -354,6 +352,7 @@ Table.propTypes = {
   classes: _propTypes["default"].object.isRequired,
   // comes from injectIntl
   intl: _propTypes["default"].object.isRequired,
+  // used to come from router
   params: _propTypes["default"].object,
   count: _propTypes["default"].number,
   pages: _propTypes["default"].number.isRequired,
@@ -373,5 +372,5 @@ Table.propTypes = {
   watchToRender: _propTypes["default"].any,
   selectionActionMessage: _propTypes["default"].string
 };
-var styledAndTranslated = (0, _core.withStyles)(_styles.styles)((0, _injectIntl.injectIntl)((0, _reactRouter.withRouter)(Table)));
+var styledAndTranslated = (0, _core.withStyles)(_styles.styles)((0, _injectIntl.injectIntl)(Table));
 exports.Table = styledAndTranslated;

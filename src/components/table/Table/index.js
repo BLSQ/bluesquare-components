@@ -3,7 +3,6 @@ import { FormattedMessage } from 'react-intl';
 import { withStyles, Checkbox } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import ReactTable, { ReactTableDefaults } from 'react-table';
-import { withRouter } from 'react-router';
 import isEqual from 'lodash/isEqual';
 import classNames from 'classnames';
 
@@ -316,6 +315,7 @@ Table.propTypes = {
     classes: PropTypes.object.isRequired,
     // comes from injectIntl
     intl: PropTypes.object.isRequired,
+    // used to come from router
     params: PropTypes.object,
     count: PropTypes.number,
     pages: PropTypes.number.isRequired,
@@ -335,5 +335,5 @@ Table.propTypes = {
     watchToRender: PropTypes.any,
     selectionActionMessage: PropTypes.string,
 };
-const styledAndTranslated = withStyles(styles)(injectIntl(withRouter(Table)));
+const styledAndTranslated = withStyles(styles)(injectIntl(Table));
 export { styledAndTranslated as Table };

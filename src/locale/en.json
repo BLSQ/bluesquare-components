@@ -2,6 +2,25 @@
     "blsq.button.label.displayPassword": "Display the password",
     "blsq.button.label.noOptions": "No result found",
     "blsq.button.label.create": "Create",
-    "blsq.button.label.export": "Export"
+    "blsq.button.label.export": "Export",
+    "blsq.table.filter.search": "Search",
+    "blsq.table.label.search": "Search",
+    "blsq.table.label.close": "Close",
+    "blsq.table.label.resetSearch": "Empty search",
+    "blsq.table.columnSelect.tooltip": "Select visible columns",
+    "blsq.table.previous": "Previous",
+    "blsq.table.next": "Next",
+    "blsq.table.loading": "Loading...",
+    "blsq.table.noResult": "No result",
+    "blsq.table.page": "Page",
+    "blsq.table.of": "of",
+    "blsq.table.results": "results",
+    "blsq.table.labels.selectionAction": "With selected org unit",
+    "blsq.table.label.resultsLower": "result(s)",
+    "blsq.table.label.selection": "Selection",
+    "blsq.table.label.selected": "selected"
+
+
+
 
 }

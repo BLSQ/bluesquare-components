@@ -2,6 +2,22 @@
     "blsq.button.label.displayPassword": "Afficher le mot de passe",
     "blsq.button.label.noOptions": "Aucun résultat trouvé",
     "blsq.button.label.create": "Créer",
-    "blsq.button.label.export": "Export"
+    "blsq.button.label.export": "Export",
+    "blsq.table.filter.search": "Rechercher",
+    "blsq.table.label.search": "Rechercher",
+    "blsq.table.label.close": "Fermer",
+    "blsq.table.label.resetSearch": "Vider la recherche",
+    "blsq.table.columnSelect.tooltip": "Colonnes visibles",
+    "blsq.table.previous": "Précédent",
+    "blsq.table.next": "Suivant",
+    "blsq.table.loading": "Chargement...",
+    "blsq.table.noResult": "Aucun résultat",
+    "blsq.table.page": "Page",
+    "blsq.table.of": "de",
+    "blsq.table.results": "résultats",
+    "blsq.table.labels.selectionAction": "Avec la sélection d'unités d'organisation",
+    "blsq.table.label.resultsLower": "résultat(s)",
+    "blsq.table.label.selection": "Sélection",
+    "blsq.table.label.selected": "sélectionné(s)"
 
 }

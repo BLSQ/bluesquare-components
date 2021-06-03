@@ -3,46 +3,46 @@ import { defineMessages } from 'react-intl';
 const MESSAGES = defineMessages({
     previousText: {
         defaultMessage: 'Previous',
-        id: 'table.previous',
+        id: 'blsq.table.previous',
     },
     nextText: {
         defaultMessage: 'Next',
-        id: 'table.next',
+        id: 'blsq.table.next',
     },
     loadingText: {
         defaultMessage: 'Loading...',
-        id: 'table.loading',
+        id: 'blsq.table.loading',
     },
     noDataText: {
         defaultMessage: 'No result',
-        id: 'table.noResult',
+        id: 'blsq.table.noResult',
     },
     pageText: {
         defaultMessage: 'Page',
-        id: 'table.page',
+        id: 'blsq.table.page',
     },
     ofText: {
         defaultMessage: 'of',
-        id: 'table.of',
+        id: 'blsq.table.of',
     },
     rowsText: {
         defaultMessage: 'results',
-        id: 'table.results',
+        id: 'blsq.table.results',
     },
     selectionAction: {
         defaultMessage: 'With',
-        id: 'table.labels.selectionAction',
+        id: 'blsq.table.labels.selectionAction',
     },
     results: {
-        id: 'iaso.label.resultsLower',
+        id: 'blsq.table.label.resultsLower',
         defaultMessage: 'result(s)',
     },
     selection: {
-        id: 'iaso.label.selection',
+        id: 'blsq.table.label.selection',
         defaultMessage: 'Selection',
     },
     selected: {
-        id: 'iaso.label.selected',
+        id: 'blsq.table.label.selected',
         defaultMessage: 'selected',
     },
 });

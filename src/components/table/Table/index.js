@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import ReactTable, { ReactTableDefaults } from 'react-table';
 import isEqual from 'lodash/isEqual';
 import classNames from 'classnames';
-import 'react-table/react-table.css';
+// import 'react-table/react-table.css';
 
 import {
     getSort,

@@ -21,8 +21,6 @@ var _isEqual = _interopRequireDefault(require("lodash/isEqual"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-require("react-table/react-table.css");
-
 var _tableUtils = require("../../../utils/tableUtils");
 
 var _utils = require("../../../utils");

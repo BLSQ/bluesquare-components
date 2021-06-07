@@ -6,6 +6,7 @@ import ReactTable, { ReactTableDefaults } from 'react-table';
 import isEqual from 'lodash/isEqual';
 import classNames from 'classnames';
 // import 'react-table/react-table.css';
+import '../../../css/index.css';
 
 import {
     getSort,

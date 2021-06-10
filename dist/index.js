@@ -59,7 +59,8 @@ var _exportNames = {
   LinkProvider: true,
   LinkContext: true,
   withLink: true,
-  useLink: true
+  useLink: true,
+  Comment: true
 };
 Object.defineProperty(exports, "LoadingSpinner", {
   enumerable: true,
@@ -367,6 +368,12 @@ Object.defineProperty(exports, "useLink", {
     return _LinkProvider.useLink;
   }
 });
+Object.defineProperty(exports, "Comment", {
+  enumerable: true,
+  get: function get() {
+    return _Comment.Comment;
+  }
+});
 exports.IasoUiConstants = exports.SnackBar = exports.IasoChipColors = void 0;
 
 var _LoadingSpinner = require("./components/LoadingSpinner");
@@ -485,6 +492,8 @@ var _Table = require("./components/table/Table");
 var _messages = require("./components/table/Table/messages");
 
 var _LinkProvider = require("./components/LinkProvider");
+
+var _Comment = require("./components/Comment");
 
 var _utils = require("./utils");
 

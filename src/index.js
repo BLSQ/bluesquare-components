@@ -54,6 +54,7 @@ import {
     withLink,
     useLink,
 } from './components/LinkProvider';
+import { Comment } from './components/Comment';
 
 export * from './utils';
 export * from './utils/intlUtils';
@@ -116,4 +117,5 @@ export {
     LinkContext,
     withLink,
     useLink,
+    Comment,
 };

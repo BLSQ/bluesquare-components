@@ -29,7 +29,7 @@ var styles = function styles(theme) {
     },
     commentPostingTime: {
       textAlign: 'left',
-      color: theme.gray
+      color: theme.lightGray
     },
     commentGrid: {
       justifyContent: 'left'

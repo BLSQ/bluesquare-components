@@ -6,6 +6,7 @@ import { MESSAGES } from './messages';
 import { useStyles } from './styles';
 import '../../css/index.css';
 
+// TODO refactor style import
 // credit: https://codesandbox.io/s/comment-box-with-material-ui-10p3c?file=/src/index.js:2810-4030
 const Comment = ({ avatar, author, content, postingTime, classNames }) => {
     const intl = useSafeIntl();
@@ -20,7 +21,7 @@ const Comment = ({ avatar, author, content, postingTime, classNames }) => {
                 <Grid className={classes.commentGrid} item xs zeroMinWidth>
                     <h4 className={classes.commentAuthor}>{author}</h4>
                     <p className={classes.commentText}>{content}</p>
-                    <p className={classes.commentPostiingTime}>
+                    <p className={classes.commentPostingTime}>
                         {`${intl.formatMessage(
                             MESSAGES.postingTime,
                         )} ${postingTime}`}

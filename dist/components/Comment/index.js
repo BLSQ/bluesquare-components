@@ -21,6 +21,7 @@ require("../../css/index.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+// TODO refactor style import
 // credit: https://codesandbox.io/s/comment-box-with-material-ui-10p3c?file=/src/index.js:2810-4030
 var Comment = function Comment(_ref) {
   var avatar = _ref.avatar,
@@ -52,7 +53,7 @@ var Comment = function Comment(_ref) {
   }, author), /*#__PURE__*/_react["default"].createElement("p", {
     className: classes.commentText
   }, content), /*#__PURE__*/_react["default"].createElement("p", {
-    className: classes.commentPostiingTime
+    className: classes.commentPostingTime
   }, "".concat(intl.formatMessage(_messages.MESSAGES.postingTime), " ").concat(postingTime)))));
 };
 

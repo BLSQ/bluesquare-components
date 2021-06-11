@@ -6,7 +6,7 @@ const styles = theme => ({
     commentRoot: { padding: '40px 20px' },
     commentAuthor: { margin: 0, textAlign: 'left' },
     commentText: { textAlign: 'justify' },
-    commentPostingTime: { textAlign: 'left', color: theme.gray },
+    commentPostingTime: { textAlign: 'left', color: theme.lightGray },
     commentGrid: { justifyContent: 'left' },
 });
 

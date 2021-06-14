@@ -3,10 +3,10 @@ import { commonStyles } from '../../styles/iaso/common';
 
 const styles = theme => ({
     ...commonStyles(theme),
-    commentRoot: { padding: '40px 20px' },
+    commentRoot: { padding: '20px 20px', marginBottom:'5px' },
     commentAuthor: { margin: 0, textAlign: 'left' },
     commentText: { textAlign: 'justify' },
-    commentPostingTime: { textAlign: 'left', color: theme.lightGray },
+    commentPostingTime: { textAlign: 'left', color: theme.ligthGray },
     commentGrid: { justifyContent: 'left' },
 });
 

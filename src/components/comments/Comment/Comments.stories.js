@@ -2,7 +2,7 @@ import { ThemeProvider } from '@material-ui/core';
 import { arrayOf, string } from 'prop-types';
 import React from 'react';
 import { IntlProvider } from 'react-intl';
-import { theme } from '../../styles/iaso/theme';
+import { theme } from '../../../styles/iaso/theme';
 import { Comment } from './index';
 
 export default {

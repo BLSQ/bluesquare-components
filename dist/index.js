@@ -61,7 +61,8 @@ var _exportNames = {
   withLink: true,
   useLink: true,
   Comment: true,
-  CommentsList: true
+  CommentsList: true,
+  AddComment: true
 };
 Object.defineProperty(exports, "LoadingSpinner", {
   enumerable: true,
@@ -381,6 +382,12 @@ Object.defineProperty(exports, "CommentsList", {
     return _CommentsList.CommentsList;
   }
 });
+Object.defineProperty(exports, "AddComment", {
+  enumerable: true,
+  get: function get() {
+    return _AddComment.AddComment;
+  }
+});
 exports.IasoUiConstants = exports.SnackBar = exports.IasoChipColors = void 0;
 
 var _LoadingSpinner = require("./components/LoadingSpinner");
@@ -500,9 +507,11 @@ var _messages = require("./components/table/Table/messages");
 
 var _LinkProvider = require("./components/LinkProvider");
 
-var _Comment = require("./components/Comment");
+var _Comment = require("./components/comments/Comment");
 
-var _CommentsList = require("./components/CommentsList");
+var _CommentsList = require("./components/comments/CommentsList");
+
+var _AddComment = require("./components/comments/AddComment");
 
 var _utils = require("./utils");
 

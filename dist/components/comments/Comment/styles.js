@@ -7,7 +7,7 @@ exports.useStyles = exports.styles = void 0;
 
 var _styles = require("@material-ui/core/styles");
 
-var _styles2 = require("../Comment/styles");
+var _common = require("../../../styles/iaso/common");
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -15,7 +15,28 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var styles = _objectSpread({}, _styles2.styles);
+var styles = function styles(theme) {
+  return _objectSpread(_objectSpread({}, (0, _common.commonStyles)(theme)), {}, {
+    commentRoot: {
+      padding: '20px 20px',
+      marginBottom: '5px'
+    },
+    commentAuthor: {
+      margin: 0,
+      textAlign: 'left'
+    },
+    commentText: {
+      textAlign: 'justify'
+    },
+    commentPostingTime: {
+      textAlign: 'left',
+      color: theme.ligthGray
+    },
+    commentGrid: {
+      justifyContent: 'left'
+    }
+  });
+};
 
 exports.styles = styles;
 var useStyles = (0, _styles.makeStyles)(styles);

@@ -1,16 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Avatar, Grid, Paper } from '@material-ui/core';
-import { useSafeIntl } from '../../utils/useSafeIntl';
+import { Avatar, Grid, Paper, Typography } from '@material-ui/core';
+import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { MESSAGES } from './messages';
 import { useStyles } from './styles';
-import '../../css/index.css';
+import { AddComment } from '../AddComment';
+import '../../../css/index.css';
 
 // TODO refactor style import
 // credit: https://codesandbox.io/s/comment-box-with-material-ui-10p3c?file=/src/index.js:2810-4030
-const Comment = ({ avatar, author, content, postingTime, classNames }) => {
+const Comment = ({
+    avatar,
+    author,
+    content,
+    postingTime,
+    classNames,
+    actionText,
+    onAddComment,
+    id,
+}) => {
     const intl = useSafeIntl();
     const defaultClasses = useStyles();
+    const [addingComment, setAddingComment] = useState(false);
+
     const classes = classNames ?? defaultClasses;
     return (
         <Paper className={classes.commentRoot}>
@@ -26,6 +38,25 @@ const Comment = ({ avatar, author, content, postingTime, classNames }) => {
                             MESSAGES.postingTime,
                         )} ${postingTime}`}
                     </p>
+                    {!addingComment && (
+                        <Typography
+                            variant="overline"
+                            onClick={() => {
+                                setAddingComment(true);
+                            }}
+                        >
+                            {actionText}
+                        </Typography>
+                    )}
+                    {addingComment && (
+                        <AddComment
+                            buttonText={actionText}
+                            onConfirm={newComment => {
+                                setAddingComment(false);
+                                onAddComment(newComment, id);
+                            }}
+                        />
+                    )}
                 </Grid>
             </Grid>
         </Paper>
@@ -37,11 +68,17 @@ Comment.propTypes = {
     content: PropTypes.string.isRequired,
     postingTime: PropTypes.string,
     classNames: PropTypes.arrayOf(PropTypes.string),
+    actionText: PropTypes.string,
+    onAddComment: PropTypes.func,
+    id: PropTypes.number,
 };
 Comment.defaultProps = {
     avatar: null,
     postingTime: '',
     classNames: null,
+    actionText: 'add comment',
+    onAddComment: () => {},
+    id: null,
 };
 
 export { Comment };

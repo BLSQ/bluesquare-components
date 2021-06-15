@@ -54,8 +54,9 @@ import {
     withLink,
     useLink,
 } from './components/LinkProvider';
-import { Comment } from './components/Comment';
-import { CommentsList } from './components/CommentsList';
+import { Comment } from './components/comments/Comment';
+import { CommentsList } from './components/comments/CommentsList';
+import { AddComment } from './components/comments/AddComment';
 
 export * from './utils';
 export * from './utils/intlUtils';
@@ -120,4 +121,5 @@ export {
     useLink,
     Comment,
     CommentsList,
+    AddComment,
 };

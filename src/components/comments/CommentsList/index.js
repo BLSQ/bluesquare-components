@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Divider, Paper, Grid, Avatar, Typography } from '@material-ui/core';
 import { useStyles } from './styles';
-import { MESSAGES } from '../../Comment/messages';
+import { MESSAGES } from '../Comment/messages';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { AddComment } from '../AddComment';
 

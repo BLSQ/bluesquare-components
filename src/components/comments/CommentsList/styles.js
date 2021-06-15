@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { styles as commentStyles } from '../../Comment/styles';
+import { styles as commentStyles } from '../Comment/styles';
 // import { commonStyles } from '../../styles/iaso/common';
 
 const styles = theme => ({

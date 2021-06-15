@@ -15,7 +15,7 @@ var _core = require("@material-ui/core");
 
 var _styles = require("./styles");
 
-var _messages = require("../../Comment/messages");
+var _messages = require("../Comment/messages");
 
 var _useSafeIntl = require("../../../utils/useSafeIntl");
 

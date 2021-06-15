@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Divider, Paper, Grid, Avatar, Typography } from '@material-ui/core';
+import moment from 'moment';
 import { useStyles } from './styles';
 import { MESSAGES } from '../Comment/messages';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
@@ -67,20 +68,25 @@ const CommentsList = ({ comments, actionText, onAddComment }) => {
                         {comment.author}
                     </h4>
                     <p className={classes.commentText}>{comment.comment}</p>
-                    <p className={classes.commentPostingTime}>
-                        {`${intl.formatMessage(MESSAGES.postingTime)} ${
-                            comment.dateTime
-                        }`}
-                    </p>
+                    <Typography
+                        variant="body2"
+                        className={classes.commentPostingTime}
+                    >
+                        {`${intl.formatMessage(MESSAGES.postingTime)} ${moment(
+                            parseInt(comment.dateTime, 10),
+                        ).fromNow()}`}
+                    </Typography>
                     {index === comments.length - 1 && !addingComment && (
-                        <Typography
-                            variant="overline"
-                            onClick={() => {
-                                setAddingComment(true);
-                            }}
-                        >
-                            {actionText}
-                        </Typography>
+                        <div className={classes.replyToComment}>
+                            <Typography
+                                variant="overline"
+                                onClick={() => {
+                                    setAddingComment(true);
+                                }}
+                            >
+                                {actionText}
+                            </Typography>
+                        </div>
                     )}
                     {index === comments.length - 1 && addingComment && (
                         <AddComment

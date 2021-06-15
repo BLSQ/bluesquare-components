@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Avatar, Grid, Paper, Typography } from '@material-ui/core';
+import moment from 'moment';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { MESSAGES } from './messages';
 import { useStyles } from './styles';
@@ -33,23 +34,29 @@ const Comment = ({
                 <Grid className={classes.commentGrid} item xs zeroMinWidth>
                     <h4 className={classes.commentAuthor}>{author}</h4>
                     <p className={classes.commentText}>{content}</p>
-                    <p className={classes.commentPostingTime}>
-                        {`${intl.formatMessage(
-                            MESSAGES.postingTime,
-                        )} ${postingTime}`}
-                    </p>
+                    <Typography
+                        variant="body2"
+                        className={classes.commentPostingTime}
+                    >
+                        {`${intl.formatMessage(MESSAGES.postingTime)}  ${moment(
+                            parseInt(postingTime, 10),
+                        ).fromNow()}`}
+                    </Typography>
                     {!addingComment && (
-                        <Typography
-                            variant="overline"
-                            onClick={() => {
-                                setAddingComment(true);
-                            }}
-                        >
-                            {actionText}
-                        </Typography>
+                        <div className={classes.replyToComment}>
+                            <Typography
+                                variant="overline"
+                                onClick={() => {
+                                    setAddingComment(true);
+                                }}
+                            >
+                                {actionText}
+                            </Typography>
+                        </div>
                     )}
                     {addingComment && (
                         <AddComment
+                            position="right"
                             buttonText={actionText}
                             onConfirm={newComment => {
                                 setAddingComment(false);

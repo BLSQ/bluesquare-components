@@ -13,6 +13,8 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _core = require("@material-ui/core");
 
+var _moment = _interopRequireDefault(require("moment"));
+
 var _styles = require("./styles");
 
 var _messages = require("../Comment/messages");
@@ -95,14 +97,17 @@ var CommentsList = function CommentsList(_ref) {
       className: "".concat(classes.commentAuthor, " ").concat(classes[assignedColors[comment.authorId]])
     }, comment.author), /*#__PURE__*/_react["default"].createElement("p", {
       className: classes.commentText
-    }, comment.comment), /*#__PURE__*/_react["default"].createElement("p", {
+    }, comment.comment), /*#__PURE__*/_react["default"].createElement(_core.Typography, {
+      variant: "body2",
       className: classes.commentPostingTime
-    }, "".concat(intl.formatMessage(_messages.MESSAGES.postingTime), " ").concat(comment.dateTime)), index === comments.length - 1 && !addingComment && /*#__PURE__*/_react["default"].createElement(_core.Typography, {
+    }, "".concat(intl.formatMessage(_messages.MESSAGES.postingTime), " ").concat((0, _moment["default"])(parseInt(comment.dateTime, 10)).fromNow())), index === comments.length - 1 && !addingComment && /*#__PURE__*/_react["default"].createElement("div", {
+      className: classes.replyToComment
+    }, /*#__PURE__*/_react["default"].createElement(_core.Typography, {
       variant: "overline",
       onClick: function onClick() {
         setAddingComment(true);
       }
-    }, actionText), index === comments.length - 1 && addingComment && /*#__PURE__*/_react["default"].createElement(_AddComment.AddComment, {
+    }, actionText)), index === comments.length - 1 && addingComment && /*#__PURE__*/_react["default"].createElement(_AddComment.AddComment, {
       buttonText: actionText,
       onConfirm: function onConfirm(newComment) {
         var _comment$parentId;

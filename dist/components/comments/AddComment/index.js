@@ -48,6 +48,15 @@ var styles = function styles(theme) {
     },
     textArea: {
       width: '100%'
+    },
+    left: {
+      textAlign: 'left'
+    },
+    right: {
+      textAlign: 'right'
+    },
+    center: {
+      textAlign: 'center'
     }
   });
 };
@@ -61,7 +70,8 @@ var AddComment = function AddComment(_ref) {
       _onChange = _ref.onChange,
       className = _ref.className,
       buttonText = _ref.buttonText,
-      onConfirm = _ref.onConfirm;
+      onConfirm = _ref.onConfirm,
+      position = _ref.position;
 
   var _useState = (0, _react.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
@@ -73,7 +83,8 @@ var AddComment = function AddComment(_ref) {
     container: true,
     direction: "row",
     alignItems: "center",
-    spacing: 2
+    spacing: 2,
+    className: position ? classes[position] : null
   }, /*#__PURE__*/_react["default"].createElement(_core.Grid, {
     item: true,
     className: classes.textAreaContainer
@@ -88,7 +99,8 @@ var AddComment = function AddComment(_ref) {
 
       _onChange(e.target.value);
     },
-    value: comment
+    value: comment,
+    autoFocus: true
   })), /*#__PURE__*/_react["default"].createElement(_core.Grid, {
     item: true
   }, /*#__PURE__*/_react["default"].createElement(_core.Button, {
@@ -107,7 +119,8 @@ AddComment.propTypes = {
   maxRows: _propTypes["default"].number,
   onChange: _propTypes["default"].func,
   onConfirm: _propTypes["default"].func,
-  buttonText: _propTypes["default"].string
+  buttonText: _propTypes["default"].string,
+  position: _propTypes["default"].string
 };
 AddComment.defaultProps = {
   placeholder: 'Write your comment here',
@@ -116,5 +129,6 @@ AddComment.defaultProps = {
   onChange: function onChange() {},
   className: null,
   buttonText: 'Confirm',
-  onConfirm: function onConfirm() {}
+  onConfirm: function onConfirm() {},
+  position: ''
 };

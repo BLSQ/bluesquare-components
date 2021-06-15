@@ -16,6 +16,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var styles = function styles(theme) {
+  var _theme$mediumGray$mai, _theme$mediumGray;
+
   return _objectSpread(_objectSpread({}, (0, _common.commonStyles)(theme)), {}, {
     commentRoot: {
       padding: '20px 20px',
@@ -29,11 +31,14 @@ var styles = function styles(theme) {
       textAlign: 'justify'
     },
     commentPostingTime: {
-      textAlign: 'left',
-      color: theme.ligthGray
+      textAlign: 'right',
+      color: (_theme$mediumGray$mai = (_theme$mediumGray = theme.mediumGray) === null || _theme$mediumGray === void 0 ? void 0 : _theme$mediumGray.main) !== null && _theme$mediumGray$mai !== void 0 ? _theme$mediumGray$mai : '#A2A2A2'
     },
     commentGrid: {
       justifyContent: 'left'
+    },
+    replyToComment: {
+      textAlign: 'end'
     }
   });
 };

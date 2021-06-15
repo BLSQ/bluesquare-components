@@ -8,6 +8,9 @@ const styles = theme => ({
     ...commonStyles(theme),
     textAreaContainer: { width: '75%' },
     textArea: { width: '100%' },
+    left: { textAlign: 'left' },
+    right: { textAlign: 'right' },
+    center: { textAlign: 'center' },
 });
 const useStyles = makeStyles(styles);
 
@@ -19,11 +22,18 @@ const AddComment = ({
     className,
     buttonText,
     onConfirm,
+    position,
 }) => {
     const [comment, setComment] = useState('');
     const classes = useStyles();
     return (
-        <Grid container direction="row" alignItems="center" spacing={2}>
+        <Grid
+            container
+            direction="row"
+            alignItems="center"
+            spacing={2}
+            className={position ? classes[position] : null}
+        >
             <Grid item className={classes.textAreaContainer}>
                 <TextareaAutosize
                     className={className ?? classes.textArea}
@@ -36,6 +46,7 @@ const AddComment = ({
                         onChange(e.target.value);
                     }}
                     value={comment}
+                    autoFocus
                 />
             </Grid>
             <Grid item>
@@ -60,6 +71,7 @@ AddComment.propTypes = {
     onChange: PropTypes.func,
     onConfirm: PropTypes.func,
     buttonText: PropTypes.string,
+    position: PropTypes.string,
 };
 AddComment.defaultProps = {
     placeholder: 'Write your comment here',
@@ -69,5 +81,6 @@ AddComment.defaultProps = {
     className: null,
     buttonText: 'Confirm',
     onConfirm: () => {},
+    position: '',
 };
 export { AddComment };

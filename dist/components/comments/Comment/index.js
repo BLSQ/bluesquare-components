@@ -13,6 +13,8 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _core = require("@material-ui/core");
 
+var _moment = _interopRequireDefault(require("moment"));
+
 var _useSafeIntl = require("../../../utils/useSafeIntl");
 
 var _messages = require("./messages");
@@ -81,14 +83,18 @@ var Comment = function Comment(_ref) {
     className: classes.commentAuthor
   }, author), /*#__PURE__*/_react["default"].createElement("p", {
     className: classes.commentText
-  }, content), /*#__PURE__*/_react["default"].createElement("p", {
+  }, content), /*#__PURE__*/_react["default"].createElement(_core.Typography, {
+    variant: "body2",
     className: classes.commentPostingTime
-  }, "".concat(intl.formatMessage(_messages.MESSAGES.postingTime), " ").concat(postingTime)), !addingComment && /*#__PURE__*/_react["default"].createElement(_core.Typography, {
+  }, "".concat(intl.formatMessage(_messages.MESSAGES.postingTime), "  ").concat((0, _moment["default"])(parseInt(postingTime, 10)).fromNow())), !addingComment && /*#__PURE__*/_react["default"].createElement("div", {
+    className: classes.replyToComment
+  }, /*#__PURE__*/_react["default"].createElement(_core.Typography, {
     variant: "overline",
     onClick: function onClick() {
       setAddingComment(true);
     }
-  }, actionText), addingComment && /*#__PURE__*/_react["default"].createElement(_AddComment.AddComment, {
+  }, actionText)), addingComment && /*#__PURE__*/_react["default"].createElement(_AddComment.AddComment, {
+    position: "right",
     buttonText: actionText,
     onConfirm: function onConfirm(newComment) {
       setAddingComment(false);

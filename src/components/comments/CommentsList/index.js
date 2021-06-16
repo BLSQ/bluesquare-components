@@ -32,7 +32,7 @@ const assignColors = comments => {
     return result;
 };
 
-const CommentsList = ({ comments, actionText, onAddComment }) => {
+const CommentsList = ({ comments, actionText, onAddComment, parentId }) => {
     const classes = useStyles();
     const intl = useSafeIntl();
     const [addingComment, setAddingComment] = useState(false);
@@ -93,10 +93,7 @@ const CommentsList = ({ comments, actionText, onAddComment }) => {
                             buttonText={actionText}
                             onConfirm={newComment => {
                                 setAddingComment(false);
-                                onAddComment(
-                                    newComment,
-                                    comment.parentId ?? comment.id,
-                                );
+                                onAddComment(newComment, parentId);
                             }}
                         />
                     )}
@@ -121,11 +118,13 @@ CommentsList.propTypes = {
     comments: PropTypes.array,
     actionText: PropTypes.string,
     onAddComment: PropTypes.func,
+    parentId: PropTypes.number,
 };
 CommentsList.defaultProps = {
     comments: [],
     actionText: 'add comment',
     onAddComment: () => {},
+    parentId: null,
 };
 
 export { CommentsList };

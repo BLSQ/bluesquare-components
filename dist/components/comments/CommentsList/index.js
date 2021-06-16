@@ -62,7 +62,8 @@ var assignColors = function assignColors(comments) {
 var CommentsList = function CommentsList(_ref) {
   var comments = _ref.comments,
       actionText = _ref.actionText,
-      onAddComment = _ref.onAddComment;
+      onAddComment = _ref.onAddComment,
+      parentId = _ref.parentId;
   var classes = (0, _styles.useStyles)();
   var intl = (0, _useSafeIntl.useSafeIntl)();
 
@@ -110,10 +111,8 @@ var CommentsList = function CommentsList(_ref) {
     }, actionText)), index === comments.length - 1 && addingComment && /*#__PURE__*/_react["default"].createElement(_AddComment.AddComment, {
       buttonText: actionText,
       onConfirm: function onConfirm(newComment) {
-        var _comment$parentId;
-
         setAddingComment(false);
-        onAddComment(newComment, (_comment$parentId = comment.parentId) !== null && _comment$parentId !== void 0 ? _comment$parentId : comment.id);
+        onAddComment(newComment, parentId);
       }
     }))), index < comments.length - 1 && /*#__PURE__*/_react["default"].createElement(_core.Divider, {
       variant: "fullWidth",
@@ -132,10 +131,12 @@ exports.CommentsList = CommentsList;
 CommentsList.propTypes = {
   comments: _propTypes["default"].array,
   actionText: _propTypes["default"].string,
-  onAddComment: _propTypes["default"].func
+  onAddComment: _propTypes["default"].func,
+  parentId: _propTypes["default"].number
 };
 CommentsList.defaultProps = {
   comments: [],
   actionText: 'add comment',
-  onAddComment: function onAddComment() {}
+  onAddComment: function onAddComment() {},
+  parentId: null
 };

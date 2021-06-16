@@ -47,7 +47,15 @@ var styles = function styles(theme) {
       width: '75%'
     },
     textArea: {
-      width: '100%'
+      width: '100%',
+      borderRadius: '6px',
+      borderColor: '#A2A2A2',
+      '&:focus-visible': {
+        border: '1px solid red'
+      },
+      '&:focus-visible :focus': {
+        border: '1px solid red'
+      }
     },
     left: {
       textAlign: 'left'

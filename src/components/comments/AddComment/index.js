@@ -6,8 +6,16 @@ import { commonStyles } from '../../../styles/iaso/common';
 
 const styles = theme => ({
     ...commonStyles(theme),
-    textAreaContainer: { width: '75%' },
-    textArea: { width: '100%' },
+    textAreaContainer: {
+        width: '75%',
+    },
+    textArea: {
+        width: '100%',
+        borderRadius: '6px',
+        borderColor: '#A2A2A2',
+        '&:focus-visible': { border: '1px solid red' },
+        '&:focus-visible :focus': { border: '1px solid red' },
+    },
     left: { textAlign: 'left' },
     right: { textAlign: 'right' },
     center: { textAlign: 'center' },

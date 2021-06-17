@@ -7,7 +7,7 @@ exports.useStyles = exports.styles = void 0;
 
 var _styles = require("@material-ui/core/styles");
 
-var _common = require("../../../styles/iaso/common");
+var _common = require("../../styles/iaso/common");
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -27,11 +27,9 @@ var styles = function styles(theme) {
       margin: 0,
       textAlign: 'left'
     },
-    commentText: {
-      textAlign: 'justify'
-    },
+    // commentText: { textAlign: 'justify' },
     commentPostingTime: {
-      textAlign: 'right',
+      textAlign: 'end',
       color: (_theme$mediumGray$mai = (_theme$mediumGray = theme.mediumGray) === null || _theme$mediumGray === void 0 ? void 0 : _theme$mediumGray.main) !== null && _theme$mediumGray$mai !== void 0 ? _theme$mediumGray$mai : '#A2A2A2'
     },
     commentGrid: {
@@ -39,7 +37,26 @@ var styles = function styles(theme) {
     },
     replyToComment: {
       textAlign: 'end'
-    }
+    },
+    commentText: {
+      display: 'inline-flex',
+      textAlign: 'justify'
+    },
+    toggleCommentText: {
+      alignSelf: 'end'
+    } // commentRoot: { padding: '20px 20px', marginBottom: '5px' },
+    // commentAuthor: { margin: 0, textAlign: 'left' },
+    // commentText: { textAlign: 'justify' },
+    // commentPostingTime: { textAlign: 'left', color: theme.ligthGray },
+    // commentGrid: { justifyContent: 'left' },
+    // black: { color: 'black' },
+    // blue: { color: 'blue' },
+    // red: { color: 'red' },
+    // green: { color: 'green' },
+    // yellow: { color: 'yellow' },
+    // purple: { color: 'purple' },
+    // amber: { color: 'amber' },
+
   });
 };
 

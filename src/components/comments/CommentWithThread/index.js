@@ -1,42 +1,47 @@
 import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Divider, Paper, Grid, Avatar, Typography } from '@material-ui/core';
-import moment from 'moment';
-import { useStyles } from './styles';
-import { MESSAGES } from '../Comment/messages';
-import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { Divider, Paper, Typography } from '@material-ui/core';
+import { useStyles } from '../styles';
+// import { MESSAGES } from '../messages';
+// import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { AddComment } from '../AddComment';
+import { Comment } from '../Comment';
 
-const assignColors = comments => {
-    const availableColors = [
-        'black',
-        'blue',
-        'red',
-        'green',
-        'yellow',
-        'purple',
-        'amber',
-    ];
-    let colorIndex = 0;
-    const result = {};
-    comments.forEach(comment => {
-        if (!result[comment.authorId]) {
-            result[comment.authorId] = availableColors[colorIndex];
-            if (colorIndex < availableColors.length - 1) {
-                colorIndex += 1;
-            } else {
-                colorIndex = 0;
-            }
-        }
-    });
-    return result;
-};
+// const assignColors = comments => {
+//     const availableColors = [
+//         'black',
+//         'blue',
+//         'red',
+//         'green',
+//         'yellow',
+//         'purple',
+//         'amber',
+//     ];
+//     let colorIndex = 0;
+//     const result = {};
+//     comments.forEach(comment => {
+//         if (!result[comment.authorId]) {
+//             result[comment.authorId] = availableColors[colorIndex];
+//             if (colorIndex < availableColors.length - 1) {
+//                 colorIndex += 1;
+//             } else {
+//                 colorIndex = 0;
+//             }
+//         }
+//     });
+//     return result;
+// };
 
-const CommentsList = ({ comments, actionText, onAddComment, parentId }) => {
+const CommentWithThread = ({
+    comments,
+    actionText,
+    onAddComment,
+    parentId,
+}) => {
     const classes = useStyles();
-    const intl = useSafeIntl();
+    // const intl = useSafeIntl();
     const [addingComment, setAddingComment] = useState(false);
-    const assignedColors = assignColors(comments);
+    // const assignedColors = assignColors(comments);
     const commentsArray = comments.map((comment, index) => (
         <Fragment
             key={
@@ -45,7 +50,7 @@ const CommentsList = ({ comments, actionText, onAddComment, parentId }) => {
             }
             // className={classes.commentWrapper}
         >
-            <Grid
+            {/* <Grid
                 container
                 wrap="nowrap"
                 spacing={2}
@@ -73,32 +78,38 @@ const CommentsList = ({ comments, actionText, onAddComment, parentId }) => {
                         className={classes.commentPostingTime}
                     >
                         {`${intl.formatMessage(MESSAGES.postingTime)} ${moment(
-                            parseInt(comment.dateTime, 10),
+                            comment.dateTime,
                         ).fromNow()}`}
                     </Typography>
-                    {index === comments.length - 1 && !addingComment && (
-                        <div className={classes.replyToComment}>
-                            <Typography
-                                variant="overline"
-                                onClick={() => {
-                                    setAddingComment(true);
-                                }}
-                            >
-                                {actionText}
-                            </Typography>
-                        </div>
-                    )}
-                    {index === comments.length - 1 && addingComment && (
-                        <AddComment
-                            buttonText={actionText}
-                            onConfirm={newComment => {
-                                setAddingComment(false);
-                                onAddComment(newComment, parentId);
-                            }}
-                        />
-                    )}
                 </Grid>
-            </Grid>
+            </Grid> */}
+            <Comment
+                avatar={comment.avatar}
+                author={comment.author}
+                postingTime={comment.dateTime}
+                content={comment.comment}
+            />
+            {index === comments.length - 1 && !addingComment && (
+                <div className={classes.replyToComment}>
+                    <Typography
+                        variant="overline"
+                        onClick={() => {
+                            setAddingComment(true);
+                        }}
+                    >
+                        {actionText}
+                    </Typography>
+                </div>
+            )}
+            {index === comments.length - 1 && addingComment && (
+                <AddComment
+                    buttonText={actionText}
+                    onConfirm={newComment => {
+                        setAddingComment(false);
+                        onAddComment(newComment, parentId);
+                    }}
+                />
+            )}
             {index < comments.length - 1 && (
                 <Divider
                     variant="fullWidth"
@@ -114,17 +125,17 @@ const CommentsList = ({ comments, actionText, onAddComment, parentId }) => {
     return <Paper className={classes.commentRoot}>{commentsArray}</Paper>;
 };
 
-CommentsList.propTypes = {
+CommentWithThread.propTypes = {
     comments: PropTypes.array,
     actionText: PropTypes.string,
     onAddComment: PropTypes.func,
     parentId: PropTypes.number,
 };
-CommentsList.defaultProps = {
+CommentWithThread.defaultProps = {
     comments: [],
     actionText: 'add comment',
     onAddComment: () => {},
     parentId: null,
 };
 
-export { CommentsList };
+export { CommentWithThread };

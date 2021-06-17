@@ -17,11 +17,9 @@ var _moment = _interopRequireDefault(require("moment"));
 
 var _useSafeIntl = require("../../../utils/useSafeIntl");
 
-var _messages = require("./messages");
+var _messages = require("../messages");
 
-var _styles = require("./styles");
-
-var _AddComment = require("../AddComment");
+var _styles = require("../styles");
 
 require("../../../css/index.css");
 
@@ -43,29 +41,64 @@ function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "und
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-// TODO refactor style import
+var MAX_TEXT_LENGTH = 150;
+
+var truncateText = function truncateText(text, maxLength) {
+  if (text.length > maxLength) {
+    return "".concat(text.substring(0, maxLength - 4), "...");
+  }
+
+  return text;
+};
+
+var CommentText = function CommentText(_ref) {
+  var text = _ref.text,
+      hideOverflow = _ref.hideOverflow,
+      toggle = _ref.toggle,
+      maxLength = _ref.maxLength;
+  var classes = (0, _styles.useStyles)();
+  return (
+    /*#__PURE__*/
+    // const classes = useStyles();
+    _react["default"].createElement("div", {
+      className: classes.commentText
+    }, /*#__PURE__*/_react["default"].createElement("p", null, hideOverflow && text.length > maxLength ? truncateText(text, MAX_TEXT_LENGTH) : text), hideOverflow && /*#__PURE__*/_react["default"].createElement("p", {
+      onClick: toggle,
+      className: classes.toggleCommentText
+    }, "Show More"), !hideOverflow && text.length > maxLength && /*#__PURE__*/_react["default"].createElement("p", {
+      onClick: toggle,
+      className: classes.toggleCommentText
+    }, "Show Less"))
+  );
+};
+
+CommentText.propTypes = {
+  text: _propTypes["default"].string.isRequired,
+  hideOverflow: _propTypes["default"].bool.isRequired,
+  toggle: _propTypes["default"].func.isRequired,
+  maxLength: _propTypes["default"].number.isRequired
+}; // TODO refactor style import
 // credit: https://codesandbox.io/s/comment-box-with-material-ui-10p3c?file=/src/index.js:2810-4030
-var Comment = function Comment(_ref) {
-  var avatar = _ref.avatar,
-      author = _ref.author,
-      content = _ref.content,
-      postingTime = _ref.postingTime,
-      classNames = _ref.classNames,
-      actionText = _ref.actionText,
-      onAddComment = _ref.onAddComment,
-      id = _ref.id;
+
+var Comment = function Comment(_ref2) {
+  var avatar = _ref2.avatar,
+      author = _ref2.author,
+      content = _ref2.content,
+      postingTime = _ref2.postingTime,
+      classNames = _ref2.classNames;
   var intl = (0, _useSafeIntl.useSafeIntl)();
   var defaultClasses = (0, _styles.useStyles)();
 
-  var _useState = (0, _react.useState)(false),
+  var _useState = (0, _react.useState)(content.length > MAX_TEXT_LENGTH),
       _useState2 = _slicedToArray(_useState, 2),
-      addingComment = _useState2[0],
-      setAddingComment = _useState2[1];
+      hideTextOverflow = _useState2[0],
+      setHideTextOverflow = _useState2[1];
 
+  var toggleOverflowDisplay = (0, _react.useCallback)(function () {
+    return setHideTextOverflow(!hideTextOverflow);
+  }, [hideTextOverflow]);
   var classes = classNames !== null && classNames !== void 0 ? classNames : defaultClasses;
-  return /*#__PURE__*/_react["default"].createElement(_core.Paper, {
-    className: classes.commentRoot
-  }, /*#__PURE__*/_react["default"].createElement(_core.Grid, {
+  return /*#__PURE__*/_react["default"].createElement(_core.Grid, {
     container: true,
     wrap: "nowrap",
     spacing: 2
@@ -81,26 +114,15 @@ var Comment = function Comment(_ref) {
     zeroMinWidth: true
   }, /*#__PURE__*/_react["default"].createElement("h4", {
     className: classes.commentAuthor
-  }, author), /*#__PURE__*/_react["default"].createElement("p", {
-    className: classes.commentText
-  }, content), /*#__PURE__*/_react["default"].createElement(_core.Typography, {
+  }, author), /*#__PURE__*/_react["default"].createElement(CommentText, {
+    text: content,
+    hideOverflow: hideTextOverflow,
+    toggle: toggleOverflowDisplay,
+    maxLength: MAX_TEXT_LENGTH
+  }), /*#__PURE__*/_react["default"].createElement(_core.Typography, {
     variant: "body2",
     className: classes.commentPostingTime
-  }, "".concat(intl.formatMessage(_messages.MESSAGES.postingTime), "  ").concat((0, _moment["default"])(parseInt(postingTime, 10)).fromNow())), !addingComment && /*#__PURE__*/_react["default"].createElement("div", {
-    className: classes.replyToComment
-  }, /*#__PURE__*/_react["default"].createElement(_core.Typography, {
-    variant: "overline",
-    onClick: function onClick() {
-      setAddingComment(true);
-    }
-  }, actionText)), addingComment && /*#__PURE__*/_react["default"].createElement(_AddComment.AddComment, {
-    position: "right",
-    buttonText: actionText,
-    onConfirm: function onConfirm(newComment) {
-      setAddingComment(false);
-      onAddComment(newComment, id);
-    }
-  }))));
+  }, "".concat(intl.formatMessage(_messages.MESSAGES.postingTime), "  ").concat((0, _moment["default"])(postingTime).fromNow()))));
 };
 
 exports.Comment = Comment;
@@ -109,16 +131,10 @@ Comment.propTypes = {
   author: _propTypes["default"].string.isRequired,
   content: _propTypes["default"].string.isRequired,
   postingTime: _propTypes["default"].string,
-  classNames: _propTypes["default"].arrayOf(_propTypes["default"].string),
-  actionText: _propTypes["default"].string,
-  onAddComment: _propTypes["default"].func,
-  id: _propTypes["default"].number
+  classNames: _propTypes["default"].arrayOf(_propTypes["default"].string)
 };
 Comment.defaultProps = {
   avatar: null,
   postingTime: '',
-  classNames: null,
-  actionText: 'add comment',
-  onAddComment: function onAddComment() {},
-  id: null
+  classNames: null
 };

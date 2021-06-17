@@ -3,7 +3,7 @@ import { arrayOf, string } from 'prop-types';
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { theme } from '../../../styles/iaso/theme';
-import { Comment } from './index';
+import { SingleComment } from './index';
 
 export default {
     title: 'Comment',
@@ -19,7 +19,7 @@ export default {
 const Template = args => (
     <ThemeProvider theme={theme}>
         <IntlProvider locale="en" messages={{}}>
-            <Comment {...args} />
+            <SingleComment {...args} />
         </IntlProvider>
     </ThemeProvider>
 );

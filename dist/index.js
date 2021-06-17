@@ -60,8 +60,8 @@ var _exportNames = {
   LinkContext: true,
   withLink: true,
   useLink: true,
-  Comment: true,
-  CommentsList: true,
+  SingleComment: true,
+  CommentWithThread: true,
   AddComment: true
 };
 Object.defineProperty(exports, "LoadingSpinner", {
@@ -370,16 +370,16 @@ Object.defineProperty(exports, "useLink", {
     return _LinkProvider.useLink;
   }
 });
-Object.defineProperty(exports, "Comment", {
+Object.defineProperty(exports, "SingleComment", {
   enumerable: true,
   get: function get() {
-    return _Comment.Comment;
+    return _SingleComment.SingleComment;
   }
 });
-Object.defineProperty(exports, "CommentsList", {
+Object.defineProperty(exports, "CommentWithThread", {
   enumerable: true,
   get: function get() {
-    return _CommentsList.CommentsList;
+    return _CommentWithThread.CommentWithThread;
   }
 });
 Object.defineProperty(exports, "AddComment", {
@@ -507,9 +507,9 @@ var _messages = require("./components/table/Table/messages");
 
 var _LinkProvider = require("./components/LinkProvider");
 
-var _Comment = require("./components/comments/Comment");
+var _SingleComment = require("./components/comments/SingleComment");
 
-var _CommentsList = require("./components/comments/CommentsList");
+var _CommentWithThread = require("./components/comments/CommentWithThread");
 
 var _AddComment = require("./components/comments/AddComment");
 

@@ -5,7 +5,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.CommentsList = void 0;
+exports.SingleComment = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -13,15 +13,13 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _core = require("@material-ui/core");
 
-var _moment = _interopRequireDefault(require("moment"));
-
-var _styles = require("./styles");
-
-var _messages = require("../Comment/messages");
-
-var _useSafeIntl = require("../../../utils/useSafeIntl");
+var _styles = require("../styles");
 
 var _AddComment = require("../AddComment");
+
+var _Comment = require("../Comment");
+
+require("../../../css/index.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -41,102 +39,66 @@ function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "und
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-var assignColors = function assignColors(comments) {
-  var availableColors = ['black', 'blue', 'red', 'green', 'yellow', 'purple', 'amber'];
-  var colorIndex = 0;
-  var result = {};
-  comments.forEach(function (comment) {
-    if (!result[comment.authorId]) {
-      result[comment.authorId] = availableColors[colorIndex];
-
-      if (colorIndex < availableColors.length - 1) {
-        colorIndex += 1;
-      } else {
-        colorIndex = 0;
-      }
-    }
-  });
-  return result;
-};
-
-var CommentsList = function CommentsList(_ref) {
-  var comments = _ref.comments,
+// TODO refactor style import
+// credit: https://codesandbox.io/s/comment-box-with-material-ui-10p3c?file=/src/index.js:2810-4030
+var SingleComment = function SingleComment(_ref) {
+  var avatar = _ref.avatar,
+      author = _ref.author,
+      content = _ref.content,
+      postingTime = _ref.postingTime,
+      classNames = _ref.classNames,
       actionText = _ref.actionText,
       onAddComment = _ref.onAddComment,
-      parentId = _ref.parentId;
-  var classes = (0, _styles.useStyles)();
-  var intl = (0, _useSafeIntl.useSafeIntl)();
+      id = _ref.id;
+  // const intl = useSafeIntl();
+  var defaultClasses = (0, _styles.useStyles)();
 
   var _useState = (0, _react.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
       addingComment = _useState2[0],
       setAddingComment = _useState2[1];
 
-  var assignedColors = assignColors(comments);
-  var commentsArray = comments.map(function (comment, index) {
-    var _ref2, _ref3, _ref4;
-
-    return /*#__PURE__*/_react["default"].createElement(_react.Fragment, {
-      key: (_ref2 = "Fragment".concat(comment.author).concat(comment.dateTime).concat(comment.id)) !== null && _ref2 !== void 0 ? _ref2 : '' // className={classes.commentWrapper}
-
-    }, /*#__PURE__*/_react["default"].createElement(_core.Grid, {
-      container: true,
-      wrap: "nowrap",
-      spacing: 2,
-      key: (_ref3 = "Grid".concat(comment.author).concat(comment.dateTime).concat(comment.id)) !== null && _ref3 !== void 0 ? _ref3 : ''
-    }, /*#__PURE__*/_react["default"].createElement(_core.Grid, {
-      item: true
-    }, comment.avatar && /*#__PURE__*/_react["default"].createElement(_core.Avatar, {
-      alt: comment.author,
-      src: comment.avatar
-    })), /*#__PURE__*/_react["default"].createElement(_core.Grid, {
-      className: classes.commentGrid,
-      item: true,
-      xs: true,
-      zeroMinWidth: true
-    }, /*#__PURE__*/_react["default"].createElement("h4", {
-      className: "".concat(classes.commentAuthor, " ").concat(classes[assignedColors[comment.authorId]])
-    }, comment.author), /*#__PURE__*/_react["default"].createElement("p", {
-      className: classes.commentText
-    }, comment.comment), /*#__PURE__*/_react["default"].createElement(_core.Typography, {
-      variant: "body2",
-      className: classes.commentPostingTime
-    }, "".concat(intl.formatMessage(_messages.MESSAGES.postingTime), " ").concat((0, _moment["default"])(parseInt(comment.dateTime, 10)).fromNow())), index === comments.length - 1 && !addingComment && /*#__PURE__*/_react["default"].createElement("div", {
-      className: classes.replyToComment
-    }, /*#__PURE__*/_react["default"].createElement(_core.Typography, {
-      variant: "overline",
-      onClick: function onClick() {
-        setAddingComment(true);
-      }
-    }, actionText)), index === comments.length - 1 && addingComment && /*#__PURE__*/_react["default"].createElement(_AddComment.AddComment, {
-      buttonText: actionText,
-      onConfirm: function onConfirm(newComment) {
-        setAddingComment(false);
-        onAddComment(newComment, parentId);
-      }
-    }))), index < comments.length - 1 && /*#__PURE__*/_react["default"].createElement(_core.Divider, {
-      variant: "fullWidth",
-      style: {
-        margin: '30px 0'
-      },
-      key: (_ref4 = "divider".concat(comment.author).concat(comment.dateTime).concat(comment.id)) !== null && _ref4 !== void 0 ? _ref4 : ''
-    }));
-  });
+  var classes = classNames !== null && classNames !== void 0 ? classNames : defaultClasses;
   return /*#__PURE__*/_react["default"].createElement(_core.Paper, {
     className: classes.commentRoot
-  }, commentsArray);
+  }, /*#__PURE__*/_react["default"].createElement(_Comment.Comment, {
+    avatar: avatar,
+    author: author,
+    postingTime: postingTime,
+    content: content
+  }), !addingComment && /*#__PURE__*/_react["default"].createElement("div", {
+    className: classes.replyToComment
+  }, /*#__PURE__*/_react["default"].createElement(_core.Typography, {
+    variant: "overline",
+    onClick: function onClick() {
+      setAddingComment(true);
+    }
+  }, actionText)), addingComment && /*#__PURE__*/_react["default"].createElement(_AddComment.AddComment, {
+    position: "right",
+    buttonText: actionText,
+    onConfirm: function onConfirm(newComment) {
+      setAddingComment(false);
+      onAddComment(newComment, id);
+    }
+  }));
 };
 
-exports.CommentsList = CommentsList;
-CommentsList.propTypes = {
-  comments: _propTypes["default"].array,
+exports.SingleComment = SingleComment;
+SingleComment.propTypes = {
+  avatar: _propTypes["default"].string,
+  author: _propTypes["default"].string.isRequired,
+  content: _propTypes["default"].string.isRequired,
+  postingTime: _propTypes["default"].string,
+  classNames: _propTypes["default"].arrayOf(_propTypes["default"].string),
   actionText: _propTypes["default"].string,
   onAddComment: _propTypes["default"].func,
-  parentId: _propTypes["default"].number
+  id: _propTypes["default"].number
 };
-CommentsList.defaultProps = {
-  comments: [],
+SingleComment.defaultProps = {
+  avatar: null,
+  postingTime: '',
+  classNames: null,
   actionText: 'add comment',
   onAddComment: function onAddComment() {},
-  parentId: null
+  id: null
 };

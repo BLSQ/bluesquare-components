@@ -10,36 +10,39 @@ import '../../../css/index.css';
 const MAX_TEXT_LENGTH = 150;
 const truncateText = (text, maxLength) => {
     if (text.length > maxLength) {
-        return `${text.substring(0, maxLength - 4)}...`;
+        return `${text.substring(0, maxLength - 4)}...   `;
     }
-    return text;
+    return `${text}   `;
 };
 
 const CommentText = ({ text, hideOverflow, toggle, maxLength }) => {
     const classes = useStyles();
     return (
-        // const classes = useStyles();
         <div className={classes.commentText}>
-            <p
-            // className={
-            //     hideOverflow
-            //         ? classes.truncatedComment
-            //         : classes.fullTextComment
-            // }
-            >
+            <p>
                 {hideOverflow && text.length > maxLength
                     ? truncateText(text, MAX_TEXT_LENGTH)
-                    : text}
+                    : text}{' '}
             </p>
             {hideOverflow && (
-                <p onClick={toggle} className={classes.toggleCommentText}>
+                <span
+                    onClick={toggle}
+                    className={classes.toggleCommentText}
+                    role="button"
+                    tabIndex={0}
+                >
                     Show More
-                </p>
+                </span>
             )}
             {!hideOverflow && text.length > maxLength && (
-                <p onClick={toggle} className={classes.toggleCommentText}>
+                <span
+                    onClick={toggle}
+                    className={classes.toggleCommentText}
+                    role="button"
+                    tabIndex={0}
+                >
                     Show Less
-                </p>
+                </span>
             )}
         </div>
     );
@@ -63,11 +66,15 @@ const Comment = ({ avatar, author, content, postingTime, classNames }) => {
         () => setHideTextOverflow(!hideTextOverflow),
         [hideTextOverflow],
     );
-
     const classes = classNames ?? defaultClasses;
     return (
-        <Grid container wrap="nowrap" spacing={2}>
-            <Grid item>{avatar && <Avatar alt={author} src={avatar} />}</Grid>
+        <Grid container wrap="nowrap" spacing={4}>
+            {avatar && (
+                <Grid item>
+                    {' '}
+                    <Avatar alt={author} src={avatar} />
+                </Grid>
+            )}
             <Grid className={classes.commentGrid} item xs zeroMinWidth>
                 <h4 className={classes.commentAuthor}>{author}</h4>
                 {/* <p className={classes.commentText}>{content}</p> */}
@@ -80,6 +87,7 @@ const Comment = ({ avatar, author, content, postingTime, classNames }) => {
                 <Typography
                     variant="body2"
                     className={classes.commentPostingTime}
+                    component="div"
                 >
                     {`${intl.formatMessage(MESSAGES.postingTime)}  ${moment(
                         postingTime,
@@ -89,6 +97,7 @@ const Comment = ({ avatar, author, content, postingTime, classNames }) => {
         </Grid>
     );
 };
+
 Comment.propTypes = {
     avatar: PropTypes.string,
     author: PropTypes.string.isRequired,

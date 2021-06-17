@@ -1,26 +1,10 @@
 import { TextareaAutosize, Button, Grid } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { commonStyles } from '../../../styles/iaso/common';
-
-const styles = theme => ({
-    ...commonStyles(theme),
-    textAreaContainer: {
-        width: '75%',
-    },
-    textArea: {
-        width: '100%',
-        borderRadius: '6px',
-        borderColor: '#A2A2A2',
-        '&:focus-visible': { border: '1px solid red' },
-        '&:focus-visible :focus': { border: '1px solid red' },
-    },
-    left: { textAlign: 'left' },
-    right: { textAlign: 'right' },
-    center: { textAlign: 'center' },
-});
-const useStyles = makeStyles(styles);
+import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { MESSAGES } from '../messages';
+import { useStyles } from './styles';
+import '../../../css/index.css';
 
 const AddComment = ({
     placeholder,
@@ -31,13 +15,15 @@ const AddComment = ({
     buttonText,
     onConfirm,
     position,
+    inline,
 }) => {
     const [comment, setComment] = useState('');
     const classes = useStyles();
+    const intl = useSafeIntl();
     return (
         <Grid
             container
-            direction="row"
+            direction={inline ? 'row' : 'column'}
             alignItems="center"
             spacing={2}
             className={position ? classes[position] : null}
@@ -57,14 +43,17 @@ const AddComment = ({
                     autoFocus
                 />
             </Grid>
-            <Grid item>
+            <Grid item className={classes.commentConfirmButton}>
                 <Button
                     onClick={() => {
                         onConfirm(comment);
                         setComment('');
                     }}
+                    className={classes.button}
+                    // variant="contained"
+                    // color="primary"
                 >
-                    {buttonText}
+                    {buttonText ?? intl.formatMessage(MESSAGES.confirmComment)}
                 </Button>
             </Grid>
         </Grid>
@@ -80,6 +69,7 @@ AddComment.propTypes = {
     onConfirm: PropTypes.func,
     buttonText: PropTypes.string,
     position: PropTypes.string,
+    inline: PropTypes.bool,
 };
 AddComment.defaultProps = {
     placeholder: 'Write your comment here',
@@ -87,8 +77,9 @@ AddComment.defaultProps = {
     maxRows: 5,
     onChange: () => {},
     className: null,
-    buttonText: 'Confirm',
+    buttonText: null,
     onConfirm: () => {},
     position: '',
+    inline: true,
 };
 export { AddComment };

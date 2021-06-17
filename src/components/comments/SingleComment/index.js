@@ -26,24 +26,7 @@ const SingleComment = ({
 
     const classes = classNames ?? defaultClasses;
     return (
-        <Paper className={classes.commentRoot}>
-            {/* <Grid container wrap="nowrap" spacing={2}>
-                <Grid item>
-                    {avatar && <Avatar alt={author} src={avatar} />}
-                </Grid>
-                <Grid className={classes.commentGrid} item xs zeroMinWidth>
-                    <h4 className={classes.commentAuthor}>{author}</h4>
-                    <p className={classes.commentText}>{content}</p>
-                    <Typography
-                        variant="body2"
-                        className={classes.commentPostingTime}
-                    >
-                        {`${intl.formatMessage(MESSAGES.postingTime)}  ${moment(
-                            postingTime,
-                        ).fromNow()}`}
-                    </Typography>
-                </Grid>
-            </Grid> */}
+        <Paper className={classes.commentRoot} variant="outlined">
             <Comment
                 avatar={avatar}
                 author={author}
@@ -65,7 +48,7 @@ const SingleComment = ({
             {addingComment && (
                 <AddComment
                     position="right"
-                    buttonText={actionText}
+                    // buttonText={actionText}
                     onConfirm={newComment => {
                         setAddingComment(false);
                         onAddComment(newComment, id);

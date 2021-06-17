@@ -20,31 +20,48 @@ var styles = function styles(theme) {
 
   return _objectSpread(_objectSpread({}, (0, _common.commonStyles)(theme)), {}, {
     commentRoot: {
-      padding: '20px 20px',
-      marginBottom: '5px'
+      padding: '10px 20px',
+      margin: '0px 5px 5px 5px'
     },
     commentAuthor: {
       margin: 0,
       textAlign: 'left'
     },
-    // commentText: { textAlign: 'justify' },
     commentPostingTime: {
       textAlign: 'end',
       color: (_theme$mediumGray$mai = (_theme$mediumGray = theme.mediumGray) === null || _theme$mediumGray === void 0 ? void 0 : _theme$mediumGray.main) !== null && _theme$mediumGray$mai !== void 0 ? _theme$mediumGray$mai : '#A2A2A2'
     },
     commentGrid: {
-      justifyContent: 'left'
+      justifyContent: 'left',
+      padding: '0px 10px'
     },
     replyToComment: {
       textAlign: 'end'
     },
     commentText: {
-      display: 'inline-flex',
-      textAlign: 'justify'
+      // display: 'inline-flex',
+      textAlign: 'justify',
+      marginTop: '10px'
     },
     toggleCommentText: {
-      alignSelf: 'end'
-    } // commentRoot: { padding: '20px 20px', marginBottom: '5px' },
+      alignSelf: 'end',
+      cursor: 'default',
+      color: 'blue',
+      '&:hover': {
+        textDecoration: 'underline'
+      }
+    },
+    expandThread: {
+      textAlign: 'end'
+    },
+    button: {
+      backgroundColor: '#fff',
+      color: '#3f51b5'
+    },
+    childComment: {
+      paddingLeft: '20px'
+    } // limitHeight: { height: '13vh' },
+    // commentRoot: { padding: '20px 20px', marginBottom: '5px' },
     // commentAuthor: { margin: 0, textAlign: 'left' },
     // commentText: { textAlign: 'justify' },
     // commentPostingTime: { textAlign: 'left', color: theme.ligthGray },

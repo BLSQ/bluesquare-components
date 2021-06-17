@@ -15,9 +15,15 @@ var _core = require("@material-ui/core");
 
 var _styles = require("../styles");
 
+var _messages = require("../messages");
+
+var _useSafeIntl = require("../../../utils/useSafeIntl");
+
 var _AddComment = require("../AddComment");
 
 var _Comment = require("../Comment");
+
+require("../../../css/index.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -66,49 +72,76 @@ var CommentWithThread = function CommentWithThread(_ref) {
       actionText = _ref.actionText,
       onAddComment = _ref.onAddComment,
       parentId = _ref.parentId;
-  var classes = (0, _styles.useStyles)(); // const intl = useSafeIntl();
+  var classes = (0, _styles.useStyles)();
+  var intl = (0, _useSafeIntl.useSafeIntl)();
 
   var _useState = (0, _react.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
       addingComment = _useState2[0],
-      setAddingComment = _useState2[1]; // const assignedColors = assignColors(comments);
+      setAddingComment = _useState2[1];
+
+  var _useState3 = (0, _react.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      isExpanded = _useState4[0],
+      setIsExpanded = _useState4[1]; // const assignedColors = assignColors(comments);
 
 
-  var commentsArray = comments.map(function (comment, index) {
-    var _ref2, _ref3;
+  var toggleExpand = (0, _react.useCallback)(function () {
+    if (isExpanded) {
+      setAddingComment(false);
+    }
 
-    return /*#__PURE__*/_react["default"].createElement(_react.Fragment, {
-      key: (_ref2 = "Fragment".concat(comment.author).concat(comment.dateTime).concat(comment.id)) !== null && _ref2 !== void 0 ? _ref2 : '' // className={classes.commentWrapper}
+    setIsExpanded(!isExpanded);
+  }, [isExpanded]);
 
-    }, /*#__PURE__*/_react["default"].createElement(_Comment.Comment, {
-      avatar: comment.avatar,
-      author: comment.author,
-      postingTime: comment.dateTime,
-      content: comment.comment
-    }), index === comments.length - 1 && !addingComment && /*#__PURE__*/_react["default"].createElement("div", {
-      className: classes.replyToComment
-    }, /*#__PURE__*/_react["default"].createElement(_core.Typography, {
-      variant: "overline",
-      onClick: function onClick() {
-        setAddingComment(true);
-      }
-    }, actionText)), index === comments.length - 1 && addingComment && /*#__PURE__*/_react["default"].createElement(_AddComment.AddComment, {
-      buttonText: actionText,
-      onConfirm: function onConfirm(newComment) {
-        setAddingComment(false);
-        onAddComment(newComment, parentId);
-      }
-    }), index < comments.length - 1 && /*#__PURE__*/_react["default"].createElement(_core.Divider, {
-      variant: "fullWidth",
-      style: {
-        margin: '30px 0'
-      },
-      key: (_ref3 = "divider".concat(comment.author).concat(comment.dateTime).concat(comment.id)) !== null && _ref3 !== void 0 ? _ref3 : ''
-    }));
-  });
+  var makeComment = function makeComment(array) {
+    return array.map(function (comment, index) {
+      var _ref2, _ref3;
+
+      return /*#__PURE__*/_react["default"].createElement("div", {
+        key: (_ref2 = "Fragment".concat(comment.author).concat(comment.dateTime).concat(comment.id)) !== null && _ref2 !== void 0 ? _ref2 : '',
+        className: index === 0 ? '' : classes.childComment
+      }, /*#__PURE__*/_react["default"].createElement(_Comment.Comment, {
+        avatar: comment.avatar,
+        author: comment.author,
+        postingTime: comment.dateTime,
+        content: comment.comment
+      }), index === 0 && /*#__PURE__*/_react["default"].createElement("div", {
+        className: classes.expandThread
+      }, /*#__PURE__*/_react["default"].createElement(_core.Button, {
+        onClick: toggleExpand,
+        className: classes.button // variant="contained"
+        // color="primary"
+        ,
+        size: "small"
+      }, intl.formatMessage(isExpanded ? _messages.MESSAGES.collapse : _messages.MESSAGES.expand))), !addingComment && /*#__PURE__*/_react["default"].createElement("div", {
+        className: classes.replyToComment
+      }, /*#__PURE__*/_react["default"].createElement(_core.Typography, {
+        variant: "overline",
+        onClick: function onClick() {
+          setAddingComment(true);
+          setIsExpanded(true);
+        }
+      }, actionText)), index === comments.length - 1 && addingComment && /*#__PURE__*/_react["default"].createElement(_AddComment.AddComment // buttonText={actionText}
+      , {
+        onConfirm: function onConfirm(newComment) {
+          setAddingComment(false);
+          onAddComment(newComment, parentId);
+        }
+      }), index < comments.length - 1 && isExpanded && /*#__PURE__*/_react["default"].createElement(_core.Divider, {
+        variant: "fullWidth",
+        style: {
+          margin: '30px 0'
+        },
+        key: (_ref3 = "divider".concat(comment.author).concat(comment.dateTime).concat(comment.id)) !== null && _ref3 !== void 0 ? _ref3 : ''
+      }));
+    });
+  };
+
   return /*#__PURE__*/_react["default"].createElement(_core.Paper, {
-    className: classes.commentRoot
-  }, commentsArray);
+    className: classes.commentRoot,
+    variant: "outlined"
+  }, isExpanded ? makeComment(comments) : makeComment([comments[0]]));
 };
 
 exports.CommentWithThread = CommentWithThread;
@@ -116,11 +149,13 @@ CommentWithThread.propTypes = {
   comments: _propTypes["default"].array,
   actionText: _propTypes["default"].string,
   onAddComment: _propTypes["default"].func,
-  parentId: _propTypes["default"].number
+  parentId: _propTypes["default"].number,
+  limitHeight: _propTypes["default"].bool
 };
 CommentWithThread.defaultProps = {
   comments: [],
   actionText: 'add comment',
   onAddComment: function onAddComment() {},
-  parentId: null
+  parentId: null,
+  limitHeight: false
 };

@@ -45,10 +45,10 @@ var MAX_TEXT_LENGTH = 150;
 
 var truncateText = function truncateText(text, maxLength) {
   if (text.length > maxLength) {
-    return "".concat(text.substring(0, maxLength - 4), "...");
+    return "".concat(text.substring(0, maxLength - 4), "...   ");
   }
 
-  return text;
+  return "".concat(text, "   ");
 };
 
 var CommentText = function CommentText(_ref) {
@@ -57,19 +57,19 @@ var CommentText = function CommentText(_ref) {
       toggle = _ref.toggle,
       maxLength = _ref.maxLength;
   var classes = (0, _styles.useStyles)();
-  return (
-    /*#__PURE__*/
-    // const classes = useStyles();
-    _react["default"].createElement("div", {
-      className: classes.commentText
-    }, /*#__PURE__*/_react["default"].createElement("p", null, hideOverflow && text.length > maxLength ? truncateText(text, MAX_TEXT_LENGTH) : text), hideOverflow && /*#__PURE__*/_react["default"].createElement("p", {
-      onClick: toggle,
-      className: classes.toggleCommentText
-    }, "Show More"), !hideOverflow && text.length > maxLength && /*#__PURE__*/_react["default"].createElement("p", {
-      onClick: toggle,
-      className: classes.toggleCommentText
-    }, "Show Less"))
-  );
+  return /*#__PURE__*/_react["default"].createElement("div", {
+    className: classes.commentText
+  }, /*#__PURE__*/_react["default"].createElement("p", null, hideOverflow && text.length > maxLength ? truncateText(text, MAX_TEXT_LENGTH) : text, ' '), hideOverflow && /*#__PURE__*/_react["default"].createElement("span", {
+    onClick: toggle,
+    className: classes.toggleCommentText,
+    role: "button",
+    tabIndex: 0
+  }, "Show More"), !hideOverflow && text.length > maxLength && /*#__PURE__*/_react["default"].createElement("span", {
+    onClick: toggle,
+    className: classes.toggleCommentText,
+    role: "button",
+    tabIndex: 0
+  }, "Show Less"));
 };
 
 CommentText.propTypes = {
@@ -101,10 +101,10 @@ var Comment = function Comment(_ref2) {
   return /*#__PURE__*/_react["default"].createElement(_core.Grid, {
     container: true,
     wrap: "nowrap",
-    spacing: 2
-  }, /*#__PURE__*/_react["default"].createElement(_core.Grid, {
+    spacing: 4
+  }, avatar && /*#__PURE__*/_react["default"].createElement(_core.Grid, {
     item: true
-  }, avatar && /*#__PURE__*/_react["default"].createElement(_core.Avatar, {
+  }, ' ', /*#__PURE__*/_react["default"].createElement(_core.Avatar, {
     alt: author,
     src: avatar
   })), /*#__PURE__*/_react["default"].createElement(_core.Grid, {
@@ -121,7 +121,8 @@ var Comment = function Comment(_ref2) {
     maxLength: MAX_TEXT_LENGTH
   }), /*#__PURE__*/_react["default"].createElement(_core.Typography, {
     variant: "body2",
-    className: classes.commentPostingTime
+    className: classes.commentPostingTime,
+    component: "div"
   }, "".concat(intl.formatMessage(_messages.MESSAGES.postingTime), "  ").concat((0, _moment["default"])(postingTime).fromNow()))));
 };
 

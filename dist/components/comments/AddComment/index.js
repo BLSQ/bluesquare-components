@@ -13,9 +13,13 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _styles = require("@material-ui/core/styles");
+var _useSafeIntl = require("../../../utils/useSafeIntl");
 
-var _common = require("../../../styles/iaso/common");
+var _messages = require("../messages");
+
+var _styles = require("./styles");
+
+require("../../../css/index.css");
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
@@ -35,42 +39,6 @@ function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "und
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var styles = function styles(theme) {
-  return _objectSpread(_objectSpread({}, (0, _common.commonStyles)(theme)), {}, {
-    textAreaContainer: {
-      width: '75%'
-    },
-    textArea: {
-      width: '100%',
-      borderRadius: '6px',
-      borderColor: '#A2A2A2',
-      '&:focus-visible': {
-        border: '1px solid red'
-      },
-      '&:focus-visible :focus': {
-        border: '1px solid red'
-      }
-    },
-    left: {
-      textAlign: 'left'
-    },
-    right: {
-      textAlign: 'right'
-    },
-    center: {
-      textAlign: 'center'
-    }
-  });
-};
-
-var useStyles = (0, _styles.makeStyles)(styles);
-
 var AddComment = function AddComment(_ref) {
   var placeholder = _ref.placeholder,
       minRows = _ref.minRows,
@@ -79,17 +47,19 @@ var AddComment = function AddComment(_ref) {
       className = _ref.className,
       buttonText = _ref.buttonText,
       onConfirm = _ref.onConfirm,
-      position = _ref.position;
+      position = _ref.position,
+      inline = _ref.inline;
 
   var _useState = (0, _react.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
       comment = _useState2[0],
       setComment = _useState2[1];
 
-  var classes = useStyles();
+  var classes = (0, _styles.useStyles)();
+  var intl = (0, _useSafeIntl.useSafeIntl)();
   return /*#__PURE__*/_react["default"].createElement(_core.Grid, {
     container: true,
-    direction: "row",
+    direction: inline ? 'row' : 'column',
     alignItems: "center",
     spacing: 2,
     className: position ? classes[position] : null
@@ -110,13 +80,17 @@ var AddComment = function AddComment(_ref) {
     value: comment,
     autoFocus: true
   })), /*#__PURE__*/_react["default"].createElement(_core.Grid, {
-    item: true
+    item: true,
+    className: classes.commentConfirmButton
   }, /*#__PURE__*/_react["default"].createElement(_core.Button, {
     onClick: function onClick() {
       onConfirm(comment);
       setComment('');
-    }
-  }, buttonText)));
+    },
+    className: classes.button // variant="contained"
+    // color="primary"
+
+  }, buttonText !== null && buttonText !== void 0 ? buttonText : intl.formatMessage(_messages.MESSAGES.confirmComment))));
 };
 
 exports.AddComment = AddComment;
@@ -128,7 +102,8 @@ AddComment.propTypes = {
   onChange: _propTypes["default"].func,
   onConfirm: _propTypes["default"].func,
   buttonText: _propTypes["default"].string,
-  position: _propTypes["default"].string
+  position: _propTypes["default"].string,
+  inline: _propTypes["default"].bool
 };
 AddComment.defaultProps = {
   placeholder: 'Write your comment here',
@@ -136,7 +111,8 @@ AddComment.defaultProps = {
   maxRows: 5,
   onChange: function onChange() {},
   className: null,
-  buttonText: 'Confirm',
+  buttonText: null,
   onConfirm: function onConfirm() {},
-  position: ''
+  position: '',
+  inline: true
 };

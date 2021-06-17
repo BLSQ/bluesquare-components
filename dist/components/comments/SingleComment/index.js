@@ -60,7 +60,8 @@ var SingleComment = function SingleComment(_ref) {
 
   var classes = classNames !== null && classNames !== void 0 ? classNames : defaultClasses;
   return /*#__PURE__*/_react["default"].createElement(_core.Paper, {
-    className: classes.commentRoot
+    className: classes.commentRoot,
+    variant: "outlined"
   }, /*#__PURE__*/_react["default"].createElement(_Comment.Comment, {
     avatar: avatar,
     author: author,
@@ -74,8 +75,8 @@ var SingleComment = function SingleComment(_ref) {
       setAddingComment(true);
     }
   }, actionText)), addingComment && /*#__PURE__*/_react["default"].createElement(_AddComment.AddComment, {
-    position: "right",
-    buttonText: actionText,
+    position: "right" // buttonText={actionText}
+    ,
     onConfirm: function onConfirm(newComment) {
       setAddingComment(false);
       onAddComment(newComment, id);

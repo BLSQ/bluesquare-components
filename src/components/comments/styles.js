@@ -3,17 +3,36 @@ import { commonStyles } from '../../styles/iaso/common';
 
 const styles = theme => ({
     ...commonStyles(theme),
-    commentRoot: { padding: '20px 20px', marginBottom: '5px' },
+    commentRoot: { padding: '10px 20px', margin: '0px 5px 5px 5px' },
     commentAuthor: { margin: 0, textAlign: 'left' },
-    // commentText: { textAlign: 'justify' },
     commentPostingTime: {
         textAlign: 'end',
         color: theme.mediumGray?.main ?? '#A2A2A2',
     },
-    commentGrid: { justifyContent: 'left' },
+    commentGrid: { justifyContent: 'left', padding: '0px 10px' },
     replyToComment: { textAlign: 'end' },
-    commentText: { display: 'inline-flex', textAlign: 'justify' },
-    toggleCommentText: { alignSelf: 'end' },
+    commentText: {
+        // display: 'inline-flex',
+        textAlign: 'justify',
+        marginTop: '10px',
+    },
+    toggleCommentText: {
+        alignSelf: 'end',
+        cursor: 'default',
+        color: 'blue',
+        '&:hover': { textDecoration: 'underline' },
+    },
+    expandThread: {
+        textAlign: 'end',
+    },
+    button: {
+        backgroundColor: '#fff',
+        color: '#3f51b5',
+    },
+    childComment: {
+        paddingLeft: '20px',
+    },
+    // limitHeight: { height: '13vh' },
     // commentRoot: { padding: '20px 20px', marginBottom: '5px' },
     // commentAuthor: { margin: 0, textAlign: 'left' },
     // commentText: { textAlign: 'justify' },

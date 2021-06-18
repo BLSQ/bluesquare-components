@@ -13,6 +13,10 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _core = require("@material-ui/core");
 
+var _useSafeIntl = require("../../../utils/useSafeIntl");
+
+var _messages = require("./messages");
+
 var _styles = require("../styles");
 
 var _AddComment = require("../AddComment");
@@ -50,7 +54,7 @@ var SingleComment = function SingleComment(_ref) {
       actionText = _ref.actionText,
       onAddComment = _ref.onAddComment,
       id = _ref.id;
-  // const intl = useSafeIntl();
+  var intl = (0, _useSafeIntl.useSafeIntl)();
   var defaultClasses = (0, _styles.useStyles)();
 
   var _useState = (0, _react.useState)(false),
@@ -75,9 +79,8 @@ var SingleComment = function SingleComment(_ref) {
     onClick: function onClick() {
       setAddingComment(true);
     }
-  }, actionText)), addingComment && /*#__PURE__*/_react["default"].createElement(_AddComment.AddComment, {
-    position: "right" // buttonText={actionText}
-    ,
+  }, actionText !== null && actionText !== void 0 ? actionText : intl.formatMessage(_messages.MESSAGES.reply))), addingComment && /*#__PURE__*/_react["default"].createElement(_AddComment.AddComment, {
+    position: "right",
     onConfirm: function onConfirm(newComment) {
       setAddingComment(false);
       onAddComment(newComment, id);
@@ -100,7 +103,7 @@ SingleComment.defaultProps = {
   avatar: null,
   postingTime: '',
   classNames: null,
-  actionText: 'add comment',
+  actionText: null,
   onAddComment: function onAddComment() {},
   id: null
 };

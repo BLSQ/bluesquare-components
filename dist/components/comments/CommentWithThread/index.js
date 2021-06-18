@@ -15,7 +15,7 @@ var _core = require("@material-ui/core");
 
 var _styles = require("../styles");
 
-var _messages = require("../messages");
+var _messages = require("./messages");
 
 var _useSafeIntl = require("../../../utils/useSafeIntl");
 
@@ -110,23 +110,18 @@ var CommentWithThread = function CommentWithThread(_ref) {
         className: classes.expandThread
       }, /*#__PURE__*/_react["default"].createElement(_core.Button, {
         onClick: toggleExpand,
-        className: classes.button // variant="contained"
-        // color="primary"
-        ,
+        className: classes.button,
         size: "small"
       }, intl.formatMessage(isExpanded ? _messages.MESSAGES.collapse : _messages.MESSAGES.expand))), !addingComment && /*#__PURE__*/_react["default"].createElement("div", {
         className: classes.replyToComment
-      }, /*#__PURE__*/_react["default"].createElement(_core.Button // variant="overline"
-      // variant="contained"
-      , {
+      }, /*#__PURE__*/_react["default"].createElement(_core.Button, {
         className: classes.button,
         size: "small",
         onClick: function onClick() {
           setAddingComment(true);
           setIsExpanded(true);
         }
-      }, actionText)), index === comments.length - 1 && addingComment && /*#__PURE__*/_react["default"].createElement(_AddComment.AddComment // buttonText={actionText}
-      , {
+      }, actionText !== null && actionText !== void 0 ? actionText : intl.formatMessage(_messages.MESSAGES.addReply))), index === comments.length - 1 && addingComment && /*#__PURE__*/_react["default"].createElement(_AddComment.AddComment, {
         onConfirm: function onConfirm(newComment) {
           setAddingComment(false);
           onAddComment(newComment, parentId);
@@ -153,13 +148,11 @@ CommentWithThread.propTypes = {
   comments: _propTypes["default"].array,
   actionText: _propTypes["default"].string,
   onAddComment: _propTypes["default"].func,
-  parentId: _propTypes["default"].number,
-  limitHeight: _propTypes["default"].bool
+  parentId: _propTypes["default"].number
 };
 CommentWithThread.defaultProps = {
   comments: [],
-  actionText: 'add comment',
+  actionText: null,
   onAddComment: function onAddComment() {},
-  parentId: null,
-  limitHeight: false
+  parentId: null
 };

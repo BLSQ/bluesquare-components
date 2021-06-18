@@ -15,7 +15,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _useSafeIntl = require("../../../utils/useSafeIntl");
 
-var _messages = require("../messages");
+var _messages = require("./messages");
 
 var _styles = require("./styles");
 
@@ -71,14 +71,14 @@ var AddComment = function AddComment(_ref) {
     rowsMin: minRows,
     rowsMax: maxRows,
     "aria-label": "write comment here",
-    placeholder: placeholder,
+    placeholder: placeholder !== null && placeholder !== void 0 ? placeholder : intl.formatMessage(_messages.MESSAGES.textAreaPlaceholder),
     onChange: function onChange(e) {
       setComment(e.target.value);
 
       _onChange(e.target.value);
     },
-    value: comment // autoFocus
-
+    value: comment,
+    autoFocus: true
   })), /*#__PURE__*/_react["default"].createElement(_core.Grid, {
     item: true,
     className: classes.commentConfirmButton
@@ -106,7 +106,7 @@ AddComment.propTypes = {
   inline: _propTypes["default"].bool
 };
 AddComment.defaultProps = {
-  placeholder: 'Write your comment here',
+  placeholder: null,
   minRows: 3,
   maxRows: 5,
   onChange: function onChange() {},

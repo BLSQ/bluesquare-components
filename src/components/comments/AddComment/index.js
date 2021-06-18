@@ -43,7 +43,7 @@ const AddComment = ({
                         onChange(e.target.value);
                     }}
                     value={comment}
-                    // autoFocus
+                    autoFocus
                 />
             </Grid>
             <Grid item className={classes.commentConfirmButton}>

@@ -17,7 +17,7 @@ var _moment = _interopRequireDefault(require("moment"));
 
 var _useSafeIntl = require("../../../utils/useSafeIntl");
 
-var _messages = require("../messages");
+var _messages = require("./messages");
 
 var _styles = require("../styles");
 
@@ -55,8 +55,11 @@ var CommentText = function CommentText(_ref) {
   var text = _ref.text,
       hideOverflow = _ref.hideOverflow,
       toggle = _ref.toggle,
-      maxLength = _ref.maxLength;
+      maxLength = _ref.maxLength,
+      textExpand = _ref.textExpand,
+      textCollapse = _ref.textCollapse;
   var classes = (0, _styles.useStyles)();
+  var intl = (0, _useSafeIntl.useSafeIntl)();
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: classes.commentText
   }, /*#__PURE__*/_react["default"].createElement("p", null, hideOverflow && text.length > maxLength ? truncateText(text, MAX_TEXT_LENGTH) : text, ' '), hideOverflow && /*#__PURE__*/_react["default"].createElement("span", {
@@ -64,19 +67,25 @@ var CommentText = function CommentText(_ref) {
     className: classes.toggleCommentText,
     role: "button",
     tabIndex: 0
-  }, "Show More"), !hideOverflow && text.length > maxLength && /*#__PURE__*/_react["default"].createElement("span", {
+  }, textExpand !== null && textExpand !== void 0 ? textExpand : intl.formatMessage(_messages.MESSAGES.textExpand)), !hideOverflow && text.length > maxLength && /*#__PURE__*/_react["default"].createElement("span", {
     onClick: toggle,
     className: classes.toggleCommentText,
     role: "button",
     tabIndex: 0
-  }, "Show Less"));
+  }, textCollapse !== null && textCollapse !== void 0 ? textCollapse : intl.formatMessage(_messages.MESSAGES.textCollapse)));
 };
 
 CommentText.propTypes = {
   text: _propTypes["default"].string.isRequired,
   hideOverflow: _propTypes["default"].bool.isRequired,
   toggle: _propTypes["default"].func.isRequired,
-  maxLength: _propTypes["default"].number.isRequired
+  maxLength: _propTypes["default"].number.isRequired,
+  textExpand: _propTypes["default"].string,
+  textCollapse: _propTypes["default"].string
+};
+CommentText.defaultProps = {
+  textExpand: null,
+  textCollapse: null
 }; // TODO refactor style import
 // credit: https://codesandbox.io/s/comment-box-with-material-ui-10p3c?file=/src/index.js:2810-4030
 

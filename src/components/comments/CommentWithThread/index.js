@@ -1,8 +1,8 @@
 import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Divider, Paper, Typography, Button } from '@material-ui/core';
+import { Divider, Paper, Button } from '@material-ui/core';
 import { useStyles } from '../styles';
-import { MESSAGES } from '../messages';
+import { MESSAGES } from './messages';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { AddComment } from '../AddComment';
 import { Comment } from '../Comment';
@@ -71,8 +71,6 @@ const CommentWithThread = ({
                         <Button
                             onClick={toggleExpand}
                             className={classes.button}
-                            // variant="contained"
-                            // color="primary"
                             size="small"
                         >
                             {intl.formatMessage(
@@ -85,20 +83,21 @@ const CommentWithThread = ({
                 )}
                 {!addingComment && (
                     <div className={classes.replyToComment}>
-                        <Typography
-                            variant="overline"
+                        <Button
+                            className={classes.button}
+                            size="small"
                             onClick={() => {
                                 setAddingComment(true);
                                 setIsExpanded(true);
                             }}
                         >
-                            {actionText}
-                        </Typography>
+                            {actionText ??
+                                intl.formatMessage(MESSAGES.addReply)}
+                        </Button>
                     </div>
                 )}
                 {index === comments.length - 1 && addingComment && (
                     <AddComment
-                        // buttonText={actionText}
                         onConfirm={newComment => {
                             setAddingComment(false);
                             onAddComment(newComment, parentId);
@@ -118,7 +117,7 @@ const CommentWithThread = ({
             </div>
         ));
     return (
-        <Paper className={classes.commentRoot} variant="outlined">
+        <Paper className={classes.commentRoot} variant="outlined" elevation={1}>
             {isExpanded ? makeComment(comments) : makeComment([comments[0]])}
         </Paper>
     );
@@ -129,14 +128,12 @@ CommentWithThread.propTypes = {
     actionText: PropTypes.string,
     onAddComment: PropTypes.func,
     parentId: PropTypes.number,
-    limitHeight: PropTypes.bool,
 };
 CommentWithThread.defaultProps = {
     comments: [],
-    actionText: 'add comment',
+    actionText: null,
     onAddComment: () => {},
     parentId: null,
-    limitHeight: false,
 };
 
 export { CommentWithThread };

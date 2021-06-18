@@ -116,8 +116,11 @@ var CommentWithThread = function CommentWithThread(_ref) {
         size: "small"
       }, intl.formatMessage(isExpanded ? _messages.MESSAGES.collapse : _messages.MESSAGES.expand))), !addingComment && /*#__PURE__*/_react["default"].createElement("div", {
         className: classes.replyToComment
-      }, /*#__PURE__*/_react["default"].createElement(_core.Typography, {
-        variant: "overline",
+      }, /*#__PURE__*/_react["default"].createElement(_core.Button // variant="overline"
+      // variant="contained"
+      , {
+        className: classes.button,
+        size: "small",
         onClick: function onClick() {
           setAddingComment(true);
           setIsExpanded(true);
@@ -140,7 +143,8 @@ var CommentWithThread = function CommentWithThread(_ref) {
 
   return /*#__PURE__*/_react["default"].createElement(_core.Paper, {
     className: classes.commentRoot,
-    variant: "outlined"
+    variant: "outlined",
+    elevation: 1
   }, isExpanded ? makeComment(comments) : makeComment([comments[0]]));
 };
 

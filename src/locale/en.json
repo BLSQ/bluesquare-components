@@ -18,8 +18,16 @@
     "blsq.table.labels.selectionAction": "With selected org unit",
     "blsq.table.label.resultsLower": "result(s)",
     "blsq.table.label.selection": "Selection",
-    "blsq.table.label.selected": "selected"
-
+    "blsq.table.label.selected": "selected",
+    "blsq.comment.button.label.expand": "Show thread",
+    "blsq.comment.button.label.collapse": "Hide thread",
+    "blsq.comment.confirmComment": "Confirm",
+    "blsq.comment.postingTime": "Posted",
+    "blsq.comment.textArea.placeholder": "Leave a comment here",
+    "blsq.comment.button.textCollapse": "See less",
+    "blsq.comment.button.textExpand": "See more",
+    "blsq.comment.button.label.addReply": "Add reply",
+    "blsq.comment.button.reply": "Reply"
 
 
 

@@ -77,8 +77,8 @@ var AddComment = function AddComment(_ref) {
 
       _onChange(e.target.value);
     },
-    value: comment,
-    autoFocus: true
+    value: comment // autoFocus
+
   })), /*#__PURE__*/_react["default"].createElement(_core.Grid, {
     item: true,
     className: classes.commentConfirmButton
@@ -86,10 +86,10 @@ var AddComment = function AddComment(_ref) {
     onClick: function onClick() {
       onConfirm(comment);
       setComment('');
-    },
-    className: classes.button // variant="contained"
-    // color="primary"
-
+    } // className={classes.button}
+    ,
+    variant: "contained",
+    color: "primary"
   }, buttonText !== null && buttonText !== void 0 ? buttonText : intl.formatMessage(_messages.MESSAGES.confirmComment))));
 };
 

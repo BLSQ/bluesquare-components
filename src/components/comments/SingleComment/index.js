@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Paper, Typography } from '@material-ui/core';
-// import { useSafeIntl } from '../../../utils/useSafeIntl';
-// import { MESSAGES } from '../messages';
+import { Paper, Button } from '@material-ui/core';
+import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { MESSAGES } from './messages';
 import { useStyles } from '../styles';
 import { AddComment } from '../AddComment';
 import { Comment } from '../Comment';
@@ -20,13 +20,13 @@ const SingleComment = ({
     onAddComment,
     id,
 }) => {
-    // const intl = useSafeIntl();
+    const intl = useSafeIntl();
     const defaultClasses = useStyles();
     const [addingComment, setAddingComment] = useState(false);
 
     const classes = classNames ?? defaultClasses;
     return (
-        <Paper className={classes.commentRoot} variant="outlined">
+        <Paper variant="outlined" className={classes.commentRoot}>
             <Comment
                 avatar={avatar}
                 author={author}
@@ -35,20 +35,20 @@ const SingleComment = ({
             />
             {!addingComment && (
                 <div className={classes.replyToComment}>
-                    <Typography
-                        variant="overline"
+                    <Button
+                        className={classes.button}
+                        size="small"
                         onClick={() => {
                             setAddingComment(true);
                         }}
                     >
-                        {actionText}
-                    </Typography>
+                        {actionText ?? intl.formatMessage(MESSAGES.reply)}
+                    </Button>
                 </div>
             )}
             {addingComment && (
                 <AddComment
                     position="right"
-                    // buttonText={actionText}
                     onConfirm={newComment => {
                         setAddingComment(false);
                         onAddComment(newComment, id);
@@ -72,7 +72,7 @@ SingleComment.defaultProps = {
     avatar: null,
     postingTime: '',
     classNames: null,
-    actionText: 'add comment',
+    actionText: null,
     onAddComment: () => {},
     id: null,
 };

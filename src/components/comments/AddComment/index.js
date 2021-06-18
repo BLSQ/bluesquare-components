@@ -2,7 +2,7 @@ import { TextareaAutosize, Button, Grid } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
-import { MESSAGES } from '../messages';
+import { MESSAGES } from './messages';
 import { useStyles } from './styles';
 import '../../../css/index.css';
 
@@ -34,13 +34,16 @@ const AddComment = ({
                     rowsMin={minRows}
                     rowsMax={maxRows}
                     aria-label="write comment here"
-                    placeholder={placeholder}
+                    placeholder={
+                        placeholder ??
+                        intl.formatMessage(MESSAGES.textAreaPlaceholder)
+                    }
                     onChange={e => {
                         setComment(e.target.value);
                         onChange(e.target.value);
                     }}
                     value={comment}
-                    autoFocus
+                    // autoFocus
                 />
             </Grid>
             <Grid item className={classes.commentConfirmButton}>
@@ -49,9 +52,9 @@ const AddComment = ({
                         onConfirm(comment);
                         setComment('');
                     }}
-                    className={classes.button}
-                    // variant="contained"
-                    // color="primary"
+                    // className={classes.button}
+                    variant="contained"
+                    color="primary"
                 >
                     {buttonText ?? intl.formatMessage(MESSAGES.confirmComment)}
                 </Button>
@@ -72,7 +75,7 @@ AddComment.propTypes = {
     inline: PropTypes.bool,
 };
 AddComment.defaultProps = {
-    placeholder: 'Write your comment here',
+    placeholder: null,
     minRows: 3,
     maxRows: 5,
     onChange: () => {},

@@ -18,6 +18,15 @@
     "blsq.table.labels.selectionAction": "Avec la sélection d'unités d'organisation",
     "blsq.table.label.resultsLower": "résultat(s)",
     "blsq.table.label.selection": "Sélection",
-    "blsq.table.label.selected": "sélectionné(s)"
+    "blsq.table.label.selected": "sélectionné(s)",
+    "blsq.comment.button.label.expand": "Voir le fil",
+    "blsq.comment.button.label.collapse": "Masquer le fil",
+    "blsq.comment.confirmComment": "Confirmer",
+    "blsq.comment.postingTime": "Publié",
+    "blsq.comment.textArea.placeholder": "Laisser un commentaire",
+    "blsq.comment.button.textCollapse": "Voir moins",
+    "blsq.comment.button.textExpand": "voir plus",
+    "blsq.comment.button.label.addReply": "Ajoute une réponse",
+    "blsq.comment.button.reply": "Répondre"
 
 }

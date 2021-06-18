@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Avatar, Grid, Typography } from '@material-ui/core';
 import moment from 'moment';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
-import { MESSAGES } from '../messages';
+import { MESSAGES } from './messages';
 import { useStyles } from '../styles';
 import '../../../css/index.css';
 
@@ -15,8 +15,16 @@ const truncateText = (text, maxLength) => {
     return `${text}   `;
 };
 
-const CommentText = ({ text, hideOverflow, toggle, maxLength }) => {
+const CommentText = ({
+    text,
+    hideOverflow,
+    toggle,
+    maxLength,
+    textExpand,
+    textCollapse,
+}) => {
     const classes = useStyles();
+    const intl = useSafeIntl();
     return (
         <div className={classes.commentText}>
             <p>
@@ -31,7 +39,7 @@ const CommentText = ({ text, hideOverflow, toggle, maxLength }) => {
                     role="button"
                     tabIndex={0}
                 >
-                    Show More
+                    {textExpand ?? intl.formatMessage(MESSAGES.textExpand)}
                 </span>
             )}
             {!hideOverflow && text.length > maxLength && (
@@ -41,7 +49,7 @@ const CommentText = ({ text, hideOverflow, toggle, maxLength }) => {
                     role="button"
                     tabIndex={0}
                 >
-                    Show Less
+                    {textCollapse ?? intl.formatMessage(MESSAGES.textCollapse)}
                 </span>
             )}
         </div>
@@ -52,6 +60,13 @@ CommentText.propTypes = {
     hideOverflow: PropTypes.bool.isRequired,
     toggle: PropTypes.func.isRequired,
     maxLength: PropTypes.number.isRequired,
+    textExpand: PropTypes.string,
+    textCollapse: PropTypes.string,
+};
+
+CommentText.defaultProps = {
+    textExpand: null,
+    textCollapse: null,
 };
 
 // TODO refactor style import
@@ -77,7 +92,6 @@ const Comment = ({ avatar, author, content, postingTime, classNames }) => {
             )}
             <Grid className={classes.commentGrid} item xs zeroMinWidth>
                 <h4 className={classes.commentAuthor}>{author}</h4>
-                {/* <p className={classes.commentText}>{content}</p> */}
                 <CommentText
                     text={content}
                     hideOverflow={hideTextOverflow}

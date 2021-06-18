@@ -60,8 +60,8 @@ var SingleComment = function SingleComment(_ref) {
 
   var classes = classNames !== null && classNames !== void 0 ? classNames : defaultClasses;
   return /*#__PURE__*/_react["default"].createElement(_core.Paper, {
-    className: classes.commentRoot,
-    variant: "outlined"
+    variant: "outlined",
+    className: classes.commentRoot
   }, /*#__PURE__*/_react["default"].createElement(_Comment.Comment, {
     avatar: avatar,
     author: author,
@@ -69,8 +69,9 @@ var SingleComment = function SingleComment(_ref) {
     content: content
   }), !addingComment && /*#__PURE__*/_react["default"].createElement("div", {
     className: classes.replyToComment
-  }, /*#__PURE__*/_react["default"].createElement(_core.Typography, {
-    variant: "overline",
+  }, /*#__PURE__*/_react["default"].createElement(_core.Button, {
+    className: classes.button,
+    size: "small",
     onClick: function onClick() {
       setAddingComment(true);
     }

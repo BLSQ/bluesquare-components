@@ -19,7 +19,7 @@ const styles = theme => ({
     toggleCommentText: {
         alignSelf: 'end',
         cursor: 'default',
-        color: 'blue',
+        color: '#3f51b5',
         '&:hover': { textDecoration: 'underline' },
     },
     expandThread: {

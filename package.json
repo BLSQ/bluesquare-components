@@ -84,6 +84,7 @@
         "react-table": "6.8.2"
     },
     "dependencies": {
-        "font-awesome": "^4.7.0"
+        "font-awesome": "^4.7.0",
+        "video.js": "^7.10.2"
     }
 }

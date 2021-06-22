@@ -2453,7 +2453,6 @@ path.map-marker {
 
 .iaso .Select-control {
   height: 54px; }
-  .iaso .Select-control .Select-value,
   .iaso .Select-control .Select-placeholder,
   .iaso .Select-control .Select-input {
     display: flex !important;

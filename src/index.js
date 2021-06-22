@@ -54,6 +54,9 @@ import {
     withLink,
     useLink,
 } from './components/LinkProvider';
+import { SingleComment } from './components/comments/SingleComment';
+import { CommentWithThread } from './components/comments/CommentWithThread';
+import { AddComment } from './components/comments/AddComment';
 
 export * from './utils';
 export * from './utils/intlUtils';
@@ -116,4 +119,7 @@ export {
     LinkContext,
     withLink,
     useLink,
+    SingleComment,
+    CommentWithThread,
+    AddComment,
 };

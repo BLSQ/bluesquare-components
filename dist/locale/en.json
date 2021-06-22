@@ -1,26 +1,31 @@
 {
-    "blsq.button.label.displayPassword": "Display the password",
-    "blsq.button.label.noOptions": "No result found",
     "blsq.button.label.create": "Create",
+    "blsq.button.label.displayPassword": "Display the password",
     "blsq.button.label.export": "Export",
+    "blsq.button.label.noOptions": "No result found",
+    "blsq.comment.button.label.addReply": "Add reply",
+    "blsq.comment.button.label.collapse": "Hide thread",
+    "blsq.comment.button.label.expand": "Show thread",
+    "blsq.comment.button.reply": "Reply",
+    "blsq.comment.button.textCollapse": "See less",
+    "blsq.comment.button.textExpand": "See more",
+    "blsq.comment.confirmComment": "Confirm",
+    "blsq.comment.postingTime": "Posted",
+    "blsq.comment.textArea.placeholder": "Leave a comment here",
+    "blsq.table.columnSelect.tooltip": "Select visible columns",
     "blsq.table.filter.search": "Search",
-    "blsq.table.label.search": "Search",
     "blsq.table.label.close": "Close",
     "blsq.table.label.resetSearch": "Empty search",
-    "blsq.table.columnSelect.tooltip": "Select visible columns",
-    "blsq.table.previous": "Previous",
-    "blsq.table.next": "Next",
-    "blsq.table.loading": "Loading...",
-    "blsq.table.noResult": "No result",
-    "blsq.table.page": "Page",
-    "blsq.table.of": "of",
-    "blsq.table.results": "results",
-    "blsq.table.labels.selectionAction": "With selected org unit",
     "blsq.table.label.resultsLower": "result(s)",
+    "blsq.table.label.search": "Search",
+    "blsq.table.label.selected": "selected",
     "blsq.table.label.selection": "Selection",
-    "blsq.table.label.selected": "selected"
-
-
-
-
+    "blsq.table.labels.selectionAction": "With selected org unit",
+    "blsq.table.loading": "Loading...",
+    "blsq.table.next": "Next",
+    "blsq.table.noResult": "No result",
+    "blsq.table.of": "of",
+    "blsq.table.page": "Page",
+    "blsq.table.previous": "Previous",
+    "blsq.table.results": "results"
 }

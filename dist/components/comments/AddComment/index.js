@@ -43,7 +43,7 @@ var AddComment = function AddComment(_ref) {
   var placeholder = _ref.placeholder,
       minRows = _ref.minRows,
       maxRows = _ref.maxRows,
-      _onChange = _ref.onChange,
+      onChange = _ref.onChange,
       className = _ref.className,
       buttonText = _ref.buttonText,
       onConfirm = _ref.onConfirm,
@@ -57,6 +57,16 @@ var AddComment = function AddComment(_ref) {
 
   var classes = (0, _styles.useStyles)();
   var intl = (0, _useSafeIntl.useSafeIntl)();
+  var handleConfirm = (0, _react.useCallback)(function () {
+    onConfirm(comment);
+    setComment('');
+  }, [comment]);
+
+  var handleChange = function handleChange(e) {
+    setComment(e.target.value);
+    onChange(e.target.value);
+  };
+
   return /*#__PURE__*/_react["default"].createElement(_core.Grid, {
     container: true,
     direction: inline ? 'row' : 'column',
@@ -72,22 +82,14 @@ var AddComment = function AddComment(_ref) {
     rowsMax: maxRows,
     "aria-label": "write comment here",
     placeholder: placeholder !== null && placeholder !== void 0 ? placeholder : intl.formatMessage(_messages.MESSAGES.textAreaPlaceholder),
-    onChange: function onChange(e) {
-      setComment(e.target.value);
-
-      _onChange(e.target.value);
-    },
+    onChange: handleChange,
     value: comment,
     autoFocus: true
   })), /*#__PURE__*/_react["default"].createElement(_core.Grid, {
     item: true,
     className: classes.commentConfirmButton
   }, /*#__PURE__*/_react["default"].createElement(_core.Button, {
-    onClick: function onClick() {
-      onConfirm(comment);
-      setComment('');
-    } // className={classes.button}
-    ,
+    onClick: handleConfirm,
     variant: "contained",
     color: "primary"
   }, buttonText !== null && buttonText !== void 0 ? buttonText : intl.formatMessage(_messages.MESSAGES.confirmComment))));

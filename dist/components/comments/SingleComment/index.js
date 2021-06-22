@@ -43,7 +43,6 @@ function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "und
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-// TODO refactor style import
 // credit: https://codesandbox.io/s/comment-box-with-material-ui-10p3c?file=/src/index.js:2810-4030
 var SingleComment = function SingleComment(_ref) {
   var avatar = _ref.avatar,
@@ -63,6 +62,10 @@ var SingleComment = function SingleComment(_ref) {
       setAddingComment = _useState2[1];
 
   var classes = classNames !== null && classNames !== void 0 ? classNames : defaultClasses;
+  var handleConfirm = (0, _react.useCallback)(function (newComment) {
+    setAddingComment(false);
+    onAddComment(newComment, id);
+  }, [id, onAddComment]);
   return /*#__PURE__*/_react["default"].createElement(_core.Paper, {
     variant: "outlined",
     className: classes.commentRoot
@@ -81,10 +84,7 @@ var SingleComment = function SingleComment(_ref) {
     }
   }, actionText !== null && actionText !== void 0 ? actionText : intl.formatMessage(_messages.MESSAGES.reply))), addingComment && /*#__PURE__*/_react["default"].createElement(_AddComment.AddComment, {
     position: "right",
-    onConfirm: function onConfirm(newComment) {
-      setAddingComment(false);
-      onAddComment(newComment, id);
-    }
+    onConfirm: handleConfirm
   }));
 };
 

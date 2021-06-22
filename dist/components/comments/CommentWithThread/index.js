@@ -43,30 +43,6 @@ function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "und
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-// const assignColors = comments => {
-//     const availableColors = [
-//         'black',
-//         'blue',
-//         'red',
-//         'green',
-//         'yellow',
-//         'purple',
-//         'amber',
-//     ];
-//     let colorIndex = 0;
-//     const result = {};
-//     comments.forEach(comment => {
-//         if (!result[comment.authorId]) {
-//             result[comment.authorId] = availableColors[colorIndex];
-//             if (colorIndex < availableColors.length - 1) {
-//                 colorIndex += 1;
-//             } else {
-//                 colorIndex = 0;
-//             }
-//         }
-//     });
-//     return result;
-// };
 var CommentWithThread = function CommentWithThread(_ref) {
   var comments = _ref.comments,
       actionText = _ref.actionText,
@@ -83,8 +59,7 @@ var CommentWithThread = function CommentWithThread(_ref) {
   var _useState3 = (0, _react.useState)(false),
       _useState4 = _slicedToArray(_useState3, 2),
       isExpanded = _useState4[0],
-      setIsExpanded = _useState4[1]; // const assignedColors = assignColors(comments);
-
+      setIsExpanded = _useState4[1];
 
   var toggleExpand = (0, _react.useCallback)(function () {
     if (isExpanded) {

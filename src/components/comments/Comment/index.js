@@ -69,7 +69,6 @@ CommentText.defaultProps = {
     textCollapse: null,
 };
 
-// TODO refactor style import
 // credit: https://codesandbox.io/s/comment-box-with-material-ui-10p3c?file=/src/index.js:2810-4030
 const Comment = ({ avatar, author, content, postingTime, classNames }) => {
     const intl = useSafeIntl();
@@ -82,14 +81,15 @@ const Comment = ({ avatar, author, content, postingTime, classNames }) => {
         [hideTextOverflow],
     );
     const classes = classNames ?? defaultClasses;
+    const formattedPostingTime = `${intl.formatMessage(
+        MESSAGES.postingTime,
+    )}  ${moment(postingTime).fromNow()}`;
     return (
         <Grid container wrap="nowrap" spacing={4}>
-            {avatar && (
-                <Grid item>
-                    {' '}
-                    <Avatar alt={author} src={avatar} />
-                </Grid>
-            )}
+            <Grid item>
+                <Avatar alt={author} src={avatar} />
+            </Grid>
+
             <Grid className={classes.commentGrid} item xs zeroMinWidth>
                 <h4 className={classes.commentAuthor}>{author}</h4>
                 <CommentText
@@ -103,9 +103,7 @@ const Comment = ({ avatar, author, content, postingTime, classNames }) => {
                     className={classes.commentPostingTime}
                     component="div"
                 >
-                    {`${intl.formatMessage(MESSAGES.postingTime)}  ${moment(
-                        postingTime,
-                    ).fromNow()}`}
+                    {formattedPostingTime}
                 </Typography>
             </Grid>
         </Grid>

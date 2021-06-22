@@ -8,31 +8,6 @@ import { AddComment } from '../AddComment';
 import { Comment } from '../Comment';
 import '../../../css/index.css';
 
-// const assignColors = comments => {
-//     const availableColors = [
-//         'black',
-//         'blue',
-//         'red',
-//         'green',
-//         'yellow',
-//         'purple',
-//         'amber',
-//     ];
-//     let colorIndex = 0;
-//     const result = {};
-//     comments.forEach(comment => {
-//         if (!result[comment.authorId]) {
-//             result[comment.authorId] = availableColors[colorIndex];
-//             if (colorIndex < availableColors.length - 1) {
-//                 colorIndex += 1;
-//             } else {
-//                 colorIndex = 0;
-//             }
-//         }
-//     });
-//     return result;
-// };
-
 const CommentWithThread = ({
     comments,
     actionText,
@@ -43,7 +18,6 @@ const CommentWithThread = ({
     const intl = useSafeIntl();
     const [addingComment, setAddingComment] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
-    // const assignedColors = assignColors(comments);
     const toggleExpand = useCallback(() => {
         if (isExpanded) {
             setAddingComment(false);

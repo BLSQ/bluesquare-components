@@ -1,6 +1,6 @@
 import { TextareaAutosize, Button, Grid } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { MESSAGES } from './messages';
 import { useStyles } from './styles';
@@ -20,6 +20,14 @@ const AddComment = ({
     const [comment, setComment] = useState('');
     const classes = useStyles();
     const intl = useSafeIntl();
+    const handleConfirm = useCallback(() => {
+        onConfirm(comment);
+        setComment('');
+    }, [comment]);
+    const handleChange = e => {
+        setComment(e.target.value);
+        onChange(e.target.value);
+    };
     return (
         <Grid
             container
@@ -38,21 +46,14 @@ const AddComment = ({
                         placeholder ??
                         intl.formatMessage(MESSAGES.textAreaPlaceholder)
                     }
-                    onChange={e => {
-                        setComment(e.target.value);
-                        onChange(e.target.value);
-                    }}
+                    onChange={handleChange}
                     value={comment}
                     autoFocus
                 />
             </Grid>
             <Grid item className={classes.commentConfirmButton}>
                 <Button
-                    onClick={() => {
-                        onConfirm(comment);
-                        setComment('');
-                    }}
-                    // className={classes.button}
+                    onClick={handleConfirm}
                     variant="contained"
                     color="primary"
                 >

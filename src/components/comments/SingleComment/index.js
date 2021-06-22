@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { Paper, Button } from '@material-ui/core';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
@@ -8,7 +8,6 @@ import { AddComment } from '../AddComment';
 import { Comment } from '../Comment';
 import '../../../css/index.css';
 
-// TODO refactor style import
 // credit: https://codesandbox.io/s/comment-box-with-material-ui-10p3c?file=/src/index.js:2810-4030
 const SingleComment = ({
     avatar,
@@ -25,6 +24,13 @@ const SingleComment = ({
     const [addingComment, setAddingComment] = useState(false);
 
     const classes = classNames ?? defaultClasses;
+    const handleConfirm = useCallback(
+        newComment => {
+            setAddingComment(false);
+            onAddComment(newComment, id);
+        },
+        [id, onAddComment],
+    );
     return (
         <Paper variant="outlined" className={classes.commentRoot}>
             <Comment
@@ -47,13 +53,7 @@ const SingleComment = ({
                 </div>
             )}
             {addingComment && (
-                <AddComment
-                    position="right"
-                    onConfirm={newComment => {
-                        setAddingComment(false);
-                        onAddComment(newComment, id);
-                    }}
-                />
+                <AddComment position="right" onConfirm={handleConfirm} />
             )}
         </Paper>
     );

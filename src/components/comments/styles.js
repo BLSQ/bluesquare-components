@@ -12,7 +12,6 @@ const styles = theme => ({
     commentGrid: { justifyContent: 'left', padding: '0px 10px' },
     replyToComment: { textAlign: 'end' },
     commentText: {
-        // display: 'inline-flex',
         textAlign: 'justify',
         marginTop: '10px',
     },
@@ -32,19 +31,6 @@ const styles = theme => ({
     childComment: {
         paddingLeft: '20px',
     },
-    // limitHeight: { height: '13vh' },
-    // commentRoot: { padding: '20px 20px', marginBottom: '5px' },
-    // commentAuthor: { margin: 0, textAlign: 'left' },
-    // commentText: { textAlign: 'justify' },
-    // commentPostingTime: { textAlign: 'left', color: theme.ligthGray },
-    // commentGrid: { justifyContent: 'left' },
-    // black: { color: 'black' },
-    // blue: { color: 'blue' },
-    // red: { color: 'red' },
-    // green: { color: 'green' },
-    // yellow: { color: 'yellow' },
-    // purple: { color: 'purple' },
-    // amber: { color: 'amber' },
 });
 
 const useStyles = makeStyles(styles);

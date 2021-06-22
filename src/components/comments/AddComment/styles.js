@@ -11,8 +11,6 @@ const styles = theme => ({
         width: '100%',
         borderRadius: '6px',
         borderColor: '#A2A2A2',
-        // '&:focus-visible': { border: '1px solid red' },
-        // '&:focus-visible :focus': { border: '1px solid red' },
         padding: '8px',
         resize: 'vertical',
     },

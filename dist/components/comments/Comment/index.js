@@ -86,8 +86,7 @@ CommentText.propTypes = {
 CommentText.defaultProps = {
   textExpand: null,
   textCollapse: null
-}; // TODO refactor style import
-// credit: https://codesandbox.io/s/comment-box-with-material-ui-10p3c?file=/src/index.js:2810-4030
+}; // credit: https://codesandbox.io/s/comment-box-with-material-ui-10p3c?file=/src/index.js:2810-4030
 
 var Comment = function Comment(_ref2) {
   var avatar = _ref2.avatar,
@@ -107,13 +106,14 @@ var Comment = function Comment(_ref2) {
     return setHideTextOverflow(!hideTextOverflow);
   }, [hideTextOverflow]);
   var classes = classNames !== null && classNames !== void 0 ? classNames : defaultClasses;
+  var formattedPostingTime = "".concat(intl.formatMessage(_messages.MESSAGES.postingTime), "  ").concat((0, _moment["default"])(postingTime).fromNow());
   return /*#__PURE__*/_react["default"].createElement(_core.Grid, {
     container: true,
     wrap: "nowrap",
     spacing: 4
-  }, avatar && /*#__PURE__*/_react["default"].createElement(_core.Grid, {
+  }, /*#__PURE__*/_react["default"].createElement(_core.Grid, {
     item: true
-  }, ' ', /*#__PURE__*/_react["default"].createElement(_core.Avatar, {
+  }, /*#__PURE__*/_react["default"].createElement(_core.Avatar, {
     alt: author,
     src: avatar
   })), /*#__PURE__*/_react["default"].createElement(_core.Grid, {
@@ -132,7 +132,7 @@ var Comment = function Comment(_ref2) {
     variant: "body2",
     className: classes.commentPostingTime,
     component: "div"
-  }, "".concat(intl.formatMessage(_messages.MESSAGES.postingTime), "  ").concat((0, _moment["default"])(postingTime).fromNow()))));
+  }, formattedPostingTime)));
 };
 
 exports.Comment = Comment;

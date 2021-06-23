@@ -6,6 +6,7 @@ import { MESSAGES } from './messages';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { AddComment } from '../AddComment';
 import { Comment } from '../Comment';
+import { SingleComment } from '../SingleComment';
 import '../../../css/index.css';
 
 const CommentWithThread = ({
@@ -25,8 +26,41 @@ const CommentWithThread = ({
         setIsExpanded(!isExpanded);
     }, [isExpanded]);
 
-    const makeComment = array =>
-        array.map((comment, index) => (
+    const toggleAddComment = () => {
+        setAddingComment(true);
+        setIsExpanded(true);
+    };
+
+    const handleConfirm = useCallback(
+        newComment => {
+            setAddingComment(false);
+            onAddComment(newComment, parentId);
+        },
+        [onAddComment, parentId],
+    );
+    const handleSingleCommentConfirm = useCallback(
+        (newComment, id) => {
+            setAddingComment(false);
+            setIsExpanded(true);
+            onAddComment(newComment, id);
+        },
+        [onAddComment],
+    );
+
+    const makeComment = array => {
+        if (array.length === 1) {
+            // const { author, dateTime, id, comment } = array[0];
+            // return (
+            //     <SingleComment
+            //         onAddComment={handleSingleCommentConfirm}
+            //         author={author}
+            //         content={comment}
+            //         postingTime={dateTime}
+            //         id={id}
+            //     />
+            // );
+        }
+        return array.map((comment, index) => (
             <div
                 key={
                     `Fragment${comment.author}${comment.dateTime}${comment.id}` ??
@@ -60,10 +94,7 @@ const CommentWithThread = ({
                         <Button
                             className={classes.button}
                             size="small"
-                            onClick={() => {
-                                setAddingComment(true);
-                                setIsExpanded(true);
-                            }}
+                            onClick={toggleAddComment}
                         >
                             {actionText ??
                                 intl.formatMessage(MESSAGES.addReply)}
@@ -71,12 +102,7 @@ const CommentWithThread = ({
                     </div>
                 )}
                 {index === comments.length - 1 && addingComment && (
-                    <AddComment
-                        onConfirm={newComment => {
-                            setAddingComment(false);
-                            onAddComment(newComment, parentId);
-                        }}
-                    />
+                    <AddComment onConfirm={handleConfirm} />
                 )}
                 {index < comments.length - 1 && isExpanded && (
                     <Divider
@@ -90,6 +116,21 @@ const CommentWithThread = ({
                 )}
             </div>
         ));
+    };
+    if (comments.length === 1) {
+        return (
+            <SingleComment
+                onAddComment={handleSingleCommentConfirm}
+                author={comments[0].author}
+                content={comments[0].comment}
+                postingTime={comments[0].dateTime}
+                id={comments[0].id}
+                // onButtonClick={() => {
+                //     setIsExpanded(true);
+                // }}
+            />
+        );
+    }
     return (
         <Paper className={classes.commentRoot} variant="outlined" elevation={1}>
             {isExpanded ? makeComment(comments) : makeComment([comments[0]])}

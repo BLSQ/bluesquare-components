@@ -23,6 +23,8 @@ var _AddComment = require("../AddComment");
 
 var _Comment = require("../Comment");
 
+var _SingleComment = require("../SingleComment");
+
 require("../../../css/index.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -69,7 +71,34 @@ var CommentWithThread = function CommentWithThread(_ref) {
     setIsExpanded(!isExpanded);
   }, [isExpanded]);
 
+  var toggleAddComment = function toggleAddComment() {
+    setAddingComment(true);
+    setIsExpanded(true);
+  };
+
+  var handleConfirm = (0, _react.useCallback)(function (newComment) {
+    setAddingComment(false);
+    onAddComment(newComment, parentId);
+  }, [onAddComment, parentId]);
+  var handleSingleCommentConfirm = (0, _react.useCallback)(function (newComment, id) {
+    setAddingComment(false);
+    setIsExpanded(true);
+    onAddComment(newComment, id);
+  }, [onAddComment]);
+
   var makeComment = function makeComment(array) {
+    if (array.length === 1) {// const { author, dateTime, id, comment } = array[0];
+      // return (
+      //     <SingleComment
+      //         onAddComment={handleSingleCommentConfirm}
+      //         author={author}
+      //         content={comment}
+      //         postingTime={dateTime}
+      //         id={id}
+      //     />
+      // );
+    }
+
     return array.map(function (comment, index) {
       var _ref2, _ref3;
 
@@ -92,15 +121,9 @@ var CommentWithThread = function CommentWithThread(_ref) {
       }, /*#__PURE__*/_react["default"].createElement(_core.Button, {
         className: classes.button,
         size: "small",
-        onClick: function onClick() {
-          setAddingComment(true);
-          setIsExpanded(true);
-        }
+        onClick: toggleAddComment
       }, actionText !== null && actionText !== void 0 ? actionText : intl.formatMessage(_messages.MESSAGES.addReply))), index === comments.length - 1 && addingComment && /*#__PURE__*/_react["default"].createElement(_AddComment.AddComment, {
-        onConfirm: function onConfirm(newComment) {
-          setAddingComment(false);
-          onAddComment(newComment, parentId);
-        }
+        onConfirm: handleConfirm
       }), index < comments.length - 1 && isExpanded && /*#__PURE__*/_react["default"].createElement(_core.Divider, {
         variant: "fullWidth",
         style: {
@@ -110,6 +133,19 @@ var CommentWithThread = function CommentWithThread(_ref) {
       }));
     });
   };
+
+  if (comments.length === 1) {
+    return /*#__PURE__*/_react["default"].createElement(_SingleComment.SingleComment, {
+      onAddComment: handleSingleCommentConfirm,
+      author: comments[0].author,
+      content: comments[0].comment,
+      postingTime: comments[0].dateTime,
+      id: comments[0].id // onButtonClick={() => {
+      //     setIsExpanded(true);
+      // }}
+
+    });
+  }
 
   return /*#__PURE__*/_react["default"].createElement(_core.Paper, {
     className: classes.commentRoot,

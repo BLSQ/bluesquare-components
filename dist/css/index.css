@@ -2474,6 +2474,13 @@ path.map-marker {
   width: 87%;
   overflow: hidden; }
 
+.iaso .Select-value {
+  display: flex;
+  align-items: center;
+  font-size: 16px !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important; }
+
 .iaso .ReactTable .rt-tbody .rt-td {
   display: flex;
   align-items: center;

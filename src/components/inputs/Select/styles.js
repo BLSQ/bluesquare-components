@@ -28,6 +28,7 @@ const styles = theme => ({
         },
         '& .Select-menu': {
             borderRadius: '4px',
+            marginRight: '1px',
         },
         '&:hover .Select-control': {
             borderColor: `${theme.palette.primary.main}  !important`,

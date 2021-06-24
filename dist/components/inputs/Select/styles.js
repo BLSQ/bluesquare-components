@@ -38,7 +38,8 @@ var styles = function styles(theme) {
         fontSize: 14
       },
       '& .Select-menu': {
-        borderRadius: '4px'
+        borderRadius: '4px',
+        marginRight: '1px'
       },
       '&:hover .Select-control': {
         borderColor: "".concat(theme.palette.primary.main, "  !important")

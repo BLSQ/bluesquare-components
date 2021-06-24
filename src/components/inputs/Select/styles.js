@@ -24,7 +24,10 @@ const styles = theme => ({
             borderLeftColor: theme.palette.primary.main,
             borderBottomColor: theme.palette.primary.main,
             borderRightColor: theme.palette.primary.main,
-            left: '1px',
+            fontSize: 14,
+        },
+        '& .Select-menu': {
+            borderRadius: '4px',
         },
         '&:hover .Select-control': {
             borderColor: `${theme.palette.primary.main}  !important`,

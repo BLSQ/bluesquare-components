@@ -13,6 +13,7 @@ import CachedRoundedIcon from '@material-ui/icons/CachedRounded';
 import StopRoundedIcon from '@material-ui/icons/StopRounded';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import RestoreFromTrash from '@material-ui/icons/RestoreFromTrash';
+import PublicIcon from '@material-ui/icons/Public';
 
 import { XmlSvg } from '../../../svg/XmlSvgComponent';
 import { DHIS2Svg } from '../../../svg/DHIS2SvgComponent';
@@ -38,6 +39,7 @@ const ICON_VARIANTS = {
     stop: StopRoundedIcon,
     xls: ExcellSvg,
     download: GetAppIcon,
+    globe: PublicIcon,
 };
 
 const styles = theme => ({

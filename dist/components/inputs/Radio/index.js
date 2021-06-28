@@ -31,7 +31,8 @@ var RadioComponent = function RadioComponent(_ref) {
       control: /*#__PURE__*/_react["default"].createElement(_core.Radio, {
         color: "primary"
       }),
-      label: o.label
+      label: o.label,
+      disabled: o.disabled
     });
   }));
 };

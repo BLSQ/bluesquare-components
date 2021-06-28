@@ -14,6 +14,7 @@ const RadioComponent = ({ options, name, onChange, value }) => (
                 value={o.value}
                 control={<Radio color="primary" />}
                 label={o.label}
+                disabled={o.disabled}
             />
         ))}
     </RadioGroup>

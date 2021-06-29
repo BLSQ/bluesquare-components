@@ -62,7 +62,8 @@ var _exportNames = {
   useLink: true,
   SingleComment: true,
   CommentWithThread: true,
-  AddComment: true
+  AddComment: true,
+  InputLabel: true
 };
 Object.defineProperty(exports, "LoadingSpinner", {
   enumerable: true,
@@ -388,6 +389,12 @@ Object.defineProperty(exports, "AddComment", {
     return _AddComment.AddComment;
   }
 });
+Object.defineProperty(exports, "InputLabel", {
+  enumerable: true,
+  get: function get() {
+    return _InputLabel.InputLabel;
+  }
+});
 exports.IasoUiConstants = exports.SnackBar = exports.IasoChipColors = void 0;
 
 var _LoadingSpinner = require("./components/LoadingSpinner");
@@ -512,6 +519,8 @@ var _SingleComment = require("./components/comments/SingleComment");
 var _CommentWithThread = require("./components/comments/CommentWithThread");
 
 var _AddComment = require("./components/comments/AddComment");
+
+var _InputLabel = require("./components/inputs/InputLabel");
 
 var _utils = require("./utils");
 

@@ -207,7 +207,7 @@ class Table extends Component {
                 Header: formatMessage(MESSAGES.selection),
                 accessor: 'selected',
                 width: 100,
-                sorttable: false,
+                sortable: false,
                 Cell: settings => (
                     <Checkbox
                         color="primary"

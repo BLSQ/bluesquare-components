@@ -272,7 +272,7 @@ var Table = /*#__PURE__*/function (_Component) {
           Header: formatMessage(_messages.MESSAGES.selection),
           accessor: 'selected',
           width: 100,
-          sorttable: false,
+          sortable: false,
           Cell: function Cell(settings) {
             return /*#__PURE__*/_react["default"].createElement(_core.Checkbox, {
               color: "primary",

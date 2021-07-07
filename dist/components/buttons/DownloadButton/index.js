@@ -9,8 +9,6 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _Button = _interopRequireDefault(require("@material-ui/core/Button"));
-
 var _core = require("@material-ui/core");
 
 var _SaveAlt = _interopRequireDefault(require("@material-ui/icons/SaveAlt"));
@@ -33,14 +31,14 @@ function DownloadButtonsComponent(props) {
       xlsxUrl = props.xlsxUrl,
       gpkgUrl = props.gpkgUrl,
       classes = props.classes;
-  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_Button["default"], {
+  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_core.Button, {
     variant: "contained",
     className: classes.button,
     color: "primary",
     onClick: function onClick() {
       window.location.href = csvUrl;
     }
-  }, /*#__PURE__*/_react["default"].createElement(_SaveAlt["default"], null), "CSV"), /*#__PURE__*/_react["default"].createElement(_Button["default"], {
+  }, /*#__PURE__*/_react["default"].createElement(_SaveAlt["default"], null), "CSV"), /*#__PURE__*/_react["default"].createElement(_core.Button, {
     variant: "contained",
     className: classes.button,
     color: "primary",
@@ -49,7 +47,7 @@ function DownloadButtonsComponent(props) {
     }
   }, /*#__PURE__*/_react["default"].createElement("i", {
     className: "fa fa-file-excel-o"
-  }), "XLSX"), gpkgUrl !== null && /*#__PURE__*/_react["default"].createElement(_Button["default"], {
+  }), "XLSX"), gpkgUrl !== null && /*#__PURE__*/_react["default"].createElement(_core.Button, {
     variant: "contained",
     className: classes.button,
     color: "primary",

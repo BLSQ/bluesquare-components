@@ -25,13 +25,13 @@ const styles = theme => ({
         position: 'relative',
     },
     iconButton: {
-        color: 'white',
+        color: 'white !important',
         height: 30,
         position: 'relative',
         top: 8,
     },
     removeIconButton: {
-        color: 'white',
+        color: 'white !important',
         position: 'relative',
         top: 19,
         right: 15,
@@ -72,8 +72,8 @@ const styles = theme => ({
         paddingLeft: theme.spacing(4),
     },
     tabContent: {
-        paddingRight: theme.spacing(4),
-        paddingLeft: theme.spacing(4),
+        paddingRight: theme.spacing(6),
+        paddingLeft: theme.spacing(6),
     },
 });
 

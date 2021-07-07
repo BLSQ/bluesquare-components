@@ -53,10 +53,10 @@ var styles = function styles(theme) {
         padding: '0 !important',
         color: theme.palette.secondary.main,
         borderColor: theme.palette.secondary.main,
-        backgroundColor: (0, _colorManipulator.fade)(theme.palette.secondary.main, 0.08)
+        backgroundColor: (0, _colorManipulator.alpha)(theme.palette.secondary.main, 0.08)
       },
       '& .Select--multi .Select-value .Select-value-icon': {
-        borderColor: (0, _colorManipulator.fade)(theme.palette.secondary.main, 0.24),
+        borderColor: (0, _colorManipulator.alpha)(theme.palette.secondary.main, 0.24),
         width: '21px',
         height: '100%',
         paddingTop: '3px'

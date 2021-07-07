@@ -18,7 +18,10 @@ const styles = theme => ({
         },
         '& .is-open .Select-control': {
             borderColor: `${theme.palette.primary.main}  !important`,
-            overfow: 'hidden',
+            overflow: 'hidden',
+        },
+        '&:hover .Select-control': {
+            borderColor: `${theme.palette.primary.main}  !important`,
         },
         '& .is-open .Select-menu-outer': {
             borderLeftColor: theme.palette.primary.main,
@@ -29,9 +32,6 @@ const styles = theme => ({
         '& .Select-menu': {
             borderRadius: '4px',
             marginRight: '1px',
-        },
-        '&:hover .Select-control': {
-            borderColor: `${theme.palette.primary.main}  !important`,
         },
         '& .Select-control': {
             boxShadow: 'none  !important',
@@ -81,6 +81,21 @@ const styles = theme => ({
     selectError: {
         '& .Select-control': {
             borderColor: `${theme.palette.error.main} !important`,
+        },
+        '& .is-focused .Select-control': {
+            borderColor: `${theme.palette.error.main}  !important`,
+        },
+        '& .is-open .Select-control': {
+            borderColor: `${theme.palette.error.main}  !important`,
+            overflow: 'hidden',
+        },
+        '&:hover .Select-control': {
+            borderColor: `${theme.palette.error.main}  !important`,
+        },
+        '& .is-open .Select-menu-outer': {
+            borderLeftColor: theme.palette.error.main,
+            borderBottomColor: theme.palette.error.main,
+            borderRightColor: theme.palette.error.main,
         },
     },
 });

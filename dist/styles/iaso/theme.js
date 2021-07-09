@@ -44,5 +44,5 @@ var rawTheme = {
   }
 };
 exports.rawTheme = rawTheme;
-var theme = (0, _styles.createMuiTheme)(rawTheme);
+var theme = (0, _styles.createTheme)(rawTheme);
 exports.theme = theme;

@@ -33,7 +33,7 @@ var mapStyles = function mapStyles(theme) {
         zIndex: -1
       },
       '& .marker-cluster.primary': {
-        backgroundColor: (0, _colorManipulator.fade)(theme.palette.primary.main, 0.6)
+        backgroundColor: (0, _colorManipulator.alpha)(theme.palette.primary.main, 0.6)
       },
       '& .marker-cluster.primary > div': {
         backgroundColor: theme.palette.primary.main,
@@ -92,11 +92,11 @@ var mapStyles = function mapStyles(theme) {
         pointerEvents: 'none'
       },
       '& path.primary': {
-        fill: (0, _colorManipulator.fade)(theme.palette.primary.main, 0.6),
+        fill: (0, _colorManipulator.alpha)(theme.palette.primary.main, 0.6),
         stroke: theme.palette.primary.main
       },
       '& path.secondary': {
-        fill: (0, _colorManipulator.fade)(theme.palette.secondary.main, 0.6),
+        fill: (0, _colorManipulator.alpha)(theme.palette.secondary.main, 0.6),
         stroke: theme.palette.secondary.main
       },
       '& path.no-pointer-event': {

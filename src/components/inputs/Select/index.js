@@ -1,106 +1,101 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Select from 'react-select';
-import { withStyles } from '@material-ui/core';
-import { FormControl } from '../FormControl';
-import { InputLabel } from '../InputLabel';
+import TextField from '@material-ui/core/TextField';
+import Box from '@material-ui/core/Box';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { MESSAGES } from './messages';
-import { styles } from './styles';
 
-const SelectComponent = ({
+const SelectCustom = ({
     value,
     keyValue,
     label,
     errors,
     onChange,
     options,
+    touched,
     onBlur,
-    onFocus,
-    withMarginTop,
     multi,
     disabled,
     clearable,
-    isFocused,
-    searchable,
     required,
-    classes,
-    // noResultsText,
+    noOptionsText,
+    getOptionLabel,
+    getOptionSelected,
 }) => {
-    const [selectInputValue, setSelectInputValue] = useState('');
-    const hasErrors = errors.length > 0;
-    const classNames = hasErrors
-        ? [classes.select, classes.selectError]
-        : [classes.select];
+    const [selectedValue, setSelectedValue] = useState(multi ? [] : null);
+    const [search, setSearch] = useState(null);
     const intl = useSafeIntl();
-    const [focus, setFocus] = useState(isFocused);
 
+    useEffect(() => {
+        if (multi && value && Array.isArray(value)) {
+            const newSelectedValue = [];
+            value.forEach(v => {
+                const option = options.find(o => o.id === v);
+                newSelectedValue.push(option);
+            });
+            options.find(o => o.id === value);
+            setSelectedValue(newSelectedValue || []);
+        }
+        if (!multi) {
+            const newSelectedValue = options.find(o => o.id === value);
+            setSelectedValue(newSelectedValue || null);
+        }
+    }, [value, options]);
     return (
-        <FormControl withMarginTop={withMarginTop} errors={errors}>
-            <InputLabel
-                htmlFor={`input-select-${keyValue}`}
-                label={label}
-                shrink={
-                    (value !== undefined && value !== null) ||
-                    selectInputValue !== ''
-                }
-                isFocused={focus}
-                required={required}
-                error={hasErrors}
+        <Box mt={1} mb={3}>
+            <Autocomplete
+                noOptionsText={intl.formatMessage(noOptionsText)}
+                multiple={multi}
+                id={keyValue}
+                disableClearable={!clearable}
+                options={options}
+                value={selectedValue}
+                onInputChange={(e, newSearch) => setSearch(newSearch)}
+                onChange={(e, newValue) => {
+                    if (multi) {
+                        return onChange(newValue.map(v => v.id));
+                    }
+                    return onChange(newValue ? newValue.id : null);
+                }}
+                getOptionLabel={getOptionLabel}
+                getOptionSelected={getOptionSelected}
+                renderInput={params => (
+                    <TextField
+                        {...params}
+                        InputLabelProps={{
+                            shrink: Boolean(value) || Boolean(search),
+                        }}
+                        variant="outlined"
+                        disabled={disabled}
+                        label={`${label}${required ? '*' : ''}`}
+                        onBlur={onBlur}
+                        error={errors.length > 0 && touched}
+                    />
+                )}
             />
-            <div className={classNames.join(' ')}>
-                <Select
-                    disabled={disabled}
-                    searchable={searchable}
-                    multi={multi}
-                    clearable={clearable}
-                    simpleValue
-                    onInputChange={newValue => {
-                        setSelectInputValue(newValue);
-                    }}
-                    name={keyValue}
-                    value={value}
-                    placeholder=""
-                    onBlur={() => {
-                        setFocus(false);
-                        onBlur();
-                    }}
-                    onFocus={() => {
-                        setFocus(true);
-                        onFocus();
-                    }}
-                    options={options}
-                    noResultsText={intl.formatMessage(MESSAGES.noOptions)}
-                    onChange={newValue => {
-                        onChange(newValue);
-                    }}
-                />
-            </div>
-        </FormControl>
+        </Box>
     );
 };
 
-SelectComponent.defaultProps = {
+SelectCustom.defaultProps = {
     value: undefined,
     errors: [],
-    withMarginTop: true,
+    label: '',
     multi: false,
     disabled: false,
     clearable: true,
-    isFocused: false,
     required: false,
+    touched: false,
     searchable: true,
-    onChange: () => {},
     options: [],
     onBlur: () => {},
-    onFocus: () => {},
-    label: '',
-    // TODO use library translations
-    // noResultsText: '',
+    getOptionSelected: (option, value) => option.value === value,
+    getOptionLabel: option => option.label,
+    noOptionsText: MESSAGES.noOptions,
 };
 
-SelectComponent.propTypes = {
-    withMarginTop: PropTypes.bool,
+SelectCustom.propTypes = {
     errors: PropTypes.arrayOf(PropTypes.string),
     keyValue: PropTypes.string.isRequired,
     label: PropTypes.string,
@@ -108,16 +103,15 @@ SelectComponent.propTypes = {
     disabled: PropTypes.bool,
     searchable: PropTypes.bool,
     clearable: PropTypes.bool,
-    isFocused: PropTypes.bool,
     multi: PropTypes.bool,
     value: PropTypes.any,
     onBlur: PropTypes.func,
-    onFocus: PropTypes.func,
-    // noResultsText: PropTypes.string,
+    noOptionsText: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     options: PropTypes.array,
-    onChange: PropTypes.func,
-    classes: PropTypes.object.isRequired,
+    touched: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
+    onChange: PropTypes.func.isRequired,
+    getOptionLabel: PropTypes.func,
+    getOptionSelected: PropTypes.func,
 };
 
-const styledSelectComponent = withStyles(styles)(SelectComponent);
-export { styledSelectComponent as Select };
+export { SelectCustom as Select };

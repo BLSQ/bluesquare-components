@@ -39,8 +39,8 @@ const AddComment = ({
             <Grid item className={classes.textAreaContainer}>
                 <TextareaAutosize
                     className={className ?? classes.textArea}
-                    rowsMin={minRows}
-                    rowsMax={maxRows}
+                    minRows={minRows}
+                    maxRows={maxRows}
                     aria-label="write comment here"
                     placeholder={
                         placeholder ??

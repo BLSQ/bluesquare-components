@@ -1,6 +1,5 @@
 @charset "UTF-8";
 @import url(~font-awesome/css/font-awesome.css);
-@import url(~react-select/dist/react-select.css);
 @import url(~react-table/react-table.css);
 @import url(~video.js/dist/video-js.css);
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -2169,13 +2168,6 @@ path.map-marker {
     left: 25px;
     right: auto; }
 
-.trypelim input[type="text"],
-.trypelim input[type="time"],
-.trypelim input[type="number"],
-.trypelim input[type="email"],
-.trypelim input[type="password"],
-.trypelim textarea,
-.trypelim input[type="date"],
 .auth__container input[type="text"],
 .auth__container input[type="time"],
 .auth__container input[type="number"],
@@ -2192,13 +2184,6 @@ path.map-marker {
   font-size: 1rem !important;
   color: #333645;
   line-height: 1; }
-  .trypelim input[type="text"]:focus,
-  .trypelim input[type="time"]:focus,
-  .trypelim input[type="number"]:focus,
-  .trypelim input[type="email"]:focus,
-  .trypelim input[type="password"]:focus,
-  .trypelim textarea:focus,
-  .trypelim input[type="date"]:focus,
   .auth__container input[type="text"]:focus,
   .auth__container input[type="time"]:focus,
   .auth__container input[type="number"]:focus,
@@ -2209,13 +2194,6 @@ path.map-marker {
     outline: 0;
     border: 1px solid #3f51b5;
     box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0 0 1px 1px rgba(51, 54, 69, 0.15); }
-  .trypelim input[type="text"]:disabled,
-  .trypelim input[type="time"]:disabled,
-  .trypelim input[type="number"]:disabled,
-  .trypelim input[type="email"]:disabled,
-  .trypelim input[type="password"]:disabled,
-  .trypelim textarea:disabled,
-  .trypelim input[type="date"]:disabled,
   .auth__container input[type="text"]:disabled,
   .auth__container input[type="time"]:disabled,
   .auth__container input[type="number"]:disabled,
@@ -2225,13 +2203,6 @@ path.map-marker {
   .auth__container input[type="date"]:disabled {
     background-color: #ccc !important;
     opacity: 0.8; }
-  .trypelim input[type="text"].form-error,
-  .trypelim input[type="time"].form-error,
-  .trypelim input[type="number"].form-error,
-  .trypelim input[type="email"].form-error,
-  .trypelim input[type="password"].form-error,
-  .trypelim textarea.form-error,
-  .trypelim input[type="date"].form-error,
   .auth__container input[type="text"].form-error,
   .auth__container input[type="time"].form-error,
   .auth__container input[type="number"].form-error,
@@ -2241,110 +2212,72 @@ path.map-marker {
   .auth__container input[type="date"].form-error {
     border-color: #FF3824; }
 
-.trypelim textarea,
 .auth__container textarea {
   min-height: 100px; }
-  .trypelim textarea.small,
   .auth__container textarea.small {
     min-height: 50px; }
 
-.trypelim input[type="date"],
 .auth__container input[type="date"] {
   width: 200px; }
 
-.trypelim input[type="time"],
 .auth__container input[type="time"] {
   width: 65px; }
 
-.trypelim input[type="time"]::-webkit-clear-button,
 .auth__container input[type="time"]::-webkit-clear-button {
   display: none; }
 
-.trypelim input[type="time"]::-webkit-inner-spin-button,
 .auth__container input[type="time"]::-webkit-inner-spin-button {
   opacity: 1; }
 
-.trypelim input[type="time"]::-ms-clear,
 .auth__container input[type="time"]::-ms-clear {
   display: none; }
 
-.trypelim form,
 .auth__container form {
   margin: 0; }
 
-.trypelim fieldset,
 .auth__container fieldset {
   border: none;
   padding: 0; }
 
-.trypelim label,
 .auth__container label {
   display: block;
   font-size: 0.875rem;
   font-weight: bold;
   margin-bottom: 8px; }
-  .trypelim label.inline,
   .auth__container label.inline {
     display: inline-block; }
 
-.trypelim .form__wrapper,
 .auth__container .form__wrapper {
   margin-bottom: 32px; }
 
-.trypelim form.inline label,
 .auth__container form.inline label {
   display: inline-block;
   margin-right: 8px; }
 
-.trypelim input.small,
 .auth__container input.small {
   font-size: 0.75rem;
   height: 15px;
   width: 50px;
   margin: 0 6.4px; }
 
-.trypelim .Select.is-open,
-.auth__container .Select.is-open {
-  z-index: 1001; }
-
-.trypelim .Select.only-one .Select-value-icon,
-.auth__container .Select.only-one .Select-value-icon {
-  display: none; }
-
-.trypelim .Select.only-one .Select-value,
-.auth__container .Select.only-one .Select-value {
-  padding-left: 5px;
-  padding-right: 5px; }
-
-.trypelim .Select.form-error .Select-control,
-.auth__container .Select.form-error .Select-control {
-  border-color: #FF3824 !important; }
-
-.trypelim .button--export,
 .auth__container .button--export {
   padding: 8px;
   width: 196px;
   font-size: 0.75rem; }
 
-.trypelim .button--print,
 .auth__container .button--print {
   margin-top: 4px;
   width: 210px;
   font-size: 0.75rem; }
 
-.trypelim .button--small,
 .auth__container .button--small {
   font-size: 0.75rem; }
 
-.trypelim .button--save,
-.trypelim .button--edit,
 .auth__container .button--save,
 .auth__container .button--edit {
   margin-bottom: 4px;
   width: 210px;
   font-size: 0.75rem; }
-  .trypelim .button--save.small,
-  .trypelim .button--edit.small,
   .auth__container .button--save.small,
   .auth__container .button--edit.small {
     width: auto;
@@ -2352,72 +2285,57 @@ path.map-marker {
     margin-left: 10px;
     padding-left: 10px;
     padding-right: 4px; }
-  .trypelim .button--save:disabled,
-  .trypelim .button--edit:disabled,
   .auth__container .button--save:disabled,
   .auth__container .button--edit:disabled {
     background-color: #3f51b5 !important;
     cursor: default;
     opacity: 0.6; }
 
-.trypelim .button--delete,
 .auth__container .button--delete {
   background-color: #FF3824 !important; }
-  .trypelim .button--delete--tiny,
   .auth__container .button--delete--tiny {
     padding: 0.5em;
     font-size: 0.75rem; }
-    .trypelim .button--delete--tiny:disabled,
     .auth__container .button--delete--tiny:disabled {
       background-color: #FF3824 !important;
       cursor: default;
       opacity: 0.6; }
-  .trypelim .button--delete:disabled,
   .auth__container .button--delete:disabled {
     background-color: #FF3824 !important;
     cursor: default;
     opacity: 0.6; }
 
-.trypelim .button--edit--tiny,
 .auth__container .button--edit--tiny {
   padding: 0.5em;
   font-size: 0.75rem; }
 
-.trypelim .button--delete--tiny,
 .auth__container .button--delete--tiny {
   background-color: #FF3824 !important;
   padding: 0.5em;
   font-size: 0.75rem; }
 
-.trypelim button:disabled,
 .auth__container button:disabled {
   background-color: #3f51b5 !important;
   cursor: default;
   opacity: 0.6; }
 
-.trypelim .check-box__container,
 .auth__container .check-box__container {
   display: inline-block; }
-  .trypelim .check-box__container label,
   .auth__container .check-box__container label {
     display: inline-block !important;
     font-size: 12px; }
-  .trypelim .check-box__container > span,
   .auth__container .check-box__container > span {
     display: inline-block;
     position: relative; }
 
-.trypelim .check-box__icon,
 .auth__container .check-box__icon {
   position: relative;
   top: 6px;
   margin-left: 10px;
   fill: #ccc; }
-  .trypelim .check-box__icon.primary,
   .auth__container .check-box__icon.primary {
     fill: #3f51b5; }
 
-.trypelim .check-box__input_hidden,
 .auth__container .check-box__input_hidden {
   position: absolute !important;
   opacity: 0 !important;
@@ -2426,15 +2344,12 @@ path.map-marker {
   height: 100% !important;
   width: 30px !important;
   cursor: pointer; }
-  .trypelim .check-box__input_hidden.disabled,
   .auth__container .check-box__input_hidden.disabled {
     cursor: not-allowed; }
 
-.trypelim .icon-green,
 .auth__container .icon-green {
   fill: #45D288; }
 
-.trypelim .icon-error,
 .auth__container .icon-error {
   fill: #FF3824; }
 
@@ -2450,36 +2365,6 @@ path.map-marker {
   .video-component .video-js .vjs-big-play-button {
     top: calc(50% - 0.75em);
     left: calc(50% - 1.5em); }
-
-.iaso .Select-control {
-  height: 54px; }
-  .iaso .Select-control .Select-placeholder,
-  .iaso .Select-control .Select-input {
-    display: flex !important;
-    align-items: center;
-    height: 54px;
-    padding-left: 16px !important;
-    padding-right: 16px !important;
-    font-size: 16px !important; }
-  .iaso .Select-control .Select-clear {
-    font-size: 30px;
-    font-weight: lighter;
-    margin-top: -5px;
-    margin-right: 5px; }
-
-.iaso .Select-menu-outer {
-  z-index: 9999; }
-
-.iaso .Select-value-label {
-  width: 87%;
-  overflow: hidden; }
-
-.iaso .Select-value {
-  display: flex;
-  align-items: center;
-  font-size: 16px !important;
-  padding-left: 16px !important;
-  padding-right: 16px !important; }
 
 .iaso .ReactTable .rt-tbody .rt-td {
   display: flex;
@@ -2539,14 +2424,6 @@ path.map-marker {
       max-height: 90vh;
       max-width: 150%; }
 
-body.trypelim .ReactTable .rt-thead .rt-th.-sort-asc,
-body.trypelim .ReactTable .rt-thead .rt-td.-sort-asc {
-  box-shadow: inset 0 3px 0 0 #3f51b5; }
-
-body.trypelim .ReactTable .rt-thead .rt-th.-sort-desc,
-body.trypelim .ReactTable .rt-thead .rt-td.-sort-desc {
-  box-shadow: inset 0 -3px 0 0 #3f51b5; }
-
 body .ReactTable {
   border: 1px solid #ccc; }
   body .ReactTable.no-border {
@@ -2579,9 +2456,6 @@ body .ReactTable {
     body .ReactTable .rt-th.select,
     body .ReactTable .rt-td.select {
       overflow: visible !important; }
-      body .ReactTable .rt-th.select .Select,
-      body .ReactTable .rt-td.select .Select {
-        text-align: left; }
     body .ReactTable .rt-th.action-zone,
     body .ReactTable .rt-td.action-zone {
       padding: 0;

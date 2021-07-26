@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
@@ -54,7 +54,7 @@ const SelectCustom = ({
 
                 valuesList.forEach(v => {
                     const option = getOption(v);
-                    if (option) newSelectedValue.push(getOption(v));
+                    if (option) newSelectedValue.push(option);
                 });
                 setMultiSelectedValue(newSelectedValue);
             } else {
@@ -64,17 +64,20 @@ const SelectCustom = ({
         } else {
             multi ? setMultiSelectedValue([]) : setSelectedValue(null);
         }
-    }, [value, options]);
+    }, [value, options, multi]);
 
-    const handleChange = (e, newValue) => {
-        if ((!multi && !newValue) || (multi && newValue.length === 0)) {
-            return onChange(null);
-        }
-        if (multi) {
-            return onChange(newValue.map(v => v && v.value).join(','));
-        }
-        return onChange(newValue.value);
-    };
+    const handleChange = useCallback(
+        (e, newValue) => {
+            if ((!multi && !newValue) || (multi && newValue.length === 0)) {
+                return onChange(null);
+            }
+            if (multi) {
+                return onChange(newValue.map(v => v && v.value).join(','));
+            }
+            return onChange(newValue.value);
+        },
+        [multi, onChange],
+    );
     const extraProps = {
         getOptionLabel: getOptionLabel || (option => option && option.label),
         getOptionSelected:
@@ -84,6 +87,56 @@ const SelectCustom = ({
     if (renderOption) {
         extraProps.renderOption = renderOption;
     }
+
+    const renderInput = params => {
+        const paramsCopy = {
+            ...params,
+        };
+        let inputExtraProps = {};
+        if (extraProps.renderOption && params.inputProps.value) {
+            inputExtraProps = {
+                startAdornment: (
+                    <div className={classes.startAdornment}>
+                        {extraProps.renderOption({
+                            label: params.inputProps.value,
+                        })}
+                    </div>
+                ),
+                style: { color: 'transparent' },
+            };
+            inputExtraProps.startAdornment = (
+                <div className={classes.startAdornment}>
+                    {extraProps.renderOption({
+                        label: params.inputProps.value,
+                    })}
+                </div>
+            );
+            paramsCopy.inputProps.value = '';
+        }
+        return (
+            <TextField
+                {...paramsCopy}
+                variant="outlined"
+                disabled={disabled}
+                label={`${label}${required ? '*' : ''}`}
+                onBlur={onBlur}
+                error={errors.length > 0 && touched}
+                InputProps={{
+                    ...params.InputProps,
+                    endAdornment: (
+                        <>
+                            {loading ? (
+                                <CircularProgress color="inherit" size={20} />
+                            ) : null}
+                            {params.InputProps.endAdornment}
+                        </>
+                    ),
+                    ...inputExtraProps,
+                }}
+            />
+        );
+    };
+
     return (
         <Box mt={1} mb={2}>
             <Autocomplete
@@ -96,9 +149,9 @@ const SelectCustom = ({
                 onChange={handleChange}
                 loading={loading}
                 renderTags={(tagValue, getTagProps) =>
-                    tagValue.map((option, index) => {
-                        if (!option) return null;
-                        return (
+                    tagValue
+                        .filter(option => option)
+                        .map((option, index) => (
                             <Chip
                                 classes={{
                                     label: classes.chipLabel,
@@ -107,60 +160,9 @@ const SelectCustom = ({
                                 label={option.label}
                                 {...getTagProps({ index })}
                             />
-                        );
-                    })
+                        ))
                 }
-                renderInput={params => {
-                    const paramsCopy = {
-                        ...params,
-                    };
-                    let inputExtraProps = {};
-                    if (extraProps.renderOption && params.inputProps.value) {
-                        inputExtraProps = {
-                            startAdornment: (
-                                <div className={classes.startAdornment}>
-                                    {extraProps.renderOption({
-                                        label: params.inputProps.value,
-                                    })}
-                                </div>
-                            ),
-                            style: { color: 'transparent' },
-                        };
-                        inputExtraProps.startAdornment = (
-                            <div className={classes.startAdornment}>
-                                {extraProps.renderOption({
-                                    label: params.inputProps.value,
-                                })}
-                            </div>
-                        );
-                        paramsCopy.inputProps.value = '';
-                    }
-                    return (
-                        <TextField
-                            {...paramsCopy}
-                            variant="outlined"
-                            disabled={disabled}
-                            label={`${label}${required ? '*' : ''}`}
-                            onBlur={onBlur}
-                            error={errors.length > 0 && touched}
-                            InputProps={{
-                                ...params.InputProps,
-                                endAdornment: (
-                                    <>
-                                        {loading ? (
-                                            <CircularProgress
-                                                color="inherit"
-                                                size={20}
-                                            />
-                                        ) : null}
-                                        {params.InputProps.endAdornment}
-                                    </>
-                                ),
-                                ...inputExtraProps,
-                            }}
-                        />
-                    );
-                }}
+                renderInput={params => renderInput(params)}
                 {...extraProps}
             />
         </Box>

@@ -47,15 +47,12 @@ const SelectCustom = ({
     useEffect(() => {
         if (value) {
             if (multi) {
-                const newSelectedValue = [];
                 const valuesList = Array.isArray(value)
                     ? value
                     : value.split(',');
-
-                valuesList.forEach(v => {
-                    const option = getOption(v);
-                    if (option) newSelectedValue.push(option);
-                });
+                const newSelectedValue = valuesList
+                    .map(v => getOption(v))
+                    .filter(o => o);
                 setMultiSelectedValue(newSelectedValue);
             } else {
                 const newSelectedValue = getOption(value);

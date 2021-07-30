@@ -22,10 +22,9 @@ export const translateOptions = (options, formatMessage) =>
 
 /**
  * Receive a timestamp and displays it as a human readable date
- * TO-DO: display date regarding the locale
  *
  * @param {Number} timestamp
  */
 
 export const displayDateFromTimestamp = timestamp =>
-    moment.unix(timestamp).format('DD/MM/YYYY HH:mm');
+    moment.unix(timestamp).format('LTS');

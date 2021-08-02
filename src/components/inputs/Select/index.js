@@ -101,13 +101,6 @@ const SelectCustom = ({
                 ),
                 style: { color: 'transparent' },
             };
-            inputExtraProps.startAdornment = (
-                <div className={classes.startAdornment}>
-                    {extraProps.renderOption({
-                        label: params.inputProps.value,
-                    })}
-                </div>
-            );
             paramsCopy.inputProps.value = '';
         }
         return (

@@ -31,25 +31,13 @@ function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "functio
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var useStyles = (0, _core.makeStyles)(function () {
   return {
@@ -80,17 +68,6 @@ var SelectCustom = function SelectCustom(_ref) {
       getOptionSelected = _ref.getOptionSelected,
       loading = _ref.loading,
       renderOption = _ref.renderOption;
-
-  var _useState = (0, _react.useState)(null),
-      _useState2 = _slicedToArray(_useState, 2),
-      selectedValue = _useState2[0],
-      setSelectedValue = _useState2[1];
-
-  var _useState3 = (0, _react.useState)([]),
-      _useState4 = _slicedToArray(_useState3, 2),
-      multiSelectedValue = _useState4[0],
-      setMultiSelectedValue = _useState4[1];
-
   var intl = (0, _useSafeIntl.useSafeIntl)();
   var classes = useStyles();
 
@@ -100,27 +77,23 @@ var SelectCustom = function SelectCustom(_ref) {
     });
   };
 
-  (0, _react.useEffect)(function () {
+  var fixedValue = (0, _react.useMemo)(function () {
     if (value) {
       if (multi) {
-        var newSelectedValue = [];
         var valuesList = Array.isArray(value) ? value : value.split(',');
-        valuesList.forEach(function (v) {
-          var option = getOption(v);
-          if (option) newSelectedValue.push(getOption(v));
+        return valuesList.map(function (v) {
+          return getOption(v);
+        }).filter(function (o) {
+          return o;
         });
-        setMultiSelectedValue(newSelectedValue);
-      } else {
-        var _newSelectedValue = getOption(value);
-
-        if (_newSelectedValue) setSelectedValue(_newSelectedValue);
       }
-    } else {
-      multi ? setMultiSelectedValue([]) : setSelectedValue(null);
-    }
-  }, [value, options]);
 
-  var handleChange = function handleChange(e, newValue) {
+      return getOption(value);
+    }
+
+    return multi ? [] : null;
+  }, [value, options, multi]);
+  var handleChange = (0, _react.useCallback)(function (e, newValue) {
     if (!multi && !newValue || multi && newValue.length === 0) {
       return onChange(null);
     }
@@ -132,8 +105,7 @@ var SelectCustom = function SelectCustom(_ref) {
     }
 
     return onChange(newValue.value);
-  };
-
+  }, [multi, onChange]);
   var extraProps = {
     getOptionLabel: getOptionLabel || function (option) {
       return option && option.label;
@@ -147,6 +119,40 @@ var SelectCustom = function SelectCustom(_ref) {
     extraProps.renderOption = renderOption;
   }
 
+  var _renderInput = function renderInput(params) {
+    var paramsCopy = _objectSpread({}, params);
+
+    var inputExtraProps = {};
+
+    if (extraProps.renderOption && params.inputProps.value) {
+      inputExtraProps = {
+        startAdornment: /*#__PURE__*/_react["default"].createElement("div", {
+          className: classes.startAdornment
+        }, extraProps.renderOption({
+          label: params.inputProps.value
+        })),
+        style: {
+          color: 'transparent'
+        }
+      };
+      paramsCopy.inputProps.value = '';
+    }
+
+    return /*#__PURE__*/_react["default"].createElement(_TextField["default"], _extends({}, paramsCopy, {
+      variant: "outlined",
+      disabled: disabled,
+      label: "".concat(label).concat(required ? '*' : ''),
+      onBlur: onBlur,
+      error: errors.length > 0 && touched,
+      InputProps: _objectSpread(_objectSpread({}, params.InputProps), {}, {
+        endAdornment: /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, loading ? /*#__PURE__*/_react["default"].createElement(_core.CircularProgress, {
+          color: "inherit",
+          size: 20
+        }) : null, params.InputProps.endAdornment)
+      }, inputExtraProps)
+    }));
+  };
+
   return /*#__PURE__*/_react["default"].createElement(_Box["default"], {
     mt: 1,
     mb: 2
@@ -156,12 +162,13 @@ var SelectCustom = function SelectCustom(_ref) {
     id: keyValue,
     disableClearable: !clearable,
     options: options,
-    value: multi ? multiSelectedValue : selectedValue,
+    value: fixedValue,
     onChange: handleChange,
     loading: loading,
     renderTags: function renderTags(tagValue, getTagProps) {
-      return tagValue.map(function (option, index) {
-        if (!option) return null;
+      return tagValue.filter(function (option) {
+        return option;
+      }).map(function (option, index) {
         return /*#__PURE__*/_react["default"].createElement(_Chip["default"], _extends({
           classes: {
             label: classes.chipLabel
@@ -174,42 +181,7 @@ var SelectCustom = function SelectCustom(_ref) {
       });
     },
     renderInput: function renderInput(params) {
-      var paramsCopy = _objectSpread({}, params);
-
-      var inputExtraProps = {};
-
-      if (extraProps.renderOption && params.inputProps.value) {
-        inputExtraProps = {
-          startAdornment: /*#__PURE__*/_react["default"].createElement("div", {
-            className: classes.startAdornment
-          }, extraProps.renderOption({
-            label: params.inputProps.value
-          })),
-          style: {
-            color: 'transparent'
-          }
-        };
-        inputExtraProps.startAdornment = /*#__PURE__*/_react["default"].createElement("div", {
-          className: classes.startAdornment
-        }, extraProps.renderOption({
-          label: params.inputProps.value
-        }));
-        paramsCopy.inputProps.value = '';
-      }
-
-      return /*#__PURE__*/_react["default"].createElement(_TextField["default"], _extends({}, paramsCopy, {
-        variant: "outlined",
-        disabled: disabled,
-        label: "".concat(label).concat(required ? '*' : ''),
-        onBlur: onBlur,
-        error: errors.length > 0 && touched,
-        InputProps: _objectSpread(_objectSpread({}, params.InputProps), {}, {
-          endAdornment: /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, loading ? /*#__PURE__*/_react["default"].createElement(_core.CircularProgress, {
-            color: "inherit",
-            size: 20
-          }) : null, params.InputProps.endAdornment)
-        }, inputExtraProps)
-      }));
+      return _renderInput(params);
     }
   }, extraProps)));
 };

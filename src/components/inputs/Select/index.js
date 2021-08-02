@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
@@ -36,31 +36,23 @@ const SelectCustom = ({
     loading,
     renderOption,
 }) => {
-    const [selectedValue, setSelectedValue] = useState(null);
-    const [multiSelectedValue, setMultiSelectedValue] = useState([]);
     const intl = useSafeIntl();
     const classes = useStyles();
 
     const getOption = optionValue =>
         options.find(o => `${o.value}` === `${optionValue}`);
 
-    useEffect(() => {
+    const fixedValue = useMemo(() => {
         if (value) {
             if (multi) {
                 const valuesList = Array.isArray(value)
                     ? value
                     : value.split(',');
-                const newSelectedValue = valuesList
-                    .map(v => getOption(v))
-                    .filter(o => o);
-                setMultiSelectedValue(newSelectedValue);
-            } else {
-                const newSelectedValue = getOption(value);
-                if (newSelectedValue) setSelectedValue(newSelectedValue);
+                return valuesList.map(v => getOption(v)).filter(o => o);
             }
-        } else {
-            multi ? setMultiSelectedValue([]) : setSelectedValue(null);
+            return getOption(value);
         }
+        return multi ? [] : null;
     }, [value, options, multi]);
 
     const handleChange = useCallback(
@@ -75,6 +67,7 @@ const SelectCustom = ({
         },
         [multi, onChange],
     );
+
     const extraProps = {
         getOptionLabel: getOptionLabel || (option => option && option.label),
         getOptionSelected:
@@ -135,7 +128,7 @@ const SelectCustom = ({
                 id={keyValue}
                 disableClearable={!clearable}
                 options={options}
-                value={multi ? multiSelectedValue : selectedValue}
+                value={fixedValue}
                 onChange={handleChange}
                 loading={loading}
                 renderTags={(tagValue, getTagProps) =>

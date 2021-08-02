@@ -1,123 +1,193 @@
-import React, { useState } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import Select from 'react-select';
-import { withStyles } from '@material-ui/core';
-import { FormControl } from '../FormControl';
-import { InputLabel } from '../InputLabel';
+import TextField from '@material-ui/core/TextField';
+import Box from '@material-ui/core/Box';
+import Chip from '@material-ui/core/Chip';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import { makeStyles, CircularProgress } from '@material-ui/core';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { MESSAGES } from './messages';
-import { styles } from './styles';
 
-const SelectComponent = ({
+const useStyles = makeStyles(() => ({
+    chipLabel: {
+        marginTop: -2,
+    },
+    startAdornment: {
+        marginTop: -5,
+    },
+}));
+
+const SelectCustom = ({
     value,
     keyValue,
     label,
     errors,
     onChange,
     options,
+    touched,
     onBlur,
-    onFocus,
-    withMarginTop,
     multi,
     disabled,
     clearable,
-    isFocused,
-    searchable,
     required,
-    classes,
-    // noResultsText,
+    noOptionsText,
+    getOptionLabel,
+    getOptionSelected,
+    loading,
+    renderOption,
 }) => {
-    const [selectInputValue, setSelectInputValue] = useState('');
-    const hasErrors = errors.length > 0;
-    const classNames = hasErrors
-        ? [classes.select, classes.selectError]
-        : [classes.select];
     const intl = useSafeIntl();
-    const [focus, setFocus] = useState(isFocused);
+    const classes = useStyles();
+
+    const getOption = optionValue =>
+        options.find(o => `${o.value}` === `${optionValue}`);
+
+    const fixedValue = useMemo(() => {
+        if (value) {
+            if (multi) {
+                const valuesList = Array.isArray(value)
+                    ? value
+                    : value.split(',');
+                return valuesList.map(v => getOption(v)).filter(o => o);
+            }
+            return getOption(value);
+        }
+        return multi ? [] : null;
+    }, [value, options, multi]);
+
+    const handleChange = useCallback(
+        (e, newValue) => {
+            if ((!multi && !newValue) || (multi && newValue.length === 0)) {
+                return onChange(null);
+            }
+            if (multi) {
+                return onChange(newValue.map(v => v && v.value).join(','));
+            }
+            return onChange(newValue.value);
+        },
+        [multi, onChange],
+    );
+
+    const extraProps = {
+        getOptionLabel: getOptionLabel || (option => option && option.label),
+        getOptionSelected:
+            getOptionSelected ||
+            ((option, val) => val && option.value === val.value),
+    };
+    if (renderOption) {
+        extraProps.renderOption = renderOption;
+    }
+
+    const renderInput = params => {
+        const paramsCopy = {
+            ...params,
+        };
+        let inputExtraProps = {};
+        if (extraProps.renderOption && params.inputProps.value) {
+            inputExtraProps = {
+                startAdornment: (
+                    <div className={classes.startAdornment}>
+                        {extraProps.renderOption({
+                            label: params.inputProps.value,
+                        })}
+                    </div>
+                ),
+                style: { color: 'transparent' },
+            };
+            paramsCopy.inputProps.value = '';
+        }
+        return (
+            <TextField
+                {...paramsCopy}
+                variant="outlined"
+                disabled={disabled}
+                label={`${label}${required ? '*' : ''}`}
+                onBlur={onBlur}
+                error={errors.length > 0 && touched}
+                InputProps={{
+                    ...params.InputProps,
+                    endAdornment: (
+                        <>
+                            {loading ? (
+                                <CircularProgress color="inherit" size={20} />
+                            ) : null}
+                            {params.InputProps.endAdornment}
+                        </>
+                    ),
+                    ...inputExtraProps,
+                }}
+            />
+        );
+    };
 
     return (
-        <FormControl withMarginTop={withMarginTop} errors={errors}>
-            <InputLabel
-                htmlFor={`input-select-${keyValue}`}
-                label={label}
-                shrink={
-                    (value !== undefined && value !== null) ||
-                    selectInputValue !== ''
+        <Box mt={1} mb={2}>
+            <Autocomplete
+                noOptionsText={intl.formatMessage(noOptionsText)}
+                multiple={multi}
+                id={keyValue}
+                disableClearable={!clearable}
+                options={options}
+                value={fixedValue}
+                onChange={handleChange}
+                loading={loading}
+                renderTags={(tagValue, getTagProps) =>
+                    tagValue
+                        .filter(option => option)
+                        .map((option, index) => (
+                            <Chip
+                                classes={{
+                                    label: classes.chipLabel,
+                                }}
+                                color="secondary"
+                                label={option.label}
+                                {...getTagProps({ index })}
+                            />
+                        ))
                 }
-                isFocused={focus}
-                required={required}
-                error={hasErrors}
+                renderInput={params => renderInput(params)}
+                {...extraProps}
             />
-            <div className={classNames.join(' ')}>
-                <Select
-                    disabled={disabled}
-                    searchable={searchable}
-                    multi={multi}
-                    clearable={clearable}
-                    simpleValue
-                    onInputChange={newValue => {
-                        setSelectInputValue(newValue);
-                    }}
-                    name={keyValue}
-                    value={value}
-                    placeholder=""
-                    onBlur={() => {
-                        setFocus(false);
-                        onBlur();
-                    }}
-                    onFocus={() => {
-                        setFocus(true);
-                        onFocus();
-                    }}
-                    options={options}
-                    noResultsText={intl.formatMessage(MESSAGES.noOptions)}
-                    onChange={newValue => {
-                        onChange(newValue);
-                    }}
-                />
-            </div>
-        </FormControl>
+        </Box>
     );
 };
 
-SelectComponent.defaultProps = {
+SelectCustom.defaultProps = {
     value: undefined,
     errors: [],
-    withMarginTop: true,
+    label: '',
     multi: false,
     disabled: false,
     clearable: true,
-    isFocused: false,
     required: false,
-    searchable: true,
-    onChange: () => {},
+    touched: false,
+    loading: false,
     options: [],
     onBlur: () => {},
-    onFocus: () => {},
-    label: '',
-    // TODO use library translations
-    // noResultsText: '',
+    getOptionSelected: null,
+    getOptionLabel: null,
+    renderOption: null,
+    noOptionsText: MESSAGES.noOptions,
 };
 
-SelectComponent.propTypes = {
-    withMarginTop: PropTypes.bool,
+SelectCustom.propTypes = {
     errors: PropTypes.arrayOf(PropTypes.string),
     keyValue: PropTypes.string.isRequired,
     label: PropTypes.string,
     required: PropTypes.bool,
     disabled: PropTypes.bool,
-    searchable: PropTypes.bool,
     clearable: PropTypes.bool,
-    isFocused: PropTypes.bool,
     multi: PropTypes.bool,
     value: PropTypes.any,
     onBlur: PropTypes.func,
-    onFocus: PropTypes.func,
-    // noResultsText: PropTypes.string,
+    noOptionsText: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     options: PropTypes.array,
-    onChange: PropTypes.func,
-    classes: PropTypes.object.isRequired,
+    touched: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
+    loading: PropTypes.bool,
+    onChange: PropTypes.func.isRequired,
+    getOptionLabel: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+    getOptionSelected: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+    renderOption: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 };
 
-const styledSelectComponent = withStyles(styles)(SelectComponent);
-export { styledSelectComponent as Select };
+export { SelectCustom as Select };

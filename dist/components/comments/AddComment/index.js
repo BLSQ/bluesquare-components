@@ -78,8 +78,8 @@ var AddComment = function AddComment(_ref) {
     className: classes.textAreaContainer
   }, /*#__PURE__*/_react["default"].createElement(_core.TextareaAutosize, {
     className: className !== null && className !== void 0 ? className : classes.textArea,
-    rowsMin: minRows,
-    rowsMax: maxRows,
+    minRows: minRows,
+    maxRows: maxRows,
     "aria-label": "write comment here",
     placeholder: placeholder !== null && placeholder !== void 0 ? placeholder : intl.formatMessage(_messages.MESSAGES.textAreaPlaceholder),
     onChange: handleChange,

@@ -14,6 +14,7 @@ import StopRoundedIcon from '@material-ui/icons/StopRounded';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import RestoreFromTrash from '@material-ui/icons/RestoreFromTrash';
 import PublicIcon from '@material-ui/icons/Public';
+import ClearIcon from '@material-ui/icons/Clear';
 
 import { XmlSvg } from '../../../svg/XmlSvgComponent';
 import { DHIS2Svg } from '../../../svg/DHIS2SvgComponent';
@@ -40,6 +41,7 @@ const ICON_VARIANTS = {
     xls: ExcellSvg,
     download: GetAppIcon,
     globe: PublicIcon,
+    clear: ClearIcon,
 };
 
 const styles = theme => ({

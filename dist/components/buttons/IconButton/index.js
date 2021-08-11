@@ -37,6 +37,8 @@ var _RestoreFromTrash = _interopRequireDefault(require("@material-ui/icons/Resto
 
 var _Public = _interopRequireDefault(require("@material-ui/icons/Public"));
 
+var _Clear = _interopRequireDefault(require("@material-ui/icons/Clear"));
+
 var _XmlSvgComponent = require("../../../svg/XmlSvgComponent");
 
 var _DHIS2SvgComponent = require("../../../svg/DHIS2SvgComponent");
@@ -75,7 +77,8 @@ var ICON_VARIANTS = {
   stop: _StopRounded["default"],
   xls: _ExcellSvgComponent.ExcellSvg,
   download: _GetApp["default"],
-  globe: _Public["default"]
+  globe: _Public["default"],
+  clear: _Clear["default"]
 };
 
 var styles = function styles(theme) {

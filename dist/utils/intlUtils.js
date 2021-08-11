@@ -38,7 +38,6 @@ var translateOptions = function translateOptions(options, formatMessage) {
 };
 /**
  * Receive a timestamp and displays it as a human readable date
- * TO-DO: display date regarding the locale
  *
  * @param {Number} timestamp
  */
@@ -47,7 +46,7 @@ var translateOptions = function translateOptions(options, formatMessage) {
 exports.translateOptions = translateOptions;
 
 var displayDateFromTimestamp = function displayDateFromTimestamp(timestamp) {
-  return _moment["default"].unix(timestamp).format('DD/MM/YYYY HH:mm');
+  return _moment["default"].unix(timestamp).format('LTS');
 };
 
 exports.displayDateFromTimestamp = displayDateFromTimestamp;

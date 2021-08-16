@@ -1,23 +1,34 @@
 body {
+    .ReactTable .rt-tbody .rt-td {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &.justify-left {
+            justify-content: flex-start;
+        }
+    }
+
+    .ReactTable .rt-tr {
+        background-color: white;
+    }
+
+    .filter__container__select.date-select .filter__container__select__label {
+        width: 75px;
+    }
+
+    &.instances {
+        .ReactTable .rt-tbody {
+            padding-bottom: 16px;
+        }
+    }
+
+    .ReactTable .rt-thead.-header {
+        z-index: 100;
+    }
 
     .ReactTable {
         border: 1px solid $gray;
-
-        &.no-border {
-            border: none;
-        }
-
-        .bullet {
-            background-color: red;
-            width: 20px;
-            height: 20px;
-            border-radius: 20px;
-            display: inline-block;
-
-            &.normalized {
-                background-color: green;
-            }
-        }
 
         .rt-noData {
             top: 80px;

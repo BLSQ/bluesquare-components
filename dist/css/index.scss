@@ -1,38 +1,17 @@
-// $fa-font-path: "~font-awesome/fonts";
+$fa-font-path: "~font-awesome/fonts";
 
-// @import "~font-awesome/css/font-awesome.css";
-// @import "~leaflet/dist/leaflet.css";
-@import url('https://unpkg.com/leaflet@1.5.1/dist/leaflet.css');
-// @import '~react-leaflet-markercluster/dist/styles.min.css';
-// @import '~react-table/react-table.css';
-
-// @import "reset";
-// @import "settings";
-// @import "mixins";
-// @import "type-styles";
-// @import "lists";
-// @import "fonts";
-// @import "layout";
-// @import "login";
-// @import "maps";
-// @import "forms";
-// @import "videos";
-// @import "iaso";
-
-$green: #45D288;
-$blue: #3f51b5;
 $gray: #ccc;
+$blue: #3f51b5;
 $active: $blue;
-$padding-unit: 32px;
+$dark-gray: #333;
 
-// @import "iaso/reactTable";
+$font-size-s: 0.875rem; // 14px
+$font-size-standard: 1rem; // 16px
+$font-size-xs: 0.75rem; // 12px
+
+$icon-font: FontAwesome;
+
+@import "~font-awesome/css/font-awesome.css";
 @import "customTable";
-// @import "iaso/leafletCluster";
 @import "leafletCluster";
-// @import "buttons";
-
-
-
-// body {
-//   background-color: $background-gray;
-// }
+@import "maps";

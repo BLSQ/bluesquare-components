@@ -43,22 +43,6 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -119,172 +103,176 @@ var Table = /*#__PURE__*/function (_Component) {
 
   var _super = _createSuper(Table);
 
-  function Table(props) {
-    var _this;
-
+  function Table() {
     _classCallCheck(this, Table);
 
-    _this = _super.call(this, props);
-    var formatMessage = props.intl.formatMessage,
-        setTableSelection = props.setTableSelection;
-    setTableSelection('reset');
-    Object.assign(_reactTable.ReactTableDefaults, (0, _messages.customTableTranslations)(formatMessage));
-    return _this;
+    return _super.apply(this, arguments);
   }
 
   _createClass(Table, [{
-    key: "shouldComponentUpdate",
-    value: function shouldComponentUpdate(nextProps) {
-      var newColumns = (0, _tableUtils.getSimplifiedColumns)(nextProps.columns);
-      var oldColumns = (0, _tableUtils.getSimplifiedColumns)(this.props.columns);
-      return !(0, _isEqual["default"])(nextProps.data, this.props.data) || !(0, _isEqual["default"])(newColumns, oldColumns) || !(0, _isEqual["default"])(nextProps.selection.selectedItems, this.props.selection.selectedItems) || !(0, _isEqual["default"])(nextProps.selection.selectAll, this.props.selection.selectAll) || !(0, _isEqual["default"])(nextProps.selection.unSelectedItems, this.props.selection.unSelectedItems) || !(0, _isEqual["default"])(nextProps.extraProps, this.props.extraProps) || !(0, _isEqual["default"])(nextProps.watchToRender, this.props.watchToRender);
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      this.props.setTableSelection('reset');
-    }
-  }, {
-    key: "onTableParamsChange",
-    value: function onTableParamsChange(key, value) {
-      var _this$props = this.props,
-          params = _this$props.params,
-          redirectTo = _this$props.redirectTo,
-          baseUrl = _this$props.baseUrl,
-          paramsPrefix = _this$props.paramsPrefix;
-
-      var newParams = _objectSpread(_objectSpread({}, params), {}, _defineProperty({}, (0, _tableUtils.getParamsKey)(paramsPrefix, key), key !== 'order' ? value : (0, _tableUtils.getSort)(value)));
-
-      if (key === 'pageSize') {
-        newParams[(0, _tableUtils.getParamsKey)(paramsPrefix, 'page')] = 1;
-      }
-
-      redirectTo(baseUrl, newParams);
-    }
-  }, {
-    key: "onSelect",
-    value: function onSelect(isSelected, item) {
-      var selectedItems = _toConsumableArray(this.props.selection.selectedItems);
-
-      var unSelectedItems = _toConsumableArray(this.props.selection.unSelectedItems);
-
-      var _this$props2 = this.props,
-          selectAll = _this$props2.selection.selectAll,
-          count = _this$props2.count,
-          setTableSelection = _this$props2.setTableSelection;
-
-      if (selectAll) {
-        if (!isSelected) {
-          unSelectedItems.push(item);
-        } else {
-          var itemIndex = unSelectedItems.findIndex(function (el) {
-            return (0, _isEqual["default"])(el, item);
-          });
-
-          if (itemIndex !== -1) {
-            unSelectedItems.splice(itemIndex, 1);
-          }
-        }
-
-        setTableSelection('unselect', unSelectedItems, count);
-      } else {
-        if (isSelected) {
-          selectedItems.push(item);
-        } else {
-          var _itemIndex = selectedItems.findIndex(function (el) {
-            return (0, _isEqual["default"])(el, item);
-          });
-
-          selectedItems.splice(_itemIndex, 1);
-        }
-
-        setTableSelection('select', selectedItems);
-      }
-    }
-  }, {
-    key: "isItemSelected",
-    value: function isItemSelected(item) {
-      var _this$props$selection = this.props.selection,
-          selectedItems = _this$props$selection.selectedItems,
-          unSelectedItems = _this$props$selection.unSelectedItems,
-          selectAll = _this$props$selection.selectAll;
-
-      if (!selectAll) {
-        return Boolean(selectedItems.find(function (el) {
-          return (0, _isEqual["default"])(el, item);
-        }));
-      }
-
-      return !unSelectedItems.find(function (el) {
-        return (0, _isEqual["default"])(el, item);
-      });
-    }
-  }, {
     key: "render",
-    value: function render() {
-      var _this2 = this,
+    value: // constructor(props) {
+    //     super(props);
+    //     const {
+    //         intl: { formatMessage },
+    //         setTableSelection,
+    //     } = props;
+    //     setTableSelection('reset');
+    //     Object.assign(
+    //         ReactTableDefaults,
+    //         customTableTranslations(formatMessage),
+    //     );
+    // }
+    // shouldComponentUpdate(nextProps) {
+    //     const newColumns = getSimplifiedColumns(nextProps.columns);
+    //     const oldColumns = getSimplifiedColumns(this.props.columns);
+    //     return (
+    //         !isEqual(nextProps.data, this.props.data) ||
+    //         !isEqual(newColumns, oldColumns) ||
+    //         !isEqual(
+    //             nextProps.selection.selectedItems,
+    //             this.props.selection.selectedItems,
+    //         ) ||
+    //         !isEqual(
+    //             nextProps.selection.selectAll,
+    //             this.props.selection.selectAll,
+    //         ) ||
+    //         !isEqual(
+    //             nextProps.selection.unSelectedItems,
+    //             this.props.selection.unSelectedItems,
+    //         ) ||
+    //         !isEqual(nextProps.extraProps, this.props.extraProps) ||
+    //         !isEqual(nextProps.watchToRender, this.props.watchToRender)
+    //     );
+    // }
+    // componentWillUnmount() {
+    //     this.props.setTableSelection('reset');
+    // }
+    // onTableParamsChange(key, value) {
+    //     const { params, redirectTo, baseUrl, paramsPrefix } = this.props;
+    //     const newParams = {
+    //         ...params,
+    //         [getParamsKey(paramsPrefix, key)]:
+    //             key !== 'order' ? value : getSort(value),
+    //     };
+    //     if (key === 'pageSize') {
+    //         newParams[getParamsKey(paramsPrefix, 'page')] = 1;
+    //     }
+    //     redirectTo(baseUrl, newParams);
+    // }
+    // onSelect(isSelected, item) {
+    //     const selectedItems = [...this.props.selection.selectedItems];
+    //     const unSelectedItems = [...this.props.selection.unSelectedItems];
+    //     const {
+    //         selection: { selectAll },
+    //         count,
+    //         setTableSelection,
+    //     } = this.props;
+    //     if (selectAll) {
+    //         if (!isSelected) {
+    //             unSelectedItems.push(item);
+    //         } else {
+    //             const itemIndex = unSelectedItems.findIndex(el =>
+    //                 isEqual(el, item),
+    //             );
+    //             if (itemIndex !== -1) {
+    //                 unSelectedItems.splice(itemIndex, 1);
+    //             }
+    //         }
+    //         setTableSelection('unselect', unSelectedItems, count);
+    //     } else {
+    //         if (isSelected) {
+    //             selectedItems.push(item);
+    //         } else {
+    //             const itemIndex = selectedItems.findIndex(el =>
+    //                 isEqual(el, item),
+    //             );
+    //             selectedItems.splice(itemIndex, 1);
+    //         }
+    //         setTableSelection('select', selectedItems);
+    //     }
+    // }
+    // isItemSelected(item) {
+    //     const {
+    //         selection: { selectedItems, unSelectedItems, selectAll },
+    //     } = this.props;
+    //     if (!selectAll) {
+    //         return Boolean(selectedItems.find(el => isEqual(el, item)));
+    //     }
+    //     return !unSelectedItems.find(el => isEqual(el, item));
+    // }
+    function render() {
+      var _selectionActionMessa,
           _classNames,
-          _classNames2;
+          _classNames2,
+          _this = this;
 
-      var _this$props3 = this.props,
-          classes = _this$props3.classes,
-          formatMessage = _this$props3.intl.formatMessage,
-          params = _this$props3.params,
-          data = _this$props3.data,
-          count = _this$props3.count,
-          pages = _this$props3.pages,
-          columns = _this$props3.columns,
-          defaultSorted = _this$props3.defaultSorted,
-          countOnTop = _this$props3.countOnTop,
-          marginTop = _this$props3.marginTop,
-          multiSelect = _this$props3.multiSelect,
-          selectionActions = _this$props3.selectionActions,
-          setTableSelection = _this$props3.setTableSelection,
-          selectCount = _this$props3.selection.selectCount,
-          selection = _this$props3.selection,
-          extraProps = _this$props3.extraProps,
-          paramsPrefix = _this$props3.paramsPrefix,
-          selectionActionMessage = _this$props3.selectionActionMessage;
-
-      var actions = _toConsumableArray((0, _tableUtils.defaultSelectionActions)(function () {
-        return setTableSelection('selectAll', [], count);
-      }, function () {
-        return setTableSelection('reset');
-      }, formatMessage));
-
-      actions = actions.concat(selectionActions);
-      var page = params[(0, _tableUtils.getParamsKey)(paramsPrefix, 'page')] ? params[(0, _tableUtils.getParamsKey)(paramsPrefix, 'page')] - 1 : 0;
-      var urlPageSize = parseInt(params[(0, _tableUtils.getParamsKey)(paramsPrefix, 'pageSize')], 10);
-      var pageSize = urlPageSize || extraProps && extraProps.defaultPageSize;
-      var showPagination = !(pageSize >= count && page === 0);
-      pageSize = pageSize < count ? pageSize : count;
-
-      if (count === 0) {
-        pageSize = 2;
-      }
-
-      var order = params[(0, _tableUtils.getParamsKey)(paramsPrefix, 'order')] ? (0, _tableUtils.getOrderArray)(params[(0, _tableUtils.getParamsKey)(paramsPrefix, 'order')]) : defaultSorted;
-
-      if (multiSelect && !columns.find(function (c) {
-        return c.accessor === 'selected';
-      })) {
-        columns.push({
-          Header: formatMessage(_messages.MESSAGES.selection),
-          accessor: 'selected',
-          width: 100,
-          sortable: false,
-          Cell: function Cell(settings) {
-            return /*#__PURE__*/_react["default"].createElement(_core.Checkbox, {
-              color: "primary",
-              checked: _this2.isItemSelected(settings.original),
-              onChange: function onChange(event) {
-                return _this2.onSelect(event.target.checked, settings.original);
-              }
-            });
-          }
-        });
-      }
-
+      // const {
+      //     classes,
+      //     intl: { formatMessage },
+      //     params,
+      //     data,
+      //     count,
+      //     pages,
+      //     columns,
+      //     defaultSorted,
+      //     countOnTop,
+      //     marginTop,
+      //     multiSelect,
+      //     selectionActions,
+      //     setTableSelection,
+      //     selection: { selectCount },
+      //     selection,
+      //     extraProps,
+      //     paramsPrefix,
+      //     selectionActionMessage,
+      // } = this.props;
+      // let actions = [
+      //     ...defaultSelectionActions(
+      //         () => setTableSelection('selectAll', [], count),
+      //         () => setTableSelection('reset'),
+      //         formatMessage,
+      //     ),
+      // ];
+      // actions = actions.concat(selectionActions);
+      // const page = params[getParamsKey(paramsPrefix, 'page')]
+      //     ? params[getParamsKey(paramsPrefix, 'page')] - 1
+      //     : 0;
+      // const urlPageSize = parseInt(
+      //     params[getParamsKey(paramsPrefix, 'pageSize')],
+      //     10,
+      // );
+      // let pageSize =
+      //     urlPageSize || (extraProps && extraProps.defaultPageSize);
+      // const showPagination = !(pageSize >= count && page === 0);
+      // pageSize = pageSize < count ? pageSize : count;
+      // if (count === 0) {
+      //     pageSize = 2;
+      // }
+      // const order = params[getParamsKey(paramsPrefix, 'order')]
+      //     ? getOrderArray(params[getParamsKey(paramsPrefix, 'order')])
+      //     : defaultSorted;
+      // if (multiSelect && !columns.find(c => c.accessor === 'selected')) {
+      //     columns.push({
+      //         Header: formatMessage(MESSAGES.selection),
+      //         accessor: 'selected',
+      //         width: 100,
+      //         sortable: false,
+      //         Cell: settings => (
+      //             <Checkbox
+      //                 color="primary"
+      //                 checked={this.isItemSelected(settings.original)}
+      //                 onChange={event =>
+      //                     this.onSelect(
+      //                         event.target.checked,
+      //                         settings.original,
+      //                     )
+      //                 }
+      //             />
+      //         ),
+      //     });
+      // }
+      return null;
       return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_SelectionSpeedDials.SelectionSpeedDials, {
         selection: selection,
         hidden: !multiSelect,
@@ -292,7 +280,7 @@ var Table = /*#__PURE__*/function (_Component) {
         reset: function reset() {
           return setTableSelection('reset');
         },
-        actionMessage: selectionActionMessage !== null && selectionActionMessage !== void 0 ? selectionActionMessage : formatMessage(_messages.MESSAGES.selectionAction)
+        actionMessage: (_selectionActionMessa = selectionActionMessage) !== null && _selectionActionMessa !== void 0 ? _selectionActionMessa : formatMessage(_messages.MESSAGES.selectionAction)
       }), /*#__PURE__*/_react["default"].createElement("div", {
         className: (0, _classnames["default"])(classes.reactTable, (_classNames = {}, _defineProperty(_classNames, classes.reactTableNoPaginationCountBottom, !countOnTop && !showPagination), _defineProperty(_classNames, classes.reactTableNoMarginTop, !marginTop), _classNames))
       }, /*#__PURE__*/_react["default"].createElement("div", {
@@ -309,13 +297,13 @@ var Table = /*#__PURE__*/function (_Component) {
         pageSize: pageSize,
         page: page,
         onPageChange: function onPageChange(newPage) {
-          return _this2.onTableParamsChange('page', newPage + 1);
+          return _this.onTableParamsChange('page', newPage + 1);
         },
         onPageSizeChange: function onPageSizeChange(newPageSize) {
-          return _this2.onTableParamsChange('pageSize', newPageSize);
+          return _this.onTableParamsChange('pageSize', newPageSize);
         },
         onSortedChange: function onSortedChange(newOrder) {
-          return _this2.onTableParamsChange('order', newOrder);
+          return _this.onTableParamsChange('order', newOrder);
         }
       }, extraProps))));
     }

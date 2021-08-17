@@ -84,7 +84,6 @@
     },
     "dependencies": {
         "font-awesome": "^4.7.0",
-        "video.js": "^7.10.2",
         "react-intersection-observer": "^8.26.1"
     }
 }

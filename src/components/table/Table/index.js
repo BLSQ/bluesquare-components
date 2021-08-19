@@ -59,170 +59,169 @@ import { styles } from './styles';
  */
 
 class Table extends Component {
-    // constructor(props) {
-    //     super(props);
-    //     const {
-    //         intl: { formatMessage },
-    //         setTableSelection,
-    //     } = props;
-    //     setTableSelection('reset');
-    //     Object.assign(
-    //         ReactTableDefaults,
-    //         customTableTranslations(formatMessage),
-    //     );
-    // }
+    constructor(props) {
+        super(props);
+        const {
+            intl: { formatMessage },
+            setTableSelection,
+        } = props;
+        setTableSelection('reset');
+        Object.assign(
+            ReactTableDefaults,
+            customTableTranslations(formatMessage),
+        );
+    }
 
-    // shouldComponentUpdate(nextProps) {
-    //     const newColumns = getSimplifiedColumns(nextProps.columns);
-    //     const oldColumns = getSimplifiedColumns(this.props.columns);
-    //     return (
-    //         !isEqual(nextProps.data, this.props.data) ||
-    //         !isEqual(newColumns, oldColumns) ||
-    //         !isEqual(
-    //             nextProps.selection.selectedItems,
-    //             this.props.selection.selectedItems,
-    //         ) ||
-    //         !isEqual(
-    //             nextProps.selection.selectAll,
-    //             this.props.selection.selectAll,
-    //         ) ||
-    //         !isEqual(
-    //             nextProps.selection.unSelectedItems,
-    //             this.props.selection.unSelectedItems,
-    //         ) ||
-    //         !isEqual(nextProps.extraProps, this.props.extraProps) ||
-    //         !isEqual(nextProps.watchToRender, this.props.watchToRender)
-    //     );
-    // }
+    shouldComponentUpdate(nextProps) {
+        const newColumns = getSimplifiedColumns(nextProps.columns);
+        const oldColumns = getSimplifiedColumns(this.props.columns);
+        return (
+            !isEqual(nextProps.data, this.props.data) ||
+            !isEqual(newColumns, oldColumns) ||
+            !isEqual(
+                nextProps.selection.selectedItems,
+                this.props.selection.selectedItems,
+            ) ||
+            !isEqual(
+                nextProps.selection.selectAll,
+                this.props.selection.selectAll,
+            ) ||
+            !isEqual(
+                nextProps.selection.unSelectedItems,
+                this.props.selection.unSelectedItems,
+            ) ||
+            !isEqual(nextProps.extraProps, this.props.extraProps) ||
+            !isEqual(nextProps.watchToRender, this.props.watchToRender)
+        );
+    }
 
-    // componentWillUnmount() {
-    //     this.props.setTableSelection('reset');
-    // }
+    componentWillUnmount() {
+        this.props.setTableSelection('reset');
+    }
 
-    // onTableParamsChange(key, value) {
-    //     const { params, redirectTo, baseUrl, paramsPrefix } = this.props;
-    //     const newParams = {
-    //         ...params,
-    //         [getParamsKey(paramsPrefix, key)]:
-    //             key !== 'order' ? value : getSort(value),
-    //     };
-    //     if (key === 'pageSize') {
-    //         newParams[getParamsKey(paramsPrefix, 'page')] = 1;
-    //     }
-    //     redirectTo(baseUrl, newParams);
-    // }
+    onTableParamsChange(key, value) {
+        const { params, redirectTo, baseUrl, paramsPrefix } = this.props;
+        const newParams = {
+            ...params,
+            [getParamsKey(paramsPrefix, key)]:
+                key !== 'order' ? value : getSort(value),
+        };
+        if (key === 'pageSize') {
+            newParams[getParamsKey(paramsPrefix, 'page')] = 1;
+        }
+        redirectTo(baseUrl, newParams);
+    }
 
-    // onSelect(isSelected, item) {
-    //     const selectedItems = [...this.props.selection.selectedItems];
-    //     const unSelectedItems = [...this.props.selection.unSelectedItems];
-    //     const {
-    //         selection: { selectAll },
-    //         count,
-    //         setTableSelection,
-    //     } = this.props;
-    //     if (selectAll) {
-    //         if (!isSelected) {
-    //             unSelectedItems.push(item);
-    //         } else {
-    //             const itemIndex = unSelectedItems.findIndex(el =>
-    //                 isEqual(el, item),
-    //             );
-    //             if (itemIndex !== -1) {
-    //                 unSelectedItems.splice(itemIndex, 1);
-    //             }
-    //         }
-    //         setTableSelection('unselect', unSelectedItems, count);
-    //     } else {
-    //         if (isSelected) {
-    //             selectedItems.push(item);
-    //         } else {
-    //             const itemIndex = selectedItems.findIndex(el =>
-    //                 isEqual(el, item),
-    //             );
-    //             selectedItems.splice(itemIndex, 1);
-    //         }
-    //         setTableSelection('select', selectedItems);
-    //     }
-    // }
+    onSelect(isSelected, item) {
+        const selectedItems = [...this.props.selection.selectedItems];
+        const unSelectedItems = [...this.props.selection.unSelectedItems];
+        const {
+            selection: { selectAll },
+            count,
+            setTableSelection,
+        } = this.props;
+        if (selectAll) {
+            if (!isSelected) {
+                unSelectedItems.push(item);
+            } else {
+                const itemIndex = unSelectedItems.findIndex(el =>
+                    isEqual(el, item),
+                );
+                if (itemIndex !== -1) {
+                    unSelectedItems.splice(itemIndex, 1);
+                }
+            }
+            setTableSelection('unselect', unSelectedItems, count);
+        } else {
+            if (isSelected) {
+                selectedItems.push(item);
+            } else {
+                const itemIndex = selectedItems.findIndex(el =>
+                    isEqual(el, item),
+                );
+                selectedItems.splice(itemIndex, 1);
+            }
+            setTableSelection('select', selectedItems);
+        }
+    }
 
-    // isItemSelected(item) {
-    //     const {
-    //         selection: { selectedItems, unSelectedItems, selectAll },
-    //     } = this.props;
-    //     if (!selectAll) {
-    //         return Boolean(selectedItems.find(el => isEqual(el, item)));
-    //     }
-    //     return !unSelectedItems.find(el => isEqual(el, item));
-    // }
+    isItemSelected(item) {
+        const {
+            selection: { selectedItems, unSelectedItems, selectAll },
+        } = this.props;
+        if (!selectAll) {
+            return Boolean(selectedItems.find(el => isEqual(el, item)));
+        }
+        return !unSelectedItems.find(el => isEqual(el, item));
+    }
 
     render() {
-        // const {
-        //     classes,
-        //     intl: { formatMessage },
-        //     params,
-        //     data,
-        //     count,
-        //     pages,
-        //     columns,
-        //     defaultSorted,
-        //     countOnTop,
-        //     marginTop,
-        //     multiSelect,
-        //     selectionActions,
-        //     setTableSelection,
-        //     selection: { selectCount },
-        //     selection,
-        //     extraProps,
-        //     paramsPrefix,
-        //     selectionActionMessage,
-        // } = this.props;
+        const {
+            classes,
+            intl: { formatMessage },
+            params,
+            data,
+            count,
+            pages,
+            columns,
+            defaultSorted,
+            countOnTop,
+            marginTop,
+            multiSelect,
+            selectionActions,
+            setTableSelection,
+            selection: { selectCount },
+            selection,
+            extraProps,
+            paramsPrefix,
+            selectionActionMessage,
+        } = this.props;
 
-        // let actions = [
-        //     ...defaultSelectionActions(
-        //         () => setTableSelection('selectAll', [], count),
-        //         () => setTableSelection('reset'),
-        //         formatMessage,
-        //     ),
-        // ];
-        // actions = actions.concat(selectionActions);
-        // const page = params[getParamsKey(paramsPrefix, 'page')]
-        //     ? params[getParamsKey(paramsPrefix, 'page')] - 1
-        //     : 0;
-        // const urlPageSize = parseInt(
-        //     params[getParamsKey(paramsPrefix, 'pageSize')],
-        //     10,
-        // );
-        // let pageSize =
-        //     urlPageSize || (extraProps && extraProps.defaultPageSize);
-        // const showPagination = !(pageSize >= count && page === 0);
-        // pageSize = pageSize < count ? pageSize : count;
-        // if (count === 0) {
-        //     pageSize = 2;
-        // }
-        // const order = params[getParamsKey(paramsPrefix, 'order')]
-        //     ? getOrderArray(params[getParamsKey(paramsPrefix, 'order')])
-        //     : defaultSorted;
-        // if (multiSelect && !columns.find(c => c.accessor === 'selected')) {
-        //     columns.push({
-        //         Header: formatMessage(MESSAGES.selection),
-        //         accessor: 'selected',
-        //         width: 100,
-        //         sortable: false,
-        //         Cell: settings => (
-        //             <Checkbox
-        //                 color="primary"
-        //                 checked={this.isItemSelected(settings.original)}
-        //                 onChange={event =>
-        //                     this.onSelect(
-        //                         event.target.checked,
-        //                         settings.original,
-        //                     )
-        //                 }
-        //             />
-        //         ),
-        //     });
-        // }
-        return null;
+        let actions = [
+            ...defaultSelectionActions(
+                () => setTableSelection('selectAll', [], count),
+                () => setTableSelection('reset'),
+                formatMessage,
+            ),
+        ];
+        actions = actions.concat(selectionActions);
+        const page = params[getParamsKey(paramsPrefix, 'page')]
+            ? params[getParamsKey(paramsPrefix, 'page')] - 1
+            : 0;
+        const urlPageSize = parseInt(
+            params[getParamsKey(paramsPrefix, 'pageSize')],
+            10,
+        );
+        let pageSize =
+            urlPageSize || (extraProps && extraProps.defaultPageSize);
+        const showPagination = !(pageSize >= count && page === 0);
+        pageSize = pageSize < count ? pageSize : count;
+        if (count === 0) {
+            pageSize = 2;
+        }
+        const order = params[getParamsKey(paramsPrefix, 'order')]
+            ? getOrderArray(params[getParamsKey(paramsPrefix, 'order')])
+            : defaultSorted;
+        if (multiSelect && !columns.find(c => c.accessor === 'selected')) {
+            columns.push({
+                Header: formatMessage(MESSAGES.selection),
+                accessor: 'selected',
+                width: 100,
+                sortable: false,
+                Cell: settings => (
+                    <Checkbox
+                        color="primary"
+                        checked={this.isItemSelected(settings.original)}
+                        onChange={event =>
+                            this.onSelect(
+                                event.target.checked,
+                                settings.original,
+                            )
+                        }
+                    />
+                ),
+            });
+        }
         return (
             <>
                 <SelectionSpeedDials

@@ -39,6 +39,8 @@ var _Public = _interopRequireDefault(require("@material-ui/icons/Public"));
 
 var _Clear = _interopRequireDefault(require("@material-ui/icons/Clear"));
 
+var _ClearAll = _interopRequireDefault(require("@material-ui/icons/ClearAll"));
+
 var _XmlSvgComponent = require("../../../svg/XmlSvgComponent");
 
 var _DHIS2SvgComponent = require("../../../svg/DHIS2SvgComponent");
@@ -78,7 +80,8 @@ var ICON_VARIANTS = {
   xls: _ExcellSvgComponent.ExcellSvg,
   download: _GetApp["default"],
   globe: _Public["default"],
-  clear: _Clear["default"]
+  clear: _Clear["default"],
+  clearAll: _ClearAll["default"]
 };
 
 var styles = function styles(theme) {

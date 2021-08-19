@@ -15,6 +15,7 @@ import GetAppIcon from '@material-ui/icons/GetApp';
 import RestoreFromTrash from '@material-ui/icons/RestoreFromTrash';
 import PublicIcon from '@material-ui/icons/Public';
 import ClearIcon from '@material-ui/icons/Clear';
+import ClearAllIcon from '@material-ui/icons/ClearAll';
 
 import { XmlSvg } from '../../../svg/XmlSvgComponent';
 import { DHIS2Svg } from '../../../svg/DHIS2SvgComponent';
@@ -42,6 +43,7 @@ const ICON_VARIANTS = {
     download: GetAppIcon,
     globe: PublicIcon,
     clear: ClearIcon,
+    clearAll: ClearAllIcon,
 };
 
 const styles = theme => ({

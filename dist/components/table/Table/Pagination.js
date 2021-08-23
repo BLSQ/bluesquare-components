@@ -68,8 +68,6 @@ var Pagination = function Pagination(_ref) {
       onRowsPerPageChange: function onRowsPerPageChange(event) {
         onTableParamsChange('pageSize', event.target.value);
       },
-      nextIconButtonText: formatMessage(_messages.MESSAGES.next),
-      backIconButtonText: formatMessage(_messages.MESSAGES.previousText),
       ActionsComponent: function ActionsComponent() {
         return /*#__PURE__*/_react["default"].createElement(_TablePaginationActions.TablePaginationActions, {
           rowsPerPageOptions: _constants.ROWS_PER_PAGE_OPTIONS,

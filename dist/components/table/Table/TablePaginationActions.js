@@ -114,7 +114,7 @@ var TablePaginationActions = function TablePaginationActions(_ref) {
     variant: "outlined",
     onClick: handleNextButtonClick,
     disabled: lastDisabled,
-    "aria-label": formatMessage(_messages.MESSAGES.next)
+    "aria-label": formatMessage(_messages.MESSAGES.nextText)
   }, /*#__PURE__*/_react["default"].createElement(_KeyboardArrowRight["default"], {
     color: lastDisabled ? 'inherit' : 'primary'
   })), /*#__PURE__*/_react["default"].createElement(_IconButton["default"], {

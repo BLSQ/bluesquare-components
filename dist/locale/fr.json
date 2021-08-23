@@ -26,6 +26,8 @@
     "blsq.table.noResult": "Aucun résultat",
     "blsq.table.of": "de",
     "blsq.table.page": "Page",
+    "blsq.table.last": "Dernière page",
+    "blsq.table.first": "Première page",
     "blsq.table.previous": "Précédent",
     "blsq.table.results": "résultats"
 }

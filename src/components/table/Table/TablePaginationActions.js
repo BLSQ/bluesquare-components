@@ -103,7 +103,7 @@ const TablePaginationActions = ({
                 variant="outlined"
                 onClick={handleNextButtonClick}
                 disabled={lastDisabled}
-                aria-label={formatMessage(MESSAGES.next)}
+                aria-label={formatMessage(MESSAGES.nextText)}
             >
                 <KeyboardArrowRight
                     color={lastDisabled ? 'inherit' : 'primary'}

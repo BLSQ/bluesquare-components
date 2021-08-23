@@ -51,8 +51,6 @@ const Pagination = ({
                 onRowsPerPageChange={event => {
                     onTableParamsChange('pageSize', event.target.value);
                 }}
-                nextIconButtonText={formatMessage(MESSAGES.next)}
-                backIconButtonText={formatMessage(MESSAGES.previousText)}
                 ActionsComponent={() => (
                     <TablePaginationActions
                         rowsPerPageOptions={ROWS_PER_PAGE_OPTIONS}

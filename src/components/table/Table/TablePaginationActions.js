@@ -81,7 +81,7 @@ const TablePaginationActions = ({
                 variant="outlined"
                 onClick={handleBackButtonClick}
                 disabled={firstDisabled}
-                aria-label={formatMessage(MESSAGES.previous)}
+                aria-label={formatMessage(MESSAGES.previousText)}
             >
                 <KeyboardArrowLeft
                     color={firstDisabled ? 'inherit' : 'primary'}

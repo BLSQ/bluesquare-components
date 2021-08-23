@@ -1,6 +1,6 @@
 const DEFAULT_PAGE_SIZE = 10;
 const DEFAULT_PAGE = 1;
-const DEFAULT_ORDER = '-updated_at';
+const DEFAULT_ORDER = '-created_at';
 const ROWS_PER_PAGE_OPTIONS = [5, 10, 20, 30, 40, 50];
 
 export {

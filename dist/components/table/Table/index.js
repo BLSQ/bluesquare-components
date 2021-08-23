@@ -19,6 +19,8 @@ var _Paper = _interopRequireDefault(require("@material-ui/core/Paper"));
 
 var _TableContainer = _interopRequireDefault(require("@material-ui/core/TableContainer"));
 
+var _styles = require("@material-ui/core/styles");
+
 var _reactTable = require("react-table");
 
 var _useSafeIntl = require("../../../utils/useSafeIntl");
@@ -97,6 +99,14 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
  *   @param {Object} selection
  *   @param {Function} setTableSelection
  */
+var useStyles = (0, _styles.makeStyles)(function () {
+  return {
+    tableContainer: {
+      overflow: 'hidden'
+    }
+  };
+});
+
 var Table = function Table(props) {
   var params = props.params,
       count = props.count,
@@ -113,6 +123,7 @@ var Table = function Table(props) {
       selection = props.selection,
       selectionActionMessage = props.selectionActionMessage;
   var intl = (0, _useSafeIntl.useSafeIntl)();
+  var classes = useStyles();
   var formatMessage = intl.formatMessage;
   var columns = (0, _react.useMemo)(function () {
     var temp = _toConsumableArray(props.columns);
@@ -203,7 +214,9 @@ var Table = function Table(props) {
     selectCount: selection.selectCount
   }), /*#__PURE__*/_react["default"].createElement(_Paper["default"], {
     elevation: 3
-  }, /*#__PURE__*/_react["default"].createElement(_TableContainer["default"], null, /*#__PURE__*/_react["default"].createElement(_Table["default"], _extends({}, tableProps, {
+  }, /*#__PURE__*/_react["default"].createElement(_TableContainer["default"], {
+    className: classes.tableContainer
+  }, /*#__PURE__*/_react["default"].createElement(_Table["default"], _extends({}, tableProps, {
     stickyHeader: true
   }), /*#__PURE__*/_react["default"].createElement(_Head.Head, {
     headerGroups: headerGroups

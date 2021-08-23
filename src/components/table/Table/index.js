@@ -4,6 +4,7 @@ import Box from '@material-ui/core/Box';
 import MaUTable from '@material-ui/core/Table';
 import Paper from '@material-ui/core/Paper';
 import TableContainer from '@material-ui/core/TableContainer';
+import { makeStyles } from '@material-ui/core/styles';
 
 import {
     useTable,
@@ -63,6 +64,11 @@ import { Pagination } from './Pagination';
  *   @param {Function} setTableSelection
  */
 
+const useStyles = makeStyles(() => ({
+    tableContainer: {
+        overflow: 'hidden',
+    },
+}));
 const Table = props => {
     const {
         params,
@@ -81,6 +87,7 @@ const Table = props => {
         selectionActionMessage,
     } = props;
     const intl = useSafeIntl();
+    const classes = useStyles();
     const { formatMessage } = intl;
 
     const columns = useMemo(() => {
@@ -191,7 +198,7 @@ const Table = props => {
             )}
 
             <Paper elevation={3}>
-                <TableContainer>
+                <TableContainer className={classes.tableContainer}>
                     <MaUTable {...tableProps} stickyHeader>
                         <Head headerGroups={headerGroups} />
                         <Body

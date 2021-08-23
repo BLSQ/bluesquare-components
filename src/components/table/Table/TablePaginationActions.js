@@ -75,7 +75,7 @@ const TablePaginationActions = ({
                 disabled={firstDisabled}
                 aria-label={formatMessage(MESSAGES.firstText)}
             >
-                <FirstPageIcon color={firstDisabled ? 'default' : 'primary'} />
+                <FirstPageIcon color={firstDisabled ? 'inherit' : 'primary'} />
             </IconButton>
             <IconButton
                 variant="outlined"
@@ -84,7 +84,7 @@ const TablePaginationActions = ({
                 aria-label={formatMessage(MESSAGES.previous)}
             >
                 <KeyboardArrowLeft
-                    color={firstDisabled ? 'default' : 'primary'}
+                    color={firstDisabled ? 'inherit' : 'primary'}
                 />
             </IconButton>
             <PageSelect

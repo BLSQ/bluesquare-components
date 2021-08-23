@@ -92,14 +92,14 @@ var TablePaginationActions = function TablePaginationActions(_ref) {
     disabled: firstDisabled,
     "aria-label": formatMessage(_messages.MESSAGES.firstText)
   }, /*#__PURE__*/_react["default"].createElement(_FirstPage["default"], {
-    color: firstDisabled ? 'default' : 'primary'
+    color: firstDisabled ? 'inherit' : 'primary'
   })), /*#__PURE__*/_react["default"].createElement(_IconButton["default"], {
     variant: "outlined",
     onClick: handleBackButtonClick,
     disabled: firstDisabled,
     "aria-label": formatMessage(_messages.MESSAGES.previous)
   }, /*#__PURE__*/_react["default"].createElement(_KeyboardArrowLeft["default"], {
-    color: firstDisabled ? 'default' : 'primary'
+    color: firstDisabled ? 'inherit' : 'primary'
   })), /*#__PURE__*/_react["default"].createElement(_PageSelect.PageSelect, {
     pages: pages,
     pageIndex: pageIndex + 1,

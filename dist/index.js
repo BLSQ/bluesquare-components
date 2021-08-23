@@ -29,7 +29,6 @@ var _exportNames = {
   innerDrawerStyles: true,
   mapStyles: true,
   mapPopupStyles: true,
-  reactTableStyles: true,
   AddButton: true,
   DownloadButton: true,
   ExportButton: true,
@@ -54,7 +53,6 @@ var _exportNames = {
   SelectionSpeedDials: true,
   TableFilters: true,
   Table: true,
-  customTableTranslations: true,
   LinkProvider: true,
   LinkContext: true,
   withLink: true,
@@ -182,12 +180,6 @@ Object.defineProperty(exports, "mapPopupStyles", {
   enumerable: true,
   get: function get() {
     return _mapPopup.mapPopupStyles;
-  }
-});
-Object.defineProperty(exports, "reactTableStyles", {
-  enumerable: true,
-  get: function get() {
-    return _reactTable.reactTableStyles;
   }
 });
 Object.defineProperty(exports, "AddButton", {
@@ -334,12 +326,6 @@ Object.defineProperty(exports, "Table", {
     return _Table.Table;
   }
 });
-Object.defineProperty(exports, "customTableTranslations", {
-  enumerable: true,
-  get: function get() {
-    return _messages.customTableTranslations;
-  }
-});
 Object.defineProperty(exports, "LinkProvider", {
   enumerable: true,
   get: function get() {
@@ -451,8 +437,6 @@ var _map = require("./styles/iaso/map");
 
 var _mapPopup = require("./styles/iaso/mapPopup");
 
-var _reactTable = require("./styles/iaso/reactTable");
-
 var _AddButton = require("./components/buttons/AddButton");
 
 var _DownloadButton = require("./components/buttons/DownloadButton");
@@ -500,8 +484,6 @@ var _SelectionSpeedDials = require("./components/table/SelectionSpeedDials");
 var _TableFilters = require("./components/table/TableFilters");
 
 var _Table = require("./components/table/Table");
-
-var _messages = require("./components/table/Table/messages");
 
 var _LinkProvider = require("./components/LinkProvider");
 

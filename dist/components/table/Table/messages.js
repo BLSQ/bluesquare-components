@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.MESSAGES = exports.customTableTranslations = void 0;
+exports.MESSAGES = void 0;
 
 var _reactIntl = require("react-intl");
 
@@ -16,9 +16,13 @@ var MESSAGES = (0, _reactIntl.defineMessages)({
     defaultMessage: 'Next',
     id: 'blsq.table.next'
   },
-  loadingText: {
-    defaultMessage: 'Loading...',
-    id: 'blsq.table.loading'
+  lastText: {
+    defaultMessage: 'Last page',
+    id: 'blsq.table.last'
+  },
+  firstText: {
+    defaultMessage: 'First page',
+    id: 'blsq.table.first'
   },
   noDataText: {
     defaultMessage: 'No result',
@@ -52,20 +56,5 @@ var MESSAGES = (0, _reactIntl.defineMessages)({
     id: 'blsq.table.label.selected',
     defaultMessage: 'selected'
   }
-}); // TODO move thi sto a place that makes more sense
-
+});
 exports.MESSAGES = MESSAGES;
-
-var customTableTranslations = function customTableTranslations(formatMessage) {
-  return {
-    previousText: formatMessage(MESSAGES.previousText),
-    nextText: formatMessage(MESSAGES.nextText),
-    loadingText: formatMessage(MESSAGES.loadingText),
-    noDataText: formatMessage(MESSAGES.noDataText),
-    pageText: formatMessage(MESSAGES.pageText),
-    ofText: formatMessage(MESSAGES.ofText),
-    rowsText: formatMessage(MESSAGES.rowsText)
-  };
-};
-
-exports.customTableTranslations = customTableTranslations;

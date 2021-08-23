@@ -21,7 +21,6 @@ import { commonStyles } from './styles/iaso/common';
 import { innerDrawerStyles } from './styles/iaso/innerDrawer';
 import { mapStyles } from './styles/iaso/map';
 import { mapPopupStyles } from './styles/iaso/mapPopup';
-import { reactTableStyles } from './styles/iaso/reactTable';
 import { AddButton } from './components/buttons/AddButton';
 import { DownloadButton } from './components/buttons/DownloadButton';
 import { ExportButton } from './components/buttons/ExportButton';
@@ -46,7 +45,6 @@ import { InfoHeader } from './components/table/InfoHeader';
 import { SelectionSpeedDials } from './components/table/SelectionSpeedDials';
 import { TableFilters } from './components/table/TableFilters';
 import { Table } from './components/table/Table';
-import { customTableTranslations } from './components/table/Table/messages';
 import {
     LinkProvider,
     LinkContext,
@@ -86,7 +84,6 @@ export {
     innerDrawerStyles,
     mapStyles,
     mapPopupStyles,
-    reactTableStyles,
     AddButton,
     DownloadButton,
     ExportButton,
@@ -113,7 +110,6 @@ export {
     SelectionSpeedDials,
     TableFilters,
     Table,
-    customTableTranslations,
     LinkProvider,
     LinkContext,
     withLink,

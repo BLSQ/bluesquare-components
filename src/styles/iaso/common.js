@@ -1,5 +1,4 @@
 import { mapStyles } from './map';
-import { reactTableStyles } from './reactTable';
 import { innerDrawerStyles } from './innerDrawer';
 import {
     MENU_HEIGHT_WITH_TABS,
@@ -9,7 +8,6 @@ import {
 const commonStyles = theme => ({
     ...mapStyles(theme),
     ...innerDrawerStyles(theme),
-    ...reactTableStyles(theme),
     containerFullHeight: {
         width: '100%',
         height: `calc(100vh - ${MENU_HEIGHT_WITH_TABS}px)`,

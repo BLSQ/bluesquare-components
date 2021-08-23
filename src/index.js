@@ -41,7 +41,6 @@ import { ErrorBoundary } from './components/ErrorBoundary';
 import { BlockPlaceholder } from './components/BlockPlaceholder';
 import { Filters } from './components/filters/Filters';
 import { ColumnsSelectDrawer } from './components/table/ColumnsSelectDrawer';
-import { ColumnText } from './components/table/ColumnText';
 import { HeaderRowIcon } from './components/table/HeaderRowIcon';
 import { InfoHeader } from './components/table/InfoHeader';
 import { SelectionSpeedDials } from './components/table/SelectionSpeedDials';
@@ -109,7 +108,6 @@ export {
     BlockPlaceholder,
     Filters,
     ColumnsSelectDrawer,
-    ColumnText,
     HeaderRowIcon,
     InfoHeader,
     SelectionSpeedDials,

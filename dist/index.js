@@ -49,7 +49,6 @@ var _exportNames = {
   BlockPlaceholder: true,
   Filters: true,
   ColumnsSelectDrawer: true,
-  ColumnText: true,
   HeaderRowIcon: true,
   InfoHeader: true,
   SelectionSpeedDials: true,
@@ -305,12 +304,6 @@ Object.defineProperty(exports, "ColumnsSelectDrawer", {
     return _ColumnsSelectDrawer.ColumnsSelectDrawer;
   }
 });
-Object.defineProperty(exports, "ColumnText", {
-  enumerable: true,
-  get: function get() {
-    return _ColumnText.ColumnText;
-  }
-});
 Object.defineProperty(exports, "HeaderRowIcon", {
   enumerable: true,
   get: function get() {
@@ -497,8 +490,6 @@ var _BlockPlaceholder = require("./components/BlockPlaceholder");
 var _Filters = require("./components/filters/Filters");
 
 var _ColumnsSelectDrawer = require("./components/table/ColumnsSelectDrawer");
-
-var _ColumnText = require("./components/table/ColumnText");
 
 var _HeaderRowIcon = require("./components/table/HeaderRowIcon");
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { oneOfType } from 'prop-types';
 import { RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
 
 const RadioComponent = ({ options, name, onChange, value }) => (
@@ -30,7 +30,7 @@ RadioComponent.propTypes = {
     options: PropTypes.array,
     name: PropTypes.string.isRequired,
     onChange: PropTypes.func,
-    value: PropTypes.string,
+    value: oneOfType(PropTypes.string, PropTypes.bool),
 };
 
 export { RadioComponent as Radio };

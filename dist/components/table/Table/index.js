@@ -121,7 +121,8 @@ var Table = function Table(props) {
       selectionActions = props.selectionActions,
       setTableSelection = props.setTableSelection,
       selection = props.selection,
-      selectionActionMessage = props.selectionActionMessage;
+      selectionActionMessage = props.selectionActionMessage,
+      watchToRender = props.watchToRender;
   var intl = (0, _useSafeIntl.useSafeIntl)();
   var classes = useStyles();
   var formatMessage = intl.formatMessage;
@@ -135,7 +136,7 @@ var Table = function Table(props) {
     }
 
     return (0, _tableUtils.getColumnsHeadersInfos)(temp);
-  }, [props.columns, multiSelect, selection]);
+  }, [props.columns, multiSelect, selection, watchToRender]);
   var data = (0, _react.useMemo)(function () {
     return props.data;
   }, [props.data]);

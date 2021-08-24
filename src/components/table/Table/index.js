@@ -85,6 +85,7 @@ const Table = props => {
         setTableSelection,
         selection,
         selectionActionMessage,
+        watchToRender,
     } = props;
     const intl = useSafeIntl();
     const classes = useStyles();
@@ -106,7 +107,7 @@ const Table = props => {
             );
         }
         return getColumnsHeadersInfos(temp);
-    }, [props.columns, multiSelect, selection]);
+    }, [props.columns, multiSelect, selection, watchToRender]);
 
     const data = useMemo(() => props.data, [props.data]);
 

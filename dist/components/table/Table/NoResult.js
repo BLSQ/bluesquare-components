@@ -30,7 +30,8 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
 });
 
 var NoResult = function NoResult(_ref) {
-  var data = _ref.data;
+  var data = _ref.data,
+      loading = _ref.loading;
   var classes = useStyles();
 
   if (data && data.length === 0) {
@@ -39,7 +40,7 @@ var NoResult = function NoResult(_ref) {
       alignItems: "center",
       justifyContent: "center",
       display: "flex"
-    }, /*#__PURE__*/_react["default"].createElement(_reactIntl.FormattedMessage, _messages.MESSAGES.noDataText));
+    }, !loading && /*#__PURE__*/_react["default"].createElement(_reactIntl.FormattedMessage, _messages.MESSAGES.noDataText), loading && /*#__PURE__*/_react["default"].createElement(_reactIntl.FormattedMessage, _messages.MESSAGES.loading));
   }
 
   return null;
@@ -47,8 +48,10 @@ var NoResult = function NoResult(_ref) {
 
 exports.NoResult = NoResult;
 NoResult.defaultProps = {
-  data: []
+  data: [],
+  loading: false
 };
 NoResult.propTypes = {
-  data: _propTypes["default"].array
+  data: _propTypes["default"].array,
+  loading: _propTypes["default"].bool
 };

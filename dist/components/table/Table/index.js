@@ -139,6 +139,7 @@ var Table = function Table(props) {
   var data = (0, _react.useMemo)(function () {
     return props.data;
   }, [props.data]);
+  var loading = extraProps.loading;
   var initialState = (0, _react.useMemo)(function () {
     var urlPageSize = parseInt(params[(0, _tableUtils.getParamsKey)(paramsPrefix, 'pageSize')], 10);
     return {
@@ -224,9 +225,11 @@ var Table = function Table(props) {
     page: page,
     getTableBodyProps: getTableBodyProps,
     prepareRow: prepareRow,
-    rowsPerPage: rowsPerPage
+    rowsPerPage: rowsPerPage,
+    subComponent: extraProps.SubComponent
   }))), /*#__PURE__*/_react["default"].createElement(_NoResult.NoResult, {
-    data: data
+    data: data,
+    loading: loading
   }), /*#__PURE__*/_react["default"].createElement(_Pagination.Pagination, {
     data: data,
     count: count,
@@ -262,7 +265,6 @@ Table.defaultProps = {
   selectionActionMessage: null
 };
 Table.propTypes = {
-  // used to come from router
   params: _propTypes["default"].object,
   count: _propTypes["default"].number,
   pages: _propTypes["default"].number.isRequired,

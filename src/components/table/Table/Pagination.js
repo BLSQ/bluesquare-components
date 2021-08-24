@@ -3,10 +3,8 @@ import PropTypes from 'prop-types';
 import TablePagination from '@material-ui/core/TablePagination';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { MESSAGES } from './messages';
 import { ROWS_PER_PAGE_OPTIONS } from './constants';
 import { TablePaginationActions } from './TablePaginationActions';
-import { useSafeIntl } from '../../../utils/useSafeIntl';
 
 const useStyles = makeStyles(() => ({
     spacer: {
@@ -30,8 +28,6 @@ const Pagination = ({
     selectCount,
 }) => {
     const classes = useStyles();
-    const intl = useSafeIntl();
-    const { formatMessage } = intl;
     if (data && data.length > 0) {
         return (
             <TablePagination

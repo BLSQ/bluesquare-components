@@ -110,6 +110,8 @@ const Table = props => {
 
     const data = useMemo(() => props.data, [props.data]);
 
+    const { loading } = extraProps;
+
     const initialState = useMemo(() => {
         const urlPageSize = parseInt(
             params[getParamsKey(paramsPrefix, 'pageSize')],
@@ -206,10 +208,11 @@ const Table = props => {
                             getTableBodyProps={getTableBodyProps}
                             prepareRow={prepareRow}
                             rowsPerPage={rowsPerPage}
+                            subComponent={extraProps.SubComponent}
                         />
                     </MaUTable>
                 </TableContainer>
-                <NoResult data={data} />
+                <NoResult data={data} loading={loading} />
                 <Pagination
                     data={data}
                     count={count}
@@ -245,7 +248,6 @@ Table.defaultProps = {
 };
 
 Table.propTypes = {
-    // used to come from router
     params: PropTypes.object,
     count: PropTypes.number,
     pages: PropTypes.number.isRequired,

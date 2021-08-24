@@ -45,6 +45,7 @@ import { InfoHeader } from './components/table/InfoHeader';
 import { SelectionSpeedDials } from './components/table/SelectionSpeedDials';
 import { TableFilters } from './components/table/TableFilters';
 import { Table } from './components/table/Table';
+import { Expander } from './components/table/Table/Expander';
 import {
     LinkProvider,
     LinkContext,
@@ -118,4 +119,5 @@ export {
     CommentWithThread,
     AddComment,
     InputLabel,
+    Expander,
 };

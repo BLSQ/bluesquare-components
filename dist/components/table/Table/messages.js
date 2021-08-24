@@ -55,6 +55,14 @@ var MESSAGES = (0, _reactIntl.defineMessages)({
   selected: {
     id: 'blsq.table.label.selected',
     defaultMessage: 'selected'
+  },
+  loading: {
+    id: 'blsq.table.loading',
+    defaultMessage: 'Loading...'
+  },
+  details: {
+    defaultMessage: 'Details',
+    id: 'blsq.table.details'
   }
 });
 exports.MESSAGES = MESSAGES;

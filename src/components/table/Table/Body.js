@@ -1,22 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableRow from '@material-ui/core/TableRow';
-import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(theme => ({
-    row: {
-        '&:nth-of-type(odd)': {
-            backgroundColor: theme.palette.gray.background,
-        },
-        '&:nth-of-type(even)': {
-            backgroundColor: 'transparent',
-        },
-    },
-}));
-const Body = ({ page, getTableBodyProps, prepareRow, rowsPerPage }) => {
-    const classes = useStyles();
+import { Row } from './Row';
+
+const Body = ({
+    page,
+    getTableBodyProps,
+    prepareRow,
+    rowsPerPage,
+    subComponent,
+}) => {
     const rows = page.slice(0, rowsPerPage);
     return (
         <TableBody {...getTableBodyProps}>
@@ -24,29 +18,12 @@ const Body = ({ page, getTableBodyProps, prepareRow, rowsPerPage }) => {
                 prepareRow(row);
                 const rowProps = row.getRowProps();
                 return (
-                    <TableRow
-                        {...rowProps}
+                    <Row
+                        row={row}
+                        rowProps={rowProps}
                         key={rowProps.key}
-                        className={classes.row}
-                    >
-                        {row.cells.map(cell => {
-                            const cellProps = cell.getCellProps();
-                            const align = cell.column.align || 'center';
-                            return (
-                                <TableCell
-                                    {...cellProps}
-                                    key={cellProps.key}
-                                    align={
-                                        cell.column.id === 'actions'
-                                            ? 'center'
-                                            : align
-                                    }
-                                >
-                                    {cell.render('Cell')}
-                                </TableCell>
-                            );
-                        })}
-                    </TableRow>
+                        subComponent={subComponent}
+                    />
                 );
             })}
         </TableBody>
@@ -56,6 +33,7 @@ const Body = ({ page, getTableBodyProps, prepareRow, rowsPerPage }) => {
 Body.defaultProps = {
     page: [],
     rowsPerPage: 10,
+    subComponent: undefined,
 };
 
 Body.propTypes = {
@@ -63,6 +41,7 @@ Body.propTypes = {
     getTableBodyProps: PropTypes.func.isRequired,
     prepareRow: PropTypes.func.isRequired,
     rowsPerPage: PropTypes.number,
+    subComponent: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 };
 
 export { Body };

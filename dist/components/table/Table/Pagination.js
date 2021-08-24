@@ -13,13 +13,9 @@ var _TablePagination = _interopRequireDefault(require("@material-ui/core/TablePa
 
 var _styles = require("@material-ui/core/styles");
 
-var _messages = require("./messages");
-
 var _constants = require("./constants");
 
 var _TablePaginationActions = require("./TablePaginationActions");
-
-var _useSafeIntl = require("../../../utils/useSafeIntl");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -47,8 +43,6 @@ var Pagination = function Pagination(_ref) {
       countOnTop = _ref.countOnTop,
       selectCount = _ref.selectCount;
   var classes = useStyles();
-  var intl = (0, _useSafeIntl.useSafeIntl)();
-  var formatMessage = intl.formatMessage;
 
   if (data && data.length > 0) {
     return /*#__PURE__*/_react["default"].createElement(_TablePagination["default"], {

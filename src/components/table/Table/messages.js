@@ -49,6 +49,14 @@ const MESSAGES = defineMessages({
         id: 'blsq.table.label.selected',
         defaultMessage: 'selected',
     },
+    loading: {
+        id: 'blsq.table.loading',
+        defaultMessage: 'Loading...',
+    },
+    details: {
+        defaultMessage: 'Details',
+        id: 'blsq.table.details',
+    },
 });
 
 export { MESSAGES };

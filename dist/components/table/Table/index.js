@@ -139,7 +139,7 @@ var Table = function Table(props) {
   var data = (0, _react.useMemo)(function () {
     return props.data;
   }, [props.data]);
-  var loading = extraProps && extraProps.loading;
+  var loading = extraProps.loading;
   var initialState = (0, _react.useMemo)(function () {
     var urlPageSize = parseInt(params[(0, _tableUtils.getParamsKey)(paramsPrefix, 'pageSize')], 10);
     return {
@@ -255,7 +255,9 @@ Table.defaultProps = {
   setTableSelection: function setTableSelection() {
     return null;
   },
-  extraProps: null,
+  extraProps: {
+    loading: false
+  },
   paramsPrefix: '',
   params: {
     pageSize: 10,

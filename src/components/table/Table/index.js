@@ -110,7 +110,7 @@ const Table = props => {
 
     const data = useMemo(() => props.data, [props.data]);
 
-    const loading = extraProps && extraProps.loading;
+    const { loading } = extraProps;
 
     const initialState = useMemo(() => {
         const urlPageSize = parseInt(
@@ -237,7 +237,9 @@ Table.defaultProps = {
     selectionActions: [],
     selection: selectionInitialState,
     setTableSelection: () => null,
-    extraProps: null,
+    extraProps: {
+        loading: false,
+    },
     paramsPrefix: '',
     params: {
         pageSize: 10,

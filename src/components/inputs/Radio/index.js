@@ -30,7 +30,7 @@ RadioComponent.propTypes = {
     options: PropTypes.array,
     name: PropTypes.string.isRequired,
     onChange: PropTypes.func,
-    value: oneOfType(PropTypes.string, PropTypes.bool),
+    value: oneOfType([PropTypes.string, PropTypes.bool]),
 };
 
 export { RadioComponent as Radio };

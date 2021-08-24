@@ -54,5 +54,5 @@ RadioComponent.propTypes = {
   options: _propTypes["default"].array,
   name: _propTypes["default"].string.isRequired,
   onChange: _propTypes["default"].func,
-  value: (0, _propTypes.oneOfType)(_propTypes["default"].string, _propTypes["default"].bool)
+  value: (0, _propTypes.oneOfType)([_propTypes["default"].string, _propTypes["default"].bool])
 };

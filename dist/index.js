@@ -53,6 +53,7 @@ var _exportNames = {
   SelectionSpeedDials: true,
   TableFilters: true,
   Table: true,
+  Expander: true,
   LinkProvider: true,
   LinkContext: true,
   withLink: true,
@@ -326,6 +327,12 @@ Object.defineProperty(exports, "Table", {
     return _Table.Table;
   }
 });
+Object.defineProperty(exports, "Expander", {
+  enumerable: true,
+  get: function get() {
+    return _Expander.Expander;
+  }
+});
 Object.defineProperty(exports, "LinkProvider", {
   enumerable: true,
   get: function get() {
@@ -484,6 +491,8 @@ var _SelectionSpeedDials = require("./components/table/SelectionSpeedDials");
 var _TableFilters = require("./components/table/TableFilters");
 
 var _Table = require("./components/table/Table");
+
+var _Expander = require("./components/table/Table/Expander");
 
 var _LinkProvider = require("./components/LinkProvider");
 

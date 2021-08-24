@@ -110,7 +110,7 @@ const Table = props => {
 
     const data = useMemo(() => props.data, [props.data]);
 
-    const { loading } = extraProps;
+    const loading = extraProps && extraProps.loading;
 
     const initialState = useMemo(() => {
         const urlPageSize = parseInt(
@@ -229,6 +229,7 @@ const Table = props => {
 };
 Table.defaultProps = {
     count: 0,
+    pages: 0,
     baseUrl: '',
     countOnTop: true,
     marginTop: true,
@@ -250,7 +251,7 @@ Table.defaultProps = {
 Table.propTypes = {
     params: PropTypes.object,
     count: PropTypes.number,
-    pages: PropTypes.number.isRequired,
+    pages: PropTypes.number,
     data: PropTypes.array.isRequired,
     columns: PropTypes.array.isRequired,
     baseUrl: PropTypes.string,

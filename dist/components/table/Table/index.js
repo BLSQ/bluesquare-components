@@ -139,7 +139,7 @@ var Table = function Table(props) {
   var data = (0, _react.useMemo)(function () {
     return props.data;
   }, [props.data]);
-  var loading = extraProps.loading;
+  var loading = extraProps && extraProps.loading;
   var initialState = (0, _react.useMemo)(function () {
     var urlPageSize = parseInt(params[(0, _tableUtils.getParamsKey)(paramsPrefix, 'pageSize')], 10);
     return {
@@ -245,6 +245,7 @@ var Table = function Table(props) {
 exports.Table = Table;
 Table.defaultProps = {
   count: 0,
+  pages: 0,
   baseUrl: '',
   countOnTop: true,
   marginTop: true,
@@ -267,7 +268,7 @@ Table.defaultProps = {
 Table.propTypes = {
   params: _propTypes["default"].object,
   count: _propTypes["default"].number,
-  pages: _propTypes["default"].number.isRequired,
+  pages: _propTypes["default"].number,
   data: _propTypes["default"].array.isRequired,
   columns: _propTypes["default"].array.isRequired,
   baseUrl: _propTypes["default"].string,

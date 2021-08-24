@@ -23,12 +23,14 @@ var RadioComponent = function RadioComponent(_ref) {
   var options = _ref.options,
       name = _ref.name,
       _onChange = _ref.onChange,
-      value = _ref.value;
+      value = _ref.value,
+      className = _ref.className;
   return /*#__PURE__*/_react["default"].createElement(_core.RadioGroup, {
+    className: className,
     name: name,
     value: value,
     onChange: function onChange(event) {
-      return _onChange(event.target.value);
+      _onChange(event.target.value);
     }
   }, options.map(function (o) {
     return /*#__PURE__*/_react["default"].createElement(_core.FormControlLabel, {
@@ -47,12 +49,13 @@ exports.Radio = RadioComponent;
 RadioComponent.defaultProps = {
   options: [],
   onChange: function onChange() {},
-  value: '' // name: '',
-
+  value: '',
+  className: ''
 };
 RadioComponent.propTypes = {
   options: _propTypes["default"].array,
   name: _propTypes["default"].string.isRequired,
   onChange: _propTypes["default"].func,
-  value: (0, _propTypes.oneOfType)([_propTypes["default"].string, _propTypes["default"].bool])
+  value: (0, _propTypes.oneOfType)([_propTypes["default"].string, _propTypes["default"].bool]),
+  className: _propTypes["default"].string
 };

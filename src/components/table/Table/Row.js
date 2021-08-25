@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
         },
     },
     cell: {
-        padding: '6px 16px 6px 16px',
+        padding: theme.spacing(1, 2),
     },
 }));
 const Row = ({ row, rowProps, subComponent }) => {

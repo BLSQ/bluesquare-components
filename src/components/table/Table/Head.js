@@ -10,10 +10,7 @@ const Head = ({ headerGroups }) => (
         {headerGroups.map(headerGroup => {
             const headerGroupProps = headerGroup.getHeaderGroupProps();
             return (
-                <TableRow
-                    {...headerGroup.getHeaderGroupProps()}
-                    key={headerGroupProps.key}
-                >
+                <TableRow {...headerGroupProps} key={headerGroupProps.key}>
                     {headerGroup.headers.map(column => {
                         const columnsProps = column.getHeaderProps();
                         return (

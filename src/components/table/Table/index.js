@@ -27,6 +27,7 @@ import {
 
 import { Head } from './Head';
 import { Body } from './Body';
+import { Footer } from './Footer';
 import { Select, getSelectionCol } from './Select';
 import { NoResult } from './NoResult';
 import { Count } from './Count';
@@ -88,7 +89,6 @@ const Table = props => {
         selectionActionMessage,
         watchToRender,
         showPagination,
-        hiddenColumns,
     } = props;
     const intl = useSafeIntl();
     const classes = useStyles();
@@ -138,6 +138,7 @@ const Table = props => {
         getTableProps,
         getTableBodyProps,
         headerGroups,
+        footerGroups,
         prepareRow,
         gotoPage,
         setPageSize,
@@ -186,7 +187,6 @@ const Table = props => {
         size: 'small',
     };
     const rowsPerPage = parseInt(pageSize, 10);
-
     return (
         <Box mt={marginTop ? 4 : 0} mb={4}>
             <Select
@@ -212,6 +212,7 @@ const Table = props => {
                             rowsPerPage={rowsPerPage}
                             subComponent={extraProps.SubComponent}
                         />
+                        <Footer footerGroups={footerGroups} />
                     </MaUTable>
                 </TableContainer>
                 <NoResult data={data} loading={loading} />

@@ -33,6 +33,8 @@ var _Head = require("./Head");
 
 var _Body = require("./Body");
 
+var _Footer = require("./Footer");
+
 var _Select = require("./Select");
 
 var _NoResult = require("./NoResult");
@@ -124,8 +126,7 @@ var Table = function Table(props) {
       selection = props.selection,
       selectionActionMessage = props.selectionActionMessage,
       watchToRender = props.watchToRender,
-      showPagination = props.showPagination,
-      hiddenColumns = props.hiddenColumns;
+      showPagination = props.showPagination;
   var intl = (0, _useSafeIntl.useSafeIntl)();
   var classes = useStyles();
   var formatMessage = intl.formatMessage;
@@ -165,6 +166,7 @@ var Table = function Table(props) {
       getTableProps = _useTable.getTableProps,
       getTableBodyProps = _useTable.getTableBodyProps,
       headerGroups = _useTable.headerGroups,
+      footerGroups = _useTable.footerGroups,
       prepareRow = _useTable.prepareRow,
       gotoPage = _useTable.gotoPage,
       setPageSize = _useTable.setPageSize,
@@ -231,6 +233,8 @@ var Table = function Table(props) {
     prepareRow: prepareRow,
     rowsPerPage: rowsPerPage,
     subComponent: extraProps.SubComponent
+  }), /*#__PURE__*/_react["default"].createElement(_Footer.Footer, {
+    footerGroups: footerGroups
   }))), /*#__PURE__*/_react["default"].createElement(_NoResult.NoResult, {
     data: data,
     loading: loading

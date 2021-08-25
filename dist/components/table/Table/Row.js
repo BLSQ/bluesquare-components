@@ -48,7 +48,7 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
       }
     },
     cell: {
-      padding: '6px 16px 6px 16px'
+      padding: theme.spacing(1, 2)
     }
   };
 });

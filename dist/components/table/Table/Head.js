@@ -23,7 +23,7 @@ var Head = function Head(_ref) {
   var headerGroups = _ref.headerGroups;
   return /*#__PURE__*/_react["default"].createElement(_TableHead["default"], null, headerGroups.map(function (headerGroup) {
     var headerGroupProps = headerGroup.getHeaderGroupProps();
-    return /*#__PURE__*/_react["default"].createElement(_TableRow["default"], _extends({}, headerGroup.getHeaderGroupProps(), {
+    return /*#__PURE__*/_react["default"].createElement(_TableRow["default"], _extends({}, headerGroupProps, {
       key: headerGroupProps.key
     }), headerGroup.headers.map(function (column) {
       var columnsProps = column.getHeaderProps();

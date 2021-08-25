@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
@@ -35,15 +35,9 @@ const useStyles = makeStyles(theme => ({
         top: 3,
     },
 }));
-const HeadCell = ({ column }) => {
+const HeadCell = ({ column, columnsProps }) => {
     const classes = useStyles();
-    const [columnsProps, setColumnsProps] = useState(
-        column.getHeaderProps(
-            column.sortable !== false
-                ? column.getSortByToggleProps()
-                : undefined,
-        ),
-    );
+    const isSortable = column.sortable !== false && !column.isResizing;
     let direction;
     if (column.isSorted) {
         if (column.isSortedDesc) {
@@ -53,19 +47,6 @@ const HeadCell = ({ column }) => {
             direction = 'asc';
         }
     }
-
-    useEffect(() => {
-        if (!column.isResizing && column.sortable !== false) {
-            // prevent resize click to sort column...
-            setTimeout(() => {
-                setColumnsProps(
-                    column.getHeaderProps(column.getSortByToggleProps()),
-                );
-            }, 500);
-        } else {
-            setColumnsProps(column.getHeaderProps());
-        }
-    }, [column.isResizing]);
 
     const cellStyle = {
         width: column.width ?? 'auto',
@@ -77,20 +58,21 @@ const HeadCell = ({ column }) => {
             className={classes.headerCell}
             key={columnsProps.key}
         >
-            {column.sortable !== false && !column.isResizing && (
-                <TableSortLabel
-                    active={column.isSorted}
-                    direction={direction}
-                    classes={{
-                        root: classes.sortLabel,
-                        icon: classes.icon,
-                    }}
-                >
-                    {column.render('Header')}
-                </TableSortLabel>
+            {isSortable && (
+                <div {...column.getSortByToggleProps()}>
+                    <TableSortLabel
+                        active={column.isSorted}
+                        direction={direction}
+                        classes={{
+                            root: classes.sortLabel,
+                            icon: classes.icon,
+                        }}
+                    >
+                        {column.render('Header')}
+                    </TableSortLabel>
+                </div>
             )}
-            {(column.sortable === false || column.isResizing) &&
-                column.render('Header')}
+            {!isSortable && column.render('Header')}
             {column.resizable !== false && (
                 <div
                     {...column.getResizerProps()}
@@ -103,6 +85,7 @@ const HeadCell = ({ column }) => {
 
 HeadCell.propTypes = {
     column: PropTypes.object.isRequired,
+    columnsProps: PropTypes.object.isRequired,
 };
 
 export { HeadCell };

@@ -46,6 +46,7 @@ import { Pagination } from './Pagination';
  * @param {String} baseUrl
  * @param {Array} marginTop
  * @param {Array} countOnTop
+ * @param {Array} showPagination
  * @param {Object} extraProps
  * @param {String} paramPrefix
  *
@@ -86,6 +87,8 @@ const Table = props => {
         selection,
         selectionActionMessage,
         watchToRender,
+        showPagination,
+        hiddenColumns,
     } = props;
     const intl = useSafeIntl();
     const classes = useStyles();
@@ -131,7 +134,6 @@ const Table = props => {
                 : getOrderArray(DEFAULT_ORDER),
         };
     }, [params, paramsPrefix, extraProps]);
-
     const {
         getTableProps,
         getTableBodyProps,
@@ -155,7 +157,6 @@ const Table = props => {
         useResizeColumns,
         usePagination,
     );
-
     const onTableParamsChange = (key, value) => {
         const newParams = {
             ...params,
@@ -214,16 +215,18 @@ const Table = props => {
                     </MaUTable>
                 </TableContainer>
                 <NoResult data={data} loading={loading} />
-                <Pagination
-                    data={data}
-                    count={count}
-                    rowsPerPage={rowsPerPage}
-                    pageIndex={pageIndex}
-                    onTableParamsChange={onTableParamsChange}
-                    pages={pages}
-                    countOnTop={countOnTop}
-                    selectCount={selection.selectCount}
-                />
+                {showPagination && (
+                    <Pagination
+                        data={data}
+                        count={count}
+                        rowsPerPage={rowsPerPage}
+                        pageIndex={pageIndex}
+                        onTableParamsChange={onTableParamsChange}
+                        pages={pages}
+                        countOnTop={countOnTop}
+                        selectCount={selection.selectCount}
+                    />
+                )}
             </Paper>
         </Box>
     );
@@ -238,6 +241,7 @@ Table.defaultProps = {
     selectionActions: [],
     selection: selectionInitialState,
     setTableSelection: () => null,
+    redirectTo: () => null,
     extraProps: {
         loading: false,
     },
@@ -249,6 +253,7 @@ Table.defaultProps = {
     },
     watchToRender: null,
     selectionActionMessage: null,
+    showPagination: true,
 };
 
 Table.propTypes = {
@@ -262,13 +267,14 @@ Table.propTypes = {
     marginTop: PropTypes.bool,
     multiSelect: PropTypes.bool,
     selectionActions: PropTypes.array,
-    redirectTo: PropTypes.func.isRequired,
+    redirectTo: PropTypes.func,
     setTableSelection: PropTypes.func,
     selection: PropTypes.object,
     extraProps: PropTypes.object,
     paramsPrefix: PropTypes.string,
     watchToRender: PropTypes.any,
     selectionActionMessage: PropTypes.string,
+    showPagination: PropTypes.bool,
 };
 
 export { Table };

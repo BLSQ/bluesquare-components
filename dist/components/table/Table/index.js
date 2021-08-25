@@ -82,6 +82,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
  * @param {String} baseUrl
  * @param {Array} marginTop
  * @param {Array} countOnTop
+ * @param {Array} showPagination
  * @param {Object} extraProps
  * @param {String} paramPrefix
  *
@@ -122,7 +123,9 @@ var Table = function Table(props) {
       setTableSelection = props.setTableSelection,
       selection = props.selection,
       selectionActionMessage = props.selectionActionMessage,
-      watchToRender = props.watchToRender;
+      watchToRender = props.watchToRender,
+      showPagination = props.showPagination,
+      hiddenColumns = props.hiddenColumns;
   var intl = (0, _useSafeIntl.useSafeIntl)();
   var classes = useStyles();
   var formatMessage = intl.formatMessage;
@@ -231,7 +234,7 @@ var Table = function Table(props) {
   }))), /*#__PURE__*/_react["default"].createElement(_NoResult.NoResult, {
     data: data,
     loading: loading
-  }), /*#__PURE__*/_react["default"].createElement(_Pagination.Pagination, {
+  }), showPagination && /*#__PURE__*/_react["default"].createElement(_Pagination.Pagination, {
     data: data,
     count: count,
     rowsPerPage: rowsPerPage,
@@ -256,6 +259,9 @@ Table.defaultProps = {
   setTableSelection: function setTableSelection() {
     return null;
   },
+  redirectTo: function redirectTo() {
+    return null;
+  },
   extraProps: {
     loading: false
   },
@@ -266,7 +272,8 @@ Table.defaultProps = {
     order: '-created_at'
   },
   watchToRender: null,
-  selectionActionMessage: null
+  selectionActionMessage: null,
+  showPagination: true
 };
 Table.propTypes = {
   params: _propTypes["default"].object,
@@ -279,11 +286,12 @@ Table.propTypes = {
   marginTop: _propTypes["default"].bool,
   multiSelect: _propTypes["default"].bool,
   selectionActions: _propTypes["default"].array,
-  redirectTo: _propTypes["default"].func.isRequired,
+  redirectTo: _propTypes["default"].func,
   setTableSelection: _propTypes["default"].func,
   selection: _propTypes["default"].object,
   extraProps: _propTypes["default"].object,
   paramsPrefix: _propTypes["default"].string,
   watchToRender: _propTypes["default"].any,
-  selectionActionMessage: _propTypes["default"].string
+  selectionActionMessage: _propTypes["default"].string,
+  showPagination: _propTypes["default"].bool
 };

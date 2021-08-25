@@ -46,6 +46,9 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
       '&:nth-of-type(even)': {
         backgroundColor: 'transparent'
       }
+    },
+    cell: {
+      padding: '6px 16px 6px 16px'
     }
   };
 });
@@ -69,6 +72,7 @@ var Row = function Row(_ref) {
     var align = cell.column.align || 'center';
     return /*#__PURE__*/_react["default"].createElement(_TableCell["default"], _extends({}, cellProps, {
       key: cellProps.key,
+      className: classes.cell,
       align: cell.column.id === 'actions' ? 'center' : align
     }), !cell.column.expander && cell.render('Cell'), cell.column.expander && cell.render('Expander', {
       isExpanded: isExpanded,

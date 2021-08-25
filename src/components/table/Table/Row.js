@@ -13,6 +13,9 @@ const useStyles = makeStyles(theme => ({
             backgroundColor: 'transparent',
         },
     },
+    cell: {
+        padding: '6px 16px 6px 16px',
+    },
 }));
 const Row = ({ row, rowProps, subComponent }) => {
     const classes = useStyles();
@@ -27,6 +30,7 @@ const Row = ({ row, rowProps, subComponent }) => {
                         <TableCell
                             {...cellProps}
                             key={cellProps.key}
+                            className={classes.cell}
                             align={
                                 cell.column.id === 'actions' ? 'center' : align
                             }

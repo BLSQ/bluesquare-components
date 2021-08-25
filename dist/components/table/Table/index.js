@@ -85,6 +85,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
  * @param {Array} marginTop
  * @param {Array} countOnTop
  * @param {Array} showPagination
+ * @param {Array} showFooter
  * @param {Object} extraProps
  * @param {String} paramPrefix
  *
@@ -126,7 +127,8 @@ var Table = function Table(props) {
       selection = props.selection,
       selectionActionMessage = props.selectionActionMessage,
       watchToRender = props.watchToRender,
-      showPagination = props.showPagination;
+      showPagination = props.showPagination,
+      showFooter = props.showFooter;
   var intl = (0, _useSafeIntl.useSafeIntl)();
   var classes = useStyles();
   var formatMessage = intl.formatMessage;
@@ -233,7 +235,7 @@ var Table = function Table(props) {
     prepareRow: prepareRow,
     rowsPerPage: rowsPerPage,
     subComponent: extraProps.SubComponent
-  }), /*#__PURE__*/_react["default"].createElement(_Footer.Footer, {
+  }), showFooter && /*#__PURE__*/_react["default"].createElement(_Footer.Footer, {
     footerGroups: footerGroups
   }))), /*#__PURE__*/_react["default"].createElement(_NoResult.NoResult, {
     data: data,
@@ -277,7 +279,8 @@ Table.defaultProps = {
   },
   watchToRender: null,
   selectionActionMessage: null,
-  showPagination: true
+  showPagination: true,
+  showFooter: false
 };
 Table.propTypes = {
   params: _propTypes["default"].object,
@@ -297,5 +300,6 @@ Table.propTypes = {
   paramsPrefix: _propTypes["default"].string,
   watchToRender: _propTypes["default"].any,
   selectionActionMessage: _propTypes["default"].string,
-  showPagination: _propTypes["default"].bool
+  showPagination: _propTypes["default"].bool,
+  showFooter: _propTypes["default"].bool
 };

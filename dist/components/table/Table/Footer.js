@@ -40,7 +40,7 @@ var Footer = function Footer(_ref) {
       var columnsProps = column.getFooterProps();
       var align = column.align || 'center';
 
-      if (column.Footer && !column.placeholderOf) {
+      if (column.Footer) {
         return /*#__PURE__*/_react["default"].createElement(_TableCell["default"], _extends({}, columnsProps, {
           className: classes.cell,
           key: columnsProps.key,

@@ -48,6 +48,7 @@ import { Pagination } from './Pagination';
  * @param {Array} marginTop
  * @param {Array} countOnTop
  * @param {Array} showPagination
+ * @param {Array} showFooter
  * @param {Object} extraProps
  * @param {String} paramPrefix
  *
@@ -89,6 +90,7 @@ const Table = props => {
         selectionActionMessage,
         watchToRender,
         showPagination,
+        showFooter,
     } = props;
     const intl = useSafeIntl();
     const classes = useStyles();
@@ -212,7 +214,7 @@ const Table = props => {
                             rowsPerPage={rowsPerPage}
                             subComponent={extraProps.SubComponent}
                         />
-                        <Footer footerGroups={footerGroups} />
+                        {showFooter && <Footer footerGroups={footerGroups} />}
                     </MaUTable>
                 </TableContainer>
                 <NoResult data={data} loading={loading} />
@@ -255,6 +257,7 @@ Table.defaultProps = {
     watchToRender: null,
     selectionActionMessage: null,
     showPagination: true,
+    showFooter: false,
 };
 
 Table.propTypes = {
@@ -276,6 +279,7 @@ Table.propTypes = {
     watchToRender: PropTypes.any,
     selectionActionMessage: PropTypes.string,
     showPagination: PropTypes.bool,
+    showFooter: PropTypes.bool,
 };
 
 export { Table };

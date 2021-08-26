@@ -19,11 +19,9 @@ var Body = function Body(_ref) {
   var page = _ref.page,
       getTableBodyProps = _ref.getTableBodyProps,
       prepareRow = _ref.prepareRow,
-      rowsPerPage = _ref.rowsPerPage,
       subComponent = _ref.subComponent,
       sortBy = _ref.sortBy;
-  var rows = page.slice(0, rowsPerPage);
-  return /*#__PURE__*/_react["default"].createElement(_TableBody["default"], getTableBodyProps, rows.map(function (row) {
+  return /*#__PURE__*/_react["default"].createElement(_TableBody["default"], getTableBodyProps, page.map(function (row) {
     prepareRow(row);
     var rowProps = row.getRowProps();
     return /*#__PURE__*/_react["default"].createElement(_Row.Row, {

@@ -34,8 +34,7 @@ var useStyles = (0, _styles.makeStyles)(function () {
 });
 
 var Pagination = function Pagination(_ref) {
-  var data = _ref.data,
-      count = _ref.count,
+  var count = _ref.count,
       rowsPerPage = _ref.rowsPerPage,
       pageIndex = _ref.pageIndex,
       onTableParamsChange = _ref.onTableParamsChange,
@@ -43,49 +42,44 @@ var Pagination = function Pagination(_ref) {
       countOnTop = _ref.countOnTop,
       selectCount = _ref.selectCount;
   var classes = useStyles();
-
-  if (data && data.length > 0) {
-    return /*#__PURE__*/_react["default"].createElement(_TablePagination["default"], {
-      classes: {
-        spacer: classes.spacer,
-        caption: classes.caption,
-        input: classes.input
-      },
-      rowsPerPageOptions: _constants.ROWS_PER_PAGE_OPTIONS,
-      component: "div",
-      count: count,
-      rowsPerPage: rowsPerPage,
-      page: pageIndex,
-      onPageChange: function onPageChange(event, newPage) {
-        onTableParamsChange('page', newPage + 1);
-      },
-      onRowsPerPageChange: function onRowsPerPageChange(event) {
-        onTableParamsChange('pageSize', event.target.value);
-      },
-      ActionsComponent: function ActionsComponent() {
-        return /*#__PURE__*/_react["default"].createElement(_TablePaginationActions.TablePaginationActions, {
-          rowsPerPageOptions: _constants.ROWS_PER_PAGE_OPTIONS,
-          count: count,
-          rowsPerPage: rowsPerPage,
-          onPageChange: function onPageChange(value) {
-            return onTableParamsChange('page', value);
-          },
-          onRowPerPageChange: function onRowPerPageChange(value) {
-            return onTableParamsChange('pageSize', value);
-          },
-          pageIndex: pageIndex,
-          pages: pages,
-          countOnTop: countOnTop,
-          selectCount: selectCount
-        });
-      },
-      labelDisplayedRows: function labelDisplayedRows() {
-        return null;
-      }
-    });
-  }
-
-  return null;
+  return /*#__PURE__*/_react["default"].createElement(_TablePagination["default"], {
+    classes: {
+      spacer: classes.spacer,
+      caption: classes.caption,
+      input: classes.input
+    },
+    rowsPerPageOptions: _constants.ROWS_PER_PAGE_OPTIONS,
+    component: "div",
+    count: count,
+    rowsPerPage: rowsPerPage,
+    page: pageIndex,
+    onPageChange: function onPageChange(event, newPage) {
+      onTableParamsChange('page', newPage + 1);
+    },
+    onRowsPerPageChange: function onRowsPerPageChange(event) {
+      onTableParamsChange('pageSize', event.target.value);
+    },
+    ActionsComponent: function ActionsComponent() {
+      return /*#__PURE__*/_react["default"].createElement(_TablePaginationActions.TablePaginationActions, {
+        rowsPerPageOptions: _constants.ROWS_PER_PAGE_OPTIONS,
+        count: count,
+        rowsPerPage: rowsPerPage,
+        onPageChange: function onPageChange(value) {
+          return onTableParamsChange('page', value);
+        },
+        onRowPerPageChange: function onRowPerPageChange(value) {
+          return onTableParamsChange('pageSize', value);
+        },
+        pageIndex: pageIndex,
+        pages: pages,
+        countOnTop: countOnTop,
+        selectCount: selectCount
+      });
+    },
+    labelDisplayedRows: function labelDisplayedRows() {
+      return null;
+    }
+  });
 };
 
 exports.Pagination = Pagination;

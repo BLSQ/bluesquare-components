@@ -65,15 +65,7 @@ export const getOrderArray = orders =>
         desc: stringValue.indexOf('-') !== -1,
     }));
 
-export const getSimplifiedColumns = columns => {
-    const newColumns = [];
-    columns.forEach(c => {
-        if (c.accessor) {
-            newColumns.push(c.accessor);
-        }
-    });
-    return newColumns;
-};
+export const getSimplifiedColumns = columns => columns.map(c => c.accessor);
 
 export const defaultSelectionActions = (
     selectAll,

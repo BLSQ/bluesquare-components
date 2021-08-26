@@ -18,7 +18,6 @@ const useStyles = makeStyles(() => ({
     },
 }));
 const Pagination = ({
-    data,
     count,
     rowsPerPage,
     pageIndex,
@@ -28,47 +27,42 @@ const Pagination = ({
     selectCount,
 }) => {
     const classes = useStyles();
-    if (data && data.length > 0) {
-        return (
-            <TablePagination
-                classes={{
-                    spacer: classes.spacer,
-                    caption: classes.caption,
-                    input: classes.input,
-                }}
-                rowsPerPageOptions={ROWS_PER_PAGE_OPTIONS}
-                component="div"
-                count={count}
-                rowsPerPage={rowsPerPage}
-                page={pageIndex}
-                onPageChange={(event, newPage) => {
-                    onTableParamsChange('page', newPage + 1);
-                }}
-                onRowsPerPageChange={event => {
-                    onTableParamsChange('pageSize', event.target.value);
-                }}
-                ActionsComponent={() => (
-                    <TablePaginationActions
-                        rowsPerPageOptions={ROWS_PER_PAGE_OPTIONS}
-                        count={count}
-                        rowsPerPage={rowsPerPage}
-                        onPageChange={value =>
-                            onTableParamsChange('page', value)
-                        }
-                        onRowPerPageChange={value =>
-                            onTableParamsChange('pageSize', value)
-                        }
-                        pageIndex={pageIndex}
-                        pages={pages}
-                        countOnTop={countOnTop}
-                        selectCount={selectCount}
-                    />
-                )}
-                labelDisplayedRows={() => null}
-            />
-        );
-    }
-    return null;
+    return (
+        <TablePagination
+            classes={{
+                spacer: classes.spacer,
+                caption: classes.caption,
+                input: classes.input,
+            }}
+            rowsPerPageOptions={ROWS_PER_PAGE_OPTIONS}
+            component="div"
+            count={count}
+            rowsPerPage={rowsPerPage}
+            page={pageIndex}
+            onPageChange={(event, newPage) => {
+                onTableParamsChange('page', newPage + 1);
+            }}
+            onRowsPerPageChange={event => {
+                onTableParamsChange('pageSize', event.target.value);
+            }}
+            ActionsComponent={() => (
+                <TablePaginationActions
+                    rowsPerPageOptions={ROWS_PER_PAGE_OPTIONS}
+                    count={count}
+                    rowsPerPage={rowsPerPage}
+                    onPageChange={value => onTableParamsChange('page', value)}
+                    onRowPerPageChange={value =>
+                        onTableParamsChange('pageSize', value)
+                    }
+                    pageIndex={pageIndex}
+                    pages={pages}
+                    countOnTop={countOnTop}
+                    selectCount={selectCount}
+                />
+            )}
+            labelDisplayedRows={() => null}
+        />
+    );
 };
 Pagination.defaultProps = {
     data: [],

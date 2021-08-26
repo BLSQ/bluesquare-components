@@ -5,6 +5,7 @@ import MaUTable from '@material-ui/core/Table';
 import Paper from '@material-ui/core/Paper';
 import TableContainer from '@material-ui/core/TableContainer';
 import { makeStyles } from '@material-ui/core/styles';
+import isEqual from 'lodash/isEqual';
 
 import {
     useTable,
@@ -23,6 +24,7 @@ import {
     getSort,
     getOrderArray,
     getColumnsHeadersInfos,
+    getSimplifiedColumns,
 } from './tableUtils';
 
 import { Head } from './Head';
@@ -33,7 +35,7 @@ import { NoResult } from './NoResult';
 import { Count } from './Count';
 import { Pagination } from './Pagination';
 /**
- * Table component, no redux, no fetch, just displaying.
+ * TableComponent component, no redux, no fetch, just displaying.
  * Multi selection is optionnal, if set to true you can add custom actions
  * Required props in order to work:
  * @param {Object} params
@@ -72,7 +74,7 @@ const useStyles = makeStyles(() => ({
         overflow: 'hidden',
     },
 }));
-const Table = props => {
+const TableComponent = props => {
     const {
         params,
         count,
@@ -88,7 +90,6 @@ const Table = props => {
         setTableSelection,
         selection,
         selectionActionMessage,
-        watchToRender,
         showPagination,
         showFooter,
     } = props;
@@ -111,7 +112,7 @@ const Table = props => {
             );
         }
         return getColumnsHeadersInfos(temp);
-    }, [props.columns, multiSelect, selection, watchToRender]);
+    }, [props.columns, multiSelect, selection]);
 
     const data = useMemo(() => props.data, [props.data]);
 
@@ -134,7 +135,7 @@ const Table = props => {
                 ? getOrderArray(params[getParamsKey(paramsPrefix, 'order')])
                 : getOrderArray(DEFAULT_ORDER),
         };
-    }, [params, paramsPrefix, extraProps]);
+    }, []);
     const {
         getTableProps,
         getTableBodyProps,
@@ -214,17 +215,15 @@ const Table = props => {
                             page={page}
                             getTableBodyProps={getTableBodyProps}
                             prepareRow={prepareRow}
-                            rowsPerPage={rowsPerPage}
                             subComponent={extraProps.SubComponent}
                             sortBy={sortBy}
                         />
                         {showFooter && <Footer footerGroups={footerGroups} />}
                     </MaUTable>
                 </TableContainer>
-                <NoResult data={data} loading={loading} />
-                {showPagination && (
+                {page && page.length === 0 && <NoResult loading={loading} />}
+                {page && page.length > 0 && showPagination && (
                     <Pagination
-                        data={data}
                         count={count}
                         rowsPerPage={rowsPerPage}
                         pageIndex={pageIndex}
@@ -238,7 +237,7 @@ const Table = props => {
         </Box>
     );
 };
-Table.defaultProps = {
+TableComponent.defaultProps = {
     count: 0,
     pages: 0,
     baseUrl: '',
@@ -258,13 +257,12 @@ Table.defaultProps = {
         page: 1,
         order: '-created_at',
     },
-    watchToRender: null,
     selectionActionMessage: null,
     showPagination: true,
     showFooter: false,
 };
 
-Table.propTypes = {
+TableComponent.propTypes = {
     params: PropTypes.object,
     count: PropTypes.number,
     pages: PropTypes.number,
@@ -280,10 +278,29 @@ Table.propTypes = {
     selection: PropTypes.object,
     extraProps: PropTypes.object,
     paramsPrefix: PropTypes.string,
-    watchToRender: PropTypes.any,
     selectionActionMessage: PropTypes.string,
     showPagination: PropTypes.bool,
     showFooter: PropTypes.bool,
 };
+
+const Table = React.memo(TableComponent, (props, prevProps) => {
+    const newColumns = getSimplifiedColumns(props.columns);
+    const oldColumns = getSimplifiedColumns(prevProps.columns);
+    const shouldRender = !(
+        !isEqual(props.data, prevProps.data) ||
+        !isEqual(newColumns, oldColumns) ||
+        !isEqual(
+            props.selection.selectedItems,
+            prevProps.selection.selectedItems,
+        ) ||
+        !isEqual(props.selection.selectAll, prevProps.selection.selectAll) ||
+        !isEqual(
+            props.selection.unSelectedItems,
+            prevProps.selection.unSelectedItems,
+        ) ||
+        !isEqual(props.extraProps, prevProps.extraProps)
+    );
+    return shouldRender;
+});
 
 export { Table };

@@ -8,29 +8,25 @@ const Body = ({
     page,
     getTableBodyProps,
     prepareRow,
-    rowsPerPage,
     subComponent,
     sortBy,
-}) => {
-    const rows = page.slice(0, rowsPerPage);
-    return (
-        <TableBody {...getTableBodyProps}>
-            {rows.map(row => {
-                prepareRow(row);
-                const rowProps = row.getRowProps();
-                return (
-                    <Row
-                        row={row}
-                        rowProps={rowProps}
-                        key={rowProps.key}
-                        subComponent={subComponent}
-                        sortBy={sortBy}
-                    />
-                );
-            })}
-        </TableBody>
-    );
-};
+}) => (
+    <TableBody {...getTableBodyProps}>
+        {page.map(row => {
+            prepareRow(row);
+            const rowProps = row.getRowProps();
+            return (
+                <Row
+                    row={row}
+                    rowProps={rowProps}
+                    key={rowProps.key}
+                    subComponent={subComponent}
+                    sortBy={sortBy}
+                />
+            );
+        })}
+    </TableBody>
+);
 
 Body.defaultProps = {
     page: [],

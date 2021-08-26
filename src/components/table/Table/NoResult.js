@@ -13,30 +13,25 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: theme.palette.gray.background,
     },
 }));
-const NoResult = ({ data, loading }) => {
+const NoResult = ({ loading }) => {
     const classes = useStyles();
-    if (data && data.length === 0) {
-        return (
-            <Box
-                className={classes.box}
-                alignItems="center"
-                justifyContent="center"
-                display="flex"
-            >
-                {!loading && <FormattedMessage {...MESSAGES.noDataText} />}
-                {loading && <FormattedMessage {...MESSAGES.loading} />}
-            </Box>
-        );
-    }
-    return null;
+    return (
+        <Box
+            className={classes.box}
+            alignItems="center"
+            justifyContent="center"
+            display="flex"
+        >
+            {!loading && <FormattedMessage {...MESSAGES.noDataText} />}
+            {loading && <FormattedMessage {...MESSAGES.loading} />}
+        </Box>
+    );
 };
 NoResult.defaultProps = {
-    data: [],
     loading: false,
 };
 
 NoResult.propTypes = {
-    data: PropTypes.array,
     loading: PropTypes.bool,
 };
 

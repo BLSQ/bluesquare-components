@@ -100,13 +100,9 @@ var getOrderArray = function getOrderArray(orders) {
 exports.getOrderArray = getOrderArray;
 
 var getSimplifiedColumns = function getSimplifiedColumns(columns) {
-  var newColumns = [];
-  columns.forEach(function (c) {
-    if (c.accessor) {
-      newColumns.push(c.accessor);
-    }
+  return columns.map(function (c) {
+    return c.accessor;
   });
-  return newColumns;
 };
 
 exports.getSimplifiedColumns = getSimplifiedColumns;

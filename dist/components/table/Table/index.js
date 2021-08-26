@@ -21,6 +21,8 @@ var _TableContainer = _interopRequireDefault(require("@material-ui/core/TableCon
 
 var _styles = require("@material-ui/core/styles");
 
+var _isEqual = _interopRequireDefault(require("lodash/isEqual"));
+
 var _reactTable = require("react-table");
 
 var _useSafeIntl2 = require("../../../utils/useSafeIntl");
@@ -70,7 +72,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 /**
- * Table component, no redux, no fetch, just displaying.
+ * TableComponent component, no redux, no fetch, just displaying.
  * Multi selection is optionnal, if set to true you can add custom actions
  * Required props in order to work:
  * @param {Object} params
@@ -111,7 +113,7 @@ var useStyles = (0, _styles.makeStyles)(function () {
   };
 });
 
-var Table = function Table(props) {
+var TableComponent = function TableComponent(props) {
   var params = props.params,
       count = props.count,
       extraProps = props.extraProps,
@@ -126,7 +128,6 @@ var Table = function Table(props) {
       setTableSelection = props.setTableSelection,
       selection = props.selection,
       selectionActionMessage = props.selectionActionMessage,
-      watchToRender = props.watchToRender,
       showPagination = props.showPagination,
       showFooter = props.showFooter;
 
@@ -144,7 +145,7 @@ var Table = function Table(props) {
     }
 
     return (0, _tableUtils.getColumnsHeadersInfos)(temp);
-  }, [props.columns, multiSelect, selection, watchToRender]);
+  }, [props.columns, multiSelect, selection]);
   var data = (0, _react.useMemo)(function () {
     return props.data;
   }, [props.data]);
@@ -156,7 +157,7 @@ var Table = function Table(props) {
       pageSize: urlPageSize || extraProps && extraProps.defaultPageSize || _constants.DEFAULT_PAGE_SIZE,
       sortBy: params[(0, _tableUtils.getParamsKey)(paramsPrefix, 'order')] ? (0, _tableUtils.getOrderArray)(params[(0, _tableUtils.getParamsKey)(paramsPrefix, 'order')]) : (0, _tableUtils.getOrderArray)(_constants.DEFAULT_ORDER)
     };
-  }, [params, paramsPrefix, extraProps]);
+  }, []);
 
   var _useTable = (0, _reactTable.useTable)({
     columns: columns,
@@ -237,16 +238,13 @@ var Table = function Table(props) {
     page: page,
     getTableBodyProps: getTableBodyProps,
     prepareRow: prepareRow,
-    rowsPerPage: rowsPerPage,
     subComponent: extraProps.SubComponent,
     sortBy: sortBy
   }), showFooter && /*#__PURE__*/_react["default"].createElement(_Footer.Footer, {
     footerGroups: footerGroups
-  }))), /*#__PURE__*/_react["default"].createElement(_NoResult.NoResult, {
-    data: data,
+  }))), page && page.length === 0 && /*#__PURE__*/_react["default"].createElement(_NoResult.NoResult, {
     loading: loading
-  }), showPagination && /*#__PURE__*/_react["default"].createElement(_Pagination.Pagination, {
-    data: data,
+  }), page && page.length > 0 && showPagination && /*#__PURE__*/_react["default"].createElement(_Pagination.Pagination, {
     count: count,
     rowsPerPage: rowsPerPage,
     pageIndex: pageIndex,
@@ -257,8 +255,7 @@ var Table = function Table(props) {
   })));
 };
 
-exports.Table = Table;
-Table.defaultProps = {
+TableComponent.defaultProps = {
   count: 0,
   pages: 0,
   baseUrl: '',
@@ -282,12 +279,11 @@ Table.defaultProps = {
     page: 1,
     order: '-created_at'
   },
-  watchToRender: null,
   selectionActionMessage: null,
   showPagination: true,
   showFooter: false
 };
-Table.propTypes = {
+TableComponent.propTypes = {
   params: _propTypes["default"].object,
   count: _propTypes["default"].number,
   pages: _propTypes["default"].number,
@@ -303,8 +299,16 @@ Table.propTypes = {
   selection: _propTypes["default"].object,
   extraProps: _propTypes["default"].object,
   paramsPrefix: _propTypes["default"].string,
-  watchToRender: _propTypes["default"].any,
   selectionActionMessage: _propTypes["default"].string,
   showPagination: _propTypes["default"].bool,
   showFooter: _propTypes["default"].bool
 };
+
+var Table = /*#__PURE__*/_react["default"].memo(TableComponent, function (props, prevProps) {
+  var newColumns = (0, _tableUtils.getSimplifiedColumns)(props.columns);
+  var oldColumns = (0, _tableUtils.getSimplifiedColumns)(prevProps.columns);
+  var shouldRender = !(!(0, _isEqual["default"])(props.data, prevProps.data) || !(0, _isEqual["default"])(newColumns, oldColumns) || !(0, _isEqual["default"])(props.selection.selectedItems, prevProps.selection.selectedItems) || !(0, _isEqual["default"])(props.selection.selectAll, prevProps.selection.selectAll) || !(0, _isEqual["default"])(props.selection.unSelectedItems, prevProps.selection.unSelectedItems) || !(0, _isEqual["default"])(props.extraProps, prevProps.extraProps));
+  return shouldRender;
+});
+
+exports.Table = Table;

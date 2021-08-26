@@ -92,9 +92,8 @@ const Table = props => {
         showPagination,
         showFooter,
     } = props;
-    const intl = useSafeIntl();
+    const { formatMessage } = useSafeIntl();
     const classes = useStyles();
-    const { formatMessage } = intl;
 
     const columns = useMemo(() => {
         const temp = [...props.columns];
@@ -144,6 +143,7 @@ const Table = props => {
         prepareRow,
         gotoPage,
         setPageSize,
+        setSortBy,
         page,
         state: { pageSize, pageIndex, sortBy },
     } = useTable(
@@ -206,13 +206,17 @@ const Table = props => {
             <Paper elevation={3}>
                 <TableContainer className={classes.tableContainer}>
                     <MaUTable {...tableProps} stickyHeader>
-                        <Head headerGroups={headerGroups} />
+                        <Head
+                            headerGroups={headerGroups}
+                            setSortBy={setSortBy}
+                        />
                         <Body
                             page={page}
                             getTableBodyProps={getTableBodyProps}
                             prepareRow={prepareRow}
                             rowsPerPage={rowsPerPage}
                             subComponent={extraProps.SubComponent}
+                            sortBy={sortBy}
                         />
                         {showFooter && <Footer footerGroups={footerGroups} />}
                     </MaUTable>

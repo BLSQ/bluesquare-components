@@ -21,7 +21,7 @@ const Footer = ({ footerGroups }) => {
                         {footerGroup.headers.map(column => {
                             const columnsProps = column.getFooterProps();
                             const align = column.align || 'center';
-                            if (column.Footer) {
+                            if (column.Footer && !column.placeholderOf) {
                                 return (
                                     <TableCell
                                         {...columnsProps}

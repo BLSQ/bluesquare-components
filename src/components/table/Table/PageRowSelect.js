@@ -22,8 +22,7 @@ const PageRowSelect = ({
     onRowPerPageChange,
 }) => {
     const classes = useStyles();
-    const intl = useSafeIntl();
-    const { formatMessage } = intl;
+    const { formatMessage } = useSafeIntl();
     const handleChange = event => {
         onRowPerPageChange(event.target.value);
     };

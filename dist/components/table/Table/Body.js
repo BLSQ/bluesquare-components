@@ -20,7 +20,8 @@ var Body = function Body(_ref) {
       getTableBodyProps = _ref.getTableBodyProps,
       prepareRow = _ref.prepareRow,
       rowsPerPage = _ref.rowsPerPage,
-      subComponent = _ref.subComponent;
+      subComponent = _ref.subComponent,
+      sortBy = _ref.sortBy;
   var rows = page.slice(0, rowsPerPage);
   return /*#__PURE__*/_react["default"].createElement(_TableBody["default"], getTableBodyProps, rows.map(function (row) {
     prepareRow(row);
@@ -29,7 +30,8 @@ var Body = function Body(_ref) {
       row: row,
       rowProps: rowProps,
       key: rowProps.key,
-      subComponent: subComponent
+      subComponent: subComponent,
+      sortBy: sortBy
     });
   }));
 };
@@ -37,11 +39,13 @@ var Body = function Body(_ref) {
 exports.Body = Body;
 Body.defaultProps = {
   page: [],
+  sortBy: [],
   rowsPerPage: 10,
   subComponent: undefined
 };
 Body.propTypes = {
   page: _propTypes["default"].array,
+  sortBy: _propTypes["default"].array,
   getTableBodyProps: _propTypes["default"].func.isRequired,
   prepareRow: _propTypes["default"].func.isRequired,
   rowsPerPage: _propTypes["default"].number,

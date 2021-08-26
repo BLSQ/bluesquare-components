@@ -10,6 +10,7 @@ const Body = ({
     prepareRow,
     rowsPerPage,
     subComponent,
+    sortBy,
 }) => {
     const rows = page.slice(0, rowsPerPage);
     return (
@@ -23,6 +24,7 @@ const Body = ({
                         rowProps={rowProps}
                         key={rowProps.key}
                         subComponent={subComponent}
+                        sortBy={sortBy}
                     />
                 );
             })}
@@ -32,12 +34,14 @@ const Body = ({
 
 Body.defaultProps = {
     page: [],
+    sortBy: [],
     rowsPerPage: 10,
     subComponent: undefined,
 };
 
 Body.propTypes = {
     page: PropTypes.array,
+    sortBy: PropTypes.array,
     getTableBodyProps: PropTypes.func.isRequired,
     prepareRow: PropTypes.func.isRequired,
     rowsPerPage: PropTypes.number,

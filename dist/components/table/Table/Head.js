@@ -20,7 +20,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 var Head = function Head(_ref) {
-  var headerGroups = _ref.headerGroups;
+  var headerGroups = _ref.headerGroups,
+      setSortBy = _ref.setSortBy;
   return /*#__PURE__*/_react["default"].createElement(_TableHead["default"], null, headerGroups.map(function (headerGroup) {
     var headerGroupProps = headerGroup.getHeaderGroupProps();
     return /*#__PURE__*/_react["default"].createElement(_TableRow["default"], _extends({}, headerGroupProps, {
@@ -30,7 +31,8 @@ var Head = function Head(_ref) {
       return /*#__PURE__*/_react["default"].createElement(_HeadCell.HeadCell, {
         column: column,
         key: column.id,
-        columnsProps: columnsProps
+        columnsProps: columnsProps,
+        setSortBy: setSortBy
       });
     }));
   }));
@@ -38,8 +40,12 @@ var Head = function Head(_ref) {
 
 exports.Head = Head;
 Head.defaultProps = {
-  headerGroups: []
+  headerGroups: [],
+  setSortBy: function setSortBy() {
+    return null;
+  }
 };
 Head.propTypes = {
-  headerGroups: _propTypes["default"].array
+  headerGroups: _propTypes["default"].array,
+  setSortBy: _propTypes["default"].func
 };

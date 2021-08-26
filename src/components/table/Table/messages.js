@@ -57,6 +57,18 @@ const MESSAGES = defineMessages({
         defaultMessage: 'Details',
         id: 'blsq.table.details',
     },
+    sortAsc: {
+        defaultMessage: 'Sort ascending',
+        id: 'blsq.table.sortAsc',
+    },
+    sortDesc: {
+        defaultMessage: 'Sort descending',
+        id: 'blsq.table.sortDesc',
+    },
+    unSort: {
+        defaultMessage: 'Remove sort',
+        id: 'blsq.table.unSort',
+    },
 });
 
 export { MESSAGES };

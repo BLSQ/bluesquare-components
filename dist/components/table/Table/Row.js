@@ -56,7 +56,8 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
 var Row = function Row(_ref) {
   var row = _ref.row,
       rowProps = _ref.rowProps,
-      subComponent = _ref.subComponent;
+      subComponent = _ref.subComponent,
+      sortBy = _ref.sortBy;
   var classes = useStyles();
 
   var _useState = (0, _react.useState)(false),
@@ -64,6 +65,9 @@ var Row = function Row(_ref) {
       isExpanded = _useState2[0],
       setIsExpanded = _useState2[1];
 
+  (0, _react.useEffect)(function () {
+    setIsExpanded(false);
+  }, [sortBy]);
   return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_TableRow["default"], _extends({}, rowProps, {
     className: classes.row,
     key: rowProps.key
@@ -88,9 +92,11 @@ var Row = function Row(_ref) {
 
 exports.Row = Row;
 Row.defaultProps = {
-  subComponent: undefined
+  subComponent: undefined,
+  sortBy: []
 };
 Row.propTypes = {
+  sortBy: _propTypes["default"].array,
   row: _propTypes["default"].object.isRequired,
   rowProps: _propTypes["default"].object.isRequired,
   subComponent: _propTypes["default"].oneOfType([_propTypes["default"].object, _propTypes["default"].func])

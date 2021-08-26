@@ -23,7 +23,7 @@ var _styles = require("@material-ui/core/styles");
 
 var _reactTable = require("react-table");
 
-var _useSafeIntl = require("../../../utils/useSafeIntl");
+var _useSafeIntl2 = require("../../../utils/useSafeIntl");
 
 var _constants = require("./constants");
 
@@ -129,9 +129,11 @@ var Table = function Table(props) {
       watchToRender = props.watchToRender,
       showPagination = props.showPagination,
       showFooter = props.showFooter;
-  var intl = (0, _useSafeIntl.useSafeIntl)();
+
+  var _useSafeIntl = (0, _useSafeIntl2.useSafeIntl)(),
+      formatMessage = _useSafeIntl.formatMessage;
+
   var classes = useStyles();
-  var formatMessage = intl.formatMessage;
   var columns = (0, _react.useMemo)(function () {
     var temp = _toConsumableArray(props.columns);
 
@@ -172,6 +174,7 @@ var Table = function Table(props) {
       prepareRow = _useTable.prepareRow,
       gotoPage = _useTable.gotoPage,
       setPageSize = _useTable.setPageSize,
+      setSortBy = _useTable.setSortBy,
       page = _useTable.page,
       _useTable$state = _useTable.state,
       pageSize = _useTable$state.pageSize,
@@ -228,13 +231,15 @@ var Table = function Table(props) {
   }, /*#__PURE__*/_react["default"].createElement(_Table["default"], _extends({}, tableProps, {
     stickyHeader: true
   }), /*#__PURE__*/_react["default"].createElement(_Head.Head, {
-    headerGroups: headerGroups
+    headerGroups: headerGroups,
+    setSortBy: setSortBy
   }), /*#__PURE__*/_react["default"].createElement(_Body.Body, {
     page: page,
     getTableBodyProps: getTableBodyProps,
     prepareRow: prepareRow,
     rowsPerPage: rowsPerPage,
-    subComponent: extraProps.SubComponent
+    subComponent: extraProps.SubComponent,
+    sortBy: sortBy
   }), showFooter && /*#__PURE__*/_react["default"].createElement(_Footer.Footer, {
     footerGroups: footerGroups
   }))), /*#__PURE__*/_react["default"].createElement(_NoResult.NoResult, {

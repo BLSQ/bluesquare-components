@@ -24,7 +24,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 var useStyles = (0, _styles.makeStyles)(function () {
   return {
     input: {
-      width: 60
+      width: 80
     }
   };
 });

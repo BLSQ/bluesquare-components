@@ -40,8 +40,7 @@ const TablePaginationActions = ({
 }) => {
     const classes = useStyles();
 
-    const intl = useSafeIntl();
-    const { formatMessage } = intl;
+    const { formatMessage } = useSafeIntl();
     const handleFirstPageButtonClick = () => {
         onPageChange(1);
     };

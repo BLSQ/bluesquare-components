@@ -4,6 +4,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 
+import { useSafeIntl } from '../../../utils/useSafeIntl';
+
+import { MESSAGES } from './messages';
+
 const useStyles = makeStyles(theme => ({
     resizer: {
         display: 'inline-block',
@@ -34,22 +38,38 @@ const useStyles = makeStyles(theme => ({
         left: '100%',
         top: 3,
     },
+    cell: {
+        cursor: 'default',
+    },
 }));
-const HeadCell = ({ column, columnsProps }) => {
+const HeadCell = ({ column, columnsProps, setSortBy }) => {
     const classes = useStyles();
+    const { formatMessage } = useSafeIntl();
     const isSortable = column.sortable !== false && !column.isResizing;
     let direction;
+    let title = MESSAGES.sortAsc;
+
     if (column.isSorted) {
         if (column.isSortedDesc) {
             direction = 'desc';
-        }
-        if (column.isSortedAsc) {
+        } else {
             direction = 'asc';
+            title = MESSAGES.sortDesc;
         }
     }
 
     const cellStyle = {
         width: column.width ?? 'auto',
+    };
+
+    const sortProps = { ...column.getSortByToggleProps() };
+    sortProps.onClick = () => {
+        setSortBy([
+            {
+                desc: direction === 'asc',
+                id: column.id,
+            },
+        ]);
     };
     return (
         <TableCell
@@ -59,10 +79,11 @@ const HeadCell = ({ column, columnsProps }) => {
             key={columnsProps.key}
         >
             {isSortable && (
-                <div {...column.getSortByToggleProps()}>
+                <div {...sortProps}>
                     <TableSortLabel
                         active={column.isSorted}
                         direction={direction}
+                        title={formatMessage(title)}
                         classes={{
                             root: classes.sortLabel,
                             icon: classes.icon,
@@ -72,7 +93,9 @@ const HeadCell = ({ column, columnsProps }) => {
                     </TableSortLabel>
                 </div>
             )}
-            {!isSortable && column.render('Header')}
+            {!isSortable && (
+                <div className={classes.cell}>{column.render('Header')}</div>
+            )}
             {column.resizable !== false && (
                 <div
                     {...column.getResizerProps()}
@@ -86,6 +109,7 @@ const HeadCell = ({ column, columnsProps }) => {
 HeadCell.propTypes = {
     column: PropTypes.object.isRequired,
     columnsProps: PropTypes.object.isRequired,
+    setSortBy: PropTypes.func.isRequired,
 };
 
 export { HeadCell };

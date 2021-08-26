@@ -8,8 +8,7 @@ import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { MESSAGES } from './messages';
 
 const Expander = ({ isExpanded, setIsExpanded }) => {
-    const intl = useSafeIntl();
-    const { formatMessage } = intl;
+    const { formatMessage } = useSafeIntl();
     return isExpanded ? (
         <IconButton onClick={() => setIsExpanded(!isExpanded)}>
             <VisibilityOff />

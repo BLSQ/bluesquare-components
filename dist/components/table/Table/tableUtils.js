@@ -79,10 +79,9 @@ var getOrderValue = function getOrderValue(obj) {
 };
 
 var getSort = function getSort(sortList) {
-  var orderTemp = '';
-  sortList.map(function (sort, index) {
-    orderTemp += "".concat(index > 0 ? ',' : '').concat(getOrderValue(sort));
-    return true;
+  var orderTemp;
+  sortList.forEach(function (sort, index) {
+    orderTemp = "".concat(orderTemp || '').concat(index > 0 ? ',' : '').concat(getOrderValue(sort));
   });
   return orderTemp;
 };

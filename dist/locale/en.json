@@ -30,5 +30,8 @@
     "blsq.table.of": "of",
     "blsq.table.page": "Page",
     "blsq.table.previous": "Previous",
-    "blsq.table.results": "results"
+    "blsq.table.results": "results",
+    "blsq.table.sortAsc": "Sort ascending",
+    "blsq.table.sortDesc": "Sort descending",
+    "blsq.table.unSort": "Remove sort"
 }

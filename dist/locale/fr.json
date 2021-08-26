@@ -30,5 +30,8 @@
     "blsq.table.of": "de",
     "blsq.table.page": "Page",
     "blsq.table.previous": "Précédent",
-    "blsq.table.results": "résultats"
+    "blsq.table.results": "résultats",
+    "blsq.table.sortAsc": "Trier par ordre croissant",
+    "blsq.table.sortDesc": "Trier par ordre décroissant",
+    "blsq.table.unSort": "Supprimer le tri"
 }

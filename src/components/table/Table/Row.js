@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
@@ -17,9 +17,12 @@ const useStyles = makeStyles(theme => ({
         padding: theme.spacing(1, 2),
     },
 }));
-const Row = ({ row, rowProps, subComponent }) => {
+const Row = ({ row, rowProps, subComponent, sortBy }) => {
     const classes = useStyles();
     const [isExpanded, setIsExpanded] = useState(false);
+    useEffect(() => {
+        setIsExpanded(false);
+    }, [sortBy]);
     return (
         <>
             <TableRow {...rowProps} className={classes.row} key={rowProps.key}>
@@ -62,9 +65,11 @@ const Row = ({ row, rowProps, subComponent }) => {
 
 Row.defaultProps = {
     subComponent: undefined,
+    sortBy: [],
 };
 
 Row.propTypes = {
+    sortBy: PropTypes.array,
     row: PropTypes.object.isRequired,
     rowProps: PropTypes.object.isRequired,
     subComponent: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),

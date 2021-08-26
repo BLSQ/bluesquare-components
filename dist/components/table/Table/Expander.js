@@ -15,7 +15,7 @@ var _Visibility = _interopRequireDefault(require("@material-ui/icons/Visibility"
 
 var _VisibilityOff = _interopRequireDefault(require("@material-ui/icons/VisibilityOff"));
 
-var _useSafeIntl = require("../../../utils/useSafeIntl");
+var _useSafeIntl2 = require("../../../utils/useSafeIntl");
 
 var _messages = require("./messages");
 
@@ -24,8 +24,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 var Expander = function Expander(_ref) {
   var isExpanded = _ref.isExpanded,
       setIsExpanded = _ref.setIsExpanded;
-  var intl = (0, _useSafeIntl.useSafeIntl)();
-  var formatMessage = intl.formatMessage;
+
+  var _useSafeIntl = (0, _useSafeIntl2.useSafeIntl)(),
+      formatMessage = _useSafeIntl.formatMessage;
+
   return isExpanded ? /*#__PURE__*/_react["default"].createElement(_core.IconButton, {
     onClick: function onClick() {
       return setIsExpanded(!isExpanded);

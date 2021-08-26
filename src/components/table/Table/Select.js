@@ -85,8 +85,7 @@ const Select = ({
     selection,
     selectionActionMessage,
 }) => {
-    const intl = useSafeIntl();
-    const { formatMessage } = intl;
+    const { formatMessage } = useSafeIntl();
 
     let actions = [
         ...defaultSelectionActions(

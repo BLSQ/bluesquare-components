@@ -15,7 +15,7 @@ var _Checkbox = _interopRequireDefault(require("@material-ui/core/Checkbox"));
 
 var _SelectionSpeedDials = require("../SelectionSpeedDials");
 
-var _useSafeIntl = require("../../../utils/useSafeIntl");
+var _useSafeIntl2 = require("../../../utils/useSafeIntl");
 
 var _messages = require("./messages");
 
@@ -130,8 +130,9 @@ var Select = function Select(_ref2) {
       setTableSelection = _ref2.setTableSelection,
       selection = _ref2.selection,
       selectionActionMessage = _ref2.selectionActionMessage;
-  var intl = (0, _useSafeIntl.useSafeIntl)();
-  var formatMessage = intl.formatMessage;
+
+  var _useSafeIntl = (0, _useSafeIntl2.useSafeIntl)(),
+      formatMessage = _useSafeIntl.formatMessage;
 
   var actions = _toConsumableArray((0, _tableUtils.defaultSelectionActions)(function () {
     return setTableSelection('selectAll', [], count);

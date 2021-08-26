@@ -5,7 +5,7 @@ import TableRow from '@material-ui/core/TableRow';
 
 import { HeadCell } from './HeadCell';
 
-const Head = ({ headerGroups }) => (
+const Head = ({ headerGroups, setSortBy }) => (
     <TableHead>
         {headerGroups.map(headerGroup => {
             const headerGroupProps = headerGroup.getHeaderGroupProps();
@@ -18,6 +18,7 @@ const Head = ({ headerGroups }) => (
                                 column={column}
                                 key={column.id}
                                 columnsProps={columnsProps}
+                                setSortBy={setSortBy}
                             />
                         );
                     })}
@@ -28,10 +29,12 @@ const Head = ({ headerGroups }) => (
 );
 Head.defaultProps = {
     headerGroups: [],
+    setSortBy: () => null,
 };
 
 Head.propTypes = {
     headerGroups: PropTypes.array,
+    setSortBy: PropTypes.func,
 };
 
 export { Head };

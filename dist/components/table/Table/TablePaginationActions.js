@@ -23,7 +23,7 @@ var _KeyboardArrowRight = _interopRequireDefault(require("@material-ui/icons/Key
 
 var _LastPage = _interopRequireDefault(require("@material-ui/icons/LastPage"));
 
-var _useSafeIntl = require("../../../utils/useSafeIntl");
+var _useSafeIntl2 = require("../../../utils/useSafeIntl");
 
 var _PageSelect = require("./PageSelect");
 
@@ -59,8 +59,9 @@ var TablePaginationActions = function TablePaginationActions(_ref) {
       countOnTop = _ref.countOnTop,
       selectCount = _ref.selectCount;
   var classes = useStyles();
-  var intl = (0, _useSafeIntl.useSafeIntl)();
-  var formatMessage = intl.formatMessage;
+
+  var _useSafeIntl = (0, _useSafeIntl2.useSafeIntl)(),
+      formatMessage = _useSafeIntl.formatMessage;
 
   var handleFirstPageButtonClick = function handleFirstPageButtonClick() {
     _onPageChange(1);

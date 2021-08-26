@@ -37,7 +37,7 @@ var NoResult = function NoResult(_ref) {
     alignItems: "center",
     justifyContent: "center",
     display: "flex"
-  }, !loading && /*#__PURE__*/_react["default"].createElement(_reactIntl.FormattedMessage, _messages.MESSAGES.noDataText), loading && /*#__PURE__*/_react["default"].createElement(_reactIntl.FormattedMessage, _messages.MESSAGES.loading));
+  }, !loading && /*#__PURE__*/_react["default"].createElement(_reactIntl.FormattedMessage, _messages.MESSAGES.noDataText));
 };
 
 exports.NoResult = NoResult;

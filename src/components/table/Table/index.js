@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
-import MaUTable from '@material-ui/core/Table';
+import MuiTable from '@material-ui/core/Table';
 import Paper from '@material-ui/core/Paper';
 import TableContainer from '@material-ui/core/TableContainer';
 import { makeStyles } from '@material-ui/core/styles';
@@ -34,6 +34,7 @@ import { Select, getSelectionCol } from './Select';
 import { NoResult } from './NoResult';
 import { Count } from './Count';
 import { Pagination } from './Pagination';
+import { LoadingSpinner } from '../../LoadingSpinner';
 /**
  * TableComponent component, no redux, no fetch, just displaying.
  * Multi selection is optionnal, if set to true you can add custom actions
@@ -72,6 +73,9 @@ import { Pagination } from './Pagination';
 const useStyles = makeStyles(() => ({
     tableContainer: {
         overflow: 'hidden',
+    },
+    paper: {
+        position: 'relative',
     },
 }));
 const TableComponent = props => {
@@ -204,9 +208,10 @@ const TableComponent = props => {
                 <Count count={count} selectCount={selection.selectCount} />
             )}
 
-            <Paper elevation={3}>
+            <Paper elevation={3} className={classes.paper}>
+                {loading && <LoadingSpinner absolute />}
                 <TableContainer className={classes.tableContainer}>
-                    <MaUTable {...tableProps} stickyHeader>
+                    <MuiTable {...tableProps} stickyHeader>
                         <Head
                             headerGroups={headerGroups}
                             setSortBy={setSortBy}
@@ -219,10 +224,10 @@ const TableComponent = props => {
                             sortBy={sortBy}
                         />
                         {showFooter && <Footer footerGroups={footerGroups} />}
-                    </MaUTable>
+                    </MuiTable>
                 </TableContainer>
-                {page && page.length === 0 && <NoResult loading={loading} />}
-                {page && page.length > 0 && showPagination && (
+                {page?.length === 0 && <NoResult loading={loading} />}
+                {page?.length > 0 && showPagination && (
                     <Pagination
                         count={count}
                         rowsPerPage={rowsPerPage}

@@ -23,7 +23,6 @@ const NoResult = ({ loading }) => {
             display="flex"
         >
             {!loading && <FormattedMessage {...MESSAGES.noDataText} />}
-            {loading && <FormattedMessage {...MESSAGES.loading} />}
         </Box>
     );
 };

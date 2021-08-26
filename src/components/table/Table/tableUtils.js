@@ -65,7 +65,16 @@ export const getOrderArray = orders =>
         desc: stringValue.indexOf('-') !== -1,
     }));
 
-export const getSimplifiedColumns = columns => columns.map(c => c.accessor);
+export const getSimplifiedColumns = columns =>
+    columns.map(c => {
+        if (c.columns) {
+            return {
+                id: c.accessor,
+                columns: getSimplifiedColumns(c.columns),
+            };
+        }
+        return { id: c.accessor };
+    });
 
 export const defaultSelectionActions = (
     selectAll,
@@ -84,7 +93,7 @@ export const defaultSelectionActions = (
         icon: <RemoveIcon />,
         label: formatMessage({
             id: 'iaso.label.unSelectAll',
-            defaultMessage: 'Un select all',
+            defaultMessage: 'Unselect all',
         }),
         onClick: () => unSelectAll(),
     },

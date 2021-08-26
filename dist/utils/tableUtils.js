@@ -126,7 +126,7 @@ var defaultSelectionActions = function defaultSelectionActions(selectAll, unSele
     icon: /*#__PURE__*/_react["default"].createElement(_Remove["default"], null),
     label: formatMessage({
       id: 'iaso.label.unSelectAll',
-      defaultMessage: 'Un select all'
+      defaultMessage: 'Unselect all'
     }),
     onClick: function onClick() {
       return unSelectAll();
@@ -146,42 +146,34 @@ exports.selectionInitialState = selectionInitialState;
 var setTableSelection = function setTableSelection(selection, selectionType) {
   var items = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
   var totalCount = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
-  var newSelection;
 
   switch (selectionType) {
     case 'select':
-      newSelection = _objectSpread(_objectSpread({}, selection), {}, {
+      return _objectSpread(_objectSpread({}, selection), {}, {
         selectedItems: items,
         selectCount: items.length
       });
-      break;
 
     case 'unselect':
-      newSelection = _objectSpread(_objectSpread({}, selection), {}, {
+      return _objectSpread(_objectSpread({}, selection), {}, {
         unSelectedItems: items,
         selectCount: totalCount - items.length
       });
-      break;
 
     case 'selectAll':
-      newSelection = _objectSpread(_objectSpread({}, selection), {}, {
+      return _objectSpread(_objectSpread({}, selection), {}, {
         selectAll: true,
         selectedItems: [],
         unSelectedItems: [],
         selectCount: totalCount
       });
-      break;
 
     case 'reset':
-      newSelection = selectionInitialState;
-      break;
+      return selectionInitialState;
 
     default:
-      newSelection = _objectSpread({}, selection);
-      break;
+      return _objectSpread({}, selection);
   }
-
-  return newSelection;
 };
 
 exports.setTableSelection = setTableSelection;
@@ -228,11 +220,9 @@ var getColumnsHeadersInfos = function getColumnsHeadersInfos(columns) {
 
   columns.forEach(function (c, i) {
     if (c.headerInfo) {
-      newColumns[i] = _objectSpread(_objectSpread({}, newColumns[i]), {}, {
-        Header: /*#__PURE__*/_react["default"].createElement(_InfoHeader.InfoHeader, {
-          message: c.headerInfo
-        }, newColumns[i].Header)
-      });
+      newColumns[i].Header = /*#__PURE__*/_react["default"].createElement(_InfoHeader.InfoHeader, {
+        message: c.headerInfo
+      }, newColumns[i].Header);
     }
   });
   return newColumns;

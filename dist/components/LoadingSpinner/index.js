@@ -17,32 +17,37 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var baseRoot = {
+  width: '100%',
+  height: '100%',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: 'rgba(255, 255, 255, 0.4)',
+  top: 0,
+  left: 0
+};
+
 var styles = function styles() {
   return {
-    rootFixed: {
+    rootFixed: _objectSpread(_objectSpread({}, baseRoot), {}, {
       position: 'fixed',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: 'rgba(255, 255, 255, 0.4)',
       zIndex: '10000'
-    },
-    root: {
+    }),
+    rootAbsolute: _objectSpread(_objectSpread({}, baseRoot), {}, {
+      position: 'absolute',
+      zIndex: '10'
+    }),
+    root: _objectSpread(_objectSpread({}, baseRoot), {}, {
       position: 'relative',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: 'rgba(255, 255, 255, 0.4)',
       zIndex: '1'
-    },
+    }),
     rootTransparent: {
       backgroundColor: 'transparent'
     }
@@ -54,12 +59,13 @@ var LoadingSpinner = function LoadingSpinner(props) {
       size = props.size,
       transparent = props.transparent,
       fixed = props.fixed,
+      absolute = props.absolute,
       padding = props.padding;
   return /*#__PURE__*/_react["default"].createElement("div", {
     style: {
       padding: padding
     },
-    className: (0, _classnames["default"])(fixed && classes.rootFixed, !fixed && classes.root, transparent && classes.rootTransparent)
+    className: (0, _classnames["default"])(fixed && !absolute && classes.rootFixed, absolute && classes.rootAbsolute, !fixed && !absolute && classes.root, transparent && classes.rootTransparent)
   }, /*#__PURE__*/_react["default"].createElement(_CircularProgress["default"], {
     size: size
   }));
@@ -69,6 +75,7 @@ LoadingSpinner.defaultProps = {
   size: 40,
   transparent: false,
   fixed: true,
+  absolute: false,
   padding: 0
 };
 LoadingSpinner.propTypes = {
@@ -82,6 +89,7 @@ LoadingSpinner.propTypes = {
    */
   transparent: _propTypes["default"].bool,
   fixed: _propTypes["default"].bool,
+  absolute: _propTypes["default"].bool,
 
   /**
    * add padding

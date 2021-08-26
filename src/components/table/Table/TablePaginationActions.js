@@ -34,7 +34,7 @@ const TablePaginationActions = ({
     onPageChange,
     pages,
     rowsPerPageOptions,
-    onRowPerPageChange,
+    selectRowsPerPage,
     countOnTop,
     selectCount,
 }) => {
@@ -96,7 +96,7 @@ const TablePaginationActions = ({
             <PageRowSelect
                 rowsPerPage={rowsPerPage}
                 rowsPerPageOptions={rowsPerPageOptions}
-                onRowPerPageChange={onRowPerPageChange}
+                selectRowsPerPage={selectRowsPerPage}
             />
             <IconButton
                 variant="outlined"
@@ -132,7 +132,7 @@ TablePaginationActions.propTypes = {
     pageIndex: PropTypes.number.isRequired,
     rowsPerPage: PropTypes.number.isRequired,
     rowsPerPageOptions: PropTypes.array.isRequired,
-    onRowPerPageChange: PropTypes.func.isRequired,
+    selectRowsPerPage: PropTypes.func.isRequired,
     countOnTop: PropTypes.bool.isRequired,
     selectCount: PropTypes.number.isRequired,
 };

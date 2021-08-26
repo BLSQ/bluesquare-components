@@ -45,6 +45,8 @@ var _Count = require("./Count");
 
 var _Pagination = require("./Pagination");
 
+var _LoadingSpinner = require("../../LoadingSpinner");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -109,6 +111,9 @@ var useStyles = (0, _styles.makeStyles)(function () {
   return {
     tableContainer: {
       overflow: 'hidden'
+    },
+    paper: {
+      position: 'relative'
     }
   };
 });
@@ -226,8 +231,11 @@ var TableComponent = function TableComponent(props) {
     count: count,
     selectCount: selection.selectCount
   }), /*#__PURE__*/_react["default"].createElement(_Paper["default"], {
-    elevation: 3
-  }, /*#__PURE__*/_react["default"].createElement(_TableContainer["default"], {
+    elevation: 3,
+    className: classes.paper
+  }, loading && /*#__PURE__*/_react["default"].createElement(_LoadingSpinner.LoadingSpinner, {
+    absolute: true
+  }), /*#__PURE__*/_react["default"].createElement(_TableContainer["default"], {
     className: classes.tableContainer
   }, /*#__PURE__*/_react["default"].createElement(_Table["default"], _extends({}, tableProps, {
     stickyHeader: true
@@ -242,9 +250,9 @@ var TableComponent = function TableComponent(props) {
     sortBy: sortBy
   }), showFooter && /*#__PURE__*/_react["default"].createElement(_Footer.Footer, {
     footerGroups: footerGroups
-  }))), page && page.length === 0 && /*#__PURE__*/_react["default"].createElement(_NoResult.NoResult, {
+  }))), (page === null || page === void 0 ? void 0 : page.length) === 0 && /*#__PURE__*/_react["default"].createElement(_NoResult.NoResult, {
     loading: loading
-  }), page && page.length > 0 && showPagination && /*#__PURE__*/_react["default"].createElement(_Pagination.Pagination, {
+  }), (page === null || page === void 0 ? void 0 : page.length) > 0 && showPagination && /*#__PURE__*/_react["default"].createElement(_Pagination.Pagination, {
     count: count,
     rowsPerPage: rowsPerPage,
     pageIndex: pageIndex,

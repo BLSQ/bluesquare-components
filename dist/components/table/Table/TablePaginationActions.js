@@ -55,7 +55,7 @@ var TablePaginationActions = function TablePaginationActions(_ref) {
       _onPageChange = _ref.onPageChange,
       pages = _ref.pages,
       rowsPerPageOptions = _ref.rowsPerPageOptions,
-      onRowPerPageChange = _ref.onRowPerPageChange,
+      selectRowsPerPage = _ref.selectRowsPerPage,
       countOnTop = _ref.countOnTop,
       selectCount = _ref.selectCount;
   var classes = useStyles();
@@ -110,7 +110,7 @@ var TablePaginationActions = function TablePaginationActions(_ref) {
   }), /*#__PURE__*/_react["default"].createElement(_PageRowSelect.PageRowSelect, {
     rowsPerPage: rowsPerPage,
     rowsPerPageOptions: rowsPerPageOptions,
-    onRowPerPageChange: onRowPerPageChange
+    selectRowsPerPage: selectRowsPerPage
   }), /*#__PURE__*/_react["default"].createElement(_IconButton["default"], {
     variant: "outlined",
     onClick: handleNextButtonClick,
@@ -141,7 +141,7 @@ TablePaginationActions.propTypes = {
   pageIndex: _propTypes["default"].number.isRequired,
   rowsPerPage: _propTypes["default"].number.isRequired,
   rowsPerPageOptions: _propTypes["default"].array.isRequired,
-  onRowPerPageChange: _propTypes["default"].func.isRequired,
+  selectRowsPerPage: _propTypes["default"].func.isRequired,
   countOnTop: _propTypes["default"].bool.isRequired,
   selectCount: _propTypes["default"].number.isRequired
 };

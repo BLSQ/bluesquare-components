@@ -5,29 +5,31 @@ import { withStyles } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+const baseRoot = {
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.4)',
+    top: 0,
+    left: 0,
+};
+
 const styles = () => ({
     rootFixed: {
+        ...baseRoot,
         position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'rgba(255, 255, 255, 0.4)',
         zIndex: '10000',
     },
+    rootAbsolute: {
+        ...baseRoot,
+        position: 'absolute',
+        zIndex: '10',
+    },
     root: {
+        ...baseRoot,
         position: 'relative',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'rgba(255, 255, 255, 0.4)',
         zIndex: '1',
     },
     rootTransparent: {
@@ -36,15 +38,16 @@ const styles = () => ({
 });
 
 const LoadingSpinner = props => {
-    const { classes, size, transparent, fixed, padding } = props;
+    const { classes, size, transparent, fixed, absolute, padding } = props;
     return (
         <div
             style={{
                 padding,
             }}
             className={classNames(
-                fixed && classes.rootFixed,
-                !fixed && classes.root,
+                fixed && !absolute && classes.rootFixed,
+                absolute && classes.rootAbsolute,
+                !fixed && !absolute && classes.root,
                 transparent && classes.rootTransparent,
             )}
         >
@@ -56,6 +59,7 @@ LoadingSpinner.defaultProps = {
     size: 40,
     transparent: false,
     fixed: true,
+    absolute: false,
     padding: 0,
 };
 
@@ -69,6 +73,7 @@ LoadingSpinner.propTypes = {
      */
     transparent: PropTypes.bool,
     fixed: PropTypes.bool,
+    absolute: PropTypes.bool,
     /**
      * add padding
      */

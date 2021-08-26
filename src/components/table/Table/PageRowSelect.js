@@ -19,12 +19,12 @@ const useStyles = makeStyles(theme => ({
 const PageRowSelect = ({
     rowsPerPage,
     rowsPerPageOptions,
-    onRowPerPageChange,
+    selectRowsPerPage,
 }) => {
     const classes = useStyles();
     const { formatMessage } = useSafeIntl();
     const handleChange = event => {
-        onRowPerPageChange(event.target.value);
+        selectRowsPerPage(event.target.value);
     };
     return (
         <Box
@@ -53,7 +53,7 @@ const PageRowSelect = ({
 PageRowSelect.propTypes = {
     rowsPerPage: PropTypes.number.isRequired,
     rowsPerPageOptions: PropTypes.array.isRequired,
-    onRowPerPageChange: PropTypes.func.isRequired,
+    selectRowsPerPage: PropTypes.func.isRequired,
 };
 
 export { PageRowSelect };

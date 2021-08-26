@@ -51,7 +51,7 @@ const Pagination = ({
                     count={count}
                     rowsPerPage={rowsPerPage}
                     onPageChange={value => onTableParamsChange('page', value)}
-                    onRowPerPageChange={value =>
+                    selectRowsPerPage={value =>
                         onTableParamsChange('pageSize', value)
                     }
                     pageIndex={pageIndex}

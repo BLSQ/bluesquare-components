@@ -101,7 +101,16 @@ exports.getOrderArray = getOrderArray;
 
 var getSimplifiedColumns = function getSimplifiedColumns(columns) {
   return columns.map(function (c) {
-    return c.accessor;
+    if (c.columns) {
+      return {
+        id: c.accessor,
+        columns: getSimplifiedColumns(c.columns)
+      };
+    }
+
+    return {
+      id: c.accessor
+    };
   });
 };
 
@@ -121,7 +130,7 @@ var defaultSelectionActions = function defaultSelectionActions(selectAll, unSele
     icon: /*#__PURE__*/_react["default"].createElement(_Remove["default"], null),
     label: formatMessage({
       id: 'iaso.label.unSelectAll',
-      defaultMessage: 'Un select all'
+      defaultMessage: 'Unselect all'
     }),
     onClick: function onClick() {
       return unSelectAll();

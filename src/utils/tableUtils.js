@@ -90,7 +90,7 @@ export const defaultSelectionActions = (
         icon: <RemoveIcon />,
         label: formatMessage({
             id: 'iaso.label.unSelectAll',
-            defaultMessage: 'Un select all',
+            defaultMessage: 'Unselect all',
         }),
         onClick: () => unSelectAll(),
     },
@@ -109,39 +109,32 @@ export const setTableSelection = (
     items = [],
     totalCount = 0,
 ) => {
-    let newSelection;
     switch (selectionType) {
         case 'select':
-            newSelection = {
+            return {
                 ...selection,
                 selectedItems: items,
                 selectCount: items.length,
             };
-            break;
         case 'unselect':
-            newSelection = {
+            return {
                 ...selection,
                 unSelectedItems: items,
                 selectCount: totalCount - items.length,
             };
-            break;
         case 'selectAll':
-            newSelection = {
+            return {
                 ...selection,
                 selectAll: true,
                 selectedItems: [],
                 unSelectedItems: [],
                 selectCount: totalCount,
             };
-            break;
         case 'reset':
-            newSelection = selectionInitialState;
-            break;
+            return selectionInitialState;
         default:
-            newSelection = { ...selection };
-            break;
+            return { ...selection };
     }
-    return newSelection;
 };
 
 export const getParamsKey = (paramsPrefix, key) => {
@@ -187,14 +180,11 @@ export const getColumnsHeadersInfos = columns => {
     const newColumns = [...columns];
     columns.forEach((c, i) => {
         if (c.headerInfo) {
-            newColumns[i] = {
-                ...newColumns[i],
-                Header: (
-                    <InfoHeader message={c.headerInfo}>
-                        {newColumns[i].Header}
-                    </InfoHeader>
-                ),
-            };
+            newColumns[i].Header = (
+                <InfoHeader message={c.headerInfo}>
+                    {newColumns[i].Header}
+                </InfoHeader>
+            );
         }
     });
     return newColumns;

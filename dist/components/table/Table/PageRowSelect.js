@@ -37,14 +37,14 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
 var PageRowSelect = function PageRowSelect(_ref) {
   var rowsPerPage = _ref.rowsPerPage,
       rowsPerPageOptions = _ref.rowsPerPageOptions,
-      onRowPerPageChange = _ref.onRowPerPageChange;
+      selectRowsPerPage = _ref.selectRowsPerPage;
   var classes = useStyles();
 
   var _useSafeIntl = (0, _useSafeIntl2.useSafeIntl)(),
       formatMessage = _useSafeIntl.formatMessage;
 
   var handleChange = function handleChange(event) {
-    onRowPerPageChange(event.target.value);
+    selectRowsPerPage(event.target.value);
   };
 
   return /*#__PURE__*/_react["default"].createElement(_Box["default"], {
@@ -70,5 +70,5 @@ exports.PageRowSelect = PageRowSelect;
 PageRowSelect.propTypes = {
   rowsPerPage: _propTypes["default"].number.isRequired,
   rowsPerPageOptions: _propTypes["default"].array.isRequired,
-  onRowPerPageChange: _propTypes["default"].func.isRequired
+  selectRowsPerPage: _propTypes["default"].func.isRequired
 };

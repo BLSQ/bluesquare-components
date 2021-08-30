@@ -23,6 +23,13 @@ const styles = theme => ({
         height: `calc(100vh - ${menuHeight}px)`,
         overflow: 'hidden',
     },
+    hiddenOpacity: {
+        position: 'absolute',
+        top: 0,
+        left: -5000,
+        zIndex: -10,
+        opacity: 0,
+    },
 });
 
 class InnerDrawer extends Component {
@@ -142,7 +149,7 @@ class InnerDrawer extends Component {
                                         width="100%"
                                         className={
                                             activeOption !== 'filters'
-                                                ? 'hidden-opacity'
+                                                ? classes.hiddenOpacity
                                                 : ''
                                         }
                                     >

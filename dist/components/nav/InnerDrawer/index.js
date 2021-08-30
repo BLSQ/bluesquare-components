@@ -64,7 +64,14 @@ var styles = function styles(theme) {
       marginBottom: 0,
       height: "calc(100vh - ".concat(_innerDrawer.menuHeight, "px)"),
       overflow: 'hidden'
-    })
+    }),
+    hiddenOpacity: {
+      position: 'absolute',
+      top: 0,
+      left: -5000,
+      zIndex: -10,
+      opacity: 0
+    }
   });
 };
 
@@ -166,7 +173,7 @@ var InnerDrawer = /*#__PURE__*/function (_Component) {
         flexDirection: "row"
       }, filtersOption && /*#__PURE__*/_react["default"].createElement(_core.Box, {
         width: "100%",
-        className: activeOption !== 'filters' ? 'hidden-opacity' : ''
+        className: activeOption !== 'filters' ? classes.hiddenOpacity : ''
       }, filtersOption.component), activeOption === 'edit' && /*#__PURE__*/_react["default"].createElement(_core.Box, {
         width: "100%"
       }, editOption.component), activeOption === 'settings' && /*#__PURE__*/_react["default"].createElement(_core.Box, {

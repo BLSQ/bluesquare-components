@@ -48,6 +48,7 @@ var PageSelect = function PageSelect(_ref) {
     label: "",
     type: "number",
     value: pageIndex,
+    disabled: pages < 2,
     variant: "outlined",
     onChange: function onChange(e) {
       return onPageChange(e.currentTarget.value);

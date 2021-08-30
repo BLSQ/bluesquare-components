@@ -65,7 +65,6 @@ const Pagination = ({
     );
 };
 Pagination.defaultProps = {
-    data: [],
     count: 0,
     rowsPerPage: 0,
     pageIndex: 0,
@@ -78,7 +77,6 @@ Pagination.propTypes = {
     rowsPerPage: PropTypes.number,
     pageIndex: PropTypes.number,
     pages: PropTypes.number,
-    data: PropTypes.array,
     onTableParamsChange: PropTypes.func.isRequired,
     countOnTop: PropTypes.bool.isRequired,
     selectCount: PropTypes.number,

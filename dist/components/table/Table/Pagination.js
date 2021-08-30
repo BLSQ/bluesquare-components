@@ -84,7 +84,6 @@ var Pagination = function Pagination(_ref) {
 
 exports.Pagination = Pagination;
 Pagination.defaultProps = {
-  data: [],
   count: 0,
   rowsPerPage: 0,
   pageIndex: 0,
@@ -96,7 +95,6 @@ Pagination.propTypes = {
   rowsPerPage: _propTypes["default"].number,
   pageIndex: _propTypes["default"].number,
   pages: _propTypes["default"].number,
-  data: _propTypes["default"].array,
   onTableParamsChange: _propTypes["default"].func.isRequired,
   countOnTop: _propTypes["default"].bool.isRequired,
   selectCount: _propTypes["default"].number

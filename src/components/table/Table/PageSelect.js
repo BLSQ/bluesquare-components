@@ -31,6 +31,7 @@ const PageSelect = ({ pageIndex, pages, onPageChange }) => {
                 label=""
                 type="number"
                 value={pageIndex}
+                disabled={pages < 2}
                 variant="outlined"
                 onChange={e => onPageChange(e.currentTarget.value)}
             />

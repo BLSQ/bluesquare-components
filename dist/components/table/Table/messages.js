@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.MESSAGES = exports.customTableTranslations = void 0;
+exports.MESSAGES = void 0;
 
 var _reactIntl = require("react-intl");
 
@@ -16,9 +16,13 @@ var MESSAGES = (0, _reactIntl.defineMessages)({
     defaultMessage: 'Next',
     id: 'blsq.table.next'
   },
-  loadingText: {
-    defaultMessage: 'Loading...',
-    id: 'blsq.table.loading'
+  lastText: {
+    defaultMessage: 'Last page',
+    id: 'blsq.table.last'
+  },
+  firstText: {
+    defaultMessage: 'First page',
+    id: 'blsq.table.first'
   },
   noDataText: {
     defaultMessage: 'No result',
@@ -51,21 +55,26 @@ var MESSAGES = (0, _reactIntl.defineMessages)({
   selected: {
     id: 'blsq.table.label.selected',
     defaultMessage: 'selected'
+  },
+  loading: {
+    id: 'blsq.table.loading',
+    defaultMessage: 'Loading...'
+  },
+  details: {
+    defaultMessage: 'Details',
+    id: 'blsq.table.details'
+  },
+  sortAsc: {
+    defaultMessage: 'Sort ascending',
+    id: 'blsq.table.sortAsc'
+  },
+  sortDesc: {
+    defaultMessage: 'Sort descending',
+    id: 'blsq.table.sortDesc'
+  },
+  unSort: {
+    defaultMessage: 'Remove sort',
+    id: 'blsq.table.unSort'
   }
-}); // TODO move thi sto a place that makes more sense
-
+});
 exports.MESSAGES = MESSAGES;
-
-var customTableTranslations = function customTableTranslations(formatMessage) {
-  return {
-    previousText: formatMessage(MESSAGES.previousText),
-    nextText: formatMessage(MESSAGES.nextText),
-    loadingText: formatMessage(MESSAGES.loadingText),
-    noDataText: formatMessage(MESSAGES.noDataText),
-    pageText: formatMessage(MESSAGES.pageText),
-    ofText: formatMessage(MESSAGES.ofText),
-    rowsText: formatMessage(MESSAGES.rowsText)
-  };
-};
-
-exports.customTableTranslations = customTableTranslations;

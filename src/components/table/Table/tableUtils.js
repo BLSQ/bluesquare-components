@@ -1,8 +1,9 @@
 import React from 'react';
 import RemoveIcon from '@material-ui/icons/Remove';
 import AddIcon from '@material-ui/icons/Add';
-import { capitalize } from './index';
-import { InfoHeader } from '../components/table/InfoHeader';
+
+import { InfoHeader } from '../InfoHeader';
+import { capitalize } from '../../../utils/index';
 
 const getTableUrl = (
     urlKey,
@@ -49,10 +50,11 @@ export { getTableUrl };
 const getOrderValue = obj => (!obj.desc ? obj.id : `-${obj.id}`);
 
 export const getSort = sortList => {
-    let orderTemp = '';
-    sortList.map((sort, index) => {
-        orderTemp += `${index > 0 ? ',' : ''}${getOrderValue(sort)}`;
-        return true;
+    let orderTemp;
+    sortList.forEach((sort, index) => {
+        orderTemp = `${orderTemp || ''}${index > 0 ? ',' : ''}${getOrderValue(
+            sort,
+        )}`;
     });
     return orderTemp;
 };
@@ -63,15 +65,16 @@ export const getOrderArray = orders =>
         desc: stringValue.indexOf('-') !== -1,
     }));
 
-export const getSimplifiedColumns = columns => {
-    const newColumns = [];
-    columns.forEach(c => {
-        if (c.accessor) {
-            newColumns.push(c.accessor);
+export const getSimplifiedColumns = columns =>
+    columns.map(c => {
+        if (c.columns) {
+            return {
+                id: c.accessor,
+                columns: getSimplifiedColumns(c.columns),
+            };
         }
+        return { id: c.accessor };
     });
-    return newColumns;
-};
 
 export const defaultSelectionActions = (
     selectAll,
@@ -109,32 +112,39 @@ export const setTableSelection = (
     items = [],
     totalCount = 0,
 ) => {
+    let newSelection;
     switch (selectionType) {
         case 'select':
-            return {
+            newSelection = {
                 ...selection,
                 selectedItems: items,
                 selectCount: items.length,
             };
+            break;
         case 'unselect':
-            return {
+            newSelection = {
                 ...selection,
                 unSelectedItems: items,
                 selectCount: totalCount - items.length,
             };
+            break;
         case 'selectAll':
-            return {
+            newSelection = {
                 ...selection,
                 selectAll: true,
                 selectedItems: [],
                 unSelectedItems: [],
                 selectCount: totalCount,
             };
+            break;
         case 'reset':
-            return selectionInitialState;
+            newSelection = selectionInitialState;
+            break;
         default:
-            return { ...selection };
+            newSelection = { ...selection };
+            break;
     }
+    return newSelection;
 };
 
 export const getParamsKey = (paramsPrefix, key) => {
@@ -170,21 +180,18 @@ export const getTableParams = (
     return newParams;
 };
 
-export const tableInitialResult = {
-    data: [],
-    pages: 0,
-    count: 0,
-};
-
 export const getColumnsHeadersInfos = columns => {
     const newColumns = [...columns];
     columns.forEach((c, i) => {
         if (c.headerInfo) {
-            newColumns[i].Header = (
-                <InfoHeader message={c.headerInfo}>
-                    {newColumns[i].Header}
-                </InfoHeader>
-            );
+            newColumns[i] = {
+                ...newColumns[i],
+                Header: (
+                    <InfoHeader message={c.headerInfo}>
+                        {newColumns[i].Header}
+                    </InfoHeader>
+                ),
+            };
         }
     });
     return newColumns;

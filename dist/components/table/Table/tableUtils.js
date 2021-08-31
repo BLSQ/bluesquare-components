@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getColumnsHeadersInfos = exports.tableInitialResult = exports.getTableParams = exports.getParamsKey = exports.setTableSelection = exports.selectionInitialState = exports.defaultSelectionActions = exports.getSimplifiedColumns = exports.getOrderArray = exports.getSort = exports.getTableUrl = void 0;
+exports.getColumnsHeadersInfos = exports.getTableParams = exports.getParamsKey = exports.setTableSelection = exports.selectionInitialState = exports.defaultSelectionActions = exports.getSimplifiedColumns = exports.getOrderArray = exports.getSort = exports.getTableUrl = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -11,9 +11,9 @@ var _Remove = _interopRequireDefault(require("@material-ui/icons/Remove"));
 
 var _Add = _interopRequireDefault(require("@material-ui/icons/Add"));
 
-var _index = require("./index");
+var _InfoHeader = require("../InfoHeader");
 
-var _InfoHeader = require("../components/table/InfoHeader");
+var _index = require("../../../utils/index");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -79,10 +79,9 @@ var getOrderValue = function getOrderValue(obj) {
 };
 
 var getSort = function getSort(sortList) {
-  var orderTemp = '';
-  sortList.map(function (sort, index) {
-    orderTemp += "".concat(index > 0 ? ',' : '').concat(getOrderValue(sort));
-    return true;
+  var orderTemp;
+  sortList.forEach(function (sort, index) {
+    orderTemp = "".concat(orderTemp || '').concat(index > 0 ? ',' : '').concat(getOrderValue(sort));
   });
   return orderTemp;
 };
@@ -101,13 +100,18 @@ var getOrderArray = function getOrderArray(orders) {
 exports.getOrderArray = getOrderArray;
 
 var getSimplifiedColumns = function getSimplifiedColumns(columns) {
-  var newColumns = [];
-  columns.forEach(function (c) {
-    if (c.accessor) {
-      newColumns.push(c.accessor);
+  return columns.map(function (c) {
+    if (c.columns) {
+      return {
+        id: c.accessor,
+        columns: getSimplifiedColumns(c.columns)
+      };
     }
+
+    return {
+      id: c.accessor
+    };
   });
-  return newColumns;
 };
 
 exports.getSimplifiedColumns = getSimplifiedColumns;
@@ -146,34 +150,42 @@ exports.selectionInitialState = selectionInitialState;
 var setTableSelection = function setTableSelection(selection, selectionType) {
   var items = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
   var totalCount = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
+  var newSelection;
 
   switch (selectionType) {
     case 'select':
-      return _objectSpread(_objectSpread({}, selection), {}, {
+      newSelection = _objectSpread(_objectSpread({}, selection), {}, {
         selectedItems: items,
         selectCount: items.length
       });
+      break;
 
     case 'unselect':
-      return _objectSpread(_objectSpread({}, selection), {}, {
+      newSelection = _objectSpread(_objectSpread({}, selection), {}, {
         unSelectedItems: items,
         selectCount: totalCount - items.length
       });
+      break;
 
     case 'selectAll':
-      return _objectSpread(_objectSpread({}, selection), {}, {
+      newSelection = _objectSpread(_objectSpread({}, selection), {}, {
         selectAll: true,
         selectedItems: [],
         unSelectedItems: [],
         selectCount: totalCount
       });
+      break;
 
     case 'reset':
-      return selectionInitialState;
+      newSelection = selectionInitialState;
+      break;
 
     default:
-      return _objectSpread({}, selection);
+      newSelection = _objectSpread({}, selection);
+      break;
   }
+
+  return newSelection;
 };
 
 exports.setTableSelection = setTableSelection;
@@ -208,21 +220,17 @@ var getTableParams = function getTableParams(params, paramsPrefix, filters, apiP
 };
 
 exports.getTableParams = getTableParams;
-var tableInitialResult = {
-  data: [],
-  pages: 0,
-  count: 0
-};
-exports.tableInitialResult = tableInitialResult;
 
 var getColumnsHeadersInfos = function getColumnsHeadersInfos(columns) {
   var newColumns = _toConsumableArray(columns);
 
   columns.forEach(function (c, i) {
     if (c.headerInfo) {
-      newColumns[i].Header = /*#__PURE__*/_react["default"].createElement(_InfoHeader.InfoHeader, {
-        message: c.headerInfo
-      }, newColumns[i].Header);
+      newColumns[i] = _objectSpread(_objectSpread({}, newColumns[i]), {}, {
+        Header: /*#__PURE__*/_react["default"].createElement(_InfoHeader.InfoHeader, {
+          message: c.headerInfo
+        }, newColumns[i].Header)
+      });
     }
   });
   return newColumns;

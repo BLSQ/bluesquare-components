@@ -21,7 +21,6 @@ import { commonStyles } from './styles/iaso/common';
 import { innerDrawerStyles } from './styles/iaso/innerDrawer';
 import { mapStyles } from './styles/iaso/map';
 import { mapPopupStyles } from './styles/iaso/mapPopup';
-import { reactTableStyles } from './styles/iaso/reactTable';
 import { AddButton } from './components/buttons/AddButton';
 import { DownloadButton } from './components/buttons/DownloadButton';
 import { ExportButton } from './components/buttons/ExportButton';
@@ -41,13 +40,12 @@ import { ErrorBoundary } from './components/ErrorBoundary';
 import { BlockPlaceholder } from './components/BlockPlaceholder';
 import { Filters } from './components/filters/Filters';
 import { ColumnsSelectDrawer } from './components/table/ColumnsSelectDrawer';
-import { ColumnText } from './components/table/ColumnText';
 import { HeaderRowIcon } from './components/table/HeaderRowIcon';
 import { InfoHeader } from './components/table/InfoHeader';
 import { SelectionSpeedDials } from './components/table/SelectionSpeedDials';
 import { TableFilters } from './components/table/TableFilters';
 import { Table } from './components/table/Table';
-import { customTableTranslations } from './components/table/Table/messages';
+import { Expander } from './components/table/Table/Expander';
 import {
     LinkProvider,
     LinkContext,
@@ -87,7 +85,6 @@ export {
     innerDrawerStyles,
     mapStyles,
     mapPopupStyles,
-    reactTableStyles,
     AddButton,
     DownloadButton,
     ExportButton,
@@ -109,13 +106,11 @@ export {
     BlockPlaceholder,
     Filters,
     ColumnsSelectDrawer,
-    ColumnText,
     HeaderRowIcon,
     InfoHeader,
     SelectionSpeedDials,
     TableFilters,
     Table,
-    customTableTranslations,
     LinkProvider,
     LinkContext,
     withLink,
@@ -124,4 +119,5 @@ export {
     CommentWithThread,
     AddComment,
     InputLabel,
+    Expander,
 };

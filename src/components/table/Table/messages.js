@@ -9,9 +9,13 @@ const MESSAGES = defineMessages({
         defaultMessage: 'Next',
         id: 'blsq.table.next',
     },
-    loadingText: {
-        defaultMessage: 'Loading...',
-        id: 'blsq.table.loading',
+    lastText: {
+        defaultMessage: 'Last page',
+        id: 'blsq.table.last',
+    },
+    firstText: {
+        defaultMessage: 'First page',
+        id: 'blsq.table.first',
     },
     noDataText: {
         defaultMessage: 'No result',
@@ -45,18 +49,26 @@ const MESSAGES = defineMessages({
         id: 'blsq.table.label.selected',
         defaultMessage: 'selected',
     },
+    loading: {
+        id: 'blsq.table.loading',
+        defaultMessage: 'Loading...',
+    },
+    details: {
+        defaultMessage: 'Details',
+        id: 'blsq.table.details',
+    },
+    sortAsc: {
+        defaultMessage: 'Sort ascending',
+        id: 'blsq.table.sortAsc',
+    },
+    sortDesc: {
+        defaultMessage: 'Sort descending',
+        id: 'blsq.table.sortDesc',
+    },
+    unSort: {
+        defaultMessage: 'Remove sort',
+        id: 'blsq.table.unSort',
+    },
 });
-
-// TODO move thi sto a place that makes more sense
-const customTableTranslations = formatMessage => ({
-    previousText: formatMessage(MESSAGES.previousText),
-    nextText: formatMessage(MESSAGES.nextText),
-    loadingText: formatMessage(MESSAGES.loadingText),
-    noDataText: formatMessage(MESSAGES.noDataText),
-    pageText: formatMessage(MESSAGES.pageText),
-    ofText: formatMessage(MESSAGES.ofText),
-    rowsText: formatMessage(MESSAGES.rowsText),
-});
-export { customTableTranslations };
 
 export { MESSAGES };

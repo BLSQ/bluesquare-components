@@ -29,7 +29,6 @@ var _exportNames = {
   innerDrawerStyles: true,
   mapStyles: true,
   mapPopupStyles: true,
-  reactTableStyles: true,
   AddButton: true,
   DownloadButton: true,
   ExportButton: true,
@@ -49,13 +48,12 @@ var _exportNames = {
   BlockPlaceholder: true,
   Filters: true,
   ColumnsSelectDrawer: true,
-  ColumnText: true,
   HeaderRowIcon: true,
   InfoHeader: true,
   SelectionSpeedDials: true,
   TableFilters: true,
   Table: true,
-  customTableTranslations: true,
+  Expander: true,
   LinkProvider: true,
   LinkContext: true,
   withLink: true,
@@ -185,12 +183,6 @@ Object.defineProperty(exports, "mapPopupStyles", {
     return _mapPopup.mapPopupStyles;
   }
 });
-Object.defineProperty(exports, "reactTableStyles", {
-  enumerable: true,
-  get: function get() {
-    return _reactTable.reactTableStyles;
-  }
-});
 Object.defineProperty(exports, "AddButton", {
   enumerable: true,
   get: function get() {
@@ -305,12 +297,6 @@ Object.defineProperty(exports, "ColumnsSelectDrawer", {
     return _ColumnsSelectDrawer.ColumnsSelectDrawer;
   }
 });
-Object.defineProperty(exports, "ColumnText", {
-  enumerable: true,
-  get: function get() {
-    return _ColumnText.ColumnText;
-  }
-});
 Object.defineProperty(exports, "HeaderRowIcon", {
   enumerable: true,
   get: function get() {
@@ -341,10 +327,10 @@ Object.defineProperty(exports, "Table", {
     return _Table.Table;
   }
 });
-Object.defineProperty(exports, "customTableTranslations", {
+Object.defineProperty(exports, "Expander", {
   enumerable: true,
   get: function get() {
-    return _messages.customTableTranslations;
+    return _Expander.Expander;
   }
 });
 Object.defineProperty(exports, "LinkProvider", {
@@ -458,8 +444,6 @@ var _map = require("./styles/iaso/map");
 
 var _mapPopup = require("./styles/iaso/mapPopup");
 
-var _reactTable = require("./styles/iaso/reactTable");
-
 var _AddButton = require("./components/buttons/AddButton");
 
 var _DownloadButton = require("./components/buttons/DownloadButton");
@@ -498,8 +482,6 @@ var _Filters = require("./components/filters/Filters");
 
 var _ColumnsSelectDrawer = require("./components/table/ColumnsSelectDrawer");
 
-var _ColumnText = require("./components/table/ColumnText");
-
 var _HeaderRowIcon = require("./components/table/HeaderRowIcon");
 
 var _InfoHeader = require("./components/table/InfoHeader");
@@ -510,7 +492,7 @@ var _TableFilters = require("./components/table/TableFilters");
 
 var _Table = require("./components/table/Table");
 
-var _messages = require("./components/table/Table/messages");
+var _Expander = require("./components/table/Table/Expander");
 
 var _LinkProvider = require("./components/LinkProvider");
 

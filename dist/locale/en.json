@@ -13,7 +13,9 @@
     "blsq.comment.postingTime": "Posted",
     "blsq.comment.textArea.placeholder": "Leave a comment here",
     "blsq.table.columnSelect.tooltip": "Select visible columns",
+    "blsq.table.details": "Details",
     "blsq.table.filter.search": "Search",
+    "blsq.table.first": "First page",
     "blsq.table.label.close": "Close",
     "blsq.table.label.resetSearch": "Empty search",
     "blsq.table.label.resultsLower": "result(s)",
@@ -21,11 +23,15 @@
     "blsq.table.label.selected": "selected",
     "blsq.table.label.selection": "Selection",
     "blsq.table.labels.selectionAction": "With selected org unit",
+    "blsq.table.last": "Last page",
     "blsq.table.loading": "Loading...",
     "blsq.table.next": "Next",
     "blsq.table.noResult": "No result",
     "blsq.table.of": "of",
     "blsq.table.page": "Page",
     "blsq.table.previous": "Previous",
-    "blsq.table.results": "results"
+    "blsq.table.results": "results",
+    "blsq.table.sortAsc": "Sort ascending",
+    "blsq.table.sortDesc": "Sort descending",
+    "blsq.table.unSort": "Remove sort"
 }

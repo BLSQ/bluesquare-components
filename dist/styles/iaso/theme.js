@@ -13,16 +13,10 @@ var rawTheme = {
   },
   textColor: '#333',
   palette: {
-    // primary: {
-    //     main: '#82AE2E',
-    //     dark: 'darken(#82AE2E, 50%)',
-    //     contrastText: '#FFFFFF',
-    // },
-    // secondary: {
-    //     main: '#EA622A',
-    // },
     gray: {
-      main: '#666'
+      main: '#666',
+      border: 'rgba(0,0,0,0.02)',
+      background: 'rgba(0,0,0,0.03)'
     },
     mediumGray: {
       main: '#A2A2A2'

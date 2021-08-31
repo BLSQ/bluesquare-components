@@ -6,7 +6,6 @@ import { MESSAGES } from './messages';
 import { useStyles } from '../styles';
 import { AddComment } from '../AddComment';
 import { Comment } from '../Comment';
-import '../../../css/index.css';
 
 // credit: https://codesandbox.io/s/comment-box-with-material-ui-10p3c?file=/src/index.js:2810-4030
 const SingleComment = ({

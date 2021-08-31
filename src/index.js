@@ -22,7 +22,6 @@ import { innerDrawerStyles } from './styles/iaso/innerDrawer';
 import { mapStyles } from './styles/iaso/map';
 import { mapPopupStyles } from './styles/iaso/mapPopup';
 import { AddButton } from './components/buttons/AddButton';
-import { DownloadButton } from './components/buttons/DownloadButton';
 import { ExportButton } from './components/buttons/ExportButton';
 import { IconButton } from './components/buttons/IconButton';
 import { DynamicTabs } from './components/nav/DynamicTabs';
@@ -86,7 +85,6 @@ export {
     mapStyles,
     mapPopupStyles,
     AddButton,
-    DownloadButton,
     ExportButton,
     IconButton,
     DynamicTabs,

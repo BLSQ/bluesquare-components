@@ -92,6 +92,7 @@ function IconButtonComponent({
     icon: iconName,
     tooltipMessage,
     color,
+    size,
 }) {
     if ((onClick === null) === (url === null)) {
         console.error(
@@ -100,6 +101,7 @@ function IconButtonComponent({
     }
     const Link = useLink();
     const icon = ICON_VARIANTS[iconName];
+    // FIXME Why the <span>????
     return (
         <Tooltip
             classes={{ popper: classes.popperFixed }}
@@ -110,7 +112,7 @@ function IconButtonComponent({
             title={<FormattedMessage {...tooltipMessage} />}
         >
             <span>
-                <IconButton disabled={disabled} onClick={onClick}>
+                <IconButton disabled={disabled} onClick={onClick} size={size}>
                     {url ? (
                         <Link to={url} className={classes.linkButton}>
                             <ButtonIcon icon={icon} color={color} />
@@ -128,8 +130,10 @@ IconButtonComponent.defaultProps = {
     url: null,
     onClick: null,
     color: 'action',
+    size: 'medium',
 };
 IconButtonComponent.propTypes = {
+    size: PropTypes.string,
     classes: PropTypes.object.isRequired,
     onClick: PropTypes.func,
     url: PropTypes.string,

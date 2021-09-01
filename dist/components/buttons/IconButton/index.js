@@ -133,14 +133,16 @@ function IconButtonComponent(_ref2) {
       url = _ref2.url,
       iconName = _ref2.icon,
       tooltipMessage = _ref2.tooltipMessage,
-      color = _ref2.color;
+      color = _ref2.color,
+      size = _ref2.size;
 
   if (onClick === null === (url === null)) {
     console.error('IconButtonComponent needs either the onClick or the url property');
   }
 
   var Link = (0, _LinkProvider.useLink)();
-  var icon = ICON_VARIANTS[iconName];
+  var icon = ICON_VARIANTS[iconName]; // FIXME Why the <span>????
+
   return /*#__PURE__*/_react["default"].createElement(_core.Tooltip, {
     classes: {
       popper: classes.popperFixed
@@ -152,7 +154,8 @@ function IconButtonComponent(_ref2) {
     title: /*#__PURE__*/_react["default"].createElement(_reactIntl.FormattedMessage, tooltipMessage)
   }, /*#__PURE__*/_react["default"].createElement("span", null, /*#__PURE__*/_react["default"].createElement(_core.IconButton, {
     disabled: disabled,
-    onClick: onClick
+    onClick: onClick,
+    size: size
   }, url ? /*#__PURE__*/_react["default"].createElement(Link, {
     to: url,
     className: classes.linkButton
@@ -169,9 +172,11 @@ IconButtonComponent.defaultProps = {
   disabled: false,
   url: null,
   onClick: null,
-  color: 'action'
+  color: 'action',
+  size: 'medium'
 };
 IconButtonComponent.propTypes = {
+  size: _propTypes["default"].string,
   classes: _propTypes["default"].object.isRequired,
   onClick: _propTypes["default"].func,
   url: _propTypes["default"].string,

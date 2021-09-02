@@ -134,7 +134,8 @@ var TableComponent = function TableComponent(props) {
       selection = props.selection,
       selectionActionMessage = props.selectionActionMessage,
       showPagination = props.showPagination,
-      showFooter = props.showFooter;
+      showFooter = props.showFooter,
+      onTableParamsChange = props.onTableParamsChange;
 
   var _useSafeIntl = (0, _useSafeIntl2.useSafeIntl)(),
       formatMessage = _useSafeIntl.formatMessage;
@@ -159,7 +160,7 @@ var TableComponent = function TableComponent(props) {
     var urlPageSize = parseInt(params[(0, _tableUtils.getParamsKey)(paramsPrefix, 'pageSize')], 10);
     return {
       pageIndex: params[(0, _tableUtils.getParamsKey)(paramsPrefix, 'page')] ? params[(0, _tableUtils.getParamsKey)(paramsPrefix, 'page')] - 1 : _constants.DEFAULT_PAGE - 1,
-      pageSize: urlPageSize || extraProps && extraProps.defaultPageSize || _constants.DEFAULT_PAGE_SIZE,
+      pageSize: urlPageSize || (extraProps === null || extraProps === void 0 ? void 0 : extraProps.defaultPageSize) || _constants.DEFAULT_PAGE_SIZE,
       sortBy: params[(0, _tableUtils.getParamsKey)(paramsPrefix, 'order')] ? (0, _tableUtils.getOrderArray)(params[(0, _tableUtils.getParamsKey)(paramsPrefix, 'order')]) : (0, _tableUtils.getOrderArray)(_constants.DEFAULT_ORDER)
     };
   }, []);
@@ -187,7 +188,7 @@ var TableComponent = function TableComponent(props) {
       pageIndex = _useTable$state.pageIndex,
       sortBy = _useTable$state.sortBy;
 
-  var onTableParamsChange = function onTableParamsChange(key, value) {
+  var handleTableParamsChange = function handleTableParamsChange(key, value) {
     var newParams = _objectSpread({}, params);
 
     if (key === 'order' && value.length > 0) {
@@ -203,13 +204,15 @@ var TableComponent = function TableComponent(props) {
 
     if (key === 'page') {
       gotoPage(value - 1);
-    }
+    } // FIXME In time we should get rid of redirectTo
+
 
     redirectTo(baseUrl, newParams);
+    onTableParamsChange(newParams);
   };
 
   (0, _react.useEffect)(function () {
-    onTableParamsChange('order', sortBy);
+    handleTableParamsChange('order', sortBy);
   }, [sortBy]);
 
   var tableProps = _objectSpread(_objectSpread({}, getTableProps()), {}, {
@@ -256,7 +259,7 @@ var TableComponent = function TableComponent(props) {
     count: count,
     rowsPerPage: rowsPerPage,
     pageIndex: pageIndex,
-    onTableParamsChange: onTableParamsChange,
+    onTableParamsChange: handleTableParamsChange,
     pages: pages,
     countOnTop: countOnTop,
     selectCount: selection.selectCount
@@ -289,7 +292,10 @@ TableComponent.defaultProps = {
   },
   selectionActionMessage: null,
   showPagination: true,
-  showFooter: false
+  showFooter: false,
+  onTableParamsChange: function onTableParamsChange() {
+    return null;
+  }
 };
 TableComponent.propTypes = {
   params: _propTypes["default"].object,
@@ -309,7 +315,8 @@ TableComponent.propTypes = {
   paramsPrefix: _propTypes["default"].string,
   selectionActionMessage: _propTypes["default"].string,
   showPagination: _propTypes["default"].bool,
-  showFooter: _propTypes["default"].bool
+  showFooter: _propTypes["default"].bool,
+  onTableParamsChange: _propTypes["default"].func
 };
 
 var Table = /*#__PURE__*/_react["default"].memo(TableComponent, function (props, prevProps) {

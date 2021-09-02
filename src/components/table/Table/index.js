@@ -96,6 +96,7 @@ const TableComponent = props => {
         selectionActionMessage,
         showPagination,
         showFooter,
+        onTableParamsChange,
     } = props;
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -132,9 +133,7 @@ const TableComponent = props => {
                 ? params[getParamsKey(paramsPrefix, 'page')] - 1
                 : DEFAULT_PAGE - 1,
             pageSize:
-                urlPageSize ||
-                (extraProps && extraProps.defaultPageSize) ||
-                DEFAULT_PAGE_SIZE,
+                urlPageSize || extraProps?.defaultPageSize || DEFAULT_PAGE_SIZE,
             sortBy: params[getParamsKey(paramsPrefix, 'order')]
                 ? getOrderArray(params[getParamsKey(paramsPrefix, 'order')])
                 : getOrderArray(DEFAULT_ORDER),
@@ -165,7 +164,7 @@ const TableComponent = props => {
         useResizeColumns,
         usePagination,
     );
-    const onTableParamsChange = (key, value) => {
+    const handleTableParamsChange = (key, value) => {
         const newParams = {
             ...params,
         };
@@ -182,11 +181,13 @@ const TableComponent = props => {
         if (key === 'page') {
             gotoPage(value - 1);
         }
+        // FIXME In time we should get rid of redirectTo
         redirectTo(baseUrl, newParams);
+        onTableParamsChange(newParams);
     };
 
     useEffect(() => {
-        onTableParamsChange('order', sortBy);
+        handleTableParamsChange('order', sortBy);
     }, [sortBy]);
 
     const tableProps = {
@@ -232,7 +233,7 @@ const TableComponent = props => {
                         count={count}
                         rowsPerPage={rowsPerPage}
                         pageIndex={pageIndex}
-                        onTableParamsChange={onTableParamsChange}
+                        onTableParamsChange={handleTableParamsChange}
                         pages={pages}
                         countOnTop={countOnTop}
                         selectCount={selection.selectCount}
@@ -265,6 +266,7 @@ TableComponent.defaultProps = {
     selectionActionMessage: null,
     showPagination: true,
     showFooter: false,
+    onTableParamsChange: () => null,
 };
 
 TableComponent.propTypes = {
@@ -286,6 +288,7 @@ TableComponent.propTypes = {
     selectionActionMessage: PropTypes.string,
     showPagination: PropTypes.bool,
     showFooter: PropTypes.bool,
+    onTableParamsChange: PropTypes.func,
 };
 
 const Table = React.memo(TableComponent, (props, prevProps) => {

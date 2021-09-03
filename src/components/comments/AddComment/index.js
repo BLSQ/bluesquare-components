@@ -4,7 +4,6 @@ import React, { useCallback, useState } from 'react';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { MESSAGES } from './messages';
 import { useStyles } from './styles';
-import '../../../css/index.css';
 
 const AddComment = ({
     placeholder,

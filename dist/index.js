@@ -30,7 +30,6 @@ var _exportNames = {
   mapStyles: true,
   mapPopupStyles: true,
   AddButton: true,
-  DownloadButton: true,
   ExportButton: true,
   IconButton: true,
   DynamicTabs: true,
@@ -187,12 +186,6 @@ Object.defineProperty(exports, "AddButton", {
   enumerable: true,
   get: function get() {
     return _AddButton.AddButton;
-  }
-});
-Object.defineProperty(exports, "DownloadButton", {
-  enumerable: true,
-  get: function get() {
-    return _DownloadButton.DownloadButton;
   }
 });
 Object.defineProperty(exports, "ExportButton", {
@@ -445,8 +438,6 @@ var _map = require("./styles/iaso/map");
 var _mapPopup = require("./styles/iaso/mapPopup");
 
 var _AddButton = require("./components/buttons/AddButton");
-
-var _DownloadButton = require("./components/buttons/DownloadButton");
 
 var _ExportButton = require("./components/buttons/ExportButton");
 

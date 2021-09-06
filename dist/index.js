@@ -7,7 +7,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 var _exportNames = {
   LoadingSpinner: true,
-  TopBar: true,
   CsvSvg: true,
   DHIS2Svg: true,
   ExcellSvg: true,
@@ -43,6 +42,7 @@ var _exportNames = {
   SearchInput: true,
   Select: true,
   TextInput: true,
+  FormControl: true,
   ErrorBoundary: true,
   BlockPlaceholder: true,
   Filters: true,
@@ -66,12 +66,6 @@ Object.defineProperty(exports, "LoadingSpinner", {
   enumerable: true,
   get: function get() {
     return _LoadingSpinner.LoadingSpinner;
-  }
-});
-Object.defineProperty(exports, "TopBar", {
-  enumerable: true,
-  get: function get() {
-    return _TopBar.TopBar;
   }
 });
 Object.defineProperty(exports, "CsvSvg", {
@@ -266,6 +260,12 @@ Object.defineProperty(exports, "TextInput", {
     return _TextInput.TextInput;
   }
 });
+Object.defineProperty(exports, "FormControl", {
+  enumerable: true,
+  get: function get() {
+    return _FormControl.FormControl;
+  }
+});
 Object.defineProperty(exports, "ErrorBoundary", {
   enumerable: true,
   get: function get() {
@@ -378,8 +378,6 @@ exports.IasoUiConstants = exports.SnackBar = exports.IasoChipColors = void 0;
 
 var _LoadingSpinner = require("./components/LoadingSpinner");
 
-var _TopBar = require("./components/nav/TopBar");
-
 var _CsvSvgComponent = require("./svg/CsvSvgComponent");
 
 var _DHIS2SvgComponent = require("./svg/DHIS2SvgComponent");
@@ -464,6 +462,8 @@ var _SearchInput = require("./components/inputs/SearchInput");
 var _Select = require("./components/inputs/Select");
 
 var _TextInput = require("./components/inputs/TextInput");
+
+var _FormControl = require("./components/inputs/FormControl");
 
 var _ErrorBoundary = require("./components/ErrorBoundary");
 

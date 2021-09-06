@@ -1,5 +1,4 @@
 import { LoadingSpinner } from './components/LoadingSpinner';
-import { TopBar } from './components/nav/TopBar';
 import { CsvSvg } from './svg/CsvSvgComponent';
 import { DHIS2Svg } from './svg/DHIS2SvgComponent';
 import { ExcellSvg } from './svg/ExcellSvgComponent';
@@ -35,6 +34,7 @@ import { Radio } from './components/inputs/Radio';
 import { SearchInput } from './components/inputs/SearchInput';
 import { Select } from './components/inputs/Select';
 import { TextInput } from './components/inputs/TextInput';
+import { FormControl } from './components/inputs/FormControl';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { BlockPlaceholder } from './components/BlockPlaceholder';
 import { Filters } from './components/filters/Filters';
@@ -64,7 +64,6 @@ export * from './constants/iaso/uiConstants';
 
 export {
     LoadingSpinner,
-    TopBar,
     CsvSvg,
     DHIS2Svg,
     ExcellSvg,
@@ -118,4 +117,5 @@ export {
     AddComment,
     InputLabel,
     Expander,
+    FormControl,
 };

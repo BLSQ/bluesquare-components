@@ -7,7 +7,6 @@ import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { AddComment } from '../AddComment';
 import { Comment } from '../Comment';
 import { SingleComment } from '../SingleComment';
-import '../../../css/index.css';
 
 const CommentWithThread = ({
     comments,

@@ -7,7 +7,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 var _exportNames = {
   LoadingSpinner: true,
-  TopBar: true,
   CsvSvg: true,
   DHIS2Svg: true,
   ExcellSvg: true,
@@ -30,7 +29,6 @@ var _exportNames = {
   mapStyles: true,
   mapPopupStyles: true,
   AddButton: true,
-  DownloadButton: true,
   ExportButton: true,
   IconButton: true,
   DynamicTabs: true,
@@ -44,6 +42,7 @@ var _exportNames = {
   SearchInput: true,
   Select: true,
   TextInput: true,
+  FormControl: true,
   ErrorBoundary: true,
   BlockPlaceholder: true,
   Filters: true,
@@ -67,12 +66,6 @@ Object.defineProperty(exports, "LoadingSpinner", {
   enumerable: true,
   get: function get() {
     return _LoadingSpinner.LoadingSpinner;
-  }
-});
-Object.defineProperty(exports, "TopBar", {
-  enumerable: true,
-  get: function get() {
-    return _TopBar.TopBar;
   }
 });
 Object.defineProperty(exports, "CsvSvg", {
@@ -189,12 +182,6 @@ Object.defineProperty(exports, "AddButton", {
     return _AddButton.AddButton;
   }
 });
-Object.defineProperty(exports, "DownloadButton", {
-  enumerable: true,
-  get: function get() {
-    return _DownloadButton.DownloadButton;
-  }
-});
 Object.defineProperty(exports, "ExportButton", {
   enumerable: true,
   get: function get() {
@@ -271,6 +258,12 @@ Object.defineProperty(exports, "TextInput", {
   enumerable: true,
   get: function get() {
     return _TextInput.TextInput;
+  }
+});
+Object.defineProperty(exports, "FormControl", {
+  enumerable: true,
+  get: function get() {
+    return _FormControl.FormControl;
   }
 });
 Object.defineProperty(exports, "ErrorBoundary", {
@@ -385,8 +378,6 @@ exports.IasoUiConstants = exports.SnackBar = exports.IasoChipColors = void 0;
 
 var _LoadingSpinner = require("./components/LoadingSpinner");
 
-var _TopBar = require("./components/nav/TopBar");
-
 var _CsvSvgComponent = require("./svg/CsvSvgComponent");
 
 var _DHIS2SvgComponent = require("./svg/DHIS2SvgComponent");
@@ -446,8 +437,6 @@ var _mapPopup = require("./styles/iaso/mapPopup");
 
 var _AddButton = require("./components/buttons/AddButton");
 
-var _DownloadButton = require("./components/buttons/DownloadButton");
-
 var _ExportButton = require("./components/buttons/ExportButton");
 
 var _IconButton = require("./components/buttons/IconButton");
@@ -473,6 +462,8 @@ var _SearchInput = require("./components/inputs/SearchInput");
 var _Select = require("./components/inputs/Select");
 
 var _TextInput = require("./components/inputs/TextInput");
+
+var _FormControl = require("./components/inputs/FormControl");
 
 var _ErrorBoundary = require("./components/ErrorBoundary");
 

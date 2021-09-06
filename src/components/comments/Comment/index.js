@@ -5,7 +5,6 @@ import moment from 'moment';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { MESSAGES } from './messages';
 import { useStyles } from '../styles';
-import '../../../css/index.css';
 import { truncateText } from '../../../utils';
 
 const MAX_TEXT_LENGTH = 150;

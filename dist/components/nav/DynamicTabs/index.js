@@ -100,6 +100,8 @@ var styles = function styles(theme) {
       }
     },
     removeContainer: {
+      padding: 0,
+      margin: 0,
       position: 'absolute',
       left: theme.spacing(4),
       top: -5,

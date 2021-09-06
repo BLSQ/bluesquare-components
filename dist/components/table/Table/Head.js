@@ -21,7 +21,9 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 var Head = function Head(_ref) {
   var headerGroups = _ref.headerGroups,
-      setSortBy = _ref.setSortBy;
+      setSortBy = _ref.setSortBy,
+      multiSortEnabled = _ref.multiSortEnabled,
+      sortBy = _ref.sortBy;
   return /*#__PURE__*/_react["default"].createElement(_TableHead["default"], null, headerGroups.map(function (headerGroup) {
     var headerGroupProps = headerGroup.getHeaderGroupProps();
     return /*#__PURE__*/_react["default"].createElement(_TableRow["default"], _extends({}, headerGroupProps, {
@@ -32,7 +34,9 @@ var Head = function Head(_ref) {
         column: column,
         key: column.id,
         columnsProps: columnsProps,
-        setSortBy: setSortBy
+        setSortBy: setSortBy,
+        multiSortEnabled: multiSortEnabled,
+        sortBy: sortBy
       });
     }));
   }));
@@ -41,11 +45,14 @@ var Head = function Head(_ref) {
 exports.Head = Head;
 Head.defaultProps = {
   headerGroups: [],
+  sortBy: [],
   setSortBy: function setSortBy() {
     return null;
   }
 };
 Head.propTypes = {
   headerGroups: _propTypes["default"].array,
-  setSortBy: _propTypes["default"].func
+  setSortBy: _propTypes["default"].func,
+  sortBy: _propTypes["default"].array,
+  multiSortEnabled: _propTypes["default"].bool.isRequired
 };

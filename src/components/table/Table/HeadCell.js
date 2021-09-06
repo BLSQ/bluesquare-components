@@ -42,7 +42,13 @@ const useStyles = makeStyles(theme => ({
         cursor: 'default',
     },
 }));
-const HeadCell = ({ column, columnsProps, setSortBy }) => {
+const HeadCell = ({
+    column,
+    columnsProps,
+    setSortBy,
+    multiSortEnabled,
+    sortBy,
+}) => {
     const classes = useStyles();
     const { formatMessage } = useSafeIntl();
     const isSortable = column.sortable !== false && !column.isResizing;
@@ -64,12 +70,20 @@ const HeadCell = ({ column, columnsProps, setSortBy }) => {
 
     const sortProps = { ...column.getSortByToggleProps() };
     sortProps.onClick = () => {
-        setSortBy([
-            {
-                desc: direction === 'asc',
-                id: column.id,
-            },
-        ]);
+        let newSort = [];
+        const currentSort = {
+            desc: direction === 'asc',
+            id: column.id,
+        };
+        if (!multiSortEnabled) {
+            newSort.push(currentSort);
+        } else {
+            newSort = [
+                ...sortBy.filter(sort => sort.id !== column.id),
+                currentSort,
+            ];
+        }
+        setSortBy(newSort);
     };
     return (
         <TableCell
@@ -110,6 +124,8 @@ HeadCell.propTypes = {
     column: PropTypes.object.isRequired,
     columnsProps: PropTypes.object.isRequired,
     setSortBy: PropTypes.func.isRequired,
+    multiSortEnabled: PropTypes.bool.isRequired,
+    sortBy: PropTypes.array.isRequired,
 };
 
 export { HeadCell };

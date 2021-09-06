@@ -65,13 +65,21 @@ function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableTo
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 /**
  * TableComponent component, no redux, no fetch, just displaying.
@@ -141,6 +149,12 @@ var TableComponent = function TableComponent(props) {
       formatMessage = _useSafeIntl.formatMessage;
 
   var classes = useStyles();
+
+  var _useState = (0, _react.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      multiSortEnabled = _useState2[0],
+      setMultiSortEnabled = _useState2[1];
+
   var columns = (0, _react.useMemo)(function () {
     var temp = _toConsumableArray(props.columns);
 
@@ -214,6 +228,30 @@ var TableComponent = function TableComponent(props) {
   (0, _react.useEffect)(function () {
     handleTableParamsChange('order', sortBy);
   }, [sortBy]);
+  (0, _react.useEffect)(function () {
+    var handleSetMultiSortEnabled = function handleSetMultiSortEnabled(e, enabled) {
+      if (e.key === 'Meta') {
+        setMultiSortEnabled(enabled);
+      }
+    };
+
+    var setOn = function setOn(e) {
+      handleSetMultiSortEnabled(e, true);
+    };
+
+    var setOff = function setOff(e) {
+      handleSetMultiSortEnabled(e, false);
+    };
+
+    document.addEventListener('keydown', setOn);
+    document.addEventListener('keyup', setOff);
+    document.addEventListener('onBlur', setOff);
+    return function () {
+      document.removeEventListener('keydown', setOn);
+      document.removeEventListener('keyup', setOff);
+      document.removeEventListener('onBlur', setOff);
+    };
+  }, [multiSortEnabled]);
 
   var tableProps = _objectSpread(_objectSpread({}, getTableProps()), {}, {
     size: 'small'
@@ -244,7 +282,9 @@ var TableComponent = function TableComponent(props) {
     stickyHeader: true
   }), /*#__PURE__*/_react["default"].createElement(_Head.Head, {
     headerGroups: headerGroups,
-    setSortBy: setSortBy
+    setSortBy: setSortBy,
+    multiSortEnabled: multiSortEnabled,
+    sortBy: sortBy
   }), /*#__PURE__*/_react["default"].createElement(_Body.Body, {
     page: page,
     getTableBodyProps: getTableBodyProps,

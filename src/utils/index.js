@@ -331,3 +331,10 @@ export const getIntegerArray = size =>
         .fill()
         .map((y, i) => size - i)
         .reverse();
+
+export const truncateText = (text, maxLength) => {
+    if (text.length > maxLength) {
+        return `${text.substring(0, maxLength - 4)}...   `;
+    }
+    return `${text}   `;
+};

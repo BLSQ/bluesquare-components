@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.clone = clone;
 exports.deepEqual = deepEqual;
 exports.substituteVars = substituteVars;
-exports.getIntegerArray = exports.isFixedStructure = exports.getAgeFromYear = exports.isSuperUser = exports.isMediumUser = exports.renderCountCell = exports.getPourcentage = exports.userHasPermission = exports.isCaseLocalised = exports.scrollToTop = exports.scrollTo = exports.removePositionIndex = exports.addPositionIndex = exports.getWorkZoneName = exports.getZsName = exports.getPercentage = exports.getBarChartMax = exports.NormalizeBarChartDatas = exports.getYears = exports.getPossibleYears = exports.arrayToObject = exports.formatThousand = exports.capitalize = void 0;
+exports.truncateText = exports.getIntegerArray = exports.isFixedStructure = exports.getAgeFromYear = exports.isSuperUser = exports.isMediumUser = exports.renderCountCell = exports.getPourcentage = exports.userHasPermission = exports.isCaseLocalised = exports.scrollToTop = exports.scrollTo = exports.removePositionIndex = exports.addPositionIndex = exports.getWorkZoneName = exports.getZsName = exports.getPercentage = exports.getBarChartMax = exports.NormalizeBarChartDatas = exports.getYears = exports.getPossibleYears = exports.arrayToObject = exports.formatThousand = exports.capitalize = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -405,3 +405,13 @@ var getIntegerArray = function getIntegerArray(size) {
 };
 
 exports.getIntegerArray = getIntegerArray;
+
+var truncateText = function truncateText(text, maxLength) {
+  if (text.length > maxLength) {
+    return "".concat(text.substring(0, maxLength - 4), "...   ");
+  }
+
+  return "".concat(text, "   ");
+};
+
+exports.truncateText = truncateText;

@@ -23,6 +23,8 @@ var _styles = require("../styles");
 
 require("../../../css/index.css");
 
+var _utils = require("../../../utils");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -43,14 +45,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var MAX_TEXT_LENGTH = 150;
 
-var truncateText = function truncateText(text, maxLength) {
-  if (text.length > maxLength) {
-    return "".concat(text.substring(0, maxLength - 4), "...   ");
-  }
-
-  return "".concat(text, "   ");
-};
-
 var CommentText = function CommentText(_ref) {
   var text = _ref.text,
       hideOverflow = _ref.hideOverflow,
@@ -62,7 +56,7 @@ var CommentText = function CommentText(_ref) {
   var intl = (0, _useSafeIntl.useSafeIntl)();
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: classes.commentText
-  }, /*#__PURE__*/_react["default"].createElement("p", null, hideOverflow && text.length > maxLength ? truncateText(text, MAX_TEXT_LENGTH) : text, ' '), hideOverflow && /*#__PURE__*/_react["default"].createElement("span", {
+  }, /*#__PURE__*/_react["default"].createElement("p", null, hideOverflow && text.length > maxLength ? (0, _utils.truncateText)(text, MAX_TEXT_LENGTH) : text, ' '), hideOverflow && /*#__PURE__*/_react["default"].createElement("span", {
     onClick: toggle,
     className: classes.toggleCommentText,
     role: "button",

@@ -37,12 +37,10 @@ import { TextInput } from './components/inputs/TextInput';
 import { FormControl } from './components/inputs/FormControl';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { BlockPlaceholder } from './components/BlockPlaceholder';
-import { Filters } from './components/filters/Filters';
 import { ColumnsSelectDrawer } from './components/table/ColumnsSelectDrawer';
 import { HeaderRowIcon } from './components/table/HeaderRowIcon';
 import { InfoHeader } from './components/table/InfoHeader';
 import { SelectionSpeedDials } from './components/table/SelectionSpeedDials';
-import { TableFilters } from './components/table/TableFilters';
 import { Table } from './components/table/Table';
 import { Expander } from './components/table/Table/Expander';
 import {
@@ -101,12 +99,10 @@ export {
     theme,
     rawTheme,
     BlockPlaceholder,
-    Filters,
     ColumnsSelectDrawer,
     HeaderRowIcon,
     InfoHeader,
     SelectionSpeedDials,
-    TableFilters,
     Table,
     LinkProvider,
     LinkContext,

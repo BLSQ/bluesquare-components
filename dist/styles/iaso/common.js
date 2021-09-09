@@ -7,8 +7,6 @@ exports.commonStyles = void 0;
 
 var _map = require("./map");
 
-var _innerDrawer = require("./innerDrawer");
-
 var _uiConstants = require("../../constants/iaso/uiConstants");
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
@@ -18,7 +16,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var commonStyles = function commonStyles(theme) {
-  return _objectSpread(_objectSpread(_objectSpread({}, (0, _map.mapStyles)(theme)), (0, _innerDrawer.innerDrawerStyles)(theme)), {}, {
+  return _objectSpread(_objectSpread({}, (0, _map.mapStyles)(theme)), {}, {
     containerFullHeight: {
       width: '100%',
       height: "calc(100vh - ".concat(_uiConstants.MENU_HEIGHT_WITH_TABS, "px)"),

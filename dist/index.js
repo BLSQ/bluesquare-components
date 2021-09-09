@@ -45,12 +45,10 @@ var _exportNames = {
   FormControl: true,
   ErrorBoundary: true,
   BlockPlaceholder: true,
-  Filters: true,
   ColumnsSelectDrawer: true,
   HeaderRowIcon: true,
   InfoHeader: true,
   SelectionSpeedDials: true,
-  TableFilters: true,
   Table: true,
   Expander: true,
   LinkProvider: true,
@@ -278,12 +276,6 @@ Object.defineProperty(exports, "BlockPlaceholder", {
     return _BlockPlaceholder.BlockPlaceholder;
   }
 });
-Object.defineProperty(exports, "Filters", {
-  enumerable: true,
-  get: function get() {
-    return _Filters.Filters;
-  }
-});
 Object.defineProperty(exports, "ColumnsSelectDrawer", {
   enumerable: true,
   get: function get() {
@@ -306,12 +298,6 @@ Object.defineProperty(exports, "SelectionSpeedDials", {
   enumerable: true,
   get: function get() {
     return _SelectionSpeedDials.SelectionSpeedDials;
-  }
-});
-Object.defineProperty(exports, "TableFilters", {
-  enumerable: true,
-  get: function get() {
-    return _TableFilters.TableFilters;
   }
 });
 Object.defineProperty(exports, "Table", {
@@ -469,8 +455,6 @@ var _ErrorBoundary = require("./components/ErrorBoundary");
 
 var _BlockPlaceholder = require("./components/BlockPlaceholder");
 
-var _Filters = require("./components/filters/Filters");
-
 var _ColumnsSelectDrawer = require("./components/table/ColumnsSelectDrawer");
 
 var _HeaderRowIcon = require("./components/table/HeaderRowIcon");
@@ -478,8 +462,6 @@ var _HeaderRowIcon = require("./components/table/HeaderRowIcon");
 var _InfoHeader = require("./components/table/InfoHeader");
 
 var _SelectionSpeedDials = require("./components/table/SelectionSpeedDials");
-
-var _TableFilters = require("./components/table/TableFilters");
 
 var _Table = require("./components/table/Table");
 

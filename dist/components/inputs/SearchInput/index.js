@@ -31,7 +31,6 @@ var SearchInput = function SearchInput(_ref) {
       onEnterPressed = _ref.onEnterPressed,
       _onChange = _ref.onChange,
       classes = _ref.classes,
-      isFocused = _ref.isFocused,
       uid = _ref.uid;
   return /*#__PURE__*/_react["default"].createElement(_FormControl.FormControl, {
     withMarginTop: withMarginTop
@@ -39,8 +38,7 @@ var SearchInput = function SearchInput(_ref) {
     htmlFor: "search-".concat(keyValue),
     label: label,
     required: required,
-    shrink: value !== undefined && value !== null && value !== '',
-    isFocused: isFocused
+    shrink: value !== undefined && value !== null && value !== ''
   }), /*#__PURE__*/_react["default"].createElement(_core.OutlinedInput, {
     disabled: disabled,
     id: uid ? "search-".concat(uid) : "search-".concat(keyValue),
@@ -78,7 +76,6 @@ SearchInput.defaultProps = {
   required: false,
   onEnterPressed: function onEnterPressed() {},
   onChange: function onChange() {},
-  isFocused: false,
   uid: '',
   label: ''
 };
@@ -91,7 +88,6 @@ SearchInput.propTypes = {
   value: _propTypes["default"].string,
   onEnterPressed: _propTypes["default"].func,
   onChange: _propTypes["default"].func,
-  isFocused: _propTypes["default"].bool,
   uid: _propTypes["default"].string,
   classes: _propTypes["default"].object.isRequired
 };

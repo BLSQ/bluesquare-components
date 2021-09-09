@@ -230,7 +230,7 @@ var TableComponent = function TableComponent(props) {
   }, [sortBy]);
   (0, _react.useEffect)(function () {
     var handleSetMultiSortEnabled = function handleSetMultiSortEnabled(e, enabled) {
-      if (e.key === 'Meta') {
+      if (e.key === 'Shift') {
         setMultiSortEnabled(enabled);
       }
     };

@@ -194,7 +194,7 @@ const TableComponent = props => {
 
     useEffect(() => {
         const handleSetMultiSortEnabled = (e, enabled) => {
-            if (e.key === 'Meta') {
+            if (e.key === 'Shift') {
                 setMultiSortEnabled(enabled);
             }
         };

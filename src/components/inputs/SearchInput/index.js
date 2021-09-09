@@ -16,7 +16,6 @@ const SearchInput = ({
     onEnterPressed,
     onChange,
     classes,
-    isFocused,
     uid,
 }) => (
     <FormControl withMarginTop={withMarginTop}>
@@ -25,7 +24,6 @@ const SearchInput = ({
             label={label}
             required={required}
             shrink={value !== undefined && value !== null && value !== ''}
-            isFocused={isFocused}
         />
         <OutlinedInput
             disabled={disabled}
@@ -62,8 +60,6 @@ SearchInput.defaultProps = {
     required: false,
     onEnterPressed: () => {},
     onChange: () => {},
-
-    isFocused: false,
     uid: '',
     label: '',
 };
@@ -77,7 +73,6 @@ SearchInput.propTypes = {
     value: PropTypes.string,
     onEnterPressed: PropTypes.func,
     onChange: PropTypes.func,
-    isFocused: PropTypes.bool,
     uid: PropTypes.string,
     classes: PropTypes.object.isRequired,
 };

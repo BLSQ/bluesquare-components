@@ -1,46 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core';
 import InputLabel from '@material-ui/core/InputLabel';
+import { useStyles } from './styles';
 
-const styles = theme => ({
-    inputLabel: {
-        color: 'rgba(0, 0, 0, 0.4)',
-        paddingLeft: 3,
-        paddingRight: 3,
-        transition: theme.transitions.create(['all'], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-        }),
-    },
-    shrink: {
-        fontSize: 20,
-        marginTop: -2,
-        backgroundColor: 'white',
-    },
-    shrinkFocused: {
-        fontSize: 20,
-        marginTop: -2,
-        backgroundColor: 'white',
-        color: theme.palette.primary.main,
-    },
-});
-
-function InputLabelComponent({
-    classes,
-    htmlFor,
-    label,
-    required,
-    isFocused,
-    shrink,
-    error,
-}) {
+function InputLabelComponent({ htmlFor, label, required, shrink, error }) {
+    const classes = useStyles();
     return (
         <InputLabel
             name={htmlFor.replace('input-text-', '')}
             htmlFor={htmlFor}
             classes={{
-                shrink: isFocused ? classes.shrinkFocused : classes.shrink,
+                shrink: classes.shrink,
             }}
             className={classes.inputLabel}
             shrink={shrink}
@@ -52,20 +22,16 @@ function InputLabelComponent({
     );
 }
 InputLabelComponent.defaultProps = {
-    isFocused: false,
     shrink: true,
     error: false,
     label: '',
 };
 InputLabelComponent.propTypes = {
-    classes: PropTypes.object.isRequired,
     htmlFor: PropTypes.string.isRequired,
     label: PropTypes.string,
     required: PropTypes.bool.isRequired,
-    isFocused: PropTypes.bool,
     shrink: PropTypes.bool,
     error: PropTypes.bool,
 };
-const styledComponent = withStyles(styles)(InputLabelComponent);
 
-export { styledComponent as InputLabel };
+export { InputLabelComponent as InputLabel };

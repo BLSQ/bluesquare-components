@@ -4,18 +4,10 @@ import TextField from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
 import Chip from '@material-ui/core/Chip';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import { makeStyles, CircularProgress } from '@material-ui/core';
+import { CircularProgress } from '@material-ui/core';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { MESSAGES } from './messages';
-
-const useStyles = makeStyles(() => ({
-    chipLabel: {
-        marginTop: -2,
-    },
-    startAdornment: {
-        marginTop: -5,
-    },
-}));
+import { useStyles } from '../styles';
 
 const SelectCustom = ({
     value,
@@ -104,6 +96,12 @@ const SelectCustom = ({
                 label={`${label}${required ? '*' : ''}`}
                 onBlur={onBlur}
                 error={errors.length > 0 && touched}
+                InputLabelProps={{
+                    classes: {
+                        shrink: classes.shrink,
+                    },
+                    className: classes.inputLabel,
+                }}
                 InputProps={{
                     ...params.InputProps,
                     endAdornment: (

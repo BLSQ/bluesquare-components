@@ -25,6 +25,8 @@ var _useSafeIntl = require("../../../utils/useSafeIntl");
 
 var _messages = require("./messages");
 
+var _styles = require("../styles");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -38,17 +40,6 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var useStyles = (0, _core.makeStyles)(function () {
-  return {
-    chipLabel: {
-      marginTop: -2
-    },
-    startAdornment: {
-      marginTop: -5
-    }
-  };
-});
 
 var SelectCustom = function SelectCustom(_ref) {
   var value = _ref.value,
@@ -69,7 +60,7 @@ var SelectCustom = function SelectCustom(_ref) {
       loading = _ref.loading,
       renderOption = _ref.renderOption;
   var intl = (0, _useSafeIntl.useSafeIntl)();
-  var classes = useStyles();
+  var classes = (0, _styles.useStyles)();
 
   var getOption = function getOption(optionValue) {
     return options.find(function (o) {
@@ -144,6 +135,12 @@ var SelectCustom = function SelectCustom(_ref) {
       label: "".concat(label).concat(required ? '*' : ''),
       onBlur: onBlur,
       error: errors.length > 0 && touched,
+      InputLabelProps: {
+        classes: {
+          shrink: classes.shrink
+        },
+        className: classes.inputLabel
+      },
       InputProps: _objectSpread(_objectSpread({}, params.InputProps), {}, {
         endAdornment: /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, loading ? /*#__PURE__*/_react["default"].createElement(_core.CircularProgress, {
           color: "inherit",

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
 import MuiTable from '@material-ui/core/Table';
@@ -101,6 +101,8 @@ const TableComponent = props => {
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
 
+    const [multiSortEnabled, setMultiSortEnabled] = useState(false);
+
     const columns = useMemo(() => {
         const temp = [...props.columns];
         if (
@@ -190,6 +192,28 @@ const TableComponent = props => {
         handleTableParamsChange('order', sortBy);
     }, [sortBy]);
 
+    useEffect(() => {
+        const handleSetMultiSortEnabled = (e, enabled) => {
+            if (e.key === 'Meta') {
+                setMultiSortEnabled(enabled);
+            }
+        };
+        const setOn = e => {
+            handleSetMultiSortEnabled(e, true);
+        };
+        const setOff = e => {
+            handleSetMultiSortEnabled(e, false);
+        };
+        document.addEventListener('keydown', setOn);
+        document.addEventListener('keyup', setOff);
+        document.addEventListener('onBlur', setOff);
+        return () => {
+            document.removeEventListener('keydown', setOn);
+            document.removeEventListener('keyup', setOff);
+            document.removeEventListener('onBlur', setOff);
+        };
+    }, [multiSortEnabled]);
+
     const tableProps = {
         ...getTableProps(),
         size: 'small',
@@ -216,6 +240,8 @@ const TableComponent = props => {
                         <Head
                             headerGroups={headerGroups}
                             setSortBy={setSortBy}
+                            multiSortEnabled={multiSortEnabled}
+                            sortBy={sortBy}
                         />
                         <Body
                             page={page}

@@ -25,14 +25,12 @@ var _exportNames = {
   theme: true,
   rawTheme: true,
   commonStyles: true,
-  innerDrawerStyles: true,
   mapStyles: true,
   mapPopupStyles: true,
   AddButton: true,
   ExportButton: true,
   IconButton: true,
   DynamicTabs: true,
-  InnerDrawer: true,
   DatePicker: true,
   ArrayFieldInput: true,
   Checkbox: true,
@@ -156,12 +154,6 @@ Object.defineProperty(exports, "commonStyles", {
     return _common.commonStyles;
   }
 });
-Object.defineProperty(exports, "innerDrawerStyles", {
-  enumerable: true,
-  get: function get() {
-    return _innerDrawer.innerDrawerStyles;
-  }
-});
 Object.defineProperty(exports, "mapStyles", {
   enumerable: true,
   get: function get() {
@@ -196,12 +188,6 @@ Object.defineProperty(exports, "DynamicTabs", {
   enumerable: true,
   get: function get() {
     return _DynamicTabs.DynamicTabs;
-  }
-});
-Object.defineProperty(exports, "InnerDrawer", {
-  enumerable: true,
-  get: function get() {
-    return _InnerDrawer.InnerDrawer;
   }
 });
 Object.defineProperty(exports, "DatePicker", {
@@ -415,8 +401,6 @@ var _theme = require("./styles/iaso/theme");
 
 var _common = require("./styles/iaso/common");
 
-var _innerDrawer = require("./styles/iaso/innerDrawer");
-
 var _map = require("./styles/iaso/map");
 
 var _mapPopup = require("./styles/iaso/mapPopup");
@@ -428,8 +412,6 @@ var _ExportButton = require("./components/buttons/ExportButton");
 var _IconButton = require("./components/buttons/IconButton");
 
 var _DynamicTabs = require("./components/nav/DynamicTabs");
-
-var _InnerDrawer = require("./components/nav/InnerDrawer");
 
 var _DatePicker = require("./components/DatePicker");
 

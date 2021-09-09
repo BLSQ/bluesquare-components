@@ -1,5 +1,4 @@
 import { mapStyles } from './map';
-import { innerDrawerStyles } from './innerDrawer';
 import {
     MENU_HEIGHT_WITH_TABS,
     MENU_HEIGHT_WITHOUT_TABS,
@@ -7,7 +6,6 @@ import {
 
 const commonStyles = theme => ({
     ...mapStyles(theme),
-    ...innerDrawerStyles(theme),
     containerFullHeight: {
         width: '100%',
         height: `calc(100vh - ${MENU_HEIGHT_WITH_TABS}px)`,

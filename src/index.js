@@ -17,14 +17,12 @@ import { patchIntl } from './utils/patchIntl';
 import { useSafeIntl } from './utils/useSafeIntl';
 import { theme, rawTheme } from './styles/iaso/theme';
 import { commonStyles } from './styles/iaso/common';
-import { innerDrawerStyles } from './styles/iaso/innerDrawer';
 import { mapStyles } from './styles/iaso/map';
 import { mapPopupStyles } from './styles/iaso/mapPopup';
 import { AddButton } from './components/buttons/AddButton';
 import { ExportButton } from './components/buttons/ExportButton';
 import { IconButton } from './components/buttons/IconButton';
 import { DynamicTabs } from './components/nav/DynamicTabs';
-import { InnerDrawer } from './components/nav/InnerDrawer';
 import { DatePicker } from './components/DatePicker';
 import { ArrayFieldInput } from './components/inputs/ArrayFieldInput';
 import { Checkbox } from './components/inputs/Checkbox';
@@ -78,14 +76,12 @@ export {
     patchIntl,
     useSafeIntl,
     commonStyles,
-    innerDrawerStyles,
     mapStyles,
     mapPopupStyles,
     AddButton,
     ExportButton,
     IconButton,
     DynamicTabs,
-    InnerDrawer,
     DatePicker,
     Select,
     ErrorBoundary,

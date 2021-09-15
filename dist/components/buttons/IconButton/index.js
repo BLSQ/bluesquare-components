@@ -146,8 +146,7 @@ function IconButtonComponent(_ref2) {
   }
 
   var Link = (0, _LinkProvider.useLink)();
-  var icon = overrideIcon !== null && overrideIcon !== void 0 ? overrideIcon : ICON_VARIANTS[iconName];
-  console.log('icon', overrideIcon, icon); // FIXME Why the <span>????
+  var icon = overrideIcon !== null && overrideIcon !== void 0 ? overrideIcon : ICON_VARIANTS[iconName]; // FIXME Why the <span>????
 
   return /*#__PURE__*/_react["default"].createElement(_core.Tooltip, {
     classes: {

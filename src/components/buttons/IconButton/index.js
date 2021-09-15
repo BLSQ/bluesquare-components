@@ -105,7 +105,6 @@ function IconButtonComponent({
     }
     const Link = useLink();
     const icon = overrideIcon ?? ICON_VARIANTS[iconName];
-    console.log('icon', overrideIcon, icon);
     // FIXME Why the <span>????
     return (
         <Tooltip

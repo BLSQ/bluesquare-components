@@ -147,7 +147,7 @@ IconButtonComponent.propTypes = {
     disabled: PropTypes.bool,
     icon: PropTypes.oneOf(Object.keys(ICON_VARIANTS)),
     color: PropTypes.string,
-    overrideIcon: PropTypes.node,
+    overrideIcon: PropTypes.any,
     tooltipMessage: PropTypes.object.isRequired, // TODO: refactor IASO to pass the translation directly
 };
 

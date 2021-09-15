@@ -132,6 +132,7 @@ function IconButtonComponent(_ref2) {
       onClick = _ref2.onClick,
       url = _ref2.url,
       iconName = _ref2.icon,
+      overrideIcon = _ref2.overrideIcon,
       tooltipMessage = _ref2.tooltipMessage,
       color = _ref2.color,
       size = _ref2.size;
@@ -140,8 +141,13 @@ function IconButtonComponent(_ref2) {
     console.error('IconButtonComponent needs either the onClick or the url property');
   }
 
+  if (!iconName && !overrideIcon) {
+    console.error('IconButtonComponent has to be provided with an icon');
+  }
+
   var Link = (0, _LinkProvider.useLink)();
-  var icon = ICON_VARIANTS[iconName]; // FIXME Why the <span>????
+  var icon = overrideIcon !== null && overrideIcon !== void 0 ? overrideIcon : ICON_VARIANTS[iconName];
+  console.log('icon', overrideIcon, icon); // FIXME Why the <span>????
 
   return /*#__PURE__*/_react["default"].createElement(_core.Tooltip, {
     classes: {
@@ -173,7 +179,9 @@ IconButtonComponent.defaultProps = {
   url: null,
   onClick: null,
   color: 'action',
-  size: 'medium'
+  size: 'medium',
+  overrideIcon: null,
+  icon: null
 };
 IconButtonComponent.propTypes = {
   size: _propTypes["default"].string,
@@ -181,8 +189,9 @@ IconButtonComponent.propTypes = {
   onClick: _propTypes["default"].func,
   url: _propTypes["default"].string,
   disabled: _propTypes["default"].bool,
-  icon: _propTypes["default"].oneOf(Object.keys(ICON_VARIANTS)).isRequired,
+  icon: _propTypes["default"].oneOf(Object.keys(ICON_VARIANTS)),
   color: _propTypes["default"].string,
+  overrideIcon: _propTypes["default"].node,
   tooltipMessage: _propTypes["default"].object.isRequired // TODO: refactor IASO to pass the translation directly
 
 };

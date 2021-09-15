@@ -90,6 +90,7 @@ function IconButtonComponent({
     onClick,
     url,
     icon: iconName,
+    overrideIcon,
     tooltipMessage,
     color,
     size,
@@ -99,8 +100,12 @@ function IconButtonComponent({
             'IconButtonComponent needs either the onClick or the url property',
         );
     }
+    if (!iconName && !overrideIcon) {
+        console.error('IconButtonComponent has to be provided with an icon');
+    }
     const Link = useLink();
-    const icon = ICON_VARIANTS[iconName];
+    const icon = overrideIcon ?? ICON_VARIANTS[iconName];
+    console.log('icon', overrideIcon, icon);
     // FIXME Why the <span>????
     return (
         <Tooltip
@@ -131,6 +136,8 @@ IconButtonComponent.defaultProps = {
     onClick: null,
     color: 'action',
     size: 'medium',
+    overrideIcon: null,
+    icon: null,
 };
 IconButtonComponent.propTypes = {
     size: PropTypes.string,
@@ -138,8 +145,9 @@ IconButtonComponent.propTypes = {
     onClick: PropTypes.func,
     url: PropTypes.string,
     disabled: PropTypes.bool,
-    icon: PropTypes.oneOf(Object.keys(ICON_VARIANTS)).isRequired,
+    icon: PropTypes.oneOf(Object.keys(ICON_VARIANTS)),
     color: PropTypes.string,
+    overrideIcon: PropTypes.node,
     tooltipMessage: PropTypes.object.isRequired, // TODO: refactor IASO to pass the translation directly
 };
 

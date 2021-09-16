@@ -57,7 +57,7 @@ const styles = theme => ({
     },
 });
 
-const ButtonIcon = ({ icon: Icon, color, onClick }) => {
+const ButtonIcon = ({ icon: Icon, color, onClick, disabled }) => {
     if (Icon === undefined) {
         return 'wrong icon';
     }
@@ -65,7 +65,11 @@ const ButtonIcon = ({ icon: Icon, color, onClick }) => {
     const iconProps = onClick !== null ? { onClick } : {};
 
     // special override for white color, which is not a "theme" variant such as primary, secondary or action
-    const iconStyles = color === 'white' ? { color: 'white' } : {};
+    const iconStyles = {
+        color: color === 'white' ? color : undefined,
+        opacity: disabled ? 0.5 : 1,
+    };
+    // const iconStyles = color === 'white' ? { color: 'white' } : {};
 
     return (
         <Icon
@@ -77,11 +81,13 @@ const ButtonIcon = ({ icon: Icon, color, onClick }) => {
 };
 ButtonIcon.defaultProps = {
     onClick: null,
+    disabled: false,
 };
 ButtonIcon.propTypes = {
     onClick: PropTypes.func,
     icon: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired,
     color: PropTypes.string.isRequired,
+    disabled: PropTypes.bool,
 };
 
 function IconButtonComponent({
@@ -122,7 +128,11 @@ function IconButtonComponent({
                             <ButtonIcon icon={icon} color={color} />
                         </Link>
                     ) : (
-                        <ButtonIcon icon={icon} color={color} />
+                        <ButtonIcon
+                            icon={icon}
+                            color={color}
+                            disabled={disabled}
+                        />
                     )}
                 </IconButton>
             </span>

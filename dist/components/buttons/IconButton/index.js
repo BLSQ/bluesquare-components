@@ -98,7 +98,8 @@ var styles = function styles(theme) {
 var ButtonIcon = function ButtonIcon(_ref) {
   var Icon = _ref.icon,
       color = _ref.color,
-      onClick = _ref.onClick;
+      onClick = _ref.onClick,
+      disabled = _ref.disabled;
 
   if (Icon === undefined) {
     return 'wrong icon';
@@ -108,9 +109,11 @@ var ButtonIcon = function ButtonIcon(_ref) {
     onClick: onClick
   } : {}; // special override for white color, which is not a "theme" variant such as primary, secondary or action
 
-  var iconStyles = color === 'white' ? {
-    color: 'white'
-  } : {};
+  var iconStyles = {
+    color: color === 'white' ? color : undefined,
+    opacity: disabled ? 0.5 : 1
+  }; // const iconStyles = color === 'white' ? { color: 'white' } : {};
+
   return /*#__PURE__*/_react["default"].createElement(Icon, _extends({}, iconProps, {
     color: color === 'white' ? 'inherit' : color,
     style: iconStyles
@@ -118,12 +121,14 @@ var ButtonIcon = function ButtonIcon(_ref) {
 };
 
 ButtonIcon.defaultProps = {
-  onClick: null
+  onClick: null,
+  disabled: false
 };
 ButtonIcon.propTypes = {
   onClick: _propTypes["default"].func,
   icon: _propTypes["default"].oneOfType([_propTypes["default"].object, _propTypes["default"].func]).isRequired,
-  color: _propTypes["default"].string.isRequired
+  color: _propTypes["default"].string.isRequired,
+  disabled: _propTypes["default"].bool
 };
 
 function IconButtonComponent(_ref2) {
@@ -169,7 +174,8 @@ function IconButtonComponent(_ref2) {
     color: color
   })) : /*#__PURE__*/_react["default"].createElement(ButtonIcon, {
     icon: icon,
-    color: color
+    color: color,
+    disabled: disabled
   }))));
 }
 

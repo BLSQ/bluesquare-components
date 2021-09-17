@@ -111,7 +111,7 @@ function IconButtonComponent({
     }
     const Link = useLink();
     const icon = overrideIcon ?? ICON_VARIANTS[iconName];
-    // FIXME Why the <span>????
+    // The <span> is needed so the tooltip correctly display when the button is disabled
     return (
         <Tooltip
             classes={{ popper: classes.popperFixed }}

@@ -97,6 +97,7 @@ const TableComponent = props => {
         showPagination,
         showFooter,
         onTableParamsChange,
+        defaultSorted,
     } = props;
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -130,15 +131,16 @@ const TableComponent = props => {
             params[getParamsKey(paramsPrefix, 'pageSize')],
             10,
         );
+        const urlSort =
+            params[getParamsKey(paramsPrefix, 'order')] &&
+            getOrderArray(params[getParamsKey(paramsPrefix, 'order')]);
         return {
             pageIndex: params[getParamsKey(paramsPrefix, 'page')]
                 ? params[getParamsKey(paramsPrefix, 'page')] - 1
                 : DEFAULT_PAGE - 1,
             pageSize:
                 urlPageSize || extraProps?.defaultPageSize || DEFAULT_PAGE_SIZE,
-            sortBy: params[getParamsKey(paramsPrefix, 'order')]
-                ? getOrderArray(params[getParamsKey(paramsPrefix, 'order')])
-                : getOrderArray(DEFAULT_ORDER),
+            sortBy: urlSort || defaultSorted,
         };
     }, []);
     const {
@@ -171,6 +173,7 @@ const TableComponent = props => {
             ...params,
         };
         if (key === 'order' && value.length > 0) {
+            setSortBy(value);
             newParams[getParamsKey(paramsPrefix, 'order')] = getSort(value);
         } else if (key !== 'order') {
             newParams[getParamsKey(paramsPrefix, key)] = value;
@@ -187,10 +190,6 @@ const TableComponent = props => {
         redirectTo(baseUrl, newParams);
         onTableParamsChange(newParams);
     };
-
-    useEffect(() => {
-        handleTableParamsChange('order', sortBy);
-    }, [sortBy]);
 
     useEffect(() => {
         const handleSetMultiSortEnabled = (e, enabled) => {
@@ -239,7 +238,9 @@ const TableComponent = props => {
                     <MuiTable {...tableProps} stickyHeader>
                         <Head
                             headerGroups={headerGroups}
-                            setSortBy={setSortBy}
+                            setSortBy={newSort =>
+                                handleTableParamsChange('order', newSort)
+                            }
                             multiSortEnabled={multiSortEnabled}
                             sortBy={sortBy}
                         />
@@ -293,6 +294,7 @@ TableComponent.defaultProps = {
     showPagination: true,
     showFooter: false,
     onTableParamsChange: () => null,
+    defaultSorted: getOrderArray(DEFAULT_ORDER),
 };
 
 TableComponent.propTypes = {
@@ -315,6 +317,7 @@ TableComponent.propTypes = {
     showPagination: PropTypes.bool,
     showFooter: PropTypes.bool,
     onTableParamsChange: PropTypes.func,
+    defaultSorted: PropTypes.array,
 };
 
 const Table = React.memo(TableComponent, (props, prevProps) => {

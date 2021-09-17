@@ -98,7 +98,8 @@ var styles = function styles(theme) {
 var ButtonIcon = function ButtonIcon(_ref) {
   var Icon = _ref.icon,
       color = _ref.color,
-      onClick = _ref.onClick;
+      onClick = _ref.onClick,
+      disabled = _ref.disabled;
 
   if (Icon === undefined) {
     return 'wrong icon';
@@ -108,9 +109,11 @@ var ButtonIcon = function ButtonIcon(_ref) {
     onClick: onClick
   } : {}; // special override for white color, which is not a "theme" variant such as primary, secondary or action
 
-  var iconStyles = color === 'white' ? {
-    color: 'white'
-  } : {};
+  var iconStyles = {
+    color: color === 'white' ? color : undefined,
+    opacity: disabled ? 0.5 : 1
+  }; // const iconStyles = color === 'white' ? { color: 'white' } : {};
+
   return /*#__PURE__*/_react["default"].createElement(Icon, _extends({}, iconProps, {
     color: color === 'white' ? 'inherit' : color,
     style: iconStyles
@@ -118,12 +121,14 @@ var ButtonIcon = function ButtonIcon(_ref) {
 };
 
 ButtonIcon.defaultProps = {
-  onClick: null
+  onClick: null,
+  disabled: false
 };
 ButtonIcon.propTypes = {
   onClick: _propTypes["default"].func,
   icon: _propTypes["default"].oneOfType([_propTypes["default"].object, _propTypes["default"].func]).isRequired,
-  color: _propTypes["default"].string.isRequired
+  color: _propTypes["default"].string.isRequired,
+  disabled: _propTypes["default"].bool
 };
 
 function IconButtonComponent(_ref2) {
@@ -132,6 +137,7 @@ function IconButtonComponent(_ref2) {
       onClick = _ref2.onClick,
       url = _ref2.url,
       iconName = _ref2.icon,
+      overrideIcon = _ref2.overrideIcon,
       tooltipMessage = _ref2.tooltipMessage,
       color = _ref2.color,
       size = _ref2.size;
@@ -140,8 +146,12 @@ function IconButtonComponent(_ref2) {
     console.error('IconButtonComponent needs either the onClick or the url property');
   }
 
+  if (!iconName && !overrideIcon) {
+    console.error('IconButtonComponent has to be provided with an icon');
+  }
+
   var Link = (0, _LinkProvider.useLink)();
-  var icon = ICON_VARIANTS[iconName]; // FIXME Why the <span>????
+  var icon = overrideIcon !== null && overrideIcon !== void 0 ? overrideIcon : ICON_VARIANTS[iconName]; // FIXME Why the <span>????
 
   return /*#__PURE__*/_react["default"].createElement(_core.Tooltip, {
     classes: {
@@ -164,7 +174,8 @@ function IconButtonComponent(_ref2) {
     color: color
   })) : /*#__PURE__*/_react["default"].createElement(ButtonIcon, {
     icon: icon,
-    color: color
+    color: color,
+    disabled: disabled
   }))));
 }
 
@@ -173,7 +184,9 @@ IconButtonComponent.defaultProps = {
   url: null,
   onClick: null,
   color: 'action',
-  size: 'medium'
+  size: 'medium',
+  overrideIcon: null,
+  icon: null
 };
 IconButtonComponent.propTypes = {
   size: _propTypes["default"].string,
@@ -181,8 +194,9 @@ IconButtonComponent.propTypes = {
   onClick: _propTypes["default"].func,
   url: _propTypes["default"].string,
   disabled: _propTypes["default"].bool,
-  icon: _propTypes["default"].oneOf(Object.keys(ICON_VARIANTS)).isRequired,
+  icon: _propTypes["default"].oneOf(Object.keys(ICON_VARIANTS)),
   color: _propTypes["default"].string,
+  overrideIcon: _propTypes["default"].any,
   tooltipMessage: _propTypes["default"].object.isRequired // TODO: refactor IASO to pass the translation directly
 
 };

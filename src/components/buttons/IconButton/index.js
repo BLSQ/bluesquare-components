@@ -57,7 +57,7 @@ const styles = theme => ({
     },
 });
 
-const ButtonIcon = ({ icon: Icon, color, onClick }) => {
+const ButtonIcon = ({ icon: Icon, color, onClick, disabled }) => {
     if (Icon === undefined) {
         return 'wrong icon';
     }
@@ -65,7 +65,11 @@ const ButtonIcon = ({ icon: Icon, color, onClick }) => {
     const iconProps = onClick !== null ? { onClick } : {};
 
     // special override for white color, which is not a "theme" variant such as primary, secondary or action
-    const iconStyles = color === 'white' ? { color: 'white' } : {};
+    const iconStyles = {
+        color: color === 'white' ? color : undefined,
+        opacity: disabled ? 0.5 : 1,
+    };
+    // const iconStyles = color === 'white' ? { color: 'white' } : {};
 
     return (
         <Icon
@@ -77,11 +81,13 @@ const ButtonIcon = ({ icon: Icon, color, onClick }) => {
 };
 ButtonIcon.defaultProps = {
     onClick: null,
+    disabled: false,
 };
 ButtonIcon.propTypes = {
     onClick: PropTypes.func,
     icon: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired,
     color: PropTypes.string.isRequired,
+    disabled: PropTypes.bool,
 };
 
 function IconButtonComponent({
@@ -90,6 +96,7 @@ function IconButtonComponent({
     onClick,
     url,
     icon: iconName,
+    overrideIcon,
     tooltipMessage,
     color,
     size,
@@ -99,8 +106,11 @@ function IconButtonComponent({
             'IconButtonComponent needs either the onClick or the url property',
         );
     }
+    if (!iconName && !overrideIcon) {
+        console.error('IconButtonComponent has to be provided with an icon');
+    }
     const Link = useLink();
-    const icon = ICON_VARIANTS[iconName];
+    const icon = overrideIcon ?? ICON_VARIANTS[iconName];
     // The <span> is needed so the tooltip correctly display when the button is disabled
     return (
         <Tooltip
@@ -118,7 +128,11 @@ function IconButtonComponent({
                             <ButtonIcon icon={icon} color={color} />
                         </Link>
                     ) : (
-                        <ButtonIcon icon={icon} color={color} />
+                        <ButtonIcon
+                            icon={icon}
+                            color={color}
+                            disabled={disabled}
+                        />
                     )}
                 </IconButton>
             </span>
@@ -131,6 +145,8 @@ IconButtonComponent.defaultProps = {
     onClick: null,
     color: 'action',
     size: 'medium',
+    overrideIcon: null,
+    icon: null,
 };
 IconButtonComponent.propTypes = {
     size: PropTypes.string,
@@ -138,8 +154,9 @@ IconButtonComponent.propTypes = {
     onClick: PropTypes.func,
     url: PropTypes.string,
     disabled: PropTypes.bool,
-    icon: PropTypes.oneOf(Object.keys(ICON_VARIANTS)).isRequired,
+    icon: PropTypes.oneOf(Object.keys(ICON_VARIANTS)),
     color: PropTypes.string,
+    overrideIcon: PropTypes.any,
     tooltipMessage: PropTypes.object.isRequired, // TODO: refactor IASO to pass the translation directly
 };
 

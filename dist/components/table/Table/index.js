@@ -143,7 +143,8 @@ var TableComponent = function TableComponent(props) {
       selectionActionMessage = props.selectionActionMessage,
       showPagination = props.showPagination,
       showFooter = props.showFooter,
-      onTableParamsChange = props.onTableParamsChange;
+      onTableParamsChange = props.onTableParamsChange,
+      defaultSorted = props.defaultSorted;
 
   var _useSafeIntl = (0, _useSafeIntl2.useSafeIntl)(),
       formatMessage = _useSafeIntl.formatMessage;
@@ -172,10 +173,11 @@ var TableComponent = function TableComponent(props) {
   var loading = extraProps.loading;
   var initialState = (0, _react.useMemo)(function () {
     var urlPageSize = parseInt(params[(0, _tableUtils.getParamsKey)(paramsPrefix, 'pageSize')], 10);
+    var urlSort = params[(0, _tableUtils.getParamsKey)(paramsPrefix, 'order')] && (0, _tableUtils.getOrderArray)(params[(0, _tableUtils.getParamsKey)(paramsPrefix, 'order')]);
     return {
       pageIndex: params[(0, _tableUtils.getParamsKey)(paramsPrefix, 'page')] ? params[(0, _tableUtils.getParamsKey)(paramsPrefix, 'page')] - 1 : _constants.DEFAULT_PAGE - 1,
       pageSize: urlPageSize || (extraProps === null || extraProps === void 0 ? void 0 : extraProps.defaultPageSize) || _constants.DEFAULT_PAGE_SIZE,
-      sortBy: params[(0, _tableUtils.getParamsKey)(paramsPrefix, 'order')] ? (0, _tableUtils.getOrderArray)(params[(0, _tableUtils.getParamsKey)(paramsPrefix, 'order')]) : (0, _tableUtils.getOrderArray)(_constants.DEFAULT_ORDER)
+      sortBy: urlSort || defaultSorted
     };
   }, []);
 
@@ -206,6 +208,7 @@ var TableComponent = function TableComponent(props) {
     var newParams = _objectSpread({}, params);
 
     if (key === 'order' && value.length > 0) {
+      setSortBy(value);
       newParams[(0, _tableUtils.getParamsKey)(paramsPrefix, 'order')] = (0, _tableUtils.getSort)(value);
     } else if (key !== 'order') {
       newParams[(0, _tableUtils.getParamsKey)(paramsPrefix, key)] = value;
@@ -225,9 +228,6 @@ var TableComponent = function TableComponent(props) {
     onTableParamsChange(newParams);
   };
 
-  (0, _react.useEffect)(function () {
-    handleTableParamsChange('order', sortBy);
-  }, [sortBy]);
   (0, _react.useEffect)(function () {
     var handleSetMultiSortEnabled = function handleSetMultiSortEnabled(e, enabled) {
       if (e.key === 'Shift') {
@@ -282,7 +282,9 @@ var TableComponent = function TableComponent(props) {
     stickyHeader: true
   }), /*#__PURE__*/_react["default"].createElement(_Head.Head, {
     headerGroups: headerGroups,
-    setSortBy: setSortBy,
+    setSortBy: function setSortBy(newSort) {
+      return handleTableParamsChange('order', newSort);
+    },
     multiSortEnabled: multiSortEnabled,
     sortBy: sortBy
   }), /*#__PURE__*/_react["default"].createElement(_Body.Body, {
@@ -335,7 +337,8 @@ TableComponent.defaultProps = {
   showFooter: false,
   onTableParamsChange: function onTableParamsChange() {
     return null;
-  }
+  },
+  defaultSorted: (0, _tableUtils.getOrderArray)(_constants.DEFAULT_ORDER)
 };
 TableComponent.propTypes = {
   params: _propTypes["default"].object,
@@ -356,7 +359,8 @@ TableComponent.propTypes = {
   selectionActionMessage: _propTypes["default"].string,
   showPagination: _propTypes["default"].bool,
   showFooter: _propTypes["default"].bool,
-  onTableParamsChange: _propTypes["default"].func
+  onTableParamsChange: _propTypes["default"].func,
+  defaultSorted: _propTypes["default"].array
 };
 
 var Table = /*#__PURE__*/_react["default"].memo(TableComponent, function (props, prevProps) {

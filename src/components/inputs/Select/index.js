@@ -123,7 +123,7 @@ const SelectCustom = ({
             <Autocomplete
                 noOptionsText={intl.formatMessage(noOptionsText)}
                 multiple={multi}
-                disableCloseOnSelect={multi}
+                // disableCloseOnSelect={multi}
                 id={keyValue}
                 disableClearable={!clearable}
                 options={options}

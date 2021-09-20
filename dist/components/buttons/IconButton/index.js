@@ -151,7 +151,7 @@ function IconButtonComponent(_ref2) {
   }
 
   var Link = (0, _LinkProvider.useLink)();
-  var icon = overrideIcon !== null && overrideIcon !== void 0 ? overrideIcon : ICON_VARIANTS[iconName]; // FIXME Why the <span>????
+  var icon = overrideIcon !== null && overrideIcon !== void 0 ? overrideIcon : ICON_VARIANTS[iconName]; // The <span> is needed so the tooltip correctly display when the button is disabled
 
   return /*#__PURE__*/_react["default"].createElement(_core.Tooltip, {
     classes: {

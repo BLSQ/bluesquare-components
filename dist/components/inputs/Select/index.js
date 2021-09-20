@@ -156,6 +156,7 @@ var SelectCustom = function SelectCustom(_ref) {
   }, /*#__PURE__*/_react["default"].createElement(_Autocomplete["default"], _extends({
     noOptionsText: intl.formatMessage(noOptionsText),
     multiple: multi,
+    disableCloseOnSelect: multi,
     id: keyValue,
     disableClearable: !clearable,
     options: options,

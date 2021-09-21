@@ -15,6 +15,7 @@ var _styles = require("./styles");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+/** @deprecated use InputLabel from @material-ui/core instead to avoid text alignment issues */
 function InputLabelComponent(_ref) {
   var htmlFor = _ref.htmlFor,
       label = _ref.label,

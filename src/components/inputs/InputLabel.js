@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import InputLabel from '@material-ui/core/InputLabel';
 import { useStyles } from './styles';
 
+/** @deprecated use InputLabel from @material-ui/core instead to avoid text alignment issues */
 function InputLabelComponent({ htmlFor, label, required, shrink, error }) {
     const classes = useStyles();
     return (

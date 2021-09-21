@@ -22,6 +22,7 @@ var _exportNames = {
   injectIntl: true,
   patchIntl: true,
   useSafeIntl: true,
+  useDebounce: true,
   theme: true,
   rawTheme: true,
   commonStyles: true,
@@ -134,6 +135,12 @@ Object.defineProperty(exports, "useSafeIntl", {
   enumerable: true,
   get: function get() {
     return _useSafeIntl.useSafeIntl;
+  }
+});
+Object.defineProperty(exports, "useDebounce", {
+  enumerable: true,
+  get: function get() {
+    return _useDebounce.useDebounce;
   }
 });
 Object.defineProperty(exports, "theme", {
@@ -396,6 +403,8 @@ var _injectIntl = require("./utils/injectIntl");
 var _patchIntl = require("./utils/patchIntl");
 
 var _useSafeIntl = require("./utils/useSafeIntl");
+
+var _useDebounce = require("./utils/useDebounce");
 
 var _theme = require("./styles/iaso/theme");
 

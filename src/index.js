@@ -51,6 +51,7 @@ import { SingleComment } from './components/comments/SingleComment';
 import { CommentWithThread } from './components/comments/CommentWithThread';
 import { AddComment } from './components/comments/AddComment';
 import { InputLabel } from './components/inputs/InputLabel';
+import { useKeyPressListener } from './utils/useKeyPressListener';
 
 export * from './utils';
 export * from './utils/intlUtils';
@@ -110,4 +111,5 @@ export {
     InputLabel,
     Expander,
     FormControl,
+    useKeyPressListener,
 };

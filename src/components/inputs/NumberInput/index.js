@@ -77,7 +77,6 @@ const NumberInput = ({
                     onChange(updatedValue);
                 }}
                 onKeyPress={event => {
-                    console.log('event', event.key, event.key === 'Enter');
                     if (event.key === 'Enter') {
                         onEnterPressed();
                     }
@@ -98,9 +97,7 @@ NumberInput.defaultProps = {
     onChange: () => {},
     label: '',
     integersOnly: true,
-    onEnterPressed: () => {
-        console.log('default');
-    },
+    onEnterPressed: () => null,
 };
 
 NumberInput.propTypes = {

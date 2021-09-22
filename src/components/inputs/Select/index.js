@@ -8,6 +8,7 @@ import { CircularProgress } from '@material-ui/core';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { MESSAGES } from './messages';
 import { useStyles } from '../styles';
+import { useKeyPressListener } from '../../../utils/useKeyPressListener';
 
 const SelectCustom = ({
     value,
@@ -30,6 +31,7 @@ const SelectCustom = ({
 }) => {
     const intl = useSafeIntl();
     const classes = useStyles();
+    const shiftKeyIsDown = useKeyPressListener('Shift');
 
     const getOption = optionValue =>
         options.find(o => `${o.value}` === `${optionValue}`);
@@ -117,13 +119,12 @@ const SelectCustom = ({
             />
         );
     };
-
     return (
         <Box mt={1} mb={2}>
             <Autocomplete
                 noOptionsText={intl.formatMessage(noOptionsText)}
                 multiple={multi}
-                // disableCloseOnSelect={multi}
+                disableCloseOnSelect={multi && shiftKeyIsDown}
                 id={keyValue}
                 disableClearable={!clearable}
                 options={options}

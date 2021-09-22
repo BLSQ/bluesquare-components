@@ -27,6 +27,8 @@ var _messages = require("./messages");
 
 var _styles = require("../styles");
 
+var _useKeyPressListener = require("../../../utils/useKeyPressListener");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -61,6 +63,7 @@ var SelectCustom = function SelectCustom(_ref) {
       renderOption = _ref.renderOption;
   var intl = (0, _useSafeIntl.useSafeIntl)();
   var classes = (0, _styles.useStyles)();
+  var shiftKeyIsDown = (0, _useKeyPressListener.useKeyPressListener)('Shift');
 
   var getOption = function getOption(optionValue) {
     return options.find(function (o) {
@@ -155,8 +158,8 @@ var SelectCustom = function SelectCustom(_ref) {
     mb: 2
   }, /*#__PURE__*/_react["default"].createElement(_Autocomplete["default"], _extends({
     noOptionsText: intl.formatMessage(noOptionsText),
-    multiple: multi // disableCloseOnSelect={multi}
-    ,
+    multiple: multi,
+    disableCloseOnSelect: multi && shiftKeyIsDown,
     id: keyValue,
     disableClearable: !clearable,
     options: options,

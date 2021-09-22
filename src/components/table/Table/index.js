@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
 import MuiTable from '@material-ui/core/Table';
@@ -35,6 +35,7 @@ import { NoResult } from './NoResult';
 import { Count } from './Count';
 import { Pagination } from './Pagination';
 import { LoadingSpinner } from '../../LoadingSpinner';
+import { useKeyPressListener } from '../../../utils/useKeyPressListener';
 /**
  * TableComponent component, no redux, no fetch, just displaying.
  * Multi selection is optionnal, if set to true you can add custom actions
@@ -102,7 +103,7 @@ const TableComponent = props => {
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
 
-    const [multiSortEnabled, setMultiSortEnabled] = useState(false);
+    const multiSortEnabled = useKeyPressListener('Shift');
 
     const columns = useMemo(() => {
         const temp = [...props.columns];
@@ -191,32 +192,11 @@ const TableComponent = props => {
         onTableParamsChange(newParams);
     };
 
-    useEffect(() => {
-        const handleSetMultiSortEnabled = (e, enabled) => {
-            if (e.key === 'Shift') {
-                setMultiSortEnabled(enabled);
-            }
-        };
-        const setOn = e => {
-            handleSetMultiSortEnabled(e, true);
-        };
-        const setOff = e => {
-            handleSetMultiSortEnabled(e, false);
-        };
-        document.addEventListener('keydown', setOn);
-        document.addEventListener('keyup', setOff);
-        document.addEventListener('onBlur', setOff);
-        return () => {
-            document.removeEventListener('keydown', setOn);
-            document.removeEventListener('keyup', setOff);
-            document.removeEventListener('onBlur', setOff);
-        };
-    }, [multiSortEnabled]);
-
     const tableProps = {
         ...getTableProps(),
         size: 'small',
     };
+
     const rowsPerPage = parseInt(pageSize, 10);
     return (
         <Box mt={marginTop ? 4 : 0} mb={4}>

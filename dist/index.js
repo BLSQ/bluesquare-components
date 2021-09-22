@@ -56,7 +56,8 @@ var _exportNames = {
   SingleComment: true,
   CommentWithThread: true,
   AddComment: true,
-  InputLabel: true
+  InputLabel: true,
+  useKeyPressListener: true
 };
 Object.defineProperty(exports, "LoadingSpinner", {
   enumerable: true,
@@ -346,6 +347,12 @@ Object.defineProperty(exports, "InputLabel", {
     return _InputLabel.InputLabel;
   }
 });
+Object.defineProperty(exports, "useKeyPressListener", {
+  enumerable: true,
+  get: function get() {
+    return _useKeyPressListener.useKeyPressListener;
+  }
+});
 exports.IasoUiConstants = exports.SnackBar = exports.IasoChipColors = void 0;
 
 var _LoadingSpinner = require("./components/LoadingSpinner");
@@ -458,6 +465,8 @@ var _CommentWithThread = require("./components/comments/CommentWithThread");
 var _AddComment = require("./components/comments/AddComment");
 
 var _InputLabel = require("./components/inputs/InputLabel");
+
+var _useKeyPressListener = require("./utils/useKeyPressListener");
 
 var _utils = require("./utils");
 

@@ -4,7 +4,7 @@ import { OutlinedInput } from '@material-ui/core';
 import { FormControl } from '../FormControl';
 import { InputLabel } from '../InputLabel';
 
-const formatValue = value => {
+const formatValue = (value, integersOnly) => {
     if (typeof value === 'number') return value;
     const valueAsArray = value.split('');
     const containsDots = valueAsArray.filter(char => char === '.');
@@ -27,7 +27,7 @@ const formatValue = value => {
         return valueAsArray.join('');
     }
 
-    const parsedValue = parseFloat(value);
+    const parsedValue = integersOnly ? parseInt(value, 10) : parseFloat(value);
     if (Number.isNaN(parsedValue)) {
         return '';
     }
@@ -44,12 +44,14 @@ const NumberInput = ({
     disabled,
     onChange,
     multiline,
+    integersOnly,
+    onEnterPressed,
 }) => {
     const hasErrors = errors.length > 1;
     const [formattedValue, setFormattedValue] = useState(formatValue(value));
 
     useEffect(() => {
-        const formatted = formatValue(value);
+        const formatted = formatValue(value, integersOnly);
         setFormattedValue(formatted);
     }, [value]);
 
@@ -74,6 +76,12 @@ const NumberInput = ({
                     setFormattedValue(updatedValue);
                     onChange(updatedValue);
                 }}
+                onKeyPress={event => {
+                    console.log('event', event.key, event.key === 'Enter');
+                    if (event.key === 'Enter') {
+                        onEnterPressed();
+                    }
+                }}
                 error={hasErrors}
             />
         </FormControl>
@@ -89,6 +97,10 @@ NumberInput.defaultProps = {
     required: false,
     onChange: () => {},
     label: '',
+    integersOnly: true,
+    onEnterPressed: () => {
+        console.log('default');
+    },
 };
 
 NumberInput.propTypes = {
@@ -101,6 +113,8 @@ NumberInput.propTypes = {
     multiline: PropTypes.bool,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     onChange: PropTypes.func,
+    integersOnly: PropTypes.bool,
+    onEnterPressed: PropTypes.func,
 };
 
 export { NumberInput };

@@ -35,7 +35,7 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-var formatValue = function formatValue(value) {
+var formatValue = function formatValue(value, integersOnly) {
   if (typeof value === 'number') return value;
   var valueAsArray = value.split('');
   var containsDots = valueAsArray.filter(function (_char) {
@@ -53,7 +53,7 @@ var formatValue = function formatValue(value) {
     return valueAsArray.join('');
   }
 
-  var parsedValue = parseFloat(value);
+  var parsedValue = integersOnly ? parseInt(value, 10) : parseFloat(value);
 
   if (Number.isNaN(parsedValue)) {
     return '';
@@ -71,7 +71,9 @@ var NumberInput = function NumberInput(_ref) {
       value = _ref.value,
       disabled = _ref.disabled,
       _onChange = _ref.onChange,
-      multiline = _ref.multiline;
+      multiline = _ref.multiline,
+      integersOnly = _ref.integersOnly,
+      onEnterPressed = _ref.onEnterPressed;
   var hasErrors = errors.length > 1;
 
   var _useState = (0, _react.useState)(formatValue(value)),
@@ -80,7 +82,7 @@ var NumberInput = function NumberInput(_ref) {
       setFormattedValue = _useState2[1];
 
   (0, _react.useEffect)(function () {
-    var formatted = formatValue(value);
+    var formatted = formatValue(value, integersOnly);
     setFormattedValue(formatted);
   }, [value]);
   return /*#__PURE__*/_react["default"].createElement(_FormControl.FormControl, {
@@ -105,6 +107,13 @@ var NumberInput = function NumberInput(_ref) {
 
       _onChange(updatedValue);
     },
+    onKeyPress: function onKeyPress(event) {
+      console.log('event', event.key, event.key === 'Enter');
+
+      if (event.key === 'Enter') {
+        onEnterPressed();
+      }
+    },
     error: hasErrors
   }));
 };
@@ -118,7 +127,11 @@ NumberInput.defaultProps = {
   disabled: false,
   required: false,
   onChange: function onChange() {},
-  label: ''
+  label: '',
+  integersOnly: true,
+  onEnterPressed: function onEnterPressed() {
+    console.log('default');
+  }
 };
 NumberInput.propTypes = {
   withMarginTop: _propTypes["default"].bool,
@@ -129,5 +142,7 @@ NumberInput.propTypes = {
   disabled: _propTypes["default"].bool,
   multiline: _propTypes["default"].bool,
   value: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].number]),
-  onChange: _propTypes["default"].func
+  onChange: _propTypes["default"].func,
+  integersOnly: _propTypes["default"].bool,
+  onEnterPressed: _propTypes["default"].func
 };

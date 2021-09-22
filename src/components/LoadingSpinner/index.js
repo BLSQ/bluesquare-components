@@ -25,7 +25,7 @@ const styles = () => ({
     rootAbsolute: {
         ...baseRoot,
         position: 'absolute',
-        zIndex: '10',
+        zIndex: '500',
     },
     root: {
         ...baseRoot,

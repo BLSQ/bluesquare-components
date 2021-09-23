@@ -42,7 +42,7 @@ var styles = function styles() {
     }),
     rootAbsolute: _objectSpread(_objectSpread({}, baseRoot), {}, {
       position: 'absolute',
-      zIndex: '10'
+      zIndex: '500'
     }),
     root: _objectSpread(_objectSpread({}, baseRoot), {}, {
       position: 'relative',

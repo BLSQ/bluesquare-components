@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
@@ -11,9 +11,33 @@ const useStyles = makeStyles(() => ({
     input: {
         width: 80,
     },
+    mediumInput: {
+        width: 90,
+    },
+    largeInput: {
+        width: 100,
+    },
+    XLInput: {
+        width: 110,
+    },
 }));
+
+const parseSelectedValue = value => {
+    const parsedValue = parseInt(value, 10);
+    if (Number.isNaN(parsedValue)) return '';
+    return parsedValue;
+};
+
+const adaptInputSize = length => {
+    if (length <= 999) return 'input';
+    if (length <= 9999) return 'mediumInput';
+    if (length <= 99999) return 'largeInput';
+    return 'XLInput';
+};
+
 const PageSelect = ({ pageIndex, pages, onPageChange }) => {
     const classes = useStyles();
+    const [selectedPage, setSelectedPage] = useState(pageIndex);
     return (
         <Box
             display="inline-flex"
@@ -26,14 +50,22 @@ const PageSelect = ({ pageIndex, pages, onPageChange }) => {
             </Box>
 
             <TextField
-                className={classes.input}
+                className={classes[adaptInputSize(selectedPage)]}
                 size="small"
                 label=""
                 type="number"
-                value={pageIndex}
+                value={selectedPage}
+                // value={pageIndex}
                 disabled={pages < 2}
                 variant="outlined"
-                onChange={e => onPageChange(e.currentTarget.value)}
+                onChange={e => {
+                    setSelectedPage(parseSelectedValue(e.currentTarget.value));
+                }}
+                onKeyPress={event => {
+                    if (event.key === 'Enter') {
+                        onPageChange(selectedPage);
+                    }
+                }}
             />
             <Box display="inline-block" ml={1}>
                 <FormattedMessage {...MESSAGES.ofText} />

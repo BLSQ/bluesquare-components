@@ -15,8 +15,6 @@ var _core = require("@material-ui/core");
 
 var _FormControl = require("../FormControl");
 
-var _InputLabel = require("../InputLabel");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -35,7 +33,9 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+// import { InputLabel } from '../InputLabel';
 var formatValue = function formatValue(value, integersOnly) {
+  if (value === null || value === undefined) return '';
   if (typeof value === 'number') return value;
   var valueAsArray = value.split('');
   var containsDots = valueAsArray.filter(function (_char) {
@@ -73,7 +73,8 @@ var NumberInput = function NumberInput(_ref) {
       _onChange = _ref.onChange,
       multiline = _ref.multiline,
       integersOnly = _ref.integersOnly,
-      onEnterPressed = _ref.onEnterPressed;
+      onEnterPressed = _ref.onEnterPressed,
+      className = _ref.className;
   var hasErrors = errors.length > 1;
 
   var _useState = (0, _react.useState)(formatValue(value)),
@@ -87,14 +88,14 @@ var NumberInput = function NumberInput(_ref) {
   }, [value]);
   return /*#__PURE__*/_react["default"].createElement(_FormControl.FormControl, {
     withMarginTop: withMarginTop,
-    errors: errors
-  }, /*#__PURE__*/_react["default"].createElement(_InputLabel.InputLabel, {
+    errors: errors,
+    className: className
+  }, /*#__PURE__*/_react["default"].createElement(_core.InputLabel, {
     htmlFor: "input-text-".concat(keyValue),
-    label: label,
     required: required,
     error: hasErrors,
     shrink: value !== ''
-  }), /*#__PURE__*/_react["default"].createElement(_core.OutlinedInput, {
+  }, label), /*#__PURE__*/_react["default"].createElement(_core.OutlinedInput, {
     size: "small",
     multiline: multiline,
     disabled: disabled,
@@ -108,8 +109,6 @@ var NumberInput = function NumberInput(_ref) {
       _onChange(updatedValue);
     },
     onKeyPress: function onKeyPress(event) {
-      console.log('event', event.key, event.key === 'Enter');
-
       if (event.key === 'Enter') {
         onEnterPressed();
       }
@@ -126,12 +125,13 @@ NumberInput.defaultProps = {
   multiline: false,
   disabled: false,
   required: false,
-  onChange: function onChange() {},
+  // onChange: () => {},
   label: '',
   integersOnly: true,
   onEnterPressed: function onEnterPressed() {
-    console.log('default');
-  }
+    return null;
+  },
+  className: ''
 };
 NumberInput.propTypes = {
   withMarginTop: _propTypes["default"].bool,
@@ -142,7 +142,8 @@ NumberInput.propTypes = {
   disabled: _propTypes["default"].bool,
   multiline: _propTypes["default"].bool,
   value: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].number]),
-  onChange: _propTypes["default"].func,
+  onChange: _propTypes["default"].func.isRequired,
   integersOnly: _propTypes["default"].bool,
-  onEnterPressed: _propTypes["default"].func
+  onEnterPressed: _propTypes["default"].func,
+  className: _propTypes["default"].string
 };

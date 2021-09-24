@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { OutlinedInput } from '@material-ui/core';
+import { OutlinedInput, InputLabel } from '@material-ui/core';
 import { FormControl } from '../FormControl';
-import { InputLabel } from '../InputLabel';
+// import { InputLabel } from '../InputLabel';
 
 const formatValue = (value, integersOnly) => {
+    if (value === null || value === undefined) return '';
     if (typeof value === 'number') return value;
     const valueAsArray = value.split('');
     const containsDots = valueAsArray.filter(char => char === '.');
@@ -46,6 +47,7 @@ const NumberInput = ({
     multiline,
     integersOnly,
     onEnterPressed,
+    className,
 }) => {
     const hasErrors = errors.length > 1;
     const [formattedValue, setFormattedValue] = useState(formatValue(value));
@@ -56,14 +58,19 @@ const NumberInput = ({
     }, [value]);
 
     return (
-        <FormControl withMarginTop={withMarginTop} errors={errors}>
+        <FormControl
+            withMarginTop={withMarginTop}
+            errors={errors}
+            className={className}
+        >
             <InputLabel
                 htmlFor={`input-text-${keyValue}`}
-                label={label}
                 required={required}
                 error={hasErrors}
                 shrink={value !== ''}
-            />
+            >
+                {label}
+            </InputLabel>
             <OutlinedInput
                 size="small"
                 multiline={multiline}
@@ -94,10 +101,11 @@ NumberInput.defaultProps = {
     multiline: false,
     disabled: false,
     required: false,
-    onChange: () => {},
+    // onChange: () => {},
     label: '',
     integersOnly: true,
     onEnterPressed: () => null,
+    className: '',
 };
 
 NumberInput.propTypes = {
@@ -109,9 +117,10 @@ NumberInput.propTypes = {
     disabled: PropTypes.bool,
     multiline: PropTypes.bool,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    onChange: PropTypes.func,
+    onChange: PropTypes.func.isRequired,
     integersOnly: PropTypes.bool,
     onEnterPressed: PropTypes.func,
+    className: PropTypes.string,
 };
 
 export { NumberInput };

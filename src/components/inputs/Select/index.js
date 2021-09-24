@@ -122,6 +122,7 @@ const SelectCustom = ({
     return (
         <Box mt={1} mb={2}>
             <Autocomplete
+                disabled={disabled}
                 noOptionsText={intl.formatMessage(noOptionsText)}
                 multiple={multi}
                 disableCloseOnSelect={multi && shiftKeyIsDown}

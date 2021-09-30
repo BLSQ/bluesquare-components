@@ -65,7 +65,7 @@ var Pagination = function Pagination(_ref) {
         count: count,
         rowsPerPage: rowsPerPage,
         onPageChange: function onPageChange(value) {
-          return onTableParamsChange('page', value);
+          onTableParamsChange('page', value);
         },
         selectRowsPerPage: function selectRowsPerPage(value) {
           return onTableParamsChange('pageSize', value);

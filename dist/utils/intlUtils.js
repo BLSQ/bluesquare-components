@@ -3,9 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.displayDateFromTimestamp = exports.translateOptions = void 0;
+exports.displayDateFromTimestamp = exports.useTranslatedOptions = exports.translateOptions = void 0;
 
 var _moment = _interopRequireDefault(require("moment"));
+
+var _useSafeIntl2 = require("./useSafeIntl");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -35,6 +37,16 @@ var translateOptions = function translateOptions(options, formatMessage) {
 
     return option;
   });
+}; // options = [{id:'translation.key',defaultMessage:'What I want to display'}]
+
+
+exports.translateOptions = translateOptions;
+
+var useTranslatedOptions = function useTranslatedOptions(options) {
+  var _useSafeIntl = (0, _useSafeIntl2.useSafeIntl)(),
+      formatMessage = _useSafeIntl.formatMessage;
+
+  return translateOptions(options, formatMessage);
 };
 /**
  * Receive a timestamp and displays it as a human readable date
@@ -43,7 +55,7 @@ var translateOptions = function translateOptions(options, formatMessage) {
  */
 
 
-exports.translateOptions = translateOptions;
+exports.useTranslatedOptions = useTranslatedOptions;
 
 var displayDateFromTimestamp = function displayDateFromTimestamp(timestamp) {
   return _moment["default"].unix(timestamp).format('LTS');

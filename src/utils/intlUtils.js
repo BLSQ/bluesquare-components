@@ -1,4 +1,5 @@
 import moment from 'moment';
+import { useSafeIntl } from './useSafeIntl';
 /**
  * Accept options either with a string label or an intl MessageDescriptor label
  * and translate if needed
@@ -19,6 +20,12 @@ export const translateOptions = (options, formatMessage) =>
 
         return option;
     });
+
+// options = [{id:'translation.key',defaultMessage:'What I want to display'}]
+export const useTranslatedOptions = options => {
+    const { formatMessage } = useSafeIntl();
+    return translateOptions(options, formatMessage);
+};
 
 /**
  * Receive a timestamp and displays it as a human readable date

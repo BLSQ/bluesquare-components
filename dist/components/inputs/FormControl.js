@@ -37,6 +37,9 @@ var styles = function styles(theme) {
     },
     error: {
       color: theme.palette.error.main
+    },
+    marginTopZero: {
+      marginTop: 0
     }
   };
 };
@@ -45,11 +48,17 @@ function FormControlComponent(_ref) {
   var classes = _ref.classes,
       children = _ref.children,
       withMarginTop = _ref.withMarginTop,
-      errors = _ref.errors;
-  var classNames = [classes.formControl];
+      errors = _ref.errors,
+      marginTopZero = _ref.marginTopZero;
+  var classNames = [classes.formControl]; // FIXME the logic seems to inverted here, but changing it leads to lots of visual bugs in Iaso
 
   if (!withMarginTop) {
     classNames.push(classes.formControlWithMarginTop);
+  } // placing marginTopZero here to make sure it overides whatever margin was given by withMarginTop
+
+
+  if (marginTopZero) {
+    classNames.push(classes.marginTopZero);
   }
 
   return /*#__PURE__*/_react["default"].createElement(_FormControl["default"], {
@@ -65,12 +74,15 @@ function FormControlComponent(_ref) {
 
 FormControlComponent.defaultProps = {
   withMarginTop: true,
+  marginTopZero: false,
   errors: []
 };
 FormControlComponent.propTypes = {
   classes: _propTypes["default"].object.isRequired,
   children: _propTypes["default"].node.isRequired,
   withMarginTop: _propTypes["default"].bool,
+  // FIXME: these 2 props are redundant, but changing withMarginTop breaks alignment in Iaso
+  marginTopZero: _propTypes["default"].bool,
   errors: _propTypes["default"].arrayOf(_propTypes["default"].string.isRequired)
 };
 var styledComponent = (0, _core.withStyles)(styles)(FormControlComponent);

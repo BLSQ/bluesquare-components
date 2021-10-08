@@ -73,7 +73,7 @@ import { useKeyPressListener } from '../../../utils/useKeyPressListener';
 
 const useStyles = makeStyles(() => ({
     tableContainer: {
-        overflow: 'hidden',
+        overflowY: 'hidden',
     },
     paper: {
         position: 'relative',

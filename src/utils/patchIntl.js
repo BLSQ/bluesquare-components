@@ -1,9 +1,8 @@
-const patchIntl = intl => {
-    const intlCopy = { ...intl };
-    const intlOriginal = { ...intl };
-    const formatMessage = message => {
-        if (message && message.id && message.defaultMessage) {
-            return intlOriginal.formatMessage(message);
+const patchIntl = intl => ({
+    ...intl,
+    formatMessage: (message, value) => {
+        if (message && message.id) {
+            return intl.formatMessage(message, value);
         }
         console.warn(
             'Warning: Message object is not defined properly!',
@@ -11,9 +10,7 @@ const patchIntl = intl => {
         );
 
         return null;
-    };
-    intlCopy.formatMessage = formatMessage;
-    return intlCopy;
-};
+    },
+});
 
 export { patchIntl };

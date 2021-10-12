@@ -12,21 +12,16 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var patchIntl = function patchIntl(intl) {
-  var intlCopy = _objectSpread({}, intl);
+  return _objectSpread(_objectSpread({}, intl), {}, {
+    formatMessage: function formatMessage(message, value) {
+      if (message && message.id) {
+        return intl.formatMessage(message, value);
+      }
 
-  var intlOriginal = _objectSpread({}, intl);
-
-  var formatMessage = function formatMessage(message) {
-    if (message && message.id && message.defaultMessage) {
-      return intlOriginal.formatMessage(message);
+      console.warn('Warning: Message object is not defined properly!', message);
+      return null;
     }
-
-    console.warn('Warning: Message object is not defined properly!', message);
-    return null;
-  };
-
-  intlCopy.formatMessage = formatMessage;
-  return intlCopy;
+  });
 };
 
 exports.patchIntl = patchIntl;

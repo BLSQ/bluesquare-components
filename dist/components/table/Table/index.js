@@ -112,7 +112,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 var useStyles = (0, _styles.makeStyles)(function () {
   return {
     tableContainer: {
-      overflow: 'hidden'
+      overflowY: 'hidden'
     },
     paper: {
       position: 'relative'

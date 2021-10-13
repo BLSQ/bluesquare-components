@@ -6,11 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.clone = clone;
 exports.deepEqual = deepEqual;
 exports.substituteVars = substituteVars;
-exports.truncateText = exports.formatThousand = exports.capitalize = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+exports.removePositionIndex = exports.addPositionIndex = exports.truncateText = exports.formatThousand = exports.capitalize = void 0;
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -125,3 +121,34 @@ var truncateText = function truncateText(text, maxLength) {
 };
 
 exports.truncateText = truncateText;
+
+var addPositionIndex = function addPositionIndex(array) {
+  var tempArray = [];
+
+  if (array) {
+    array.forEach(function (e, index) {
+      tempArray.push({
+        value: e,
+        position: index
+      });
+    });
+  }
+
+  return tempArray;
+};
+
+exports.addPositionIndex = addPositionIndex;
+
+var removePositionIndex = function removePositionIndex(array) {
+  var tempArray = [];
+
+  if (array) {
+    array.forEach(function (e) {
+      tempArray.push(e.value);
+    });
+  }
+
+  return tempArray;
+};
+
+exports.removePositionIndex = removePositionIndex;

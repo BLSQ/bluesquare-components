@@ -1,5 +1,3 @@
-import React from 'react';
-
 export function clone(x) {
     return JSON.parse(JSON.stringify(x));
 }
@@ -92,4 +90,27 @@ export const truncateText = (text, maxLength) => {
         return `${text.substring(0, maxLength - 4)}...   `;
     }
     return `${text}   `;
+};
+
+export const addPositionIndex = array => {
+    const tempArray = [];
+    if (array) {
+        array.forEach((e, index) => {
+            tempArray.push({
+                value: e,
+                position: index,
+            });
+        });
+    }
+    return tempArray;
+};
+
+export const removePositionIndex = array => {
+    const tempArray = [];
+    if (array) {
+        array.forEach(e => {
+            tempArray.push(e.value);
+        });
+    }
+    return tempArray;
 };

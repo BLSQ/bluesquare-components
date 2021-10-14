@@ -21,6 +21,8 @@ var _Autocomplete = _interopRequireDefault(require("@material-ui/lab/Autocomplet
 
 var _core = require("@material-ui/core");
 
+var _Clear = _interopRequireDefault(require("@material-ui/icons/Clear"));
+
 var _useSafeIntl = require("../../../utils/useSafeIntl");
 
 var _messages = require("./messages");
@@ -167,6 +169,7 @@ var SelectCustom = function SelectCustom(_ref) {
     value: fixedValue,
     onChange: handleChange,
     loading: loading,
+    closeIcon: /*#__PURE__*/_react["default"].createElement(_Clear["default"], null),
     renderTags: function renderTags(tagValue, getTagProps) {
       return tagValue.filter(function (option) {
         return option;
@@ -184,6 +187,9 @@ var SelectCustom = function SelectCustom(_ref) {
     },
     renderInput: function renderInput(params) {
       return _renderInput(params);
+    },
+    classes: {
+      popupIndicator: classes.popupIndicator
     }
   }, extraProps)));
 };

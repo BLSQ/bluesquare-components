@@ -1,18 +1,13 @@
 import React, { useState } from 'react';
 
 import { KeyboardDatePicker } from '@material-ui/pickers';
-import Clear from '@material-ui/icons/Clear';
-import {
-    FormControl,
-    Tooltip,
-    IconButton,
-    makeStyles,
-} from '@material-ui/core';
+import EventIcon from '@material-ui/icons/Event';
+import { FormControl, makeStyles } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
+import { IconButton } from '../buttons/IconButton';
+
 import { commonStyles } from '../../styles/iaso/common';
-import { useSafeIntl } from '../../utils/useSafeIntl';
-// import MESSAGES from '../messages';
 
 const useStyles = makeStyles(theme => ({
     ...commonStyles(theme),
@@ -23,8 +18,8 @@ const useStyles = makeStyles(theme => ({
         marginRight: theme.spacing(2),
         padding: 0,
         position: 'absolute',
-        right: theme.spacing(6),
-        top: 15,
+        right: theme.spacing(4),
+        top: 13,
     },
 }));
 
@@ -36,7 +31,6 @@ const DatePicker = ({
     clearMessage,
 }) => {
     const classes = useStyles();
-    const intl = useSafeIntl();
     const [dateError, setDateError] = useState(null);
     return (
         <FormControl className={classes.formControl}>
@@ -49,6 +43,10 @@ const DatePicker = ({
                     shrink: Boolean(currentDate),
                     error: hasError || Boolean(dateError),
                 }}
+                KeyboardButtonProps={{
+                    size: 'small',
+                }}
+                keyboardIcon={<EventIcon size="small" />}
                 InputProps={{
                     error: hasError || Boolean(dateError),
                 }}
@@ -60,15 +58,14 @@ const DatePicker = ({
                 onError={error => setDateError(error)}
             />
             {currentDate && (
-                <Tooltip arrow title={intl.formatMessage(clearMessage)}>
+                <span className={classes.clearDateButton}>
                     <IconButton
-                        color="inherit"
+                        size="small"
+                        icon="clear"
+                        tooltipMessage={clearMessage}
                         onClick={() => onChange(null)}
-                        className={classes.clearDateButton}
-                    >
-                        <Clear color="primary" />
-                    </IconButton>
-                </Tooltip>
+                    />
+                </span>
             )}
         </FormControl>
     );

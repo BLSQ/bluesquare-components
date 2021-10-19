@@ -11,15 +11,15 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _pickers = require("@material-ui/pickers");
 
-var _Clear = _interopRequireDefault(require("@material-ui/icons/Clear"));
+var _Event = _interopRequireDefault(require("@material-ui/icons/Event"));
 
 var _core = require("@material-ui/core");
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _common = require("../../styles/iaso/common");
+var _IconButton = require("../buttons/IconButton");
 
-var _useSafeIntl = require("../../utils/useSafeIntl");
+var _common = require("../../styles/iaso/common");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -45,7 +45,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-// import MESSAGES from '../messages';
 var useStyles = (0, _core.makeStyles)(function (theme) {
   return _objectSpread(_objectSpread({}, (0, _common.commonStyles)(theme)), {}, {
     formControl: {
@@ -55,8 +54,8 @@ var useStyles = (0, _core.makeStyles)(function (theme) {
       marginRight: theme.spacing(2),
       padding: 0,
       position: 'absolute',
-      right: theme.spacing(6),
-      top: 15
+      right: theme.spacing(4),
+      top: 13
     }
   });
 });
@@ -68,7 +67,6 @@ var DatePicker = function DatePicker(_ref) {
       hasError = _ref.hasError,
       clearMessage = _ref.clearMessage;
   var classes = useStyles();
-  var intl = (0, _useSafeIntl.useSafeIntl)();
 
   var _useState = (0, _react.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
@@ -86,6 +84,12 @@ var DatePicker = function DatePicker(_ref) {
       shrink: Boolean(currentDate),
       error: hasError || Boolean(dateError)
     },
+    KeyboardButtonProps: {
+      size: 'small'
+    },
+    keyboardIcon: /*#__PURE__*/_react["default"].createElement(_Event["default"], {
+      size: "small"
+    }),
     InputProps: {
       error: hasError || Boolean(dateError)
     },
@@ -98,18 +102,16 @@ var DatePicker = function DatePicker(_ref) {
     onError: function onError(error) {
       return setDateError(error);
     }
-  }), currentDate && /*#__PURE__*/_react["default"].createElement(_core.Tooltip, {
-    arrow: true,
-    title: intl.formatMessage(clearMessage)
-  }, /*#__PURE__*/_react["default"].createElement(_core.IconButton, {
-    color: "inherit",
+  }), currentDate && /*#__PURE__*/_react["default"].createElement("span", {
+    className: classes.clearDateButton
+  }, /*#__PURE__*/_react["default"].createElement(_IconButton.IconButton, {
+    size: "small",
+    icon: "clear",
+    tooltipMessage: clearMessage,
     onClick: function onClick() {
       return onChange(null);
-    },
-    className: classes.clearDateButton
-  }, /*#__PURE__*/_react["default"].createElement(_Clear["default"], {
-    color: "primary"
-  }))));
+    }
+  })));
 };
 
 exports.DatePicker = DatePicker;

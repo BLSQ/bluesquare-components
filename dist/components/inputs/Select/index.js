@@ -189,7 +189,8 @@ var SelectCustom = function SelectCustom(_ref) {
       return _renderInput(params);
     },
     classes: {
-      popupIndicator: classes.popupIndicator
+      popupIndicator: classes.popupIndicator,
+      clearIndicator: classes.clearIndicator
     }
   }, extraProps)));
 };

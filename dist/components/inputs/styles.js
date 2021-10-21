@@ -26,6 +26,9 @@ var styles = function styles(theme) {
     popupIndicator: {
       marginRight: '6px !important',
       marginLeft: '6px !important'
+    },
+    clearIndicator: {
+      marginTop: -2
     }
   };
 };

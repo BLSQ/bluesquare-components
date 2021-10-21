@@ -21,6 +21,8 @@ var _Autocomplete = _interopRequireDefault(require("@material-ui/lab/Autocomplet
 
 var _core = require("@material-ui/core");
 
+var _Clear = _interopRequireDefault(require("@material-ui/icons/Clear"));
+
 var _useSafeIntl = require("../../../utils/useSafeIntl");
 
 var _messages = require("./messages");
@@ -60,7 +62,10 @@ var SelectCustom = function SelectCustom(_ref) {
       getOptionLabel = _ref.getOptionLabel,
       getOptionSelected = _ref.getOptionSelected,
       loading = _ref.loading,
-      renderOption = _ref.renderOption;
+      renderOption = _ref.renderOption,
+      renderTags = _ref.renderTags,
+      returnFullObject = _ref.returnFullObject,
+      helperText = _ref.helperText;
   var intl = (0, _useSafeIntl.useSafeIntl)();
   var classes = (0, _styles.useStyles)();
   var shiftKeyIsDown = (0, _useKeyPressListener.useKeyPressListener)('Shift');
@@ -75,6 +80,11 @@ var SelectCustom = function SelectCustom(_ref) {
     if (value) {
       if (multi) {
         var valuesList = Array.isArray(value) ? value : value.split(',');
+
+        if (returnFullObject) {
+          return valuesList;
+        }
+
         return valuesList.map(function (v) {
           return getOption(v);
         }).filter(function (o) {
@@ -93,9 +103,13 @@ var SelectCustom = function SelectCustom(_ref) {
     }
 
     if (multi) {
-      return onChange(newValue.map(function (v) {
-        return v && v.value;
-      }).join(','));
+      if (!returnFullObject) {
+        return onChange(newValue.map(function (v) {
+          return v && v.value;
+        }).join(','));
+      }
+
+      return onChange(newValue);
     }
 
     return onChange(newValue.value);
@@ -144,6 +158,7 @@ var SelectCustom = function SelectCustom(_ref) {
         },
         className: classes.inputLabel
       },
+      helperText: helperText,
       InputProps: _objectSpread(_objectSpread({}, params.InputProps), {}, {
         endAdornment: /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, loading ? /*#__PURE__*/_react["default"].createElement(_core.CircularProgress, {
           color: "inherit",
@@ -167,23 +182,14 @@ var SelectCustom = function SelectCustom(_ref) {
     value: fixedValue,
     onChange: handleChange,
     loading: loading,
-    renderTags: function renderTags(tagValue, getTagProps) {
-      return tagValue.filter(function (option) {
-        return option;
-      }).map(function (option, index) {
-        return /*#__PURE__*/_react["default"].createElement(_Chip["default"], _extends({
-          classes: {
-            label: classes.chipLabel
-          },
-          color: "secondary",
-          label: option.label
-        }, getTagProps({
-          index: index
-        })));
-      });
-    },
+    closeIcon: /*#__PURE__*/_react["default"].createElement(_Clear["default"], null),
+    renderTags: renderTags,
     renderInput: function renderInput(params) {
       return _renderInput(params);
+    },
+    classes: {
+      popupIndicator: classes.popupIndicator,
+      clearIndicator: classes.clearIndicator
     }
   }, extraProps)));
 };
@@ -204,7 +210,21 @@ SelectCustom.defaultProps = {
   getOptionSelected: null,
   getOptionLabel: null,
   renderOption: null,
-  noOptionsText: _messages.MESSAGES.noOptions
+  noOptionsText: _messages.MESSAGES.noOptions,
+  helperText: undefined,
+  renderTags: function renderTags(tagValue, getTagProps) {
+    return tagValue.filter(function (option) {
+      return option;
+    }).map(function (option, index) {
+      return /*#__PURE__*/_react["default"].createElement(_Chip["default"], _extends({
+        color: "secondary",
+        label: option.label
+      }, getTagProps({
+        index: index
+      })));
+    });
+  },
+  returnFullObject: false
 };
 SelectCustom.propTypes = {
   errors: _propTypes["default"].arrayOf(_propTypes["default"].string),
@@ -217,11 +237,14 @@ SelectCustom.propTypes = {
   value: _propTypes["default"].any,
   onBlur: _propTypes["default"].func,
   noOptionsText: _propTypes["default"].oneOfType([_propTypes["default"].object, _propTypes["default"].string]),
+  helperText: _propTypes["default"].oneOfType([_propTypes["default"].object, _propTypes["default"].string]),
   options: _propTypes["default"].array,
   touched: _propTypes["default"].oneOfType([_propTypes["default"].bool, _propTypes["default"].array]),
   loading: _propTypes["default"].bool,
   onChange: _propTypes["default"].func.isRequired,
   getOptionLabel: _propTypes["default"].oneOfType([_propTypes["default"].object, _propTypes["default"].func]),
   getOptionSelected: _propTypes["default"].oneOfType([_propTypes["default"].object, _propTypes["default"].func]),
-  renderOption: _propTypes["default"].oneOfType([_propTypes["default"].object, _propTypes["default"].func])
+  renderOption: _propTypes["default"].oneOfType([_propTypes["default"].object, _propTypes["default"].func]),
+  renderTags: _propTypes["default"].func,
+  returnFullObject: _propTypes["default"].bool
 };

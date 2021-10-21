@@ -15,6 +15,13 @@ const styles = theme => ({
         marginTop: -2,
         backgroundColor: 'white',
     },
+    popupIndicator: {
+        marginRight: '6px !important',
+        marginLeft: '6px !important',
+    },
+    clearIndicator: {
+        marginTop: -2,
+    },
 });
 
 const useStyles = makeStyles(styles);

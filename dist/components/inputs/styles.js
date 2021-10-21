@@ -22,6 +22,13 @@ var styles = function styles(theme) {
       fontSize: 20,
       marginTop: -2,
       backgroundColor: 'white'
+    },
+    popupIndicator: {
+      marginRight: '6px !important',
+      marginLeft: '6px !important'
+    },
+    clearIndicator: {
+      marginTop: -2
     }
   };
 };

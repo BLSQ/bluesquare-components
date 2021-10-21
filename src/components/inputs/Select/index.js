@@ -5,6 +5,8 @@ import Box from '@material-ui/core/Box';
 import Chip from '@material-ui/core/Chip';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { CircularProgress } from '@material-ui/core';
+import ClearIcon from '@material-ui/icons/Clear';
+
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { MESSAGES } from './messages';
 import { useStyles } from '../styles';
@@ -140,8 +142,13 @@ const SelectCustom = ({
                 value={fixedValue}
                 onChange={handleChange}
                 loading={loading}
+                closeIcon={<ClearIcon />}
                 renderTags={renderTags}
                 renderInput={params => renderInput(params)}
+                classes={{
+                    popupIndicator: classes.popupIndicator,
+                    clearIndicator: classes.clearIndicator,
+                }}
                 {...extraProps}
             />
         </Box>

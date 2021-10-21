@@ -20,13 +20,16 @@ var mapStyles = function mapStyles(theme) {
       },
       '& .marker-cluster.color div': {
         marginLeft: 2,
-        marginTop: 2
+        marginTop: 2,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
       },
       '& .marker-cluster.color div .border': {
         position: 'absolute',
         display: 'block',
-        height: 34,
-        width: 34,
+        height: '100%',
+        width: '100%',
         top: -2,
         left: -2,
         borderRadius: '100%',

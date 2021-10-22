@@ -148,6 +148,7 @@ const SelectCustom = ({
                 classes={{
                     popupIndicator: classes.popupIndicator,
                     clearIndicator: classes.clearIndicator,
+                    hasClearIcon: classes.hasClearIcon,
                 }}
                 {...extraProps}
             />

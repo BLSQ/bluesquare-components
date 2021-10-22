@@ -29,6 +29,11 @@ var styles = function styles(theme) {
     },
     clearIndicator: {
       marginTop: -2
+    },
+    hasClearIcon: {
+      '& .MuiAutocomplete-inputRoot': {
+        paddingRight: '85px !important'
+      }
     }
   };
 };

@@ -11,6 +11,7 @@ import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { MESSAGES } from './messages';
 import { useStyles } from '../styles';
 import { useKeyPressListener } from '../../../utils/useKeyPressListener';
+import { FormControl } from '../FormControl';
 
 const SelectCustom = ({
     value,
@@ -93,32 +94,37 @@ const SelectCustom = ({
             paramsCopy.inputProps.value = '';
         }
         return (
-            <TextField
-                {...paramsCopy}
-                variant="outlined"
-                disabled={disabled}
-                label={`${label}${required ? '*' : ''}`}
-                onBlur={onBlur}
-                error={errors.length > 0 && touched}
-                InputLabelProps={{
-                    classes: {
-                        shrink: classes.shrink,
-                    },
-                    className: classes.inputLabel,
-                }}
-                InputProps={{
-                    ...params.InputProps,
-                    endAdornment: (
-                        <>
-                            {loading ? (
-                                <CircularProgress color="inherit" size={20} />
-                            ) : null}
-                            {params.InputProps.endAdornment}
-                        </>
-                    ),
-                    ...inputExtraProps,
-                }}
-            />
+            <FormControl errors={errors}>
+                <TextField
+                    {...paramsCopy}
+                    variant="outlined"
+                    disabled={disabled}
+                    label={`${label}${required ? '*' : ''}`}
+                    onBlur={onBlur}
+                    error={errors.length > 0 && touched}
+                    InputLabelProps={{
+                        classes: {
+                            shrink: classes.shrink,
+                        },
+                        className: classes.inputLabel,
+                    }}
+                    InputProps={{
+                        ...params.InputProps,
+                        endAdornment: (
+                            <>
+                                {loading ? (
+                                    <CircularProgress
+                                        color="inherit"
+                                        size={20}
+                                    />
+                                ) : null}
+                                {params.InputProps.endAdornment}
+                            </>
+                        ),
+                        ...inputExtraProps,
+                    }}
+                />
+            </FormControl>
         );
     };
     return (

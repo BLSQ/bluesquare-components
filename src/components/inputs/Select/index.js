@@ -12,6 +12,19 @@ import { MESSAGES } from './messages';
 import { useStyles } from '../styles';
 import { useKeyPressListener } from '../../../utils/useKeyPressListener';
 
+const defaultRenderTags = getLabel => (tagValue, getTagProps) =>
+    tagValue.map((option, index) => (
+        <Chip
+            color="secondary"
+            style={{
+                backgroundColor: option.color,
+                color: 'white',
+            }}
+            label={getLabel(option)}
+            {...getTagProps({ index })}
+        />
+    ));
+
 const SelectCustom = ({
     value,
     keyValue,
@@ -30,6 +43,9 @@ const SelectCustom = ({
     getOptionSelected,
     loading,
     renderOption,
+    renderTags,
+    returnFullObject,
+    helperText,
 }) => {
     const intl = useSafeIntl();
     const classes = useStyles();
@@ -44,26 +60,30 @@ const SelectCustom = ({
                 const valuesList = Array.isArray(value)
                     ? value
                     : value.split(',');
+                if (returnFullObject) {
+                    return valuesList;
+                }
                 return valuesList.map(v => getOption(v)).filter(o => o);
             }
             return getOption(value);
         }
         return multi ? [] : null;
     }, [value, options, multi]);
-
     const handleChange = useCallback(
         (e, newValue) => {
             if ((!multi && !newValue) || (multi && newValue.length === 0)) {
                 return onChange(null);
             }
             if (multi) {
-                return onChange(newValue.map(v => v && v.value).join(','));
+                if (!returnFullObject) {
+                    return onChange(newValue.map(v => v?.value).join(','));
+                }
+                return onChange(newValue);
             }
             return onChange(newValue.value);
         },
-        [multi, onChange],
+        [multi, onChange, returnFullObject],
     );
-
     const extraProps = {
         getOptionLabel: getOptionLabel || (option => option && option.label),
         getOptionSelected:
@@ -106,6 +126,7 @@ const SelectCustom = ({
                     },
                     className: classes.inputLabel,
                 }}
+                helperText={helperText}
                 InputProps={{
                     ...params.InputProps,
                     endAdornment: (
@@ -135,24 +156,12 @@ const SelectCustom = ({
                 onChange={handleChange}
                 loading={loading}
                 closeIcon={<ClearIcon />}
-                renderTags={(tagValue, getTagProps) =>
-                    tagValue
-                        .filter(option => option)
-                        .map((option, index) => (
-                            <Chip
-                                classes={{
-                                    label: classes.chipLabel,
-                                }}
-                                color="secondary"
-                                label={option.label}
-                                {...getTagProps({ index })}
-                            />
-                        ))
-                }
+                renderTags={renderTags}
                 renderInput={params => renderInput(params)}
                 classes={{
                     popupIndicator: classes.popupIndicator,
                     clearIndicator: classes.clearIndicator,
+                    hasClearIcon: classes.hasClearIcon,
                 }}
                 {...extraProps}
             />
@@ -176,6 +185,9 @@ SelectCustom.defaultProps = {
     getOptionLabel: null,
     renderOption: null,
     noOptionsText: MESSAGES.noOptions,
+    helperText: undefined,
+    renderTags: defaultRenderTags(o => (o?.label ? o.label : '')),
+    returnFullObject: false, // use this one if you pass array of objects as options and want an array of objects as sected items, not a string of id's
 };
 
 SelectCustom.propTypes = {
@@ -189,6 +201,7 @@ SelectCustom.propTypes = {
     value: PropTypes.any,
     onBlur: PropTypes.func,
     noOptionsText: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+    helperText: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     options: PropTypes.array,
     touched: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
     loading: PropTypes.bool,
@@ -196,6 +209,8 @@ SelectCustom.propTypes = {
     getOptionLabel: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
     getOptionSelected: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
     renderOption: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+    renderTags: PropTypes.func,
+    returnFullObject: PropTypes.bool,
 };
 
-export { SelectCustom as Select };
+export { SelectCustom as Select, defaultRenderTags as renderTags };

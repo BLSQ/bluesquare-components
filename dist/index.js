@@ -39,6 +39,7 @@ var _exportNames = {
   Radio: true,
   SearchInput: true,
   Select: true,
+  renderTags: true,
   TextInput: true,
   FormControl: true,
   ErrorBoundary: true,
@@ -237,6 +238,12 @@ Object.defineProperty(exports, "Select", {
   enumerable: true,
   get: function get() {
     return _Select.Select;
+  }
+});
+Object.defineProperty(exports, "renderTags", {
+  enumerable: true,
+  get: function get() {
+    return _Select.renderTags;
   }
 });
 Object.defineProperty(exports, "TextInput", {

@@ -61,11 +61,12 @@ var useStyles = (0, _core.makeStyles)(function (theme) {
 });
 
 var DatePicker = function DatePicker(_ref) {
-  var placeholder = _ref.placeholder,
+  var label = _ref.label,
       onChange = _ref.onChange,
       currentDate = _ref.currentDate,
       hasError = _ref.hasError,
-      clearMessage = _ref.clearMessage;
+      clearMessage = _ref.clearMessage,
+      helperText = _ref.helperText;
   var classes = useStyles();
 
   var _useState = (0, _react.useState)(null),
@@ -95,8 +96,8 @@ var DatePicker = function DatePicker(_ref) {
     },
     format: "DD/MM/YYYY" // This one need be set by user locale
     ,
-    label: placeholder,
-    helperText: "",
+    label: label,
+    helperText: helperText,
     value: currentDate,
     onChange: onChange,
     onError: function onError(error) {
@@ -116,14 +117,16 @@ var DatePicker = function DatePicker(_ref) {
 
 exports.DatePicker = DatePicker;
 DatePicker.defaultProps = {
-  currentDate: null
+  currentDate: null,
+  helperText: ''
 };
 DatePicker.propTypes = {
   /**
-   * A placeholder. Required
+   * A label. Required
    */
-  placeholder: _propTypes["default"].string.isRequired,
+  label: _propTypes["default"].string.isRequired,
 
+  /**
   /**
    * OnChange function. Required
    */
@@ -142,5 +145,10 @@ DatePicker.propTypes = {
   /**
    * A message object to use with react-intl. Displays when hovering over the clear icon
    */
-  clearMessage: _propTypes["default"].object.isRequired
+  clearMessage: _propTypes["default"].object.isRequired,
+
+  /**
+   * A message object to use with react-intl. Displays when hovering over the clear icon
+   */
+  helperText: _propTypes["default"].string
 };

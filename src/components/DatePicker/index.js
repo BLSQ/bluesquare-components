@@ -24,11 +24,12 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const DatePicker = ({
-    placeholder,
+    label,
     onChange,
     currentDate,
     hasError,
     clearMessage,
+    helperText,
 }) => {
     const classes = useStyles();
     const [dateError, setDateError] = useState(null);
@@ -51,8 +52,8 @@ const DatePicker = ({
                     error: hasError || Boolean(dateError),
                 }}
                 format="DD/MM/YYYY" // This one need be set by user locale
-                label={placeholder}
-                helperText=""
+                label={label}
+                helperText={helperText}
                 value={currentDate}
                 onChange={onChange}
                 onError={error => setDateError(error)}
@@ -73,13 +74,15 @@ const DatePicker = ({
 
 DatePicker.defaultProps = {
     currentDate: null,
+    helperText: '',
 };
 
 DatePicker.propTypes = {
     /**
-     * A placeholder. Required
+     * A label. Required
      */
-    placeholder: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    /**
     /**
      * OnChange function. Required
      */
@@ -96,6 +99,10 @@ DatePicker.propTypes = {
      * A message object to use with react-intl. Displays when hovering over the clear icon
      */
     clearMessage: PropTypes.object.isRequired,
+    /**
+     * A message object to use with react-intl. Displays when hovering over the clear icon
+     */
+    helperText: PropTypes.string,
 };
 
 export { DatePicker };

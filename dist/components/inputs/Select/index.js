@@ -5,7 +5,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Select = void 0;
+exports.renderTags = exports.Select = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -37,13 +37,32 @@ function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "functio
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+var defaultRenderTags = function defaultRenderTags(getLabel) {
+  return function (tagValue, getTagProps) {
+    return tagValue.map(function (option, index) {
+      return /*#__PURE__*/_react["default"].createElement(_Chip["default"], _extends({
+        color: "secondary",
+        style: {
+          backgroundColor: option.color,
+          color: 'white'
+        },
+        label: getLabel(option)
+      }, getTagProps({
+        index: index
+      })));
+    });
+  };
+};
+
+exports.renderTags = defaultRenderTags;
 
 var SelectCustom = function SelectCustom(_ref) {
   var value = _ref.value,
@@ -105,7 +124,7 @@ var SelectCustom = function SelectCustom(_ref) {
     if (multi) {
       if (!returnFullObject) {
         return onChange(newValue.map(function (v) {
-          return v && v.value;
+          return v === null || v === void 0 ? void 0 : v.value;
         }).join(','));
       }
 
@@ -113,7 +132,7 @@ var SelectCustom = function SelectCustom(_ref) {
     }
 
     return onChange(newValue.value);
-  }, [multi, onChange]);
+  }, [multi, onChange, returnFullObject]);
   var extraProps = {
     getOptionLabel: getOptionLabel || function (option) {
       return option && option.label;
@@ -213,19 +232,11 @@ SelectCustom.defaultProps = {
   renderOption: null,
   noOptionsText: _messages.MESSAGES.noOptions,
   helperText: undefined,
-  renderTags: function renderTags(tagValue, getTagProps) {
-    return tagValue.filter(function (option) {
-      return option;
-    }).map(function (option, index) {
-      return /*#__PURE__*/_react["default"].createElement(_Chip["default"], _extends({
-        color: "secondary",
-        label: option.label
-      }, getTagProps({
-        index: index
-      })));
-    });
-  },
-  returnFullObject: false
+  renderTags: defaultRenderTags(function (o) {
+    return o !== null && o !== void 0 && o.label ? o.label : '';
+  }),
+  returnFullObject: false // use this one if you pass array of objects as options and want an array of objects as sected items, not a string of id's
+
 };
 SelectCustom.propTypes = {
   errors: _propTypes["default"].arrayOf(_propTypes["default"].string),

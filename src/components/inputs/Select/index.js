@@ -12,6 +12,19 @@ import { MESSAGES } from './messages';
 import { useStyles } from '../styles';
 import { useKeyPressListener } from '../../../utils/useKeyPressListener';
 
+const defaultRenderTags = getLabel => (tagValue, getTagProps) =>
+    tagValue.map((option, index) => (
+        <Chip
+            color="secondary"
+            style={{
+                backgroundColor: option.color,
+                color: 'white',
+            }}
+            label={getLabel(option)}
+            {...getTagProps({ index })}
+        />
+    ));
+
 const SelectCustom = ({
     value,
     keyValue,
@@ -173,16 +186,7 @@ SelectCustom.defaultProps = {
     renderOption: null,
     noOptionsText: MESSAGES.noOptions,
     helperText: undefined,
-    renderTags: (tagValue, getTagProps) =>
-        tagValue
-            .filter(option => option)
-            .map((option, index) => (
-                <Chip
-                    color="secondary"
-                    label={option?.label ? option.label : ''}
-                    {...getTagProps({ index })}
-                />
-            )),
+    renderTags: defaultRenderTags(o => (o?.label ? o.label : '')),
     returnFullObject: false, // use this one if you pass array of objects as options and want an array of objects as sected items, not a string of id's
 };
 
@@ -209,4 +213,4 @@ SelectCustom.propTypes = {
     returnFullObject: PropTypes.bool,
 };
 
-export { SelectCustom as Select };
+export { SelectCustom as Select, defaultRenderTags as renderTags };

@@ -63,13 +63,13 @@ const SelectCustom = ({
             }
             if (multi) {
                 if (!returnFullObject) {
-                    return onChange(newValue.map(v => v && v.value).join(','));
+                    return onChange(newValue.map(v => v?.value).join(','));
                 }
                 return onChange(newValue);
             }
             return onChange(newValue.value);
         },
-        [multi, onChange],
+        [multi, onChange, returnFullObject],
     );
     const extraProps = {
         getOptionLabel: getOptionLabel || (option => option && option.label),
@@ -179,11 +179,11 @@ SelectCustom.defaultProps = {
             .map((option, index) => (
                 <Chip
                     color="secondary"
-                    label={option.label}
+                    label={option?.label ? option.label : ''}
                     {...getTagProps({ index })}
                 />
             )),
-    returnFullObject: false,
+    returnFullObject: false, // use this one if you pass array of objects as options and want an array of objects as sected items, not a string of id's
 };
 
 SelectCustom.propTypes = {

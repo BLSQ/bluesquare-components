@@ -154,32 +154,6 @@ export const getParamsKey = (paramsPrefix, key) => {
     return `${paramsPrefix}${capitalize(key, true)}`;
 };
 
-export const getTableParams = (
-    params,
-    paramsPrefix,
-    filters,
-    apiParams,
-    defaultSorted = [{ id: 'name', desc: false }],
-    defaultPageSize = 10,
-) => {
-    const newParams = {
-        ...apiParams,
-        limit:
-            parseInt(params[getParamsKey(paramsPrefix, 'pageSize')], 10) ||
-            defaultPageSize,
-        page: parseInt(params[getParamsKey(paramsPrefix, 'page')], 10) || 0,
-        order: getSort(
-            params[getParamsKey(paramsPrefix, 'order')]
-                ? getOrderArray(params[getParamsKey(paramsPrefix, 'order')])
-                : defaultSorted,
-        ),
-    };
-    filters.forEach(f => {
-        newParams[f.apiUrlKey] = params[f.urlKey];
-    });
-    return newParams;
-};
-
 export const getColumnsHeadersInfos = columns => {
     const newColumns = [...columns];
     columns.forEach((c, i) => {

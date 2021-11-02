@@ -165,7 +165,7 @@ export const getTableParams = (
         ),
     };
     filters.forEach(f => {
-        newParams[f.apiUrlKey] = params[f.urlKey];
+        newParams[f.apiUrlKey] = params[f.urlKey] ?? f.defaultValue;
     });
     return newParams;
 };

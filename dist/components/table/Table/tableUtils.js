@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getColumnsHeadersInfos = exports.getTableParams = exports.getParamsKey = exports.setTableSelection = exports.selectionInitialState = exports.defaultSelectionActions = exports.getSimplifiedColumns = exports.getOrderArray = exports.getSort = exports.getTableUrl = void 0;
+exports.getColumnsHeadersInfos = exports.getParamsKey = exports.setTableSelection = exports.selectionInitialState = exports.defaultSelectionActions = exports.getSimplifiedColumns = exports.getOrderArray = exports.getSort = exports.getTableUrl = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -199,27 +199,6 @@ var getParamsKey = function getParamsKey(paramsPrefix, key) {
 };
 
 exports.getParamsKey = getParamsKey;
-
-var getTableParams = function getTableParams(params, paramsPrefix, filters, apiParams) {
-  var defaultSorted = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : [{
-    id: 'name',
-    desc: false
-  }];
-  var defaultPageSize = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 10;
-
-  var newParams = _objectSpread(_objectSpread({}, apiParams), {}, {
-    limit: parseInt(params[getParamsKey(paramsPrefix, 'pageSize')], 10) || defaultPageSize,
-    page: parseInt(params[getParamsKey(paramsPrefix, 'page')], 10) || 0,
-    order: getSort(params[getParamsKey(paramsPrefix, 'order')] ? getOrderArray(params[getParamsKey(paramsPrefix, 'order')]) : defaultSorted)
-  });
-
-  filters.forEach(function (f) {
-    newParams[f.apiUrlKey] = params[f.urlKey];
-  });
-  return newParams;
-};
-
-exports.getTableParams = getTableParams;
 
 var getColumnsHeadersInfos = function getColumnsHeadersInfos(columns) {
   var newColumns = _toConsumableArray(columns);

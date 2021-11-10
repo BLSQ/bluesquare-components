@@ -49,6 +49,7 @@ var _exportNames = {
   InfoHeader: true,
   SelectionSpeedDials: true,
   Table: true,
+  PageRowSelect: true,
   Expander: true,
   LinkProvider: true,
   LinkContext: true,
@@ -300,6 +301,12 @@ Object.defineProperty(exports, "Table", {
     return _Table.Table;
   }
 });
+Object.defineProperty(exports, "PageRowSelect", {
+  enumerable: true,
+  get: function get() {
+    return _PageRowSelect.PageRowSelect;
+  }
+});
 Object.defineProperty(exports, "Expander", {
   enumerable: true,
   get: function get() {
@@ -460,6 +467,8 @@ var _InfoHeader = require("./components/table/InfoHeader");
 var _SelectionSpeedDials = require("./components/table/SelectionSpeedDials");
 
 var _Table = require("./components/table/Table");
+
+var _PageRowSelect = require("./components/table/Table/PageRowSelect");
 
 var _Expander = require("./components/table/Table/Expander");
 

@@ -202,7 +202,9 @@ var getTableParams = function getTableParams(params, paramsPrefix, filters, apiP
   });
 
   filters.forEach(function (f) {
-    newParams[f.apiUrlKey] = params[f.urlKey];
+    var _params$f$urlKey;
+
+    newParams[f.apiUrlKey] = (_params$f$urlKey = params[f.urlKey]) !== null && _params$f$urlKey !== void 0 ? _params$f$urlKey : f.defaultValue;
   });
   return newParams;
 };

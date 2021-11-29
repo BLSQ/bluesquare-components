@@ -65,7 +65,7 @@ const SelectCustom = ({
                 }
                 return valuesList.map(v => getOption(v)).filter(o => o);
             }
-            return getOption(value);
+            return getOption(value) ?? value;
         }
         return multi ? [] : null;
     }, [value, options, multi]);
@@ -85,7 +85,7 @@ const SelectCustom = ({
         [multi, onChange, returnFullObject],
     );
     const extraProps = {
-        getOptionLabel: getOptionLabel || (option => option && option.label),
+        getOptionLabel: getOptionLabel || (option => option?.label || option),
         getOptionSelected:
             getOptionSelected ||
             ((option, val) => val && option.value === val.value),

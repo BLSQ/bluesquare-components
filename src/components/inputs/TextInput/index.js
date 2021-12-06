@@ -15,7 +15,7 @@ const TextInput = ({
     onChange,
     multiline,
 }) => {
-    const hasErrors = errors.length > 1;
+    const hasErrors = errors.length >= 1;
     return (
         <FormControl withMarginTop={withMarginTop} errors={errors}>
             <InputLabel

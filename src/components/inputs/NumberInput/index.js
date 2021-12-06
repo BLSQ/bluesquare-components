@@ -45,7 +45,7 @@ const NumberInput = ({
     onChange,
     multiline,
 }) => {
-    const hasErrors = errors.length > 1;
+    const hasErrors = errors.length >= 1;
     const [formattedValue, setFormattedValue] = useState(formatValue(value));
 
     useEffect(() => {

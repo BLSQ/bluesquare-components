@@ -26,7 +26,7 @@ const PasswordInput = ({
     displayPassword,
     classes,
 }) => {
-    const hasErrors = errors.length > 1;
+    const hasErrors = errors.length >= 1;
     const [showPassword, setShowPassword] = useState(displayPassword);
     const intl = useSafeIntl();
 

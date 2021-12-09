@@ -12,10 +12,10 @@ const styles = theme => ({
             borderWidth: '1px !important',
         },
         '&:hover fieldset': {
-            borderColor: `${theme.palette.primary.main}  !important`,
+            borderColor: `${theme.palette.primary.main}`,
         },
         '&:focused label': {
-            color: `${theme.palette.primary.main}  !important`,
+            color: `${theme.palette.primary.main}`,
         },
         zIndex: 'auto',
     },

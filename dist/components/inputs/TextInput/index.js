@@ -27,7 +27,7 @@ var TextInput = function TextInput(_ref) {
       disabled = _ref.disabled,
       _onChange = _ref.onChange,
       multiline = _ref.multiline;
-  var hasErrors = errors.length > 1;
+  var hasErrors = errors.length >= 1;
   return /*#__PURE__*/_react["default"].createElement(_FormControl.FormControl, {
     withMarginTop: withMarginTop,
     errors: errors

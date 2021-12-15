@@ -97,6 +97,8 @@ var SelectCustom = function SelectCustom(_ref) {
 
   var fixedValue = (0, _react.useMemo)(function () {
     if (value) {
+      var _getOption;
+
       if (multi) {
         var valuesList = Array.isArray(value) ? value : value.split(',');
 
@@ -111,7 +113,7 @@ var SelectCustom = function SelectCustom(_ref) {
         });
       }
 
-      return getOption(value);
+      return (_getOption = getOption(value)) !== null && _getOption !== void 0 ? _getOption : value;
     }
 
     return multi ? [] : null;
@@ -135,7 +137,7 @@ var SelectCustom = function SelectCustom(_ref) {
   }, [multi, onChange, returnFullObject]);
   var extraProps = {
     getOptionLabel: getOptionLabel || function (option) {
-      return option && option.label;
+      return (option === null || option === void 0 ? void 0 : option.label) || option;
     },
     getOptionSelected: getOptionSelected || function (option, val) {
       return val && option.value === val.value;

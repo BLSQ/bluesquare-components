@@ -72,7 +72,7 @@ var NumberInput = function NumberInput(_ref) {
       disabled = _ref.disabled,
       _onChange = _ref.onChange,
       multiline = _ref.multiline;
-  var hasErrors = errors.length > 1;
+  var hasErrors = errors.length >= 1;
 
   var _useState = (0, _react.useState)(formatValue(value)),
       _useState2 = _slicedToArray(_useState, 2),

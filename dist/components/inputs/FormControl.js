@@ -25,10 +25,10 @@ var styles = function styles(theme) {
         borderWidth: '1px !important'
       },
       '&:hover fieldset': {
-        borderColor: "".concat(theme.palette.primary.main, "  !important")
+        borderColor: "".concat(theme.palette.primary.main)
       },
       '&:focused label': {
-        color: "".concat(theme.palette.primary.main, "  !important")
+        color: "".concat(theme.palette.primary.main)
       },
       zIndex: 'auto'
     },

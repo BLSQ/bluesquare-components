@@ -55,7 +55,7 @@ var PasswordInput = function PasswordInput(_ref) {
       multiline = _ref.multiline,
       displayPassword = _ref.displayPassword,
       classes = _ref.classes;
-  var hasErrors = errors.length > 1;
+  var hasErrors = errors.length >= 1;
 
   var _useState = (0, _react.useState)(displayPassword),
       _useState2 = _slicedToArray(_useState, 2),

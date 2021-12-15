@@ -19,7 +19,7 @@ var _useSafeIntl2 = require("../../../utils/useSafeIntl");
 
 var _messages = require("./messages");
 
-var _tableUtils = require("./tableUtils");
+var _tableUtils = require("../../../utils/tableUtils");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 

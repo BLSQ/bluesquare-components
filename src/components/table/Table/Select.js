@@ -7,7 +7,10 @@ import { SelectionSpeedDials } from '../SelectionSpeedDials';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { MESSAGES } from './messages';
 
-import { selectionInitialState, defaultSelectionActions } from './tableUtils';
+import {
+    selectionInitialState,
+    defaultSelectionActions,
+} from '../../../utils/tableUtils';
 
 const onSelect = ({
     isSelected,

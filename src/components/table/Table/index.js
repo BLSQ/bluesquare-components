@@ -25,7 +25,7 @@ import {
     getOrderArray,
     getColumnsHeadersInfos,
     getSimplifiedColumns,
-} from './tableUtils';
+} from '../../../utils/tableUtils';
 
 import { Head } from './Head';
 import { Body } from './Body';

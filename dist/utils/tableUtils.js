@@ -79,10 +79,9 @@ var getOrderValue = function getOrderValue(obj) {
 };
 
 var getSort = function getSort(sortList) {
-  var orderTemp = '';
-  sortList.map(function (sort, index) {
-    orderTemp += "".concat(index > 0 ? ',' : '').concat(getOrderValue(sort));
-    return true;
+  var orderTemp;
+  sortList.forEach(function (sort, index) {
+    orderTemp = "".concat(orderTemp || '').concat(index > 0 ? ',' : '').concat(getOrderValue(sort));
   });
   return orderTemp;
 };
@@ -101,13 +100,18 @@ var getOrderArray = function getOrderArray(orders) {
 exports.getOrderArray = getOrderArray;
 
 var getSimplifiedColumns = function getSimplifiedColumns(columns) {
-  var newColumns = [];
-  columns.forEach(function (c) {
-    if (c.accessor) {
-      newColumns.push(c.accessor);
+  return columns.map(function (c) {
+    if (c.columns) {
+      return {
+        id: c.accessor,
+        columns: getSimplifiedColumns(c.columns)
+      };
     }
+
+    return {
+      id: c.accessor
+    };
   });
-  return newColumns;
 };
 
 exports.getSimplifiedColumns = getSimplifiedColumns;
@@ -222,9 +226,11 @@ var getColumnsHeadersInfos = function getColumnsHeadersInfos(columns) {
 
   columns.forEach(function (c, i) {
     if (c.headerInfo) {
-      newColumns[i].Header = /*#__PURE__*/_react["default"].createElement(_InfoHeader.InfoHeader, {
-        message: c.headerInfo
-      }, newColumns[i].Header);
+      newColumns[i] = _objectSpread(_objectSpread({}, newColumns[i]), {}, {
+        Header: /*#__PURE__*/_react["default"].createElement(_InfoHeader.InfoHeader, {
+          message: c.headerInfo
+        }, newColumns[i].Header)
+      });
     }
   });
   return newColumns;

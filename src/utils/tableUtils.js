@@ -49,10 +49,11 @@ export { getTableUrl };
 const getOrderValue = obj => (!obj.desc ? obj.id : `-${obj.id}`);
 
 export const getSort = sortList => {
-    let orderTemp = '';
-    sortList.map((sort, index) => {
-        orderTemp += `${index > 0 ? ',' : ''}${getOrderValue(sort)}`;
-        return true;
+    let orderTemp;
+    sortList.forEach((sort, index) => {
+        orderTemp = `${orderTemp || ''}${index > 0 ? ',' : ''}${getOrderValue(
+            sort,
+        )}`;
     });
     return orderTemp;
 };
@@ -63,15 +64,16 @@ export const getOrderArray = orders =>
         desc: stringValue.indexOf('-') !== -1,
     }));
 
-export const getSimplifiedColumns = columns => {
-    const newColumns = [];
-    columns.forEach(c => {
-        if (c.accessor) {
-            newColumns.push(c.accessor);
+export const getSimplifiedColumns = columns =>
+    columns.map(c => {
+        if (c.columns) {
+            return {
+                id: c.accessor,
+                columns: getSimplifiedColumns(c.columns),
+            };
         }
+        return { id: c.accessor };
     });
-    return newColumns;
-};
 
 export const defaultSelectionActions = (
     selectAll,
@@ -180,11 +182,14 @@ export const getColumnsHeadersInfos = columns => {
     const newColumns = [...columns];
     columns.forEach((c, i) => {
         if (c.headerInfo) {
-            newColumns[i].Header = (
-                <InfoHeader message={c.headerInfo}>
-                    {newColumns[i].Header}
-                </InfoHeader>
-            );
+            newColumns[i] = {
+                ...newColumns[i],
+                Header: (
+                    <InfoHeader message={c.headerInfo}>
+                        {newColumns[i].Header}
+                    </InfoHeader>
+                ),
+            };
         }
     });
     return newColumns;

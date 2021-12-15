@@ -29,7 +29,7 @@ var _useSafeIntl2 = require("../../../utils/useSafeIntl");
 
 var _constants = require("./constants");
 
-var _tableUtils = require("./tableUtils");
+var _tableUtils = require("../../../utils/tableUtils");
 
 var _Head = require("./Head");
 

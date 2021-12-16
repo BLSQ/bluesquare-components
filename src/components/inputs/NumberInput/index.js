@@ -6,6 +6,7 @@ import { InputLabel } from '../InputLabel';
 
 const formatValue = value => {
     if (typeof value === 'number') return value;
+    if (value === undefined || value == null) return '';
     const valueAsArray = value.split('');
     const containsDots = valueAsArray.filter(char => char === '.');
     // If there is only one dot, the dot should be the last char and the char before it should be a number

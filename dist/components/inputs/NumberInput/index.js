@@ -37,6 +37,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var formatValue = function formatValue(value) {
   if (typeof value === 'number') return value;
+  if (value === undefined || value == null) return '';
   var valueAsArray = value.split('');
   var containsDots = valueAsArray.filter(function (_char) {
     return _char === '.';

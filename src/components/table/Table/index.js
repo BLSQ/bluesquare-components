@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
 import MuiTable from '@material-ui/core/Table';
@@ -99,6 +99,7 @@ const TableComponent = props => {
         showFooter,
         onTableParamsChange,
         defaultSorted,
+        resetPageToOne,
     } = props;
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -197,6 +198,10 @@ const TableComponent = props => {
         size: 'small',
     };
 
+    useEffect(() => {
+        gotoPage(0);
+    }, [resetPageToOne]);
+
     const rowsPerPage = parseInt(pageSize, 10);
     return (
         <Box mt={marginTop ? 4 : 0} mb={4}>
@@ -275,6 +280,7 @@ TableComponent.defaultProps = {
     showFooter: false,
     onTableParamsChange: () => null,
     defaultSorted: getOrderArray(DEFAULT_ORDER),
+    resetPageToOne: '',
 };
 
 TableComponent.propTypes = {
@@ -298,6 +304,7 @@ TableComponent.propTypes = {
     showFooter: PropTypes.bool,
     onTableParamsChange: PropTypes.func,
     defaultSorted: PropTypes.array,
+    resetPageToOne: PropTypes.string,
 };
 
 const Table = React.memo(TableComponent, (props, prevProps) => {

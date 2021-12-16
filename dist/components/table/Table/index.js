@@ -138,7 +138,8 @@ var TableComponent = function TableComponent(props) {
       showPagination = props.showPagination,
       showFooter = props.showFooter,
       onTableParamsChange = props.onTableParamsChange,
-      defaultSorted = props.defaultSorted;
+      defaultSorted = props.defaultSorted,
+      resetPageToOne = props.resetPageToOne;
 
   var _useSafeIntl = (0, _useSafeIntl2.useSafeIntl)(),
       formatMessage = _useSafeIntl.formatMessage;
@@ -221,6 +222,9 @@ var TableComponent = function TableComponent(props) {
     size: 'small'
   });
 
+  (0, _react.useEffect)(function () {
+    gotoPage(0);
+  }, [resetPageToOne]);
   var rowsPerPage = parseInt(pageSize, 10);
   return /*#__PURE__*/_react["default"].createElement(_Box["default"], {
     mt: marginTop ? 4 : 0,
@@ -302,7 +306,8 @@ TableComponent.defaultProps = {
   onTableParamsChange: function onTableParamsChange() {
     return null;
   },
-  defaultSorted: (0, _tableUtils.getOrderArray)(_constants.DEFAULT_ORDER)
+  defaultSorted: (0, _tableUtils.getOrderArray)(_constants.DEFAULT_ORDER),
+  resetPageToOne: ''
 };
 TableComponent.propTypes = {
   params: _propTypes["default"].object,
@@ -324,7 +329,8 @@ TableComponent.propTypes = {
   showPagination: _propTypes["default"].bool,
   showFooter: _propTypes["default"].bool,
   onTableParamsChange: _propTypes["default"].func,
-  defaultSorted: _propTypes["default"].array
+  defaultSorted: _propTypes["default"].array,
+  resetPageToOne: _propTypes["default"].string
 };
 
 var Table = /*#__PURE__*/_react["default"].memo(TableComponent, function (props, prevProps) {

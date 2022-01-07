@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Checkbox, FormControlLabel } from '@material-ui/core';
 
-const CheckboxComponent = ({ value, disabled, label, onChange }) => (
+const CheckboxComponent = ({ value, disabled, label, onChange, keyValue }) => (
     <FormControlLabel
         disabled={disabled}
         control={
             <Checkbox
+                id={`check-box-${keyValue}`}
                 color="primary"
                 checked={value === true}
                 onChange={event => onChange(event.target.checked)}
@@ -30,5 +31,6 @@ CheckboxComponent.propTypes = {
     disabled: PropTypes.bool,
     label: PropTypes.string,
     onChange: PropTypes.func,
+    keyValue: PropTypes.string.isRequired,
 };
 export { CheckboxComponent as Checkbox };

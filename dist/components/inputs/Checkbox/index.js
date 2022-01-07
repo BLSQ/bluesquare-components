@@ -17,10 +17,12 @@ var CheckboxComponent = function CheckboxComponent(_ref) {
   var value = _ref.value,
       disabled = _ref.disabled,
       label = _ref.label,
-      _onChange = _ref.onChange;
+      _onChange = _ref.onChange,
+      keyValue = _ref.keyValue;
   return /*#__PURE__*/_react["default"].createElement(_core.FormControlLabel, {
     disabled: disabled,
     control: /*#__PURE__*/_react["default"].createElement(_core.Checkbox, {
+      id: "check-box-".concat(keyValue),
       color: "primary",
       checked: value === true,
       onChange: function onChange(event) {
@@ -44,5 +46,6 @@ CheckboxComponent.propTypes = {
   value: _propTypes["default"].bool,
   disabled: _propTypes["default"].bool,
   label: _propTypes["default"].string,
-  onChange: _propTypes["default"].func
+  onChange: _propTypes["default"].func,
+  keyValue: _propTypes["default"].string.isRequired
 };

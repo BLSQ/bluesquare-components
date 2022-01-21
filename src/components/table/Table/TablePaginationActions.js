@@ -21,6 +21,9 @@ const useStyles = makeStyles(theme => ({
         width: '100%',
         position: 'relative',
     },
+    withCount: {
+        marginRight: '130px',
+    },
     count: {
         position: 'absolute',
         right: theme.spacing(2),
@@ -113,6 +116,7 @@ const TablePaginationActions = ({
                 onClick={handleLastPageButtonClick}
                 disabled={lastDisabled}
                 aria-label={formatMessage(MESSAGES.lastText)}
+                className={!countOnTop ? classes.withCount : ''}
             >
                 <LastPageIcon color={lastDisabled ? 'inherit' : 'primary'} />
             </IconButton>

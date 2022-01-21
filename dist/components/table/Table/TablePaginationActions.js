@@ -41,6 +41,9 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
       width: '100%',
       position: 'relative'
     },
+    withCount: {
+      marginRight: '130px'
+    },
     count: {
       position: 'absolute',
       right: theme.spacing(2)
@@ -122,7 +125,8 @@ var TablePaginationActions = function TablePaginationActions(_ref) {
     variant: "outlined",
     onClick: handleLastPageButtonClick,
     disabled: lastDisabled,
-    "aria-label": formatMessage(_messages.MESSAGES.lastText)
+    "aria-label": formatMessage(_messages.MESSAGES.lastText),
+    className: !countOnTop ? classes.withCount : ''
   }, /*#__PURE__*/_react["default"].createElement(_LastPage["default"], {
     color: lastDisabled ? 'inherit' : 'primary'
   })), !countOnTop && /*#__PURE__*/_react["default"].createElement("div", {

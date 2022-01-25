@@ -160,11 +160,9 @@ var DynamicTabs = /*#__PURE__*/function (_Component) {
     key: "handleAddTab",
     value: function handleAddTab() {
       var _this$props = this.props,
-          redirectTo = _this$props.redirectTo,
           params = _this$props.params,
           defaultItem = _this$props.defaultItem,
           paramKey = _this$props.paramKey,
-          baseUrl = _this$props.baseUrl,
           tabParamKey = _this$props.tabParamKey,
           onTabsUpdated = _this$props.onTabsUpdated;
 
@@ -178,18 +176,15 @@ var DynamicTabs = /*#__PURE__*/function (_Component) {
 
       newParams[tabParamKey] = newState.tabIndex.toString();
       newParams[paramKey] = JSON.stringify(newItems);
-      redirectTo(baseUrl, newParams);
-      onTabsUpdated();
       this.setState(newState);
+      onTabsUpdated(newParams);
     }
   }, {
     key: "handleDeleteTab",
     value: function handleDeleteTab(tabIndex) {
       var _this$props2 = this.props,
-          redirectTo = _this$props2.redirectTo,
           params = _this$props2.params,
           paramKey = _this$props2.paramKey,
-          baseUrl = _this$props2.baseUrl,
           tabParamKey = _this$props2.tabParamKey,
           onTabsDeleted = _this$props2.onTabsDeleted;
       var newItems = JSON.parse(params[paramKey]);
@@ -208,18 +203,16 @@ var DynamicTabs = /*#__PURE__*/function (_Component) {
         });
       }
 
-      onTabsDeleted();
-      redirectTo(baseUrl, newParams);
+      onTabsDeleted(newParams);
     }
   }, {
     key: "handleTabChange",
     value: function handleTabChange(tabIndex) {
       var _this$props3 = this.props,
-          redirectTo = _this$props3.redirectTo,
           params = _this$props3.params,
           paramKey = _this$props3.paramKey,
-          baseUrl = _this$props3.baseUrl,
-          tabParamKey = _this$props3.tabParamKey;
+          tabParamKey = _this$props3.tabParamKey,
+          onTabChange = _this$props3.onTabChange;
 
       var newState = _objectSpread({}, this.state);
 
@@ -230,7 +223,7 @@ var DynamicTabs = /*#__PURE__*/function (_Component) {
 
       newParams[tabParamKey] = newState.tabIndex.toString();
       newParams[paramKey] = JSON.stringify(newItems);
-      redirectTo(baseUrl, newParams);
+      onTabChange(newParams);
       this.setState(newState);
     }
   }, {
@@ -341,6 +334,9 @@ DynamicTabs.defaultProps = {
   onTabsDeleted: function onTabsDeleted() {
     return {};
   },
+  onTabChange: function onTabChange() {
+    return {};
+  },
   displayCounts: false,
   counts: []
 };
@@ -356,6 +352,7 @@ DynamicTabs.propTypes = {
   maxItems: _propTypes["default"].number,
   onTabsUpdated: _propTypes["default"].func,
   onTabsDeleted: _propTypes["default"].func,
+  onTabChange: _propTypes["default"].func,
   displayCounts: _propTypes["default"].bool,
   counts: _propTypes["default"].array,
   deleteMessage: _propTypes["default"].object.isRequired,

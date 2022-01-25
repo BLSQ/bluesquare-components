@@ -89,15 +89,8 @@ class DynamicTabs extends Component {
     }
 
     handleAddTab() {
-        const {
-            redirectTo,
-            params,
-            defaultItem,
-            paramKey,
-            baseUrl,
-            tabParamKey,
-            onTabsUpdated,
-        } = this.props;
+        const { params, defaultItem, paramKey, tabParamKey, onTabsUpdated } =
+            this.props;
         const newState = {
             ...this.state,
         };
@@ -109,20 +102,12 @@ class DynamicTabs extends Component {
         };
         newParams[tabParamKey] = newState.tabIndex.toString();
         newParams[paramKey] = JSON.stringify(newItems);
-        redirectTo(baseUrl, newParams);
-        onTabsUpdated();
         this.setState(newState);
+        onTabsUpdated(newParams);
     }
 
     handleDeleteTab(tabIndex) {
-        const {
-            redirectTo,
-            params,
-            paramKey,
-            baseUrl,
-            tabParamKey,
-            onTabsDeleted,
-        } = this.props;
+        const { params, paramKey, tabParamKey, onTabsDeleted } = this.props;
         const newItems = JSON.parse(params[paramKey]);
         newItems.splice(tabIndex, 1);
         const newParams = {
@@ -137,13 +122,11 @@ class DynamicTabs extends Component {
                 tabIndex: newItems.length - 1,
             });
         }
-        onTabsDeleted();
-        redirectTo(baseUrl, newParams);
+        onTabsDeleted(newParams);
     }
 
     handleTabChange(tabIndex) {
-        const { redirectTo, params, paramKey, baseUrl, tabParamKey } =
-            this.props;
+        const { params, paramKey, tabParamKey, onTabChange } = this.props;
         const newState = {
             ...this.state,
         };
@@ -154,7 +137,7 @@ class DynamicTabs extends Component {
         };
         newParams[tabParamKey] = newState.tabIndex.toString();
         newParams[paramKey] = JSON.stringify(newItems);
-        redirectTo(baseUrl, newParams);
+        onTabChange(newParams);
         this.setState(newState);
     }
 
@@ -306,6 +289,7 @@ DynamicTabs.defaultProps = {
     maxItems: 5,
     onTabsUpdated: () => ({}),
     onTabsDeleted: () => ({}),
+    onTabChange: () => ({}),
     displayCounts: false,
     counts: [],
 };
@@ -322,6 +306,7 @@ DynamicTabs.propTypes = {
     maxItems: PropTypes.number,
     onTabsUpdated: PropTypes.func,
     onTabsDeleted: PropTypes.func,
+    onTabChange: PropTypes.func,
     displayCounts: PropTypes.bool,
     counts: PropTypes.array,
     deleteMessage: PropTypes.object.isRequired,

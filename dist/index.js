@@ -22,6 +22,7 @@ var _exportNames = {
   injectIntl: true,
   patchIntl: true,
   useSafeIntl: true,
+  useDidMountEffect: true,
   theme: true,
   rawTheme: true,
   commonStyles: true,
@@ -137,6 +138,12 @@ Object.defineProperty(exports, "useSafeIntl", {
   enumerable: true,
   get: function get() {
     return _useSafeIntl.useSafeIntl;
+  }
+});
+Object.defineProperty(exports, "useDidMountEffect", {
+  enumerable: true,
+  get: function get() {
+    return _useDidMountEffect.useDidMountEffect;
   }
 });
 Object.defineProperty(exports, "theme", {
@@ -417,6 +424,8 @@ var _injectIntl = require("./utils/injectIntl");
 var _patchIntl = require("./utils/patchIntl");
 
 var _useSafeIntl = require("./utils/useSafeIntl");
+
+var _useDidMountEffect = require("./utils/useDidMountEffect");
 
 var _theme = require("./styles/iaso/theme");
 

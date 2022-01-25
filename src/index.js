@@ -15,6 +15,7 @@ import * as IasoUiConstants from './constants/iaso/uiConstants';
 import { injectIntl } from './utils/injectIntl';
 import { patchIntl } from './utils/patchIntl';
 import { useSafeIntl } from './utils/useSafeIntl';
+import { useDidMountEffect } from './utils/useDidMountEffect';
 import { theme, rawTheme } from './styles/iaso/theme';
 import { commonStyles } from './styles/iaso/common';
 import { mapStyles } from './styles/iaso/map';
@@ -77,6 +78,7 @@ export {
     injectIntl,
     patchIntl,
     useSafeIntl,
+    useDidMountEffect,
     commonStyles,
     mapStyles,
     mapPopupStyles,

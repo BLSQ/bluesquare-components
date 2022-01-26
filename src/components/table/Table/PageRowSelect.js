@@ -5,6 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/core/styles';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
+import classNames from 'classnames';
 
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 
@@ -35,12 +36,19 @@ const PageRowSelect = ({
         >
             <FormControl variant="outlined">
                 <Select
-                    className={classes.select}
+                    className={classNames(
+                        classes.select,
+                        'pagination-row-select',
+                    )}
                     value={rowsPerPage}
                     onChange={handleChange}
                 >
                     {rowsPerPageOptions.map(o => (
-                        <MenuItem key={o} value={o}>
+                        <MenuItem
+                            key={o}
+                            value={o}
+                            className={`row-option-${o}`}
+                        >
                             {`${o} ${formatMessage(MESSAGES.rowsText)}`}
                         </MenuItem>
                     ))}

@@ -4,6 +4,7 @@ import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import { FormattedMessage } from 'react-intl';
+import classNames from 'classnames';
 
 import { MESSAGES } from './messages';
 
@@ -50,7 +51,10 @@ const PageSelect = ({ pageIndex, pages, onPageChange }) => {
             </Box>
 
             <TextField
-                className={classes[adaptInputSize(selectedPage)]}
+                className={classNames(
+                    classes[adaptInputSize(selectedPage)],
+                    'pagination-page-select',
+                )}
                 size="small"
                 label=""
                 type="number"

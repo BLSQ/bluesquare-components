@@ -7,6 +7,7 @@ import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
+import classNames from 'classnames';
 
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 
@@ -72,6 +73,7 @@ const TablePaginationActions = ({
             className={classes.root}
         >
             <IconButton
+                className="pagination-first"
                 variant="outlined"
                 onClick={handleFirstPageButtonClick}
                 disabled={firstDisabled}
@@ -80,6 +82,7 @@ const TablePaginationActions = ({
                 <FirstPageIcon color={firstDisabled ? 'inherit' : 'primary'} />
             </IconButton>
             <IconButton
+                className="pagination-previous"
                 variant="outlined"
                 onClick={handleBackButtonClick}
                 disabled={firstDisabled}
@@ -102,6 +105,7 @@ const TablePaginationActions = ({
                 selectRowsPerPage={selectRowsPerPage}
             />
             <IconButton
+                className="pagination-next"
                 variant="outlined"
                 onClick={handleNextButtonClick}
                 disabled={lastDisabled}
@@ -116,12 +120,15 @@ const TablePaginationActions = ({
                 onClick={handleLastPageButtonClick}
                 disabled={lastDisabled}
                 aria-label={formatMessage(MESSAGES.lastText)}
-                className={!countOnTop ? classes.withCount : ''}
+                className={classNames(
+                    !countOnTop && classes.withCount,
+                    'pagination-last',
+                )}
             >
                 <LastPageIcon color={lastDisabled ? 'inherit' : 'primary'} />
             </IconButton>
             {!countOnTop && (
-                <div className={classes.count}>
+                <div className={classNames(classes.count, 'pagination-count')}>
                     <Count count={count} selectCount={selectCount} />
                 </div>
             )}

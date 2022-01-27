@@ -23,6 +23,8 @@ var _KeyboardArrowRight = _interopRequireDefault(require("@material-ui/icons/Key
 
 var _LastPage = _interopRequireDefault(require("@material-ui/icons/LastPage"));
 
+var _classnames = _interopRequireDefault(require("classnames"));
+
 var _useSafeIntl2 = require("../../../utils/useSafeIntl");
 
 var _PageSelect = require("./PageSelect");
@@ -91,6 +93,7 @@ var TablePaginationActions = function TablePaginationActions(_ref) {
     alignItems: "center",
     className: classes.root
   }, /*#__PURE__*/_react["default"].createElement(_IconButton["default"], {
+    className: "pagination-first",
     variant: "outlined",
     onClick: handleFirstPageButtonClick,
     disabled: firstDisabled,
@@ -98,6 +101,7 @@ var TablePaginationActions = function TablePaginationActions(_ref) {
   }, /*#__PURE__*/_react["default"].createElement(_FirstPage["default"], {
     color: firstDisabled ? 'inherit' : 'primary'
   })), /*#__PURE__*/_react["default"].createElement(_IconButton["default"], {
+    className: "pagination-previous",
     variant: "outlined",
     onClick: handleBackButtonClick,
     disabled: firstDisabled,
@@ -115,6 +119,7 @@ var TablePaginationActions = function TablePaginationActions(_ref) {
     rowsPerPageOptions: rowsPerPageOptions,
     selectRowsPerPage: selectRowsPerPage
   }), /*#__PURE__*/_react["default"].createElement(_IconButton["default"], {
+    className: "pagination-next",
     variant: "outlined",
     onClick: handleNextButtonClick,
     disabled: lastDisabled,
@@ -126,11 +131,11 @@ var TablePaginationActions = function TablePaginationActions(_ref) {
     onClick: handleLastPageButtonClick,
     disabled: lastDisabled,
     "aria-label": formatMessage(_messages.MESSAGES.lastText),
-    className: !countOnTop ? classes.withCount : ''
+    className: (0, _classnames["default"])(!countOnTop && classes.withCount, 'pagination-last')
   }, /*#__PURE__*/_react["default"].createElement(_LastPage["default"], {
     color: lastDisabled ? 'inherit' : 'primary'
   })), !countOnTop && /*#__PURE__*/_react["default"].createElement("div", {
-    className: classes.count
+    className: (0, _classnames["default"])(classes.count, 'pagination-count')
   }, /*#__PURE__*/_react["default"].createElement(_Count.Count, {
     count: count,
     selectCount: selectCount

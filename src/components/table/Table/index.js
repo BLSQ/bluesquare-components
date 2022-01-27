@@ -36,7 +36,7 @@ import { Count } from './Count';
 import { Pagination } from './Pagination';
 import { LoadingSpinner } from '../../LoadingSpinner';
 import { useKeyPressListener } from '../../../utils/useKeyPressListener';
-import { useDidMountEffect } from '../../../utils/useDidMountEffect';
+import { useSkipEffectOnMount } from '../../../utils/useSkipEffectOnMount';
 /**
  * TableComponent component, no redux, no fetch, just displaying.
  * Multi selection is optionnal, if set to true you can add custom actions
@@ -199,7 +199,7 @@ const TableComponent = props => {
         size: 'small',
     };
 
-    useDidMountEffect(() => {
+    useSkipEffectOnMount(() => {
         gotoPage(0);
     }, [resetPageToOne]);
 

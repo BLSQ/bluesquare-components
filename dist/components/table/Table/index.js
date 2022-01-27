@@ -49,7 +49,7 @@ var _LoadingSpinner = require("../../LoadingSpinner");
 
 var _useKeyPressListener = require("../../../utils/useKeyPressListener");
 
-var _useDidMountEffect = require("../../../utils/useDidMountEffect");
+var _useSkipEffectOnMount = require("../../../utils/useSkipEffectOnMount");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -224,7 +224,7 @@ var TableComponent = function TableComponent(props) {
     size: 'small'
   });
 
-  (0, _useDidMountEffect.useDidMountEffect)(function () {
+  (0, _useSkipEffectOnMount.useSkipEffectOnMount)(function () {
     gotoPage(0);
   }, [resetPageToOne]);
   var rowsPerPage = parseInt(pageSize, 10);
@@ -267,7 +267,7 @@ var TableComponent = function TableComponent(props) {
     footerGroups: footerGroups
   }))), (page === null || page === void 0 ? void 0 : page.length) === 0 && /*#__PURE__*/_react["default"].createElement(_NoResult.NoResult, {
     loading: loading
-  }), pageIndex, (page === null || page === void 0 ? void 0 : page.length) > 0 && showPagination && /*#__PURE__*/_react["default"].createElement(_Pagination.Pagination, {
+  }), (page === null || page === void 0 ? void 0 : page.length) > 0 && showPagination && /*#__PURE__*/_react["default"].createElement(_Pagination.Pagination, {
     count: count,
     rowsPerPage: rowsPerPage,
     pageIndex: pageIndex,

@@ -1,9 +1,6 @@
 import { useRef, useEffect } from 'react';
 
-export const useSkipEffectOnMount = (
-    func: () => any,
-    deps: Array<any>,
-) => {
+export const useSkipEffectOnMount = (func, deps) => {
     const didMount = useRef(false);
 
     useEffect(() => {

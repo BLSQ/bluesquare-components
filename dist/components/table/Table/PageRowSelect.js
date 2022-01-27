@@ -19,6 +19,8 @@ var _Select = _interopRequireDefault(require("@material-ui/core/Select"));
 
 var _FormControl = _interopRequireDefault(require("@material-ui/core/FormControl"));
 
+var _classnames = _interopRequireDefault(require("classnames"));
+
 var _useSafeIntl2 = require("../../../utils/useSafeIntl");
 
 var _messages = require("./messages");
@@ -55,13 +57,14 @@ var PageRowSelect = function PageRowSelect(_ref) {
   }, /*#__PURE__*/_react["default"].createElement(_FormControl["default"], {
     variant: "outlined"
   }, /*#__PURE__*/_react["default"].createElement(_Select["default"], {
-    className: classes.select,
+    className: (0, _classnames["default"])(classes.select, 'pagination-row-select'),
     value: rowsPerPage,
     onChange: handleChange
   }, rowsPerPageOptions.map(function (o) {
     return /*#__PURE__*/_react["default"].createElement(_MenuItem["default"], {
       key: o,
-      value: o
+      value: o,
+      className: "row-option-".concat(o)
     }, "".concat(o, " ").concat(formatMessage(_messages.MESSAGES.rowsText)));
   }))));
 };

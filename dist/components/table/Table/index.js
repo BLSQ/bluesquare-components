@@ -49,6 +49,8 @@ var _LoadingSpinner = require("../../LoadingSpinner");
 
 var _useKeyPressListener = require("../../../utils/useKeyPressListener");
 
+var _useSkipEffectOnMount = require("../../../utils/useSkipEffectOnMount");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -165,7 +167,7 @@ var TableComponent = function TableComponent(props) {
     var urlPageSize = parseInt(params[(0, _tableUtils.getParamsKey)(paramsPrefix, 'pageSize')], 10);
     var urlSort = params[(0, _tableUtils.getParamsKey)(paramsPrefix, 'order')] && (0, _tableUtils.getOrderArray)(params[(0, _tableUtils.getParamsKey)(paramsPrefix, 'order')]);
     return {
-      pageIndex: params[(0, _tableUtils.getParamsKey)(paramsPrefix, 'page')] ? params[(0, _tableUtils.getParamsKey)(paramsPrefix, 'page')] - 1 : _constants.DEFAULT_PAGE - 1,
+      pageIndex: params[(0, _tableUtils.getParamsKey)(paramsPrefix, 'page')] ? parseInt(params[(0, _tableUtils.getParamsKey)(paramsPrefix, 'page')], 10) - 1 : _constants.DEFAULT_PAGE - 1,
       pageSize: urlPageSize || (extraProps === null || extraProps === void 0 ? void 0 : extraProps.defaultPageSize) || _constants.DEFAULT_PAGE_SIZE,
       sortBy: urlSort || defaultSorted
     };
@@ -222,7 +224,7 @@ var TableComponent = function TableComponent(props) {
     size: 'small'
   });
 
-  (0, _react.useEffect)(function () {
+  (0, _useSkipEffectOnMount.useSkipEffectOnMount)(function () {
     gotoPage(0);
   }, [resetPageToOne]);
   var rowsPerPage = parseInt(pageSize, 10);

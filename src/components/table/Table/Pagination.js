@@ -27,6 +27,7 @@ const Pagination = ({
     selectCount,
 }) => {
     const classes = useStyles();
+    const displayedPageIndex = pageIndex + 1 > pages ? pages - 1 : pageIndex;
     return (
         <TablePagination
             classes={{
@@ -38,7 +39,7 @@ const Pagination = ({
             component="div"
             count={count}
             rowsPerPage={rowsPerPage}
-            page={pageIndex}
+            page={displayedPageIndex}
             onPageChange={(event, newPage) => {
                 onTableParamsChange('page', newPage + 1);
             }}
@@ -56,7 +57,7 @@ const Pagination = ({
                     selectRowsPerPage={value =>
                         onTableParamsChange('pageSize', value)
                     }
-                    pageIndex={pageIndex}
+                    pageIndex={displayedPageIndex}
                     pages={pages}
                     countOnTop={countOnTop}
                     selectCount={selectCount}

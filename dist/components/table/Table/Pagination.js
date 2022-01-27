@@ -42,6 +42,7 @@ var Pagination = function Pagination(_ref) {
       countOnTop = _ref.countOnTop,
       selectCount = _ref.selectCount;
   var classes = useStyles();
+  var displayedPageIndex = pageIndex + 1 > pages ? pages - 1 : pageIndex;
   return /*#__PURE__*/_react["default"].createElement(_TablePagination["default"], {
     classes: {
       spacer: classes.spacer,
@@ -52,7 +53,7 @@ var Pagination = function Pagination(_ref) {
     component: "div",
     count: count,
     rowsPerPage: rowsPerPage,
-    page: pageIndex,
+    page: displayedPageIndex,
     onPageChange: function onPageChange(event, newPage) {
       onTableParamsChange('page', newPage + 1);
     },
@@ -70,7 +71,7 @@ var Pagination = function Pagination(_ref) {
         selectRowsPerPage: function selectRowsPerPage(value) {
           return onTableParamsChange('pageSize', value);
         },
-        pageIndex: pageIndex,
+        pageIndex: displayedPageIndex,
         pages: pages,
         countOnTop: countOnTop,
         selectCount: selectCount

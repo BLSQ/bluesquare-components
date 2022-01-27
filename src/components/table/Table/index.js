@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
 import MuiTable from '@material-ui/core/Table';
@@ -36,6 +36,7 @@ import { Count } from './Count';
 import { Pagination } from './Pagination';
 import { LoadingSpinner } from '../../LoadingSpinner';
 import { useKeyPressListener } from '../../../utils/useKeyPressListener';
+import { useSkipEffectOnMount } from '../../../utils/useSkipEffectOnMount';
 /**
  * TableComponent component, no redux, no fetch, just displaying.
  * Multi selection is optionnal, if set to true you can add custom actions
@@ -138,7 +139,7 @@ const TableComponent = props => {
             getOrderArray(params[getParamsKey(paramsPrefix, 'order')]);
         return {
             pageIndex: params[getParamsKey(paramsPrefix, 'page')]
-                ? params[getParamsKey(paramsPrefix, 'page')] - 1
+                ? parseInt(params[getParamsKey(paramsPrefix, 'page')], 10) - 1
                 : DEFAULT_PAGE - 1,
             pageSize:
                 urlPageSize || extraProps?.defaultPageSize || DEFAULT_PAGE_SIZE,
@@ -198,7 +199,7 @@ const TableComponent = props => {
         size: 'small',
     };
 
-    useEffect(() => {
+    useSkipEffectOnMount(() => {
         gotoPage(0);
     }, [resetPageToOne]);
 

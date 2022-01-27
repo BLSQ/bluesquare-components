@@ -19,6 +19,8 @@ var _styles = require("@material-ui/core/styles");
 
 var _reactIntl = require("react-intl");
 
+var _classnames = _interopRequireDefault(require("classnames"));
+
 var _messages = require("./messages");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -89,7 +91,7 @@ var PageSelect = function PageSelect(_ref) {
     display: "inline-block",
     mr: 1
   }, /*#__PURE__*/_react["default"].createElement(_reactIntl.FormattedMessage, _messages.MESSAGES.pageText)), /*#__PURE__*/_react["default"].createElement(_TextField["default"], {
-    className: classes[adaptInputSize(selectedPage)],
+    className: (0, _classnames["default"])(classes[adaptInputSize(selectedPage)], 'pagination-page-select'),
     size: "small",
     label: "",
     type: "number",

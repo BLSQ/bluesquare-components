@@ -166,6 +166,7 @@ const TableComponent = props => {
             manualPagination: true,
             manualSortBy: true,
             pageCount: pages,
+            autoResetPage: false,
         },
         useSortBy,
         useResizeColumns,
@@ -204,6 +205,7 @@ const TableComponent = props => {
     }, [resetPageToOne]);
 
     const rowsPerPage = parseInt(pageSize, 10);
+    console.log('pageIndex', pageIndex);
     return (
         <Box mt={marginTop ? 4 : 0} mb={4}>
             <Select

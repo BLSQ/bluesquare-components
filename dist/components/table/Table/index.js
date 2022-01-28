@@ -180,7 +180,8 @@ var TableComponent = function TableComponent(props) {
     disableMultiSort: true,
     manualPagination: true,
     manualSortBy: true,
-    pageCount: pages
+    pageCount: pages,
+    autoResetPage: false
   }, _reactTable.useSortBy, _reactTable.useResizeColumns, _reactTable.usePagination),
       getTableProps = _useTable.getTableProps,
       getTableBodyProps = _useTable.getTableBodyProps,

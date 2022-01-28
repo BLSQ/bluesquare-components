@@ -137,7 +137,9 @@ var SelectCustom = function SelectCustom(_ref) {
   }, [multi, onChange, returnFullObject]);
   var extraProps = {
     getOptionLabel: getOptionLabel || function (option) {
-      return (option === null || option === void 0 ? void 0 : option.label) || option;
+      var _option$label;
+
+      return (_option$label = option === null || option === void 0 ? void 0 : option.label) !== null && _option$label !== void 0 ? _option$label : option;
     },
     getOptionSelected: getOptionSelected || function (option, val) {
       return val && option.value === val.value;

@@ -54,6 +54,12 @@ import { CommentWithThread } from './components/comments/CommentWithThread';
 import { AddComment } from './components/comments/AddComment';
 import { InputLabel } from './components/inputs/InputLabel';
 import { useKeyPressListener } from './utils/useKeyPressListener';
+import { DynamicSelect } from './components/Treeview/DynamicSelect';
+import { EnrichedTreeItem } from './components/Treeview/EnrichedTreeItem';
+import { IasoTreeView } from './components/Treeview/IasoTreeView';
+import { TreeViewResultsCountSelect } from './components/Treeview/TreeViewResultsCountSelect';
+import { TreeViewWithSearch } from './components/Treeview/TreeViewWithSearch';
+import { TruncatedTreeview } from './components/Treeview/TruncatedTreeview';
 
 export * from './utils';
 export * from './utils/intlUtils';
@@ -117,4 +123,10 @@ export {
     Expander,
     FormControl,
     useKeyPressListener,
+    TruncatedTreeview,
+    TreeViewWithSearch,
+    TreeViewResultsCountSelect,
+    IasoTreeView,
+    EnrichedTreeItem,
+    DynamicSelect,
 };

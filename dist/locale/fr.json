@@ -33,5 +33,15 @@
     "blsq.table.results": "résultats",
     "blsq.table.sortAsc": "Trier par ordre croissant",
     "blsq.table.sortDesc": "Trier par ordre décroissant",
-    "blsq.table.unSort": "Supprimer le tri"
+    "blsq.table.unSort": "Supprimer le tri",
+    "blsq.treeview.label.selectMultiple": "Sélectionner des unité(s) d'organisation",
+    "blsq.treeview.label.selectSingle": "Sélectionner une unités d'organisation",
+    "blsq.treeview.loading": "Chargement",
+    "blsq.treeview.search.cancel": "Annuler",
+    "blsq.treeview.search.confirm": "Confirmer",
+    "blsq.treeview.search.inputLabelObject": "Rechercher",
+    "blsq.treeview.search.options.label.clear": "Effacer",
+    "blsq.treeview.search.options.label.noOptions": "Aucun résultat trouvé",
+    "blsq.treeview.search.results.label.display": "Afficher",
+    "blsq.treeview.search.results.label.resultsLower": "résultat(s)"
 }

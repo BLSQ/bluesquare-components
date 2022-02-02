@@ -33,5 +33,15 @@
     "blsq.table.results": "results",
     "blsq.table.sortAsc": "Sort ascending",
     "blsq.table.sortDesc": "Sort descending",
-    "blsq.table.unSort": "Remove sort"
+    "blsq.table.unSort": "Remove sort",
+    "blsq.treeview.label.selectMultiple": "Select org unit(s)",
+    "blsq.treeview.label.selectSingle": "Select an org unit",
+    "blsq.treeview.loading": "Loading",
+    "blsq.treeview.search.cancel": "Cancel",
+    "blsq.treeview.search.confirm": "Confirm",
+    "blsq.treeview.search.inputLabelObject": "Enter search term",
+    "blsq.treeview.search.options.label.clear": "Clear",
+    "blsq.treeview.search.options.label.noOptions": "No result found",
+    "blsq.treeview.search.results.label.display": "Display",
+    "blsq.treeview.search.results.label.resultsLower": "result(s)"
 }

@@ -166,6 +166,7 @@ const TableComponent = props => {
             manualPagination: true,
             manualSortBy: true,
             pageCount: pages,
+            autoResetPage: false,
         },
         useSortBy,
         useResizeColumns,

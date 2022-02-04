@@ -36,6 +36,7 @@ function FormControlComponent({
     withMarginTop,
     errors,
     marginTopZero,
+    id,
 }) {
     const classNames = [classes.formControl];
     // FIXME the logic seems to inverted here, but changing it leads to lots of visual bugs in Iaso
@@ -47,9 +48,17 @@ function FormControlComponent({
     if (marginTopZero) {
         classNames.push(classes.marginTopZero);
     }
+    const extraProps = {};
+    if (id) {
+        extraProps.id = id;
+    }
 
     return (
-        <FormControl className={classNames.join(' ')} variant="outlined">
+        <FormControl
+            className={classNames.join(' ')}
+            variant="outlined"
+            {...extraProps}
+        >
             {children}
             {errors.length > 0 &&
                 errors.map(error => (
@@ -64,6 +73,7 @@ FormControlComponent.defaultProps = {
     withMarginTop: true,
     marginTopZero: false,
     errors: [],
+    id: null,
 };
 FormControlComponent.propTypes = {
     classes: PropTypes.object.isRequired,
@@ -71,6 +81,7 @@ FormControlComponent.propTypes = {
     withMarginTop: PropTypes.bool, // FIXME: these 2 props are redundant, but changing withMarginTop breaks alignment in Iaso
     marginTopZero: PropTypes.bool,
     errors: PropTypes.arrayOf(PropTypes.string.isRequired),
+    id: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 };
 const styledComponent = withStyles(styles)(FormControlComponent);
 

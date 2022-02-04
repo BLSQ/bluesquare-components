@@ -11,10 +11,6 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _List = _interopRequireDefault(require("@material-ui/core/List"));
-
-var _Grid = _interopRequireDefault(require("@material-ui/core/Grid"));
-
 var _core = require("@material-ui/core");
 
 var _ListItem = _interopRequireDefault(require("@material-ui/core/ListItem"));
@@ -165,19 +161,21 @@ var ArrayFieldInput = /*#__PURE__*/function (_Component) {
           classes = _this$props.classes;
       var fieldList = this.state.fieldList;
       var addFieldButtonDisabled = fieldList.length > 0 && fieldList[fieldList.length - 1].value === '';
-      return /*#__PURE__*/_react["default"].createElement(_Grid["default"], {
+      return /*#__PURE__*/_react["default"].createElement(_core.Grid, {
         container: true,
         spacing: 0,
         className: classes.marginTop
-      }, /*#__PURE__*/_react["default"].createElement(_Grid["default"], {
+      }, /*#__PURE__*/_react["default"].createElement(_core.Grid, {
         item: true,
         xs: 1
       }, /*#__PURE__*/_react["default"].createElement("span", {
         className: classes.label
-      }, label, ":")), /*#__PURE__*/_react["default"].createElement(_Grid["default"], {
+      }, label, ":")), /*#__PURE__*/_react["default"].createElement(_core.Grid, {
         item: true,
         xs: 11
-      }, /*#__PURE__*/_react["default"].createElement(_List["default"], {
+      }, /*#__PURE__*/_react["default"].createElement(_core.Box, {
+        id: "array-input-field-list-".concat(baseId)
+      }, /*#__PURE__*/_react["default"].createElement(_core.List, {
         className: classes.list
       }, fieldList.map(function (a, fieldIndex) {
         return /*#__PURE__*/_react["default"].createElement(_ListItem["default"], {
@@ -208,7 +206,7 @@ var ArrayFieldInput = /*#__PURE__*/function (_Component) {
         onClick: function onClick() {
           return _this2.addField();
         }
-      }, /*#__PURE__*/_react["default"].createElement(_Add["default"], null))))));
+      }, /*#__PURE__*/_react["default"].createElement(_Add["default"], null)))))));
     }
   }]);
 

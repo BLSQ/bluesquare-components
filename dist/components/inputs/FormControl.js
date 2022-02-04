@@ -15,6 +15,8 @@ var _FormControl = _interopRequireDefault(require("@material-ui/core/FormControl
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 var styles = function styles(theme) {
   return {
     formControl: {
@@ -49,7 +51,8 @@ function FormControlComponent(_ref) {
       children = _ref.children,
       withMarginTop = _ref.withMarginTop,
       errors = _ref.errors,
-      marginTopZero = _ref.marginTopZero;
+      marginTopZero = _ref.marginTopZero,
+      id = _ref.id;
   var classNames = [classes.formControl]; // FIXME the logic seems to inverted here, but changing it leads to lots of visual bugs in Iaso
 
   if (!withMarginTop) {
@@ -61,10 +64,16 @@ function FormControlComponent(_ref) {
     classNames.push(classes.marginTopZero);
   }
 
-  return /*#__PURE__*/_react["default"].createElement(_FormControl["default"], {
+  var extraProps = {};
+
+  if (id) {
+    extraProps.id = id;
+  }
+
+  return /*#__PURE__*/_react["default"].createElement(_FormControl["default"], _extends({
     className: classNames.join(' '),
     variant: "outlined"
-  }, children, errors.length > 0 && errors.map(function (error) {
+  }, extraProps), children, errors.length > 0 && errors.map(function (error) {
     return /*#__PURE__*/_react["default"].createElement(_core.Typography, {
       key: error,
       className: classes.error
@@ -75,7 +84,8 @@ function FormControlComponent(_ref) {
 FormControlComponent.defaultProps = {
   withMarginTop: true,
   marginTopZero: false,
-  errors: []
+  errors: [],
+  id: null
 };
 FormControlComponent.propTypes = {
   classes: _propTypes["default"].object.isRequired,
@@ -83,7 +93,8 @@ FormControlComponent.propTypes = {
   withMarginTop: _propTypes["default"].bool,
   // FIXME: these 2 props are redundant, but changing withMarginTop breaks alignment in Iaso
   marginTopZero: _propTypes["default"].bool,
-  errors: _propTypes["default"].arrayOf(_propTypes["default"].string.isRequired)
+  errors: _propTypes["default"].arrayOf(_propTypes["default"].string.isRequired),
+  id: _propTypes["default"].oneOfType([_propTypes["default"].object, _propTypes["default"].string])
 };
 var styledComponent = (0, _core.withStyles)(styles)(FormControlComponent);
 exports.FormControl = styledComponent;

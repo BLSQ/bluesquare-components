@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import List from '@material-ui/core/List';
-import Grid from '@material-ui/core/Grid';
-import { IconButton, withStyles } from '@material-ui/core';
+import { IconButton, withStyles, Box, List, Grid } from '@material-ui/core';
 import ListItem from '@material-ui/core/ListItem';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import Fab from '@material-ui/core/Fab';
@@ -104,45 +102,49 @@ class ArrayFieldInput extends Component {
                     <span className={classes.label}>{label}:</span>
                 </Grid>
                 <Grid item xs={11}>
-                    <List className={classes.list}>
-                        {fieldList.map((a, fieldIndex) => (
-                            <ListItem
-                                key={a.position}
-                                className={classes.listItem}
-                            >
-                                <OutlinedInput
-                                    className={classes.input}
-                                    id={`${baseId}-${a.position}`}
-                                    value={a.value || undefined}
-                                    onChange={event =>
-                                        this.updateField(
-                                            event.currentTarget.value,
-                                            fieldIndex,
-                                        )
-                                    }
-                                />
-                                <IconButton
-                                    className={classes.deleteIcon}
-                                    color="inherit"
-                                    onClick={() => this.removeField(fieldIndex)}
+                    <Box id={`array-input-field-list-${baseId}`}>
+                        <List className={classes.list}>
+                            {fieldList.map((a, fieldIndex) => (
+                                <ListItem
+                                    key={a.position}
+                                    className={classes.listItem}
                                 >
-                                    <DeleteIcon />
-                                </IconButton>
+                                    <OutlinedInput
+                                        className={classes.input}
+                                        id={`${baseId}-${a.position}`}
+                                        value={a.value || undefined}
+                                        onChange={event =>
+                                            this.updateField(
+                                                event.currentTarget.value,
+                                                fieldIndex,
+                                            )
+                                        }
+                                    />
+                                    <IconButton
+                                        className={classes.deleteIcon}
+                                        color="inherit"
+                                        onClick={() =>
+                                            this.removeField(fieldIndex)
+                                        }
+                                    >
+                                        <DeleteIcon />
+                                    </IconButton>
+                                </ListItem>
+                            ))}
+                            <ListItem className={classes.addListItem}>
+                                <Fab
+                                    disabled={addFieldButtonDisabled}
+                                    className={classes.Fab}
+                                    size="small"
+                                    color="primary"
+                                    aria-label="add"
+                                    onClick={() => this.addField()}
+                                >
+                                    <Add />
+                                </Fab>
                             </ListItem>
-                        ))}
-                        <ListItem className={classes.addListItem}>
-                            <Fab
-                                disabled={addFieldButtonDisabled}
-                                className={classes.Fab}
-                                size="small"
-                                color="primary"
-                                aria-label="add"
-                                onClick={() => this.addField()}
-                            >
-                                <Add />
-                            </Fab>
-                        </ListItem>
-                    </List>
+                        </List>
+                    </Box>
                 </Grid>
             </Grid>
         );

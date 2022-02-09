@@ -122,6 +122,7 @@ function IconButtonComponent({
             placement="bottom"
             title={<FormattedMessage {...tooltipMessage} />}
         >
+            {/* Wrapping the button in a span to prevent tooltip from crashing as it needs a DOm element to position itself  */}
             <span id={id}>
                 <IconButton disabled={disabled} onClick={onClick} size={size}>
                     {url ? (

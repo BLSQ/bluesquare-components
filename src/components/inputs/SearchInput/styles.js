@@ -14,18 +14,6 @@ const styles = theme => ({
             width: 'auto',
         },
     },
-    searchIcon: {
-        width: theme.spacing(7),
-        height: '100%',
-        position: 'absolute',
-        right: 0,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        cursor: 'pointer',
-        outline: 'none',
-        boxShadow: 'none',
-    },
     inputRoot: {
         color: 'inherit',
     },

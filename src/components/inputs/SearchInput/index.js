@@ -17,41 +17,51 @@ const SearchInput = ({
     onChange,
     classes,
     uid,
-}) => (
-    <FormControl withMarginTop={withMarginTop}>
-        <InputLabel
-            htmlFor={`search-${keyValue}`}
-            label={label}
-            required={required}
-            shrink={value !== undefined && value !== null && value !== ''}
-        />
-        <OutlinedInput
-            disabled={disabled}
-            id={uid ? `search-${uid}` : `search-${keyValue}`}
-            value={value || ''}
-            placeholder=""
-            onKeyPress={event => {
-                if (event.which === 13 || event.keyCode === 13) {
-                    onEnterPressed();
-                }
-            }}
-            classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-            }}
-            inputProps={{ 'aria-label': 'search' }}
-            onChange={event => onChange(event.target.value)}
-        />
-        <div
-            tabIndex={0}
-            role="button"
-            className={classes.searchIcon}
-            onClick={() => onEnterPressed()}
-        >
-            <SearchIcon />
-        </div>
-    </FormControl>
-);
+    errors = [],
+}) => {
+    const hasErrors = errors.length >= 1;
+    return (
+        <FormControl withMarginTop={withMarginTop} errors={errors}>
+            <InputLabel
+                htmlFor={`search-${keyValue}`}
+                label={label}
+                required={required}
+                shrink={value !== undefined && value !== null && value !== ''}
+                error={hasErrors}
+            />
+            <OutlinedInput
+                disabled={disabled}
+                error={hasErrors}
+                id={uid ? `search-${uid}` : `search-${keyValue}`}
+                value={value || ''}
+                placeholder=""
+                onKeyPress={event => {
+                    if (
+                        event.which === 13 ||
+                        event.keyCode === 13 ||
+                        event.key === 'Enter'
+                    ) {
+                        onEnterPressed();
+                    }
+                }}
+                classes={{
+                    root: classes.inputRoot,
+                    input: classes.inputInput,
+                }}
+                inputProps={{ 'aria-label': 'search' }}
+                onChange={event => onChange(event.target.value)}
+            />
+            <div
+                tabIndex={0}
+                role="button"
+                className={classes.searchIcon}
+                onClick={() => onEnterPressed()}
+            >
+                <SearchIcon />
+            </div>
+        </FormControl>
+    );
+};
 
 SearchInput.defaultProps = {
     value: '',
@@ -62,6 +72,7 @@ SearchInput.defaultProps = {
     onChange: () => {},
     uid: '',
     label: '',
+    errors: [],
 };
 
 SearchInput.propTypes = {
@@ -75,6 +86,7 @@ SearchInput.propTypes = {
     onChange: PropTypes.func,
     uid: PropTypes.string,
     classes: PropTypes.object.isRequired,
+    errors: PropTypes.arrayOf(PropTypes.string),
 };
 
 const styledSearchInput = withStyles(styles)(SearchInput);

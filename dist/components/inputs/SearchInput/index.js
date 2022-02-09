@@ -31,21 +31,27 @@ var SearchInput = function SearchInput(_ref) {
       onEnterPressed = _ref.onEnterPressed,
       _onChange = _ref.onChange,
       classes = _ref.classes,
-      uid = _ref.uid;
+      uid = _ref.uid,
+      _ref$errors = _ref.errors,
+      errors = _ref$errors === void 0 ? [] : _ref$errors;
+  var hasErrors = errors.length >= 1;
   return /*#__PURE__*/_react["default"].createElement(_FormControl.FormControl, {
-    withMarginTop: withMarginTop
+    withMarginTop: withMarginTop,
+    errors: errors
   }, /*#__PURE__*/_react["default"].createElement(_InputLabel.InputLabel, {
     htmlFor: "search-".concat(keyValue),
     label: label,
     required: required,
-    shrink: value !== undefined && value !== null && value !== ''
+    shrink: value !== undefined && value !== null && value !== '',
+    error: hasErrors
   }), /*#__PURE__*/_react["default"].createElement(_core.OutlinedInput, {
     disabled: disabled,
+    error: hasErrors,
     id: uid ? "search-".concat(uid) : "search-".concat(keyValue),
     value: value || '',
     placeholder: "",
     onKeyPress: function onKeyPress(event) {
-      if (event.which === 13 || event.keyCode === 13) {
+      if (event.which === 13 || event.keyCode === 13 || event.key === 'Enter') {
         onEnterPressed();
       }
     },
@@ -77,7 +83,8 @@ SearchInput.defaultProps = {
   onEnterPressed: function onEnterPressed() {},
   onChange: function onChange() {},
   uid: '',
-  label: ''
+  label: '',
+  errors: []
 };
 SearchInput.propTypes = {
   withMarginTop: _propTypes["default"].bool,
@@ -89,7 +96,8 @@ SearchInput.propTypes = {
   onEnterPressed: _propTypes["default"].func,
   onChange: _propTypes["default"].func,
   uid: _propTypes["default"].string,
-  classes: _propTypes["default"].object.isRequired
+  classes: _propTypes["default"].object.isRequired,
+  errors: _propTypes["default"].arrayOf(_propTypes["default"].string)
 };
 var styledSearchInput = (0, _core.withStyles)(_styles.styles)(SearchInput);
 exports.SearchInput = styledSearchInput;

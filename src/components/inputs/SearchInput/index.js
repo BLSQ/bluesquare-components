@@ -48,17 +48,20 @@ const SearchInput = ({
                     root: classes.inputRoot,
                     input: classes.inputInput,
                 }}
-                inputProps={{ 'aria-label': 'search' }}
+                endAdornment={
+                    <div
+                        tabIndex={0}
+                        role="button"
+                        onClick={() => onEnterPressed()}
+                    >
+                        <SearchIcon />
+                    </div>
+                }
+                inputProps={{
+                    'aria-label': 'search',
+                }}
                 onChange={event => onChange(event.target.value)}
             />
-            <div
-                tabIndex={0}
-                role="button"
-                className={classes.searchIcon}
-                onClick={() => onEnterPressed()}
-            >
-                <SearchIcon />
-            </div>
         </FormControl>
     );
 };

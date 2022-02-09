@@ -59,20 +59,21 @@ var SearchInput = function SearchInput(_ref) {
       root: classes.inputRoot,
       input: classes.inputInput
     },
+    endAdornment: /*#__PURE__*/_react["default"].createElement("div", {
+      tabIndex: 0,
+      role: "button" // className={classes.searchIcon}
+      ,
+      onClick: function onClick() {
+        return onEnterPressed();
+      }
+    }, /*#__PURE__*/_react["default"].createElement(_Search["default"], null)),
     inputProps: {
       'aria-label': 'search'
     },
     onChange: function onChange(event) {
       return _onChange(event.target.value);
     }
-  }), /*#__PURE__*/_react["default"].createElement("div", {
-    tabIndex: 0,
-    role: "button",
-    className: classes.searchIcon,
-    onClick: function onClick() {
-      return onEnterPressed();
-    }
-  }, /*#__PURE__*/_react["default"].createElement(_Search["default"], null)));
+  }));
 };
 
 SearchInput.defaultProps = {

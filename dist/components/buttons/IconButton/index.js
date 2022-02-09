@@ -140,7 +140,8 @@ function IconButtonComponent(_ref2) {
       overrideIcon = _ref2.overrideIcon,
       tooltipMessage = _ref2.tooltipMessage,
       color = _ref2.color,
-      size = _ref2.size;
+      size = _ref2.size,
+      id = _ref2.id;
 
   if (onClick === null === (url === null)) {
     console.error('IconButtonComponent needs either the onClick or the url property');
@@ -162,7 +163,9 @@ function IconButtonComponent(_ref2) {
     disableTouchListener: disabled,
     placement: "bottom",
     title: /*#__PURE__*/_react["default"].createElement(_reactIntl.FormattedMessage, tooltipMessage)
-  }, /*#__PURE__*/_react["default"].createElement("span", null, /*#__PURE__*/_react["default"].createElement(_core.IconButton, {
+  }, /*#__PURE__*/_react["default"].createElement("span", {
+    id: id
+  }, /*#__PURE__*/_react["default"].createElement(_core.IconButton, {
     disabled: disabled,
     onClick: onClick,
     size: size
@@ -186,7 +189,8 @@ IconButtonComponent.defaultProps = {
   color: 'action',
   size: 'medium',
   overrideIcon: null,
-  icon: null
+  icon: null,
+  id: ''
 };
 IconButtonComponent.propTypes = {
   size: _propTypes["default"].string,
@@ -197,8 +201,9 @@ IconButtonComponent.propTypes = {
   icon: _propTypes["default"].oneOf(Object.keys(ICON_VARIANTS)),
   color: _propTypes["default"].string,
   overrideIcon: _propTypes["default"].any,
-  tooltipMessage: _propTypes["default"].object.isRequired // TODO: refactor IASO to pass the translation directly
-
+  tooltipMessage: _propTypes["default"].object.isRequired,
+  // TODO: refactor IASO to pass the translation directly
+  id: _propTypes["default"].string
 };
 var styledIconButton = (0, _core.withStyles)(styles)(IconButtonComponent);
 exports.IconButton = styledIconButton;

@@ -100,6 +100,7 @@ function IconButtonComponent({
     tooltipMessage,
     color,
     size,
+    id,
 }) {
     if ((onClick === null) === (url === null)) {
         console.error(
@@ -121,7 +122,7 @@ function IconButtonComponent({
             placement="bottom"
             title={<FormattedMessage {...tooltipMessage} />}
         >
-            <span>
+            <span id={id}>
                 <IconButton disabled={disabled} onClick={onClick} size={size}>
                     {url ? (
                         <Link to={url} className={classes.linkButton}>
@@ -147,6 +148,7 @@ IconButtonComponent.defaultProps = {
     size: 'medium',
     overrideIcon: null,
     icon: null,
+    id: '',
 };
 IconButtonComponent.propTypes = {
     size: PropTypes.string,
@@ -158,6 +160,7 @@ IconButtonComponent.propTypes = {
     color: PropTypes.string,
     overrideIcon: PropTypes.any,
     tooltipMessage: PropTypes.object.isRequired, // TODO: refactor IASO to pass the translation directly
+    id: PropTypes.string,
 };
 
 const styledIconButton = withStyles(styles)(IconButtonComponent);

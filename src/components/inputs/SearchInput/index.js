@@ -52,7 +52,6 @@ const SearchInput = ({
                     <div
                         tabIndex={0}
                         role="button"
-                        // className={classes.searchIcon}
                         onClick={() => onEnterPressed()}
                     >
                         <SearchIcon />

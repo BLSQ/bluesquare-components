@@ -24,6 +24,7 @@ function ExportButtonComponent({
     message,
     isDisabled,
     batchExport,
+    id,
 }) {
     return batchExport ? (
         <Button
@@ -32,6 +33,7 @@ function ExportButtonComponent({
             color="primary"
             onClick={onClick}
             disabled={isDisabled}
+            id={id}
         >
             <CallMade className={classes.buttonIcon} />
             {intl.formatMessage(message)}
@@ -43,6 +45,7 @@ function ExportButtonComponent({
 ExportButtonComponent.defaultProps = {
     message: MESSAGES.export,
     isDisabled: false,
+    id: '',
 };
 ExportButtonComponent.propTypes = {
     intl: PropTypes.object.isRequired,
@@ -51,6 +54,7 @@ ExportButtonComponent.propTypes = {
     isDisabled: PropTypes.bool,
     batchExport: PropTypes.bool.isRequired,
     message: PropTypes.object, // TODO: make a message prop type
+    id: PropTypes.string,
 };
 
 const styledExportButton = withStyles(styles)(

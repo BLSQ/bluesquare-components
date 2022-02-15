@@ -34,26 +34,30 @@ var styles = function styles(theme) {
 function AddButtonComponent(_ref) {
   var classes = _ref.classes,
       onClick = _ref.onClick,
-      message = _ref.message;
+      message = _ref.message,
+      id = _ref.id;
   var intl = (0, _useSafeIntl.useSafeIntl)();
   return /*#__PURE__*/_react["default"].createElement(_core.Button, {
     variant: "contained",
     className: classes.button,
     color: "primary",
-    onClick: onClick
+    onClick: onClick,
+    id: id
   }, /*#__PURE__*/_react["default"].createElement(_Add["default"], {
     className: classes.buttonIcon
   }), intl.formatMessage(message));
 }
 
 AddButtonComponent.defaultProps = {
-  message: _messages.MESSAGES.create
+  message: _messages.MESSAGES.create,
+  id: ''
 };
 AddButtonComponent.propTypes = {
   classes: _propTypes["default"].object.isRequired,
   onClick: _propTypes["default"].func.isRequired,
-  message: _propTypes["default"].object // TODO: make a message prop type
-
+  message: _propTypes["default"].object,
+  // TODO: make a message prop type
+  id: _propTypes["default"].string
 };
 var styledAddButton = (0, _core.withStyles)(styles)(AddButtonComponent);
 exports.AddButton = styledAddButton;

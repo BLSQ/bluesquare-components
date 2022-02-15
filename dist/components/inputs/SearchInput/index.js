@@ -61,8 +61,7 @@ var SearchInput = function SearchInput(_ref) {
     },
     endAdornment: /*#__PURE__*/_react["default"].createElement("div", {
       tabIndex: 0,
-      role: "button" // className={classes.searchIcon}
-      ,
+      role: "button",
       onClick: function onClick() {
         return onEnterPressed();
       }

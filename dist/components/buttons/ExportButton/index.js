@@ -45,13 +45,15 @@ function ExportButtonComponent(_ref) {
       onClick = _ref.onClick,
       message = _ref.message,
       isDisabled = _ref.isDisabled,
-      batchExport = _ref.batchExport;
+      batchExport = _ref.batchExport,
+      id = _ref.id;
   return batchExport ? /*#__PURE__*/_react["default"].createElement(_core.Button, {
     variant: "contained",
     className: classes.button,
     color: "primary",
     onClick: onClick,
-    disabled: isDisabled
+    disabled: isDisabled,
+    id: id
   }, /*#__PURE__*/_react["default"].createElement(_CallMade["default"], {
     className: classes.buttonIcon
   }), intl.formatMessage(message)) : /*#__PURE__*/_react["default"].createElement(_CallMade["default"], {
@@ -62,7 +64,8 @@ function ExportButtonComponent(_ref) {
 
 ExportButtonComponent.defaultProps = {
   message: _messages.MESSAGES["export"],
-  isDisabled: false
+  isDisabled: false,
+  id: ''
 };
 ExportButtonComponent.propTypes = {
   intl: _propTypes["default"].object.isRequired,
@@ -70,8 +73,9 @@ ExportButtonComponent.propTypes = {
   onClick: _propTypes["default"].func.isRequired,
   isDisabled: _propTypes["default"].bool,
   batchExport: _propTypes["default"].bool.isRequired,
-  message: _propTypes["default"].object // TODO: make a message prop type
-
+  message: _propTypes["default"].object,
+  // TODO: make a message prop type
+  id: _propTypes["default"].string
 };
 var styledExportButton = (0, _core.withStyles)(styles)((0, _injectIntl.injectIntl)(ExportButtonComponent));
 exports.ExportButton = styledExportButton;

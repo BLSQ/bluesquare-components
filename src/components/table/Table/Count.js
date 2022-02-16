@@ -7,7 +7,12 @@ import { formatThousand } from '../../../utils';
 import { MESSAGES } from './messages';
 
 const Count = ({ count, selectCount }) => (
-    <Box py={2} display="flex" justifyContent="flex-end">
+    <Box
+        py={2}
+        display="flex"
+        justifyContent="flex-end"
+        className="pagination-count"
+    >
         {selectCount > 0 && (
             <>
                 <Box display="inline-block" mr={1}>

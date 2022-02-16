@@ -135,7 +135,7 @@ var TablePaginationActions = function TablePaginationActions(_ref) {
   }, /*#__PURE__*/_react["default"].createElement(_LastPage["default"], {
     color: lastDisabled ? 'inherit' : 'primary'
   })), !countOnTop && /*#__PURE__*/_react["default"].createElement("div", {
-    className: (0, _classnames["default"])(classes.count, 'pagination-count')
+    className: classes.count
   }, /*#__PURE__*/_react["default"].createElement(_Count.Count, {
     count: count,
     selectCount: selectCount

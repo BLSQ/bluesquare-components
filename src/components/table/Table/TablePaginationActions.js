@@ -128,7 +128,7 @@ const TablePaginationActions = ({
                 <LastPageIcon color={lastDisabled ? 'inherit' : 'primary'} />
             </IconButton>
             {!countOnTop && (
-                <div className={classNames(classes.count, 'pagination-count')}>
+                <div className={classes.count}>
                     <Count count={count} selectCount={selectCount} />
                 </div>
             )}

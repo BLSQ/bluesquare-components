@@ -25,7 +25,8 @@ var Count = function Count(_ref) {
   return /*#__PURE__*/_react["default"].createElement(_Box["default"], {
     py: 2,
     display: "flex",
-    justifyContent: "flex-end"
+    justifyContent: "flex-end",
+    className: "pagination-count"
   }, selectCount > 0 && /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_Box["default"], {
     display: "inline-block",
     mr: 1

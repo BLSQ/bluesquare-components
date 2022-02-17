@@ -101,6 +101,7 @@ const TableComponent = props => {
         onTableParamsChange,
         defaultSorted,
         resetPageToOne,
+        elevation,
     } = props;
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -219,7 +220,7 @@ const TableComponent = props => {
                 <Count count={count} selectCount={selection.selectCount} />
             )}
 
-            <Paper elevation={3} className={classes.paper}>
+            <Paper elevation={elevation} className={classes.paper}>
                 {loading && <LoadingSpinner absolute />}
                 <TableContainer className={classes.tableContainer}>
                     <MuiTable {...tableProps} stickyHeader>
@@ -283,6 +284,7 @@ TableComponent.defaultProps = {
     onTableParamsChange: () => null,
     defaultSorted: getOrderArray(DEFAULT_ORDER),
     resetPageToOne: '',
+    elevation: 3,
 };
 
 TableComponent.propTypes = {
@@ -307,6 +309,7 @@ TableComponent.propTypes = {
     onTableParamsChange: PropTypes.func,
     defaultSorted: PropTypes.array,
     resetPageToOne: PropTypes.string,
+    elevation: PropTypes.number,
 };
 
 const Table = React.memo(TableComponent, (props, prevProps) => {

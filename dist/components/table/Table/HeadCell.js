@@ -15,6 +15,8 @@ var _TableCell = _interopRequireDefault(require("@material-ui/core/TableCell"));
 
 var _TableSortLabel = _interopRequireDefault(require("@material-ui/core/TableSortLabel"));
 
+var _classnames = _interopRequireDefault(require("classnames"));
+
 var _useSafeIntl2 = require("../../../utils/useSafeIntl");
 
 var _messages = require("./messages");
@@ -62,6 +64,9 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
       textAlign: 'center',
       backgroundColor: 'white'
     },
+    lastHeaderCell: {
+      borderRight: 'none'
+    },
     sortLabel: {
       display: 'inline-block',
       width: '80%'
@@ -85,7 +90,8 @@ var HeadCell = function HeadCell(_ref) {
       columnsProps = _ref.columnsProps,
       setSortBy = _ref.setSortBy,
       multiSortEnabled = _ref.multiSortEnabled,
-      sortBy = _ref.sortBy;
+      sortBy = _ref.sortBy,
+      isLastCell = _ref.isLastCell;
   var classes = useStyles();
 
   var _useSafeIntl = (0, _useSafeIntl2.useSafeIntl)(),
@@ -130,7 +136,7 @@ var HeadCell = function HeadCell(_ref) {
 
   return /*#__PURE__*/_react["default"].createElement(_TableCell["default"], _extends({}, columnsProps, {
     style: cellStyle,
-    className: classes.headerCell,
+    className: (0, _classnames["default"])(classes.headerCell, isLastCell && classes.lastHeaderCell),
     key: columnsProps.key
   }), isSortable && /*#__PURE__*/_react["default"].createElement("div", sortProps, /*#__PURE__*/_react["default"].createElement(_TableSortLabel["default"], {
     active: column.isSorted,
@@ -153,5 +159,6 @@ HeadCell.propTypes = {
   columnsProps: _propTypes["default"].object.isRequired,
   setSortBy: _propTypes["default"].func.isRequired,
   multiSortEnabled: _propTypes["default"].bool.isRequired,
-  sortBy: _propTypes["default"].array.isRequired
+  sortBy: _propTypes["default"].array.isRequired,
+  isLastCell: _propTypes["default"].bool.isRequired
 };

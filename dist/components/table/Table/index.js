@@ -141,7 +141,8 @@ var TableComponent = function TableComponent(props) {
       showFooter = props.showFooter,
       onTableParamsChange = props.onTableParamsChange,
       defaultSorted = props.defaultSorted,
-      resetPageToOne = props.resetPageToOne;
+      resetPageToOne = props.resetPageToOne,
+      elevation = props.elevation;
 
   var _useSafeIntl = (0, _useSafeIntl2.useSafeIntl)(),
       formatMessage = _useSafeIntl.formatMessage;
@@ -243,7 +244,7 @@ var TableComponent = function TableComponent(props) {
     count: count,
     selectCount: selection.selectCount
   }), /*#__PURE__*/_react["default"].createElement(_Paper["default"], {
-    elevation: 3,
+    elevation: elevation,
     className: classes.paper
   }, loading && /*#__PURE__*/_react["default"].createElement(_LoadingSpinner.LoadingSpinner, {
     absolute: true
@@ -310,7 +311,8 @@ TableComponent.defaultProps = {
     return null;
   },
   defaultSorted: (0, _tableUtils.getOrderArray)(_constants.DEFAULT_ORDER),
-  resetPageToOne: ''
+  resetPageToOne: '',
+  elevation: 3
 };
 TableComponent.propTypes = {
   params: _propTypes["default"].object,
@@ -333,7 +335,8 @@ TableComponent.propTypes = {
   showFooter: _propTypes["default"].bool,
   onTableParamsChange: _propTypes["default"].func,
   defaultSorted: _propTypes["default"].array,
-  resetPageToOne: _propTypes["default"].string
+  resetPageToOne: _propTypes["default"].string,
+  elevation: _propTypes["default"].number
 };
 
 var Table = /*#__PURE__*/_react["default"].memo(TableComponent, function (props, prevProps) {

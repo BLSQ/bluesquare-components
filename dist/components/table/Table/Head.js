@@ -28,7 +28,7 @@ var Head = function Head(_ref) {
     var headerGroupProps = headerGroup.getHeaderGroupProps();
     return /*#__PURE__*/_react["default"].createElement(_TableRow["default"], _extends({}, headerGroupProps, {
       key: headerGroupProps.key
-    }), headerGroup.headers.map(function (column) {
+    }), headerGroup.headers.map(function (column, colIndex) {
       var columnsProps = column.getHeaderProps();
       return /*#__PURE__*/_react["default"].createElement(_HeadCell.HeadCell, {
         column: column,
@@ -36,7 +36,8 @@ var Head = function Head(_ref) {
         columnsProps: columnsProps,
         setSortBy: setSortBy,
         multiSortEnabled: multiSortEnabled,
-        sortBy: sortBy
+        sortBy: sortBy,
+        isLastCell: colIndex + 1 === headerGroup.headers.length
       });
     }));
   }));

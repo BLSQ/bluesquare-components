@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
+import classNames from 'classnames';
 
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 
@@ -28,6 +29,9 @@ const useStyles = makeStyles(theme => ({
         textAlign: 'center',
         backgroundColor: 'white',
     },
+    lastHeaderCell: {
+        borderRight: 'none',
+    },
     sortLabel: {
         display: 'inline-block',
         width: '80%',
@@ -48,6 +52,7 @@ const HeadCell = ({
     setSortBy,
     multiSortEnabled,
     sortBy,
+    isLastCell,
 }) => {
     const classes = useStyles();
     const { formatMessage } = useSafeIntl();
@@ -89,7 +94,10 @@ const HeadCell = ({
         <TableCell
             {...columnsProps}
             style={cellStyle}
-            className={classes.headerCell}
+            className={classNames(
+                classes.headerCell,
+                isLastCell && classes.lastHeaderCell,
+            )}
             key={columnsProps.key}
         >
             {isSortable && (
@@ -126,6 +134,7 @@ HeadCell.propTypes = {
     setSortBy: PropTypes.func.isRequired,
     multiSortEnabled: PropTypes.bool.isRequired,
     sortBy: PropTypes.array.isRequired,
+    isLastCell: PropTypes.bool.isRequired,
 };
 
 export { HeadCell };

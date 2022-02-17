@@ -11,7 +11,7 @@ const Head = ({ headerGroups, setSortBy, multiSortEnabled, sortBy }) => (
             const headerGroupProps = headerGroup.getHeaderGroupProps();
             return (
                 <TableRow {...headerGroupProps} key={headerGroupProps.key}>
-                    {headerGroup.headers.map(column => {
+                    {headerGroup.headers.map((column, colIndex) => {
                         const columnsProps = column.getHeaderProps();
                         return (
                             <HeadCell
@@ -21,6 +21,9 @@ const Head = ({ headerGroups, setSortBy, multiSortEnabled, sortBy }) => (
                                 setSortBy={setSortBy}
                                 multiSortEnabled={multiSortEnabled}
                                 sortBy={sortBy}
+                                isLastCell={
+                                    colIndex + 1 === headerGroup.headers.length
+                                }
                             />
                         );
                     })}

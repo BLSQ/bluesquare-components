@@ -184,7 +184,7 @@ var ArrayFieldInput = /*#__PURE__*/function (_Component) {
         }, /*#__PURE__*/_react["default"].createElement(_OutlinedInput["default"], {
           className: classes.input,
           id: "".concat(baseId, "-").concat(a.position),
-          value: a.value || undefined,
+          value: a.value || '',
           onChange: function onChange(event) {
             return _this2.updateField(event.currentTarget.value, fieldIndex);
           }

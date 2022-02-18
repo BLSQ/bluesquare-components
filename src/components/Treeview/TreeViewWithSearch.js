@@ -39,6 +39,7 @@ const TreeViewWithSearch = ({
     preselected, // TODO rename
     preexpanded, // TODO rename
     selectedData,
+    allowSelection,
 }) => {
     const [data, setData] = useState(formatInitialSelectedData(selectedData));
     const [selected, setSelected] = useState(
@@ -66,20 +67,26 @@ const TreeViewWithSearch = ({
 
     // Tick and untick checkbox
     const onLabelClick = useCallback(
-        (id, itemData) => {
+        (id, itemData, isSelectable) => {
             let newTicked;
             let updatedParents;
             let updatedSelectedData;
+            if (isSelectable) {
+                console.log('OK');
+                if (multiselect) {
+                    newTicked = ticked.includes(id)
+                        ? ticked.filter(tickedId => tickedId !== id)
+                        : [...ticked, id];
+                } else {
+                    newTicked = [id];
+                }
+                setTicked(newTicked);
+            }
             if (multiselect) {
-                newTicked = ticked.includes(id)
-                    ? ticked.filter(tickedId => tickedId !== id)
-                    : [...ticked, id];
                 updatedParents = new Map(parentsTicked);
             } else {
-                newTicked = [id];
                 updatedParents = new Map();
             }
-            setTicked(newTicked);
             if (parentsTicked.has(id)) {
                 updatedParents.delete(id);
                 updatedSelectedData = data.filter(d => d.id !== id);
@@ -153,6 +160,7 @@ const TreeViewWithSearch = ({
                 ticked={ticked}
                 parentsTicked={adaptMap(parentsTicked)}
                 scrollIntoView={scrollIntoView}
+                allowSelection={allowSelection}
             />
         </>
     );
@@ -177,6 +185,7 @@ TreeViewWithSearch.propTypes = {
     preexpanded: any,
     selectedData: oneOfType([object, array]),
     label: func.isRequired,
+    allowSelection: func,
 };
 
 TreeViewWithSearch.defaultProps = {
@@ -193,6 +202,7 @@ TreeViewWithSearch.defaultProps = {
     preselected: null,
     preexpanded: null,
     selectedData: [],
+    allowSelection: () => true,
 };
 
 export { TreeViewWithSearch };

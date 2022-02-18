@@ -40,6 +40,7 @@ const IasoTreeView = ({
     ticked,
     parentsTicked,
     scrollIntoView,
+    allowSelection,
 }) => {
     const classes = useStyles();
     const fetchChildrenData = useCallback(getChildrenData, [getChildrenData]);
@@ -69,6 +70,7 @@ const IasoTreeView = ({
                     ticked={ticked}
                     parentsTicked={parentsTicked}
                     scrollIntoView={scrollIntoView}
+                    allowSelection={allowSelection}
                 />
             ));
         },
@@ -129,6 +131,7 @@ IasoTreeView.propTypes = {
     ticked: oneOfType([string, arrayOf(string)]),
     parentsTicked: array,
     scrollIntoView: string,
+    allowSelection: func,
 };
 
 IasoTreeView.defaultProps = {
@@ -143,6 +146,7 @@ IasoTreeView.defaultProps = {
     ticked: [],
     parentsTicked: [],
     scrollIntoView: null,
+    allowSelection: () => true,
 };
 
 export { IasoTreeView };

@@ -38,7 +38,14 @@ var styles = function styles(theme) {
     treeItem: {
       '&.MuiTreeItem-root.Mui-selected > .MuiTreeItem-content .MuiTreeItem-label': {
         backgroundColor: theme.palette.primary.background,
-        alignItems: 'center'
+        alignItems: 'center',
+        color: theme.palette.primary.main
+      }
+    },
+    unselectableTreeItem: {
+      '&.MuiTreeItem-root > .MuiTreeItem-content .MuiTreeItem-label': {
+        alignItems: 'center',
+        color: theme.palette.mediumGray.main
       }
     },
     checkbox: {
@@ -62,11 +69,13 @@ var EnrichedTreeItem = function EnrichedTreeItem(_ref) {
       withCheckbox = _ref.withCheckbox,
       ticked = _ref.ticked,
       parentsTicked = _ref.parentsTicked,
-      scrollIntoView = _ref.scrollIntoView;
+      scrollIntoView = _ref.scrollIntoView,
+      allowSelection = _ref.allowSelection;
   var classes = useStyles();
   var isExpanded = expanded.includes(id);
   var isTicked = ticked.includes(id);
   var isTickedParent = parentsTicked.includes(id);
+  var isSelectable = allowSelection(data);
 
   var _useChildrenData = (0, _requests.useChildrenData)({
     request: fetchChildrenData,
@@ -107,8 +116,8 @@ var EnrichedTreeItem = function EnrichedTreeItem(_ref) {
       e.preventDefault();
     }
 
-    onLabelClick(id, data);
-  }, [data, id, onLabelClick, toggleOnLabelClick]);
+    onLabelClick(id, data, isSelectable);
+  }, [data, id, onLabelClick, toggleOnLabelClick, isSelectable]);
   (0, _react.useEffect)(function () {
     if (scrollIntoView === id) {
       ref.current.scrollIntoView();
@@ -130,7 +139,8 @@ var EnrichedTreeItem = function EnrichedTreeItem(_ref) {
         withCheckbox: withCheckbox,
         ticked: ticked,
         parentsTicked: parentsTicked,
-        scrollIntoView: scrollIntoView
+        scrollIntoView: scrollIntoView,
+        allowSelection: allowSelection
       });
     });
   };
@@ -138,7 +148,7 @@ var EnrichedTreeItem = function EnrichedTreeItem(_ref) {
   if (isExpanded && isLoading) {
     return /*#__PURE__*/_react["default"].createElement(_lab.TreeItem, {
       classes: {
-        root: classes.treeItem
+        root: isSelectable ? classes.treeItem : classes.unselectableTreeItem
       },
       ref: ref,
       label: makeLabel(label(data), withCheckbox, isTicked, isTickedParent),
@@ -158,7 +168,7 @@ var EnrichedTreeItem = function EnrichedTreeItem(_ref) {
       }
     }, /*#__PURE__*/_react["default"].createElement(_lab.TreeItem, {
       classes: {
-        root: classes.treeItem
+        root: isSelectable ? classes.treeItem : classes.unselectableTreeItem
       },
       ref: ref,
       label: makeLabel(label(data), withCheckbox, isTicked, isTickedParent),
@@ -183,7 +193,7 @@ var EnrichedTreeItem = function EnrichedTreeItem(_ref) {
     }
   }, /*#__PURE__*/_react["default"].createElement(_lab.TreeItem, {
     classes: {
-      root: classes.treeItem
+      root: isSelectable ? classes.treeItem : classes.unselectableTreeItem
     },
     ref: ref,
     label: makeLabel(label(data), withCheckbox, isTicked),
@@ -214,7 +224,8 @@ EnrichedTreeItem.propTypes = {
   withCheckbox: _propTypes.bool,
   ticked: (0, _propTypes.oneOfType)([_propTypes.string, _propTypes.array]),
   parentsTicked: _propTypes.array,
-  scrollIntoView: _propTypes.string
+  scrollIntoView: _propTypes.string,
+  allowSelection: _propTypes.func
 };
 EnrichedTreeItem.defaultProps = {
   fetchChildrenData: function fetchChildrenData() {},
@@ -224,5 +235,8 @@ EnrichedTreeItem.defaultProps = {
   withCheckbox: false,
   ticked: [],
   parentsTicked: [],
-  scrollIntoView: null
+  scrollIntoView: null,
+  allowSelection: function allowSelection() {
+    return true;
+  }
 };

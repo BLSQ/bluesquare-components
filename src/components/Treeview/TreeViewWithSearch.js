@@ -72,7 +72,6 @@ const TreeViewWithSearch = ({
             let updatedParents;
             let updatedSelectedData;
             if (isSelectable) {
-                console.log('OK');
                 if (multiselect) {
                     newTicked = ticked.includes(id)
                         ? ticked.filter(tickedId => tickedId !== id)

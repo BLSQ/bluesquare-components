@@ -116,8 +116,6 @@ var TreeViewWithSearch = function TreeViewWithSearch(_ref) {
     var updatedSelectedData;
 
     if (isSelectable) {
-      console.log('OK');
-
       if (multiselect) {
         newTicked = ticked.includes(id) ? ticked.filter(function (tickedId) {
           return tickedId !== id;

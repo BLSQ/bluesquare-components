@@ -187,6 +187,7 @@ var EnrichedTreeItem = function EnrichedTreeItem(_ref) {
     }, childrenData && isExpanded && makeSubTree(childrenData), !isExpanded && /*#__PURE__*/_react["default"].createElement("div", null)));
   }
 
+  if (!hasChildren && !isSelectable) return null;
   return /*#__PURE__*/_react["default"].createElement("div", {
     style: {
       display: 'flex'

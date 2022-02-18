@@ -176,6 +176,7 @@ const EnrichedTreeItem = ({
             </div>
         );
     }
+    if (!hasChildren && !isSelectable) return null;
     return (
         <div style={{ display: 'flex' }}>
             <TreeItem

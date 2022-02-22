@@ -60,7 +60,8 @@ var IasoTreeView = function IasoTreeView(_ref) {
       onLabelClick = _ref.onLabelClick,
       ticked = _ref.ticked,
       parentsTicked = _ref.parentsTicked,
-      scrollIntoView = _ref.scrollIntoView;
+      scrollIntoView = _ref.scrollIntoView,
+      allowSelection = _ref.allowSelection;
   var classes = useStyles();
   var fetchChildrenData = (0, _react.useCallback)(getChildrenData, [getChildrenData]);
 
@@ -93,7 +94,8 @@ var IasoTreeView = function IasoTreeView(_ref) {
         withCheckbox: multiselect,
         ticked: ticked,
         parentsTicked: parentsTicked,
-        scrollIntoView: scrollIntoView
+        scrollIntoView: scrollIntoView,
+        allowSelection: allowSelection
       });
     });
   }, [label, fetchChildrenData, expanded, selected, toggleOnLabelClick, onCheckBoxClick, onLabelClick, multiselect, ticked, parentsTicked, scrollIntoView]);
@@ -132,7 +134,8 @@ IasoTreeView.propTypes = {
   selected: (0, _propTypes.oneOfType)([_propTypes.string, (0, _propTypes.arrayOf)(_propTypes.string)]),
   ticked: (0, _propTypes.oneOfType)([_propTypes.string, (0, _propTypes.arrayOf)(_propTypes.string)]),
   parentsTicked: _propTypes.array,
-  scrollIntoView: _propTypes.string
+  scrollIntoView: _propTypes.string,
+  allowSelection: _propTypes.func
 };
 IasoTreeView.defaultProps = {
   getChildrenData: function getChildrenData() {},
@@ -145,5 +148,8 @@ IasoTreeView.defaultProps = {
   selected: undefined,
   ticked: [],
   parentsTicked: [],
-  scrollIntoView: null
+  scrollIntoView: null,
+  allowSelection: function allowSelection() {
+    return true;
+  }
 };

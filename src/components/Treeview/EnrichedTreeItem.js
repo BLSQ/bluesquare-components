@@ -23,7 +23,14 @@ const styles = theme => ({
             {
                 backgroundColor: theme.palette.primary.background,
                 alignItems: 'center',
+                color: theme.palette.primary.main,
             },
+    },
+    unselectableTreeItem: {
+        '&.MuiTreeItem-root > .MuiTreeItem-content .MuiTreeItem-label': {
+            alignItems: 'center',
+            color: theme.palette.mediumGray.main,
+        },
     },
     checkbox: {
         color: theme.palette.mediumGray.main,
@@ -46,11 +53,13 @@ const EnrichedTreeItem = ({
     ticked,
     parentsTicked,
     scrollIntoView,
+    allowSelection,
 }) => {
     const classes = useStyles();
     const isExpanded = expanded.includes(id);
     const isTicked = ticked.includes(id);
     const isTickedParent = parentsTicked.includes(id);
+    const isSelectable = allowSelection(data);
     const { data: childrenData, isLoading } = useChildrenData({
         request: fetchChildrenData,
         id,
@@ -87,9 +96,9 @@ const EnrichedTreeItem = ({
             if (!toggleOnLabelClick) {
                 e.preventDefault();
             }
-            onLabelClick(id, data);
+            onLabelClick(id, data, isSelectable);
         },
-        [data, id, onLabelClick, toggleOnLabelClick],
+        [data, id, onLabelClick, toggleOnLabelClick, isSelectable],
     );
 
     useEffect(() => {
@@ -114,13 +123,18 @@ const EnrichedTreeItem = ({
                 ticked={ticked}
                 parentsTicked={parentsTicked}
                 scrollIntoView={scrollIntoView}
+                allowSelection={allowSelection}
             />
         ));
     };
     if (isExpanded && isLoading) {
         return (
             <TreeItem
-                classes={{ root: classes.treeItem }}
+                classes={{
+                    root: isSelectable
+                        ? classes.treeItem
+                        : classes.unselectableTreeItem,
+                }}
                 ref={ref}
                 label={makeLabel(
                     label(data),
@@ -137,7 +151,11 @@ const EnrichedTreeItem = ({
         return (
             <div style={{ display: 'flex' }}>
                 <TreeItem
-                    classes={{ root: classes.treeItem }}
+                    classes={{
+                        root: isSelectable
+                            ? classes.treeItem
+                            : classes.unselectableTreeItem,
+                    }}
                     ref={ref}
                     label={makeLabel(
                         label(data),
@@ -158,10 +176,15 @@ const EnrichedTreeItem = ({
             </div>
         );
     }
+    if (!hasChildren && !isSelectable) return null;
     return (
         <div style={{ display: 'flex' }}>
             <TreeItem
-                classes={{ root: classes.treeItem }}
+                classes={{
+                    root: isSelectable
+                        ? classes.treeItem
+                        : classes.unselectableTreeItem,
+                }}
                 ref={ref}
                 label={makeLabel(label(data), withCheckbox, isTicked)}
                 nodeId={id}
@@ -187,6 +210,7 @@ EnrichedTreeItem.propTypes = {
     ticked: oneOfType([string, array]),
     parentsTicked: array,
     scrollIntoView: string,
+    allowSelection: func,
 };
 
 EnrichedTreeItem.defaultProps = {
@@ -198,6 +222,7 @@ EnrichedTreeItem.defaultProps = {
     ticked: [],
     parentsTicked: [],
     scrollIntoView: null,
+    allowSelection: () => true,
 };
 
 export { EnrichedTreeItem };

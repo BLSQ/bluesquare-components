@@ -68,7 +68,8 @@ var TreeViewWithSearch = function TreeViewWithSearch(_ref) {
       multiselect = _ref.multiselect,
       preselected = _ref.preselected,
       preexpanded = _ref.preexpanded,
-      selectedData = _ref.selectedData;
+      selectedData = _ref.selectedData,
+      allowSelection = _ref.allowSelection;
 
   var _useState = (0, _react.useState)(formatInitialSelectedData(selectedData)),
       _useState2 = _slicedToArray(_useState, 2),
@@ -109,22 +110,28 @@ var TreeViewWithSearch = function TreeViewWithSearch(_ref) {
     }
   }, [onSelect, multiselect]); // Tick and untick checkbox
 
-  var onLabelClick = (0, _react.useCallback)(function (id, itemData) {
+  var onLabelClick = (0, _react.useCallback)(function (id, itemData, isSelectable) {
     var newTicked;
     var updatedParents;
     var updatedSelectedData;
 
-    if (multiselect) {
-      newTicked = ticked.includes(id) ? ticked.filter(function (tickedId) {
-        return tickedId !== id;
-      }) : [].concat(_toConsumableArray(ticked), [id]);
-      updatedParents = new Map(parentsTicked);
-    } else {
-      newTicked = [id];
-      updatedParents = new Map();
+    if (isSelectable) {
+      if (multiselect) {
+        newTicked = ticked.includes(id) ? ticked.filter(function (tickedId) {
+          return tickedId !== id;
+        }) : [].concat(_toConsumableArray(ticked), [id]);
+      } else {
+        newTicked = [id];
+      }
+
+      setTicked(newTicked);
     }
 
-    setTicked(newTicked);
+    if (multiselect) {
+      updatedParents = new Map(parentsTicked);
+    } else {
+      updatedParents = new Map();
+    }
 
     if (parentsTicked.has(id)) {
       updatedParents["delete"](id);
@@ -193,7 +200,8 @@ var TreeViewWithSearch = function TreeViewWithSearch(_ref) {
     multiselect: multiselect,
     ticked: ticked,
     parentsTicked: (0, _utils.adaptMap)(parentsTicked),
-    scrollIntoView: scrollIntoView
+    scrollIntoView: scrollIntoView,
+    allowSelection: allowSelection
   }));
 };
 
@@ -216,7 +224,8 @@ TreeViewWithSearch.propTypes = {
   // preexpanded is a Map
   preexpanded: _propTypes.any,
   selectedData: (0, _propTypes.oneOfType)([_propTypes.object, _propTypes.array]),
-  label: _propTypes.func.isRequired
+  label: _propTypes.func.isRequired,
+  allowSelection: _propTypes.func
 };
 TreeViewWithSearch.defaultProps = {
   getChildrenData: function getChildrenData() {},
@@ -231,5 +240,8 @@ TreeViewWithSearch.defaultProps = {
   multiselect: false,
   preselected: null,
   preexpanded: null,
-  selectedData: []
+  selectedData: [],
+  allowSelection: function allowSelection() {
+    return true;
+  }
 };

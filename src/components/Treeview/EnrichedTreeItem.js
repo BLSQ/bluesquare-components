@@ -54,6 +54,7 @@ const EnrichedTreeItem = ({
     parentsTicked,
     scrollIntoView,
     allowSelection,
+    queryOptions = {},
 }) => {
     const classes = useStyles();
     const isExpanded = expanded.includes(id);
@@ -63,7 +64,7 @@ const EnrichedTreeItem = ({
     const { data: childrenData, isLoading } = useChildrenData({
         request: fetchChildrenData,
         id,
-        enabled: isExpanded,
+        options: { ...queryOptions, enabled: isExpanded },
     });
     const ref = useRef();
     const hasChildren = data.has_children;
@@ -124,6 +125,7 @@ const EnrichedTreeItem = ({
                 parentsTicked={parentsTicked}
                 scrollIntoView={scrollIntoView}
                 allowSelection={allowSelection}
+                queryOptions={queryOptions}
             />
         ));
     };
@@ -211,6 +213,7 @@ EnrichedTreeItem.propTypes = {
     parentsTicked: array,
     scrollIntoView: string,
     allowSelection: func,
+    queryOptions: object,
 };
 
 EnrichedTreeItem.defaultProps = {
@@ -223,6 +226,7 @@ EnrichedTreeItem.defaultProps = {
     parentsTicked: [],
     scrollIntoView: null,
     allowSelection: () => true,
+    queryOptions: {},
 };
 
 export { EnrichedTreeItem };

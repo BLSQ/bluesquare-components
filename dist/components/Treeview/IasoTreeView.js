@@ -61,11 +61,15 @@ var IasoTreeView = function IasoTreeView(_ref) {
       ticked = _ref.ticked,
       parentsTicked = _ref.parentsTicked,
       scrollIntoView = _ref.scrollIntoView,
-      allowSelection = _ref.allowSelection;
+      allowSelection = _ref.allowSelection,
+      _ref$queryOptions = _ref.queryOptions,
+      queryOptions = _ref$queryOptions === void 0 ? {} : _ref$queryOptions,
+      _ref$childrenQueryOpt = _ref.childrenQueryOptions,
+      childrenQueryOptions = _ref$childrenQueryOpt === void 0 ? {} : _ref$childrenQueryOpt;
   var classes = useStyles();
   var fetchChildrenData = (0, _react.useCallback)(getChildrenData, [getChildrenData]);
 
-  var _useRootData = (0, _requests.useRootData)(getRootData),
+  var _useRootData = (0, _requests.useRootData)(getRootData, queryOptions),
       rootData = _useRootData.data,
       isFetching = _useRootData.isFetching;
 
@@ -95,7 +99,8 @@ var IasoTreeView = function IasoTreeView(_ref) {
         ticked: ticked,
         parentsTicked: parentsTicked,
         scrollIntoView: scrollIntoView,
-        allowSelection: allowSelection
+        allowSelection: allowSelection,
+        queryOptions: childrenQueryOptions
       });
     });
   }, [label, fetchChildrenData, expanded, selected, toggleOnLabelClick, onCheckBoxClick, onLabelClick, multiselect, ticked, parentsTicked, scrollIntoView]);
@@ -135,7 +140,9 @@ IasoTreeView.propTypes = {
   ticked: (0, _propTypes.oneOfType)([_propTypes.string, (0, _propTypes.arrayOf)(_propTypes.string)]),
   parentsTicked: _propTypes.array,
   scrollIntoView: _propTypes.string,
-  allowSelection: _propTypes.func
+  allowSelection: _propTypes.func,
+  queryOptions: _propTypes.object,
+  childrenQueryOptions: _propTypes.object
 };
 IasoTreeView.defaultProps = {
   getChildrenData: function getChildrenData() {},
@@ -151,5 +158,7 @@ IasoTreeView.defaultProps = {
   scrollIntoView: null,
   allowSelection: function allowSelection() {
     return true;
-  }
+  },
+  queryOptions: {},
+  childrenQueryOptions: {}
 };

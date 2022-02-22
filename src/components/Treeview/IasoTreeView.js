@@ -1,4 +1,12 @@
-import { string, bool, arrayOf, func, array, oneOfType } from 'prop-types';
+import {
+    string,
+    bool,
+    arrayOf,
+    func,
+    array,
+    oneOfType,
+    object,
+} from 'prop-types';
 import React, { useCallback } from 'react';
 import { TreeView } from '@material-ui/lab';
 import { makeStyles } from '@material-ui/core/styles';
@@ -41,10 +49,15 @@ const IasoTreeView = ({
     parentsTicked,
     scrollIntoView,
     allowSelection,
+    queryOptions = {},
+    childrenQueryOptions = {},
 }) => {
     const classes = useStyles();
     const fetchChildrenData = useCallback(getChildrenData, [getChildrenData]);
-    const { data: rootData, isFetching } = useRootData(getRootData);
+    const { data: rootData, isFetching } = useRootData(
+        getRootData,
+        queryOptions,
+    );
     const onNodeToggle = (_event, nodeIds) => {
         onToggle(nodeIds);
     };
@@ -71,6 +84,7 @@ const IasoTreeView = ({
                     parentsTicked={parentsTicked}
                     scrollIntoView={scrollIntoView}
                     allowSelection={allowSelection}
+                    queryOptions={childrenQueryOptions}
                 />
             ));
         },
@@ -132,6 +146,8 @@ IasoTreeView.propTypes = {
     parentsTicked: array,
     scrollIntoView: string,
     allowSelection: func,
+    queryOptions: object,
+    childrenQueryOptions: object,
 };
 
 IasoTreeView.defaultProps = {
@@ -147,6 +163,8 @@ IasoTreeView.defaultProps = {
     parentsTicked: [],
     scrollIntoView: null,
     allowSelection: () => true,
+    queryOptions: {},
+    childrenQueryOptions: {},
 };
 
 export { IasoTreeView };

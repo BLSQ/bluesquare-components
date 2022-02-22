@@ -34,7 +34,9 @@ var useChildrenData = function useChildrenData(_ref) {
         }
       }
     }, _callee);
-  })), _objectSpread({}, options));
+  })), _objectSpread({
+    retry: false
+  }, options));
 };
 
 exports.useChildrenData = useChildrenData;
@@ -54,7 +56,9 @@ var useRootData = function useRootData(request) {
         }
       }
     }, _callee2);
-  })), _objectSpread(_objectSpread({}, options), {}, {
+  })), _objectSpread(_objectSpread({
+    retry: false
+  }, options), {}, {
     keepPreviousData: false
   }));
 };
@@ -87,7 +91,8 @@ var useTreeviewSearch = function useTreeviewSearch(_ref4) {
     }, _callee3);
   })), // keepPreviousData=true avoids flicker when changing resultsCount
   _objectSpread(_objectSpread({
-    initialData: []
+    initialData: [],
+    retry: false
   }, options), {}, {
     keepPreviousData: true
   }));

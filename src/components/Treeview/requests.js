@@ -2,11 +2,13 @@ import { useQuery } from 'react-query';
 
 export const useChildrenData = ({ request, id, options }) =>
     useQuery(['getChildrenData', request, id], async () => request(id), {
+        retry: false,
         ...options,
     });
 
 export const useRootData = (request, options = {}) =>
     useQuery(['getRootData', request], async () => request(), {
+        retry: false,
         ...options,
         keepPreviousData: false,
     });
@@ -23,5 +25,5 @@ export const useTreeviewSearch = ({
             return queryResult;
         },
         // keepPreviousData=true avoids flicker when changing resultsCount
-        { initialData: [], ...options, keepPreviousData: true },
+        { initialData: [], retry: false, ...options, keepPreviousData: true },
     );

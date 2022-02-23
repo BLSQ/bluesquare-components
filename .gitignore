@@ -2,3 +2,4 @@ node_modules
 dist/stories
 .DS_Store
 lib
+temp

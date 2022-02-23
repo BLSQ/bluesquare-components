@@ -43,9 +43,9 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-var formatInitialSelectedData = function formatInitialSelectedData(selectedData, multiselect) {
-  if (multiselect && !selectedData) return [];
-  if (multiselect && !Array.isArray(selectedData)) throw new Error('Multiselect Treeview requires an array');
+var formatInitialSelectedData = function formatInitialSelectedData(selectedData) {
+  if (!selectedData) return [];
+  if (!Array.isArray(selectedData)) return [selectedData];
   return selectedData;
 };
 
@@ -134,10 +134,12 @@ var TreeViewWithSearch = function TreeViewWithSearch(_ref) {
     }
 
     if (parentsTicked.has(id)) {
+      var _data$filter;
+
       updatedParents["delete"](id);
-      updatedSelectedData = data.filter(function (d) {
+      updatedSelectedData = (_data$filter = data === null || data === void 0 ? void 0 : data.filter(function (d) {
         return d.id !== id;
-      });
+      })) !== null && _data$filter !== void 0 ? _data$filter : [];
     } else {
       updatedParents.set(id, parseNodeIds(itemData));
 

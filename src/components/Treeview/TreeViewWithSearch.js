@@ -14,10 +14,9 @@ import { MESSAGES } from './messages';
 import { IasoTreeView } from './IasoTreeView';
 import { adaptMap } from './utils';
 
-const formatInitialSelectedData = (selectedData, multiselect) => {
-    if (multiselect && !selectedData) return [];
-    if (multiselect && !Array.isArray(selectedData))
-        throw new Error('Multiselect Treeview requires an array');
+const formatInitialSelectedData = selectedData => {
+    if (!selectedData) return [];
+    if (!Array.isArray(selectedData)) return [selectedData];
     return selectedData;
 };
 
@@ -88,7 +87,7 @@ const TreeViewWithSearch = ({
             }
             if (parentsTicked.has(id)) {
                 updatedParents.delete(id);
-                updatedSelectedData = data.filter(d => d.id !== id);
+                updatedSelectedData = data?.filter(d => d.id !== id) ?? [];
             } else {
                 updatedParents.set(id, parseNodeIds(itemData));
                 if (multiselect) {

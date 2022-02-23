@@ -9,9 +9,7 @@ const alignTailIcon = { display: 'flex', alignItems: 'center' };
 // TODO remove repetitions
 const styles = theme => ({
     truncatedTreeview: {
-        '&:hover .MuiTreeItem-label': {
-            backgroundColor: 'white',
-        },
+        '&:hover .MuiTreeItem-label': {},
         '&.MuiTreeItem-root:focus > .MuiTreeItem-content .MuiTreeItem-label': {
             backgroundColor: 'white',
         },
@@ -25,12 +23,9 @@ const styles = theme => ({
         color: theme.palette.mediumGray.main,
     },
     lastTreeItem: {
-        '&:hover .MuiTreeItem-label': {
-            backgroundColor: 'white',
-        },
-        '&.MuiTreeItem-root:focus > .MuiTreeItem-content .MuiTreeItem-label': {
-            backgroundColor: 'white',
-        },
+        '&:hover .MuiTreeItem-label': {},
+        '&.MuiTreeItem-root:focus > .MuiTreeItem-content .MuiTreeItem-label':
+            {},
         '& .MuiTreeItem-label': {
             ...alignTailIcon,
         },
@@ -54,7 +49,7 @@ const determineClassName = (items, nextItems, style) => {
 };
 const useStyles = makeStyles(styles);
 
-const TruncatedTreeview = ({ onClick, selectedItems, label }) => {
+const TruncatedTreeview = ({ selectedItems, label, redirect }) => {
     const style = useStyles();
     const mouseDownTime = useRef();
 
@@ -67,10 +62,15 @@ const TruncatedTreeview = ({ onClick, selectedItems, label }) => {
         const className = determineClassName(initialItems, nextItems, style);
         return (
             <TreeItem
-                key={item + nextItems.size.toString()}
+                key={item[0].toString() + nextItems.size.toString()}
                 className={className}
                 onIconClick={e => e.preventDefault()}
-                onLabelClick={e => e.preventDefault()}
+                onLabelClick={e => {
+                    e.preventDefault();
+                    if (new Date() - mouseDownTime.current < 150) {
+                        redirect(item[0]);
+                    }
+                }}
                 collapseIcon={
                     <ArrowDropDownIcon style={{ fontSize: 'large' }} />
                 }
@@ -91,11 +91,6 @@ const TruncatedTreeview = ({ onClick, selectedItems, label }) => {
             onMouseDown={() => {
                 mouseDownTime.current = new Date();
             }}
-            onClick={() => {
-                if (new Date() - mouseDownTime.current < 150) {
-                    onClick();
-                }
-            }}
             disableSelection
             expanded={expanded}
             className={style.truncatedTreeview}
@@ -106,13 +101,14 @@ const TruncatedTreeview = ({ onClick, selectedItems, label }) => {
 };
 
 TruncatedTreeview.propTypes = {
-    onClick: func.isRequired,
     // in fact a nested map : {orgUnitId:{parentId:parentName}}
     selectedItems: any,
     label: func.isRequired,
+    redirect: func,
 };
 TruncatedTreeview.defaultProps = {
     selectedItems: null,
+    redirect: () => null,
 };
 
 export { TruncatedTreeview };

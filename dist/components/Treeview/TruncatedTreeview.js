@@ -39,8 +39,7 @@ var alignTailIcon = {
 var styles = function styles(theme) {
   return {
     truncatedTreeview: {
-      '&:hover .MuiTreeItem-label': {
-        backgroundColor: 'white'
+      '&:hover .MuiTreeItem-label': {// backgroundColor: 'white',
       },
       '&.MuiTreeItem-root:focus > .MuiTreeItem-content .MuiTreeItem-label': {
         backgroundColor: 'white'
@@ -54,11 +53,9 @@ var styles = function styles(theme) {
       color: theme.palette.mediumGray.main
     },
     lastTreeItem: {
-      '&:hover .MuiTreeItem-label': {
-        backgroundColor: 'white'
+      '&:hover .MuiTreeItem-label': {// backgroundColor: 'white',
       },
-      '&.MuiTreeItem-root:focus > .MuiTreeItem-content .MuiTreeItem-label': {
-        backgroundColor: 'white'
+      '&.MuiTreeItem-root:focus > .MuiTreeItem-content .MuiTreeItem-label': {// backgroundColor: 'white',
       },
       '& .MuiTreeItem-label': _objectSpread({}, alignTailIcon),
       color: theme.palette.gray.main
@@ -86,9 +83,9 @@ var useStyles = (0, _styles.makeStyles)(styles);
 var TruncatedTreeview = function TruncatedTreeview(_ref) {
   var _Array$from$map;
 
-  var _onClick = _ref.onClick,
-      selectedItems = _ref.selectedItems,
-      label = _ref.label;
+  var selectedItems = _ref.selectedItems,
+      label = _ref.label,
+      redirect = _ref.redirect;
   var style = useStyles();
   var mouseDownTime = (0, _react.useRef)();
 
@@ -100,13 +97,17 @@ var TruncatedTreeview = function TruncatedTreeview(_ref) {
     nextItems["delete"](item[0]);
     var className = determineClassName(initialItems, nextItems, style);
     return /*#__PURE__*/_react["default"].createElement(_lab.TreeItem, {
-      key: item + nextItems.size.toString(),
+      key: item[0].toString() + nextItems.size.toString(),
       className: className,
       onIconClick: function onIconClick(e) {
         return e.preventDefault();
       },
       onLabelClick: function onLabelClick(e) {
-        return e.preventDefault();
+        e.preventDefault();
+
+        if (new Date() - mouseDownTime.current < 150) {
+          redirect(item[0]);
+        }
       },
       collapseIcon: /*#__PURE__*/_react["default"].createElement(_ArrowDropDown["default"], {
         style: {
@@ -130,11 +131,6 @@ var TruncatedTreeview = function TruncatedTreeview(_ref) {
     onMouseDown: function onMouseDown() {
       mouseDownTime.current = new Date();
     },
-    onClick: function onClick() {
-      if (new Date() - mouseDownTime.current < 150) {
-        _onClick();
-      }
-    },
     disableSelection: true,
     expanded: expanded,
     className: style.truncatedTreeview
@@ -143,11 +139,14 @@ var TruncatedTreeview = function TruncatedTreeview(_ref) {
 
 exports.TruncatedTreeview = TruncatedTreeview;
 TruncatedTreeview.propTypes = {
-  onClick: _propTypes.func.isRequired,
   // in fact a nested map : {orgUnitId:{parentId:parentName}}
   selectedItems: _propTypes.any,
-  label: _propTypes.func.isRequired
+  label: _propTypes.func.isRequired,
+  redirect: _propTypes.func
 };
 TruncatedTreeview.defaultProps = {
-  selectedItems: null
+  selectedItems: null,
+  redirect: function redirect() {
+    return null;
+  }
 };

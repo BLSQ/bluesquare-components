@@ -34,48 +34,43 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var alignTailIcon = {
   display: 'flex',
   alignItems: 'center'
-}; // TODO remove repetitions
+};
+var removeBackgroundOnTabNav = {
+  '&.MuiTreeItem-root:focus > .MuiTreeItem-content .MuiTreeItem-label': {
+    backgroundColor: 'white'
+  }
+};
+
+var treeItemStyle = _objectSpread({
+  '& .MuiTreeItem-label': _objectSpread(_objectSpread({}, alignTailIcon), {}, {
+    paddingLeft: '0px'
+  })
+}, removeBackgroundOnTabNav); // TODO remove repetitions
+
 
 var styles = function styles(theme) {
   return {
     truncatedTreeview: {
-      '&:hover .MuiTreeItem-label': {// backgroundColor: 'white',
-      },
-      '&.MuiTreeItem-root:focus > .MuiTreeItem-content .MuiTreeItem-label': {
-        backgroundColor: 'white'
-      },
-      '&MuiTreeItem-iconContainer': {
-        width: '0px'
-      },
-      '& .MuiTreeItem-label': _objectSpread({
-        paddingLeft: '0px'
-      }, alignTailIcon),
       color: theme.palette.mediumGray.main
     },
-    lastTreeItem: {
-      '&:hover .MuiTreeItem-label': {// backgroundColor: 'white',
-      },
-      '&.MuiTreeItem-root:focus > .MuiTreeItem-content .MuiTreeItem-label': {// backgroundColor: 'white',
-      },
-      '& .MuiTreeItem-label': _objectSpread({}, alignTailIcon),
+    singleTreeItem: _objectSpread(_objectSpread({}, treeItemStyle), {}, {
       color: theme.palette.gray.main
-    },
-    singleTreeItem: {
-      '& .MuiTreeItem-iconContainer': {
-        width: '0px'
-      },
-      '& .MuiTreeItem-label': _objectSpread({
-        paddingLeft: '0px'
-      }, alignTailIcon),
+    }),
+    truncatedTreeviewItem: _objectSpread(_objectSpread({}, treeItemStyle), {}, {
+      color: theme.palette.mediumGray.main
+    }),
+    lastTreeItem: _objectSpread(_objectSpread({
+      '& .MuiTreeItem-label': _objectSpread({}, alignTailIcon)
+    }, removeBackgroundOnTabNav), {}, {
       color: theme.palette.gray.main
-    }
+    })
   };
 };
 
 var determineClassName = function determineClassName(items, nextItems, style) {
   if (items.size === 1) return style.singleTreeItem;
   if (nextItems.size === 0) return style.lastTreeItem;
-  return style.truncatedTreeView;
+  return style.truncatedTreeviewItem;
 };
 
 var useStyles = (0, _styles.makeStyles)(styles);
@@ -88,6 +83,16 @@ var TruncatedTreeview = function TruncatedTreeview(_ref) {
       redirect = _ref.redirect;
   var style = useStyles();
   var mouseDownTime = (0, _react.useRef)();
+
+  var onLabelClick = function onLabelClick(id) {
+    return function (e) {
+      e.preventDefault();
+
+      if (new Date() - mouseDownTime.current < 150) {
+        redirect(id);
+      }
+    };
+  };
 
   var makeTreeItems = function makeTreeItems(items, initialItems) {
     if (items.size === 0) return null;
@@ -102,13 +107,7 @@ var TruncatedTreeview = function TruncatedTreeview(_ref) {
       onIconClick: function onIconClick(e) {
         return e.preventDefault();
       },
-      onLabelClick: function onLabelClick(e) {
-        e.preventDefault();
-
-        if (new Date() - mouseDownTime.current < 150) {
-          redirect(item[0]);
-        }
-      },
+      onLabelClick: onLabelClick(item[0]),
       collapseIcon: /*#__PURE__*/_react["default"].createElement(_ArrowDropDown["default"], {
         style: {
           fontSize: 'large'
@@ -120,7 +119,8 @@ var TruncatedTreeview = function TruncatedTreeview(_ref) {
         }
       }),
       label: label(item[1]),
-      nodeId: item[0]
+      nodeId: item[0],
+      disabled: true
     }, items.size >= 1 ? makeTreeItems(nextItems, initialItems) : null);
   };
 

@@ -9,12 +9,12 @@ var _reactIntl = require("react-intl");
 
 var MESSAGES = (0, _reactIntl.defineMessages)({
   textAreaPlaceholder: {
-    id: 'blsq.comment.textArea.placeholder',
-    defaultMessage: 'Leave a comment here'
+    id: "blsq.comment.textArea.placeholder",
+    defaultMessage: "Leave a comment here"
   },
   confirmComment: {
-    id: 'blsq.comment.confirmComment',
-    defaultMessage: 'Confirm'
+    id: "blsq.comment.confirmComment",
+    defaultMessage: "Confirm"
   }
 });
 exports.MESSAGES = MESSAGES;

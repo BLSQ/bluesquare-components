@@ -9,20 +9,20 @@ var _reactIntl = require("react-intl");
 
 var MESSAGES = (0, _reactIntl.defineMessages)({
   search: {
-    id: 'blsq.table.label.search',
-    defaultMessage: 'Search'
+    id: "blsq.table.label.search",
+    defaultMessage: "Search"
   },
   close: {
-    id: 'blsq.table.label.close',
-    defaultMessage: 'Close'
+    id: "blsq.table.label.close",
+    defaultMessage: "Close"
   },
   resetSearch: {
-    id: 'blsq.table.label.resetSearch',
-    defaultMessage: 'Empty search'
+    id: "blsq.table.label.resetSearch",
+    defaultMessage: "Empty search"
   },
   columnSelectTooltip: {
-    id: 'blsq.table.columnSelect.tooltip',
-    defaultMessage: 'Select visible columns'
+    id: "blsq.table.columnSelect.tooltip",
+    defaultMessage: "Select visible columns"
   }
 });
 exports.MESSAGES = MESSAGES;

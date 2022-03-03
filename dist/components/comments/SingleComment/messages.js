@@ -9,8 +9,8 @@ var _reactIntl = require("react-intl");
 
 var MESSAGES = (0, _reactIntl.defineMessages)({
   reply: {
-    id: 'blsq.comment.button.reply',
-    defaultMessage: 'Reply'
+    id: "blsq.comment.button.reply",
+    defaultMessage: "Reply"
   }
 });
 exports.MESSAGES = MESSAGES;

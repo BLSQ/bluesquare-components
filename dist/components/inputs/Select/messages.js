@@ -9,8 +9,8 @@ var _reactIntl = require("react-intl");
 
 var MESSAGES = (0, _reactIntl.defineMessages)({
   noOptions: {
-    id: 'blsq.button.label.noOptions',
-    defaultMessage: 'No results found'
+    id: "blsq.button.label.noOptions",
+    defaultMessage: "No results found"
   }
 });
 exports.MESSAGES = MESSAGES;

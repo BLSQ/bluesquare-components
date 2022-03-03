@@ -9,72 +9,72 @@ var _reactIntl = require("react-intl");
 
 var MESSAGES = (0, _reactIntl.defineMessages)({
   previousText: {
-    defaultMessage: 'Previous',
-    id: 'blsq.table.previous'
+    defaultMessage: "Previous",
+    id: "blsq.table.previous"
   },
   nextText: {
-    defaultMessage: 'Next',
-    id: 'blsq.table.next'
+    defaultMessage: "Next",
+    id: "blsq.table.next"
   },
   lastText: {
-    defaultMessage: 'Last page',
-    id: 'blsq.table.last'
+    defaultMessage: "Last page",
+    id: "blsq.table.last"
   },
   firstText: {
-    defaultMessage: 'First page',
-    id: 'blsq.table.first'
+    defaultMessage: "First page",
+    id: "blsq.table.first"
   },
   noDataText: {
-    defaultMessage: 'No result',
-    id: 'blsq.table.noResult'
+    defaultMessage: "No result",
+    id: "blsq.table.noResult"
   },
   pageText: {
-    defaultMessage: 'Page',
-    id: 'blsq.table.page'
+    defaultMessage: "Page",
+    id: "blsq.table.page"
   },
   ofText: {
-    defaultMessage: 'of',
-    id: 'blsq.table.of'
+    defaultMessage: "of",
+    id: "blsq.table.of"
   },
   rowsText: {
-    defaultMessage: 'results',
-    id: 'blsq.table.results'
+    defaultMessage: "results",
+    id: "blsq.table.results"
   },
   selectionAction: {
-    defaultMessage: 'With',
-    id: 'blsq.table.labels.selectionAction'
+    defaultMessage: "With",
+    id: "blsq.table.labels.selectionAction"
   },
   results: {
-    id: 'blsq.table.label.resultsLower',
-    defaultMessage: 'result(s)'
+    id: "blsq.table.label.resultsLower",
+    defaultMessage: "result(s)"
   },
   selection: {
-    id: 'blsq.table.label.selection',
-    defaultMessage: 'Selection'
+    id: "blsq.table.label.selection",
+    defaultMessage: "Selection"
   },
   selected: {
-    id: 'blsq.table.label.selected',
-    defaultMessage: 'selected'
+    id: "blsq.table.label.selected",
+    defaultMessage: "selected"
   },
   loading: {
-    id: 'blsq.table.loading',
-    defaultMessage: 'Loading...'
+    id: "blsq.table.loading",
+    defaultMessage: "Loading..."
   },
   details: {
-    defaultMessage: 'Details',
-    id: 'blsq.table.details'
+    defaultMessage: "Details",
+    id: "blsq.table.details"
   },
   sortAsc: {
-    defaultMessage: 'Sort ascending',
-    id: 'blsq.table.sortAsc'
+    defaultMessage: "Sort ascending",
+    id: "blsq.table.sortAsc"
   },
   sortDesc: {
-    defaultMessage: 'Sort descending',
-    id: 'blsq.table.sortDesc'
+    defaultMessage: "Sort descending",
+    id: "blsq.table.sortDesc"
   },
   unSort: {
-    defaultMessage: 'Remove sort',
-    id: 'blsq.table.unSort'
+    defaultMessage: "Remove sort",
+    id: "blsq.table.unSort"
   }
 });
 exports.MESSAGES = MESSAGES;

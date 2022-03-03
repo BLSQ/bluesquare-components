@@ -1,9 +1,13 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.Footer = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -16,10 +20,6 @@ var _TableCell = _interopRequireDefault(require("@material-ui/core/TableCell"));
 var _TableRow = _interopRequireDefault(require("@material-ui/core/TableRow"));
 
 var _styles = require("@material-ui/core/styles");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 var useStyles = (0, _styles.makeStyles)(function (theme) {
   return {
@@ -34,14 +34,14 @@ var Footer = function Footer(_ref) {
   var classes = useStyles();
   return /*#__PURE__*/_react["default"].createElement(_TableFooter["default"], null, footerGroups.map(function (footerGroup) {
     var footerGroupProps = footerGroup.getFooterGroupProps();
-    return /*#__PURE__*/_react["default"].createElement(_TableRow["default"], _extends({}, footerGroupProps, {
+    return /*#__PURE__*/_react["default"].createElement(_TableRow["default"], (0, _extends2["default"])({}, footerGroupProps, {
       key: footerGroupProps.key
     }), footerGroup.headers.map(function (column) {
       var columnsProps = column.getFooterProps();
       var align = column.align || 'center';
 
       if (column.Footer && !column.placeholderOf) {
-        return /*#__PURE__*/_react["default"].createElement(_TableCell["default"], _extends({}, columnsProps, {
+        return /*#__PURE__*/_react["default"].createElement(_TableCell["default"], (0, _extends2["default"])({}, columnsProps, {
           className: classes.cell,
           key: columnsProps.key,
           align: align

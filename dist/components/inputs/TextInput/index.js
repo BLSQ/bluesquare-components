@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -14,8 +16,6 @@ var _core = require("@material-ui/core");
 var _FormControl = require("../FormControl");
 
 var _InputLabel = require("../InputLabel");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var TextInput = function TextInput(_ref) {
   var keyValue = _ref.keyValue,

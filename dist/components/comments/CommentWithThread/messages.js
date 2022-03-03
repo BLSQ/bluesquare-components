@@ -9,16 +9,16 @@ var _reactIntl = require("react-intl");
 
 var MESSAGES = (0, _reactIntl.defineMessages)({
   collapse: {
-    id: 'blsq.comment.button.label.collapse',
-    defaultMessage: 'Hide thread'
+    id: "blsq.comment.button.label.collapse",
+    defaultMessage: "Hide thread"
   },
   expand: {
-    id: 'blsq.comment.button.label.expand',
-    defaultMessage: 'Show thread'
+    id: "blsq.comment.button.label.expand",
+    defaultMessage: "Show thread"
   },
   addReply: {
-    id: 'blsq.comment.button.label.addReply',
-    defaultMessage: 'Add reply'
+    id: "blsq.comment.button.label.addReply",
+    defaultMessage: "Add reply"
   }
 });
 exports.MESSAGES = MESSAGES;

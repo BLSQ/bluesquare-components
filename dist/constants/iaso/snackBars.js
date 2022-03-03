@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.reloadPage = exports.warning = exports.error = exports.success = exports.reloadPageMessageKey = exports.buttonReloadMessageKey = exports.formWarningMessageKey = exports.formErrorMessageKey = exports.formSuccessFullMessageKey = void 0;
+exports.warning = exports.success = exports.reloadPageMessageKey = exports.reloadPage = exports.formWarningMessageKey = exports.formSuccessFullMessageKey = exports.formErrorMessageKey = exports.error = exports.buttonReloadMessageKey = void 0;
 var formSuccessFullMessageKey = 'successful';
 exports.formSuccessFullMessageKey = formSuccessFullMessageKey;
 var formErrorMessageKey = 'error';

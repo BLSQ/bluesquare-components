@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -18,8 +20,6 @@ var _FormControl = require("../FormControl");
 var _InputLabel = require("../InputLabel");
 
 var _styles = require("./styles");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var SearchInput = function SearchInput(_ref) {
   var withMarginTop = _ref.withMarginTop,

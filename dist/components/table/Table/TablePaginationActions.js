@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -34,8 +36,6 @@ var _PageRowSelect = require("./PageRowSelect");
 var _Count = require("./Count");
 
 var _messages = require("./messages");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var useStyles = (0, _styles.makeStyles)(function (theme) {
   return {

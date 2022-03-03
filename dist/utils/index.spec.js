@@ -1,10 +1,10 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 var _assert = _interopRequireDefault(require("assert"));
 
 var _index = require("./index");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 describe('clone', function () {
   it('should clone an obj', function () {

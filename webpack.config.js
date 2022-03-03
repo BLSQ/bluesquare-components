@@ -29,6 +29,18 @@ module.exports = {
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
+                    options: {
+                        cacheDirectory: true,
+                        presets: [
+                            ['@babel/preset-env', { targets: { node: '14' } }],
+                            '@babel/preset-react',
+                            [
+                                '@babel/preset-typescript',
+                                { isTSX: true, allExtensions: true },
+                            ],
+                        ],
+                        plugins: ['@babel/transform-runtime', 'formatjs'],
+                    },
                 },
             },
             {

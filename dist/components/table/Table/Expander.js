@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -18,8 +20,6 @@ var _VisibilityOff = _interopRequireDefault(require("@material-ui/icons/Visibili
 var _useSafeIntl2 = require("../../../utils/useSafeIntl");
 
 var _messages = require("./messages");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var Expander = function Expander(_ref) {
   var isExpanded = _ref.isExpanded,

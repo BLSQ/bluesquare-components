@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -14,8 +16,6 @@ var _core = require("@material-ui/core");
 var _Info = _interopRequireDefault(require("@material-ui/icons/Info"));
 
 var _styles = require("./styles");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var InfoHeader = function InfoHeader(_ref) {
   var message = _ref.message,

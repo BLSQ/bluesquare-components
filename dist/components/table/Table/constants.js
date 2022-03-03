@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ROWS_PER_PAGE_OPTIONS = exports.DEFAULT_ORDER = exports.DEFAULT_PAGE = exports.DEFAULT_PAGE_SIZE = void 0;
+exports.ROWS_PER_PAGE_OPTIONS = exports.DEFAULT_PAGE_SIZE = exports.DEFAULT_PAGE = exports.DEFAULT_ORDER = void 0;
 var DEFAULT_PAGE_SIZE = 10;
 exports.DEFAULT_PAGE_SIZE = DEFAULT_PAGE_SIZE;
 var DEFAULT_PAGE = 1;

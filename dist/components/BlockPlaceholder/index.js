@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -12,8 +14,6 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _core = require("@material-ui/core");
 
 var _styles = require("./styles");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var BlockPlaceholder = function BlockPlaceholder(_ref) {
   var classes = _ref.classes,

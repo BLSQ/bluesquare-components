@@ -1,10 +1,10 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 var _assert = _interopRequireDefault(require("assert"));
 
 var _fetchData = require("./fetchData");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 describe('createUrl', function () {
   it('should create an url', function () {

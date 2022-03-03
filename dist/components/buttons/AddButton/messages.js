@@ -9,8 +9,8 @@ var _reactIntl = require("react-intl");
 
 var MESSAGES = (0, _reactIntl.defineMessages)({
   create: {
-    id: 'blsq.button.label.create',
-    defaultMessage: 'Create'
+    id: "blsq.button.label.create",
+    defaultMessage: "Create"
   }
 });
 exports.MESSAGES = MESSAGES;

@@ -1,4 +1,4 @@
-import { LoadingSpinner } from './components/LoadingSpinner';
+import { LoadingSpinner } from './components/LoadingSpinner/index.tsx';
 import { CsvSvg } from './svg/CsvSvgComponent';
 import { DHIS2Svg } from './svg/DHIS2SvgComponent';
 import { ExcellSvg } from './svg/ExcellSvgComponent';
@@ -17,6 +17,7 @@ import { patchIntl } from './utils/patchIntl';
 import { useSafeIntl } from './utils/useSafeIntl';
 import { useSkipEffectOnMount } from './utils/useSkipEffectOnMount';
 import { theme, rawTheme } from './styles/iaso/theme';
+import { testTS } from './utils/test.ts';
 import { commonStyles } from './styles/iaso/common';
 import { mapStyles } from './styles/iaso/map';
 import { mapPopupStyles } from './styles/iaso/mapPopup';
@@ -68,6 +69,7 @@ export * from './utils/fetchData';
 export * from './constants/iaso/uiConstants';
 
 export {
+    testTS,
     LoadingSpinner,
     CsvSvg,
     DHIS2Svg,

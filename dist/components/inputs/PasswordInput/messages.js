@@ -9,8 +9,8 @@ var _reactIntl = require("react-intl");
 
 var MESSAGES = (0, _reactIntl.defineMessages)({
   displayPassword: {
-    id: 'blsq.button.label.displayPassword',
-    defaultMessage: 'Display the pasword'
+    id: "blsq.button.label.displayPassword",
+    defaultMessage: "Display the pasword"
   }
 });
 exports.MESSAGES = MESSAGES;

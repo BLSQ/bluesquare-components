@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getOtChipColors = exports.otChipColors = exports.getChipColors = exports.chipColors = void 0;
+exports.otChipColors = exports.getOtChipColors = exports.getChipColors = exports.chipColors = void 0;
 var chipColors = ['#4dd0e1', '#01579b', '#607d8b', '#ff7043', '#e91e63', '#9c27b0', '#f44336', '#2196f3', '#009688'];
 exports.chipColors = chipColors;
 

@@ -1,14 +1,18 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.capitalize = exports.addPositionIndex = void 0;
 exports.clone = clone;
 exports.deepEqual = deepEqual;
+exports.removePositionIndex = exports.formatThousand = void 0;
 exports.substituteVars = substituteVars;
-exports.removePositionIndex = exports.addPositionIndex = exports.truncateText = exports.formatThousand = exports.capitalize = void 0;
+exports.truncateText = void 0;
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
 
 function clone(x) {
   return JSON.parse(JSON.stringify(x));
@@ -17,7 +21,7 @@ function clone(x) {
 function deepEqual(a, b) {
   var ignoreNull = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
-  if (_typeof(a) !== 'object') {
+  if ((0, _typeof2["default"])(a) !== 'object') {
     return a === b;
   }
 

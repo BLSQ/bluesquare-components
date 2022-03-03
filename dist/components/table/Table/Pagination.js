@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -16,8 +18,6 @@ var _styles = require("@material-ui/core/styles");
 var _constants = require("./constants");
 
 var _TablePaginationActions = require("./TablePaginationActions");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var useStyles = (0, _styles.makeStyles)(function () {
   return {

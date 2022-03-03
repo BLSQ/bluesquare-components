@@ -1,11 +1,13 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.styles = void 0;
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
 var styles = function styles(theme) {
   return {
@@ -14,7 +16,7 @@ var styles = function styles(theme) {
       right: theme.spacing(2)
     },
     // TODO confirm if can safely be deleted
-    search: _defineProperty({
+    search: (0, _defineProperty2["default"])({
       position: 'relative',
       borderRadius: theme.shape.borderRadius,
       marginLeft: 0,

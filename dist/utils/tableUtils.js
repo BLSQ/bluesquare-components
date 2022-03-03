@@ -1,9 +1,15 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getColumnsHeadersInfos = exports.tableInitialResult = exports.getTableParams = exports.getParamsKey = exports.setTableSelection = exports.selectionInitialState = exports.defaultSelectionActions = exports.getSimplifiedColumns = exports.getOrderArray = exports.getSort = exports.getTableUrl = void 0;
+exports.tableInitialResult = exports.setTableSelection = exports.selectionInitialState = exports.getTableUrl = exports.getTableParams = exports.getSort = exports.getSimplifiedColumns = exports.getParamsKey = exports.getOrderArray = exports.getColumnsHeadersInfos = exports.defaultSelectionActions = void 0;
+
+var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
+
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -15,25 +21,9 @@ var _index = require("./index");
 
 var _InfoHeader = require("../components/table/InfoHeader");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2["default"])(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
 var getTableUrl = function getTableUrl(urlKey, params) {
   var toExport = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
@@ -120,8 +110,8 @@ var defaultSelectionActions = function defaultSelectionActions(selectAll, unSele
   return [{
     icon: /*#__PURE__*/_react["default"].createElement(_Add["default"], null),
     label: formatMessage({
-      id: 'iaso.label.selectAll',
-      defaultMessage: 'Select all'
+      id: "iaso.label.selectAll",
+      defaultMessage: "Select all"
     }),
     onClick: function onClick() {
       return selectAll();
@@ -129,8 +119,8 @@ var defaultSelectionActions = function defaultSelectionActions(selectAll, unSele
   }, {
     icon: /*#__PURE__*/_react["default"].createElement(_Remove["default"], null),
     label: formatMessage({
-      id: 'iaso.label.unSelectAll',
-      defaultMessage: 'Unselect all'
+      id: "iaso.label.unSelectAll",
+      defaultMessage: "Unselect all"
     }),
     onClick: function onClick() {
       return unSelectAll();
@@ -222,8 +212,7 @@ var tableInitialResult = {
 exports.tableInitialResult = tableInitialResult;
 
 var getColumnsHeadersInfos = function getColumnsHeadersInfos(columns) {
-  var newColumns = _toConsumableArray(columns);
-
+  var newColumns = (0, _toConsumableArray2["default"])(columns);
   columns.forEach(function (c, i) {
     if (c.headerInfo) {
       newColumns[i] = _objectSpread(_objectSpread({}, newColumns[i]), {}, {

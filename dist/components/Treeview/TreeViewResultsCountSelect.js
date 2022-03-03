@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -10,8 +12,6 @@ var _react = _interopRequireDefault(require("react"));
 var _propTypes = require("prop-types");
 
 var _PageRowSelect = require("../table/Table/PageRowSelect");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var ROWS_PER_PAGE_OPTIONS = [5, 10, 20, 30, 40, 50];
 

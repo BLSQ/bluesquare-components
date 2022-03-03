@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -12,8 +14,6 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _InputLabel = _interopRequireDefault(require("@material-ui/core/InputLabel"));
 
 var _styles = require("./styles");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 /** @deprecated use InputLabel from @material-ui/core instead to avoid text alignment issues */
 function InputLabelComponent(_ref) {

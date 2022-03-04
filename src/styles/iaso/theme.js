@@ -6,6 +6,11 @@ const rawTheme = {
     },
     textColor: '#333',
     palette: {
+        primary: {
+            main: '#006699',
+            secondary: '#0066cc',
+            background: '#ffffff',
+        },
         gray: {
             main: '#666',
             border: 'rgba(0,0,0,0.02)',

@@ -9,7 +9,7 @@ const rawTheme = {
         primary: {
             main: '#006699',
             secondary: '#0066cc',
-            background: '#ffffff',
+            background: '#F5F5F5',
         },
         gray: {
             main: '#666',

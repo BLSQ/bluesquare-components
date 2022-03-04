@@ -13,6 +13,11 @@ var rawTheme = {
   },
   textColor: '#333',
   palette: {
+    primary: {
+      main: '#006699',
+      secondary: '#0066cc',
+      background: '#F5F5F5'
+    },
     gray: {
       main: '#666',
       border: 'rgba(0,0,0,0.02)',

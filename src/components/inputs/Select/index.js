@@ -85,7 +85,8 @@ const SelectCustom = ({
         [multi, onChange, returnFullObject],
     );
     const extraProps = {
-        getOptionLabel: getOptionLabel || (option => option?.label ?? option),
+        getOptionLabel:
+            getOptionLabel || (option => option?.label ?? option.toString()),
         getOptionSelected:
             getOptionSelected ||
             ((option, val) => val && option.value === val.value),

@@ -47,6 +47,7 @@ const SelectCustom = ({
     returnFullObject,
     helperText,
 }) => {
+    console.log('errors', errors);
     const intl = useSafeIntl();
     const classes = useStyles();
     const shiftKeyIsDown = useKeyPressListener('Shift');
@@ -120,7 +121,7 @@ const SelectCustom = ({
                 disabled={disabled}
                 label={`${label}${required ? '*' : ''}`}
                 onBlur={onBlur}
-                error={errors.length > 0 && touched}
+                error={errors.length > 0}
                 InputLabelProps={{
                     classes: {
                         shrink: classes.shrink,
@@ -178,7 +179,6 @@ SelectCustom.defaultProps = {
     disabled: false,
     clearable: true,
     required: false,
-    touched: false,
     loading: false,
     options: [],
     onBlur: () => {},
@@ -204,7 +204,6 @@ SelectCustom.propTypes = {
     noOptionsText: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     helperText: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     options: PropTypes.array,
-    touched: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
     loading: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
     getOptionLabel: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),

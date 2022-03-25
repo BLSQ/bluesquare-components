@@ -85,6 +85,7 @@ var SelectCustom = function SelectCustom(_ref) {
       renderTags = _ref.renderTags,
       returnFullObject = _ref.returnFullObject,
       helperText = _ref.helperText;
+  console.log('errors', errors);
   var intl = (0, _useSafeIntl.useSafeIntl)();
   var classes = (0, _styles.useStyles)();
   var shiftKeyIsDown = (0, _useKeyPressListener.useKeyPressListener)('Shift');
@@ -174,7 +175,7 @@ var SelectCustom = function SelectCustom(_ref) {
       disabled: disabled,
       label: "".concat(label).concat(required ? '*' : ''),
       onBlur: onBlur,
-      error: errors.length > 0 && touched,
+      error: errors.length > 0,
       InputLabelProps: {
         classes: {
           shrink: classes.shrink
@@ -227,7 +228,6 @@ SelectCustom.defaultProps = {
   disabled: false,
   clearable: true,
   required: false,
-  touched: false,
   loading: false,
   options: [],
   onBlur: function onBlur() {},
@@ -255,7 +255,6 @@ SelectCustom.propTypes = {
   noOptionsText: _propTypes["default"].oneOfType([_propTypes["default"].object, _propTypes["default"].string]),
   helperText: _propTypes["default"].oneOfType([_propTypes["default"].object, _propTypes["default"].string]),
   options: _propTypes["default"].array,
-  touched: _propTypes["default"].oneOfType([_propTypes["default"].bool, _propTypes["default"].array]),
   loading: _propTypes["default"].bool,
   onChange: _propTypes["default"].func.isRequired,
   getOptionLabel: _propTypes["default"].oneOfType([_propTypes["default"].object, _propTypes["default"].func]),

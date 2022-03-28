@@ -47,7 +47,6 @@ const SelectCustom = ({
     returnFullObject,
     helperText,
 }) => {
-    console.log('errors', errors);
     const intl = useSafeIntl();
     const classes = useStyles();
     const shiftKeyIsDown = useKeyPressListener('Shift');

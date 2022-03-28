@@ -85,7 +85,6 @@ var SelectCustom = function SelectCustom(_ref) {
       renderTags = _ref.renderTags,
       returnFullObject = _ref.returnFullObject,
       helperText = _ref.helperText;
-  console.log('errors', errors);
   var intl = (0, _useSafeIntl.useSafeIntl)();
   var classes = (0, _styles.useStyles)();
   var shiftKeyIsDown = (0, _useKeyPressListener.useKeyPressListener)('Shift');

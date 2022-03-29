@@ -13,11 +13,6 @@ const styles = theme => ({
 
 function AddButtonComponent({ classes, onClick, message, id, dataTestId }) {
     const intl = useSafeIntl();
-    const extraProps = {};
-
-    if (dataTestId !== '') {
-        extraProps['data-test'] = dataTestId;
-    }
     return (
         <Button
             variant="contained"
@@ -25,7 +20,7 @@ function AddButtonComponent({ classes, onClick, message, id, dataTestId }) {
             color="primary"
             onClick={onClick}
             id={id}
-            {...extraProps}
+            data-test={dataTestId}
         >
             <Add className={classes.buttonIcon} />
             {intl.formatMessage(message)}

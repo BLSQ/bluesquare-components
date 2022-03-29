@@ -11,8 +11,13 @@ const styles = theme => ({
     ...commonStyles(theme),
 });
 
-function AddButtonComponent({ classes, onClick, message, id }) {
+function AddButtonComponent({ classes, onClick, message, id, dataTestId }) {
     const intl = useSafeIntl();
+    const extraProps = {};
+
+    if (dataTestId !== '') {
+        extraProps['data-test'] = dataTestId;
+    }
     return (
         <Button
             variant="contained"
@@ -20,6 +25,7 @@ function AddButtonComponent({ classes, onClick, message, id }) {
             color="primary"
             onClick={onClick}
             id={id}
+            {...extraProps}
         >
             <Add className={classes.buttonIcon} />
             {intl.formatMessage(message)}
@@ -29,12 +35,14 @@ function AddButtonComponent({ classes, onClick, message, id }) {
 AddButtonComponent.defaultProps = {
     message: MESSAGES.create,
     id: '',
+    dataTestId: '',
 };
 AddButtonComponent.propTypes = {
     classes: PropTypes.object.isRequired,
     onClick: PropTypes.func.isRequired,
     message: PropTypes.object, // TODO: make a message prop type
     id: PropTypes.string,
+    dataTestId: PropTypes.string,
 };
 
 const styledAddButton = withStyles(styles)(AddButtonComponent);

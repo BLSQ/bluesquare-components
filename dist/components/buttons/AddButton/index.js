@@ -35,14 +35,16 @@ function AddButtonComponent(_ref) {
   var classes = _ref.classes,
       onClick = _ref.onClick,
       message = _ref.message,
-      id = _ref.id;
+      id = _ref.id,
+      dataTestId = _ref.dataTestId;
   var intl = (0, _useSafeIntl.useSafeIntl)();
   return /*#__PURE__*/_react["default"].createElement(_core.Button, {
     variant: "contained",
     className: classes.button,
     color: "primary",
     onClick: onClick,
-    id: id
+    id: id,
+    "data-test": dataTestId
   }, /*#__PURE__*/_react["default"].createElement(_Add["default"], {
     className: classes.buttonIcon
   }), intl.formatMessage(message));
@@ -50,14 +52,16 @@ function AddButtonComponent(_ref) {
 
 AddButtonComponent.defaultProps = {
   message: _messages.MESSAGES.create,
-  id: ''
+  id: '',
+  dataTestId: ''
 };
 AddButtonComponent.propTypes = {
   classes: _propTypes["default"].object.isRequired,
   onClick: _propTypes["default"].func.isRequired,
   message: _propTypes["default"].object,
   // TODO: make a message prop type
-  id: _propTypes["default"].string
+  id: _propTypes["default"].string,
+  dataTestId: _propTypes["default"].string
 };
 var styledAddButton = (0, _core.withStyles)(styles)(AddButtonComponent);
 exports.AddButton = styledAddButton;

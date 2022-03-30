@@ -101,6 +101,7 @@ function IconButtonComponent({
     color,
     size,
     id,
+    dataTestId,
 }) {
     if ((onClick === null) === (url === null)) {
         console.error(
@@ -124,7 +125,12 @@ function IconButtonComponent({
         >
             {/* Wrapping the button in a span to prevent tooltip from crashing as it needs a DOm element to position itself  */}
             <span id={id}>
-                <IconButton disabled={disabled} onClick={onClick} size={size}>
+                <IconButton
+                    disabled={disabled}
+                    onClick={onClick}
+                    size={size}
+                    data-test={dataTestId}
+                >
                     {url ? (
                         <Link to={url} className={classes.linkButton}>
                             <ButtonIcon icon={icon} color={color} />
@@ -150,6 +156,7 @@ IconButtonComponent.defaultProps = {
     overrideIcon: null,
     icon: null,
     id: '',
+    dataTestId: '',
 };
 IconButtonComponent.propTypes = {
     size: PropTypes.string,
@@ -162,6 +169,7 @@ IconButtonComponent.propTypes = {
     overrideIcon: PropTypes.any,
     tooltipMessage: PropTypes.object.isRequired, // TODO: refactor IASO to pass the translation directly
     id: PropTypes.string,
+    dataTestId: PropTypes.string,
 };
 
 const styledIconButton = withStyles(styles)(IconButtonComponent);

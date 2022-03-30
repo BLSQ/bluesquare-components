@@ -141,7 +141,8 @@ function IconButtonComponent(_ref2) {
       tooltipMessage = _ref2.tooltipMessage,
       color = _ref2.color,
       size = _ref2.size,
-      id = _ref2.id;
+      id = _ref2.id,
+      dataTestId = _ref2.dataTestId;
 
   if (onClick === null === (url === null)) {
     console.error('IconButtonComponent needs either the onClick or the url property');
@@ -168,7 +169,8 @@ function IconButtonComponent(_ref2) {
   }, /*#__PURE__*/_react["default"].createElement(_core.IconButton, {
     disabled: disabled,
     onClick: onClick,
-    size: size
+    size: size,
+    "data-test": dataTestId
   }, url ? /*#__PURE__*/_react["default"].createElement(Link, {
     to: url,
     className: classes.linkButton
@@ -190,7 +192,8 @@ IconButtonComponent.defaultProps = {
   size: 'medium',
   overrideIcon: null,
   icon: null,
-  id: ''
+  id: '',
+  dataTestId: ''
 };
 IconButtonComponent.propTypes = {
   size: _propTypes["default"].string,
@@ -203,7 +206,8 @@ IconButtonComponent.propTypes = {
   overrideIcon: _propTypes["default"].any,
   tooltipMessage: _propTypes["default"].object.isRequired,
   // TODO: refactor IASO to pass the translation directly
-  id: _propTypes["default"].string
+  id: _propTypes["default"].string,
+  dataTestId: _propTypes["default"].string
 };
 var styledIconButton = (0, _core.withStyles)(styles)(IconButtonComponent);
 exports.IconButton = styledIconButton;

@@ -38,7 +38,7 @@ var styles = function styles() {
   return {
     rootFixed: _objectSpread(_objectSpread({}, baseRoot), {}, {
       position: 'fixed',
-      zIndex: '10000'
+      zIndex: '1000'
     }),
     rootAbsolute: _objectSpread(_objectSpread({}, baseRoot), {}, {
       position: 'absolute',

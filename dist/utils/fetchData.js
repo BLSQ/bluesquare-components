@@ -12,7 +12,7 @@ function createUrl(params) {
   Object.keys(params).forEach(function (key) {
     var value = params[key];
 
-    if (value) {
+    if (value !== undefined && value !== null) {
       url += "/".concat(key, "/").concat(value); // eslint-disable-line
     }
   });

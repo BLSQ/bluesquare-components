@@ -61,6 +61,9 @@ module.exports = {
         ],
     },
     resolve: {
+        fallback: {
+            fs: false,
+        },
         extensions: ['.tsx', '.ts', '.js'],
     },
     devtool: 'source-map',

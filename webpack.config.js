@@ -5,8 +5,8 @@ module.exports = {
     // mode:'development',
     // Where files should be sent once they are bundled
     output: {
-        path: path.join(__dirname, '/dist'),
         filename: 'index.js',
+        path: path.join(__dirname, '/dist'),
         library: {
             name: 'bluesquare-components',
             export: 'default',
@@ -59,8 +59,9 @@ module.exports = {
                 ],
             },
             {
-                test: /.json$/,
-                loader: 'json-loader',
+                test: /\.json$/,
+                loader: 'file-loader',
+                type:'javascript/auto',
                 exclude: /node_modules/,
             }
         ],
@@ -69,7 +70,7 @@ module.exports = {
         fallback: {
             fs: false,
         },
-        extensions: ['.tsx', '.ts', '.js'],
+        extensions: ['.tsx', '.ts', '.js', '.json'],
     },
     devtool: 'source-map',
 };

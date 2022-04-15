@@ -3,3 +3,4 @@ dist/stories
 .DS_Store
 lib
 temp
+dist/*.json

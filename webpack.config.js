@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
     entry: './index.js',
-    mode:'development',
+    // mode:'development',
     // Where files should be sent once they are bundled
     output: {
         filename: 'index.js',
@@ -13,6 +13,7 @@ module.exports = {
             type:'umd',
             umdNamedDefine: true,
         },
+        assetModuleFilename: 'assets/[name][ext]'
         // libraryTarget: 'umd',
         // globalObject: 'this',
     },
@@ -59,9 +60,9 @@ module.exports = {
                 ],
             },
             {
-                test: /\.json$/,
-                loader: 'file-loader',
-                type:'javascript/auto',
+                test: /.json$/,
+                type: 'asset/resource',
+                use:'file-loader',
                 exclude: /node_modules/,
             }
         ],
@@ -70,7 +71,7 @@ module.exports = {
         fallback: {
             fs: false,
         },
-        extensions: ['.tsx', '.ts', '.js', '.json'],
+        extensions: ['.tsx', '.ts', '.js'],
     },
     devtool: 'source-map',
 };

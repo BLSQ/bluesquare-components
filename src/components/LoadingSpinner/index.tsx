@@ -81,5 +81,5 @@ LoadingSpinner.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-const styledSpinner = withStyles(styles)(LoadingSpinner);
+const styledSpinner = withStyles(styles as any)(LoadingSpinner);
 export { styledSpinner as LoadingSpinner };

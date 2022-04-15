@@ -62,7 +62,9 @@ module.exports = {
             {
                 test: /.json$/,
                 type: 'asset/resource',
-                use:'file-loader',
+                generator: {
+                    filename: 'locale/[name][ext]'
+                },
                 exclude: /node_modules/,
             }
         ],

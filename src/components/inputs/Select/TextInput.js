@@ -7,7 +7,7 @@ import { useStyles } from '../styles';
 
 const TextInput = ({
     params,
-    extraProps,
+    renderOption,
     disabled,
     label,
     required,
@@ -21,11 +21,11 @@ const TextInput = ({
         ...params,
     };
     let inputExtraProps = {};
-    if (extraProps.renderOption && params.inputProps.value) {
+    if (renderOption && params.inputProps.value) {
         inputExtraProps = {
             startAdornment: (
                 <div className={classes.startAdornment}>
-                    {extraProps.renderOption({
+                    {renderOption({
                         label: params.inputProps.value,
                     })}
                 </div>
@@ -67,10 +67,11 @@ const TextInput = ({
 
 TextInput.defaultProps = {
     helperText: undefined,
+    renderOption: null,
 };
 
 TextInput.propTypes = {
-    extraProps: PropTypes.object.isRequired,
+    renderOption: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
     params: PropTypes.object.isRequired,
     disabled: PropTypes.bool.isRequired,
     label: PropTypes.string.isRequired,

@@ -27,7 +27,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var TextInput = function TextInput(_ref) {
   var params = _ref.params,
-      extraProps = _ref.extraProps,
+      renderOption = _ref.renderOption,
       disabled = _ref.disabled,
       label = _ref.label,
       required = _ref.required,
@@ -41,11 +41,11 @@ var TextInput = function TextInput(_ref) {
 
   var inputExtraProps = {};
 
-  if (extraProps.renderOption && params.inputProps.value) {
+  if (renderOption && params.inputProps.value) {
     inputExtraProps = {
       startAdornment: /*#__PURE__*/_react["default"].createElement("div", {
         className: classes.startAdornment
-      }, extraProps.renderOption({
+      }, renderOption({
         label: params.inputProps.value
       })),
       style: {
@@ -79,10 +79,11 @@ var TextInput = function TextInput(_ref) {
 
 exports.TextInput = TextInput;
 TextInput.defaultProps = {
-  helperText: undefined
+  helperText: undefined,
+  renderOption: null
 };
 TextInput.propTypes = {
-  extraProps: _propTypes["default"].object.isRequired,
+  renderOption: _propTypes["default"].oneOfType([_propTypes["default"].object, _propTypes["default"].func]),
   params: _propTypes["default"].object.isRequired,
   disabled: _propTypes["default"].bool.isRequired,
   label: _propTypes["default"].string.isRequired,

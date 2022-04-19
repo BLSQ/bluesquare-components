@@ -69,7 +69,7 @@ const SingleSelect = ({
                 renderInput={params => (
                     <TextInput
                         params={params}
-                        extraProps={extraProps}
+                        renderOption={renderOption}
                         disabled={disabled}
                         label={label}
                         required={required}

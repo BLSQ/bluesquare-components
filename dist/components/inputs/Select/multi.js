@@ -109,7 +109,7 @@ var MultiSelect = function MultiSelect(_ref) {
     renderInput: function renderInput(params) {
       return /*#__PURE__*/_react["default"].createElement(_TextInput.TextInput, {
         params: params,
-        extraProps: extraProps,
+        renderOption: renderOption,
         disabled: disabled,
         label: label,
         required: required,

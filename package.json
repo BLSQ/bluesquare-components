@@ -4,8 +4,7 @@
     "description": "reusable UI components for Bluesquare apps",
     "author": "Bluesquare",
     "license": "Apache-2.0",
-    "main": "./dist/index.js",
-    "module": "./dist/index.js",
+    "module": "./src/index.js",
     "files": [
         "dist"
     ],

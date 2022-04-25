@@ -23,9 +23,20 @@ module.exports = {
     //     splitChunks:{chunks:'all'},
     // },
     externals:{
-        react:'react',
+        "@material-ui/core":"@material-ui/core",
+        "@material-ui/icons": "@material-ui/icons",
+        "@material-ui/lab":"@material-ui/lab",
+        "@material-ui/pickers":"@material-ui/pickers",
+        "classnames":"classnames",
+        "color":"color",
+        "moment":"moment",
+        "prop-types":'prop-types',
+        "react":'react',
         "react-dom":'react-dom',
-        "prop-types":'prop-types'
+        'react-intl':'react-intl',
+        "react-query":"react-query",
+        "react-table":"react-table",
+        "typescript":"typescript"
     },
 
     module: {

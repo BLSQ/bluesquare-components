@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 const NoResult = ({ loading }) => {
-    const classes = useStyles();
+    // const classes = useStyles();
     return (
         <Box
             className={classes.box}

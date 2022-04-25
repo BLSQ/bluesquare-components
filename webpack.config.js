@@ -10,7 +10,7 @@ module.exports = {
         library: {
             name: 'bluesquare-components',
             export: 'default',
-            type: 'this',
+            type: 'umd',
             umdNamedDefine: true,
         },
         assetModuleFilename: 'assets/[name][ext]',

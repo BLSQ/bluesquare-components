@@ -1,4 +1,14 @@
-/******/ (() => { // webpackBootstrap
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory(require("react"), require("@material-ui/core"), require("prop-types"), require("classnames"), require("react-intl"), require("react-dom"), require("color"), require("@material-ui/pickers"), require("@material-ui/lab"), require("react-table"), require("moment"), require("react-query"));
+	else if(typeof define === 'function' && define.amd)
+		define("bluesquare-components", ["react", "@material-ui/core", "prop-types", "classnames", "react-intl", "react-dom", "color", "@material-ui/pickers", "@material-ui/lab", "react-table", "moment", "react-query"], factory);
+	else if(typeof exports === 'object')
+		exports["bluesquare-components"] = factory(require("react"), require("@material-ui/core"), require("prop-types"), require("classnames"), require("react-intl"), require("react-dom"), require("color"), require("@material-ui/pickers"), require("@material-ui/lab"), require("react-table"), require("moment"), require("react-query"));
+	else
+		root["bluesquare-components"] = factory(root[undefined], root[undefined], root[undefined], root[undefined], root[undefined], root[undefined], root[undefined], root[undefined], root[undefined], root[undefined], root[undefined], root[undefined]);
+})(self, (__WEBPACK_EXTERNAL_MODULE_react__, __WEBPACK_EXTERNAL_MODULE__material_ui_core__, __WEBPACK_EXTERNAL_MODULE_prop_types__, __WEBPACK_EXTERNAL_MODULE_classnames__, __WEBPACK_EXTERNAL_MODULE_react_intl__, __WEBPACK_EXTERNAL_MODULE_react_dom__, __WEBPACK_EXTERNAL_MODULE_color__, __WEBPACK_EXTERNAL_MODULE__material_ui_pickers__, __WEBPACK_EXTERNAL_MODULE__material_ui_lab__, __WEBPACK_EXTERNAL_MODULE_react_table__, __WEBPACK_EXTERNAL_MODULE_moment__, __WEBPACK_EXTERNAL_MODULE_react_query__) => {
+return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js":
@@ -27840,9 +27850,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "prop-types");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/makeStyles.js");
-/* harmony import */ var _material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/TableCell */ "./node_modules/@material-ui/core/esm/TableCell/TableCell.js");
-/* harmony import */ var _material_ui_core_TableSortLabel__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core/TableSortLabel */ "./node_modules/@material-ui/core/esm/TableSortLabel/TableSortLabel.js");
+/* harmony import */ var _material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/TableCell */ "./node_modules/@material-ui/core/esm/TableCell/TableCell.js");
+/* harmony import */ var _material_ui_core_TableSortLabel__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/TableSortLabel */ "./node_modules/@material-ui/core/esm/TableSortLabel/TableSortLabel.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! classnames */ "classnames");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _utils_useSafeIntl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../utils/useSafeIntl */ "./src/utils/useSafeIntl.js");
@@ -27855,14 +27864,14 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
 
+ // import { makeStyles } from '@material-ui/core/styles';
 
 
 
 
 
 
-
-const useStyles = (0,_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_7__["default"])(theme => ({
+const useStyles = makeStyles(theme => ({
   resizer: {
     display: 'inline-block',
     width: '15px',
@@ -27908,7 +27917,7 @@ const HeadCell = ({
   sortBy,
   isLastCell
 }) => {
-  const classes = useStyles();
+  // const classes = useStyles();
   const {
     formatMessage
   } = (0,_utils_useSafeIntl__WEBPACK_IMPORTED_MODULE_5__.useSafeIntl)();
@@ -27947,11 +27956,11 @@ const HeadCell = ({
     setSortBy(newSort);
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_8__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, columnsProps, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_7__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, columnsProps, {
     style: cellStyle,
     className: classnames__WEBPACK_IMPORTED_MODULE_4___default()(classes.headerCell, isLastCell && classes.lastHeaderCell),
     key: columnsProps.key
-  }), isSortable && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", sortProps, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_material_ui_core_TableSortLabel__WEBPACK_IMPORTED_MODULE_9__["default"], {
+  }), isSortable && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", sortProps, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_material_ui_core_TableSortLabel__WEBPACK_IMPORTED_MODULE_8__["default"], {
     active: column.isSorted,
     direction: direction,
     title: formatMessage(title),
@@ -28015,7 +28024,7 @@ const useStyles = (0,_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_4__["defa
 const NoResult = ({
   loading
 }) => {
-  const classes = useStyles();
+  // const classes = useStyles();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Box__WEBPACK_IMPORTED_MODULE_5__["default"], {
     className: classes.box,
     alignItems: "center",
@@ -42989,7 +42998,8 @@ module.exports = __webpack_require__.p + "locale/fr.json";
   \***********************************************************************************************************/
 /***/ ((module) => {
 
-module.exports = (function() { return this[undefined]; }());
+"use strict";
+module.exports = __WEBPACK_EXTERNAL_MODULE__material_ui_core__;
 
 /***/ }),
 
@@ -42999,7 +43009,8 @@ module.exports = (function() { return this[undefined]; }());
   \********************************************************************************************************/
 /***/ ((module) => {
 
-module.exports = (function() { return this[undefined]; }());
+"use strict";
+module.exports = __WEBPACK_EXTERNAL_MODULE__material_ui_lab__;
 
 /***/ }),
 
@@ -43009,7 +43020,8 @@ module.exports = (function() { return this[undefined]; }());
   \********************************************************************************************************************/
 /***/ ((module) => {
 
-module.exports = (function() { return this[undefined]; }());
+"use strict";
+module.exports = __WEBPACK_EXTERNAL_MODULE__material_ui_pickers__;
 
 /***/ }),
 
@@ -43019,7 +43031,8 @@ module.exports = (function() { return this[undefined]; }());
   \**************************************************************************************/
 /***/ ((module) => {
 
-module.exports = (function() { return this[undefined]; }());
+"use strict";
+module.exports = __WEBPACK_EXTERNAL_MODULE_classnames__;
 
 /***/ }),
 
@@ -43029,7 +43042,8 @@ module.exports = (function() { return this[undefined]; }());
   \***********************************************************************/
 /***/ ((module) => {
 
-module.exports = (function() { return this[undefined]; }());
+"use strict";
+module.exports = __WEBPACK_EXTERNAL_MODULE_color__;
 
 /***/ }),
 
@@ -43039,7 +43053,8 @@ module.exports = (function() { return this[undefined]; }());
   \**************************************************************************/
 /***/ ((module) => {
 
-module.exports = (function() { return this[undefined]; }());
+"use strict";
+module.exports = __WEBPACK_EXTERNAL_MODULE_moment__;
 
 /***/ }),
 
@@ -43049,7 +43064,8 @@ module.exports = (function() { return this[undefined]; }());
   \**************************************************************************************/
 /***/ ((module) => {
 
-module.exports = (function() { return this[undefined]; }());
+"use strict";
+module.exports = __WEBPACK_EXTERNAL_MODULE_prop_types__;
 
 /***/ }),
 
@@ -43059,7 +43075,8 @@ module.exports = (function() { return this[undefined]; }());
   \***********************************************************************/
 /***/ ((module) => {
 
-module.exports = (function() { return this[undefined]; }());
+"use strict";
+module.exports = __WEBPACK_EXTERNAL_MODULE_react__;
 
 /***/ }),
 
@@ -43069,7 +43086,8 @@ module.exports = (function() { return this[undefined]; }());
   \***********************************************************************************/
 /***/ ((module) => {
 
-module.exports = (function() { return this[undefined]; }());
+"use strict";
+module.exports = __WEBPACK_EXTERNAL_MODULE_react_dom__;
 
 /***/ }),
 
@@ -43079,7 +43097,8 @@ module.exports = (function() { return this[undefined]; }());
   \**************************************************************************************/
 /***/ ((module) => {
 
-module.exports = (function() { return this[undefined]; }());
+"use strict";
+module.exports = __WEBPACK_EXTERNAL_MODULE_react_intl__;
 
 /***/ }),
 
@@ -43089,7 +43108,8 @@ module.exports = (function() { return this[undefined]; }());
   \*****************************************************************************************/
 /***/ ((module) => {
 
-module.exports = (function() { return this[undefined]; }());
+"use strict";
+module.exports = __WEBPACK_EXTERNAL_MODULE_react_query__;
 
 /***/ }),
 
@@ -43099,7 +43119,8 @@ module.exports = (function() { return this[undefined]; }());
   \*****************************************************************************************/
 /***/ ((module) => {
 
-module.exports = (function() { return this[undefined]; }());
+"use strict";
+module.exports = __WEBPACK_EXTERNAL_MODULE_react_table__;
 
 /***/ }),
 
@@ -43717,7 +43738,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_src_index__WEBPACK_IMPORTED_MODULE_0__);
 })();
 
-this["bluesquare-components"] = __webpack_exports__["default"];
+__webpack_exports__ = __webpack_exports__["default"];
+/******/ 	return __webpack_exports__;
 /******/ })()
 ;
+});
 //# sourceMappingURL=index.js.map

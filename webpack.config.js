@@ -7,7 +7,7 @@ module.exports = {
     // mode:'development',
     // Where files should be sent once they are bundled
     output: {
-        filename: '[name].js',
+        filename: 'index.js',
         path: path.join(__dirname, '/dist'),
         library: {
             name: 'bluesquare-components',

@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
     entry: './index.js',
-    // mode:'development',
+    mode: 'development',
     // Where files should be sent once they are bundled
     output: {
         filename: 'index.js',
@@ -14,12 +14,7 @@ module.exports = {
             umdNamedDefine: true,
         },
         assetModuleFilename: 'assets/[name][ext]',
-        // libraryTarget: 'umd',
-        // globalObject: 'this',
     },
-    // optimization:{
-    //     splitChunks:{chunks:'all'},
-    // },
     externals: {
         '@material-ui/core': {
             commonjs: '@material-ui/core',
@@ -86,7 +81,7 @@ module.exports = {
             {
                 test: /\.(js|ts|tsx)$/,
                 enforce: 'pre',
-                use: ['source-map-loader'],
+                use: { loader: 'source-map-loader' },
                 exclude: /node_modules/,
             },
             {

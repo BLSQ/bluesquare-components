@@ -4,9 +4,9 @@ module.exports = {
     entry: {
         index: {
             import:'./index.js', 
-            dependOn:'common'
+            dependOn:'shared'
         },
-            common: [
+            shared: [
                 'react',
                 'react-dom',
                 'react-intl',

@@ -1,14 +1,4 @@
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("react"), require("@material-ui/core"), require("prop-types"), require("classnames"), require("react-intl"), require("react-dom"), require("color"), require("@material-ui/pickers"), require("@material-ui/lab"), require("react-table"), require("moment"), require("react-query"));
-	else if(typeof define === 'function' && define.amd)
-		define("bluesquare-components", ["react", "@material-ui/core", "prop-types", "classnames", "react-intl", "react-dom", "color", "@material-ui/pickers", "@material-ui/lab", "react-table", "moment", "react-query"], factory);
-	else if(typeof exports === 'object')
-		exports["bluesquare-components"] = factory(require("react"), require("@material-ui/core"), require("prop-types"), require("classnames"), require("react-intl"), require("react-dom"), require("color"), require("@material-ui/pickers"), require("@material-ui/lab"), require("react-table"), require("moment"), require("react-query"));
-	else
-		root["bluesquare-components"] = factory(root[undefined], root[undefined], root[undefined], root[undefined], root[undefined], root[undefined], root[undefined], root[undefined], root[undefined], root[undefined], root[undefined], root[undefined]);
-})(self, (__WEBPACK_EXTERNAL_MODULE_react__, __WEBPACK_EXTERNAL_MODULE__material_ui_core__, __WEBPACK_EXTERNAL_MODULE_prop_types__, __WEBPACK_EXTERNAL_MODULE_classnames__, __WEBPACK_EXTERNAL_MODULE_react_intl__, __WEBPACK_EXTERNAL_MODULE_react_dom__, __WEBPACK_EXTERNAL_MODULE_color__, __WEBPACK_EXTERNAL_MODULE__material_ui_pickers__, __WEBPACK_EXTERNAL_MODULE__material_ui_lab__, __WEBPACK_EXTERNAL_MODULE_react_table__, __WEBPACK_EXTERNAL_MODULE_moment__, __WEBPACK_EXTERNAL_MODULE_react_query__) => {
-return /******/ (() => { // webpackBootstrap
+/******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js":
@@ -42999,8 +42989,7 @@ module.exports = __webpack_require__.p + "locale/fr.json";
   \***********************************************************************************************************/
 /***/ ((module) => {
 
-"use strict";
-module.exports = __WEBPACK_EXTERNAL_MODULE__material_ui_core__;
+module.exports = (function() { return this[undefined]; }());
 
 /***/ }),
 
@@ -43010,8 +42999,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__material_ui_core__;
   \********************************************************************************************************/
 /***/ ((module) => {
 
-"use strict";
-module.exports = __WEBPACK_EXTERNAL_MODULE__material_ui_lab__;
+module.exports = (function() { return this[undefined]; }());
 
 /***/ }),
 
@@ -43021,8 +43009,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__material_ui_lab__;
   \********************************************************************************************************************/
 /***/ ((module) => {
 
-"use strict";
-module.exports = __WEBPACK_EXTERNAL_MODULE__material_ui_pickers__;
+module.exports = (function() { return this[undefined]; }());
 
 /***/ }),
 
@@ -43032,8 +43019,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__material_ui_pickers__;
   \**************************************************************************************/
 /***/ ((module) => {
 
-"use strict";
-module.exports = __WEBPACK_EXTERNAL_MODULE_classnames__;
+module.exports = (function() { return this[undefined]; }());
 
 /***/ }),
 
@@ -43043,8 +43029,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_classnames__;
   \***********************************************************************/
 /***/ ((module) => {
 
-"use strict";
-module.exports = __WEBPACK_EXTERNAL_MODULE_color__;
+module.exports = (function() { return this[undefined]; }());
 
 /***/ }),
 
@@ -43054,8 +43039,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_color__;
   \**************************************************************************/
 /***/ ((module) => {
 
-"use strict";
-module.exports = __WEBPACK_EXTERNAL_MODULE_moment__;
+module.exports = (function() { return this[undefined]; }());
 
 /***/ }),
 
@@ -43065,8 +43049,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_moment__;
   \**************************************************************************************/
 /***/ ((module) => {
 
-"use strict";
-module.exports = __WEBPACK_EXTERNAL_MODULE_prop_types__;
+module.exports = (function() { return this[undefined]; }());
 
 /***/ }),
 
@@ -43076,8 +43059,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_prop_types__;
   \***********************************************************************/
 /***/ ((module) => {
 
-"use strict";
-module.exports = __WEBPACK_EXTERNAL_MODULE_react__;
+module.exports = (function() { return this[undefined]; }());
 
 /***/ }),
 
@@ -43087,8 +43069,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_react__;
   \***********************************************************************************/
 /***/ ((module) => {
 
-"use strict";
-module.exports = __WEBPACK_EXTERNAL_MODULE_react_dom__;
+module.exports = (function() { return this[undefined]; }());
 
 /***/ }),
 
@@ -43098,8 +43079,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_react_dom__;
   \**************************************************************************************/
 /***/ ((module) => {
 
-"use strict";
-module.exports = __WEBPACK_EXTERNAL_MODULE_react_intl__;
+module.exports = (function() { return this[undefined]; }());
 
 /***/ }),
 
@@ -43109,8 +43089,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_react_intl__;
   \*****************************************************************************************/
 /***/ ((module) => {
 
-"use strict";
-module.exports = __WEBPACK_EXTERNAL_MODULE_react_query__;
+module.exports = (function() { return this[undefined]; }());
 
 /***/ }),
 
@@ -43120,8 +43099,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_react_query__;
   \*****************************************************************************************/
 /***/ ((module) => {
 
-"use strict";
-module.exports = __WEBPACK_EXTERNAL_MODULE_react_table__;
+module.exports = (function() { return this[undefined]; }());
 
 /***/ }),
 
@@ -43739,9 +43717,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_src_index__WEBPACK_IMPORTED_MODULE_0__);
 })();
 
-__webpack_exports__ = __webpack_exports__["default"];
-/******/ 	return __webpack_exports__;
+this["bluesquare-components"] = __webpack_exports__["default"];
 /******/ })()
 ;
-});
 //# sourceMappingURL=index.js.map

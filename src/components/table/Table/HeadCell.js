@@ -116,7 +116,7 @@ const HeadCell = ({
                 </div>
             )}
             {!isSortable && (
-                <div className={classes.cell}>{column.render('Header')}</div>
+                <div >{column.render('Header')}</div>
             )}
             {column.resizable !== false && (
                 <div

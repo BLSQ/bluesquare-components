@@ -27972,9 +27972,7 @@ const HeadCell = ({
     //     icon: classes.icon,
     // }}
 
-  }, column.render('Header'))), !isSortable && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
-    className: classes.cell
-  }, column.render('Header')), column.resizable !== false && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", column.getResizerProps()));
+  }, column.render('Header'))), !isSortable && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, column.render('Header')), column.resizable !== false && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", column.getResizerProps()));
 };
 
 HeadCell.propTypes = {

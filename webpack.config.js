@@ -1,7 +1,9 @@
 const path = require('path');
 
 module.exports = {
-    entry: './index.js',
+    entry: {
+        main: './index.js',
+    },
     // mode:'development',
     // Where files should be sent once they are bundled
     output: {
@@ -10,10 +12,10 @@ module.exports = {
         library: {
             name: 'bluesquare-components',
             export: 'default',
-            type:'umd',
+            type: 'umd',
             umdNamedDefine: true,
         },
-        assetModuleFilename: 'assets/[name][ext]'
+        assetModuleFilename: 'assets/[name][ext]',
         // libraryTarget: 'umd',
         // globalObject: 'this',
     },
@@ -63,10 +65,10 @@ module.exports = {
                 test: /.json$/,
                 type: 'asset/resource',
                 generator: {
-                    filename: 'locale/[name][ext]'
+                    filename: 'locale/[name][ext]',
                 },
                 exclude: /node_modules/,
-            }
+            },
         ],
     },
     resolve: {

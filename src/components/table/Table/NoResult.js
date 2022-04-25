@@ -17,7 +17,7 @@ const NoResult = ({ loading }) => {
     // const classes = useStyles();
     return (
         <Box
-            className={classes.box}
+            // className={classes.box}
             alignItems="center"
             justifyContent="center"
             display="flex"

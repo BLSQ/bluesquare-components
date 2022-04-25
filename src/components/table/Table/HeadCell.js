@@ -94,10 +94,10 @@ const HeadCell = ({
         <TableCell
             {...columnsProps}
             style={cellStyle}
-            className={classNames(
-                classes.headerCell,
-                isLastCell && classes.lastHeaderCell,
-            )}
+            // className={classNames(
+            //     classes.headerCell,
+            //     isLastCell && classes.lastHeaderCell,
+            // )}
             key={columnsProps.key}
         >
             {isSortable && (
@@ -106,10 +106,10 @@ const HeadCell = ({
                         active={column.isSorted}
                         direction={direction}
                         title={formatMessage(title)}
-                        classes={{
-                            root: classes.sortLabel,
-                            icon: classes.icon,
-                        }}
+                        // classes={{
+                        //     root: classes.sortLabel,
+                        //     icon: classes.icon,
+                        // }}
                     >
                         {column.render('Header')}
                     </TableSortLabel>
@@ -121,7 +121,7 @@ const HeadCell = ({
             {column.resizable !== false && (
                 <div
                     {...column.getResizerProps()}
-                    className={classes.resizer}
+                    // className={classes.resizer}
                 />
             )}
         </TableCell>

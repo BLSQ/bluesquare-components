@@ -27958,22 +27958,23 @@ const HeadCell = ({
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_8__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, columnsProps, {
-    style: cellStyle,
-    className: classnames__WEBPACK_IMPORTED_MODULE_4___default()(classes.headerCell, isLastCell && classes.lastHeaderCell),
+    style: cellStyle // className={classNames(
+    //     classes.headerCell,
+    //     isLastCell && classes.lastHeaderCell,
+    // )}
+    ,
     key: columnsProps.key
   }), isSortable && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", sortProps, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_material_ui_core_TableSortLabel__WEBPACK_IMPORTED_MODULE_9__["default"], {
     active: column.isSorted,
     direction: direction,
-    title: formatMessage(title),
-    classes: {
-      root: classes.sortLabel,
-      icon: classes.icon
-    }
+    title: formatMessage(title) // classes={{
+    //     root: classes.sortLabel,
+    //     icon: classes.icon,
+    // }}
+
   }, column.render('Header'))), !isSortable && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
     className: classes.cell
-  }, column.render('Header')), column.resizable !== false && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, column.getResizerProps(), {
-    className: classes.resizer
-  })));
+  }, column.render('Header')), column.resizable !== false && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", column.getResizerProps()));
 };
 
 HeadCell.propTypes = {
@@ -28026,8 +28027,8 @@ const NoResult = ({
   loading
 }) => {
   // const classes = useStyles();
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Box__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    className: classes.box,
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_material_ui_core_Box__WEBPACK_IMPORTED_MODULE_5__["default"] // className={classes.box}
+  , {
     alignItems: "center",
     justifyContent: "center",
     display: "flex"

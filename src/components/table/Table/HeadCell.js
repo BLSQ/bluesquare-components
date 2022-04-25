@@ -54,7 +54,7 @@ const HeadCell = ({
     sortBy,
     isLastCell,
 }) => {
-    // const classes = useStyles();
+    const classes = useStyles();
     const { formatMessage } = useSafeIntl();
     const isSortable = column.sortable !== false && !column.isResizing;
     let direction;
@@ -94,10 +94,10 @@ const HeadCell = ({
         <TableCell
             {...columnsProps}
             style={cellStyle}
-            // className={classNames(
-            //     classes.headerCell,
-            //     isLastCell && classes.lastHeaderCell,
-            // )}
+            className={classNames(
+                classes.headerCell,
+                isLastCell && classes.lastHeaderCell,
+            )}
             key={columnsProps.key}
         >
             {isSortable && (
@@ -106,22 +106,22 @@ const HeadCell = ({
                         active={column.isSorted}
                         direction={direction}
                         title={formatMessage(title)}
-                        // classes={{
-                        //     root: classes.sortLabel,
-                        //     icon: classes.icon,
-                        // }}
+                        classes={{
+                            root: classes.sortLabel,
+                            icon: classes.icon,
+                        }}
                     >
                         {column.render('Header')}
                     </TableSortLabel>
                 </div>
             )}
             {!isSortable && (
-                <div >{column.render('Header')}</div>
+                <div className={classes.cell}>{column.render('Header')}</div>
             )}
             {column.resizable !== false && (
                 <div
                     {...column.getResizerProps()}
-                    // className={classes.resizer}
+                    className={classes.resizer}
                 />
             )}
         </TableCell>

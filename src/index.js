@@ -61,7 +61,7 @@ import { IasoTreeView } from './components/Treeview/IasoTreeView';
 import { TreeViewResultsCountSelect } from './components/Treeview/TreeViewResultsCountSelect';
 import { TreeViewWithSearch } from './components/Treeview/TreeViewWithSearch';
 import { TruncatedTreeview } from './components/Treeview/TruncatedTreeview';
-import {french, english} from '../src/locale'
+import { french, english } from './locale';
 
 export * from './utils';
 export * from './utils/intlUtils';
@@ -70,7 +70,8 @@ export * from './utils/fetchData';
 export * from './constants/iaso/uiConstants';
 
 export {
-    french, english,
+    french,
+    english,
     testTS,
     LoadingSpinner,
     CsvSvg,

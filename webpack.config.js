@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        main: {
+        index: {
             import:'./index.js', 
             dependOn:'common'
         },
@@ -25,7 +25,7 @@ module.exports = {
     // mode:'development',
     // Where files should be sent once they are bundled
     output: {
-        filename: '[name].bundle.js',
+        filename: '[name].js',
         path: path.join(__dirname, '/dist'),
         library: {
             name: 'bluesquare-components',

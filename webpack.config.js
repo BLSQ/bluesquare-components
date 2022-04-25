@@ -2,25 +2,7 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        index: {
-            import:'./index.js', 
-            dependOn:'shared'
-        },
-            shared: [
-                'react',
-                'react-dom',
-                'react-intl',
-                '@material-ui/core',
-                // Don't include, it packs all the icon instead of actually used one
-                // '@material-ui/icons',
-                '@material-ui/lab',
-                '@material-ui/pickers',
-                'lodash',
-                'moment',
-                'prop-types',
-                'typescript',
-                'video.js',
-            ],
+        main:'./index.js', 
     },
     // mode:'development',
     // Where files should be sent once they are bundled
@@ -37,10 +19,15 @@ module.exports = {
         // libraryTarget: 'umd',
         // globalObject: 'this',
     },
-    optimization:{
-        splitChunks:{chunks:'all'},
-        runtimeChunk:'single',
+    // optimization:{
+    //     splitChunks:{chunks:'all'},
+    // },
+    externals:{
+        react:'react',
+        "react-dom":'react-dom',
+        "prop-types":'prop-types'
     },
+
     module: {
         rules: [
             {

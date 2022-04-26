@@ -8,7 +8,7 @@
     "files": [
         "dist"
     ],
-    "types": "./dist/types",
+    "typings": "./dist/types",
     "scripts": {
         "fix-lint": "prettier-eslint \"./src/**/*.js\" --lint-different  --write",
         "show-lint-problems": "eslint \"./src/**/*.js\"",

@@ -5,6 +5,7 @@ module.exports = {
     entry: './index.ts',
     mode: 'development',
     output: {
+        publicPath: '',
         filename: 'index.js',
         path: path.resolve(__dirname, 'dist'),
         library: {
@@ -21,23 +22,35 @@ module.exports = {
         rules: [
             {
                 test: /\.tsx?$/,
-                use: [{
-                    loader: 'babel-loader',
-                    options: {
-                        cacheDirectory: true,
-                        presets: [
-                            ['@babel/preset-env', { targets: { node: '14' } }],
-                            '@babel/preset-react',
-                        ],
-                        plugins: ['@babel/transform-runtime', 'formatjs',"@babel/plugin-proposal-nullish-coalescing-operator", "@babel/proposal-class-properties",
-                        "@babel/proposal-object-rest-spread","@babel/plugin-proposal-optional-chaining"],
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            cacheDirectory: true,
+                            presets: [
+                                [
+                                    '@babel/preset-env',
+                                    { targets: { node: '14' } },
+                                ],
+                                '@babel/preset-react',
+                            ],
+                            plugins: [
+                                '@babel/transform-runtime',
+                                'formatjs',
+                                '@babel/plugin-proposal-nullish-coalescing-operator',
+                                '@babel/proposal-class-properties',
+                                '@babel/proposal-object-rest-spread',
+                                '@babel/plugin-proposal-optional-chaining',
+                            ],
+                        },
                     },
-                },{
-                    loader: 'ts-loader',
-                    options: {
-                        compilerOptions: { noEmit: false },
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            compilerOptions: { noEmit: false },
+                        },
                     },
-                }],
+                ],
                 exclude: /node_modules/,
             },
             {

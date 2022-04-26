@@ -21,12 +21,23 @@ module.exports = {
         rules: [
             {
                 test: /\.tsx?$/,
-                use: {
+                use: [{
+                    loader: 'babel-loader',
+                    options: {
+                        cacheDirectory: true,
+                        presets: [
+                            ['@babel/preset-env', { targets: { node: '14' } }],
+                            '@babel/preset-react',
+                        ],
+                        plugins: ['@babel/transform-runtime', 'formatjs',"@babel/plugin-proposal-nullish-coalescing-operator", "@babel/proposal-class-properties",
+                        "@babel/proposal-object-rest-spread","@babel/plugin-proposal-optional-chaining"],
+                    },
+                },{
                     loader: 'ts-loader',
                     options: {
                         compilerOptions: { noEmit: false },
                     },
-                },
+                }],
                 exclude: /node_modules/,
             },
             {

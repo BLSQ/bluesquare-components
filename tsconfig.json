@@ -4,7 +4,7 @@
         "outDir": "./dist",          // path to output directory (tsc compiler)
         "sourceMap": true,                    // enable sourcemap support
         "strictNullChecks": true,             // enable strict null checks as a best practice
-        "module": "commonjs",                 // specify module code generation
+        "module": "es6",                 // specify module code generation
         "jsx": "react",                       // use typescript to transpile jsx to js
         "target": "es2018",                   // specify ECMAScript target version
         "allowJs": true,                      // allow a mixed TypeScript and JavaScript codebase

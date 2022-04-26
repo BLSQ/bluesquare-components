@@ -1,4 +1,4 @@
-import { LoadingSpinner } from './components/LoadingSpinner/index';
+import { LoadingSpinner } from './components/LoadingSpinner';
 import { CsvSvg } from './svg/CsvSvgComponent';
 import { DHIS2Svg } from './svg/DHIS2SvgComponent';
 import { ExcellSvg } from './svg/ExcellSvgComponent';

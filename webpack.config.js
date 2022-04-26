@@ -3,6 +3,7 @@ const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
     entry: './index.ts',
+    mode: 'development',
     output: {
         filename: 'index.js',
         path: path.resolve(__dirname, 'dist'),

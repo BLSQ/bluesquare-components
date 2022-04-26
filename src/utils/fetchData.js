@@ -3,7 +3,7 @@ export function createUrl(params, url = '/charts') {
     // e.g.: `{foo: 11, bar: 22} => '/foo/11/bar/22'`
     Object.keys(params).forEach(key => {
         const value = params[key];
-        if (value) {
+        if (value !== undefined && value !== null && value !== '') {
             url += `/${key}/${value}`; // eslint-disable-line
         }
     });

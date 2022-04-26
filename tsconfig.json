@@ -15,6 +15,8 @@
         "noEmit": true,                       // don't emit files as babel will do it
         "lib":["ES2020","DOM"],                    // prevent some linter errors
         "declaration": true,                  // export types
+        "declarationDir": "./dist/types/",    // Declare where files are packaged
+
 
     },
     "exclude":["node_modules", "dist","src/**/*.json"],

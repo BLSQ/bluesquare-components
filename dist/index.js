@@ -8430,9 +8430,21 @@ const baseRoot = {
     left: 0,
 };
 const styles = () => ({
-    rootFixed: Object.assign(Object.assign({}, baseRoot), { position: 'fixed', zIndex: '1000' }),
-    rootAbsolute: Object.assign(Object.assign({}, baseRoot), { position: 'absolute', zIndex: '500' }),
-    root: Object.assign(Object.assign({}, baseRoot), { position: 'relative', zIndex: '1' }),
+    rootFixed: {
+        ...baseRoot,
+        position: 'fixed',
+        zIndex: '1000',
+    },
+    rootAbsolute: {
+        ...baseRoot,
+        position: 'absolute',
+        zIndex: '500',
+    },
+    root: {
+        ...baseRoot,
+        position: 'relative',
+        zIndex: '1',
+    },
     rootTransparent: {
         backgroundColor: 'transparent',
     },

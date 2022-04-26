@@ -6,7 +6,7 @@
         "strictNullChecks": true,             // enable strict null checks as a best practice
         "module": "commonjs",                 // specify module code generation
         "jsx": "react",                       // use typescript to transpile jsx to js
-        "target": "es2015",                   // specify ECMAScript target version
+        "target": "es2018",                   // specify ECMAScript target version
         "allowJs": true,                      // allow a mixed TypeScript and JavaScript codebase
         "checkJs": false,                     // don't use ts-lint on js files
         "allowSyntheticDefaultImports": true, // allow import syntax with default exports (1/2)

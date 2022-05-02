@@ -2,5 +2,13 @@
     "presets": [
         "@babel/preset-env",
         "@babel/preset-react"
+    ],
+    "plugins": [
+        "@babel/transform-runtime",
+        "@babel/proposal-class-properties",
+        "@babel/proposal-object-rest-spread",
+        "formatjs",
+        "@babel/plugin-proposal-optional-chaining",
+        "@babel/plugin-proposal-nullish-coalescing-operator"
     ]
 }

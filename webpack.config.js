@@ -1,61 +1,103 @@
 const path = require('path');
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-// const deps = require("./package.json").dependencies;
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-    entry: './index.js',
-    // Where files should be sent once they are bundled
+    entry: './index.ts',
+    // mode: 'development',
     output: {
-        path: path.join(__dirname, '/dist'),
+        publicPath: '',
         filename: 'index.js',
+        path: path.resolve(__dirname, 'dist'),
         library: {
             name: 'bluesquare-components',
-            type: 'var',
             export: 'default',
+            type: 'umd',
+            umdNamedDefine: true,
         },
-        libraryTarget: 'umd',
-        globalObject: 'this',
+        assetModuleFilename: 'assets/[name][ext]',
     },
-    stories: [
-        '../src/**/*.stories.mdx',
-        '../src/**/*.stories.@(js|jsx|ts|tsx)',
-    ],
+    externalsPresets: { node: true },
+    externals: [nodeExternals()],
     module: {
         rules: [
+            {
+                test: /\.tsx?$/,
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            cacheDirectory: true,
+                            presets: [
+                                [
+                                    '@babel/preset-env',
+                                    { targets: { node: '14' } },
+                                ],
+                                '@babel/preset-react',
+                            ],
+                            plugins: [
+                                '@babel/transform-runtime',
+                                'formatjs',
+                                '@babel/plugin-proposal-nullish-coalescing-operator',
+                                '@babel/proposal-class-properties',
+                                '@babel/proposal-object-rest-spread',
+                                '@babel/plugin-proposal-optional-chaining',
+                            ],
+                        },
+                    },
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            compilerOptions: { noEmit: false },
+                        },
+                    },
+                ],
+                exclude: /node_modules/,
+            },
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
+                    options: {
+                        cacheDirectory: true,
+                        presets: [
+                            ['@babel/preset-env', { targets: { node: '14' } }],
+                            '@babel/preset-react',
+                        ],
+                        plugins: ['@babel/transform-runtime', 'formatjs'],
+                    },
                 },
             },
             {
                 test: /\.css$/,
-                use: [
-                    // MiniCssExtractPlugin.loader,
-                    'css-loader',
-                ],
+                use: ['css-loader'],
             },
             {
                 test: /\.svg$/,
                 use: [
                     {
                         loader: 'babel-loader',
-                        query: {
-                            presets: ['airbnb'],
-                        },
                     },
                     {
                         loader: 'react-svg-loader',
-                        query: {
-                            jsx: true,
-                        },
                     },
                 ],
             },
+            {
+                test: /.json$/,
+                type: 'asset/resource',
+                generator: {
+                    filename: 'locale/[name][ext]',
+                },
+                exclude: /node_modules/,
+            },
         ],
     },
-    // plugins: [new MiniCssExtractPlugin()],
+    resolve: {
+        fallback: {
+            fs: false,
+        },
+        extensions: ['.tsx', '.ts', '.js'],
+    },
+    devtool: 'source-map',
 };

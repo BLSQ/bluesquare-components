@@ -641,6 +641,10 @@ class LazyImage extends react__WEBPACK_IMPORTED_MODULE_1__.Component {
       isVisible: false,
       loading: true
     };
+    this.handleVisibilityChange = this.handleVisibilityChange.bind(this);
+    this.onLoad = this.onLoad.bind(this);
+    this.onError = this.onError.bind(this);
+    this.loadImage = this.loadImage.bind(this);
   }
 
   componentDidUpdate(oldProps) {

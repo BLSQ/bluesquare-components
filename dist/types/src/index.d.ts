@@ -56,9 +56,10 @@ import { TreeViewResultsCountSelect } from './components/Treeview/TreeViewResult
 import { TreeViewWithSearch } from './components/Treeview/TreeViewWithSearch';
 import { TruncatedTreeview } from './components/Treeview/TruncatedTreeview';
 import { french, english } from './locale';
+import { LazyImage } from './components/LazyProgressiveImage';
 export * from './utils';
 export * from './utils/intlUtils';
 export * from './utils/tableUtils';
 export * from './utils/fetchData';
 export * from './constants/iaso/uiConstants';
-export { french, english, testTS, LoadingSpinner, CsvSvg, DHIS2Svg, ExcellSvg, OrgUnitSvg, PdfSvg, ShapeSvg, TextSvg, WordSvg, XmlSvg, IasoChipColors, SnackBar, IasoUiConstants, injectIntl, patchIntl, useSafeIntl, useSkipEffectOnMount, commonStyles, mapStyles, mapPopupStyles, AddButton, ExportButton, IconButton, DynamicTabs, DatePicker, Select, renderTags, PageRowSelect, ErrorBoundary, TextInput, PasswordInput, NumberInput, ArrayFieldInput, SearchInput, Checkbox, Radio, theme, rawTheme, BlockPlaceholder, ColumnsSelectDrawer, HeaderRowIcon, InfoHeader, SelectionSpeedDials, Table, LinkProvider, LinkContext, withLink, useLink, SingleComment, CommentWithThread, AddComment, InputLabel, Expander, FormControl, useKeyPressListener, TruncatedTreeview, TreeViewWithSearch, TreeViewResultsCountSelect, IasoTreeView, EnrichedTreeItem, DynamicSelect, };
+export { LazyImage, french, english, testTS, LoadingSpinner, CsvSvg, DHIS2Svg, ExcellSvg, OrgUnitSvg, PdfSvg, ShapeSvg, TextSvg, WordSvg, XmlSvg, IasoChipColors, SnackBar, IasoUiConstants, injectIntl, patchIntl, useSafeIntl, useSkipEffectOnMount, commonStyles, mapStyles, mapPopupStyles, AddButton, ExportButton, IconButton, DynamicTabs, DatePicker, Select, renderTags, PageRowSelect, ErrorBoundary, TextInput, PasswordInput, NumberInput, ArrayFieldInput, SearchInput, Checkbox, Radio, theme, rawTheme, BlockPlaceholder, ColumnsSelectDrawer, HeaderRowIcon, InfoHeader, SelectionSpeedDials, Table, LinkProvider, LinkContext, withLink, useLink, SingleComment, CommentWithThread, AddComment, InputLabel, Expander, FormControl, useKeyPressListener, TruncatedTreeview, TreeViewWithSearch, TreeViewResultsCountSelect, IasoTreeView, EnrichedTreeItem, DynamicSelect, };

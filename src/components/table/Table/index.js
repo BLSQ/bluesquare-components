@@ -34,7 +34,7 @@ import { Select, getSelectionCol } from './Select';
 import { NoResult } from './NoResult';
 import { Count } from './Count';
 import { Pagination } from './Pagination';
-import { LoadingSpinner } from '../../LoadingSpinner';
+import { LoadingSpinner } from '../../LoadingSpinner/index.tsx';
 import { useKeyPressListener } from '../../../utils/useKeyPressListener';
 import { useSkipEffectOnMount } from '../../../utils/useSkipEffectOnMount';
 /**

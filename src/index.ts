@@ -62,6 +62,7 @@ import { TreeViewResultsCountSelect } from './components/Treeview/TreeViewResult
 import { TreeViewWithSearch } from './components/Treeview/TreeViewWithSearch';
 import { TruncatedTreeview } from './components/Treeview/TruncatedTreeview';
 import { french, english } from './locale';
+import { LazyImage } from './components/LazyProgressiveImage';
 
 export * from './utils';
 export * from './utils/intlUtils';
@@ -70,6 +71,7 @@ export * from './utils/fetchData';
 export * from './constants/iaso/uiConstants';
 
 export {
+    LazyImage,
     french,
     english,
     testTS,

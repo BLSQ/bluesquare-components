@@ -80,3 +80,5 @@ Coming soon.
 ## Credits
 
 `Comment` component is slightly adapted from [Hatem's CodeSandbox](https://codesandbox.io/s/comment-box-with-material-ui-10p3c?file=/src/index.js:62-127)
+
+`LazyImage` is taken from [react-lazy-progressive-image](https://github.com/imbhargav5/react-lazy-progressive-image), which is not maintained anymore

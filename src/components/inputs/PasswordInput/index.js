@@ -16,7 +16,6 @@ import { styles } from './styles';
 const PasswordInput = ({
     keyValue,
     label,
-    withMarginTop,
     errors,
     required,
     value,
@@ -31,7 +30,7 @@ const PasswordInput = ({
     const intl = useSafeIntl();
 
     return (
-        <FormControl withMarginTop={withMarginTop} errors={errors}>
+        <FormControl errors={errors}>
             <InputLabel
                 htmlFor={`input-text-${keyValue}`}
                 label={label}
@@ -76,7 +75,6 @@ const PasswordInput = ({
 PasswordInput.defaultProps = {
     value: '',
     errors: [],
-    withMarginTop: true,
     multiline: false,
     disabled: false,
     required: false,
@@ -86,7 +84,6 @@ PasswordInput.defaultProps = {
 };
 
 PasswordInput.propTypes = {
-    withMarginTop: PropTypes.bool,
     errors: PropTypes.arrayOf(PropTypes.string),
     keyValue: PropTypes.string.isRequired,
     label: PropTypes.string,

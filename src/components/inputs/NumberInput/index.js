@@ -38,7 +38,6 @@ const formatValue = value => {
 const NumberInput = ({
     keyValue,
     label,
-    withMarginTop,
     errors,
     required,
     value,
@@ -55,7 +54,7 @@ const NumberInput = ({
     }, [value]);
 
     return (
-        <FormControl withMarginTop={withMarginTop} errors={errors}>
+        <FormControl errors={errors}>
             <InputLabel
                 htmlFor={`input-text-${keyValue}`}
                 label={label}
@@ -84,7 +83,6 @@ const NumberInput = ({
 NumberInput.defaultProps = {
     value: '',
     errors: [],
-    withMarginTop: true,
     multiline: false,
     disabled: false,
     required: false,
@@ -93,7 +91,6 @@ NumberInput.defaultProps = {
 };
 
 NumberInput.propTypes = {
-    withMarginTop: PropTypes.bool,
     errors: PropTypes.arrayOf(PropTypes.string),
     keyValue: PropTypes.string.isRequired,
     label: PropTypes.string,

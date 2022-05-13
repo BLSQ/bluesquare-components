@@ -57,6 +57,7 @@ const DatePicker = ({
                 InputProps={{
                     error: isOnError,
                 }}
+                helperText={null}
                 format="DD/MM/YYYY" // This one need be set by user locale
                 label={`${label}`}
                 value={currentDate}

@@ -116,10 +116,17 @@ const commonStyles = theme => ({
     popperFixed: {
         position: 'fixed !important',
     },
+    iconButton: {
+        padding: 0,
+    },
     linkButton: {
         color: 'inherit',
         textDecoration: 'none',
         display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: 48,
+        width: 48,
     },
     capitalize: {
         display: 'inline-block',

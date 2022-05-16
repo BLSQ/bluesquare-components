@@ -43,11 +43,13 @@ function FormControlComponent({ classes, children, errors, id, hideError }) {
             {children}
             {errors.length > 0 && !hideError && (
                 <Box className={classes.errorContainer}>
-                    {errors.map(error => (
-                        <Typography key={error} className={classes.error}>
-                            {error}
-                        </Typography>
-                    ))}
+                    {errors
+                        .filter(error => !!error)
+                        .map(error => (
+                            <Typography key={error} className={classes.error}>
+                                {error}
+                            </Typography>
+                        ))}
                 </Box>
             )}
         </FormControl>

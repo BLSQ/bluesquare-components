@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles, Typography } from '@material-ui/core';
+import { withStyles, Typography, Box } from '@material-ui/core';
 import FormControl from '@material-ui/core/FormControl';
 
 const styles = theme => ({
     formControl: {
         width: '100%',
-        marginBottom: theme.spacing(1),
-        marginTop: theme.spacing(1),
         '& fieldset': {
             borderWidth: '1px !important',
         },
@@ -19,35 +17,18 @@ const styles = theme => ({
         },
         zIndex: 'auto',
     },
-    formControlWithMarginTop: {
-        marginTop: theme.spacing(2),
+    errorContainer: {
+        paddingLeft: theme.spacing(2),
+        paddingTop: theme.spacing(1),
     },
     error: {
         color: theme.palette.error.main,
-    },
-    marginTopZero: {
-        marginTop: 0,
+        fontSize: 14,
+        padding: 0,
     },
 });
 
-function FormControlComponent({
-    classes,
-    children,
-    withMarginTop,
-    errors,
-    marginTopZero,
-    id,
-}) {
-    const classNames = [classes.formControl];
-    // FIXME the logic seems to inverted here, but changing it leads to lots of visual bugs in Iaso
-    if (!withMarginTop) {
-        classNames.push(classes.formControlWithMarginTop);
-    }
-
-    // placing marginTopZero here to make sure it overides whatever margin was given by withMarginTop
-    if (marginTopZero) {
-        classNames.push(classes.marginTopZero);
-    }
+function FormControlComponent({ classes, children, errors, id, hideError }) {
     const extraProps = {};
     if (id) {
         extraProps.id = id;
@@ -55,33 +36,36 @@ function FormControlComponent({
 
     return (
         <FormControl
-            className={classNames.join(' ')}
+            className={classes.formControl}
             variant="outlined"
             {...extraProps}
         >
             {children}
-            {errors.length > 0 &&
-                errors.map(error => (
-                    <Typography key={error} className={classes.error}>
-                        {error}
-                    </Typography>
-                ))}
+            {errors.length > 0 && !hideError && (
+                <Box className={classes.errorContainer}>
+                    {errors
+                        .filter(error => !!error)
+                        .map(error => (
+                            <Typography key={error} className={classes.error}>
+                                {error}
+                            </Typography>
+                        ))}
+                </Box>
+            )}
         </FormControl>
     );
 }
 FormControlComponent.defaultProps = {
-    withMarginTop: true,
-    marginTopZero: false,
     errors: [],
     id: null,
+    hideError: false,
 };
 FormControlComponent.propTypes = {
     classes: PropTypes.object.isRequired,
     children: PropTypes.node.isRequired,
-    withMarginTop: PropTypes.bool, // FIXME: these 2 props are redundant, but changing withMarginTop breaks alignment in Iaso
-    marginTopZero: PropTypes.bool,
     errors: PropTypes.arrayOf(PropTypes.string.isRequired),
     id: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+    hideError: PropTypes.bool,
 };
 const styledComponent = withStyles(styles)(FormControlComponent);
 

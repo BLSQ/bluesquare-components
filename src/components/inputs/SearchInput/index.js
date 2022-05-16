@@ -7,7 +7,6 @@ import { InputLabel } from '../InputLabel';
 import { styles } from './styles';
 
 const SearchInput = ({
-    withMarginTop,
     label,
     required,
     keyValue,
@@ -21,7 +20,7 @@ const SearchInput = ({
 }) => {
     const hasErrors = errors.length >= 1;
     return (
-        <FormControl withMarginTop={withMarginTop} errors={errors}>
+        <FormControl errors={errors}>
             <InputLabel
                 htmlFor={`search-${keyValue}`}
                 label={label}
@@ -68,7 +67,6 @@ const SearchInput = ({
 
 SearchInput.defaultProps = {
     value: '',
-    withMarginTop: true,
     disabled: false,
     required: false,
     onEnterPressed: () => {},
@@ -79,7 +77,6 @@ SearchInput.defaultProps = {
 };
 
 SearchInput.propTypes = {
-    withMarginTop: PropTypes.bool,
     keyValue: PropTypes.string.isRequired,
     label: PropTypes.string,
     required: PropTypes.bool,

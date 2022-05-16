@@ -125,8 +125,8 @@ const commonStyles = theme => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        height: 48,
-        width: 48,
+        height: theme.spacing(6),
+        width: theme.spacing(6),
     },
     capitalize: {
         display: 'inline-block',

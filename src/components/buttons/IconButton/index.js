@@ -126,7 +126,7 @@ function IconButtonComponent({
             {/* Wrapping the button in a span to prevent tooltip from crashing as it needs a DOm element to position itself  */}
             <span id={id}>
                 <IconButton
-                    className={classes.iconButton}
+                    className={url && classes.iconButton}
                     disabled={disabled}
                     onClick={onClick}
                     size={size}

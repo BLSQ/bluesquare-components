@@ -2,18 +2,16 @@ import React, { useState } from 'react';
 
 import { KeyboardDatePicker } from '@material-ui/pickers';
 import EventIcon from '@material-ui/icons/Event';
-import { FormControl, makeStyles } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
 import { IconButton } from '../buttons/IconButton';
+import { FormControl } from '../inputs/FormControl';
 
 import { commonStyles } from '../../styles/iaso/common';
 
 const useStyles = makeStyles(theme => ({
     ...commonStyles(theme),
-    formControl: {
-        width: '100%',
-    },
     clearDateButton: {
         marginRight: theme.spacing(2),
         padding: 0,
@@ -21,39 +19,47 @@ const useStyles = makeStyles(theme => ({
         right: theme.spacing(4),
         top: 13,
     },
+    helperTextError: {
+        color: theme.palette.error.main,
+    },
 }));
 
 const DatePicker = ({
     label,
     onChange,
     currentDate,
-    hasError,
     clearMessage,
-    helperText,
+    required,
+    errors,
+    hideError,
 }) => {
     const classes = useStyles();
     const [dateError, setDateError] = useState(null);
+
+    const isOnError = errors.length > 0 || Boolean(dateError);
+
     return (
-        <FormControl className={classes.formControl}>
+        <FormControl errors={errors} hideError={hideError}>
             <KeyboardDatePicker
                 autoOk
                 disableToolbar
                 inputVariant="outlined"
+                required={required}
                 InputLabelProps={{
                     className: classes.label,
                     shrink: Boolean(currentDate),
-                    error: hasError || Boolean(dateError),
+                    error: isOnError,
                 }}
                 KeyboardButtonProps={{
                     size: 'small',
                 }}
                 keyboardIcon={<EventIcon size="small" />}
                 InputProps={{
-                    error: hasError || Boolean(dateError),
+                    error: isOnError,
                 }}
+                helperText={null}
                 format="DD/MM/YYYY" // This one need be set by user locale
-                label={label}
-                helperText={helperText}
+                label={`${label}`}
                 value={currentDate}
                 onChange={onChange}
                 onError={error => setDateError(error)}
@@ -74,7 +80,9 @@ const DatePicker = ({
 
 DatePicker.defaultProps = {
     currentDate: null,
-    helperText: '',
+    required: false,
+    errors: [],
+    hideError: false,
 };
 
 DatePicker.propTypes = {
@@ -92,17 +100,21 @@ DatePicker.propTypes = {
      */
     currentDate: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     /**
-     * Toggles the CSS for error state
+     * List of errors strings
      */
-    hasError: PropTypes.bool.isRequired,
+    errors: PropTypes.array,
     /**
      * A message object to use with react-intl. Displays when hovering over the clear icon
      */
     clearMessage: PropTypes.object.isRequired,
     /**
-     * A message object to use with react-intl. Displays when hovering over the clear icon
+     * display a star in the label if required
      */
-    helperText: PropTypes.string,
+    required: PropTypes.bool,
+    /**
+     * hidde error message
+     */
+    hideError: PropTypes.bool,
 };
 
 export { DatePicker };

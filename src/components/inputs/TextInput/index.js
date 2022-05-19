@@ -7,7 +7,6 @@ import { InputLabel } from '../InputLabel';
 const TextInput = ({
     keyValue,
     label,
-    withMarginTop,
     errors,
     required,
     value,
@@ -17,7 +16,7 @@ const TextInput = ({
 }) => {
     const hasErrors = errors.length >= 1;
     return (
-        <FormControl withMarginTop={withMarginTop} errors={errors}>
+        <FormControl errors={errors}>
             <InputLabel
                 htmlFor={`input-text-${keyValue}`}
                 label={label}
@@ -42,7 +41,6 @@ const TextInput = ({
 TextInput.defaultProps = {
     value: '',
     errors: [],
-    withMarginTop: true,
     multiline: false,
     disabled: false,
     required: false,
@@ -51,7 +49,6 @@ TextInput.defaultProps = {
 };
 
 TextInput.propTypes = {
-    withMarginTop: PropTypes.bool,
     errors: PropTypes.arrayOf(PropTypes.string),
     keyValue: PropTypes.string.isRequired,
     label: PropTypes.string,

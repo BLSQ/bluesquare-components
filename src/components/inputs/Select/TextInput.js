@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import { CircularProgress } from '@material-ui/core';
 
+import { FormControl } from '../FormControl';
 import { useStyles } from '../styles';
 
 const TextInput = ({
@@ -35,38 +36,40 @@ const TextInput = ({
         paramsCopy.inputProps.value = '';
     }
     return (
-        <TextField
-            {...paramsCopy}
-            variant="outlined"
-            disabled={disabled}
-            label={`${label}${required ? '*' : ''}`}
-            onBlur={onBlur}
-            error={errors.length > 0}
-            InputLabelProps={{
-                classes: {
-                    shrink: classes.shrink,
-                },
-                className: classes.inputLabel,
-            }}
-            helperText={helperText}
-            InputProps={{
-                ...params.InputProps,
-                endAdornment: (
-                    <>
-                        {loading ? (
-                            <CircularProgress color="inherit" size={20} />
-                        ) : null}
-                        {params.InputProps.endAdornment}
-                    </>
-                ),
-                ...inputExtraProps,
-            }}
-        />
+        <FormControl errors={errors}>
+            <TextField
+                {...paramsCopy}
+                variant="outlined"
+                disabled={disabled}
+                label={`${label}${required ? '*' : ''}`}
+                onBlur={onBlur}
+                error={errors.length > 0}
+                InputLabelProps={{
+                    classes: {
+                        shrink: classes.shrink,
+                    },
+                    className: classes.inputLabel,
+                }}
+                helperText={helperText}
+                InputProps={{
+                    ...params.InputProps,
+                    endAdornment: (
+                        <>
+                            {loading ? (
+                                <CircularProgress color="inherit" size={20} />
+                            ) : null}
+                            {params.InputProps.endAdornment}
+                        </>
+                    ),
+                    ...inputExtraProps,
+                }}
+            />
+        </FormControl>
     );
 };
 
 TextInput.defaultProps = {
-    helperText: undefined,
+    helperText: null,
     renderOption: null,
 };
 

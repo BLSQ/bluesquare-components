@@ -2,15 +2,15 @@ const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-    entry: {
-        index: './index.ts',
-        // LoadingSpinner: './src/components/LoadingSpinner/index.tsx',
-    },
-    // entry: './index.ts',
+    // entry: {
+    //     index: './index.ts',
+    //     // LoadingSpinner: './src/components/LoadingSpinner/index.tsx',
+    // },
+    entry: './index.ts',
     mode: 'development',
     output: {
         publicPath: '',
-        filename: '[name].js',
+        filename: 'index.js',
         path: path.resolve(__dirname, 'dist'),
         library: {
             name: 'bluesquare-components',

@@ -3,7 +3,7 @@ const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
     entry: {
-        index: './index.ts',
+        // index: './index.ts',
         LoadingSpinner: './src/components/LoadingSpinner/index.tsx',
     },
     // entry: './index.ts',

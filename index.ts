@@ -1,6 +1,6 @@
 import * as library from './src/index';
 
-export {library};
+export default library;
 // import { LoadingSpinner } from './src/components/LoadingSpinner';
 // import { CsvSvg } from './src/svg/CsvSvgComponent';
 // import { DHIS2Svg } from './src/svg/DHIS2SvgComponent';

@@ -3,11 +3,14 @@ const nodeExternals = require('webpack-node-externals');
 const IgnoreNotFoundExportPlugin = require('./webpackPlugin/IgnoreNotFoundExportPlugin');
 
 module.exports = {
-    entry: './index.ts',
-    // mode: 'development',
+    entry: {
+        main: './index.ts',
+        LoadingSpinner: './src/components/LoadingSpinner/index.tsx',
+    },
+    mode: 'development',
     output: {
         publicPath: '',
-        filename: 'index.js',
+        filename: '[name].js',
         path: path.resolve(__dirname, 'dist'),
         library: {
             name: 'bluesquare-components',

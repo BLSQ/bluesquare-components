@@ -124,239 +124,6 @@ const styledSpinner = (0,_material_ui_core__WEBPACK_IMPORTED_MODULE_3__.withStyl
 
 /***/ }),
 
-/***/ "./src/index.ts":
-/*!**********************!*\
-  !*** ./src/index.ts ***!
-  \**********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "AddButton": () => (/* reexport safe */ _components_buttons_AddButton__WEBPACK_IMPORTED_MODULE_22__.AddButton),
-/* harmony export */   "AddComment": () => (/* reexport safe */ _components_comments_AddComment__WEBPACK_IMPORTED_MODULE_48__.AddComment),
-/* harmony export */   "ArrayFieldInput": () => (/* reexport safe */ _components_inputs_ArrayFieldInput__WEBPACK_IMPORTED_MODULE_27__.ArrayFieldInput),
-/* harmony export */   "BlockPlaceholder": () => (/* reexport safe */ _components_BlockPlaceholder__WEBPACK_IMPORTED_MODULE_37__.BlockPlaceholder),
-/* harmony export */   "Checkbox": () => (/* reexport safe */ _components_inputs_Checkbox__WEBPACK_IMPORTED_MODULE_28__.Checkbox),
-/* harmony export */   "ColumnsSelectDrawer": () => (/* reexport safe */ _components_table_ColumnsSelectDrawer__WEBPACK_IMPORTED_MODULE_38__.ColumnsSelectDrawer),
-/* harmony export */   "CommentWithThread": () => (/* reexport safe */ _components_comments_CommentWithThread__WEBPACK_IMPORTED_MODULE_47__.CommentWithThread),
-/* harmony export */   "CsvSvg": () => (/* reexport safe */ _svg_CsvSvgComponent__WEBPACK_IMPORTED_MODULE_1__.CsvSvg),
-/* harmony export */   "DHIS2Svg": () => (/* reexport safe */ _svg_DHIS2SvgComponent__WEBPACK_IMPORTED_MODULE_2__.DHIS2Svg),
-/* harmony export */   "DatePicker": () => (/* reexport safe */ _components_DatePicker__WEBPACK_IMPORTED_MODULE_26__.DatePicker),
-/* harmony export */   "DynamicSelect": () => (/* reexport safe */ _components_Treeview_DynamicSelect__WEBPACK_IMPORTED_MODULE_51__.DynamicSelect),
-/* harmony export */   "DynamicTabs": () => (/* reexport safe */ _components_nav_DynamicTabs__WEBPACK_IMPORTED_MODULE_25__.DynamicTabs),
-/* harmony export */   "EnrichedTreeItem": () => (/* reexport safe */ _components_Treeview_EnrichedTreeItem__WEBPACK_IMPORTED_MODULE_52__.EnrichedTreeItem),
-/* harmony export */   "ErrorBoundary": () => (/* reexport safe */ _components_ErrorBoundary__WEBPACK_IMPORTED_MODULE_36__.ErrorBoundary),
-/* harmony export */   "ExcellSvg": () => (/* reexport safe */ _svg_ExcellSvgComponent__WEBPACK_IMPORTED_MODULE_3__.ExcellSvg),
-/* harmony export */   "Expander": () => (/* reexport safe */ _components_table_Table_Expander__WEBPACK_IMPORTED_MODULE_44__.Expander),
-/* harmony export */   "ExportButton": () => (/* reexport safe */ _components_buttons_ExportButton__WEBPACK_IMPORTED_MODULE_23__.ExportButton),
-/* harmony export */   "FormControl": () => (/* reexport safe */ _components_inputs_FormControl__WEBPACK_IMPORTED_MODULE_35__.FormControl),
-/* harmony export */   "HeaderRowIcon": () => (/* reexport safe */ _components_table_HeaderRowIcon__WEBPACK_IMPORTED_MODULE_39__.HeaderRowIcon),
-/* harmony export */   "IasoChipColors": () => (/* reexport module object */ _constants_iaso_chipColors__WEBPACK_IMPORTED_MODULE_10__),
-/* harmony export */   "IasoTreeView": () => (/* reexport safe */ _components_Treeview_IasoTreeView__WEBPACK_IMPORTED_MODULE_53__.IasoTreeView),
-/* harmony export */   "IasoUiConstants": () => (/* reexport module object */ _constants_iaso_uiConstants__WEBPACK_IMPORTED_MODULE_12__),
-/* harmony export */   "IconButton": () => (/* reexport safe */ _components_buttons_IconButton__WEBPACK_IMPORTED_MODULE_24__.IconButton),
-/* harmony export */   "InfoHeader": () => (/* reexport safe */ _components_table_InfoHeader__WEBPACK_IMPORTED_MODULE_40__.InfoHeader),
-/* harmony export */   "InputLabel": () => (/* reexport safe */ _components_inputs_InputLabel__WEBPACK_IMPORTED_MODULE_49__.InputLabel),
-/* harmony export */   "LazyImage": () => (/* reexport safe */ _components_LazyProgressiveImage__WEBPACK_IMPORTED_MODULE_58__.LazyImage),
-/* harmony export */   "LinkContext": () => (/* reexport safe */ _components_LinkProvider__WEBPACK_IMPORTED_MODULE_45__.LinkContext),
-/* harmony export */   "LinkProvider": () => (/* reexport safe */ _components_LinkProvider__WEBPACK_IMPORTED_MODULE_45__.LinkProvider),
-/* harmony export */   "LoadingSpinner": () => (/* reexport safe */ _components_LoadingSpinner__WEBPACK_IMPORTED_MODULE_0__.LoadingSpinner),
-/* harmony export */   "MENU_HEIGHT_WITHOUT_TABS": () => (/* reexport safe */ _constants_iaso_uiConstants__WEBPACK_IMPORTED_MODULE_12__.MENU_HEIGHT_WITHOUT_TABS),
-/* harmony export */   "MENU_HEIGHT_WITH_TABS": () => (/* reexport safe */ _constants_iaso_uiConstants__WEBPACK_IMPORTED_MODULE_12__.MENU_HEIGHT_WITH_TABS),
-/* harmony export */   "NumberInput": () => (/* reexport safe */ _components_inputs_NumberInput__WEBPACK_IMPORTED_MODULE_29__.NumberInput),
-/* harmony export */   "OrgUnitSvg": () => (/* reexport safe */ _svg_OrgUnitSvgComponent__WEBPACK_IMPORTED_MODULE_4__.OrgUnitSvg),
-/* harmony export */   "PageRowSelect": () => (/* reexport safe */ _components_table_Table_PageRowSelect__WEBPACK_IMPORTED_MODULE_43__.PageRowSelect),
-/* harmony export */   "PasswordInput": () => (/* reexport safe */ _components_inputs_PasswordInput__WEBPACK_IMPORTED_MODULE_30__.PasswordInput),
-/* harmony export */   "PdfSvg": () => (/* reexport safe */ _svg_PdfSvgComponent__WEBPACK_IMPORTED_MODULE_5__.PdfSvg),
-/* harmony export */   "Radio": () => (/* reexport safe */ _components_inputs_Radio__WEBPACK_IMPORTED_MODULE_31__.Radio),
-/* harmony export */   "SIDEBAR_WIDTH": () => (/* reexport safe */ _constants_iaso_uiConstants__WEBPACK_IMPORTED_MODULE_12__.SIDEBAR_WIDTH),
-/* harmony export */   "SearchInput": () => (/* reexport safe */ _components_inputs_SearchInput__WEBPACK_IMPORTED_MODULE_32__.SearchInput),
-/* harmony export */   "Select": () => (/* reexport safe */ _components_inputs_Select__WEBPACK_IMPORTED_MODULE_33__.Select),
-/* harmony export */   "SelectionSpeedDials": () => (/* reexport safe */ _components_table_SelectionSpeedDials__WEBPACK_IMPORTED_MODULE_41__.SelectionSpeedDials),
-/* harmony export */   "ShapeSvg": () => (/* reexport safe */ _svg_ShapeSvgComponent__WEBPACK_IMPORTED_MODULE_6__.ShapeSvg),
-/* harmony export */   "SingleComment": () => (/* reexport safe */ _components_comments_SingleComment__WEBPACK_IMPORTED_MODULE_46__.SingleComment),
-/* harmony export */   "SnackBar": () => (/* reexport module object */ _constants_iaso_snackBars__WEBPACK_IMPORTED_MODULE_11__),
-/* harmony export */   "Table": () => (/* reexport safe */ _components_table_Table__WEBPACK_IMPORTED_MODULE_42__.Table),
-/* harmony export */   "TextInput": () => (/* reexport safe */ _components_inputs_TextInput__WEBPACK_IMPORTED_MODULE_34__.TextInput),
-/* harmony export */   "TextSvg": () => (/* reexport safe */ _svg_TextSvgComponent__WEBPACK_IMPORTED_MODULE_7__.TextSvg),
-/* harmony export */   "TreeViewResultsCountSelect": () => (/* reexport safe */ _components_Treeview_TreeViewResultsCountSelect__WEBPACK_IMPORTED_MODULE_54__.TreeViewResultsCountSelect),
-/* harmony export */   "TreeViewWithSearch": () => (/* reexport safe */ _components_Treeview_TreeViewWithSearch__WEBPACK_IMPORTED_MODULE_55__.TreeViewWithSearch),
-/* harmony export */   "TruncatedTreeview": () => (/* reexport safe */ _components_Treeview_TruncatedTreeview__WEBPACK_IMPORTED_MODULE_56__.TruncatedTreeview),
-/* harmony export */   "WordSvg": () => (/* reexport safe */ _svg_WordSvgComponent__WEBPACK_IMPORTED_MODULE_8__.WordSvg),
-/* harmony export */   "XmlSvg": () => (/* reexport safe */ _svg_XmlSvgComponent__WEBPACK_IMPORTED_MODULE_9__.XmlSvg),
-/* harmony export */   "addPositionIndex": () => (/* reexport safe */ _utils__WEBPACK_IMPORTED_MODULE_59__.addPositionIndex),
-/* harmony export */   "capitalize": () => (/* reexport safe */ _utils__WEBPACK_IMPORTED_MODULE_59__.capitalize),
-/* harmony export */   "clone": () => (/* reexport safe */ _utils__WEBPACK_IMPORTED_MODULE_59__.clone),
-/* harmony export */   "commonStyles": () => (/* reexport safe */ _styles_iaso_common__WEBPACK_IMPORTED_MODULE_19__.commonStyles),
-/* harmony export */   "createUrl": () => (/* reexport safe */ _utils_fetchData__WEBPACK_IMPORTED_MODULE_62__.createUrl),
-/* harmony export */   "deepEqual": () => (/* reexport safe */ _utils__WEBPACK_IMPORTED_MODULE_59__.deepEqual),
-/* harmony export */   "defaultSelectionActions": () => (/* reexport safe */ _utils_tableUtils__WEBPACK_IMPORTED_MODULE_61__.defaultSelectionActions),
-/* harmony export */   "displayDateFromTimestamp": () => (/* reexport safe */ _utils_intlUtils__WEBPACK_IMPORTED_MODULE_60__.displayDateFromTimestamp),
-/* harmony export */   "english": () => (/* reexport safe */ _locale__WEBPACK_IMPORTED_MODULE_57__.english),
-/* harmony export */   "formatThousand": () => (/* reexport safe */ _utils__WEBPACK_IMPORTED_MODULE_59__.formatThousand),
-/* harmony export */   "french": () => (/* reexport safe */ _locale__WEBPACK_IMPORTED_MODULE_57__.french),
-/* harmony export */   "getColumnsHeadersInfos": () => (/* reexport safe */ _utils_tableUtils__WEBPACK_IMPORTED_MODULE_61__.getColumnsHeadersInfos),
-/* harmony export */   "getOrderArray": () => (/* reexport safe */ _utils_tableUtils__WEBPACK_IMPORTED_MODULE_61__.getOrderArray),
-/* harmony export */   "getParamsKey": () => (/* reexport safe */ _utils_tableUtils__WEBPACK_IMPORTED_MODULE_61__.getParamsKey),
-/* harmony export */   "getSimplifiedColumns": () => (/* reexport safe */ _utils_tableUtils__WEBPACK_IMPORTED_MODULE_61__.getSimplifiedColumns),
-/* harmony export */   "getSort": () => (/* reexport safe */ _utils_tableUtils__WEBPACK_IMPORTED_MODULE_61__.getSort),
-/* harmony export */   "getTableParams": () => (/* reexport safe */ _utils_tableUtils__WEBPACK_IMPORTED_MODULE_61__.getTableParams),
-/* harmony export */   "getTableUrl": () => (/* reexport safe */ _utils_tableUtils__WEBPACK_IMPORTED_MODULE_61__.getTableUrl),
-/* harmony export */   "injectIntl": () => (/* reexport safe */ _utils_injectIntl__WEBPACK_IMPORTED_MODULE_13__.injectIntl),
-/* harmony export */   "mapPopupStyles": () => (/* reexport safe */ _styles_iaso_mapPopup__WEBPACK_IMPORTED_MODULE_21__.mapPopupStyles),
-/* harmony export */   "mapStyles": () => (/* reexport safe */ _styles_iaso_map__WEBPACK_IMPORTED_MODULE_20__.mapStyles),
-/* harmony export */   "patchIntl": () => (/* reexport safe */ _utils_patchIntl__WEBPACK_IMPORTED_MODULE_14__.patchIntl),
-/* harmony export */   "rawTheme": () => (/* reexport safe */ _styles_iaso_theme__WEBPACK_IMPORTED_MODULE_17__.rawTheme),
-/* harmony export */   "removePositionIndex": () => (/* reexport safe */ _utils__WEBPACK_IMPORTED_MODULE_59__.removePositionIndex),
-/* harmony export */   "renderTags": () => (/* reexport safe */ _components_inputs_Select__WEBPACK_IMPORTED_MODULE_33__.renderTags),
-/* harmony export */   "selectionInitialState": () => (/* reexport safe */ _utils_tableUtils__WEBPACK_IMPORTED_MODULE_61__.selectionInitialState),
-/* harmony export */   "setTableSelection": () => (/* reexport safe */ _utils_tableUtils__WEBPACK_IMPORTED_MODULE_61__.setTableSelection),
-/* harmony export */   "substituteVars": () => (/* reexport safe */ _utils__WEBPACK_IMPORTED_MODULE_59__.substituteVars),
-/* harmony export */   "tableInitialResult": () => (/* reexport safe */ _utils_tableUtils__WEBPACK_IMPORTED_MODULE_61__.tableInitialResult),
-/* harmony export */   "testTS": () => (/* reexport safe */ _utils_test__WEBPACK_IMPORTED_MODULE_18__.testTS),
-/* harmony export */   "textPlaceholder": () => (/* reexport safe */ _constants_iaso_uiConstants__WEBPACK_IMPORTED_MODULE_12__.textPlaceholder),
-/* harmony export */   "theme": () => (/* reexport safe */ _styles_iaso_theme__WEBPACK_IMPORTED_MODULE_17__.theme),
-/* harmony export */   "translateOptions": () => (/* reexport safe */ _utils_intlUtils__WEBPACK_IMPORTED_MODULE_60__.translateOptions),
-/* harmony export */   "truncateText": () => (/* reexport safe */ _utils__WEBPACK_IMPORTED_MODULE_59__.truncateText),
-/* harmony export */   "useKeyPressListener": () => (/* reexport safe */ _utils_useKeyPressListener__WEBPACK_IMPORTED_MODULE_50__.useKeyPressListener),
-/* harmony export */   "useLink": () => (/* reexport safe */ _components_LinkProvider__WEBPACK_IMPORTED_MODULE_45__.useLink),
-/* harmony export */   "useSafeIntl": () => (/* reexport safe */ _utils_useSafeIntl__WEBPACK_IMPORTED_MODULE_15__.useSafeIntl),
-/* harmony export */   "useSkipEffectOnMount": () => (/* reexport safe */ _utils_useSkipEffectOnMount__WEBPACK_IMPORTED_MODULE_16__.useSkipEffectOnMount),
-/* harmony export */   "useTranslatedOptions": () => (/* reexport safe */ _utils_intlUtils__WEBPACK_IMPORTED_MODULE_60__.useTranslatedOptions),
-/* harmony export */   "withLink": () => (/* reexport safe */ _components_LinkProvider__WEBPACK_IMPORTED_MODULE_45__.withLink)
-/* harmony export */ });
-/* harmony import */ var _components_LoadingSpinner__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/LoadingSpinner */ "./src/components/LoadingSpinner/index.tsx");
-/* harmony import */ var _svg_CsvSvgComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./svg/CsvSvgComponent */ "./src/svg/CsvSvgComponent.js");
-/* harmony import */ var _svg_DHIS2SvgComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./svg/DHIS2SvgComponent */ "./src/svg/DHIS2SvgComponent.js");
-/* harmony import */ var _svg_ExcellSvgComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./svg/ExcellSvgComponent */ "./src/svg/ExcellSvgComponent.js");
-/* harmony import */ var _svg_OrgUnitSvgComponent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./svg/OrgUnitSvgComponent */ "./src/svg/OrgUnitSvgComponent.js");
-/* harmony import */ var _svg_PdfSvgComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./svg/PdfSvgComponent */ "./src/svg/PdfSvgComponent.js");
-/* harmony import */ var _svg_ShapeSvgComponent__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./svg/ShapeSvgComponent */ "./src/svg/ShapeSvgComponent.js");
-/* harmony import */ var _svg_TextSvgComponent__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./svg/TextSvgComponent */ "./src/svg/TextSvgComponent.js");
-/* harmony import */ var _svg_WordSvgComponent__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./svg/WordSvgComponent */ "./src/svg/WordSvgComponent.js");
-/* harmony import */ var _svg_XmlSvgComponent__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./svg/XmlSvgComponent */ "./src/svg/XmlSvgComponent.js");
-/* harmony import */ var _constants_iaso_chipColors__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./constants/iaso/chipColors */ "./src/constants/iaso/chipColors.js");
-/* harmony import */ var _constants_iaso_snackBars__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./constants/iaso/snackBars */ "./src/constants/iaso/snackBars.js");
-/* harmony import */ var _constants_iaso_uiConstants__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./constants/iaso/uiConstants */ "./src/constants/iaso/uiConstants.js");
-/* harmony import */ var _utils_injectIntl__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./utils/injectIntl */ "./src/utils/injectIntl.js");
-/* harmony import */ var _utils_patchIntl__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./utils/patchIntl */ "./src/utils/patchIntl.js");
-/* harmony import */ var _utils_useSafeIntl__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./utils/useSafeIntl */ "./src/utils/useSafeIntl.js");
-/* harmony import */ var _utils_useSkipEffectOnMount__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./utils/useSkipEffectOnMount */ "./src/utils/useSkipEffectOnMount.js");
-/* harmony import */ var _styles_iaso_theme__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./styles/iaso/theme */ "./src/styles/iaso/theme.js");
-/* harmony import */ var _utils_test__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./utils/test */ "./src/utils/test.ts");
-/* harmony import */ var _styles_iaso_common__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./styles/iaso/common */ "./src/styles/iaso/common.js");
-/* harmony import */ var _styles_iaso_map__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./styles/iaso/map */ "./src/styles/iaso/map.js");
-/* harmony import */ var _styles_iaso_mapPopup__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./styles/iaso/mapPopup */ "./src/styles/iaso/mapPopup.js");
-/* harmony import */ var _components_buttons_AddButton__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/buttons/AddButton */ "./src/components/buttons/AddButton/index.js");
-/* harmony import */ var _components_buttons_ExportButton__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/buttons/ExportButton */ "./src/components/buttons/ExportButton/index.js");
-/* harmony import */ var _components_buttons_IconButton__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/buttons/IconButton */ "./src/components/buttons/IconButton/index.js");
-/* harmony import */ var _components_nav_DynamicTabs__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/nav/DynamicTabs */ "./src/components/nav/DynamicTabs/index.js");
-/* harmony import */ var _components_DatePicker__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/DatePicker */ "./src/components/DatePicker/index.js");
-/* harmony import */ var _components_inputs_ArrayFieldInput__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/inputs/ArrayFieldInput */ "./src/components/inputs/ArrayFieldInput/index.js");
-/* harmony import */ var _components_inputs_Checkbox__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/inputs/Checkbox */ "./src/components/inputs/Checkbox/index.js");
-/* harmony import */ var _components_inputs_NumberInput__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/inputs/NumberInput */ "./src/components/inputs/NumberInput/index.js");
-/* harmony import */ var _components_inputs_PasswordInput__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/inputs/PasswordInput */ "./src/components/inputs/PasswordInput/index.js");
-/* harmony import */ var _components_inputs_Radio__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/inputs/Radio */ "./src/components/inputs/Radio/index.js");
-/* harmony import */ var _components_inputs_SearchInput__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/inputs/SearchInput */ "./src/components/inputs/SearchInput/index.js");
-/* harmony import */ var _components_inputs_Select__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/inputs/Select */ "./src/components/inputs/Select/index.js");
-/* harmony import */ var _components_inputs_TextInput__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/inputs/TextInput */ "./src/components/inputs/TextInput/index.js");
-/* harmony import */ var _components_inputs_FormControl__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/inputs/FormControl */ "./src/components/inputs/FormControl.js");
-/* harmony import */ var _components_ErrorBoundary__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./components/ErrorBoundary */ "./src/components/ErrorBoundary/index.js");
-/* harmony import */ var _components_BlockPlaceholder__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./components/BlockPlaceholder */ "./src/components/BlockPlaceholder/index.js");
-/* harmony import */ var _components_table_ColumnsSelectDrawer__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./components/table/ColumnsSelectDrawer */ "./src/components/table/ColumnsSelectDrawer/index.js");
-/* harmony import */ var _components_table_HeaderRowIcon__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./components/table/HeaderRowIcon */ "./src/components/table/HeaderRowIcon/index.js");
-/* harmony import */ var _components_table_InfoHeader__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./components/table/InfoHeader */ "./src/components/table/InfoHeader/index.js");
-/* harmony import */ var _components_table_SelectionSpeedDials__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./components/table/SelectionSpeedDials */ "./src/components/table/SelectionSpeedDials/index.js");
-/* harmony import */ var _components_table_Table__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./components/table/Table */ "./src/components/table/Table/index.js");
-/* harmony import */ var _components_table_Table_PageRowSelect__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./components/table/Table/PageRowSelect */ "./src/components/table/Table/PageRowSelect.js");
-/* harmony import */ var _components_table_Table_Expander__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./components/table/Table/Expander */ "./src/components/table/Table/Expander.js");
-/* harmony import */ var _components_LinkProvider__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./components/LinkProvider */ "./src/components/LinkProvider/index.js");
-/* harmony import */ var _components_comments_SingleComment__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./components/comments/SingleComment */ "./src/components/comments/SingleComment/index.js");
-/* harmony import */ var _components_comments_CommentWithThread__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ./components/comments/CommentWithThread */ "./src/components/comments/CommentWithThread/index.js");
-/* harmony import */ var _components_comments_AddComment__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./components/comments/AddComment */ "./src/components/comments/AddComment/index.js");
-/* harmony import */ var _components_inputs_InputLabel__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./components/inputs/InputLabel */ "./src/components/inputs/InputLabel.js");
-/* harmony import */ var _utils_useKeyPressListener__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./utils/useKeyPressListener */ "./src/utils/useKeyPressListener.js");
-/* harmony import */ var _components_Treeview_DynamicSelect__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./components/Treeview/DynamicSelect */ "./src/components/Treeview/DynamicSelect.js");
-/* harmony import */ var _components_Treeview_EnrichedTreeItem__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ./components/Treeview/EnrichedTreeItem */ "./src/components/Treeview/EnrichedTreeItem.js");
-/* harmony import */ var _components_Treeview_IasoTreeView__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! ./components/Treeview/IasoTreeView */ "./src/components/Treeview/IasoTreeView.js");
-/* harmony import */ var _components_Treeview_TreeViewResultsCountSelect__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! ./components/Treeview/TreeViewResultsCountSelect */ "./src/components/Treeview/TreeViewResultsCountSelect.js");
-/* harmony import */ var _components_Treeview_TreeViewWithSearch__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! ./components/Treeview/TreeViewWithSearch */ "./src/components/Treeview/TreeViewWithSearch.js");
-/* harmony import */ var _components_Treeview_TruncatedTreeview__WEBPACK_IMPORTED_MODULE_56__ = __webpack_require__(/*! ./components/Treeview/TruncatedTreeview */ "./src/components/Treeview/TruncatedTreeview.js");
-/* harmony import */ var _locale__WEBPACK_IMPORTED_MODULE_57__ = __webpack_require__(/*! ./locale */ "./src/locale/index.js");
-/* harmony import */ var _components_LazyProgressiveImage__WEBPACK_IMPORTED_MODULE_58__ = __webpack_require__(/*! ./components/LazyProgressiveImage */ "./src/components/LazyProgressiveImage/index.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_59__ = __webpack_require__(/*! ./utils */ "./src/utils/index.js");
-/* harmony import */ var _utils_intlUtils__WEBPACK_IMPORTED_MODULE_60__ = __webpack_require__(/*! ./utils/intlUtils */ "./src/utils/intlUtils.js");
-/* harmony import */ var _utils_tableUtils__WEBPACK_IMPORTED_MODULE_61__ = __webpack_require__(/*! ./utils/tableUtils */ "./src/utils/tableUtils.js");
-/* harmony import */ var _utils_fetchData__WEBPACK_IMPORTED_MODULE_62__ = __webpack_require__(/*! ./utils/fetchData */ "./src/utils/fetchData.js");
-
-
-
-
-
-
-
-
-
-
- // TODO check if individual snackbars can still be imported
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/***/ }),
-
 /***/ "./src/utils/test.ts":
 /*!***************************!*\
   !*** ./src/utils/test.ts ***!
@@ -9777,147 +9544,230 @@ var __webpack_exports__ = {};
   \******************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "AddButton": () => (/* reexport safe */ _src_components_buttons_AddButton__WEBPACK_IMPORTED_MODULE_22__.AddButton),
+/* harmony export */   "AddComment": () => (/* reexport safe */ _src_components_comments_AddComment__WEBPACK_IMPORTED_MODULE_48__.AddComment),
+/* harmony export */   "ArrayFieldInput": () => (/* reexport safe */ _src_components_inputs_ArrayFieldInput__WEBPACK_IMPORTED_MODULE_27__.ArrayFieldInput),
+/* harmony export */   "BlockPlaceholder": () => (/* reexport safe */ _src_components_BlockPlaceholder__WEBPACK_IMPORTED_MODULE_37__.BlockPlaceholder),
+/* harmony export */   "Checkbox": () => (/* reexport safe */ _src_components_inputs_Checkbox__WEBPACK_IMPORTED_MODULE_28__.Checkbox),
+/* harmony export */   "ColumnsSelectDrawer": () => (/* reexport safe */ _src_components_table_ColumnsSelectDrawer__WEBPACK_IMPORTED_MODULE_38__.ColumnsSelectDrawer),
+/* harmony export */   "CommentWithThread": () => (/* reexport safe */ _src_components_comments_CommentWithThread__WEBPACK_IMPORTED_MODULE_47__.CommentWithThread),
+/* harmony export */   "CsvSvg": () => (/* reexport safe */ _src_svg_CsvSvgComponent__WEBPACK_IMPORTED_MODULE_1__.CsvSvg),
+/* harmony export */   "DHIS2Svg": () => (/* reexport safe */ _src_svg_DHIS2SvgComponent__WEBPACK_IMPORTED_MODULE_2__.DHIS2Svg),
+/* harmony export */   "DatePicker": () => (/* reexport safe */ _src_components_DatePicker__WEBPACK_IMPORTED_MODULE_26__.DatePicker),
+/* harmony export */   "DynamicSelect": () => (/* reexport safe */ _src_components_Treeview_DynamicSelect__WEBPACK_IMPORTED_MODULE_51__.DynamicSelect),
+/* harmony export */   "DynamicTabs": () => (/* reexport safe */ _src_components_nav_DynamicTabs__WEBPACK_IMPORTED_MODULE_25__.DynamicTabs),
+/* harmony export */   "EnrichedTreeItem": () => (/* reexport safe */ _src_components_Treeview_EnrichedTreeItem__WEBPACK_IMPORTED_MODULE_52__.EnrichedTreeItem),
+/* harmony export */   "ErrorBoundary": () => (/* reexport safe */ _src_components_ErrorBoundary__WEBPACK_IMPORTED_MODULE_36__.ErrorBoundary),
+/* harmony export */   "ExcellSvg": () => (/* reexport safe */ _src_svg_ExcellSvgComponent__WEBPACK_IMPORTED_MODULE_3__.ExcellSvg),
+/* harmony export */   "Expander": () => (/* reexport safe */ _src_components_table_Table_Expander__WEBPACK_IMPORTED_MODULE_44__.Expander),
+/* harmony export */   "ExportButton": () => (/* reexport safe */ _src_components_buttons_ExportButton__WEBPACK_IMPORTED_MODULE_23__.ExportButton),
+/* harmony export */   "FormControl": () => (/* reexport safe */ _src_components_inputs_FormControl__WEBPACK_IMPORTED_MODULE_35__.FormControl),
+/* harmony export */   "HeaderRowIcon": () => (/* reexport safe */ _src_components_table_HeaderRowIcon__WEBPACK_IMPORTED_MODULE_39__.HeaderRowIcon),
+/* harmony export */   "IasoChipColors": () => (/* reexport module object */ _src_constants_iaso_chipColors__WEBPACK_IMPORTED_MODULE_10__),
+/* harmony export */   "IasoTreeView": () => (/* reexport safe */ _src_components_Treeview_IasoTreeView__WEBPACK_IMPORTED_MODULE_53__.IasoTreeView),
+/* harmony export */   "IasoUiConstants": () => (/* reexport module object */ _src_constants_iaso_uiConstants__WEBPACK_IMPORTED_MODULE_12__),
+/* harmony export */   "IconButton": () => (/* reexport safe */ _src_components_buttons_IconButton__WEBPACK_IMPORTED_MODULE_24__.IconButton),
+/* harmony export */   "InfoHeader": () => (/* reexport safe */ _src_components_table_InfoHeader__WEBPACK_IMPORTED_MODULE_40__.InfoHeader),
+/* harmony export */   "InputLabel": () => (/* reexport safe */ _src_components_inputs_InputLabel__WEBPACK_IMPORTED_MODULE_49__.InputLabel),
+/* harmony export */   "LazyImage": () => (/* reexport safe */ _src_components_LazyProgressiveImage__WEBPACK_IMPORTED_MODULE_58__.LazyImage),
+/* harmony export */   "LinkContext": () => (/* reexport safe */ _src_components_LinkProvider__WEBPACK_IMPORTED_MODULE_45__.LinkContext),
+/* harmony export */   "LinkProvider": () => (/* reexport safe */ _src_components_LinkProvider__WEBPACK_IMPORTED_MODULE_45__.LinkProvider),
+/* harmony export */   "LoadingSpinner": () => (/* reexport safe */ _src_components_LoadingSpinner__WEBPACK_IMPORTED_MODULE_0__.LoadingSpinner),
+/* harmony export */   "MENU_HEIGHT_WITHOUT_TABS": () => (/* reexport safe */ _src_constants_iaso_uiConstants__WEBPACK_IMPORTED_MODULE_12__.MENU_HEIGHT_WITHOUT_TABS),
+/* harmony export */   "MENU_HEIGHT_WITH_TABS": () => (/* reexport safe */ _src_constants_iaso_uiConstants__WEBPACK_IMPORTED_MODULE_12__.MENU_HEIGHT_WITH_TABS),
+/* harmony export */   "NumberInput": () => (/* reexport safe */ _src_components_inputs_NumberInput__WEBPACK_IMPORTED_MODULE_29__.NumberInput),
+/* harmony export */   "OrgUnitSvg": () => (/* reexport safe */ _src_svg_OrgUnitSvgComponent__WEBPACK_IMPORTED_MODULE_4__.OrgUnitSvg),
+/* harmony export */   "PageRowSelect": () => (/* reexport safe */ _src_components_table_Table_PageRowSelect__WEBPACK_IMPORTED_MODULE_43__.PageRowSelect),
+/* harmony export */   "PasswordInput": () => (/* reexport safe */ _src_components_inputs_PasswordInput__WEBPACK_IMPORTED_MODULE_30__.PasswordInput),
+/* harmony export */   "PdfSvg": () => (/* reexport safe */ _src_svg_PdfSvgComponent__WEBPACK_IMPORTED_MODULE_5__.PdfSvg),
+/* harmony export */   "Radio": () => (/* reexport safe */ _src_components_inputs_Radio__WEBPACK_IMPORTED_MODULE_31__.Radio),
+/* harmony export */   "SIDEBAR_WIDTH": () => (/* reexport safe */ _src_constants_iaso_uiConstants__WEBPACK_IMPORTED_MODULE_12__.SIDEBAR_WIDTH),
+/* harmony export */   "SearchInput": () => (/* reexport safe */ _src_components_inputs_SearchInput__WEBPACK_IMPORTED_MODULE_32__.SearchInput),
+/* harmony export */   "Select": () => (/* reexport safe */ _src_components_inputs_Select__WEBPACK_IMPORTED_MODULE_33__.Select),
+/* harmony export */   "SelectionSpeedDials": () => (/* reexport safe */ _src_components_table_SelectionSpeedDials__WEBPACK_IMPORTED_MODULE_41__.SelectionSpeedDials),
+/* harmony export */   "ShapeSvg": () => (/* reexport safe */ _src_svg_ShapeSvgComponent__WEBPACK_IMPORTED_MODULE_6__.ShapeSvg),
+/* harmony export */   "SingleComment": () => (/* reexport safe */ _src_components_comments_SingleComment__WEBPACK_IMPORTED_MODULE_46__.SingleComment),
+/* harmony export */   "SnackBar": () => (/* reexport module object */ _src_constants_iaso_snackBars__WEBPACK_IMPORTED_MODULE_11__),
+/* harmony export */   "Table": () => (/* reexport safe */ _src_components_table_Table__WEBPACK_IMPORTED_MODULE_42__.Table),
+/* harmony export */   "TextInput": () => (/* reexport safe */ _src_components_inputs_TextInput__WEBPACK_IMPORTED_MODULE_34__.TextInput),
+/* harmony export */   "TextSvg": () => (/* reexport safe */ _src_svg_TextSvgComponent__WEBPACK_IMPORTED_MODULE_7__.TextSvg),
+/* harmony export */   "TreeViewResultsCountSelect": () => (/* reexport safe */ _src_components_Treeview_TreeViewResultsCountSelect__WEBPACK_IMPORTED_MODULE_54__.TreeViewResultsCountSelect),
+/* harmony export */   "TreeViewWithSearch": () => (/* reexport safe */ _src_components_Treeview_TreeViewWithSearch__WEBPACK_IMPORTED_MODULE_55__.TreeViewWithSearch),
+/* harmony export */   "TruncatedTreeview": () => (/* reexport safe */ _src_components_Treeview_TruncatedTreeview__WEBPACK_IMPORTED_MODULE_56__.TruncatedTreeview),
+/* harmony export */   "WordSvg": () => (/* reexport safe */ _src_svg_WordSvgComponent__WEBPACK_IMPORTED_MODULE_8__.WordSvg),
+/* harmony export */   "XmlSvg": () => (/* reexport safe */ _src_svg_XmlSvgComponent__WEBPACK_IMPORTED_MODULE_9__.XmlSvg),
+/* harmony export */   "addPositionIndex": () => (/* reexport safe */ _src_utils__WEBPACK_IMPORTED_MODULE_59__.addPositionIndex),
+/* harmony export */   "capitalize": () => (/* reexport safe */ _src_utils__WEBPACK_IMPORTED_MODULE_59__.capitalize),
+/* harmony export */   "clone": () => (/* reexport safe */ _src_utils__WEBPACK_IMPORTED_MODULE_59__.clone),
+/* harmony export */   "commonStyles": () => (/* reexport safe */ _src_styles_iaso_common__WEBPACK_IMPORTED_MODULE_19__.commonStyles),
+/* harmony export */   "createUrl": () => (/* reexport safe */ _src_utils_fetchData__WEBPACK_IMPORTED_MODULE_62__.createUrl),
+/* harmony export */   "deepEqual": () => (/* reexport safe */ _src_utils__WEBPACK_IMPORTED_MODULE_59__.deepEqual),
+/* harmony export */   "defaultSelectionActions": () => (/* reexport safe */ _src_utils_tableUtils__WEBPACK_IMPORTED_MODULE_61__.defaultSelectionActions),
+/* harmony export */   "displayDateFromTimestamp": () => (/* reexport safe */ _src_utils_intlUtils__WEBPACK_IMPORTED_MODULE_60__.displayDateFromTimestamp),
+/* harmony export */   "english": () => (/* reexport safe */ _src_locale__WEBPACK_IMPORTED_MODULE_57__.english),
+/* harmony export */   "formatThousand": () => (/* reexport safe */ _src_utils__WEBPACK_IMPORTED_MODULE_59__.formatThousand),
+/* harmony export */   "french": () => (/* reexport safe */ _src_locale__WEBPACK_IMPORTED_MODULE_57__.french),
+/* harmony export */   "getColumnsHeadersInfos": () => (/* reexport safe */ _src_utils_tableUtils__WEBPACK_IMPORTED_MODULE_61__.getColumnsHeadersInfos),
+/* harmony export */   "getOrderArray": () => (/* reexport safe */ _src_utils_tableUtils__WEBPACK_IMPORTED_MODULE_61__.getOrderArray),
+/* harmony export */   "getParamsKey": () => (/* reexport safe */ _src_utils_tableUtils__WEBPACK_IMPORTED_MODULE_61__.getParamsKey),
+/* harmony export */   "getSimplifiedColumns": () => (/* reexport safe */ _src_utils_tableUtils__WEBPACK_IMPORTED_MODULE_61__.getSimplifiedColumns),
+/* harmony export */   "getSort": () => (/* reexport safe */ _src_utils_tableUtils__WEBPACK_IMPORTED_MODULE_61__.getSort),
+/* harmony export */   "getTableParams": () => (/* reexport safe */ _src_utils_tableUtils__WEBPACK_IMPORTED_MODULE_61__.getTableParams),
+/* harmony export */   "getTableUrl": () => (/* reexport safe */ _src_utils_tableUtils__WEBPACK_IMPORTED_MODULE_61__.getTableUrl),
+/* harmony export */   "injectIntl": () => (/* reexport safe */ _src_utils_injectIntl__WEBPACK_IMPORTED_MODULE_13__.injectIntl),
+/* harmony export */   "mapPopupStyles": () => (/* reexport safe */ _src_styles_iaso_mapPopup__WEBPACK_IMPORTED_MODULE_21__.mapPopupStyles),
+/* harmony export */   "mapStyles": () => (/* reexport safe */ _src_styles_iaso_map__WEBPACK_IMPORTED_MODULE_20__.mapStyles),
+/* harmony export */   "patchIntl": () => (/* reexport safe */ _src_utils_patchIntl__WEBPACK_IMPORTED_MODULE_14__.patchIntl),
+/* harmony export */   "rawTheme": () => (/* reexport safe */ _src_styles_iaso_theme__WEBPACK_IMPORTED_MODULE_17__.rawTheme),
+/* harmony export */   "removePositionIndex": () => (/* reexport safe */ _src_utils__WEBPACK_IMPORTED_MODULE_59__.removePositionIndex),
+/* harmony export */   "renderTags": () => (/* reexport safe */ _src_components_inputs_Select__WEBPACK_IMPORTED_MODULE_33__.renderTags),
+/* harmony export */   "selectionInitialState": () => (/* reexport safe */ _src_utils_tableUtils__WEBPACK_IMPORTED_MODULE_61__.selectionInitialState),
+/* harmony export */   "setTableSelection": () => (/* reexport safe */ _src_utils_tableUtils__WEBPACK_IMPORTED_MODULE_61__.setTableSelection),
+/* harmony export */   "substituteVars": () => (/* reexport safe */ _src_utils__WEBPACK_IMPORTED_MODULE_59__.substituteVars),
+/* harmony export */   "tableInitialResult": () => (/* reexport safe */ _src_utils_tableUtils__WEBPACK_IMPORTED_MODULE_61__.tableInitialResult),
+/* harmony export */   "testTS": () => (/* reexport safe */ _src_utils_test__WEBPACK_IMPORTED_MODULE_18__.testTS),
+/* harmony export */   "textPlaceholder": () => (/* reexport safe */ _src_constants_iaso_uiConstants__WEBPACK_IMPORTED_MODULE_12__.textPlaceholder),
+/* harmony export */   "theme": () => (/* reexport safe */ _src_styles_iaso_theme__WEBPACK_IMPORTED_MODULE_17__.theme),
+/* harmony export */   "translateOptions": () => (/* reexport safe */ _src_utils_intlUtils__WEBPACK_IMPORTED_MODULE_60__.translateOptions),
+/* harmony export */   "truncateText": () => (/* reexport safe */ _src_utils__WEBPACK_IMPORTED_MODULE_59__.truncateText),
+/* harmony export */   "useKeyPressListener": () => (/* reexport safe */ _src_utils_useKeyPressListener__WEBPACK_IMPORTED_MODULE_50__.useKeyPressListener),
+/* harmony export */   "useLink": () => (/* reexport safe */ _src_components_LinkProvider__WEBPACK_IMPORTED_MODULE_45__.useLink),
+/* harmony export */   "useSafeIntl": () => (/* reexport safe */ _src_utils_useSafeIntl__WEBPACK_IMPORTED_MODULE_15__.useSafeIntl),
+/* harmony export */   "useSkipEffectOnMount": () => (/* reexport safe */ _src_utils_useSkipEffectOnMount__WEBPACK_IMPORTED_MODULE_16__.useSkipEffectOnMount),
+/* harmony export */   "useTranslatedOptions": () => (/* reexport safe */ _src_utils_intlUtils__WEBPACK_IMPORTED_MODULE_60__.useTranslatedOptions),
+/* harmony export */   "withLink": () => (/* reexport safe */ _src_components_LinkProvider__WEBPACK_IMPORTED_MODULE_45__.withLink)
 /* harmony export */ });
-/* harmony import */ var _src_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/index */ "./src/index.ts");
+/* harmony import */ var _src_components_LoadingSpinner__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/components/LoadingSpinner */ "./src/components/LoadingSpinner/index.tsx");
+/* harmony import */ var _src_svg_CsvSvgComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/svg/CsvSvgComponent */ "./src/svg/CsvSvgComponent.js");
+/* harmony import */ var _src_svg_DHIS2SvgComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/svg/DHIS2SvgComponent */ "./src/svg/DHIS2SvgComponent.js");
+/* harmony import */ var _src_svg_ExcellSvgComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./src/svg/ExcellSvgComponent */ "./src/svg/ExcellSvgComponent.js");
+/* harmony import */ var _src_svg_OrgUnitSvgComponent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./src/svg/OrgUnitSvgComponent */ "./src/svg/OrgUnitSvgComponent.js");
+/* harmony import */ var _src_svg_PdfSvgComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./src/svg/PdfSvgComponent */ "./src/svg/PdfSvgComponent.js");
+/* harmony import */ var _src_svg_ShapeSvgComponent__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./src/svg/ShapeSvgComponent */ "./src/svg/ShapeSvgComponent.js");
+/* harmony import */ var _src_svg_TextSvgComponent__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./src/svg/TextSvgComponent */ "./src/svg/TextSvgComponent.js");
+/* harmony import */ var _src_svg_WordSvgComponent__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./src/svg/WordSvgComponent */ "./src/svg/WordSvgComponent.js");
+/* harmony import */ var _src_svg_XmlSvgComponent__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./src/svg/XmlSvgComponent */ "./src/svg/XmlSvgComponent.js");
+/* harmony import */ var _src_constants_iaso_chipColors__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./src/constants/iaso/chipColors */ "./src/constants/iaso/chipColors.js");
+/* harmony import */ var _src_constants_iaso_snackBars__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./src/constants/iaso/snackBars */ "./src/constants/iaso/snackBars.js");
+/* harmony import */ var _src_constants_iaso_uiConstants__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./src/constants/iaso/uiConstants */ "./src/constants/iaso/uiConstants.js");
+/* harmony import */ var _src_utils_injectIntl__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./src/utils/injectIntl */ "./src/utils/injectIntl.js");
+/* harmony import */ var _src_utils_patchIntl__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./src/utils/patchIntl */ "./src/utils/patchIntl.js");
+/* harmony import */ var _src_utils_useSafeIntl__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./src/utils/useSafeIntl */ "./src/utils/useSafeIntl.js");
+/* harmony import */ var _src_utils_useSkipEffectOnMount__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./src/utils/useSkipEffectOnMount */ "./src/utils/useSkipEffectOnMount.js");
+/* harmony import */ var _src_styles_iaso_theme__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./src/styles/iaso/theme */ "./src/styles/iaso/theme.js");
+/* harmony import */ var _src_utils_test__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./src/utils/test */ "./src/utils/test.ts");
+/* harmony import */ var _src_styles_iaso_common__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./src/styles/iaso/common */ "./src/styles/iaso/common.js");
+/* harmony import */ var _src_styles_iaso_map__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./src/styles/iaso/map */ "./src/styles/iaso/map.js");
+/* harmony import */ var _src_styles_iaso_mapPopup__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./src/styles/iaso/mapPopup */ "./src/styles/iaso/mapPopup.js");
+/* harmony import */ var _src_components_buttons_AddButton__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./src/components/buttons/AddButton */ "./src/components/buttons/AddButton/index.js");
+/* harmony import */ var _src_components_buttons_ExportButton__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./src/components/buttons/ExportButton */ "./src/components/buttons/ExportButton/index.js");
+/* harmony import */ var _src_components_buttons_IconButton__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./src/components/buttons/IconButton */ "./src/components/buttons/IconButton/index.js");
+/* harmony import */ var _src_components_nav_DynamicTabs__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./src/components/nav/DynamicTabs */ "./src/components/nav/DynamicTabs/index.js");
+/* harmony import */ var _src_components_DatePicker__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./src/components/DatePicker */ "./src/components/DatePicker/index.js");
+/* harmony import */ var _src_components_inputs_ArrayFieldInput__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./src/components/inputs/ArrayFieldInput */ "./src/components/inputs/ArrayFieldInput/index.js");
+/* harmony import */ var _src_components_inputs_Checkbox__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./src/components/inputs/Checkbox */ "./src/components/inputs/Checkbox/index.js");
+/* harmony import */ var _src_components_inputs_NumberInput__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./src/components/inputs/NumberInput */ "./src/components/inputs/NumberInput/index.js");
+/* harmony import */ var _src_components_inputs_PasswordInput__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./src/components/inputs/PasswordInput */ "./src/components/inputs/PasswordInput/index.js");
+/* harmony import */ var _src_components_inputs_Radio__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./src/components/inputs/Radio */ "./src/components/inputs/Radio/index.js");
+/* harmony import */ var _src_components_inputs_SearchInput__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./src/components/inputs/SearchInput */ "./src/components/inputs/SearchInput/index.js");
+/* harmony import */ var _src_components_inputs_Select__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./src/components/inputs/Select */ "./src/components/inputs/Select/index.js");
+/* harmony import */ var _src_components_inputs_TextInput__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./src/components/inputs/TextInput */ "./src/components/inputs/TextInput/index.js");
+/* harmony import */ var _src_components_inputs_FormControl__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./src/components/inputs/FormControl */ "./src/components/inputs/FormControl.js");
+/* harmony import */ var _src_components_ErrorBoundary__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./src/components/ErrorBoundary */ "./src/components/ErrorBoundary/index.js");
+/* harmony import */ var _src_components_BlockPlaceholder__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./src/components/BlockPlaceholder */ "./src/components/BlockPlaceholder/index.js");
+/* harmony import */ var _src_components_table_ColumnsSelectDrawer__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./src/components/table/ColumnsSelectDrawer */ "./src/components/table/ColumnsSelectDrawer/index.js");
+/* harmony import */ var _src_components_table_HeaderRowIcon__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./src/components/table/HeaderRowIcon */ "./src/components/table/HeaderRowIcon/index.js");
+/* harmony import */ var _src_components_table_InfoHeader__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./src/components/table/InfoHeader */ "./src/components/table/InfoHeader/index.js");
+/* harmony import */ var _src_components_table_SelectionSpeedDials__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./src/components/table/SelectionSpeedDials */ "./src/components/table/SelectionSpeedDials/index.js");
+/* harmony import */ var _src_components_table_Table__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./src/components/table/Table */ "./src/components/table/Table/index.js");
+/* harmony import */ var _src_components_table_Table_PageRowSelect__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./src/components/table/Table/PageRowSelect */ "./src/components/table/Table/PageRowSelect.js");
+/* harmony import */ var _src_components_table_Table_Expander__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./src/components/table/Table/Expander */ "./src/components/table/Table/Expander.js");
+/* harmony import */ var _src_components_LinkProvider__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./src/components/LinkProvider */ "./src/components/LinkProvider/index.js");
+/* harmony import */ var _src_components_comments_SingleComment__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./src/components/comments/SingleComment */ "./src/components/comments/SingleComment/index.js");
+/* harmony import */ var _src_components_comments_CommentWithThread__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ./src/components/comments/CommentWithThread */ "./src/components/comments/CommentWithThread/index.js");
+/* harmony import */ var _src_components_comments_AddComment__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./src/components/comments/AddComment */ "./src/components/comments/AddComment/index.js");
+/* harmony import */ var _src_components_inputs_InputLabel__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./src/components/inputs/InputLabel */ "./src/components/inputs/InputLabel.js");
+/* harmony import */ var _src_utils_useKeyPressListener__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./src/utils/useKeyPressListener */ "./src/utils/useKeyPressListener.js");
+/* harmony import */ var _src_components_Treeview_DynamicSelect__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./src/components/Treeview/DynamicSelect */ "./src/components/Treeview/DynamicSelect.js");
+/* harmony import */ var _src_components_Treeview_EnrichedTreeItem__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ./src/components/Treeview/EnrichedTreeItem */ "./src/components/Treeview/EnrichedTreeItem.js");
+/* harmony import */ var _src_components_Treeview_IasoTreeView__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! ./src/components/Treeview/IasoTreeView */ "./src/components/Treeview/IasoTreeView.js");
+/* harmony import */ var _src_components_Treeview_TreeViewResultsCountSelect__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! ./src/components/Treeview/TreeViewResultsCountSelect */ "./src/components/Treeview/TreeViewResultsCountSelect.js");
+/* harmony import */ var _src_components_Treeview_TreeViewWithSearch__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! ./src/components/Treeview/TreeViewWithSearch */ "./src/components/Treeview/TreeViewWithSearch.js");
+/* harmony import */ var _src_components_Treeview_TruncatedTreeview__WEBPACK_IMPORTED_MODULE_56__ = __webpack_require__(/*! ./src/components/Treeview/TruncatedTreeview */ "./src/components/Treeview/TruncatedTreeview.js");
+/* harmony import */ var _src_locale__WEBPACK_IMPORTED_MODULE_57__ = __webpack_require__(/*! ./src/locale */ "./src/locale/index.js");
+/* harmony import */ var _src_components_LazyProgressiveImage__WEBPACK_IMPORTED_MODULE_58__ = __webpack_require__(/*! ./src/components/LazyProgressiveImage */ "./src/components/LazyProgressiveImage/index.js");
+/* harmony import */ var _src_utils__WEBPACK_IMPORTED_MODULE_59__ = __webpack_require__(/*! ./src/utils */ "./src/utils/index.js");
+/* harmony import */ var _src_utils_intlUtils__WEBPACK_IMPORTED_MODULE_60__ = __webpack_require__(/*! ./src/utils/intlUtils */ "./src/utils/intlUtils.js");
+/* harmony import */ var _src_utils_tableUtils__WEBPACK_IMPORTED_MODULE_61__ = __webpack_require__(/*! ./src/utils/tableUtils */ "./src/utils/tableUtils.js");
+/* harmony import */ var _src_utils_fetchData__WEBPACK_IMPORTED_MODULE_62__ = __webpack_require__(/*! ./src/utils/fetchData */ "./src/utils/fetchData.js");
+// import * as library from './src/index';
+// export default library;
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_src_index__WEBPACK_IMPORTED_MODULE_0__); // import { LoadingSpinner } from './src/components/LoadingSpinner';
-// import { CsvSvg } from './src/svg/CsvSvgComponent';
-// import { DHIS2Svg } from './src/svg/DHIS2SvgComponent';
-// import { ExcellSvg } from './src/svg/ExcellSvgComponent';
-// import { OrgUnitSvg } from './src/svg/OrgUnitSvgComponent';
-// import { PdfSvg } from './src/svg/PdfSvgComponent';
-// import { ShapeSvg } from './src/svg/ShapeSvgComponent';
-// import { TextSvg } from './src/svg/TextSvgComponent';
-// import { WordSvg } from './src/svg/WordSvgComponent';
-// import { XmlSvg } from './src/svg/XmlSvgComponent';
-// import * as IasoChipColors from './src/constants/iaso/chipColors';
-// // TODO check if individual snackbars can still be imported
-// import * as SnackBar from './src/constants/iaso/snackBars';
-// import * as IasoUiConstants from './src/constants/iaso/uiConstants';
-// import { injectIntl } from './src/utils/injectIntl';
-// import { patchIntl } from './src/utils/patchIntl';
-// import { useSafeIntl } from './src/utils/useSafeIntl';
-// import { useSkipEffectOnMount } from './src/utils/useSkipEffectOnMount';
-// import { theme, rawTheme } from './src/styles/iaso/theme';
-// import { testTS } from './src/utils/test';
-// import { commonStyles } from './src/styles/iaso/common';
-// import { mapStyles } from './src/styles/iaso/map';
-// import { mapPopupStyles } from './src/styles/iaso/mapPopup';
-// import { AddButton } from './src/components/buttons/AddButton';
-// import { ExportButton } from './src/components/buttons/ExportButton';
-// import { IconButton } from './src/components/buttons/IconButton';
-// import { DynamicTabs } from './src/components/nav/DynamicTabs';
-// import { DatePicker } from './src/components/DatePicker';
-// import { ArrayFieldInput } from './src/components/inputs/ArrayFieldInput';
-// import { Checkbox } from './src/components/inputs/Checkbox';
-// import { NumberInput } from './src/components/inputs/NumberInput';
-// import { PasswordInput } from './src/components/inputs/PasswordInput';
-// import { Radio } from './src/components/inputs/Radio';
-// import { SearchInput } from './src/components/inputs/SearchInput';
-// import { Select, renderTags } from './src/components/inputs/Select';
-// import { TextInput } from './src/components/inputs/TextInput';
-// import { FormControl } from './src/components/inputs/FormControl';
-// import { ErrorBoundary } from './src/components/ErrorBoundary';
-// import { BlockPlaceholder } from './src/components/BlockPlaceholder';
-// import { ColumnsSelectDrawer } from './src/components/table/ColumnsSelectDrawer';
-// import { HeaderRowIcon } from './src/components/table/HeaderRowIcon';
-// import { InfoHeader } from './src/components/table/InfoHeader';
-// import { SelectionSpeedDials } from './src/components/table/SelectionSpeedDials';
-// import { Table } from './src/components/table/Table';
-// import { PageRowSelect } from './src/components/table/Table/PageRowSelect';
-// import { Expander } from './src/components/table/Table/Expander';
-// import {
-//     LinkProvider,
-//     LinkContext,
-//     withLink,
-//     useLink,
-// } from './src/components/LinkProvider';
-// import { SingleComment } from './src/components/comments/SingleComment';
-// import { CommentWithThread } from './src/components/comments/CommentWithThread';
-// import { AddComment } from './src/components/comments/AddComment';
-// import { InputLabel } from './src/components/inputs/InputLabel';
-// import { useKeyPressListener } from './src/utils/useKeyPressListener';
-// import { DynamicSelect } from './src/components/Treeview/DynamicSelect';
-// import { EnrichedTreeItem } from './src/components/Treeview/EnrichedTreeItem';
-// import { IasoTreeView } from './src/components/Treeview/IasoTreeView';
-// import { TreeViewResultsCountSelect } from './src/components/Treeview/TreeViewResultsCountSelect';
-// import { TreeViewWithSearch } from './src/components/Treeview/TreeViewWithSearch';
-// import { TruncatedTreeview } from './src/components/Treeview/TruncatedTreeview';
-// import { french, english } from './src/locale';
-// import { LazyImage } from './src/components/LazyProgressiveImage';
-// export * from './src/utils';
-// export * from './src/utils/intlUtils';
-// export * from './src/utils/tableUtils';
-// export * from './src/utils/fetchData';
-// export * from './src/constants/iaso/uiConstants';
-// export {
-//     LazyImage,
-//     french,
-//     english,
-//     testTS,
-//     LoadingSpinner,
-//     CsvSvg,
-//     DHIS2Svg,
-//     ExcellSvg,
-//     OrgUnitSvg,
-//     PdfSvg,
-//     ShapeSvg,
-//     TextSvg,
-//     WordSvg,
-//     XmlSvg,
-//     IasoChipColors,
-//     SnackBar,
-//     IasoUiConstants,
-//     injectIntl,
-//     patchIntl,
-//     useSafeIntl,
-//     useSkipEffectOnMount,
-//     commonStyles,
-//     mapStyles,
-//     mapPopupStyles,
-//     AddButton,
-//     ExportButton,
-//     IconButton,
-//     DynamicTabs,
-//     DatePicker,
-//     Select,
-//     renderTags,
-//     PageRowSelect,
-//     ErrorBoundary,
-//     TextInput,
-//     PasswordInput,
-//     NumberInput,
-//     ArrayFieldInput,
-//     SearchInput,
-//     Checkbox,
-//     Radio,
-//     theme,
-//     rawTheme,
-//     BlockPlaceholder,
-//     ColumnsSelectDrawer,
-//     HeaderRowIcon,
-//     InfoHeader,
-//     SelectionSpeedDials,
-//     Table,
-//     LinkProvider,
-//     LinkContext,
-//     withLink,
-//     useLink,
-//     SingleComment,
-//     CommentWithThread,
-//     AddComment,
-//     InputLabel,
-//     Expander,
-//     FormControl,
-//     useKeyPressListener,
-//     TruncatedTreeview,
-//     TreeViewWithSearch,
-//     TreeViewResultsCountSelect,
-//     IasoTreeView,
-//     EnrichedTreeItem,
-//     DynamicSelect,
-// };
+
+
+
+
+
+
+
+
+
+ // TODO check if individual snackbars can still be imported
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 })();
 
 __webpack_exports__ = __webpack_exports__["default"];
@@ -9925,4 +9775,4 @@ __webpack_exports__ = __webpack_exports__["default"];
 /******/ })()
 ;
 });
-//# sourceMappingURL=main.js.map
+//# sourceMappingURL=index.js.map

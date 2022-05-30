@@ -3,8 +3,8 @@ const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
     entry: {
-        main: './index.ts',
-        LoadingSpinner: './src/components/LoadingSpinner/index.tsx',
+        index: './index.ts',
+        // LoadingSpinner: './src/components/LoadingSpinner/index.tsx',
     },
     // entry: './index.ts',
     mode: 'development',

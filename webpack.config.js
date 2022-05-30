@@ -1,12 +1,12 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
-const IgnoreNotFoundExportPlugin = require('./webpackPlugin/IgnoreNotFoundExportPlugin');
 
 module.exports = {
     entry: {
-        main: './index.ts',
+        index: './index.ts',
         LoadingSpinner: './src/components/LoadingSpinner/index.tsx',
     },
+    // entry: './index.ts',
     mode: 'development',
     output: {
         publicPath: '',
@@ -104,5 +104,4 @@ module.exports = {
         extensions: ['.tsx', '.ts', '.js'],
     },
     devtool: 'source-map',
-    plugins: [new IgnoreNotFoundExportPlugin()],
 };

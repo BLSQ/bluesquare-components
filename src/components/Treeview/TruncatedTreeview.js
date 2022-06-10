@@ -38,6 +38,12 @@ const styles = theme => ({
         ...removeBackgroundOnTabNav,
         color: theme.palette.gray.main,
     },
+    removeIconContainer: {
+        paddingLeft: '5px',
+        '& .MuiTreeItem-iconContainer': {
+            display: 'none',
+        },
+    },
 });
 const determineClassName = (items, nextItems, style) => {
     if (items.size === 1) return style.singleTreeItem;
@@ -91,6 +97,9 @@ const TruncatedTreeview = ({ selectedItems, label, redirect }) => {
             }}
             disableSelection
             expanded={expanded}
+            classes={{
+                root: expanded.length === 1 && style.removeIconContainer,
+            }}
             className={style.truncatedTreeview}
         >
             {makeTreeItems(selectedItems, selectedItems)}

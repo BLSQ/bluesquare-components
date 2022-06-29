@@ -91,6 +91,7 @@ const TableComponent = props => {
         pages,
         countOnTop,
         marginTop,
+        marginBottom,
         multiSelect,
         selectionActions,
         setTableSelection,
@@ -207,7 +208,7 @@ const TableComponent = props => {
 
     const rowsPerPage = parseInt(pageSize, 10);
     return (
-        <Box mt={marginTop ? 4 : 0} mb={4}>
+        <Box mt={marginTop ? 4 : 0} mb={marginBottom ? 4 : 0}>
             <Select
                 count={count}
                 multiSelect={multiSelect}
@@ -264,6 +265,7 @@ TableComponent.defaultProps = {
     baseUrl: '',
     countOnTop: true,
     marginTop: true,
+    marginBottom: true,
     multiSelect: false,
     selectionActions: [],
     selection: selectionInitialState,
@@ -296,6 +298,7 @@ TableComponent.propTypes = {
     baseUrl: PropTypes.string,
     countOnTop: PropTypes.bool,
     marginTop: PropTypes.bool,
+    marginBottom: PropTypes.bool,
     multiSelect: PropTypes.bool,
     selectionActions: PropTypes.array,
     redirectTo: PropTypes.func,

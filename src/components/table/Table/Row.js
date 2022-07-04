@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import { makeStyles } from '@material-ui/core/styles';
+import classNames from 'classnames';
 
 const useStyles = makeStyles(theme => ({
     row: {
@@ -13,11 +14,22 @@ const useStyles = makeStyles(theme => ({
             backgroundColor: 'transparent',
         },
     },
+    rowClickable: {
+        cursor: 'pointer',
+        '&:hover': {
+            '&:nth-of-type(odd)': {
+                backgroundColor: theme.palette.grey['300'],
+            },
+            '&:nth-of-type(even)': {
+                backgroundColor: theme.palette.grey['300'],
+            },
+        },
+    },
     cell: {
         padding: theme.spacing(1, 2),
     },
 }));
-const Row = ({ row, rowProps, subComponent, sortBy }) => {
+const Row = ({ row, rowProps, subComponent, sortBy, onRowClick }) => {
     const classes = useStyles();
     const [isExpanded, setIsExpanded] = useState(false);
     useEffect(() => {
@@ -25,7 +37,15 @@ const Row = ({ row, rowProps, subComponent, sortBy }) => {
     }, [sortBy]);
     return (
         <>
-            <TableRow {...rowProps} className={classes.row} key={rowProps.key}>
+            <TableRow
+                {...rowProps}
+                onClick={() => (onRowClick ? onRowClick(row.original) : null)}
+                className={classNames(
+                    classes.row,
+                    Boolean(onRowClick) && classes.rowClickable,
+                )}
+                key={rowProps.key}
+            >
                 {row.cells.map(cell => {
                     const cellProps = cell.getCellProps();
                     const align = cell.column.align || 'center';
@@ -66,6 +86,7 @@ const Row = ({ row, rowProps, subComponent, sortBy }) => {
 Row.defaultProps = {
     subComponent: undefined,
     sortBy: [],
+    onRowClick: undefined,
 };
 
 Row.propTypes = {
@@ -73,6 +94,7 @@ Row.propTypes = {
     row: PropTypes.object.isRequired,
     rowProps: PropTypes.object.isRequired,
     subComponent: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+    onRowClick: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
 };
 
 export { Row };

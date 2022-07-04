@@ -10,6 +10,7 @@ const Body = ({
     prepareRow,
     subComponent,
     sortBy,
+    onRowClick,
 }) => (
     <TableBody {...getTableBodyProps}>
         {page.map(row => {
@@ -22,6 +23,7 @@ const Body = ({
                     key={rowProps.key}
                     subComponent={subComponent}
                     sortBy={sortBy}
+                    onRowClick={onRowClick}
                 />
             );
         })}
@@ -33,6 +35,7 @@ Body.defaultProps = {
     sortBy: [],
     rowsPerPage: 10,
     subComponent: undefined,
+    onRowClick: undefined,
 };
 
 Body.propTypes = {
@@ -42,6 +45,7 @@ Body.propTypes = {
     prepareRow: PropTypes.func.isRequired,
     rowsPerPage: PropTypes.number,
     subComponent: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+    onRowClick: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
 };
 
 export { Body };

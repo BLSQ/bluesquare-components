@@ -103,6 +103,7 @@ const TableComponent = props => {
         defaultSorted,
         resetPageToOne,
         elevation,
+        onRowClick,
     } = props;
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -239,6 +240,7 @@ const TableComponent = props => {
                             prepareRow={prepareRow}
                             subComponent={extraProps.SubComponent}
                             sortBy={sortBy}
+                            onRowClick={onRowClick}
                         />
                         {showFooter && <Footer footerGroups={footerGroups} />}
                     </MuiTable>
@@ -287,6 +289,7 @@ TableComponent.defaultProps = {
     defaultSorted: getOrderArray(DEFAULT_ORDER),
     resetPageToOne: '',
     elevation: 3,
+    onRowClick: undefined,
 };
 
 TableComponent.propTypes = {
@@ -313,6 +316,7 @@ TableComponent.propTypes = {
     defaultSorted: PropTypes.array,
     resetPageToOne: PropTypes.string,
     elevation: PropTypes.number,
+    onRowClick: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
 };
 
 const Table = React.memo(TableComponent, (props, prevProps) => {

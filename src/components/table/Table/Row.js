@@ -39,7 +39,9 @@ const Row = ({ row, rowProps, subComponent, sortBy, onRowClick }) => {
         <>
             <TableRow
                 {...rowProps}
-                onClick={() => (onRowClick ? onRowClick(row.original) : null)}
+                onClick={event =>
+                    onRowClick ? onRowClick(row.original, event) : null
+                }
                 className={classNames(
                     classes.row,
                     Boolean(onRowClick) && classes.rowClickable,

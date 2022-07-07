@@ -56,6 +56,8 @@ import { useSkipEffectOnMount } from '../../../utils/useSkipEffectOnMount';
  * @param {Array} showFooter
  * @param {Object} extraProps
  * @param {String} paramPrefix
+ * @param {Function} onRowClick  Pass this function to tha table and each row of the table will be clickable.
+ *                               It will return the value of the row and the event as second argument.
  *
  * Multi selection is optionnal
  * Selection props:

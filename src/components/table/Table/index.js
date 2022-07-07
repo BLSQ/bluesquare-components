@@ -58,6 +58,9 @@ import { useSkipEffectOnMount } from '../../../utils/useSkipEffectOnMount';
  * @param {String} paramPrefix
  * @param {Function} onRowClick  Pass this function to tha table and each row of the table will be clickable.
  *                               It will return the value of the row and the event as second argument.
+ *                               Please do not use a action column and a clivkable row, it can be a bit confusing.
+ *                               For complex cases you can always check the origin of the click with event.target
+ *                               and decide or not propagate the click.
  *
  * Multi selection is optionnal
  * Selection props:

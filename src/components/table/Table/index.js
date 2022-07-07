@@ -318,7 +318,7 @@ TableComponent.propTypes = {
     defaultSorted: PropTypes.array,
     resetPageToOne: PropTypes.string,
     elevation: PropTypes.number,
-    onRowClick: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+    onRowClick: PropTypes.func,
 };
 
 const Table = React.memo(TableComponent, (props, prevProps) => {

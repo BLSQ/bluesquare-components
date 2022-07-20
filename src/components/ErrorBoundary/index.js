@@ -18,7 +18,9 @@ class ErrorBoundary extends React.Component {
 
     render() {
         if (this.state.hasError) {
-            console.log('YAbadabadoo');
+            if (this.props.message) {
+                return <h1>{this.props.message}</h1>;
+            }
             return (
                 <h1>An exception occurred: {this.state.error.toString()}</h1>
             );
@@ -29,5 +31,9 @@ class ErrorBoundary extends React.Component {
 
 ErrorBoundary.propTypes = {
     children: PropTypes.node.isRequired,
+    message: PropTypes.string,
+};
+ErrorBoundary.defaultProps = {
+    message: null,
 };
 export { ErrorBoundary };

@@ -44,6 +44,8 @@ import { SelectionSpeedDials } from './components/table/SelectionSpeedDials';
 import { Table } from './components/table/Table';
 import { PageRowSelect } from './components/table/Table/PageRowSelect';
 import { Expander } from './components/table/Table/Expander';
+import { ErrorBoundaryWithMessage } from './components/ErrorBoundary/ErrorBoundaryWithMessage'
+
 import {
     LinkProvider,
     LinkContext,
@@ -136,4 +138,5 @@ export {
     IasoTreeView,
     EnrichedTreeItem,
     DynamicSelect,
+    ErrorBoundaryWithMessage
 };

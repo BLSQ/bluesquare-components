@@ -19,6 +19,7 @@ const SearchInput = ({
     errors = [],
 }) => {
     const hasErrors = errors.length >= 1;
+    // use local state to avoid re render on value prop change, avoiding special chars combinaison like "ê", "î" => IA-1432
     const [localValue, setLocalValue] = useState(value || '');
 
     useEffect(() => {
@@ -65,13 +66,7 @@ const SearchInput = ({
                 inputProps={{
                     'aria-label': 'search',
                 }}
-                onChange={event => {
-                    console.log('event.target.value', event.target.value);
-                    // if (event.target.value !== '^') {
-                    //     onChange(event.target.value);
-                    // }
-                    setLocalValue(event.target.value);
-                }}
+                onChange={event => setLocalValue(event.target.value)}
             />
         </FormControl>
     );

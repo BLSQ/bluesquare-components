@@ -5,6 +5,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import { FormControl } from '../FormControl';
 import { InputLabel } from '../InputLabel';
 import { styles } from './styles';
+import { useSkipEffectOnMount } from '../../../utils/useSkipEffectOnMount';
 
 const SearchInput = ({
     label,
@@ -22,7 +23,7 @@ const SearchInput = ({
     // use local state to avoid re render on value prop change, avoiding special chars combinaison like "ê", "î" => IA-1432
     const [localValue, setLocalValue] = useState(value || '');
 
-    useEffect(() => {
+    useSkipEffectOnMount(() => {
         onChange(localValue);
     }, [localValue]);
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { OutlinedInput, withStyles } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
@@ -19,6 +19,13 @@ const SearchInput = ({
     errors = [],
 }) => {
     const hasErrors = errors.length >= 1;
+    // use local state to avoid re render on value prop change, avoiding special chars combinaison like "ê", "î" => IA-1432
+    const [localValue, setLocalValue] = useState(value || '');
+
+    useEffect(() => {
+        onChange(localValue);
+    }, [localValue]);
+
     return (
         <FormControl errors={errors}>
             <InputLabel
@@ -32,7 +39,7 @@ const SearchInput = ({
                 disabled={disabled}
                 error={hasErrors}
                 id={uid ? `search-${uid}` : `search-${keyValue}`}
-                value={value || ''}
+                value={localValue}
                 placeholder=""
                 onKeyPress={event => {
                     if (
@@ -59,7 +66,7 @@ const SearchInput = ({
                 inputProps={{
                     'aria-label': 'search',
                 }}
-                onChange={event => onChange(event.target.value)}
+                onChange={event => setLocalValue(event.target.value)}
             />
         </FormControl>
     );

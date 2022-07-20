@@ -18,6 +18,7 @@ class ErrorBoundary extends React.Component {
 
     render() {
         if (this.state.hasError) {
+            console.log('YAbadabadoo');
             return (
                 <h1>An exception occurred: {this.state.error.toString()}</h1>
             );

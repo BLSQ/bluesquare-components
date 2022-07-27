@@ -89,7 +89,7 @@ class DynamicTabs extends Component {
     }
 
     handleAddTab() {
-        const { params, defaultItem, paramKey, tabParamKey, onTabsUpdated } =
+        const { params, defaultItem, paramKey, tabParamKey, onTabsAdded } =
             this.props;
         const newState = {
             ...this.state,
@@ -103,7 +103,7 @@ class DynamicTabs extends Component {
         newParams[tabParamKey] = newState.tabIndex.toString();
         newParams[paramKey] = JSON.stringify(newItems);
         this.setState(newState);
-        onTabsUpdated(newParams);
+        onTabsAdded(newParams);
     }
 
     handleDeleteTab(tabIndex) {
@@ -112,7 +112,6 @@ class DynamicTabs extends Component {
         newItems.splice(tabIndex, 1);
         const newParams = {
             ...params,
-            searchActive: false,
         };
 
         newParams[paramKey] = JSON.stringify(newItems);
@@ -287,7 +286,7 @@ class DynamicTabs extends Component {
 DynamicTabs.defaultProps = {
     baseLabel: 'tab',
     maxItems: 5,
-    onTabsUpdated: () => ({}),
+    onTabsAdded: () => ({}),
     onTabsDeleted: () => ({}),
     onTabChange: () => ({}),
     displayCounts: false,
@@ -304,7 +303,7 @@ DynamicTabs.propTypes = {
     baseUrl: PropTypes.string.isRequired,
     redirectTo: PropTypes.func.isRequired,
     maxItems: PropTypes.number,
-    onTabsUpdated: PropTypes.func,
+    onTabsAdded: PropTypes.func,
     onTabsDeleted: PropTypes.func,
     onTabChange: PropTypes.func,
     displayCounts: PropTypes.bool,

@@ -27,6 +27,12 @@ const SearchInput = ({
         onChange(localValue);
     }, [localValue]);
 
+    useSkipEffectOnMount(() => {
+        if (value !== localValue) {
+            setLocalValue(value);
+        }
+    }, [value]);
+
     return (
         <FormControl errors={errors}>
             <InputLabel

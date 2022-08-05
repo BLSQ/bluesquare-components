@@ -20,6 +20,9 @@ const commonStyles = theme => ({
         margin: 0,
         backgroundColor: 'white',
         overflow: 'auto',
+        [theme.breakpoints.down('md')]: {
+            padding: theme.spacing(2),
+        },
     },
     containerFullHeightNoTabPadded: {
         width: '100%',
@@ -28,6 +31,9 @@ const commonStyles = theme => ({
         margin: 0,
         overflow: 'auto',
         backgroundColor: 'white',
+        [theme.breakpoints.down('md')]: {
+            padding: theme.spacing(2),
+        },
     },
     indicator: {
         backgroundColor: 'white',

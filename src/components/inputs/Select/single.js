@@ -53,7 +53,7 @@ const SingleSelect = ({
     );
 
     return (
-        <Box mt={1} mb={2}>
+        <Box>
             <Autocomplete
                 disabled={disabled}
                 noOptionsText={intl.formatMessage(noOptionsText)}

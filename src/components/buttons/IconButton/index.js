@@ -134,7 +134,11 @@ function IconButtonComponent({
                 >
                     {url ? (
                         <Link to={url} className={classes.linkButton}>
-                            <ButtonIcon icon={icon} color={color} />
+                            <ButtonIcon
+                                icon={icon}
+                                color={color}
+                                disabled={disabled}
+                            />
                         </Link>
                     ) : (
                         <ButtonIcon

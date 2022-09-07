@@ -91,7 +91,7 @@ class ArrayFieldInput extends Component {
     }
 
     render() {
-        const { baseId, label, classes } = this.props;
+        const { baseId, label, classes, autoComplete } = this.props;
         const { fieldList } = this.state;
         const addFieldButtonDisabled =
             fieldList.length > 0 &&
@@ -110,6 +110,7 @@ class ArrayFieldInput extends Component {
                                     className={classes.listItem}
                                 >
                                     <OutlinedInput
+                                        autoComplete={autoComplete}
                                         className={classes.input}
                                         id={`${baseId}-${a.position}`}
                                         value={a.value || ''}
@@ -153,6 +154,7 @@ class ArrayFieldInput extends Component {
 ArrayFieldInput.defaultProps = {
     fieldList: [],
     label: '',
+    autoComplete: 'off',
 };
 // TODO type/document classes prop
 ArrayFieldInput.propTypes = {
@@ -161,6 +163,7 @@ ArrayFieldInput.propTypes = {
     updateList: PropTypes.func.isRequired,
     classes: PropTypes.object.isRequired,
     label: PropTypes.string,
+    autoComplete: PropTypes.string,
 };
 
 const styledArrayFieldInput = withStyles(styles)(ArrayFieldInput);

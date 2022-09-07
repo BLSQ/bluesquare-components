@@ -13,6 +13,7 @@ const TextInput = ({
     disabled,
     onChange,
     multiline,
+    autoComplete,
 }) => {
     const hasErrors = errors.length >= 1;
     return (
@@ -26,6 +27,7 @@ const TextInput = ({
             />
             <OutlinedInput
                 size="small"
+                autoComplete={autoComplete}
                 multiline={multiline}
                 disabled={disabled}
                 id={`input-text-${keyValue}`}
@@ -46,6 +48,7 @@ TextInput.defaultProps = {
     required: false,
     onChange: () => {},
     label: '',
+    autoComplete: 'off',
 };
 
 TextInput.propTypes = {
@@ -57,6 +60,7 @@ TextInput.propTypes = {
     multiline: PropTypes.bool,
     value: PropTypes.string,
     onChange: PropTypes.func,
+    autoComplete: PropTypes.string,
 };
 
 export { TextInput };

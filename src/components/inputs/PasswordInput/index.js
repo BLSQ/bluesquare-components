@@ -83,7 +83,7 @@ PasswordInput.defaultProps = {
     onChange: () => {},
     displayPassword: false,
     label: '',
-    autoComplete: 'off',
+    autoComplete: 'new-password',
 };
 
 PasswordInput.propTypes = {

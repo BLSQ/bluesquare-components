@@ -44,6 +44,7 @@ const NumberInput = ({
     disabled,
     onChange,
     multiline,
+    autoComplete,
 }) => {
     const hasErrors = errors.length >= 1;
     const [formattedValue, setFormattedValue] = useState(formatValue(value));
@@ -63,6 +64,7 @@ const NumberInput = ({
                 shrink={value !== ''}
             />
             <OutlinedInput
+                autoComplete={autoComplete}
                 size="small"
                 multiline={multiline}
                 disabled={disabled}
@@ -88,6 +90,7 @@ NumberInput.defaultProps = {
     required: false,
     onChange: () => {},
     label: '',
+    autoComplete: 'off',
 };
 
 NumberInput.propTypes = {
@@ -99,6 +102,7 @@ NumberInput.propTypes = {
     multiline: PropTypes.bool,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     onChange: PropTypes.func,
+    autoComplete: PropTypes.string,
 };
 
 export { NumberInput };

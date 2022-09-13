@@ -18,6 +18,7 @@ const SearchInput = ({
     classes,
     uid,
     errors = [],
+    autoComplete,
 }) => {
     const hasErrors = errors.length >= 1;
     // use local state to avoid re render on value prop change, avoiding special chars combinaison like "ê", "î" => IA-1432
@@ -43,6 +44,7 @@ const SearchInput = ({
                 error={hasErrors}
             />
             <OutlinedInput
+                autoComplete={autoComplete}
                 disabled={disabled}
                 error={hasErrors}
                 id={uid ? `search-${uid}` : `search-${keyValue}`}
@@ -88,6 +90,7 @@ SearchInput.defaultProps = {
     uid: '',
     label: '',
     errors: [],
+    autoComplete: 'off',
 };
 
 SearchInput.propTypes = {
@@ -101,6 +104,7 @@ SearchInput.propTypes = {
     uid: PropTypes.string,
     classes: PropTypes.object.isRequired,
     errors: PropTypes.arrayOf(PropTypes.string),
+    autoComplete: PropTypes.string,
 };
 
 const styledSearchInput = withStyles(styles)(SearchInput);

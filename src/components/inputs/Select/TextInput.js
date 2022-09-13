@@ -16,6 +16,7 @@ const TextInput = ({
     errors,
     helperText,
     loading,
+    autoComplete,
 }) => {
     const classes = useStyles();
     const paramsCopy = {
@@ -53,6 +54,7 @@ const TextInput = ({
                 helperText={helperText}
                 InputProps={{
                     ...params.InputProps,
+                    autoComplete,
                     endAdornment: (
                         <>
                             {loading ? (
@@ -71,6 +73,7 @@ const TextInput = ({
 TextInput.defaultProps = {
     helperText: null,
     renderOption: null,
+    autoComplete: 'off',
 };
 
 TextInput.propTypes = {
@@ -83,5 +86,6 @@ TextInput.propTypes = {
     errors: PropTypes.array.isRequired,
     helperText: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     loading: PropTypes.bool.isRequired,
+    autoComplete: PropTypes.string,
 };
 export { TextInput };

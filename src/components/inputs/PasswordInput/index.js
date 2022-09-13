@@ -24,6 +24,7 @@ const PasswordInput = ({
     multiline,
     displayPassword,
     classes,
+    autoComplete,
 }) => {
     const hasErrors = errors.length >= 1;
     const [showPassword, setShowPassword] = useState(displayPassword);
@@ -40,6 +41,7 @@ const PasswordInput = ({
             />
             <OutlinedInput
                 size="small"
+                autoComplete={autoComplete}
                 multiline={multiline}
                 disabled={disabled}
                 id={`input-text-${keyValue}`}
@@ -81,6 +83,7 @@ PasswordInput.defaultProps = {
     onChange: () => {},
     displayPassword: false,
     label: '',
+    autoComplete: 'new-password',
 };
 
 PasswordInput.propTypes = {
@@ -95,6 +98,7 @@ PasswordInput.propTypes = {
     displayPassword: PropTypes.bool,
     // tooltipMessage: PropTypes.string,
     classes: PropTypes.object.isRequired,
+    autoComplete: PropTypes.string,
 };
 
 const styledPasswordInput = withStyles(styles)(PasswordInput);

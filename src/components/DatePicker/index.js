@@ -5,6 +5,7 @@ import EventIcon from '@material-ui/icons/Event';
 import { makeStyles } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
+import { classnames } from 'classnames';
 import { IconButton } from '../buttons/IconButton';
 import { FormControl } from '../inputs/FormControl';
 
@@ -21,6 +22,9 @@ const useStyles = makeStyles(theme => ({
     },
     helperTextError: {
         color: theme.palette.error.main,
+    },
+    enableLineBreaks: {
+        whiteSpace: 'pre',
     },
 }));
 
@@ -46,7 +50,10 @@ const DatePicker = ({
                 inputVariant="outlined"
                 required={required}
                 InputLabelProps={{
-                    className: classes.label,
+                    className: classnames(
+                        classes.label,
+                        classes.enableLineBreaks,
+                    ),
                     shrink: Boolean(currentDate),
                     error: isOnError,
                 }}

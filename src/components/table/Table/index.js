@@ -212,6 +212,28 @@ const TableComponent = props => {
         gotoPage(0);
     }, [resetPageToOne]);
 
+    useSkipEffectOnMount(() => {
+        const newSort = params[getParamsKey(paramsPrefix, 'order')];
+        if (getSort(sortBy) !== newSort) {
+            setSortBy(getOrderArray(newSort));
+        }
+    }, [params[getParamsKey(paramsPrefix, 'order')]]);
+
+    useSkipEffectOnMount(() => {
+        const newPageSize = params[getParamsKey(paramsPrefix, 'pageSize')];
+        if (newPageSize !== pageSize) {
+            setPageSize(newPageSize);
+        }
+    }, [params[getParamsKey(paramsPrefix, 'pageSize')]]);
+
+    useSkipEffectOnMount(() => {
+        const newPage =
+            parseInt(params[getParamsKey(paramsPrefix, 'page')], 10) - 1;
+        if (pageIndex !== newPage) {
+            gotoPage(newPage);
+        }
+    }, [params[getParamsKey(paramsPrefix, 'page')]]);
+
     const rowsPerPage = parseInt(pageSize, 10);
     return (
         <Box mt={marginTop ? 4 : 0} mb={marginBottom ? 4 : 0}>

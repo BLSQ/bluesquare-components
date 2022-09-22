@@ -59,7 +59,7 @@ const DatePicker = ({
                 }}
                 helperText={null}
                 format="DD/MM/YYYY" // This one need be set by user locale
-                label={`${label}`}
+                label={label}
                 value={currentDate}
                 onChange={onChange}
                 onError={error => setDateError(error)}

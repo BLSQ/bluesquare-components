@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { OutlinedInput, Tooltip } from '@material-ui/core';
 import InfoIcon from '@material-ui/icons/Info';
@@ -46,6 +46,21 @@ const formatValue = (value, min, max, previousValue = '') => {
     return parsedValue;
 };
 
+const useTooltipMessage = (min, max) => {
+    const { formatMessage } = useSafeIntl();
+    let msg = '';
+    if (min || min === 0) {
+        msg = `${formatMessage(MESSAGES.min)}: ${min}`;
+        if (max) {
+            msg += ' - ';
+        }
+    }
+    if (max || max === 0) {
+        msg += `${formatMessage(MESSAGES.max)}: ${max}`;
+    }
+    return msg;
+};
+
 const NumberInput = ({
     keyValue,
     label,
@@ -59,7 +74,6 @@ const NumberInput = ({
     min,
     max,
 }) => {
-    const { formatMessage } = useSafeIntl();
     const hasErrors = errors.length >= 1;
     const [formattedValue, setFormattedValue] = useState(
         formatValue(value, min, max),
@@ -74,21 +88,9 @@ const NumberInput = ({
         ) {
             setFormattedValue(formatted);
         }
-    }, [value]);
+    }, [value, formattedValue]);
 
-    const tooltipMessage = useMemo(() => {
-        let msg = '';
-        if (min || min === 0) {
-            msg = `${formatMessage(MESSAGES.min)}: ${min}`;
-            if (max) {
-                msg += ' - ';
-            }
-        }
-        if (max || max === 0) {
-            msg += `${formatMessage(MESSAGES.max)}: ${max}`;
-        }
-        return msg;
-    }, []);
+    const tooltipMessage = useTooltipMessage();
 
     return (
         <FormControl errors={errors}>

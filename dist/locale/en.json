@@ -12,6 +12,8 @@
     "blsq.comment.confirmComment": "Confirm",
     "blsq.comment.postingTime": "Posted",
     "blsq.comment.textArea.placeholder": "Leave a comment here",
+    "blsq.input.label.max": "Maximum",
+    "blsq.input.label.min": "Minimum",
     "blsq.table.columnSelect.tooltip": "Select visible columns",
     "blsq.table.details": "Details",
     "blsq.table.filter.search": "Search",

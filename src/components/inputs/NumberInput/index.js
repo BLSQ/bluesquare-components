@@ -90,8 +90,7 @@ const NumberInput = ({
         }
     }, [value, formattedValue]);
 
-    const tooltipMessage = useTooltipMessage();
-
+    const tooltipMessage = useTooltipMessage(min, max);
     return (
         <FormControl errors={errors}>
             <InputLabel

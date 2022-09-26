@@ -44,7 +44,7 @@ import { SelectionSpeedDials } from './components/table/SelectionSpeedDials';
 import { Table } from './components/table/Table';
 import { PageRowSelect } from './components/table/Table/PageRowSelect';
 import { Expander } from './components/table/Table/Expander';
-import { ErrorBoundaryWithMessage } from './components/ErrorBoundary/ErrorBoundaryWithMessage'
+import { ErrorBoundaryWithMessage } from './components/ErrorBoundary/ErrorBoundaryWithMessage';
 
 import {
     LinkProvider,
@@ -65,6 +65,11 @@ import { TreeViewWithSearch } from './components/Treeview/TreeViewWithSearch';
 import { TruncatedTreeview } from './components/Treeview/TruncatedTreeview';
 import { french, english } from './locale';
 import { LazyImage } from './components/LazyProgressiveImage';
+import { QueryBuilder } from './components/QueryBuilder';
+import {
+    QueryFields,
+    QueryJsonLogicTree,
+} from './components/QueryBuilder/types';
 
 export * from './utils';
 export * from './utils/intlUtils';
@@ -138,5 +143,8 @@ export {
     IasoTreeView,
     EnrichedTreeItem,
     DynamicSelect,
-    ErrorBoundaryWithMessage
+    ErrorBoundaryWithMessage,
+    QueryBuilder,
+    QueryFields,
+    QueryJsonLogicTree,
 };

@@ -7,10 +7,9 @@ import {
     DialogTitle,
     makeStyles,
 } from '@material-ui/core';
-// @ts-ignore
-import { commonStyles } from 'bluesquare-components';
+import { commonStyles } from '../../styles/iaso/common';
 import { FormattedMessage } from 'react-intl';
-import { IntlMessage } from '../../types/intl';
+import { IntlMessage } from '../../types/types';
 
 const styles = theme => ({
     ...commonStyles(theme),
@@ -30,6 +29,7 @@ const styles = theme => ({
     },
 });
 
+//@ts-ignore
 const useStyles = makeStyles(styles);
 
 const normalizedMessage = CompOrMessage => {

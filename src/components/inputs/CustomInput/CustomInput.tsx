@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactNode } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import classnames from 'classnames';
 // @ts-ignore
-import { FormControl } from 'bluesquare-components';
+import { FormControl } from '../FormControl';
 import { Paper, InputLabel, Box } from '@material-ui/core';
 
 const childrenStyle = theme => ({

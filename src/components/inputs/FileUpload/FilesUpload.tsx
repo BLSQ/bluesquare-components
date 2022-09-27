@@ -1,8 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { FunctionComponent, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
-// @ts-ignore
-import { useSafeIntl } from 'bluesquare-components';
+import { useSafeIntl } from '../../../utils/useSafeIntl';
 import AttachmentIcon from '@material-ui/icons/Attachment';
 import {
     Box,
@@ -14,7 +13,7 @@ import {
 } from '@material-ui/core';
 import { FormattedMessage } from 'react-intl';
 import MESSAGES from './messages';
-import { CustomInput, useCustomInputTextStyle } from './CustomInput';
+import { CustomInput, useCustomInputTextStyle } from '../CustomInput/CustomInput';
 
 type Props = {
     multi?: boolean;

@@ -12,10 +12,9 @@ import {
     Fields,
 } from 'react-awesome-query-builder';
 
-import MaterialConfig from 'react-awesome-query-builder/lib/config/material';
+import { useTranslatedConfig } from './useTranslatedConfig';
 
-import 'react-awesome-query-builder/lib/css/styles.css';
-import 'react-awesome-query-builder/lib/css/compact_styles.css'; // optional, for more compact styles
+import { useStyles } from './styles';
 
 type Props = {
     logic: JsonLogicTree;
@@ -33,12 +32,14 @@ export const QueryBuilder: FunctionComponent<Props> = ({
     fields,
     onChange,
 }) => {
+    const baseConfig = useTranslatedConfig();
+    console.log('baseConfig', baseConfig);
     const config: Config = useMemo(
         () => ({
-            ...MaterialConfig,
+            ...baseConfig,
             fields,
         }),
-        [fields],
+        [baseConfig, fields],
     );
     const [state, setState] = useState({
         tree: QbUtils.checkTree(
@@ -75,14 +76,15 @@ export const QueryBuilder: FunctionComponent<Props> = ({
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [logic]);
 
+    const classes: Record<string, string> = useStyles();
     return (
-        <div>
+        <section className={classes.root}>
             <Query
                 {...config}
                 value={state.tree}
                 onChange={handleChange}
                 renderBuilder={renderBuilder}
             />
-        </div>
+        </section>
     );
 };

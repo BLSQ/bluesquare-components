@@ -258,6 +258,13 @@
         "Cypress": "readonly",
         "context": "readonly",
         "assert": "readonly"
+      },
+      "settings": {
+        "import/resolver": {
+          "node": {
+            "extensions": [".js", ".jsx", ".ts", ".tsx"]
+          }
+        }
       }
     }
   ],

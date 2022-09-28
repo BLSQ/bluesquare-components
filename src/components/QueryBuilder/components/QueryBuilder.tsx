@@ -64,18 +64,6 @@ export const QueryBuilder: FunctionComponent<Props> = ({
         </div>
     );
 
-    // useEffect(() => {
-    //     if (JSON.stringify(logic) !== JSON.stringify(state.logic)) {
-    //         const newTree = QbUtils.checkTree(
-    //             QbUtils.loadFromJsonLogic(logic, config) ||
-    //                 QbUtils.loadTree(queryValue),
-    //             config,
-    //         );
-    //         setState({ tree: newTree, config, logic });
-    //     }
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, [logic]);
-
     const classes: Record<string, string> = useStyles();
     return (
         <section className={classes.root}>

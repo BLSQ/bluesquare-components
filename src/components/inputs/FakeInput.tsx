@@ -1,12 +1,12 @@
 import React, { FunctionComponent } from 'react';
 import { Box, makeStyles, Typography, InputLabel } from '@material-ui/core';
-import { FormControl } from '../../inputs/FormControl';
+import { FormControl } from './FormControl';
 
 type Props = {
     value: string;
     onClick: () => void;
     dataTestId?: string;
-    errors: string[];
+    errors?: string[];
     required?: boolean;
     label: string;
 };

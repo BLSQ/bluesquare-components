@@ -378,6 +378,28 @@ const MESSAGES = defineMessages({
         id: 'blsq.queryBuilder.valueSourcesPopupTitle',
         defaultMessage: 'Select value source',
     },
+    cancel: {
+        id: 'blsq.queryBuilder.cancel',
+        defaultMessage: 'Cancel',
+    },
+    confirm: {
+        id: 'blsq.queryBuilder.confirm',
+        defaultMessage: 'Confirm',
+    },
+    // TABS
+    queryTab: {
+        id: 'blsq.queryBuilder.confqueryTabirm',
+        defaultMessage: 'Query',
+    },
+    jsonTab: {
+        id: 'blsq.queryBuilder.jsonTab',
+        defaultMessage: 'Json',
+    },
+    // OTHER
+    apply: {
+        id: 'blsq.queryBuilder.apply',
+        defaultMessage: 'Apply',
+    },
 });
 
 export { MESSAGES };

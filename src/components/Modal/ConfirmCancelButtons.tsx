@@ -31,51 +31,47 @@ export const ConfirmCancelButtons: FunctionComponent<ConfirmCancelButtonsProps> 
         additionalMessage,
         onAdditionalButtonClick,
         allowConfirmAdditionalButton = true,
-    }) => {
-        return (
-            <>
+    }) => (
+        <>
+            <Button
+                onClick={() => {
+                    onCancel();
+                    closeDialog();
+                }}
+                color="primary"
+                data-test="cancel-button"
+            >
+                <FormattedMessage {...cancelMessage} />
+            </Button>
+            <Button
+                data-test="confirm-button"
+                onClick={() => {
+                    onConfirm();
+                    closeDialog();
+                }}
+                disabled={!allowConfirm}
+                color="primary"
+                autoFocus
+            >
+                <FormattedMessage {...confirmMessage} />
+            </Button>
+            {additionalButton && additionalMessage && onAdditionalButtonClick && (
                 <Button
+                    data-test="additional-button"
                     onClick={() => {
-                        onCancel();
+                        onAdditionalButtonClick();
                         closeDialog();
                     }}
                     color="primary"
-                    data-test="cancel-button"
+                    disabled={
+                        allowConfirmAdditionalButton !== null &&
+                        allowConfirmAdditionalButton !== undefined
+                            ? !allowConfirmAdditionalButton
+                            : !allowConfirm
+                    }
                 >
-                    <FormattedMessage {...cancelMessage} />
+                    <FormattedMessage {...additionalMessage} />
                 </Button>
-                <Button
-                    data-test="confirm-button"
-                    onClick={() => {
-                        onConfirm();
-                        closeDialog();
-                    }}
-                    disabled={!allowConfirm}
-                    color="primary"
-                    autoFocus
-                >
-                    <FormattedMessage {...confirmMessage} />
-                </Button>
-                {additionalButton &&
-                    additionalMessage &&
-                    onAdditionalButtonClick && (
-                        <Button
-                            data-test="additional-button"
-                            onClick={() => {
-                                onAdditionalButtonClick();
-                                closeDialog();
-                            }}
-                            color="primary"
-                            disabled={
-                                allowConfirmAdditionalButton !== null &&
-                                allowConfirmAdditionalButton !== undefined
-                                    ? !allowConfirmAdditionalButton
-                                    : !allowConfirm
-                            }
-                        >
-                            <FormattedMessage {...additionalMessage} />
-                        </Button>
-                    )}
-            </>
-        );
-    };
+            )}
+        </>
+    );

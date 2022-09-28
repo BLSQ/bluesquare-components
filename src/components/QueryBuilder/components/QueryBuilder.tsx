@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState, FunctionComponent, useMemo, useEffect } from 'react';
+import React, { useState, FunctionComponent, useMemo } from 'react';
 import {
     JsonGroup,
     Config,
@@ -12,9 +12,9 @@ import {
     Fields,
 } from 'react-awesome-query-builder';
 
-import { useTranslatedConfig } from './useTranslatedConfig';
+import { useTranslatedConfig } from '../hooks/useTranslatedConfig';
 
-import { useStyles } from './styles';
+import { useStyles } from '../styles';
 
 type Props = {
     logic: JsonLogicTree;
@@ -32,14 +32,14 @@ export const QueryBuilder: FunctionComponent<Props> = ({
     fields,
     onChange,
 }) => {
-    const baseConfig = useTranslatedConfig();
-    console.log('baseConfig', baseConfig);
+    const translatedConfig = useTranslatedConfig();
     const config: Config = useMemo(
         () => ({
-            ...baseConfig,
+            ...translatedConfig,
             fields,
         }),
-        [baseConfig, fields],
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        [fields],
     );
     const [state, setState] = useState({
         tree: QbUtils.checkTree(
@@ -64,17 +64,17 @@ export const QueryBuilder: FunctionComponent<Props> = ({
         </div>
     );
 
-    useEffect(() => {
-        if (JSON.stringify(logic) !== JSON.stringify(state.logic)) {
-            const newTree = QbUtils.checkTree(
-                QbUtils.loadFromJsonLogic(logic, config) ||
-                    QbUtils.loadTree(queryValue),
-                config,
-            );
-            setState({ tree: newTree, config, logic });
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [logic]);
+    // useEffect(() => {
+    //     if (JSON.stringify(logic) !== JSON.stringify(state.logic)) {
+    //         const newTree = QbUtils.checkTree(
+    //             QbUtils.loadFromJsonLogic(logic, config) ||
+    //                 QbUtils.loadTree(queryValue),
+    //             config,
+    //         );
+    //         setState({ tree: newTree, config, logic });
+    //     }
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [logic]);
 
     const classes: Record<string, string> = useStyles();
     return (

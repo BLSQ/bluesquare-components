@@ -68,7 +68,7 @@
     "blsq.queryBuilder.numberLabel": "Nombre",
     "blsq.queryBuilder.numberPlaceholder": "Entrez un nombre",
     "blsq.queryBuilder.numberToLabel": "Nombre jusqu'à",
-    "blsq.queryBuilder.numberToPlaceholder": "Enter number to",
+    "blsq.queryBuilder.numberToPlaceholder": "Entrez un nombre jusqu'à",
     "blsq.queryBuilder.operator": "Opérateur",
     "blsq.queryBuilder.or": "Ou",
     "blsq.queryBuilder.proximity": "Recherche de proximité",

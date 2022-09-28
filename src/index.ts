@@ -65,8 +65,8 @@ import { TreeViewWithSearch } from './components/Treeview/TreeViewWithSearch';
 import { TruncatedTreeview } from './components/Treeview/TruncatedTreeview';
 import { french, english } from './locale';
 import { LazyImage } from './components/LazyProgressiveImage';
-import { QueryBuilder } from './components/QueryBuilder';
-import { FakeInput } from './components/QueryBuilder/FakeInput';
+import { QueryBuilder } from './components/QueryBuilder/components/QueryBuilder';
+import { FakeInput } from './components/QueryBuilder/components/FakeInput';
 import {
     QueryFields,
     QueryJsonLogicTree,

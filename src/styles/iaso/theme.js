@@ -38,6 +38,11 @@ const rawTheme = {
             hover: 'rgba(0,0,0,0.87)',
         },
     },
+    props: {
+        MuiTextField: {
+            variant: 'outlined',
+        },
+    },
 };
 
 const theme = createTheme(rawTheme);

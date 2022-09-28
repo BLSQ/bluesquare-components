@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { Box, makeStyles, Typography, InputLabel } from '@material-ui/core';
-import { FormControl } from '../inputs/FormControl';
+import { FormControl } from '../../inputs/FormControl';
 
 type Props = {
     value: string;

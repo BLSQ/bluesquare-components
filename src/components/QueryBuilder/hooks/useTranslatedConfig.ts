@@ -1,14 +1,13 @@
 import moment from 'moment';
+
 import MaterialConfig from 'react-awesome-query-builder/lib/config/material';
 import { Config } from 'react-awesome-query-builder';
 
-import { useSafeIntl } from '../../utils/useSafeIntl';
-import { MESSAGES } from './messages';
+import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { MESSAGES } from '../messages';
 
 export const useTranslatedConfig = (): Config => {
     const { formatMessage } = useSafeIntl();
-    console.log('MaterialConfig', MaterialConfig);
-    console.log('MESSAGES', MESSAGES);
     return {
         ...MaterialConfig,
         conjunctions: {
@@ -140,6 +139,7 @@ export const useTranslatedConfig = (): Config => {
                 ...MaterialConfig.widgets.number,
                 valueLabel: formatMessage(MESSAGES.numberLabel),
                 valuePlaceholder: formatMessage(MESSAGES.numberPlaceholder),
+                // valuePlaceholder: ' ',
                 valueLabels: [
                     {
                         label: formatMessage(MESSAGES.numberFromLabel),
@@ -339,7 +339,7 @@ export const useTranslatedConfig = (): Config => {
             defaultCaseLabel: formatMessage(MESSAGES.defaultCase),
             addRuleLabel: formatMessage(MESSAGES.addRule),
             addSubRuleLabel: formatMessage(MESSAGES.addSubRule),
-            notLabel: formatMessage(MESSAGES.not),
+            // notLabel: formatMessage(MESSAGES.not),
             valueSourcesPopupTitle: formatMessage(
                 MESSAGES.valueSourcesPopupTitle,
             ),

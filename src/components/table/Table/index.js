@@ -225,7 +225,7 @@ const TableComponent = props => {
 
     useSkipEffectOnMount(() => {
         const newPage = parseInt(pageParam, 10) - 1;
-        if (pageIndex !== newPage) {
+        if (!Number.isNaN(newPage) && pageIndex !== newPage) {
             gotoPage(newPage);
         }
     }, [pageParam]);

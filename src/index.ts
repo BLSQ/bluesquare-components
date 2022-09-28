@@ -44,8 +44,13 @@ import { SelectionSpeedDials } from './components/table/SelectionSpeedDials';
 import { Table } from './components/table/Table';
 import { PageRowSelect } from './components/table/Table/PageRowSelect';
 import { Expander } from './components/table/Table/Expander';
-import { ErrorBoundaryWithMessage } from './components/ErrorBoundary/ErrorBoundaryWithMessage';
-
+import { ErrorBoundaryWithMessage } from './components/ErrorBoundary/ErrorBoundaryWithMessage'
+import { SimpleModal } from './components/Modal/SimpleModal';
+import { CustomInput } from './components/inputs/CustomInput/CustomInput'
+import { FilesUpload } from './components/inputs/FileUpload/FilesUpload';
+import { ConfirmCancelButtons } from './components/Modal/ConfirmCancelButtons';
+import { ConfirmCancelModal } from './components/Modal/ConfirmCancelModal';
+import { makeFullModal } from './components/Modal/ModalWithButton';
 import {
     LinkProvider,
     LinkContext,
@@ -71,6 +76,10 @@ import {
     QueryFields,
     QueryJsonLogicTree,
 } from './components/QueryBuilder/types';
+
+// Types
+import { IntlFormatMessage, IntlMessage } from './types/types';
+
 
 export * from './utils';
 export * from './utils/intlUtils';
@@ -144,9 +153,17 @@ export {
     IasoTreeView,
     EnrichedTreeItem,
     DynamicSelect,
-    ErrorBoundaryWithMessage,
     QueryBuilder,
     QueryFields,
     QueryJsonLogicTree,
     FakeInput,
+    ErrorBoundaryWithMessage,
+    CustomInput,
+    FilesUpload,
+    SimpleModal,
+    ConfirmCancelModal,
+    ConfirmCancelButtons,
+    makeFullModal,
+    IntlFormatMessage,
+    IntlMessage
 };

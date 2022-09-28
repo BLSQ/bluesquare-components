@@ -135,19 +135,18 @@ const TableComponent = props => {
 
     const data = useMemo(() => props.data, [props.data]);
 
+    const orderParam = params[getParamsKey(paramsPrefix, 'order')];
+    const pageParam = params[getParamsKey(paramsPrefix, 'page')];
+    const pageSizeParam = params[getParamsKey(paramsPrefix, 'pageSize')];
+
     const { loading } = extraProps;
 
     const initialState = useMemo(() => {
-        const urlPageSize = parseInt(
-            params[getParamsKey(paramsPrefix, 'pageSize')],
-            10,
-        );
-        const urlSort =
-            params[getParamsKey(paramsPrefix, 'order')] &&
-            getOrderArray(params[getParamsKey(paramsPrefix, 'order')]);
+        const urlPageSize = parseInt(pageSizeParam, 10);
+        const urlSort = orderParam && getOrderArray(orderParam);
         return {
-            pageIndex: params[getParamsKey(paramsPrefix, 'page')]
-                ? parseInt(params[getParamsKey(paramsPrefix, 'page')], 10) - 1
+            pageIndex: pageParam
+                ? parseInt(pageParam, 10) - 1
                 : DEFAULT_PAGE - 1,
             pageSize:
                 urlPageSize || extraProps?.defaultPageSize || DEFAULT_PAGE_SIZE,
@@ -213,26 +212,23 @@ const TableComponent = props => {
     }, [resetPageToOne]);
 
     useSkipEffectOnMount(() => {
-        const newSort = params[getParamsKey(paramsPrefix, 'order')];
-        if (getSort(sortBy) !== newSort) {
-            setSortBy(getOrderArray(newSort));
+        if (getSort(sortBy) !== orderParam) {
+            setSortBy(getOrderArray(orderParam));
         }
-    }, [params[getParamsKey(paramsPrefix, 'order')]]);
+    }, [orderParam]);
 
     useSkipEffectOnMount(() => {
-        const newPageSize = params[getParamsKey(paramsPrefix, 'pageSize')];
-        if (newPageSize !== pageSize) {
-            setPageSize(newPageSize);
+        if (pageSizeParam !== pageSize) {
+            setPageSize(pageSizeParam);
         }
-    }, [params[getParamsKey(paramsPrefix, 'pageSize')]]);
+    }, [pageSizeParam]);
 
     useSkipEffectOnMount(() => {
-        const newPage =
-            parseInt(params[getParamsKey(paramsPrefix, 'page')], 10) - 1;
+        const newPage = parseInt(pageParam, 10) - 1;
         if (pageIndex !== newPage) {
             gotoPage(newPage);
         }
-    }, [params[getParamsKey(paramsPrefix, 'page')]]);
+    }, [pageParam]);
 
     const rowsPerPage = parseInt(pageSize, 10);
     return (

@@ -400,6 +400,10 @@ const MESSAGES = defineMessages({
         id: 'blsq.queryBuilder.apply',
         defaultMessage: 'Apply',
     },
+    invalidJson: {
+        id: 'blsq.queryBuilder.invalidJson',
+        defaultMessage: 'Invalid JSON',
+    },
 });
 
 export { MESSAGES };

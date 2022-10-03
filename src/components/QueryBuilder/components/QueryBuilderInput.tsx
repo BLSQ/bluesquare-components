@@ -77,7 +77,7 @@ const QueryBuilderInput: FunctionComponent<Props> = ({
             {tab === 'query' && (
                 <Box ml={-4} mr={-4}>
                     <QueryBuilder
-                        logic={logic || {}}
+                        logic={logic}
                         fields={fields}
                         onChange={handleChangeLogic}
                     />

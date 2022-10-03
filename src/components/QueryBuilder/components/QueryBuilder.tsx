@@ -17,7 +17,7 @@ import { useTranslatedConfig } from '../hooks/useTranslatedConfig';
 import { useStyles } from '../styles';
 
 type Props = {
-    logic: JsonLogicTree;
+    logic?: JsonLogicTree;
     fields: Fields;
     onChange: (
         // eslint-disable-next-line no-unused-vars

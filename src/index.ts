@@ -1,3 +1,4 @@
+import { Fields as QueryBuilderFields } from 'react-awesome-query-builder';
 import { LoadingSpinner } from './components/LoadingSpinner';
 import { CsvSvg } from './svg/CsvSvgComponent';
 import { DHIS2Svg } from './svg/DHIS2SvgComponent';
@@ -160,4 +161,5 @@ export {
     makeFullModal,
     IntlFormatMessage,
     IntlMessage,
+    QueryBuilderFields,
 };

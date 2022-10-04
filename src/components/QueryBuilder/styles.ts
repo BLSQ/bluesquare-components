@@ -358,6 +358,30 @@ const styles = theme => ({
             height: '100%',
         },
         '& .svg-inline--fa': { pointerEvents: 'none' },
+        '& .MuiFormControl-root fieldset legend': {
+            fontSize: 0,
+            padding: 0,
+            width: 0,
+        },
+        '& .MuiFormControl-root .MuiSelect-select': {
+            padding: theme.spacing(1, 5, 1, 1),
+        },
+        '& .MuiFormControl-root .MuiAutocomplete-inputRoot': {
+            padding: theme.spacing(1, 5, 1, 1),
+        },
+        '& .MuiFormControl-root .MuiAutocomplete-endAdornment': {
+            top: 5,
+        },
+        '& .MuiFormControl-root .MuiSelect-icon': {
+            top: 7,
+        },
+        '& .MuiOutlinedInput-input': {
+            padding: '17.5px 14px',
+        },
+        '& .MuiAutocomplete-root': {
+            width: '300px !important',
+            minWidth: '300px !important',
+        },
     },
 });
 

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState, useMemo } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { Button, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { JsonLogicTree } from 'react-awesome-query-builder';

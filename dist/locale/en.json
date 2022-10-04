@@ -54,6 +54,7 @@
     "blsq.queryBuilder.fieldCompare": "Field to compare",
     "blsq.queryBuilder.fieldPlaceholder": "Select field to compare",
     "blsq.queryBuilder.function": "Function",
+    "blsq.queryBuilder.invalidJson": "Invalid JSON",
     "blsq.queryBuilder.isEmpty": "Is empty",
     "blsq.queryBuilder.isNotEmpty": "Is not empty",
     "blsq.queryBuilder.isNotNull": "Is not null",

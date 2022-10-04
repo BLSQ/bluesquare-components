@@ -415,6 +415,30 @@ declare const styles: (theme: any) => {
         '& .svg-inline--fa': {
             pointerEvents: string;
         };
+        '& .MuiFormControl-root fieldset legend': {
+            fontSize: number;
+            padding: number;
+            width: number;
+        };
+        '& .MuiFormControl-root .MuiSelect-select': {
+            padding: any;
+        };
+        '& .MuiFormControl-root .MuiAutocomplete-inputRoot': {
+            padding: any;
+        };
+        '& .MuiFormControl-root .MuiAutocomplete-endAdornment': {
+            top: number;
+        };
+        '& .MuiFormControl-root .MuiSelect-icon': {
+            top: number;
+        };
+        '& .MuiOutlinedInput-input': {
+            padding: string;
+        };
+        '& .MuiAutocomplete-root': {
+            width: string;
+            minWidth: string;
+        };
     };
 };
 declare const useStyles: (props?: any) => import("@material-ui/styles").ClassNameMap<"root">;

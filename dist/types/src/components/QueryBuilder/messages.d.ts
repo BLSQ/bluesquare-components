@@ -391,5 +391,9 @@ declare const MESSAGES: {
         id: string;
         defaultMessage: string;
     };
+    invalidJson: {
+        id: string;
+        defaultMessage: string;
+    };
 };
 export { MESSAGES };

@@ -42,6 +42,9 @@ const rawTheme = {
         MuiTextField: {
             variant: 'outlined',
         },
+        MuiSelect: {
+            variant: 'outlined',
+        },
     },
 };
 

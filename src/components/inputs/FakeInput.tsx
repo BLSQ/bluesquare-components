@@ -1,6 +1,10 @@
 import React, { FunctionComponent } from 'react';
+import { defineMessages } from 'react-intl';
+
 import { Box, makeStyles, Typography, InputLabel } from '@material-ui/core';
 import { FormControl } from './FormControl';
+
+import { IconButton as IconButtonComponent } from '../buttons/IconButton';
 
 type Props = {
     value: string;
@@ -9,7 +13,15 @@ type Props = {
     errors?: string[];
     required?: boolean;
     label: string;
+    onClear: () => void;
 };
+
+const MESSAGES = defineMessages({
+    clear: {
+        id: 'blsq.treeview.search.options.label.clear',
+        defaultMessage: 'clear',
+    },
+});
 
 const useStyles = makeStyles(theme => ({
     input: {
@@ -33,12 +45,17 @@ const useStyles = makeStyles(theme => ({
         whiteSpace: 'nowrap',
         overflow: 'hidden',
         textOverflow: 'ellipsis',
-        width: '100%',
+        width: '92%',
     },
     inputLabel: {
         backgroundColor: 'white',
         // @ts-ignore
         color: theme.palette.mediumGray.main,
+    },
+    clear: {
+        position: 'absolute',
+        right: theme.spacing(2),
+        top: theme.spacing(1.5),
     },
 }));
 
@@ -49,6 +66,7 @@ export const FakeInput: FunctionComponent<Props> = ({
     errors,
     required,
     label,
+    onClear,
 }) => {
     const classes: Record<string, string> = useStyles();
     return (
@@ -70,6 +88,16 @@ export const FakeInput: FunctionComponent<Props> = ({
                         {value}
                     </Typography>
                 </Box>
+                {value && value !== '' && (
+                    <Box className={classes.clear}>
+                        <IconButtonComponent
+                            size="small"
+                            onClick={onClear}
+                            icon="clear"
+                            tooltipMessage={MESSAGES.clear}
+                        />
+                    </Box>
+                )}
             </FormControl>
         </Box>
     );

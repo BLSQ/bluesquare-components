@@ -13,6 +13,7 @@ declare const modalWithButton: React.FunctionComponent<{
         dataTestId?: string | undefined;
         label: IntlMessage;
         value: string;
+        onClear: () => void;
     };
 }>;
 export { modalWithButton as QueryBuilderInput };

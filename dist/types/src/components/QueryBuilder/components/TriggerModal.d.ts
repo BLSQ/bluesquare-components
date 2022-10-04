@@ -5,6 +5,7 @@ declare type Props = {
     value: string;
     onClick: () => void;
     dataTestId?: string;
+    onClear: () => void;
 };
 export declare const TriggerModal: FunctionComponent<Props>;
 export {};

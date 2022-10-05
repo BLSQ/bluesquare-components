@@ -45,15 +45,14 @@ const onSelect = ({
     }
 };
 
-const isItemSelected = (item, selection) => {
-    console.log('');
-    console.log('isItemSelected selection', selection);
-    console.log('isItemSelected item', item);
+const isItemSelected = (item, selection, selector = 'id') => {
     const { selectedItems, unSelectedItems, selectAll } = selection;
     if (!selectAll) {
-        return Boolean(selectedItems.find(el => el.id === item.id));
+        return Boolean(
+            selectedItems.find(el => el[selector] === item[selector]),
+        );
     }
-    return !unSelectedItems.find(el => el.id === item.id);
+    return !unSelectedItems.find(el => el[selector] === item[selector]);
 };
 
 const getSelectionCol = (

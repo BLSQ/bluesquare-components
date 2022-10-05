@@ -212,7 +212,7 @@ const TableComponent = props => {
     }, [resetPageToOne]);
 
     useSkipEffectOnMount(() => {
-        if (getSort(sortBy) !== orderParam) {
+        if (orderParam && getSort(sortBy) !== orderParam) {
             setSortBy(getOrderArray(orderParam));
         }
     }, [orderParam]);

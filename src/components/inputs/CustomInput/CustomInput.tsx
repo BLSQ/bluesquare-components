@@ -29,7 +29,7 @@ const styles = theme => ({
         cursor: 'default',
         color: 'transparent',
         paddingTop: 0.5,
-        paddingBottom: 0.5,
+        paddingBottom: 2.5,
     },
     treeviews: {
         alignItems: 'center',
@@ -114,7 +114,6 @@ export const CustomInput: FunctionComponent<Props> = ({
     const additionalPaperStyle = icon
         ? classes.paperWithIcon
         : 'MuiOutlinedInput-multiline';
-
     return (
         <FormControl errors={errors}>
             <InputLabel

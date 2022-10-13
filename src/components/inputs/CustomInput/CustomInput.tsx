@@ -29,7 +29,7 @@ const styles = theme => ({
         cursor: 'default',
         color: 'transparent',
         paddingTop: 0.5,
-        paddingBottom: 2.5,
+        paddingBottom: 0.5,
     },
     treeviews: {
         alignItems: 'center',
@@ -43,8 +43,8 @@ const styles = theme => ({
         border: '1px solid rgba(0,0,0,0.23)', // aligning with AutoSelect
     },
     paperWithIcon: {
-        paddingTop: 12,
-        paddingBottom: 12,
+        paddingTop: 16,
+        paddingBottom: 16,
         paddingRight: theme.spacing(2),
     },
     inputLabel: {

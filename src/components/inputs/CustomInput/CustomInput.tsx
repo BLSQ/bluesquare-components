@@ -50,6 +50,7 @@ const styles = theme => ({
     inputLabel: {
         backgroundColor: 'white',
         color: theme.palette.mediumGray.main,
+        paddingLeft:'1px',
     },
     shrinkInputLabel: {
         fontSize: '20px',

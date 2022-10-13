@@ -5,6 +5,7 @@ declare type Props = {
     files: File[];
     placeholder?: string;
     required?: boolean;
+    errors?: string[];
 };
 export declare const dragzoneStyle: (theme: any) => {
     outlined: {

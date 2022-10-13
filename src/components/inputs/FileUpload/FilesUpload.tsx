@@ -21,6 +21,7 @@ type Props = {
     onFilesSelect: (files: File[]) => void;
     files: File[];
     placeholder?: string;
+    required?:boolean
 };
 
 const Icon = (
@@ -69,6 +70,7 @@ export const FilesUpload: FunctionComponent<Props> = ({
     multi = true,
     onFilesSelect = () => null,
     files = [],
+    required=false
 }) => {
     const [showDropZone, setShowDropzone] = useState<boolean>(false);
     const { getRootProps, getInputProps } = useDropzone({
@@ -93,7 +95,7 @@ export const FilesUpload: FunctionComponent<Props> = ({
         <div {...getRootProps()}>
             <input {...getInputProps()} />
             {!showDropZone && (
-                <CustomInput placeholder={placeHolderText} icon={Icon}>
+                <CustomInput placeholder={placeHolderText} icon={Icon} required={required}>
                     {files.length > 0 && (
                         <Box className={contentStyle.textStyle}>
                             {`${files.length} files selected`}

@@ -7,7 +7,7 @@ declare type Props = {
     errors?: string[];
     children?: ReactNode;
     onClick?: () => void;
-    icon?: ReactNode;
+    icons?: ReactNode | ReactNode[];
 };
 export declare const CustomInput: FunctionComponent<Props>;
 export {};

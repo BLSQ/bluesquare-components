@@ -3,6 +3,7 @@ import React, { FunctionComponent, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import AttachmentIcon from '@material-ui/icons/Attachment';
+import ClearIcon from '@material-ui/icons/Clear';
 import {
     Box,
     Grid,
@@ -18,18 +19,29 @@ import { CustomInput, useCustomInputTextStyle } from '../CustomInput/CustomInput
 type Props = {
     multi?: boolean;
     // eslint-disable-next-line no-unused-vars
-    onFilesSelect: (files: File[]) => void;
+    onFilesSelect: (files?: File[]) => void;
     files: File[];
     placeholder?: string;
     required?:boolean
     errors?:string[]
 };
 
-const Icon = (
-    <Tooltip title={<FormattedMessage {...MESSAGES.clickOrDragFile} />}>
-        <AttachmentIcon color="action" />
-    </Tooltip>
-);
+const Icons = (onClick:(files?: File[]) => void, files:File[]=[]) => {
+
+   return ( 
+    <>
+       { files.length>0 && <Tooltip title={<FormattedMessage {...MESSAGES.clear} />}>
+            <ClearIcon color="action" onClick={()=>onClick()} />
+        </Tooltip>}
+        <Tooltip title={<FormattedMessage {...MESSAGES.clickOrDragFile} />}>
+            <AttachmentIcon color="action" />
+        </Tooltip>
+    </>
+    )
+}
+
+
+
 
 export const dragzoneStyle = theme => ({
     outlined: {
@@ -97,7 +109,7 @@ export const FilesUpload: FunctionComponent<Props> = ({
         <div {...getRootProps()}>
             <input {...getInputProps()} />
             {!showDropZone && (
-                <CustomInput placeholder={placeHolderText} icon={Icon} required={required} errors={errors}>
+                <CustomInput placeholder={placeHolderText} icons={Icons(onFilesSelect,files)} required={required} errors={errors}>
                     {files.length > 0 && (
                         <Box className={contentStyle.textStyle}>
                             {`${files.length} files selected`}

@@ -94,7 +94,7 @@ type Props = {
     errors?: string[];
     children?: ReactNode;
     onClick?: () => void;
-    icon?: ReactNode;
+    icons?: ReactNode | ReactNode[];
 };
 
 export const CustomInput: FunctionComponent<Props> = ({
@@ -104,7 +104,7 @@ export const CustomInput: FunctionComponent<Props> = ({
     errors = [],
     children,
     onClick = noOp,
-    icon,
+    icons,
 }) => {
     const classes = useStyles();
     const hasError = errors.length > 0;
@@ -112,7 +112,7 @@ export const CustomInput: FunctionComponent<Props> = ({
     const errorStyle = hasError && !disabled ? classes.error : '';
     const errorLabelStyle = hasError && !disabled ? classes.errorLabel : '';
     const enabledStyle = disabled ? '' : classes.enabled;
-    const additionalPaperStyle = icon
+    const additionalPaperStyle = icons
         ? classes.paperWithIcon
         : 'MuiOutlinedInput-multiline';
     return (
@@ -143,7 +143,7 @@ export const CustomInput: FunctionComponent<Props> = ({
                     <PlaceHolderText text={placeholder} disabled={disabled} />
                 )}
                 {children}
-                {icon}
+                {icons}
             </Paper>
         </FormControl>
     );

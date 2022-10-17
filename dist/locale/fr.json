@@ -14,6 +14,7 @@
     "blsq.comment.textArea.placeholder": "Laisser un commentaire",
     "blsq.input.label.max": "Maximum",
     "blsq.input.label.min": "Minimum",
+    "blsq.label.clear": "Effacer",
     "blsq.table.columnSelect.tooltip": "Colonnes visibles",
     "blsq.table.details": "Détails",
     "blsq.table.filter.search": "Rechercher",

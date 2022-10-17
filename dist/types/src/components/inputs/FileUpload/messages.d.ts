@@ -15,5 +15,9 @@ declare const MESSAGES: {
         id: string;
         defaultMessage: string;
     };
+    clear: {
+        id: string;
+        defaultMessage: string;
+    };
 };
 export default MESSAGES;

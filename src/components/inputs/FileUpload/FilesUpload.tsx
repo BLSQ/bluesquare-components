@@ -31,7 +31,7 @@ const Icons = (onClick:(files?: File[]) => void, files:File[]=[]) => {
    return ( 
     <>
        { files.length>0 && <Tooltip title={<FormattedMessage {...MESSAGES.clear} />}>
-            <ClearIcon color="action" onClick={()=>onClick()} />
+            <ClearIcon color="action" onClick={(e)=>{e.preventDefault();onClick()}} />
         </Tooltip>}
         <Tooltip title={<FormattedMessage {...MESSAGES.clickOrDragFile} />}>
             <AttachmentIcon color="action" />

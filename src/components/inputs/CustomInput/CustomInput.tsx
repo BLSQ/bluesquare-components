@@ -115,9 +115,7 @@ export const CustomInput: FunctionComponent<Props> = ({
     const additionalPaperStyle = icons
         ? classes.paperWithIcon
         : 'MuiOutlinedInput-multiline';
-    console.log("HELLO from blsq-comp")
     return (
-        <>
         <FormControl errors={errors}>
             <InputLabel
                 shrink={Boolean(children)}
@@ -145,8 +143,8 @@ export const CustomInput: FunctionComponent<Props> = ({
                     <PlaceHolderText text={placeholder} disabled={disabled} />
                 )}
                 {children}
+                {icons}
             </Paper>
         </FormControl>
-                {icons}</>
     );
 };

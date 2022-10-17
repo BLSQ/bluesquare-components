@@ -5,10 +5,11 @@ declare const modalWithButton: React.FunctionComponent<{
     id?: string | undefined;
     dataTestId?: string | undefined;
     label: IntlMessage;
-    onChange: (logic: JsonLogicTree | undefined) => void;
+    onChange: (logic?: Object | undefined) => void;
     initialLogic?: Object | undefined;
     fields: Fields;
 } & {
+    defaultOpen?: boolean | undefined;
     iconProps: {
         dataTestId?: string | undefined;
         label: IntlMessage;

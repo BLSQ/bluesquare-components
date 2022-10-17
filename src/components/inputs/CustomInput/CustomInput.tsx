@@ -43,13 +43,14 @@ const styles = theme => ({
         border: '1px solid rgba(0,0,0,0.23)', // aligning with AutoSelect
     },
     paperWithIcon: {
-        paddingTop: 12,
-        paddingBottom: 12,
+        paddingTop: 16,
+        paddingBottom: 16,
         paddingRight: theme.spacing(2),
     },
     inputLabel: {
         backgroundColor: 'white',
         color: theme.palette.mediumGray.main,
+        paddingLeft:'1px',
     },
     shrinkInputLabel: {
         fontSize: '20px',
@@ -114,7 +115,6 @@ export const CustomInput: FunctionComponent<Props> = ({
     const additionalPaperStyle = icon
         ? classes.paperWithIcon
         : 'MuiOutlinedInput-multiline';
-
     return (
         <FormControl errors={errors}>
             <InputLabel

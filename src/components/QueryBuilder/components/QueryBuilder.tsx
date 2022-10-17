@@ -1,5 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState, FunctionComponent, useMemo } from 'react';
+import React, {
+    useState,
+    FunctionComponent,
+    useMemo,
+    useCallback,
+} from 'react';
 import {
     JsonGroup,
     Config,
@@ -38,23 +43,23 @@ export const QueryBuilder: FunctionComponent<Props> = ({
             ...translatedConfig,
             fields,
         }),
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        [fields],
+        [fields, translatedConfig],
     );
-    const [state, setState] = useState({
-        tree: QbUtils.checkTree(
+    const [tree, setTree] = useState(
+        QbUtils.checkTree(
             QbUtils.loadFromJsonLogic(logic, config) ||
                 QbUtils.loadTree(queryValue),
             config,
         ),
-        config,
-        logic,
-    });
+    );
 
-    const handleChange = (immutableTree: ImmutableTree, newConfig: Config) => {
-        setState({ tree: immutableTree, config: newConfig, logic });
-        onChange(QbUtils.jsonLogicFormat(immutableTree, newConfig));
-    };
+    const handleChange = useCallback(
+        (immutableTree: ImmutableTree, newConfig: Config) => {
+            setTree(immutableTree);
+            onChange(QbUtils.jsonLogicFormat(immutableTree, newConfig));
+        },
+        [onChange],
+    );
 
     const renderBuilder = (props: BuilderProps) => (
         <div className="query-builder-container" style={{ padding: '10px' }}>
@@ -69,7 +74,7 @@ export const QueryBuilder: FunctionComponent<Props> = ({
         <section className={classes.root}>
             <Query
                 {...config}
-                value={state.tree}
+                value={tree}
                 onChange={handleChange}
                 renderBuilder={renderBuilder}
             />

@@ -26,7 +26,7 @@ type Props = {
     initialLogic?: JsonLogicTree;
     fields: Fields;
     // eslint-disable-next-line no-unused-vars
-    onChange: (logic: JsonLogicTree | undefined) => void;
+    onChange: (logic?: JsonLogicTree) => void;
 };
 
 const QueryBuilderInput: FunctionComponent<Props> = ({

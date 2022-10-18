@@ -1,3 +1,4 @@
+import { Fields as QueryBuilderFields } from 'react-awesome-query-builder';
 import { LoadingSpinner } from './components/LoadingSpinner';
 import { CsvSvg } from './svg/CsvSvgComponent';
 import { DHIS2Svg } from './svg/DHIS2SvgComponent';
@@ -44,9 +45,9 @@ import { SelectionSpeedDials } from './components/table/SelectionSpeedDials';
 import { Table } from './components/table/Table';
 import { PageRowSelect } from './components/table/Table/PageRowSelect';
 import { Expander } from './components/table/Table/Expander';
-import { ErrorBoundaryWithMessage } from './components/ErrorBoundary/ErrorBoundaryWithMessage'
+import { ErrorBoundaryWithMessage } from './components/ErrorBoundary/ErrorBoundaryWithMessage';
 import { SimpleModal } from './components/Modal/SimpleModal';
-import { CustomInput } from './components/inputs/CustomInput/CustomInput'
+import { CustomInput } from './components/inputs/CustomInput/CustomInput';
 import { FilesUpload } from './components/inputs/FileUpload/FilesUpload';
 import { ConfirmCancelButtons } from './components/Modal/ConfirmCancelButtons';
 import { ConfirmCancelModal } from './components/Modal/ConfirmCancelModal';
@@ -70,10 +71,11 @@ import { TreeViewWithSearch } from './components/Treeview/TreeViewWithSearch';
 import { TruncatedTreeview } from './components/Treeview/TruncatedTreeview';
 import { french, english } from './locale';
 import { LazyImage } from './components/LazyProgressiveImage';
-
+import { QueryBuilder } from './components/QueryBuilder/components/QueryBuilder';
+import { FakeInput } from './components/inputs/FakeInput';
+import { QueryBuilderInput } from './components/QueryBuilder/components/QueryBuilderInput';
 // Types
 import { IntlFormatMessage, IntlMessage } from './types/types';
-
 
 export * from './utils';
 export * from './utils/intlUtils';
@@ -147,6 +149,9 @@ export {
     IasoTreeView,
     EnrichedTreeItem,
     DynamicSelect,
+    QueryBuilder,
+    QueryBuilderInput,
+    FakeInput,
     ErrorBoundaryWithMessage,
     CustomInput,
     FilesUpload,
@@ -155,5 +160,6 @@ export {
     ConfirmCancelButtons,
     makeFullModal,
     IntlFormatMessage,
-    IntlMessage
+    IntlMessage,
+    QueryBuilderFields,
 };

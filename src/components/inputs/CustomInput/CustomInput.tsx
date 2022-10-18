@@ -2,8 +2,8 @@ import React, { FunctionComponent, ReactNode } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import classnames from 'classnames';
 // @ts-ignore
-import { FormControl } from '../FormControl';
 import { Paper, InputLabel, Box } from '@material-ui/core';
+import { FormControl } from '../FormControl';
 
 const childrenStyle = theme => ({
     // replicated from .MuiTypography-body1 (except font-family and letter spacing)

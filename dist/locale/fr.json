@@ -3,6 +3,8 @@
     "blsq.button.label.displayPassword": "Afficher le mot de passe",
     "blsq.button.label.export": "Export",
     "blsq.button.label.noOptions": "Aucun résultat trouvé",
+    "blsq.button.label.valueNotFound": "Valeur non trouvée dans la liste d'options",
+    "blsq.button.label.oneValueNotFound": "Valeur \"{value}\" non trouvée dans la liste d'options",
     "blsq.comment.button.label.addReply": "Ajouter une réponse",
     "blsq.comment.button.label.collapse": "Masquer le fil",
     "blsq.comment.button.label.expand": "Voir le fil",

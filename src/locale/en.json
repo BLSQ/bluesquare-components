@@ -3,6 +3,8 @@
     "blsq.button.label.displayPassword": "Display the password",
     "blsq.button.label.export": "Export",
     "blsq.button.label.noOptions": "No result found",
+    "blsq.button.label.valueNotFound": "Value not found in possible options",
+    "blsq.button.label.oneValueNotFound": "Value \"{value}\" not found in possible options",
     "blsq.comment.button.label.addReply": "Add reply",
     "blsq.comment.button.label.collapse": "Hide thread",
     "blsq.comment.button.label.expand": "Show thread",

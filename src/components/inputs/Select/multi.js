@@ -34,13 +34,33 @@ const MultiSelect = ({
     returnFullObject,
     helperText,
 }) => {
-    const intl = useSafeIntl();
+    const { formatMessage } = useSafeIntl();
     const classes = useStyles();
     const shiftKeyIsDown = useKeyPressListener('Shift');
 
+    const valuesList = useMemo(() => {
+        if (!value) return [];
+        return Array.isArray(value) ? value : value.split(',');
+    }, [value]);
+    const displayedErrors = useMemo(() => {
+        const tempErrors = [...errors];
+        if (value && !loading) {
+            valuesList.forEach(val => {
+                const missingValueError = !getOption(val, options);
+                if (missingValueError) {
+                    tempErrors.push(
+                        formatMessage(MESSAGES.oneValueNotFound, {
+                            value: `${val}`,
+                        }),
+                    );
+                }
+            });
+        }
+        return tempErrors;
+    }, [value, options, errors, loading]);
+
     const fixedValue = useMemo(() => {
         if (value) {
-            const valuesList = Array.isArray(value) ? value : value.split(',');
             if (returnFullObject) {
                 return valuesList;
             }
@@ -72,7 +92,7 @@ const MultiSelect = ({
         <Box>
             <Autocomplete
                 disabled={disabled}
-                noOptionsText={intl.formatMessage(noOptionsText)}
+                noOptionsText={formatMessage(noOptionsText)}
                 multiple
                 disableCloseOnSelect={shiftKeyIsDown}
                 id={keyValue}
@@ -91,7 +111,7 @@ const MultiSelect = ({
                         label={label}
                         required={required}
                         onBlur={onBlur}
-                        errors={errors}
+                        errors={displayedErrors}
                         helperText={helperText}
                         loading={loading}
                     />

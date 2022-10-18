@@ -57,7 +57,7 @@ const styles = theme => ({
     },
 });
 
-const ButtonIcon = ({ icon: Icon, color, onClick, disabled }) => {
+const ButtonIcon = ({ icon: Icon, color, onClick, disabled, fontSize }) => {
     if (Icon === undefined) {
         return 'wrong icon';
     }
@@ -76,18 +76,27 @@ const ButtonIcon = ({ icon: Icon, color, onClick, disabled }) => {
             {...iconProps}
             color={color === 'white' ? 'inherit' : color}
             style={iconStyles}
+            fontSize={fontSize}
         />
     );
 };
 ButtonIcon.defaultProps = {
     onClick: null,
     disabled: false,
+    fontSize: 'medium',
 };
 ButtonIcon.propTypes = {
     onClick: PropTypes.func,
     icon: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired,
     color: PropTypes.string.isRequired,
     disabled: PropTypes.bool,
+    fontSize: PropTypes.oneOf([
+        'small',
+        'medium',
+        'large',
+        'default',
+        'inherit',
+    ]),
 };
 
 function IconButtonComponent({
@@ -102,6 +111,7 @@ function IconButtonComponent({
     size,
     id,
     dataTestId,
+    iconSize,
 }) {
     if ((onClick === null) === (url === null)) {
         console.error(
@@ -138,6 +148,7 @@ function IconButtonComponent({
                                 icon={icon}
                                 color={color}
                                 disabled={disabled}
+                                fontSize={iconSize}
                             />
                         </Link>
                     ) : (
@@ -145,6 +156,7 @@ function IconButtonComponent({
                             icon={icon}
                             color={color}
                             disabled={disabled}
+                            fontSize={iconSize}
                         />
                     )}
                 </IconButton>
@@ -162,6 +174,7 @@ IconButtonComponent.defaultProps = {
     icon: null,
     id: '',
     dataTestId: '',
+    iconSize: 'medium',
 };
 IconButtonComponent.propTypes = {
     size: PropTypes.string,
@@ -175,6 +188,13 @@ IconButtonComponent.propTypes = {
     tooltipMessage: PropTypes.object.isRequired, // TODO: refactor IASO to pass the translation directly
     id: PropTypes.string,
     dataTestId: PropTypes.string,
+    iconSize: PropTypes.oneOf([
+        'small',
+        'medium',
+        'large',
+        'default',
+        'inherit',
+    ]),
 };
 
 const styledIconButton = withStyles(styles)(IconButtonComponent);

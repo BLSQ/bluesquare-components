@@ -33,8 +33,17 @@ const SingleSelect = ({
     returnFullObject,
     helperText,
 }) => {
-    const intl = useSafeIntl();
+    const { formatMessage } = useSafeIntl();
     const classes = useStyles();
+
+    const displayedErrors = useMemo(() => {
+        const tempErrors = [...errors];
+        const missingValueError = !getOption(value, options);
+        if (value && !loading && missingValueError) {
+            tempErrors.push(formatMessage(MESSAGES.valueNotFound));
+        }
+        return tempErrors;
+    }, [value, options, errors, loading]);
 
     const fixedValue = useMemo(
         () => (value ? getOption(value, options) ?? value : null),
@@ -56,7 +65,7 @@ const SingleSelect = ({
         <Box>
             <Autocomplete
                 disabled={disabled}
-                noOptionsText={intl.formatMessage(noOptionsText)}
+                noOptionsText={formatMessage(noOptionsText)}
                 multiple={false}
                 id={keyValue}
                 disableClearable={!clearable}
@@ -74,7 +83,7 @@ const SingleSelect = ({
                         label={label}
                         required={required}
                         onBlur={onBlur}
-                        errors={errors}
+                        errors={displayedErrors}
                         helperText={helperText}
                         loading={loading}
                     />

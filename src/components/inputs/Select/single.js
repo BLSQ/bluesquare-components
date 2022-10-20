@@ -28,6 +28,7 @@ const SingleSelect = ({
     getOptionLabel,
     getOptionSelected,
     loading,
+    loadingText,
     renderOption,
     renderTags,
     returnFullObject,
@@ -73,6 +74,7 @@ const SingleSelect = ({
                 value={fixedValue}
                 onChange={handleChange}
                 loading={loading}
+                loadingText={formatMessage(loadingText)}
                 closeIcon={<ClearIcon />}
                 renderTags={renderTags}
                 renderInput={params => (
@@ -113,6 +115,7 @@ SingleSelect.defaultProps = {
     getOptionLabel: null,
     renderOption: null,
     noOptionsText: MESSAGES.noOptions,
+    loadingText: MESSAGES.loadingOptions,
     helperText: undefined,
     renderTags: defaultRenderTags(o => (o?.label ? o.label : '')),
     returnFullObject: false, // use this one if you pass array of objects as options and want an array of objects as sected items, not a string of id's
@@ -127,6 +130,7 @@ SingleSelect.propTypes = {
     clearable: PropTypes.bool,
     value: PropTypes.any,
     onBlur: PropTypes.func,
+    loadingText: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     noOptionsText: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     helperText: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     options: PropTypes.array,

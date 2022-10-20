@@ -13,7 +13,7 @@ const MESSAGES = defineMessages({
         id: 'blsq.button.label.oneValueNotFound',
         defaultMessage: 'Value "{value}" not found in possible options',
     },
-    loadingText: {
+    loadingOptions: {
         id: 'blsq.select.label.loadingText',
         defaultMessage: 'Loading...',
     },

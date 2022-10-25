@@ -1,14 +1,17 @@
+import { useMemo } from 'react';
 import moment from 'moment';
 
 import MaterialConfig from 'react-awesome-query-builder/lib/config/material';
 import { Config } from 'react-awesome-query-builder';
 
-import { useMemo } from 'react';
+// import { DatePicker } from '../../DatePicker';
+
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { MESSAGES } from '../messages';
 
 export const useTranslatedConfig = (): Config => {
     const { formatMessage } = useSafeIntl();
+    console.log('MaterialConfig', MaterialConfig);
     return useMemo(
         () => ({
             ...MaterialConfig,
@@ -178,8 +181,18 @@ export const useTranslatedConfig = (): Config => {
                 },
                 date: {
                     ...MaterialConfig.widgets.date,
-                    dateFormat: 'DD.MM.YYYY',
-                    valueFormat: 'YYYY-MM-DD',
+                    // factory: props => (
+                    //     // console.log('props', props);
+                    //     <DatePicker
+                    //         isClearable={false}
+                    //         label={props.label}
+                    //         onChange={value =>
+                    //             props.setValue(value.format(props.valueFormat))
+                    //         }
+                    //         currentDate={props.value}
+                    //         clearMessage={MESSAGES.datePlaceholder}
+                    //     />
+                    // ),
                     valueLabel: formatMessage(MESSAGES.date),
                     valuePlaceholder: formatMessage(MESSAGES.datePlaceholder),
                     valueLabels: [
@@ -199,8 +212,6 @@ export const useTranslatedConfig = (): Config => {
                 },
                 time: {
                     ...MaterialConfig.widgets.time,
-                    timeFormat: 'HH:mm',
-                    valueFormat: 'HH:mm:ss',
                     valueLabel: formatMessage(MESSAGES.time),
                     valuePlaceholder: formatMessage(MESSAGES.timePlaceholder),
                     valueLabels: [
@@ -220,9 +231,6 @@ export const useTranslatedConfig = (): Config => {
                 },
                 datetime: {
                     ...MaterialConfig.widgets.datetime,
-                    timeFormat: 'HH:mm',
-                    dateFormat: 'DD.MM.YYYY',
-                    valueFormat: 'YYYY-MM-DD HH:mm:ss',
                     valueLabel: formatMessage(MESSAGES.datetime),
                     valuePlaceholder: formatMessage(
                         MESSAGES.datetimePlaceholder,

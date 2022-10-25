@@ -388,7 +388,7 @@ const MESSAGES = defineMessages({
     },
     // TABS
     queryTab: {
-        id: 'blsq.queryBuilder.confqueryTabirm',
+        id: 'blsq.queryBuilder.queryTab',
         defaultMessage: 'Query',
     },
     jsonTab: {

@@ -55,6 +55,7 @@ export const QueryBuilder: FunctionComponent<Props> = ({
 
     const handleChange = useCallback(
         (immutableTree: ImmutableTree, newConfig: Config) => {
+            // console.log('immutableTree', immutableTree);
             setTree(immutableTree);
             onChange(QbUtils.jsonLogicFormat(immutableTree, newConfig));
         },
@@ -68,7 +69,7 @@ export const QueryBuilder: FunctionComponent<Props> = ({
             </div>
         </div>
     );
-
+    console.log('HUMAN READABLE', QbUtils.queryString(tree, config, true));
     const classes: Record<string, string> = useStyles();
     return (
         <section className={classes.root}>

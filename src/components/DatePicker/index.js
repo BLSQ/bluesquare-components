@@ -32,6 +32,7 @@ const DatePicker = ({
     required,
     errors,
     hideError,
+    isClearable,
 }) => {
     const classes = useStyles();
     const [dateError, setDateError] = useState(null);
@@ -64,7 +65,7 @@ const DatePicker = ({
                 onChange={onChange}
                 onError={error => setDateError(error)}
             />
-            {currentDate && (
+            {currentDate && isClearable && (
                 <span className={classes.clearDateButton}>
                     <IconButton
                         size="small"
@@ -83,6 +84,7 @@ DatePicker.defaultProps = {
     required: false,
     errors: [],
     hideError: false,
+    isClearable: false,
 };
 
 DatePicker.propTypes = {
@@ -111,6 +113,10 @@ DatePicker.propTypes = {
      * display a star in the label if required
      */
     required: PropTypes.bool,
+    /**
+     * display a clear button
+     */
+    isClearable: PropTypes.bool,
     /**
      * hidde error message
      */

@@ -44,6 +44,7 @@ const QueryBuilderInput: FunctionComponent<Props> = ({
     const [tab, setTab] = useState<string>('query');
     const handleChangeLogic = (result: JsonLogicResult) => {
         setLogic(result?.logic);
+        console.log('result?.logic', result?.logic);
     };
     const handleConfirm = () => {
         closeDialog();

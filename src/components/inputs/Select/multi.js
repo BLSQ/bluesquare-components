@@ -101,6 +101,7 @@ const MultiSelect = ({
                 value={fixedValue}
                 onChange={handleChange}
                 loading={loading}
+                loadingText={formatMessage(loadingText)}
                 closeIcon={<ClearIcon />}
                 renderTags={renderTags}
                 renderInput={params => (
@@ -140,6 +141,7 @@ MultiSelect.defaultProps = {
     getOptionSelected: null,
     getOptionLabel: null,
     renderOption: null,
+    loadingText: MESSAGES.loadingOptions,
     noOptionsText: MESSAGES.noOptions,
     helperText: undefined,
     renderTags: defaultRenderTags(o => (o?.label ? o.label : '')),
@@ -155,6 +157,7 @@ MultiSelect.propTypes = {
     clearable: PropTypes.bool,
     value: PropTypes.any,
     onBlur: PropTypes.func,
+    loadingText: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     noOptionsText: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     helperText: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     options: PropTypes.array,

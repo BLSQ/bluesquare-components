@@ -146,5 +146,6 @@
     "blsq.treeview.search.options.label.clear": "Clear",
     "blsq.treeview.search.options.label.noOptions": "No result found",
     "blsq.treeview.search.results.label.display": "Display",
-    "blsq.treeview.search.results.label.resultsLower": "result(s)"
+    "blsq.treeview.search.results.label.resultsLower": "result(s)",
+    "blsq.select.label.loadingText": "Loading..."
 }

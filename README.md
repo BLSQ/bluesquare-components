@@ -3,7 +3,7 @@ A library of UI components to be used in [Bluesquare](https://www.bluesquarehub.
 
 ## Making changes
 
-If you make additions or changes to the library, run `npm run compile` and commit the updated `/dist` folder before pushing.
+If you make additions or changes to the library, run `npm run clean && npm run build` and commit the updated `/dist` folder before pushing.
 
 ## Translations
 

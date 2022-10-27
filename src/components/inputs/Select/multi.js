@@ -33,6 +33,7 @@ const MultiSelect = ({
     renderTags,
     returnFullObject,
     helperText,
+    loadingText,
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();

@@ -9,6 +9,15 @@ import { InputLabel } from '../InputLabel';
 
 import { MESSAGES } from './messages';
 
+export const convertToNumber = (formattedValue, locale = 'EN') => {
+    const decimalMarker = locale === 'EN' ? '.' : ',';
+    const thousandMarker = locale === 'EN' ? ',' : '.';
+    const [number, decimals] = formattedValue.split(decimalMarker);
+    const rawNumber = parseInt(number.split(thousandMarker).join(''), 10);
+    if (!decimals) return rawNumber;
+    return parseFloat(`${rawNumber}.${decimals}`);
+};
+
 const formatValue = (value, min, max, previousValue = '') => {
     if (value === undefined || value == null) return '';
     if (typeof value !== 'number') {

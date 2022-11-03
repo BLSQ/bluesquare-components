@@ -29,7 +29,7 @@ import { DynamicTabs } from './components/nav/DynamicTabs';
 import { DatePicker } from './components/DatePicker';
 import { ArrayFieldInput } from './components/inputs/ArrayFieldInput';
 import { Checkbox } from './components/inputs/Checkbox';
-import { NumberInput } from './components/inputs/NumberInput';
+import { NumberInput, convertToNumber } from './components/inputs/NumberInput';
 import { PasswordInput } from './components/inputs/PasswordInput';
 import { Radio } from './components/inputs/Radio';
 import { SearchInput } from './components/inputs/SearchInput';
@@ -160,6 +160,7 @@ export {
     ConfirmCancelButtons,
     makeFullModal,
     IntlFormatMessage,
+    convertToNumber,
     IntlMessage,
     QueryBuilderFields,
 };

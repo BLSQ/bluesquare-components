@@ -10,30 +10,30 @@ import { InputLabel } from '../InputLabel';
 import { MESSAGES } from './messages';
 
 const formatValue = (value, min, max, previousValue = '') => {
-    if (typeof value === 'number') return value;
     if (value === undefined || value == null) return '';
-    const valueAsArray = value.split('');
-    const containsDots = valueAsArray.filter(char => char === '.');
-    // If there is only one dot, the dot should be the last char and the char before it should be a number
-    // e.g: "123."
-    if (
-        containsDots.length === 1 &&
-        valueAsArray[valueAsArray.length - 1] === '.' &&
-        !Number.isNaN(parseInt(valueAsArray[valueAsArray.length - 2], 10))
-    ) {
-        return value;
+    if (typeof value === 'string') {
+        const valueAsArray = value.split('');
+        const containsDots = valueAsArray.filter(char => char === '.');
+        // If there is only one dot, the dot should be the last char and the char before it should be a number
+        // e.g: "123."
+        if (
+            containsDots.length === 1 &&
+            valueAsArray[valueAsArray.length - 1] === '.' &&
+            !Number.isNaN(parseInt(valueAsArray[valueAsArray.length - 2], 10))
+        ) {
+            return value;
+        }
+        // "12.l" should return "12.""
+        if (
+            containsDots.length === 1 &&
+            valueAsArray[valueAsArray.length - 2] === '.' &&
+            Number.isNaN(parseInt(valueAsArray[valueAsArray.length - 1], 10))
+        ) {
+            valueAsArray.pop();
+            return valueAsArray.join('');
+        }
     }
-    // "12.l" should return "12.""
-    if (
-        containsDots.length === 1 &&
-        valueAsArray[valueAsArray.length - 2] === '.' &&
-        Number.isNaN(parseInt(valueAsArray[valueAsArray.length - 1], 10))
-    ) {
-        valueAsArray.pop();
-        return valueAsArray.join('');
-    }
-
-    const parsedValue = parseFloat(value);
+    const parsedValue = typeof value === 'number' ? value : parseFloat(value);
     if (Number.isNaN(parsedValue)) {
         return '';
     }
@@ -44,6 +44,18 @@ const formatValue = (value, min, max, previousValue = '') => {
         return previousValue;
     }
     return parsedValue;
+};
+const formatThousand = (value, min, max, previousValue = '') => {
+    const parsedValue = formatValue(value, min, max, previousValue);
+    if (parsedValue > 1000) return parsedValue;
+    const [number, decimals] = parsedValue.toString().split('.');
+    const numberAsArray = number.split('');
+    const mutableArray = [...numberAsArray];
+    for (let i = numberAsArray.length - 3; i >= 0; i -= 3) {
+        mutableArray.splice(i, 0, '.');
+    }
+    const formattedValue = `${mutableArray.join('')}.${decimals}`;
+    return formattedValue;
 };
 
 const useTooltipMessage = (min, max) => {
@@ -73,14 +85,16 @@ const NumberInput = ({
     autoComplete,
     min,
     max,
+    markThousands,
 }) => {
     const hasErrors = errors.length >= 1;
+    const formatter = markThousands ? formatThousand : formatValue;
     const [formattedValue, setFormattedValue] = useState(
-        formatValue(value, min, max),
+        formatter(value, min, max),
     );
 
     useEffect(() => {
-        const formatted = formatValue(value, min, max, formattedValue);
+        const formatted = formatter(value, min, max, formattedValue);
         if (
             formatted !== formattedValue &&
             formatted < min && // avoiding copy paste of wrong value
@@ -116,7 +130,7 @@ const NumberInput = ({
                     )
                 }
                 onChange={event => {
-                    const updatedValue = formatValue(
+                    const updatedValue = formatter(
                         event.target.value,
                         min,
                         max,
@@ -144,6 +158,7 @@ NumberInput.defaultProps = {
     autoComplete: 'off',
     min: undefined,
     max: undefined,
+    markThousands: false,
 };
 
 NumberInput.propTypes = {
@@ -158,6 +173,7 @@ NumberInput.propTypes = {
     autoComplete: PropTypes.string,
     min: PropTypes.number,
     max: PropTypes.number,
+    markThousands: PropTypes.bool,
 };
 
 export { NumberInput };

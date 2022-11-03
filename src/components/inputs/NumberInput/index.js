@@ -106,7 +106,7 @@ const formatThousand = (value, min, max, previousValue = '') => {
     }
     // add the decimals to the string value
     if (decimals) {
-        return `${mutableArray.join('')},${decimals}`;
+        return `${mutableArray.join('')}${decimalMarker}${decimals}`;
     }
     return mutableArray.join('');
 };

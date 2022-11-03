@@ -9,24 +9,28 @@ import { InputLabel } from '../InputLabel';
 
 import { MESSAGES } from './messages';
 
-const formatValue = (value, min, max, previousValue = '') => {
+const formatValue = (value, min, max, previousValue = '', useComma = false) => {
     if (value === undefined || value == null) return '';
     if (typeof value === 'string') {
         const valueAsArray = value.split('');
-        const containsDots = valueAsArray.filter(char => char === '.');
-        // If there is only one dot, the dot should be the last char and the char before it should be a number
+        // split around a comma if using the thousand separator
+        const decimalMarker = useComma ? ',' : '.';
+        const containsDecimal = valueAsArray.filter(
+            char => char === decimalMarker,
+        );
+        // If there is only one dot/comma, the dot should be the last char and the char before it should be a number
         // e.g: "123."
         if (
-            containsDots.length === 1 &&
-            valueAsArray[valueAsArray.length - 1] === '.' &&
+            containsDecimal.length === 1 &&
+            valueAsArray[valueAsArray.length - 1] === decimalMarker &&
             !Number.isNaN(parseInt(valueAsArray[valueAsArray.length - 2], 10))
         ) {
             return value;
         }
         // "12.l" should return "12.""
         if (
-            containsDots.length === 1 &&
-            valueAsArray[valueAsArray.length - 2] === '.' &&
+            containsDecimal.length === 1 &&
+            valueAsArray[valueAsArray.length - 2] === decimalMarker &&
             Number.isNaN(parseInt(valueAsArray[valueAsArray.length - 1], 10))
         ) {
             valueAsArray.pop();
@@ -48,15 +52,16 @@ const formatValue = (value, min, max, previousValue = '') => {
 const formatThousand = (value, min, max, previousValue = '') => {
     const parsedValue = formatValue(value, min, max, previousValue);
     if (parsedValue > 1000 || !parsedValue) return parsedValue;
-    const [number, decimals] = parsedValue.toString().split('.');
+    const [number, decimals] = parsedValue.toString().split(',');
     const numberAsArray = number.split('');
     const mutableArray = [...numberAsArray];
-    for (let i = numberAsArray.length - 3; i >= 0; i -= 3) {
+    // stop the loop before 0 to avoid turning the whole input into 0.xxxx
+    for (let i = numberAsArray.length - 3; i > 0; i -= 3) {
         mutableArray.splice(i, 0, '.');
     }
     if (decimals) {
         console.log('decimals', decimals);
-        return `${mutableArray.join('')}.${decimals}`;
+        return `${mutableArray.join('')},${decimals}`;
     }
     return mutableArray.join('');
 };

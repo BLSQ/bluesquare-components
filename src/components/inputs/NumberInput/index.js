@@ -100,7 +100,7 @@ const formatThousand = (value, min, max, previousValue = '') => {
     const mutableArray = [...rawNumberAsArray];
     // stop the loop before 0 to avoid turning the whole input into 0.xxxx
     for (let i = rawNumberAsArray.length - 3; i > 0; i -= 3) {
-        mutableArray.splice(i, 0, '.');
+        mutableArray.splice(i, 0, thousandMarker);
     }
     // add the decimals to the string value
     if (decimals) {

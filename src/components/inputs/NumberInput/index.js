@@ -47,7 +47,7 @@ const formatValue = (value, min, max, previousValue = '') => {
 };
 const formatThousand = (value, min, max, previousValue = '') => {
     const parsedValue = formatValue(value, min, max, previousValue);
-    if (parsedValue > 1000) return parsedValue;
+    if (parsedValue > 1000 || !parsedValue) return parsedValue;
     const [number, decimals] = parsedValue.toString().split('.');
     const numberAsArray = number.split('');
     const mutableArray = [...numberAsArray];

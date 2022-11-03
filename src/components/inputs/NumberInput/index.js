@@ -54,8 +54,10 @@ const formatThousand = (value, min, max, previousValue = '') => {
     for (let i = numberAsArray.length - 3; i >= 0; i -= 3) {
         mutableArray.splice(i, 0, '.');
     }
-    const formattedValue = `${mutableArray.join('')}.${decimals}`;
-    return formattedValue;
+    if (decimals) {
+        return `${mutableArray.join('')}.${decimals}`;
+    }
+    return mutableArray.join('');
 };
 
 const useTooltipMessage = (min, max) => {

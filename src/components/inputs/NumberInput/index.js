@@ -9,34 +9,31 @@ import { InputLabel } from '../InputLabel';
 
 import { MESSAGES } from './messages';
 
-const formatValue = (value, min, max, previousValue = '', useComma = false) => {
+const formatValue = (value, min, max, previousValue = '') => {
     if (value === undefined || value == null) return '';
-    if (typeof value === 'string') {
+    if (typeof value !== 'number') {
         const valueAsArray = value.split('');
-        // split around a comma if using the thousand separator
-        const decimalMarker = useComma ? ',' : '.';
-        const containsDecimal = valueAsArray.filter(
-            char => char === decimalMarker,
-        );
-        // If there is only one dot/comma, the dot should be the last char and the char before it should be a number
+        const containsDots = valueAsArray.filter(char => char === '.');
+        // If there is only one dot, the dot should be the last char and the char before it should be a number
         // e.g: "123."
         if (
-            containsDecimal.length === 1 &&
-            valueAsArray[valueAsArray.length - 1] === decimalMarker &&
+            containsDots.length === 1 &&
+            valueAsArray[valueAsArray.length - 1] === '.' &&
             !Number.isNaN(parseInt(valueAsArray[valueAsArray.length - 2], 10))
         ) {
             return value;
         }
         // "12.l" should return "12.""
         if (
-            containsDecimal.length === 1 &&
-            valueAsArray[valueAsArray.length - 2] === decimalMarker &&
+            containsDots.length === 1 &&
+            valueAsArray[valueAsArray.length - 2] === '.' &&
             Number.isNaN(parseInt(valueAsArray[valueAsArray.length - 1], 10))
         ) {
             valueAsArray.pop();
             return valueAsArray.join('');
         }
     }
+
     const parsedValue = typeof value === 'number' ? value : parseFloat(value);
     if (Number.isNaN(parsedValue)) {
         return '';
@@ -49,20 +46,64 @@ const formatValue = (value, min, max, previousValue = '', useComma = false) => {
     }
     return parsedValue;
 };
+
 const formatThousand = (value, min, max, previousValue = '') => {
-    const parsedValue = formatValue(value, min, max, previousValue);
-    if (parsedValue > 1000 || !parsedValue) return parsedValue;
-    const [number, decimals] = parsedValue.toString().split(',');
-    const numberAsArray = number.split('');
-    const mutableArray = [...numberAsArray];
-    // stop the loop before 0 to avoid turning the whole input into 0.xxxx
-    for (let i = numberAsArray.length - 3; i > 0; i -= 3) {
-        if (i > 0) {
-            mutableArray.splice(i, 0, '.');
-        }
+    if ((typeof value === 'number' && value < 1000) || !value) return value;
+    // const parsedValue = formatValue(value, min, max, previousValue);
+    const decimalMarker = '.';
+    const thousandMarker = ',';
+    // Check if number has decimals, split and store value
+    const valueAsArray = value.split('');
+    const hasDecimals = valueAsArray.filter(char => char === decimalMarker);
+    // if value has separators, remove them
+    const [number, decimals] = value.toString().split(decimalMarker);
+    const rawNumberAsString = number.split(thousandMarker).join();
+    const rawNumberAsArray = rawNumberAsString.split('');
+    const rawNumber = parseInt(rawNumberAsString, 10);
+    // If there is only one dot, the dot should be the last char and the char before it should be a number
+    // e.g: "123."
+    if (
+        hasDecimals.length === 1 &&
+        valueAsArray[valueAsArray.length - 1] === decimalMarker &&
+        !Number.isNaN(rawNumber)
+    ) {
+        return value;
     }
+    // "12.l" should return "12.""
+    if (
+        hasDecimals.length === 1 &&
+        valueAsArray[valueAsArray.length - 2] === decimalMarker &&
+        Number.isNaN(decimals, 10)
+    ) {
+        valueAsArray.pop();
+        return valueAsArray.join('');
+    }
+    // reconstruct float value, store it for comparison with min and max
+    const rawNumberAsFloat = decimals
+        ? parseFloat(`${rawNumberAsString}.${decimals}`)
+        : rawNumber;
+    if (Number.isNaN(rawNumberAsFloat)) {
+        return '';
+    }
+    // if problem with min or max, return previous value
+    if (min && rawNumberAsFloat < min) {
+        return previousValue;
+    }
+    if (max && rawNumberAsFloat > max) {
+        return previousValue;
+    }
+    // else if number <1000 return it
+    if (rawNumber < 1000) {
+        return rawNumberAsFloat;
+    }
+    // else add the separators at the right spots
+    const mutableArray = [...rawNumberAsArray];
+    // stop the loop before 0 to avoid turning the whole input into 0.xxxx
+    for (let i = rawNumberAsArray.length - 3; i > 0; i -= 3) {
+        mutableArray.splice(i, 0, '.');
+    }
+    // add the decimals to the string value
     if (decimals) {
-        console.log('decimals', decimals);
         return `${mutableArray.join('')},${decimals}`;
     }
     return mutableArray.join('');
@@ -97,8 +138,8 @@ const NumberInput = ({
     max,
     markThousands,
 }) => {
-    const hasErrors = errors.length >= 1;
     const formatter = markThousands ? formatThousand : formatValue;
+    const hasErrors = errors.length >= 1;
     const [formattedValue, setFormattedValue] = useState(
         formatter(value, min, max),
     );

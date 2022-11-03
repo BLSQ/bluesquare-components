@@ -57,7 +57,9 @@ const formatThousand = (value, min, max, previousValue = '') => {
     const mutableArray = [...numberAsArray];
     // stop the loop before 0 to avoid turning the whole input into 0.xxxx
     for (let i = numberAsArray.length - 3; i > 0; i -= 3) {
-        mutableArray.splice(i, 0, '.');
+        if (i > 0) {
+            mutableArray.splice(i, 0, '.');
+        }
     }
     if (decimals) {
         console.log('decimals', decimals);
@@ -96,7 +98,6 @@ const NumberInput = ({
     markThousands,
 }) => {
     const hasErrors = errors.length >= 1;
-    console.log('markThousands', markThousands);
     const formatter = markThousands ? formatThousand : formatValue;
     const [formattedValue, setFormattedValue] = useState(
         formatter(value, min, max),

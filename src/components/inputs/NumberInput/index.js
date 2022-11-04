@@ -69,8 +69,6 @@ const formatThousand = (value, min, max, previousValue = '') => {
     const rawNumberAsString = number.split(thousandMarker).join('');
     const rawNumberAsArray = rawNumberAsString.split('');
     const rawNumber = parseInt(rawNumberAsString, 10);
-    console.log('number', number, 'decimals', decimals);
-    console.log('rawNumber', rawNumberAsString, rawNumberAsArray, rawNumber);
     // If there is only one dot, the dot should be the last char and the char before it should be a number
     // e.g: "123."
     if (

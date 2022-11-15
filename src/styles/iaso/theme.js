@@ -31,7 +31,7 @@ const rawTheme = {
         },
         success: {
             main: '#4caf50',
-            background: 'rgba(#4caf50, 0.2)',
+            background: 'rgba(76,175,80, 0.2)',
         },
         border: {
             main: 'rgba(0,0,0,0.23)',

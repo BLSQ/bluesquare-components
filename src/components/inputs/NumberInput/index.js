@@ -57,6 +57,7 @@ const formatValue = (value, min, max, previousValue = '') => {
 };
 
 const formatThousand = (value, min, max, previousValue = '') => {
+    if (value === undefined || value == null) return '';
     if ((typeof value === 'number' && value < 1000) || !value) return value;
     // const parsedValue = formatValue(value, min, max, previousValue);
     const decimalMarker = '.';

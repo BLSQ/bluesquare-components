@@ -68,7 +68,7 @@ export const formatThousand = ({
     const decimalMarker = localeMarkers[locale].thousand;
     const thousandMarker = localeMarkers[locale].decimal;
     const valueAsString = typeof value === 'string' ? value : `${value}`;
-    // Check if number has decimals, split and store value
+    // Split string to be able to remove markers
     const valueAsArray = valueAsString.split('');
     const decimalMarkerIndex = valueAsString.indexOf(decimalMarker);
     let number = valueAsString;
@@ -80,7 +80,7 @@ export const formatThousand = ({
             valueAsString.length,
         );
     }
-    // const [number, decimals] = valueAsString.split(decimalMarker);
+    console.log('number', number, 'decimals', decimals);
     const rawNumberAsString = number.split(thousandMarker).join('');
     const rawNumberAsArray = rawNumberAsString.split('');
     const rawNumber = parseInt(rawNumberAsString, 10);
@@ -125,9 +125,11 @@ export const formatThousand = ({
     }
     // else add the separators at the right spots
     const mutableArray = [...rawNumberAsArray];
-    // stop the loop before 0 to avoid turning the whole input into 0.xxxx
-    for (let i = rawNumberAsArray.length - 3; i > 0; i -= 3) {
-        mutableArray.splice(i, 0, thousandMarker);
+    if (rawNumberAsArray.length > 3) {
+        // stop the loop before 0 to avoid turning the whole input into 0.xxxx
+        for (let i = rawNumberAsArray.length - 3; i > 0; i -= 3) {
+            mutableArray.splice(i, 0, thousandMarker);
+        }
     }
     // add the decimals to the string value
     if (!Number.isNaN(parsedDecimals)) {

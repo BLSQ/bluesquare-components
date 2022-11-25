@@ -94,6 +94,7 @@ export const formatThousand = ({
         valueAsArray[valueAsArray.length - 1] === decimalMarker &&
         !Number.isNaN(rawNumber)
     ) {
+        console.log('BUG!');
         return value;
     }
     // "12.l" should return "12.""
@@ -122,7 +123,7 @@ export const formatThousand = ({
         return previousValue;
     }
     // else if number <1000 return it
-    if (rawNumber < 1000) {
+    if (rawNumber < 1000 && Number.isInteger(rawNumberAsFloat)) {
         return rawNumberAsFloat;
     }
     // else add the separators at the right spots

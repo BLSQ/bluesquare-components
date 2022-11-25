@@ -93,7 +93,6 @@ export const formatThousand = ({
     //     decimalMarkerIndex !== -1 &&
     //     valueAsArray[valueAsArray.length - 1] === decimalMarker &&
     //     !Number.isNaN(rawNumber) &&
-    //     // if we don't check decimals, the decimal marker cxan be repeated, e.g: 1,,,,,,,,
     //     Number.isNaN(decimals)
     // ) {
     //     console.log('BUG!');
@@ -142,6 +141,9 @@ export const formatThousand = ({
     if (!Number.isNaN(parsedDecimals)) {
         console.log('concat', mutableArray, parsedDecimals);
         return `${mutableArray.join('')}${decimalMarker}${parsedDecimals}`;
+    }
+    if (Number.isNaN(parsedDecimals) && decimalMarkerIndex !== -1) {
+        return `${mutableArray.join('')}${decimalMarker}`;
     }
     return mutableArray.join('');
 };

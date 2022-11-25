@@ -89,16 +89,16 @@ export const formatThousand = ({
     console.log('parsedDecimals', parsedDecimals, Number.isNaN(parsedDecimals));
     // If there is only one decimalMarker, the decimalMarker should be the last char and the char before it should be a number
     // e.g: "123."
-    if (
-        decimalMarkerIndex !== -1 &&
-        valueAsArray[valueAsArray.length - 1] === decimalMarker &&
-        !Number.isNaN(rawNumber) &&
-        // if we don't check decimals, the decimal marker cxan be repeated, e.g: 1,,,,,,,,
-        Number.isNaN(decimals)
-    ) {
-        console.log('BUG!');
-        return value;
-    }
+    // if (
+    //     decimalMarkerIndex !== -1 &&
+    //     valueAsArray[valueAsArray.length - 1] === decimalMarker &&
+    //     !Number.isNaN(rawNumber) &&
+    //     // if we don't check decimals, the decimal marker cxan be repeated, e.g: 1,,,,,,,,
+    //     Number.isNaN(decimals)
+    // ) {
+    //     console.log('BUG!');
+    //     return value;
+    // }
     // "12.l" should return "12.""
     if (
         decimalMarkerIndex !== -1 &&

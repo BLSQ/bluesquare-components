@@ -92,7 +92,9 @@ export const formatThousand = ({
     if (
         decimalMarkerIndex !== -1 &&
         valueAsArray[valueAsArray.length - 1] === decimalMarker &&
-        !Number.isNaN(rawNumber)
+        !Number.isNaN(rawNumber) &&
+        // if we don't check decimals, the decimal marker cxan be repeated, e.g: 1,,,,,,,,
+        Number.isNaN(decimals)
     ) {
         console.log('BUG!');
         return value;

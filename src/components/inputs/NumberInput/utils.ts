@@ -69,16 +69,18 @@ export const formatThousand = ({
     const thousandMarker = localeMarkers[locale].decimal;
     // Check if number has decimals, split and store value
     const valueAsArray = value.split('');
-    const hasDecimals = valueAsArray.filter(char => char === decimalMarker);
+    const hasDecimals = valueAsArray.find(char => char === decimalMarker);
     // if value has separators, remove them
     const [number, decimals] = value.toString().split(decimalMarker);
     const rawNumberAsString = number.split(thousandMarker).join('');
     const rawNumberAsArray = rawNumberAsString.split('');
     const rawNumber = parseInt(rawNumberAsString, 10);
-    // If there is only one dot, the dot should be the last char and the char before it should be a number
+    console.log('hasDecimals', hasDecimals);
+    console.log('decimals', decimals);
+    // If there is only one decimalMarker, the decimalMarker should be the last char and the char before it should be a number
     // e.g: "123."
     if (
-        hasDecimals.length === 1 &&
+        hasDecimals &&
         valueAsArray[valueAsArray.length - 1] === decimalMarker &&
         !Number.isNaN(rawNumber)
     ) {
@@ -86,11 +88,12 @@ export const formatThousand = ({
     }
     // "12.l" should return "12.""
     if (
-        hasDecimals.length === 1 &&
+        hasDecimals &&
         valueAsArray[valueAsArray.length - 2] === decimalMarker &&
         Number.isNaN(decimals)
     ) {
         valueAsArray.pop();
+        console.log('correct path', valueAsArray);
         return valueAsArray.join('');
     }
     // reconstruct float value, store it for comparison with min and max

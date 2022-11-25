@@ -77,7 +77,7 @@ export const formatThousand = ({
             decimalMarker,
             firstDecimalIndex,
         );
-        const deleteCount = valueAsArray.length - secondDecimalIndex;
+        const deleteCount = valueAsArray.length - secondDecimalIndex - 1;
         valueAsArray.splice(secondDecimalIndex, deleteCount);
     }
     const [number, decimals] = value.toString().split(decimalMarker);

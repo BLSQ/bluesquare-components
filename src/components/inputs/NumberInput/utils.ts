@@ -81,11 +81,12 @@ export const formatThousand = ({
         );
     }
     console.log('number', number, 'decimals', decimals);
-    const rawNumberAsString = number.split(thousandMarker).join('');
-    const rawNumberAsArray = rawNumberAsString.split('');
+    const rawNumberAsArray = number.split(thousandMarker);
+    const rawNumberAsString = rawNumberAsArray.join('');
     const rawNumber = parseInt(rawNumberAsString, 10);
     // Parse decimals to prevent forbidden chars
     const parsedDecimals = parseInt(decimals, 10);
+    console.log('parsedDecimals', parsedDecimals, Number.isNaN(parsedDecimals));
     // If there is only one decimalMarker, the decimalMarker should be the last char and the char before it should be a number
     // e.g: "123."
     if (
@@ -109,6 +110,7 @@ export const formatThousand = ({
     const rawNumberAsFloat = !Number.isNaN(parsedDecimals)
         ? parseFloat(`${rawNumberAsString}.${parsedDecimals}`)
         : rawNumber;
+    console.log('rawNumberAsFloat', rawNumberAsFloat);
     if (Number.isNaN(rawNumberAsFloat)) {
         return '';
     }
@@ -125,14 +127,17 @@ export const formatThousand = ({
     }
     // else add the separators at the right spots
     const mutableArray = [...rawNumberAsArray];
+    console.log('rawNumberAsArray', rawNumberAsArray);
     if (rawNumberAsArray.length > 3) {
         // stop the loop before 0 to avoid turning the whole input into 0.xxxx
         for (let i = rawNumberAsArray.length - 3; i > 0; i -= 3) {
+            console.log('replacing', mutableArray[i]);
             mutableArray.splice(i, 0, thousandMarker);
         }
     }
     // add the decimals to the string value
     if (!Number.isNaN(parsedDecimals)) {
+        console.log('concat', mutableArray, parsedDecimals);
         return `${mutableArray.join('')}${decimalMarker}${parsedDecimals}`;
     }
     return mutableArray.join('');

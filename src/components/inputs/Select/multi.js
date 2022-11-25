@@ -11,7 +11,12 @@ import { MESSAGES } from './messages';
 
 import { useStyles } from '../styles';
 
-import { defaultRenderTags, getExtraProps, getOption } from './utils';
+import {
+    defaultRenderTags,
+    getExtraProps,
+    getMultiOption,
+    getOption,
+} from './utils';
 import { TextInput } from './TextInput';
 
 const MultiSelect = ({
@@ -43,15 +48,25 @@ const MultiSelect = ({
         if (!value) return [];
         return Array.isArray(value) ? value : value.split(',');
     }, [value]);
+
+    const extraProps = getExtraProps(
+        getOptionLabel,
+        getOptionSelected,
+        renderOption,
+    );
     const displayedErrors = useMemo(() => {
         const tempErrors = [...errors];
         if (value && !loading) {
             valuesList.forEach(val => {
-                const missingValueError = !getOption(val, options);
+                const missingValueError = !getMultiOption(
+                    val,
+                    options,
+                    extraProps.getOptionSelected,
+                );
                 if (missingValueError) {
                     tempErrors.push(
                         formatMessage(MESSAGES.oneValueNotFound, {
-                            value: `${val}`,
+                            value: `${extraProps.getOptionLabel(val)}`,
                         }),
                     );
                 }
@@ -82,13 +97,6 @@ const MultiSelect = ({
         },
         [onChange, returnFullObject],
     );
-
-    const extraProps = getExtraProps(
-        getOptionLabel,
-        getOptionSelected,
-        renderOption,
-    );
-
     return (
         <Box>
             <Autocomplete

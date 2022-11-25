@@ -24,7 +24,15 @@ export const getExtraProps = (
             getOptionLabel || (option => option?.label ?? option.toString()),
         getOptionSelected:
             getOptionSelected ||
-            ((option, val) => val && option.value === val.value),
+            ((option, val) => {
+                if (val?.value) {
+                    return `${option.value}` === `${val.value}`;
+                }
+                if (val) {
+                    return `${option.value}` === `${val}`;
+                }
+                return false;
+            }),
     };
 
     if (renderOption) {
@@ -35,3 +43,6 @@ export const getExtraProps = (
 
 export const getOption = (value, options) =>
     options.find(o => `${o.value}` === `${value}`);
+
+export const getMultiOption = (value, options, getOptionSelected) =>
+    options.find(option => getOptionSelected(option, value));

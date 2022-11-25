@@ -75,8 +75,8 @@ export const formatThousand = ({
     const rawNumberAsString = number.split(thousandMarker).join('');
     const rawNumberAsArray = rawNumberAsString.split('');
     const rawNumber = parseInt(rawNumberAsString, 10);
-    console.log('hasDecimals', hasDecimals);
-    console.log('decimals', decimals);
+    // Parse decimals to prevent forbidden chars
+    const parsedDecimals = parseInt(decimals, 10);
     // If there is only one decimalMarker, the decimalMarker should be the last char and the char before it should be a number
     // e.g: "123."
     if (
@@ -90,15 +90,15 @@ export const formatThousand = ({
     if (
         hasDecimals &&
         valueAsArray[valueAsArray.length - 2] === decimalMarker &&
-        Number.isNaN(decimals)
+        Number.isNaN(parsedDecimals)
     ) {
         valueAsArray.pop();
-        console.log('correct path', valueAsArray);
         return valueAsArray.join('');
     }
     // reconstruct float value, store it for comparison with min and max
-    const rawNumberAsFloat = decimals
-        ? parseFloat(`${rawNumberAsString}.${decimals}`)
+
+    const rawNumberAsFloat = !Number.isNaN(parsedDecimals)
+        ? parseFloat(`${rawNumberAsString}.${parsedDecimals}`)
         : rawNumber;
     if (Number.isNaN(rawNumberAsFloat)) {
         return '';
@@ -121,8 +121,8 @@ export const formatThousand = ({
         mutableArray.splice(i, 0, thousandMarker);
     }
     // add the decimals to the string value
-    if (decimals) {
-        return `${mutableArray.join('')}${decimalMarker}${decimals}`;
+    if (!Number.isNaN(parsedDecimals)) {
+        return `${mutableArray.join('')}${decimalMarker}${parsedDecimals}`;
     }
     return mutableArray.join('');
 };

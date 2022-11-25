@@ -81,8 +81,8 @@ export const formatThousand = ({
         );
     }
     console.log('number', number, 'decimals', decimals);
-    const rawNumberAsArray = number.split(thousandMarker);
-    const rawNumberAsString = rawNumberAsArray.join('');
+    const rawNumberAsString = number.split(thousandMarker).join('');
+    const rawNumberAsArray = rawNumberAsString.split('');
     const rawNumber = parseInt(rawNumberAsString, 10);
     // Parse decimals to prevent forbidden chars
     const parsedDecimals = parseInt(decimals, 10);

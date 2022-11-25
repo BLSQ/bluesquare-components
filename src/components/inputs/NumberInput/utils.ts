@@ -69,10 +69,18 @@ export const formatThousand = ({
     const thousandMarker = localeMarkers[locale].decimal;
     // Check if number has decimals, split and store value
     const valueAsArray = value.split('');
-    const hasDecimals = valueAsArray.find(char => char === decimalMarker);
-    // if value has separators, remove them. _rest is used to discard anything after the first decimal marker
-    // eslint-disable-next-line no-unused-vars
-    const [number, decimals, _rest] = value.toString().split(decimalMarker);
+    const hasDecimals = valueAsArray.filter(char => char === decimalMarker);
+    // prevent multiple decimal markers
+    if (hasDecimals.length > 1) {
+        const firstDecimalIndex = valueAsArray.indexOf(decimalMarker);
+        const secondDecimalIndex = valueAsArray.indexOf(
+            decimalMarker,
+            firstDecimalIndex,
+        );
+        const deleteCount = valueAsArray.length - secondDecimalIndex;
+        valueAsArray.splice(secondDecimalIndex, deleteCount);
+    }
+    const [number, decimals] = value.toString().split(decimalMarker);
     const rawNumberAsString = number.split(thousandMarker).join('');
     const rawNumberAsArray = rawNumberAsString.split('');
     const rawNumber = parseInt(rawNumberAsString, 10);
@@ -81,7 +89,7 @@ export const formatThousand = ({
     // If there is only one decimalMarker, the decimalMarker should be the last char and the char before it should be a number
     // e.g: "123."
     if (
-        hasDecimals &&
+        hasDecimals.length > 0 &&
         valueAsArray[valueAsArray.length - 1] === decimalMarker &&
         !Number.isNaN(rawNumber)
     ) {
@@ -89,7 +97,7 @@ export const formatThousand = ({
     }
     // "12.l" should return "12.""
     if (
-        hasDecimals &&
+        hasDecimals.length > 0 &&
         valueAsArray[valueAsArray.length - 2] === decimalMarker &&
         Number.isNaN(parsedDecimals)
     ) {

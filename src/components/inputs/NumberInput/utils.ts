@@ -67,20 +67,20 @@ export const formatThousand = ({
     if ((typeof value === 'number' && value < 1000) || !value) return value;
     const decimalMarker = localeMarkers[locale].thousand;
     const thousandMarker = localeMarkers[locale].decimal;
+    const valueAsString = typeof value === 'string' ? value : `${value}`;
     // Check if number has decimals, split and store value
-    const valueAsArray = value.split('');
-    const hasDecimals = valueAsArray.filter(char => char === decimalMarker);
-    // prevent multiple decimal markers
-    if (hasDecimals.length > 1) {
-        const firstDecimalIndex = valueAsArray.indexOf(decimalMarker);
-        const secondDecimalIndex = valueAsArray.indexOf(
-            decimalMarker,
-            firstDecimalIndex,
+    const valueAsArray = valueAsString.split('');
+    const decimalMarkerIndex = valueAsString.indexOf(decimalMarker);
+    let number = valueAsString;
+    let decimals;
+    if (decimalMarkerIndex !== -1) {
+        number = valueAsString.substring(0, decimalMarkerIndex);
+        decimals = valueAsString.substring(
+            decimalMarkerIndex + 1,
+            valueAsString.length,
         );
-        const deleteCount = valueAsArray.length - secondDecimalIndex - 1;
-        valueAsArray.splice(secondDecimalIndex, deleteCount);
     }
-    const [number, decimals] = value.toString().split(decimalMarker);
+    // const [number, decimals] = valueAsString.split(decimalMarker);
     const rawNumberAsString = number.split(thousandMarker).join('');
     const rawNumberAsArray = rawNumberAsString.split('');
     const rawNumber = parseInt(rawNumberAsString, 10);
@@ -89,7 +89,7 @@ export const formatThousand = ({
     // If there is only one decimalMarker, the decimalMarker should be the last char and the char before it should be a number
     // e.g: "123."
     if (
-        hasDecimals.length > 0 &&
+        decimalMarkerIndex !== -1 &&
         valueAsArray[valueAsArray.length - 1] === decimalMarker &&
         !Number.isNaN(rawNumber)
     ) {
@@ -97,7 +97,7 @@ export const formatThousand = ({
     }
     // "12.l" should return "12.""
     if (
-        hasDecimals.length > 0 &&
+        decimalMarkerIndex !== -1 &&
         valueAsArray[valueAsArray.length - 2] === decimalMarker &&
         Number.isNaN(parsedDecimals)
     ) {

@@ -85,6 +85,15 @@ export const formatThousand = ({
     const rawNumber = parseInt(rawNumberAsString, 10);
     // Parse decimals to prevent forbidden chars
     const parsedDecimals = parseInt(decimals, 10);
+    // If there is only one decimalMarker, the decimalMarker should be the last char and the char before it should be a number
+    // e.g: "123."
+    if (
+        decimalMarkerIndex !== -1 &&
+        valueAsArray[valueAsArray.length - 1] === decimalMarker &&
+        !Number.isNaN(rawNumber)
+    ) {
+        return value;
+    }
     // "12.l" should return "12.""
     if (
         decimalMarkerIndex !== -1 &&

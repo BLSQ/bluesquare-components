@@ -83,17 +83,10 @@ export const formatThousand = ({
     const rawNumberAsString = number.split(thousandMarker).join('');
     const rawNumberAsArray = rawNumberAsString.split('');
     const rawNumber = parseInt(rawNumberAsString, 10);
+    const lastChar = rawNumberAsArray[rawNumberAsArray.length - 1];
     // Parse decimals to prevent forbidden chars
     const parsedDecimals = parseInt(decimals, 10);
-    // If there is only one decimalMarker, the decimalMarker should be the last char and the char before it should be a number
-    // e.g: "123."
-    if (
-        decimalMarkerIndex !== -1 &&
-        valueAsArray[valueAsArray.length - 1] === decimalMarker &&
-        !Number.isNaN(rawNumber)
-    ) {
-        return value;
-    }
+
     // "12.l" should return "12.""
     if (
         decimalMarkerIndex !== -1 &&
@@ -108,8 +101,11 @@ export const formatThousand = ({
     const rawNumberAsFloat = !Number.isNaN(parsedDecimals)
         ? parseFloat(`${rawNumberAsString}.${parsedDecimals}`)
         : rawNumber;
-    if (Number.isNaN(rawNumberAsFloat)) {
-        return '';
+    if (
+        Number.isNaN(rawNumberAsFloat) ||
+        (lastChar !== decimalMarker && Number.isNaN(parseInt(lastChar, 10)))
+    ) {
+        return previousValue;
     }
     // if problem with min or max, return previous value
     if (min && rawNumberAsFloat < min) {

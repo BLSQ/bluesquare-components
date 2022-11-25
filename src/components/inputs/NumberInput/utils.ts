@@ -123,10 +123,7 @@ export const formatThousand = ({
     if (max && rawNumberAsFloat > max) {
         return previousValue;
     }
-    // else if number <1000 return it
-    if (rawNumber < 1000 && Number.isInteger(rawNumberAsFloat)) {
-        return rawNumberAsFloat;
-    }
+
     // else add the separators at the right spots
     const mutableArray = [...rawNumberAsArray];
     console.log('rawNumberAsArray', rawNumberAsArray);

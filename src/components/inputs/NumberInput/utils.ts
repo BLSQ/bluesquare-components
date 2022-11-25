@@ -70,8 +70,9 @@ export const formatThousand = ({
     // Check if number has decimals, split and store value
     const valueAsArray = value.split('');
     const hasDecimals = valueAsArray.find(char => char === decimalMarker);
-    // if value has separators, remove them
-    const [number, decimals] = value.toString().split(decimalMarker);
+    // if value has separators, remove them. _rest is used to discard anything after the first decimal marker
+    // eslint-disable-next-line no-unused-vars
+    const [number, decimals, _rest] = value.toString().split(decimalMarker);
     const rawNumberAsString = number.split(thousandMarker).join('');
     const rawNumberAsArray = rawNumberAsString.split('');
     const rawNumber = parseInt(rawNumberAsString, 10);

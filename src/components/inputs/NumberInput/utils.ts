@@ -2,8 +2,8 @@ import { localeMarkers } from './constants';
 
 // Helper to remove the thousand and decimal markers and convert the string back to a number
 export const convertToNumber = (formattedValue, locale = 'EN') => {
-    const decimalMarker = localeMarkers[locale].thousand;
-    const thousandMarker = localeMarkers[locale].decimal;
+    const decimalMarker = localeMarkers[locale].decimal;
+    const thousandMarker = localeMarkers[locale].thousand;
     const [number, decimals] = formattedValue.split(decimalMarker);
     const rawNumber = parseInt(number.split(thousandMarker).join(''), 10);
     if (!decimals) return rawNumber;
@@ -73,8 +73,8 @@ export const formatThousand = ({
     if (value === undefined || value == null) return '';
     if ((typeof value === 'number' && value < 1000) || !value)
         return floatToLocalizedString(value, locale);
-    const decimalMarker = localeMarkers[locale].thousand;
-    const thousandMarker = localeMarkers[locale].decimal;
+    const decimalMarker = localeMarkers[locale].decimal;
+    const thousandMarker = localeMarkers[locale].thousand;
     const valueAsString =
         typeof value === 'string'
             ? value

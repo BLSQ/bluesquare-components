@@ -32,7 +32,7 @@ import { Checkbox } from './components/inputs/Checkbox';
 import { NumberInput } from './components/inputs/NumberInput';
 import {
     convertToNumber,
-    formatThousand as formatThoudandLocalized,
+    formatThousand as formatThousandLocalized,
 } from './components/inputs/NumberInput/utils';
 import { PasswordInput } from './components/inputs/PasswordInput';
 import { Radio } from './components/inputs/Radio';
@@ -167,5 +167,5 @@ export {
     convertToNumber,
     IntlMessage,
     QueryBuilderFields,
-    formatThoudandLocalized,
+    formatThousandLocalized,
 };

@@ -57,9 +57,7 @@ export const formatValue = ({
 };
 
 const floatToLocalizedString = (value: number, locale = 'EN') => {
-    console.log('locale', locale, localeMarkers[locale].decimal);
     const result = `${value}`.replace('.', localeMarkers[locale].decimal);
-    console.log('result', result);
     return result;
 };
 

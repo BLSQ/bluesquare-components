@@ -53,6 +53,7 @@ export const NumberInput: FunctionComponent<Props> = ({
             previousValue: formattedValue,
             locale,
         });
+        console.log('old value', formattedValue, 'new value', formatted);
         if (formatted !== formattedValue) {
             // the value is already checked against min and max by the formatted function
             setFormattedValue(formatted);

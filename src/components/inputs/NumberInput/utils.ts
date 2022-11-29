@@ -56,8 +56,10 @@ export const formatValue = ({
     return parsedValue;
 };
 
-const floatToLocalizedString = (value: number, locale = 'EN') =>
-    `${value}`.replace('.', localeMarkers[locale].decimal);
+const floatToLocalizedString = (value: number, locale = 'EN') => {
+    console.log('locale', locale, localeMarkers[locale].decimal);
+    return `${value}`.replace('.', localeMarkers[locale].decimal);
+};
 
 export const formatThousand = ({
     value,
@@ -71,7 +73,8 @@ export const formatThousand = ({
         return floatToLocalizedString(value);
     const decimalMarker = localeMarkers[locale].thousand;
     const thousandMarker = localeMarkers[locale].decimal;
-    const valueAsString = typeof value === 'string' ? value : `${value}`;
+    const valueAsString =
+        typeof value === 'string' ? value : floatToLocalizedString(value);
     // Split string to be able to remove markers
     const valueAsArray = valueAsString.split('');
     const decimalMarkerIndex = valueAsString.indexOf(decimalMarker);

@@ -70,11 +70,13 @@ export const formatThousand = ({
 }) => {
     if (value === undefined || value == null) return '';
     if ((typeof value === 'number' && value < 1000) || !value)
-        return floatToLocalizedString(value);
+        return floatToLocalizedString(value, locale);
     const decimalMarker = localeMarkers[locale].thousand;
     const thousandMarker = localeMarkers[locale].decimal;
     const valueAsString =
-        typeof value === 'string' ? value : floatToLocalizedString(value);
+        typeof value === 'string'
+            ? value
+            : floatToLocalizedString(value, locale);
     // Split string to be able to remove markers
     const valueAsArray = valueAsString.split('');
     const decimalMarkerIndex = valueAsString.indexOf(decimalMarker);

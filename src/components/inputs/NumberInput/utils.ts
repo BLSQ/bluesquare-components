@@ -79,6 +79,7 @@ export const formatThousand = ({
         typeof value === 'string'
             ? value
             : floatToLocalizedString(value, locale);
+    console.log('valueAsString', valueAsString, 'value', value);
     // Split string to be able to remove markers
     const valueAsArray = valueAsString.split('');
     const decimalMarkerIndex = valueAsString.indexOf(decimalMarker);
@@ -91,6 +92,7 @@ export const formatThousand = ({
             valueAsString.length,
         );
     }
+    console.log('number', number, 'decimals', decimals);
     const rawNumberAsString = number.split(thousandMarker).join('');
     const rawNumberAsArray = rawNumberAsString.split('');
     const rawNumber = parseInt(rawNumberAsString, 10);

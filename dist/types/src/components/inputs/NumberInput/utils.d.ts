@@ -12,4 +12,4 @@ export declare const formatThousand: ({ value, min, max, previousValue, locale, 
     max: any;
     previousValue?: string | undefined;
     locale?: string | undefined;
-}) => any;
+}) => string;

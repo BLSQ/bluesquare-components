@@ -56,6 +56,9 @@ export const formatValue = ({
     return parsedValue;
 };
 
+const floatToLocalizedString = (value: number, locale = 'EN') =>
+    `${value}`.replace('.', localeMarkers[locale].decimal);
+
 export const formatThousand = ({
     value,
     min,
@@ -64,7 +67,8 @@ export const formatThousand = ({
     locale = 'EN',
 }) => {
     if (value === undefined || value == null) return '';
-    if ((typeof value === 'number' && value < 1000) || !value) return value;
+    if ((typeof value === 'number' && value < 1000) || !value)
+        return floatToLocalizedString(value);
     const decimalMarker = localeMarkers[locale].thousand;
     const thousandMarker = localeMarkers[locale].decimal;
     const valueAsString = typeof value === 'string' ? value : `${value}`;

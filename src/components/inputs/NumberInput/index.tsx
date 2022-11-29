@@ -43,7 +43,6 @@ export const NumberInput: FunctionComponent<Props> = ({
     const [formattedValue, setFormattedValue] = useState(
         formatter({ value, min, max, locale }),
     );
-    console.log('rawValue', value);
 
     useEffect(() => {
         const formatted = formatter({

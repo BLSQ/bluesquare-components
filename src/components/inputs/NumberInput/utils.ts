@@ -57,10 +57,7 @@ export const formatValue = ({
 };
 
 const floatToLocalizedString = (value: number, locale = 'EN') => {
-    const result = `${value}`.replace(
-        '.',
-        localeMarkers[locale].decimal ?? 'a',
-    );
+    const result = `${value}`.replace('.', localeMarkers[locale].decimal);
     return result;
 };
 
@@ -71,6 +68,7 @@ export const formatThousand = ({
     previousValue = '',
     locale = 'EN',
 }) => {
+    console.log('formatThousandLocale', locale);
     if (value === undefined || value == null) return '';
     if ((typeof value === 'number' && value < 1000) || !value) {
         return floatToLocalizedString(value, locale);

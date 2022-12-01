@@ -25,7 +25,7 @@ import {
 } from '@dnd-kit/sortable';
 import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
 
-import { SortableItem } from './SortableItem';
+import { SortableItem } from './Item';
 
 type RenderProps = {
     item: any;
@@ -51,12 +51,13 @@ const useStyles = makeStyles(theme => ({
         margin: 0,
         listStyleType: 'none',
     },
-    item: {
+    draggableItem: {
         padding: theme.spacing(1),
         backgroundColor: theme.palette.grey['200'],
         // @ts-ignore
         border: `1px solid ${theme.palette.grey['400']}`,
         borderRadius: 5,
+        boxShadow: '-2px 8px 3px -3px rgba(0,0,0,0.15)',
     },
 }));
 
@@ -134,7 +135,7 @@ export const SortableList: FunctionComponent<Props> = props => {
             </SortableContext>
             <DragOverlay>
                 <ul className={classes.list}>
-                    <li className={classes.item}>
+                    <li className={classes.draggableItem}>
                         {renderItem({
                             item: activeItem,
                             index: -1,

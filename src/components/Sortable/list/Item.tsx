@@ -2,7 +2,6 @@ import React, { ReactNode, FunctionComponent } from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { makeStyles } from '@material-ui/core/styles';
 import { CSS } from '@dnd-kit/utilities';
-// import { MenuIcon } from '@heroicons/react/outline';
 
 type Props = {
     id: string;

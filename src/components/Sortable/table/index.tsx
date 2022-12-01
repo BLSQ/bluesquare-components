@@ -1,5 +1,4 @@
 import React, {
-    ReactNode,
     useMemo,
     FunctionComponent,
     useCallback,
@@ -13,8 +12,8 @@ import {
     useSensor,
     useSensors,
     DragEndEvent,
-    DragOverlay,
     Active,
+    DragOverlay,
 } from '@dnd-kit/core';
 import { makeStyles } from '@material-ui/core/styles';
 import {
@@ -33,28 +32,19 @@ import {
 import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
 import classNames from 'classnames';
 
-import { SortableRow } from './SortableRow';
-
-type RenderProps = {
-    item: any;
-    index: number;
-    handleProps?: any;
-};
-
-type Item = {
-    id: string | number;
-};
+import { SortableRow } from './Row';
+import { SortableCells } from './Cells';
+import { DragItem } from './DragItem';
+import { Column, Item } from './types';
 
 type Props = {
     items: Item[];
-    disabled?: boolean;
     // eslint-disable-next-line no-unused-vars
     onChange: (items: Item[]) => void;
-    // eslint-disable-next-line no-unused-vars
-    renderItem: ({ item, index, handleProps }: RenderProps) => ReactNode;
+    columns: Column[];
+    disabled?: boolean;
     // eslint-disable-next-line no-unused-vars
     getItemId?: (item: Item) => string;
-    headers?: string[];
 };
 
 const useStyles = makeStyles(theme => ({
@@ -67,13 +57,6 @@ const useStyles = makeStyles(theme => ({
             backgroundColor: 'white',
         },
     },
-    draggableRow: {
-        backgroundColor: theme.palette.grey['400'],
-        opacity: 0.8,
-    },
-    hiddenRow: {
-        visibility: 'collapse',
-    },
     headerCell: {
         // @ts-ignore
         borderRight: `2px solid ${theme.palette.ligthGray.border}`,
@@ -85,6 +68,10 @@ const useStyles = makeStyles(theme => ({
     lastHeaderCell: {
         borderRight: 'none',
     },
+    sortCell: {
+        padding: theme.spacing(1),
+        width: 20,
+    },
 }));
 
 export const SortableTable: FunctionComponent<Props> = props => {
@@ -92,9 +79,8 @@ export const SortableTable: FunctionComponent<Props> = props => {
         items,
         onChange,
         disabled,
-        renderItem,
         getItemId = item => item?.id ?? '',
-        headers,
+        columns,
     } = props;
     const [activeItem, setActiveItem] = useState<Active | undefined>();
     const classes = useStyles();
@@ -114,7 +100,6 @@ export const SortableTable: FunctionComponent<Props> = props => {
             }, {}),
         [items, getItemId],
     );
-
     const handleDragEnd = useCallback(
         (event: DragEndEvent) => {
             setActiveItem(undefined);
@@ -145,55 +130,48 @@ export const SortableTable: FunctionComponent<Props> = props => {
                 strategy={verticalListSortingStrategy}
             >
                 <Table size="small" className={classes.table}>
-                    {headers && (
-                        <TableHead>
-                            {headers.map((header, ind) => (
+                    <TableHead>
+                        <TableRow>
+                            <TableCell
+                                className={classNames(
+                                    classes.headerCell,
+                                    classes.sortCell,
+                                )}
+                            />
+                            {columns.map((col, ind) => (
                                 <TableCell
+                                    key={col.accessor}
                                     className={classNames(
                                         classes.headerCell,
-                                        ind + 1 === headers.length &&
+                                        ind + 1 === columns.length &&
                                             classes.lastHeaderCell,
                                     )}
                                 >
-                                    {header}
+                                    {col.Header}
                                 </TableCell>
                             ))}
-                        </TableHead>
-                    )}
+                        </TableRow>
+                    </TableHead>
                     <TableBody>
-                        {ids.map((id, index) => (
+                        {ids.map(id => (
                             <SortableRow key={id} id={id}>
-                                {handleProps =>
-                                    renderItem({
-                                        item: itemsMap[id],
-                                        index,
-                                        handleProps,
-                                    })
-                                }
+                                <SortableCells
+                                    columns={columns}
+                                    itemsMap={itemsMap}
+                                    id={id}
+                                />
                             </SortableRow>
                         ))}
                     </TableBody>
                 </Table>
             </SortableContext>
             <DragOverlay>
-                <Table size="small">
-                    <TableBody>
-                        {ids.map((id, index) => (
-                            <TableRow
-                                key={id}
-                                className={classNames(
-                                    classes.draggableRow,
-                                    activeItem?.id !== id && classes.hiddenRow,
-                                )}
-                            >
-                                {renderItem({
-                                    item: itemsMap[id],
-                                    index,
-                                })}
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
+                <DragItem
+                    ids={ids}
+                    activeItem={activeItem}
+                    columns={columns}
+                    itemsMap={itemsMap}
+                />
             </DragOverlay>
         </DndContext>
     );

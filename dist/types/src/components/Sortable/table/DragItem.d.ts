@@ -1,11 +1,10 @@
 import { FunctionComponent } from 'react';
 import { Active } from '@dnd-kit/core';
-import { Column } from './types';
+import { Column, Item } from './types';
 declare type Props = {
-    ids: (string | number)[];
-    activeItem?: Active;
+    items: Item[];
     columns: Column[];
-    itemsMap: Record<any, any>;
+    activeItem?: Active;
 };
 export declare const DragItem: FunctionComponent<Props>;
 export {};

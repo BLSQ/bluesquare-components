@@ -1,6 +1,5 @@
 import React, {
     ReactNode,
-    useMemo,
     FunctionComponent,
     useCallback,
     useState,
@@ -27,22 +26,16 @@ import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
 
 import { SortableItem } from './Item';
 
-type RenderProps = {
-    item: any;
-    index: number;
-    handleProps?: any;
-};
+import { Item, RenderProps } from './types';
 
 type Props = {
     items: any[];
-    handle?: boolean;
-    disabled?: boolean;
     // eslint-disable-next-line no-unused-vars
     onChange: (items: any[]) => void;
     // eslint-disable-next-line no-unused-vars
     renderItem: ({ item, index, handleProps }: RenderProps) => ReactNode;
-    // eslint-disable-next-line no-unused-vars
-    getItemId?: (item: any) => string;
+    handle?: boolean;
+    disabled?: boolean;
 };
 
 const useStyles = makeStyles(theme => ({
@@ -62,14 +55,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export const SortableList: FunctionComponent<Props> = props => {
-    const {
-        items,
-        onChange,
-        handle = false,
-        disabled,
-        renderItem,
-        getItemId = item => item?.id ?? '',
-    } = props;
+    const { items, onChange, handle = false, disabled, renderItem } = props;
     const [activeItem, setActiveItem] = useState<Active | undefined>();
     const classes = useStyles();
     const sensors = useSensors(
@@ -79,29 +65,22 @@ export const SortableList: FunctionComponent<Props> = props => {
         }),
     );
 
-    const ids = useMemo(() => items.map(getItemId), [items, getItemId]);
-    const itemsMap = useMemo(
-        () =>
-            items.reduce<{ [key: string]: any }>((acc, cur) => {
-                acc[getItemId(cur)] = cur;
-                return acc;
-            }, {}),
-        [items, getItemId],
-    );
-
     const handleDragEnd = useCallback(
         (event: DragEndEvent) => {
             setActiveItem(undefined);
             const { active, over } = event;
-            if (active.id !== over?.id) {
-                const oldIndex = ids.indexOf(active.id);
-                const newIndex = ids.indexOf(over?.id);
-                const newIds = arrayMove(ids, oldIndex, newIndex);
-
-                onChange(newIds.map(id => itemsMap[id]));
+            if (over && active.id !== over?.id) {
+                const oldIndex: number = items.findIndex(
+                    (item: Item) => item.id === active.id,
+                );
+                const newIndex: number = items.findIndex(
+                    (item: Item) => item.id === over.id,
+                );
+                const newItems = arrayMove(items, oldIndex, newIndex);
+                onChange(newItems);
             }
         },
-        [ids, itemsMap, onChange],
+        [items, onChange],
     );
 
     return (
@@ -116,15 +95,19 @@ export const SortableList: FunctionComponent<Props> = props => {
         >
             <SortableContext
                 disabled={disabled}
-                items={ids}
+                items={items}
                 strategy={verticalListSortingStrategy}
             >
                 <ul className={classes.list}>
-                    {ids.map((id, index) => (
-                        <SortableItem handle={handle} key={id} id={id}>
+                    {items.map((item, index) => (
+                        <SortableItem
+                            handle={handle}
+                            key={item.id}
+                            id={item.id}
+                        >
                             {handleProps =>
                                 renderItem({
-                                    item: itemsMap[id],
+                                    item,
                                     index,
                                     handleProps,
                                 })

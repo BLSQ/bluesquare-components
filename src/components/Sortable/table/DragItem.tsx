@@ -6,13 +6,12 @@ import classNames from 'classnames';
 import { Active } from '@dnd-kit/core';
 
 import { SortableCells } from './Cells';
-import { Column } from './types';
+import { Column, Item } from './types';
 
 type Props = {
-    ids: (string | number)[];
-    activeItem?: Active;
+    items: Item[];
     columns: Column[];
-    itemsMap: Record<any, any>;
+    activeItem?: Active;
 };
 
 const useStyles = makeStyles(theme => ({
@@ -30,21 +29,20 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export const DragItem: FunctionComponent<Props> = ({
-    ids,
+    items,
     activeItem,
     columns,
-    itemsMap,
 }) => {
     const classes = useStyles();
     return (
         <Table size="small">
             <TableBody>
-                {ids.map(id => (
+                {items.map(item => (
                     <TableRow
-                        key={id}
+                        key={item.id}
                         className={classNames(
                             classes.draggableRow,
-                            activeItem?.id !== id && classes.hiddenRow,
+                            activeItem?.id !== item.id && classes.hiddenRow,
                         )}
                     >
                         <TableCell align="center" className={classes.sortCell}>
@@ -53,11 +51,7 @@ export const DragItem: FunctionComponent<Props> = ({
                             </Box>
                         </TableCell>
 
-                        <SortableCells
-                            columns={columns}
-                            itemsMap={itemsMap}
-                            id={id}
-                        />
+                        <SortableCells columns={columns} item={item} />
                     </TableRow>
                 ))}
             </TableBody>

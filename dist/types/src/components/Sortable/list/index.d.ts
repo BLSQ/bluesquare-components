@@ -1,16 +1,11 @@
 import { ReactNode, FunctionComponent } from 'react';
-declare type RenderProps = {
-    item: any;
-    index: number;
-    handleProps?: any;
-};
+import { RenderProps } from './types';
 declare type Props = {
     items: any[];
-    handle?: boolean;
-    disabled?: boolean;
     onChange: (items: any[]) => void;
     renderItem: ({ item, index, handleProps }: RenderProps) => ReactNode;
-    getItemId?: (item: any) => string;
+    handle?: boolean;
+    disabled?: boolean;
 };
 export declare const SortableList: FunctionComponent<Props>;
 export {};

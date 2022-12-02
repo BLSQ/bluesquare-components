@@ -1,9 +1,4 @@
-import React, {
-    useMemo,
-    FunctionComponent,
-    useCallback,
-    useState,
-} from 'react';
+import React, { FunctionComponent, useCallback, useState } from 'react';
 import {
     DndContext,
     closestCenter,
@@ -43,8 +38,6 @@ type Props = {
     onChange: (items: Item[]) => void;
     columns: Column[];
     disabled?: boolean;
-    // eslint-disable-next-line no-unused-vars
-    getItemId?: (item: Item) => string;
 };
 
 const useStyles = makeStyles(theme => ({
@@ -75,13 +68,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export const SortableTable: FunctionComponent<Props> = props => {
-    const {
-        items,
-        onChange,
-        disabled,
-        getItemId = item => item?.id ?? '',
-        columns,
-    } = props;
+    const { items, onChange, disabled, columns } = props;
     const [activeItem, setActiveItem] = useState<Active | undefined>();
     const classes = useStyles();
     const sensors = useSensors(
@@ -90,29 +77,22 @@ export const SortableTable: FunctionComponent<Props> = props => {
             coordinateGetter: sortableKeyboardCoordinates,
         }),
     );
-
-    const ids = useMemo(() => items.map(getItemId), [items, getItemId]);
-    const itemsMap = useMemo(
-        () =>
-            items.reduce<{ [key: string]: any }>((acc, cur) => {
-                acc[getItemId(cur)] = cur;
-                return acc;
-            }, {}),
-        [items, getItemId],
-    );
     const handleDragEnd = useCallback(
         (event: DragEndEvent) => {
             setActiveItem(undefined);
             const { active, over } = event;
             if (over && active.id !== over?.id) {
-                const oldIndex = ids.indexOf(active.id);
-                const newIndex = ids.indexOf(over.id);
-                const newIds = arrayMove(ids, oldIndex, newIndex);
-
-                onChange(newIds.map(id => itemsMap[id]));
+                const oldIndex: number = items.findIndex(
+                    (item: Item) => item.id === active.id,
+                );
+                const newIndex: number = items.findIndex(
+                    (item: Item) => item.id === over.id,
+                );
+                const newItems = arrayMove(items, oldIndex, newIndex);
+                onChange(newItems);
             }
         },
-        [ids, itemsMap, onChange],
+        [items, onChange],
     );
     return (
         <DndContext
@@ -126,7 +106,7 @@ export const SortableTable: FunctionComponent<Props> = props => {
         >
             <SortableContext
                 disabled={disabled}
-                items={ids}
+                items={items}
                 strategy={verticalListSortingStrategy}
             >
                 <Table size="small" className={classes.table}>
@@ -153,13 +133,9 @@ export const SortableTable: FunctionComponent<Props> = props => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {ids.map(id => (
-                            <SortableRow key={id} id={id}>
-                                <SortableCells
-                                    columns={columns}
-                                    itemsMap={itemsMap}
-                                    id={id}
-                                />
+                        {items.map(item => (
+                            <SortableRow key={item.id} id={item.id}>
+                                <SortableCells columns={columns} item={item} />
                             </SortableRow>
                         ))}
                     </TableBody>
@@ -167,10 +143,9 @@ export const SortableTable: FunctionComponent<Props> = props => {
             </SortableContext>
             <DragOverlay>
                 <DragItem
-                    ids={ids}
                     activeItem={activeItem}
                     columns={columns}
-                    itemsMap={itemsMap}
+                    items={items}
                 />
             </DragOverlay>
         </DndContext>

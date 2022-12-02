@@ -1,22 +1,17 @@
 import React, { FunctionComponent } from 'react';
 import { TableCell } from '@material-ui/core';
 
-import { Column } from './types';
+import { Column, Item } from './types';
 
 type Props = {
     columns: Column[];
-    id: number | string;
-    itemsMap: Record<any, any>;
+    item: Item;
 };
 
-export const SortableCells: FunctionComponent<Props> = ({
-    columns,
-    itemsMap,
-    id,
-}) => (
+export const SortableCells: FunctionComponent<Props> = ({ columns, item }) => (
     <>
         {columns.map(column => {
-            const value = itemsMap[id][column.accessor];
+            const value = item[column.accessor];
             if (!column.Cell) {
                 return (
                     <TableCell key={column.accessor} align="center">

@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import { Active } from '@dnd-kit/core';
 
 import { SortableCells } from './Cells';
+import { Head } from './Head';
 import { Column, Item } from './types';
 
 type Props = {
@@ -36,6 +37,7 @@ export const DragItem: FunctionComponent<Props> = ({
     const classes = useStyles();
     return (
         <Table size="small">
+            <Head columns={columns} hidden />
             <TableBody>
                 {items.map(item => (
                     <TableRow

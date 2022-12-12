@@ -30,6 +30,7 @@ import classNames from 'classnames';
 import { SortableRow } from './Row';
 import { SortableCells } from './Cells';
 import { DragItem } from './DragItem';
+import { Head } from './Head';
 import { Column, Item } from './types';
 
 type Props = {
@@ -110,28 +111,7 @@ export const SortableTable: FunctionComponent<Props> = props => {
                 strategy={verticalListSortingStrategy}
             >
                 <Table size="small" className={classes.table}>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell
-                                className={classNames(
-                                    classes.headerCell,
-                                    classes.sortCell,
-                                )}
-                            />
-                            {columns.map((col, ind) => (
-                                <TableCell
-                                    key={col.accessor}
-                                    className={classNames(
-                                        classes.headerCell,
-                                        ind + 1 === columns.length &&
-                                            classes.lastHeaderCell,
-                                    )}
-                                >
-                                    {col.Header}
-                                </TableCell>
-                            ))}
-                        </TableRow>
-                    </TableHead>
+                    <Head columns={columns} />
                     <TableBody>
                         {items.map(item => (
                             <SortableRow key={item.id} id={item.id}>

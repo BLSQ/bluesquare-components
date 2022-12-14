@@ -11,13 +11,7 @@ import {
     DragOverlay,
 } from '@dnd-kit/core';
 import { makeStyles } from '@material-ui/core/styles';
-import {
-    Table,
-    TableBody,
-    TableRow,
-    TableHead,
-    TableCell,
-} from '@material-ui/core';
+import { Table, TableBody } from '@material-ui/core';
 import {
     arrayMove,
     SortableContext,
@@ -25,12 +19,13 @@ import {
     verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
-import classNames from 'classnames';
 
 import { SortableRow } from './Row';
 import { SortableCells } from './Cells';
 import { DragItem } from './DragItem';
 import { Head } from './Head';
+import { Placeholder } from './Placeholder';
+
 import { Column, Item } from './types';
 
 type Props = {
@@ -113,6 +108,9 @@ export const SortableTable: FunctionComponent<Props> = props => {
                 <Table size="small" className={classes.table}>
                     <Head columns={columns} />
                     <TableBody>
+                        {items.length === 0 && (
+                            <Placeholder colSpan={columns.length + 1} />
+                        )}
                         {items.map(item => (
                             <SortableRow key={item.id} id={item.id}>
                                 <SortableCells columns={columns} item={item} />

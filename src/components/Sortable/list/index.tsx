@@ -1,9 +1,4 @@
-import React, {
-    ReactNode,
-    FunctionComponent,
-    useCallback,
-    useState,
-} from 'react';
+import React, { FunctionComponent, useCallback, useState } from 'react';
 import {
     DndContext,
     closestCenter,
@@ -25,6 +20,7 @@ import {
 import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
 
 import { SortableItem } from './Item';
+import { Placeholder } from './Placeholder';
 
 import { Item, RenderProps } from './types';
 
@@ -32,15 +28,21 @@ type Props = {
     items: any[];
     // eslint-disable-next-line no-unused-vars
     onChange: (items: any[]) => void;
-    // eslint-disable-next-line no-unused-vars
-    renderItem: ({ item, index, handleProps }: RenderProps) => ReactNode;
+    RenderItem: FunctionComponent<RenderProps>;
     handle?: boolean;
     disabled?: boolean;
 };
 
 const useStyles = makeStyles(theme => ({
     list: {
-        padding: 0,
+        padding: theme.spacing(1),
+        margin: 0,
+        listStyleType: 'none',
+        // @ts-ignore
+        backgroundColor: theme.palette.gray.background,
+    },
+    draggablelist: {
+        padding: theme.spacing(0),
         margin: 0,
         listStyleType: 'none',
     },
@@ -55,7 +57,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export const SortableList: FunctionComponent<Props> = props => {
-    const { items, onChange, handle = false, disabled, renderItem } = props;
+    const { items, onChange, handle = false, disabled, RenderItem } = props;
     const [activeItem, setActiveItem] = useState<Active | undefined>();
     const classes = useStyles();
     const sensors = useSensors(
@@ -84,48 +86,51 @@ export const SortableList: FunctionComponent<Props> = props => {
     );
 
     return (
-        <DndContext
-            sensors={sensors}
-            collisionDetection={closestCenter}
-            onDragEnd={handleDragEnd}
-            onDragStart={({ active }) => {
-                setActiveItem(active);
-            }}
-            modifiers={[restrictToVerticalAxis]}
-        >
-            <SortableContext
-                disabled={disabled}
-                items={items}
-                strategy={verticalListSortingStrategy}
-            >
-                <ul className={classes.list}>
-                    {items.map((item, index) => (
-                        <SortableItem
-                            handle={handle}
-                            key={item.id}
-                            id={item.id}
-                        >
-                            {handleProps =>
-                                renderItem({
-                                    item,
-                                    index,
-                                    handleProps,
-                                })
-                            }
-                        </SortableItem>
-                    ))}
-                </ul>
-            </SortableContext>
-            <DragOverlay>
-                <ul className={classes.list}>
-                    <li className={classes.draggableItem}>
-                        {renderItem({
-                            item: activeItem,
-                            index: -1,
-                        })}
-                    </li>
-                </ul>
-            </DragOverlay>
-        </DndContext>
+        <>
+            {items.length === 0 && <Placeholder />}
+            {items.length > 0 && (
+                <DndContext
+                    sensors={sensors}
+                    collisionDetection={closestCenter}
+                    onDragEnd={handleDragEnd}
+                    onDragStart={({ active }) => {
+                        setActiveItem(active);
+                    }}
+                    modifiers={[restrictToVerticalAxis]}
+                >
+                    <SortableContext
+                        disabled={disabled}
+                        items={items}
+                        strategy={verticalListSortingStrategy}
+                    >
+                        <ul className={classes.list}>
+                            {items.map((item, index) => (
+                                <SortableItem
+                                    handle={handle}
+                                    key={item.id}
+                                    id={item.id}
+                                    isLast={index + 1 === items.length}
+                                >
+                                    {handleProps => (
+                                        <RenderItem
+                                            item={item}
+                                            index={index}
+                                            handleProps={handleProps}
+                                        />
+                                    )}
+                                </SortableItem>
+                            ))}
+                        </ul>
+                    </SortableContext>
+                    <DragOverlay>
+                        <ul className={classes.draggablelist}>
+                            <li className={classes.draggableItem}>
+                                <RenderItem item={activeItem} index={-1} />
+                            </li>
+                        </ul>
+                    </DragOverlay>
+                </DndContext>
+            )}
+        </>
     );
 };

@@ -15,13 +15,13 @@ export const SortableCells: FunctionComponent<Props> = ({ columns, item }) => (
             if (!column.Cell) {
                 return (
                     <TableCell key={column.accessor} align="center">
-                        {value}
+                        <>{value}</>
                     </TableCell>
                 );
             }
             return (
                 <TableCell key={column.accessor} align="center">
-                    {column.Cell({ value })}
+                    <>{column.Cell({ value })}</>
                 </TableCell>
             );
         })}

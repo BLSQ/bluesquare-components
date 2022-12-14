@@ -37,6 +37,9 @@ const rawTheme = {
             main: 'rgba(0,0,0,0.23)',
             hover: 'rgba(0,0,0,0.87)',
         },
+        yellow: {
+            main: '#FFD835',
+        },
     },
     props: {
         MuiTextField: {

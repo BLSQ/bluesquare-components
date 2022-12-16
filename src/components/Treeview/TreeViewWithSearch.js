@@ -55,21 +55,13 @@ const TreeViewWithSearch = ({
 
     const onNodeSelect = useCallback(
         selection => {
-            console.log(
-                'onNodeSelect',
-                selection,
-                selected,
-                ticked,
-                ticked.includes(selection),
-            );
+            // Changing this code seems to have zero effect
             if (!multiselect) {
                 setSelected(selection);
             } else {
                 if (!ticked.includes(selection[0])) {
-                    console.log('not ticked -> ticked');
                     setSelected([...selected, ...selection]);
                 } else {
-                    console.log('ticked -> unticked');
                     setSelected(
                         selected.filter(
                             orgUnitId => orgUnitId !== selection[0],
@@ -85,19 +77,18 @@ const TreeViewWithSearch = ({
     // Tick and untick checkbox
     const onLabelClick = useCallback(
         (id, itemData, isSelectable) => {
-            console.log('onLabelClick', id, itemData, isSelectable);
             let newTicked;
             let updatedParents;
             let updatedSelectedData;
+            const wasTicked = ticked.includes(id);
             if (isSelectable) {
                 if (multiselect) {
-                    newTicked = ticked.includes(id)
+                    newTicked = wasTicked
                         ? ticked.filter(tickedId => tickedId !== id)
                         : [...ticked, id];
                 } else {
                     newTicked = [id];
                 }
-                setTicked(newTicked);
             }
             if (multiselect) {
                 updatedParents = new Map(parentsTicked);
@@ -110,11 +101,17 @@ const TreeViewWithSearch = ({
             } else {
                 updatedParents.set(id, parseNodeIds(itemData));
                 if (multiselect) {
-                    updatedSelectedData = [...data, itemData];
+                    if (!wasTicked) {
+                        updatedSelectedData = [...data, itemData];
+                    } else {
+                        // if unticking, itemData must be removed from data
+                        console.log('itemData', itemData, 'data', data);
+                    }
                 } else {
                     updatedSelectedData = [itemData];
                 }
             }
+            setTicked(newTicked);
             onUpdate(newTicked, updatedParents, updatedSelectedData);
             setParentsTicked(updatedParents);
             setData(updatedSelectedData);

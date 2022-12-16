@@ -55,15 +55,21 @@ const TreeViewWithSearch = ({
 
     const onNodeSelect = useCallback(
         selection => {
-            setSelected(selection);
             console.log('onNodeSelect', selection, selected);
-            if (multiselect) {
-                console.log('passed');
-                // disabling when multiselect to avoid allowing user to confirm data while boxes are unticked
+            if (!multiselect) {
+                setSelected(selection);
+            } else {
+                if (!ticked.includes(selection)) {
+                    setSelected([...selected, selection]);
+                } else {
+                    setSelected(
+                        selection.filter(orgUnitId => orgUnitId !== selection),
+                    );
+                }
                 onSelect(selection);
             }
         },
-        [onSelect, multiselect],
+        [onSelect, multiselect, selected],
     );
 
     // Tick and untick checkbox

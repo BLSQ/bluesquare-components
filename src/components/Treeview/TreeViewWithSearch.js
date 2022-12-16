@@ -55,23 +55,13 @@ const TreeViewWithSearch = ({
 
     const onNodeSelect = useCallback(
         selection => {
-            // Changing this code seems to have zero effect
-            if (!multiselect) {
-                setSelected(selection);
-            } else {
-                if (!ticked.includes(selection[0])) {
-                    setSelected([...selected, ...selection]);
-                } else {
-                    setSelected(
-                        selected.filter(
-                            orgUnitId => orgUnitId !== selection[0],
-                        ),
-                    );
-                }
+            setSelected(selection);
+            if (multiselect) {
+                // disabling when multiselect to avoid allowing user to confirm data while boxes are unticked
                 onSelect(selection);
             }
         },
-        [onSelect, multiselect, selected],
+        [onSelect, multiselect],
     );
 
     // Tick and untick checkbox
@@ -97,16 +87,18 @@ const TreeViewWithSearch = ({
             }
             if (parentsTicked.has(id)) {
                 updatedParents.delete(id);
-                updatedSelectedData = data?.filter(d => d.id !== id) ?? [];
+                updatedSelectedData =
+                    data?.filter(d => d.id !== parseInt(id, 10)) ?? [];
             } else {
                 updatedParents.set(id, parseNodeIds(itemData));
                 if (multiselect) {
-                    console.log('itemData', itemData, 'data', data);
                     if (newTicked.includes(itemData.id)) {
                         updatedSelectedData = [...data, itemData];
                     } else {
                         // if unticking, itemData must be removed from data
-                        console.log('itemData', itemData, 'data', data);
+                        updatedSelectedData = data.filter(
+                            d => d.id !== parseInt(itemData.id, 10),
+                        );
                     }
                 } else {
                     updatedSelectedData = [itemData];

@@ -80,15 +80,15 @@ const TreeViewWithSearch = ({
             let newTicked;
             let updatedParents;
             let updatedSelectedData;
-            const wasTicked = ticked.includes(id);
             if (isSelectable) {
                 if (multiselect) {
-                    newTicked = wasTicked
+                    newTicked = ticked.includes(id)
                         ? ticked.filter(tickedId => tickedId !== id)
                         : [...ticked, id];
                 } else {
                     newTicked = [id];
                 }
+                setTicked(newTicked);
             }
             if (multiselect) {
                 updatedParents = new Map(parentsTicked);
@@ -101,7 +101,8 @@ const TreeViewWithSearch = ({
             } else {
                 updatedParents.set(id, parseNodeIds(itemData));
                 if (multiselect) {
-                    if (!wasTicked) {
+                    console.log('itemData', itemData, 'data', data);
+                    if (newTicked.includes(itemData.id)) {
                         updatedSelectedData = [...data, itemData];
                     } else {
                         // if unticking, itemData must be removed from data
@@ -111,7 +112,7 @@ const TreeViewWithSearch = ({
                     updatedSelectedData = [itemData];
                 }
             }
-            setTicked(newTicked);
+
             onUpdate(newTicked, updatedParents, updatedSelectedData);
             setParentsTicked(updatedParents);
             setData(updatedSelectedData);

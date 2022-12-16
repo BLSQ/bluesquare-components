@@ -71,7 +71,7 @@ const TreeViewWithSearch = ({
                 } else {
                     console.log('ticked -> unticked');
                     setSelected(
-                        selection.filter(
+                        selected.filter(
                             orgUnitId => orgUnitId !== selection[0],
                         ),
                     );

@@ -60,8 +60,10 @@ const TreeViewWithSearch = ({
                 setSelected(selection);
             } else {
                 if (!ticked.includes(selection)) {
-                    setSelected([...selected, selection]);
+                    console.log('not ticked -> ticked');
+                    setSelected([...selected, ...selection]);
                 } else {
+                    console.log('ticked -> unticked');
                     setSelected(
                         selection.filter(orgUnitId => orgUnitId !== selection),
                     );

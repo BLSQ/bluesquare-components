@@ -56,7 +56,7 @@ const TreeViewWithSearch = ({
     const onNodeSelect = useCallback(
         selection => {
             setSelected(selection);
-            console.log('onNodeSelect', selection);
+            console.log('onNodeSelect', selection, selected);
             if (multiselect) {
                 console.log('passed');
                 // disabling when multiselect to avoid allowing user to confirm data while boxes are unticked
@@ -69,6 +69,7 @@ const TreeViewWithSearch = ({
     // Tick and untick checkbox
     const onLabelClick = useCallback(
         (id, itemData, isSelectable) => {
+            console.log('onLabelClick', id, itemData, isSelectable);
             let newTicked;
             let updatedParents;
             let updatedSelectedData;

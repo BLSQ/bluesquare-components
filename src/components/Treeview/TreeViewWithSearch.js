@@ -55,7 +55,7 @@ const TreeViewWithSearch = ({
 
     const onNodeSelect = useCallback(
         selection => {
-            console.log('onNodeSelect', selection, selected);
+            console.log('onNodeSelect', selection, selected, ticked);
             if (!multiselect) {
                 setSelected(selection);
             } else {

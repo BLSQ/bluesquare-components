@@ -56,7 +56,9 @@ const TreeViewWithSearch = ({
     const onNodeSelect = useCallback(
         selection => {
             setSelected(selection);
+            console.log('onNodeSelect', selection);
             if (multiselect) {
+                console.log('passed');
                 // disabling when multiselect to avoid allowing user to confirm data while boxes are unticked
                 onSelect(selection);
             }

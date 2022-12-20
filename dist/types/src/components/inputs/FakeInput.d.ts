@@ -7,6 +7,7 @@ declare type Props = {
     required?: boolean;
     label: string;
     onClear: () => void;
+    fixHeight?: boolean;
 };
 export declare const FakeInput: FunctionComponent<Props>;
 export {};

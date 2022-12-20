@@ -74,6 +74,7 @@ import { LazyImage } from './components/LazyProgressiveImage';
 import { QueryBuilder } from './components/QueryBuilder/components/QueryBuilder';
 import { FakeInput } from './components/inputs/FakeInput';
 import { QueryBuilderInput } from './components/QueryBuilder/components/QueryBuilderInput';
+import { QueryBuilderListToReplace } from './components/QueryBuilder/types';
 import { useHumanReadableJsonLogic } from './components/QueryBuilder/hooks/useHumanReadableJsonLogic';
 import { SortableList } from './components/Sortable/list';
 import { SortableTable } from './components/Sortable/table';
@@ -166,6 +167,7 @@ export {
     IntlFormatMessage,
     IntlMessage,
     QueryBuilderFields,
+    QueryBuilderListToReplace,
     SortableList,
     SortableTable,
 };

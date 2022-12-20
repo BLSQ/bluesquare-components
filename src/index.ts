@@ -74,6 +74,7 @@ import { LazyImage } from './components/LazyProgressiveImage';
 import { QueryBuilder } from './components/QueryBuilder/components/QueryBuilder';
 import { FakeInput } from './components/inputs/FakeInput';
 import { QueryBuilderInput } from './components/QueryBuilder/components/QueryBuilderInput';
+import { useHumanReadableJsonLogic } from './components/QueryBuilder/hooks/useHumanReadableJsonLogic';
 import { SortableList } from './components/Sortable/list';
 import { SortableTable } from './components/Sortable/table';
 // Types
@@ -153,6 +154,7 @@ export {
     DynamicSelect,
     QueryBuilder,
     QueryBuilderInput,
+    useHumanReadableJsonLogic,
     FakeInput,
     ErrorBoundaryWithMessage,
     CustomInput,

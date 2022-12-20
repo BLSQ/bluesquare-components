@@ -28,6 +28,7 @@ export const TriggerModal: FunctionComponent<Props> = ({
             dataTestId={`open-query-builder-${dataTestId || 'default'}`}
             label={formatMessage(label)}
             onClear={onClear}
+            fixHeight={false}
         />
     );
 };

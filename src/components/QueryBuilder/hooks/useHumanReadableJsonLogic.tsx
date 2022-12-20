@@ -27,7 +27,7 @@ const getColor = (
 
 export const useHumanReadableJsonLogic = (
     fields: Fields,
-    listToReplace: QueryBuilderListToReplace[],
+    listToReplace?: QueryBuilderListToReplace[],
 ): ((
     // eslint-disable-next-line no-unused-vars
     logic?: JsonLogicTree,
@@ -64,28 +64,33 @@ export const useHumanReadableJsonLogic = (
                         queryString.length - 1,
                     );
                 }
-
-                const toReplaceItems = listToReplace.flatMap(
-                    toReplaceConfig => toReplaceConfig.items,
-                );
-                const term = new RegExp(
-                    `(\\b${toReplaceItems.join('|')}+\\b)`,
-                    'g',
-                );
-                const parts: ReactElement<any, any>[] = queryString.split(term);
-                for (let i = 1; i < parts.length; i += 2) {
-                    parts[i] = (
-                        <span
-                            style={{
-                                color: getColor(`${parts[i]}`, listToReplace),
-                            }}
-                            key={i}
-                        >
-                            {parts[i]}
-                        </span>
+                if (listToReplace) {
+                    const toReplaceItems = listToReplace.flatMap(
+                        toReplaceConfig => toReplaceConfig.items,
                     );
+                    const term = new RegExp(
+                        `(\\b${toReplaceItems.join('|')}+\\b)`,
+                        'g',
+                    );
+                    const parts: ReactElement<any, any>[] =
+                        queryString.split(term);
+                    for (let i = 1; i < parts.length; i += 2) {
+                        parts[i] = (
+                            <span
+                                style={{
+                                    color: getColor(
+                                        `${parts[i]}`,
+                                        listToReplace,
+                                    ),
+                                }}
+                                key={i}
+                            >
+                                {parts[i]}
+                            </span>
+                        );
+                    }
+                    queryString = parts;
                 }
-                queryString = parts;
             }
 
             return queryString;

@@ -39,8 +39,7 @@ type Props = {
 const useStyles = makeStyles(theme => ({
     table: {
         '& tr': {
-            // @ts-ignore
-            backgroundColor: theme.palette.gray.background,
+            backgroundColor: 'rgba(244,244,244,1)',
         },
         '& tr:nth-of-type(even)': {
             backgroundColor: 'white',

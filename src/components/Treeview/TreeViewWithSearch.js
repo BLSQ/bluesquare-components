@@ -87,15 +87,24 @@ const TreeViewWithSearch = ({
             }
             if (parentsTicked.has(id)) {
                 updatedParents.delete(id);
-                updatedSelectedData = data?.filter(d => d.id !== id) ?? [];
+                updatedSelectedData =
+                    data?.filter(d => d.id !== parseInt(id, 10)) ?? [];
             } else {
                 updatedParents.set(id, parseNodeIds(itemData));
                 if (multiselect) {
-                    updatedSelectedData = [...data, itemData];
+                    if (newTicked.includes(itemData.id)) {
+                        updatedSelectedData = [...data, itemData];
+                    } else {
+                        // if unticking, itemData must be removed from data
+                        updatedSelectedData = data.filter(
+                            d => d.id !== parseInt(itemData.id, 10),
+                        );
+                    }
                 } else {
                     updatedSelectedData = [itemData];
                 }
             }
+
             onUpdate(newTicked, updatedParents, updatedSelectedData);
             setParentsTicked(updatedParents);
             setData(updatedSelectedData);

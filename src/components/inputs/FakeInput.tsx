@@ -15,7 +15,7 @@ type Props = {
     required?: boolean;
     label: string;
     onClear: () => void;
-    fixHeight?: boolean;
+    fixedHeight?: boolean;
 };
 
 const MESSAGES = defineMessages({
@@ -43,7 +43,7 @@ const useStyles = makeStyles(theme => ({
             borderColor: theme.palette.border.hover,
         },
     },
-    fixHeightValue: {
+    fixedHeightValue: {
         whiteSpace: 'nowrap',
         overflow: 'hidden',
         textOverflow: 'ellipsis',
@@ -73,7 +73,7 @@ export const FakeInput: FunctionComponent<Props> = ({
     required,
     label,
     onClear,
-    fixHeight = true,
+    fixedHeight = true,
 }) => {
     const classes: Record<string, string> = useStyles();
     return (
@@ -93,8 +93,8 @@ export const FakeInput: FunctionComponent<Props> = ({
                 >
                     <Typography
                         className={classNames(
-                            fixHeight && classes.fixHeightValue,
-                            !fixHeight && classes.value,
+                            fixedHeight && classes.fixedHeightValue,
+                            !fixedHeight && classes.value,
                         )}
                         component="span"
                     >

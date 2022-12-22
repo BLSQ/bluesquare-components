@@ -60,8 +60,6 @@ export const useTranslatedConfig = (): Config => {
                 is_null: {
                     ...MaterialConfig.operators.is_null,
                     label: formatMessage(MESSAGES.isNull),
-                    labelForFormat: 'labelForFormat',
-                    sqlOp: 'sqlOp',
                 },
                 is_not_null: {
                     ...MaterialConfig.operators.is_not_null,

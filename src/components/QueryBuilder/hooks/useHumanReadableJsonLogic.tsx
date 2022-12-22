@@ -12,7 +12,10 @@ import isEmpty from 'lodash/isEmpty';
 import { useTranslatedConfig } from './useTranslatedConfig';
 import { QueryBuilderListToReplace } from '../types';
 
-type getHumanReadableJsonLogicReturn = ReactNode;
+type getHumanReadableJsonLogicReturnFn = (
+    // eslint-disable-next-line no-unused-vars
+    logic?: JsonLogicTree,
+) => ReactNode;
 
 const queryValue: JsonGroup = { id: QbUtils.uuid(), type: 'group' };
 
@@ -71,10 +74,7 @@ const withListToReplace = (
 export const useHumanReadableJsonLogic = (
     fields: Fields,
     listToReplace?: QueryBuilderListToReplace[],
-): ((
-    // eslint-disable-next-line no-unused-vars
-    logic?: JsonLogicTree,
-) => getHumanReadableJsonLogicReturn) => {
+): getHumanReadableJsonLogicReturnFn => {
     const translatedConfig = useTranslatedConfig();
     const getHumanReadableJsonLogic = useCallback(
         (logic?: JsonLogicTree) => {

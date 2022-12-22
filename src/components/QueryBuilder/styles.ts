@@ -3,6 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
     root: {
+        '& .query-builder-container': {
+            padding: '0 !important',
+        },
         '& .qb-drag-handler, .qb-draggable, .query-builder': {
             WebkitUserSelect: 'none',
             KhtmlUserSelect: 'none',
@@ -28,7 +31,7 @@ const styles = theme => ({
             fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
             fontSize: '14px',
             lineHeight: 1.25,
-            margin: '1rem',
+            margin: 0,
         },
         '& .query-builder *, .query-builder *::before, .query-builder *::after':
             {

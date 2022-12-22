@@ -1,5 +1,8 @@
 declare const styles: (theme: any) => {
     root: {
+        '& .query-builder-container': {
+            padding: string;
+        };
         '& .qb-drag-handler, .qb-draggable, .query-builder': {
             WebkitUserSelect: string;
             KhtmlUserSelect: string;
@@ -25,7 +28,7 @@ declare const styles: (theme: any) => {
             fontFamily: string;
             fontSize: string;
             lineHeight: number;
-            margin: string;
+            margin: number;
         };
         '& .query-builder *, .query-builder *::before, .query-builder *::after': {
             boxSizing: string;

@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
-import { Box, Tabs, Tab } from '@material-ui/core';
+import { Tabs, Tab, Box } from '@material-ui/core';
 import {
     JsonLogicTree,
     JsonLogicResult,
@@ -75,7 +75,7 @@ const QueryBuilderInput: FunctionComponent<Props> = ({
                 <Tab value="json" label={formatMessage(MESSAGES.jsonTab)} />
             </Tabs>
             {tab === 'query' && (
-                <Box ml={-4} mr={-4}>
+                <Box mt={2}>
                     <QueryBuilder
                         logic={logic}
                         fields={fields}

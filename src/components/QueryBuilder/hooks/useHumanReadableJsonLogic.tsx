@@ -32,7 +32,9 @@ const getColor = (
 
 const makeQueryString = (initialQuery: string | undefined): string => {
     let queryString: any = '';
-    queryString = JSON.stringify(initialQuery, undefined, 2);
+    queryString = initialQuery
+        ? JSON.stringify(initialQuery, undefined, 2)
+        : '';
 
     // remove double quotes at the beginning and the end
     queryString = queryString.substring(1, queryString.length - 1);

@@ -16,10 +16,16 @@ const styles = theme => ({
     },
     inputRoot: {
         color: 'inherit',
+        display: 'flex',
+        alignItems: 'center',
     },
     inputInput: {
         paddingRight: theme.spacing(7),
         width: '100%',
+    },
+    searchIconWrapper: {
+        width: '24px',
+        height: '24px',
     },
 });
 

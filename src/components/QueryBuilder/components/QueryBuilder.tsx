@@ -70,6 +70,7 @@ export const QueryBuilder: FunctionComponent<Props> = ({
     );
 
     const classes: Record<string, string> = useStyles();
+
     return (
         <section className={classes.root}>
             <Query

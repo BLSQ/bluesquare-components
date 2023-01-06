@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { defineMessages } from 'react-intl';
+import classNames from 'classnames';
 
 import { Box, makeStyles, Typography, InputLabel } from '@material-ui/core';
 import { FormControl } from './FormControl';
@@ -14,6 +15,7 @@ type Props = {
     required?: boolean;
     label: string;
     onClear: () => void;
+    fixedHeight?: boolean;
 };
 
 const MESSAGES = defineMessages({
@@ -41,11 +43,14 @@ const useStyles = makeStyles(theme => ({
             borderColor: theme.palette.border.hover,
         },
     },
-    value: {
+    fixedHeightValue: {
         whiteSpace: 'nowrap',
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         width: '92%',
+    },
+    value: {
+        paddingRight: '8%',
     },
     inputLabel: {
         backgroundColor: 'white',
@@ -55,7 +60,8 @@ const useStyles = makeStyles(theme => ({
     clear: {
         position: 'absolute',
         right: theme.spacing(2),
-        top: theme.spacing(1.5),
+        top: '50%',
+        transform: 'translateY(-50%)',
     },
 }));
 
@@ -67,6 +73,7 @@ export const FakeInput: FunctionComponent<Props> = ({
     required,
     label,
     onClear,
+    fixedHeight = true,
 }) => {
     const classes: Record<string, string> = useStyles();
     return (
@@ -84,7 +91,13 @@ export const FakeInput: FunctionComponent<Props> = ({
                     onClick={onClick}
                     data-test={dataTestId}
                 >
-                    <Typography className={classes.value} component="span">
+                    <Typography
+                        className={classNames(
+                            fixedHeight && classes.fixedHeightValue,
+                            !fixedHeight && classes.value,
+                        )}
+                        component="span"
+                    >
                         {value}
                     </Typography>
                 </Box>

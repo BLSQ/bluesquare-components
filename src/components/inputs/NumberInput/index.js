@@ -49,13 +49,13 @@ const formatValue = (value, min, max, previousValue = '') => {
 const useTooltipMessage = (min, max) => {
     const { formatMessage } = useSafeIntl();
     let msg = '';
-    if (min || min === 0) {
+    if ((min || min === 0) && min !== -Infinity) {
         msg = `${formatMessage(MESSAGES.min)}: ${min}`;
-        if (max) {
+        if (max && max !== Infinity) {
             msg += ' - ';
         }
     }
-    if (max || max === 0) {
+    if ((max || max === 0) && max !== Infinity) {
         msg += `${formatMessage(MESSAGES.max)}: ${max}`;
     }
     return msg;
@@ -71,8 +71,8 @@ const NumberInput = ({
     onChange,
     multiline,
     autoComplete,
-    min,
-    max,
+    min = -Infinity,
+    max = Infinity,
 }) => {
     const hasErrors = errors.length >= 1;
     const [formattedValue, setFormattedValue] = useState(
@@ -83,8 +83,8 @@ const NumberInput = ({
         const formatted = formatValue(value, min, max, formattedValue);
         if (
             formatted !== formattedValue &&
-            formatted < min && // avoiding copy paste of wrong value
-            formatted > max
+            formatted > min && // avoiding copy paste of wrong value
+            formatted < max
         ) {
             setFormattedValue(formatted);
         }

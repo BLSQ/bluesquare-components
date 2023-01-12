@@ -119,6 +119,7 @@
     "blsq.table.filter.search": "Rechercher",
     "blsq.table.first": "Première page",
     "blsq.table.label.close": "Fermer",
+    "blsq.table.label.renderError": "Erreur de rendu de la valeur",
     "blsq.table.label.resetSearch": "Vider la recherche",
     "blsq.table.label.resultsLower": "résultat(s)",
     "blsq.table.label.search": "Rechercher",

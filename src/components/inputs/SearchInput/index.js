@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { defineMessages } from 'react-intl';
 import PropTypes from 'prop-types';
 import { OutlinedInput, withStyles } from '@material-ui/core';
@@ -36,20 +36,13 @@ const SearchInput = ({
     autoComplete,
 }) => {
     const hasErrors = errors.length >= 1;
+
     // use local state to avoid re render on value prop change, avoiding special chars combinaison like "ê", "î" => IA-1432
     const [localValue, setLocalValue] = useState(value || '');
+    const hasClearIcon = useMemo(() => value !== '', [value]);
     const onClear = () => {
         setLocalValue('');
     };
-    const [hasClearIcon, setClearIcon] = useState(false);
-
-    useEffect(() => {
-        if (value !== '') {
-            setClearIcon(true);
-        } else {
-            setClearIcon(false);
-        }
-    }, [value]);
 
     useSkipEffectOnMount(() => {
         onChange(localValue);

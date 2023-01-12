@@ -120,6 +120,7 @@
     "blsq.table.filter.search": "Search",
     "blsq.table.first": "First page",
     "blsq.table.label.close": "Close",
+    "blsq.table.label.renderError": "Error rendering value",
     "blsq.table.label.resetSearch": "Empty search",
     "blsq.table.label.resultsLower": "result(s)",
     "blsq.table.label.search": "Search",

@@ -1,17 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
+import { defineMessages } from 'react-intl';
 import PropTypes from 'prop-types';
 import { OutlinedInput, withStyles } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
+import { IconButton as IconButtonComponent } from '../../buttons/IconButton';
 import { FormControl } from '../FormControl';
 import { InputLabel } from '../InputLabel';
+
 import { styles } from './styles';
 import { useSkipEffectOnMount } from '../../../utils/useSkipEffectOnMount';
+
+const MESSAGES = defineMessages({
+    clear: {
+        id: 'blsq.treeview.search.options.label.clear',
+        defaultMessage: 'clear',
+    },
+    search: {
+        id: 'blsq.table.filter.search',
+        defaultMessage: 'search',
+    },
+});
 
 const SearchInput = ({
     label,
     required,
     keyValue,
     disabled,
+    clearable,
     value,
     onEnterPressed,
     onChange,
@@ -21,8 +36,13 @@ const SearchInput = ({
     autoComplete,
 }) => {
     const hasErrors = errors.length >= 1;
+
     // use local state to avoid re render on value prop change, avoiding special chars combinaison like "ê", "î" => IA-1432
     const [localValue, setLocalValue] = useState(value || '');
+    const hasClearIcon = useMemo(() => value !== '', [value]);
+    const onClear = () => {
+        setLocalValue('');
+    };
 
     useSkipEffectOnMount(() => {
         onChange(localValue);
@@ -64,13 +84,25 @@ const SearchInput = ({
                     input: classes.inputInput,
                 }}
                 endAdornment={
-                    <div
-                        tabIndex={0}
-                        role="button"
-                        onClick={() => onEnterPressed()}
-                    >
-                        <SearchIcon />
-                    </div>
+                    <>
+                        {clearable && hasClearIcon && (
+                            <IconButtonComponent
+                                size="small"
+                                onClick={onClear}
+                                icon="clear"
+                                tooltipMessage={MESSAGES.clear}
+                            />
+                        )}
+
+                        <div
+                            className={classes.searchIconWrapper}
+                            tabIndex={0}
+                            role="button"
+                            onClick={() => onEnterPressed()}
+                        >
+                            <SearchIcon />
+                        </div>
+                    </>
                 }
                 inputProps={{
                     'aria-label': 'search',
@@ -84,6 +116,7 @@ const SearchInput = ({
 SearchInput.defaultProps = {
     value: '',
     disabled: false,
+    clearable: true,
     required: false,
     onEnterPressed: () => {},
     onChange: () => {},
@@ -98,6 +131,7 @@ SearchInput.propTypes = {
     label: PropTypes.string,
     required: PropTypes.bool,
     disabled: PropTypes.bool,
+    clearable: PropTypes.bool,
     value: PropTypes.string,
     onEnterPressed: PropTypes.func,
     onChange: PropTypes.func,

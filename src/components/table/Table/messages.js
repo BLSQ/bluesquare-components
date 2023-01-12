@@ -69,6 +69,10 @@ const MESSAGES = defineMessages({
         defaultMessage: 'Remove sort',
         id: 'blsq.table.unSort',
     },
+    renderError: {
+        id: 'blsq.table.label.renderError',
+        defaultMessage: 'Error rendering value',
+    },
 });
 
 export { MESSAGES };

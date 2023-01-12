@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import { makeStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
+import { CellContentWithErrorBoundary } from './CellContentWithErrorBoundary';
 
 const useStyles = makeStyles(theme => ({
     row: {
@@ -29,6 +30,7 @@ const useStyles = makeStyles(theme => ({
         padding: theme.spacing(1, 2),
     },
 }));
+
 const Row = ({ row, rowProps, subComponent, sortBy, onRowClick }) => {
     const classes = useStyles();
     const [isExpanded, setIsExpanded] = useState(false);
@@ -60,12 +62,14 @@ const Row = ({ row, rowProps, subComponent, sortBy, onRowClick }) => {
                                 cell.column.id === 'actions' ? 'center' : align
                             }
                         >
-                            {!cell.column.expander && cell.render('Cell')}
-                            {cell.column.expander &&
-                                cell.render('Expander', {
-                                    isExpanded,
-                                    setIsExpanded,
-                                })}
+                            <CellContentWithErrorBoundary value={cell.value}>
+                                {!cell.column.expander && cell.render('Cell')}
+                                {cell.column.expander &&
+                                    cell.render('Expander', {
+                                        isExpanded,
+                                        setIsExpanded,
+                                    })}
+                            </CellContentWithErrorBoundary>
                         </TableCell>
                     );
                 })}

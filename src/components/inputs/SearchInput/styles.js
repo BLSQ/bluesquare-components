@@ -24,8 +24,8 @@ const styles = theme => ({
         width: '100%',
     },
     searchIconWrapper: {
-        width: '24px',
-        height: '24px',
+        width: theme.spacing(3),
+        height: theme.spacing(3),
     },
 });
 

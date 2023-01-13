@@ -6,3 +6,4 @@ declare type Props = {
 };
 export declare const SortableCells: FunctionComponent<Props>;
 export {};
+//# sourceMappingURL=Cells.d.ts.map

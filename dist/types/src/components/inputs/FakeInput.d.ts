@@ -11,3 +11,4 @@ declare type Props = {
 };
 export declare const FakeInput: FunctionComponent<Props>;
 export {};
+//# sourceMappingURL=FakeInput.d.ts.map

@@ -9,3 +9,4 @@ declare type Props = {
 };
 export declare const TriggerModal: FunctionComponent<Props>;
 export {};
+//# sourceMappingURL=TriggerModal.d.ts.map

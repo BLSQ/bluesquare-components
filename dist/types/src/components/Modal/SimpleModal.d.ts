@@ -15,3 +15,4 @@ export declare type SimpleDialogProps = {
     }>;
 };
 export declare const SimpleModal: FunctionComponent<SimpleDialogProps>;
+//# sourceMappingURL=SimpleModal.d.ts.map

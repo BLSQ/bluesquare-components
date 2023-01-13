@@ -7,3 +7,4 @@ export declare type Column = {
     accessor: string;
     Cell?: (s: any) => ReactElement;
 };
+//# sourceMappingURL=types.d.ts.map

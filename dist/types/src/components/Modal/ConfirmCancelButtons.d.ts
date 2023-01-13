@@ -14,3 +14,4 @@ export declare type ConfirmCancelButtonsProps = {
     allowConfirmAdditionalButton?: boolean;
 };
 export declare const ConfirmCancelButtons: FunctionComponent<ConfirmCancelButtonsProps>;
+//# sourceMappingURL=ConfirmCancelButtons.d.ts.map

@@ -19,3 +19,4 @@ export declare const dragzoneStyle: (theme: any) => {
 };
 export declare const FilesUpload: FunctionComponent<Props>;
 export {};
+//# sourceMappingURL=FilesUpload.d.ts.map

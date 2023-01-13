@@ -5,3 +5,4 @@ declare type Props = {
 };
 export declare const SortableRow: FunctionComponent<Props>;
 export {};
+//# sourceMappingURL=Row.d.ts.map

@@ -40,3 +40,4 @@ declare const styledSpinner: React.ComponentType<Pick<Pick<PropTypes.InferProps<
     padding: number;
 }, never>>, "size" | "transparent" | "fixed" | "absolute" | "padding"> & import("@material-ui/core").StyledComponentProps<string>>;
 export { styledSpinner as LoadingSpinner };
+//# sourceMappingURL=index.d.ts.map

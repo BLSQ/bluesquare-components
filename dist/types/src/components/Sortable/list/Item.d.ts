@@ -8,3 +8,4 @@ declare type Props = {
 };
 export declare const SortableItem: FunctionComponent<Props>;
 export {};
+//# sourceMappingURL=Item.d.ts.map

@@ -4,3 +4,4 @@ declare type Props = {
 };
 export declare const Placeholder: FunctionComponent<Props>;
 export {};
+//# sourceMappingURL=Placeholder.d.ts.map

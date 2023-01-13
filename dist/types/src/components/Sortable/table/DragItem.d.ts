@@ -8,3 +8,4 @@ declare type Props = {
 };
 export declare const DragItem: FunctionComponent<Props>;
 export {};
+//# sourceMappingURL=DragItem.d.ts.map

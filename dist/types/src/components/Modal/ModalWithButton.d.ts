@@ -14,3 +14,4 @@ declare type FullModalProps<T extends ModalComponentProps, U extends ButtonCompo
 };
 export declare const makeFullModal: <T extends ModalComponentProps, U extends ButtonComponentProps>(ModalComponent: React.ComponentType<T>, ButtonComponent: React.ComponentType<U>) => React.FunctionComponent<FullModalProps<T, U>>;
 export {};
+//# sourceMappingURL=ModalWithButton.d.ts.map

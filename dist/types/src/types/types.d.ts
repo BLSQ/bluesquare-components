@@ -4,3 +4,4 @@ export declare type IntlMessage = {
     values?: Record<string, any>;
 };
 export declare type IntlFormatMessage = (message: IntlMessage, values?: Record<string, string | HTMLElement>) => string;
+//# sourceMappingURL=types.d.ts.map

@@ -6,3 +6,4 @@ declare type Props = {
 };
 export declare const Head: FunctionComponent<Props>;
 export {};
+//# sourceMappingURL=Head.d.ts.map

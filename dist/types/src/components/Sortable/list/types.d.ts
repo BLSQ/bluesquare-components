@@ -9,3 +9,4 @@ export declare type RenderProps = {
     index: number;
     handleProps?: HandleProps;
 };
+//# sourceMappingURL=types.d.ts.map

@@ -52,7 +52,7 @@ CellWithErrorBoundary_.defaultProps = {
     value: undefined,
 };
 CellWithErrorBoundary_.propTypes = {
-    value: PropTypes.oneOfType(PropTypes.string, PropTypes.number),
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     intl: PropTypes.object.isRequired,
     classes: PropTypes.object.isRequired,
 };

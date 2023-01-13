@@ -10,7 +10,6 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         library: {
             name: 'bluesquare-components',
-            export: 'default',
             type: 'umd',
             umdNamedDefine: true,
         },

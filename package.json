@@ -8,6 +8,7 @@
     "files": [
         "dist"
     ],
+    "types": "./dist/types/index.d.ts",
     "typings": "./dist/types",
     "scripts": {
         "fix-lint": "prettier-eslint \"./src/**/*.js\" --lint-different  --write",

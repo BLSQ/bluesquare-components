@@ -1,0 +1,1 @@
+{"version":3,"file":"Head.d.ts","sourceRoot":"","sources":["../../../../../../src/components/Sortable/table/Head.tsx"],"names":[],"mappings":"AAAA,OAAc,EAAE,iBAAiB,EAAE,MAAM,OAAO,CAAC;AAKjD,OAAO,EAAE,MAAM,EAAE,MAAM,SAAS,CAAC;AAEjC,aAAK,KAAK,GAAG;IACT,OAAO,EAAE,MAAM,EAAE,CAAC;IAClB,MAAM,CAAC,EAAE,OAAO,CAAC;CACpB,CAAC;AAuBF,eAAO,MAAM,IAAI,EAAE,iBAAiB,CAAC,KAAK,CAuBzC,CAAC"}

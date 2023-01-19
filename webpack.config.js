@@ -2,7 +2,7 @@ const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-    entry: './index.ts',
+    entry: './src/index.ts',
     // mode: 'development',
     output: {
         publicPath: '',
@@ -10,7 +10,6 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         library: {
             name: 'bluesquare-components',
-            export: 'default',
             type: 'umd',
             umdNamedDefine: true,
         },

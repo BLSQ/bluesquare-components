@@ -78,6 +78,7 @@ import { QueryBuilderListToReplace } from './components/QueryBuilder/types';
 import { useHumanReadableJsonLogic } from './components/QueryBuilder/hooks/useHumanReadableJsonLogic';
 import { SortableList } from './components/Sortable/list';
 import { SortableTable } from './components/Sortable/table';
+import { useAccessDOMNode } from './utils/useAccessDOMNode';
 // Types
 import { IntlFormatMessage, IntlMessage } from './types/types';
 
@@ -170,4 +171,5 @@ export {
     QueryBuilderListToReplace,
     SortableList,
     SortableTable,
+    useAccessDOMNode
 };

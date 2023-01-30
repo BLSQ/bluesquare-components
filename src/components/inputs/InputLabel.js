@@ -1,11 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import InputLabel from '@material-ui/core/InputLabel';
+import { makeStyles } from '@material-ui/core';
+import classNames from 'classnames';
 import { useStyles } from './styles';
+import { useCenterMultilineLabel } from './useCenterMultilineLabel.ts';
+
+const useCustomStyle = makeStyles({
+    size: { width: `calc(100% - 52px)` },
+});
 
 /** @deprecated use InputLabel from @material-ui/core instead to avoid text alignment issues */
 function InputLabelComponent({ htmlFor, label, required, shrink, error }) {
     const classes = useStyles();
+    const customStyle = useCustomStyle();
+    const labelRef = useCenterMultilineLabel();
     return (
         <InputLabel
             name={htmlFor.replace('input-text-', '')}
@@ -13,11 +22,12 @@ function InputLabelComponent({ htmlFor, label, required, shrink, error }) {
             classes={{
                 shrink: classes.shrink,
             }}
-            className={classes.inputLabel}
+            className={classNames(classes.inputLabel, customStyle.size)}
             shrink={shrink}
             error={error}
+            ref={labelRef}
         >
-            {label}
+            <span>{label}</span>
             {required && <sup> *</sup>}
         </InputLabel>
     );

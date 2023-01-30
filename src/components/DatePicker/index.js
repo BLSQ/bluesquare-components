@@ -9,6 +9,7 @@ import { IconButton } from '../buttons/IconButton';
 import { FormControl } from '../inputs/FormControl';
 
 import { commonStyles } from '../../styles/iaso/common';
+import { useCenterMultilineLabel } from '../inputs/useCenterMultilineLabel.ts';
 
 const useStyles = makeStyles(theme => ({
     ...commonStyles(theme),
@@ -22,6 +23,8 @@ const useStyles = makeStyles(theme => ({
     helperTextError: {
         color: theme.palette.error.main,
     },
+    // The sum subtracted is: 14px of margin 24px of icon width + 14px of horizontal translation coming from MUI
+    label: { width: `calc(100% - 52px)` },
 }));
 
 const DatePicker = ({
@@ -35,7 +38,7 @@ const DatePicker = ({
 }) => {
     const classes = useStyles();
     const [dateError, setDateError] = useState(null);
-
+    const labelRef = useCenterMultilineLabel();
     const isOnError = errors.length > 0 || Boolean(dateError);
 
     return (
@@ -49,6 +52,8 @@ const DatePicker = ({
                     className: classes.label,
                     shrink: Boolean(currentDate),
                     error: isOnError,
+                    id: label,
+                    ref: labelRef,
                 }}
                 KeyboardButtonProps={{
                     size: 'small',
@@ -59,7 +64,7 @@ const DatePicker = ({
                 }}
                 helperText={null}
                 format="DD/MM/YYYY" // This one need be set by user locale
-                label={`${label}`}
+                label={<span>{label}</span>}
                 value={currentDate}
                 onChange={onChange}
                 onError={error => setDateError(error)}

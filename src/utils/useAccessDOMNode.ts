@@ -15,8 +15,11 @@ const useWindowSize = (): [number, number] => {
 };
 
 // eslint-disable-next-line no-unused-vars
-export const useAccessDOMNode = (callback: (ref: RefObject<any>) => void) => {
-    const ref = useRef();
+export const useAccessDOMNode = <T>(
+    // eslint-disable-next-line no-unused-vars
+    callback: (ref: RefObject<T | null>) => void,
+) => {
+    const ref = useRef<T>(null);
     // We need to track windowSize to force a render onResize, otherwise, the text position will be off when resizing
     const size = useWindowSize();
 

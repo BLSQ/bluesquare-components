@@ -6,6 +6,7 @@ import { Box, makeStyles, Typography, InputLabel } from '@material-ui/core';
 import { FormControl } from './FormControl';
 
 import { IconButton as IconButtonComponent } from '../buttons/IconButton';
+import { useCenterMultilineLabel } from './useCenterMultilineLabel';
 
 type Props = {
     value: string;
@@ -76,15 +77,17 @@ export const FakeInput: FunctionComponent<Props> = ({
     fixedHeight = true,
 }) => {
     const classes: Record<string, string> = useStyles();
+    const labelRef = useCenterMultilineLabel();
     return (
         <Box mt={2}>
             <FormControl errors={errors}>
                 <InputLabel
+                    ref={labelRef}
                     shrink={Boolean(value)}
                     required={required}
                     className={classes.inputLabel}
                 >
-                    {label}
+                    <span>{label}</span>
                 </InputLabel>
                 <Box
                     className={classes.input}

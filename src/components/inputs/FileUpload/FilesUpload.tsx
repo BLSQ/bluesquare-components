@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { FunctionComponent, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { useSafeIntl } from '../../../utils/useSafeIntl';
 import AttachmentIcon from '@material-ui/icons/Attachment';
 import {
     Box,
@@ -12,8 +11,12 @@ import {
     Typography,
 } from '@material-ui/core';
 import { FormattedMessage } from 'react-intl';
+import { useSafeIntl } from '../../../utils/useSafeIntl';
 import MESSAGES from './messages';
-import { CustomInput, useCustomInputTextStyle } from '../CustomInput/CustomInput';
+import {
+    CustomInput,
+    useCustomInputTextStyle,
+} from '../CustomInput/CustomInput';
 
 type Props = {
     multi?: boolean;
@@ -21,8 +24,8 @@ type Props = {
     onFilesSelect: (files: File[]) => void;
     files: File[];
     placeholder?: string;
-    required?:boolean
-    errors?:string[]
+    required?: boolean;
+    errors?: string[];
 };
 
 const Icon = (
@@ -71,8 +74,8 @@ export const FilesUpload: FunctionComponent<Props> = ({
     multi = true,
     onFilesSelect = () => null,
     files = [],
-    required=false,
-    errors = []
+    required = false,
+    errors = [],
 }) => {
     const [showDropZone, setShowDropzone] = useState<boolean>(false);
     const { getRootProps, getInputProps } = useDropzone({
@@ -97,7 +100,12 @@ export const FilesUpload: FunctionComponent<Props> = ({
         <div {...getRootProps()}>
             <input {...getInputProps()} />
             {!showDropZone && (
-                <CustomInput placeholder={placeHolderText} icon={Icon} required={required} errors={errors}>
+                <CustomInput
+                    placeholder={placeHolderText}
+                    icon={Icon}
+                    required={required}
+                    errors={errors}
+                >
                     {files.length > 0 && (
                         <Box className={contentStyle.textStyle}>
                             {`${files.length} files selected`}

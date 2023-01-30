@@ -4,6 +4,7 @@ import classnames from 'classnames';
 // @ts-ignore
 import { Paper, InputLabel, Box } from '@material-ui/core';
 import { FormControl } from '../FormControl';
+import { useCenterMultilineLabel } from '../useCenterMultilineLabel';
 
 const childrenStyle = theme => ({
     // replicated from .MuiTypography-body1 (except font-family and letter spacing)
@@ -50,7 +51,7 @@ const styles = theme => ({
     inputLabel: {
         backgroundColor: 'white',
         color: theme.palette.mediumGray.main,
-        paddingLeft:'1px',
+        paddingLeft: '1px',
     },
     shrinkInputLabel: {
         fontSize: '20px',
@@ -108,7 +109,7 @@ export const CustomInput: FunctionComponent<Props> = ({
 }) => {
     const classes = useStyles();
     const hasError = errors.length > 0;
-
+    const labelRef = useCenterMultilineLabel();
     const errorStyle = hasError && !disabled ? classes.error : '';
     const errorLabelStyle = hasError && !disabled ? classes.errorLabel : '';
     const enabledStyle = disabled ? '' : classes.enabled;
@@ -118,6 +119,7 @@ export const CustomInput: FunctionComponent<Props> = ({
     return (
         <FormControl errors={errors}>
             <InputLabel
+                ref={labelRef}
                 shrink={Boolean(children)}
                 required={required}
                 className={`${classnames(
@@ -126,7 +128,7 @@ export const CustomInput: FunctionComponent<Props> = ({
                     'input-label',
                 )} ${errorLabelStyle}`}
             >
-                {placeholder}
+                <span>{placeholder}</span>
             </InputLabel>
             <Paper
                 variant="outlined"

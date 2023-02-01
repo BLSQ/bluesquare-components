@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { JsonLogicTree, Fields } from 'react-awesome-query-builder';
 import { IntlMessage } from '../../../types/types';
 declare const modalWithButton: React.FunctionComponent<{
@@ -8,6 +8,7 @@ declare const modalWithButton: React.FunctionComponent<{
     onChange: (logic?: Object | undefined) => void;
     initialLogic?: Object | undefined;
     fields: Fields;
+    InfoPopper?: ReactNode;
 } & {
     defaultOpen?: boolean | undefined;
     iconProps: {

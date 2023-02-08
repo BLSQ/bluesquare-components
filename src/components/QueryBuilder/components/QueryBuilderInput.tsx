@@ -1,5 +1,5 @@
-import React, { FunctionComponent, useState } from 'react';
-import { Tabs, Tab, Box } from '@material-ui/core';
+import React, { FunctionComponent, ReactNode, useState } from 'react';
+import { Tabs, Tab, Box, useTheme } from '@material-ui/core';
 import {
     JsonLogicTree,
     JsonLogicResult,
@@ -27,6 +27,7 @@ type Props = {
     fields: Fields;
     // eslint-disable-next-line no-unused-vars
     onChange: (logic?: JsonLogicTree) => void;
+    InfoPopper?: ReactNode;
 };
 
 const QueryBuilderInput: FunctionComponent<Props> = ({
@@ -38,8 +39,10 @@ const QueryBuilderInput: FunctionComponent<Props> = ({
     initialLogic,
     fields,
     onChange,
+    InfoPopper,
 }) => {
     const { formatMessage } = useSafeIntl();
+    const theme = useTheme();
     const [logic, setLogic] = useState<JsonLogicTree | undefined>(initialLogic);
     const [tab, setTab] = useState<string>('query');
     const handleChangeLogic = (result: JsonLogicResult) => {
@@ -52,7 +55,6 @@ const QueryBuilderInput: FunctionComponent<Props> = ({
     const handleChangeTab = (newTab: string) => {
         setTab(newTab);
     };
-
     return (
         <ConfirmCancelModal
             allowConfirm
@@ -70,25 +72,43 @@ const QueryBuilderInput: FunctionComponent<Props> = ({
             id={id || ''}
             onClose={() => null}
         >
-            <Tabs value={tab} onChange={(_, newtab) => handleChangeTab(newtab)}>
-                <Tab value="query" label={formatMessage(MESSAGES.queryTab)} />
-                <Tab value="json" label={formatMessage(MESSAGES.jsonTab)} />
-            </Tabs>
-            {tab === 'query' && (
-                <Box mt={2}>
-                    <QueryBuilder
-                        logic={logic}
-                        fields={fields}
-                        onChange={handleChangeLogic}
+            <Box position="relative">
+                {/* allow to display an popper with informations about the fields used */}
+                {InfoPopper && (
+                    <Box
+                        position="absolute"
+                        top={theme.spacing(-7)}
+                        right={theme.spacing(-3)}
+                    >
+                        {InfoPopper}
+                    </Box>
+                )}
+                <Tabs
+                    value={tab}
+                    onChange={(_, newtab) => handleChangeTab(newtab)}
+                >
+                    <Tab
+                        value="query"
+                        label={formatMessage(MESSAGES.queryTab)}
                     />
-                </Box>
-            )}
-            {tab === 'json' && (
-                <JsonLogicEditor
-                    initialLogic={logic}
-                    changeLogic={newLogic => setLogic(newLogic)}
-                />
-            )}
+                    <Tab value="json" label={formatMessage(MESSAGES.jsonTab)} />
+                </Tabs>
+                {tab === 'query' && (
+                    <Box mt={2}>
+                        <QueryBuilder
+                            logic={logic}
+                            fields={fields}
+                            onChange={handleChangeLogic}
+                        />
+                    </Box>
+                )}
+                {tab === 'json' && (
+                    <JsonLogicEditor
+                        initialLogic={logic}
+                        changeLogic={newLogic => setLogic(newLogic)}
+                    />
+                )}
+            </Box>
         </ConfirmCancelModal>
     );
 };

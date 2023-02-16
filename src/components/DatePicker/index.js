@@ -32,6 +32,7 @@ const DatePicker = ({
     required,
     errors,
     hideError,
+    disabled,
 }) => {
     const classes = useStyles();
     const [dateError, setDateError] = useState(null);
@@ -45,6 +46,7 @@ const DatePicker = ({
                 disableToolbar
                 inputVariant="outlined"
                 required={required}
+                disabled={disabled}
                 InputLabelProps={{
                     className: classes.label,
                     shrink: Boolean(currentDate),
@@ -67,6 +69,7 @@ const DatePicker = ({
             {currentDate && (
                 <span className={classes.clearDateButton}>
                     <IconButton
+                        disabled={disabled}
                         size="small"
                         icon="clear"
                         tooltipMessage={clearMessage}
@@ -83,6 +86,7 @@ DatePicker.defaultProps = {
     required: false,
     errors: [],
     hideError: false,
+    disabled: false,
 };
 
 DatePicker.propTypes = {
@@ -115,6 +119,7 @@ DatePicker.propTypes = {
      * hidde error message
      */
     hideError: PropTypes.bool,
+    disabled: PropTypes.bool,
 };
 
 export { DatePicker };

@@ -1,17 +1,13 @@
 declare const MESSAGES: {
-    clickOrDragFile: {
+    clear: {
         id: string;
         defaultMessage: string;
     };
-    clicktoOpenFileSelect: {
+    search: {
         id: string;
         defaultMessage: string;
     };
-    files: {
-        id: string;
-        defaultMessage: string;
-    };
-    dropHere: {
+    forbiddenChars: {
         id: string;
         defaultMessage: string;
     };

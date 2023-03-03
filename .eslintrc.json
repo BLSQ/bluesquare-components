@@ -18,7 +18,8 @@
       "tsx": true
     },
     "sourceType": "module",
-    "ecmaVersion": 2020
+    "ecmaVersion": 2020,
+    "project": "tsconfig.eslint.json"
   },
   "rules": {
     "no-tabs": "off",

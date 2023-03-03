@@ -26,7 +26,7 @@ type Props = {
     onChange: (newValue: string) => void;
     // eslint-disable-next-line no-unused-vars
     onErrorChange: (hasError: boolean) => void;
-    hasCharactersCheck: boolean;
+    blockForbiddenChars: boolean;
     value: string;
     errors: [];
     autoComplete: string;
@@ -45,7 +45,7 @@ const SearchInput: FunctionComponent<Props> = ({
     onErrorChange,
     errors = [],
     autoComplete,
-    hasCharactersCheck = false,
+    blockForbiddenChars = false,
 }) => {
     const hasErrors = errors.length >= 1;
 
@@ -73,7 +73,7 @@ const SearchInput: FunctionComponent<Props> = ({
     }, [value]);
 
     useEffect(() => {
-        if (hasCharactersCheck) {
+        if (blockForbiddenChars) {
             const forbiddenChars = ['"', '?', '/', '%', '&'];
             const hasForbiddenChar = containsForbiddenCharacter(
                 localValue,
@@ -85,7 +85,7 @@ const SearchInput: FunctionComponent<Props> = ({
                 : [];
             setTextSearchErrors(newErrors);
         }
-    }, [localValue, formatMessage, hasCharactersCheck]);
+    }, [localValue, formatMessage, blockForbiddenChars]);
 
     useEffect(() => {
         onErrorChange(hasError);
@@ -135,7 +135,9 @@ const SearchInput: FunctionComponent<Props> = ({
                             className={classes.searchIconWrapper}
                             tabIndex={0}
                             role="button"
-                            onClick={() => onEnterPressed()}
+                            onClick={() =>
+                                !hasError ? onEnterPressed() : null
+                            }
                         >
                             <SearchIcon />
                         </div>

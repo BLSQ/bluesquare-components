@@ -9,7 +9,7 @@ declare type Props = {
     onEnterPressed: () => void;
     onChange: (newValue: string) => void;
     onErrorChange: (hasError: boolean) => void;
-    hasCharactersCheck: boolean;
+    blockForbiddenChars: boolean;
     value: string;
     errors: [];
     autoComplete: string;

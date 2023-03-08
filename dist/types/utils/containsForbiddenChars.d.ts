@@ -1,1 +1,1 @@
-export declare const containsForbiddenCharacter: (value: string, forbiddenCharacters: string[]) => boolean;
+export declare const containsForbiddenCharacter: (value: string, charsToCheck?: string[]) => boolean;

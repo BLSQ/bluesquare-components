@@ -1,4 +1,10 @@
-import React, { FunctionComponent, useState, useEffect, useMemo } from 'react';
+import React, {
+    FunctionComponent,
+    useState,
+    useEffect,
+    useMemo,
+    useCallback,
+} from 'react';
 
 import { OutlinedInput } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
@@ -53,7 +59,8 @@ const SearchInput: FunctionComponent<Props> = ({
     const [localValue, setLocalValue] = useState(value);
     const hasClearIcon = useMemo(() => value !== '', [value]);
     const [textSearchErrors, setTextSearchErrors] = useState<Array<string>>([]);
-    const [hasError, setHasError] = useState<boolean>(false);
+    const [hasTextSearchError, setHasTextSearchError] =
+        useState<boolean>(false);
     const classes: Record<string, any> = useStyles();
     const { formatMessage }: { formatMessage: IntlFormatMessage } =
         useSafeIntl();
@@ -61,6 +68,12 @@ const SearchInput: FunctionComponent<Props> = ({
     const onClear = () => {
         setLocalValue('');
     };
+
+    const onPressed = useCallback(() => {
+        if (!hasTextSearchError) {
+            onEnterPressed();
+        }
+    }, [hasTextSearchError, onEnterPressed]);
 
     useSkipEffectOnMount(() => {
         onChange(localValue);
@@ -74,12 +87,9 @@ const SearchInput: FunctionComponent<Props> = ({
 
     useEffect(() => {
         if (blockForbiddenChars) {
-            const forbiddenChars = ['"', '?', '/', '%', '&'];
-            const hasForbiddenChar = containsForbiddenCharacter(
-                localValue,
-                forbiddenChars,
-            );
-            setHasError(hasForbiddenChar);
+            const hasForbiddenChar = containsForbiddenCharacter(localValue);
+            setHasTextSearchError(hasForbiddenChar);
+
             const newErrors = hasForbiddenChar
                 ? [formatMessage(MESSAGES.forbiddenChars)]
                 : [];
@@ -88,8 +98,8 @@ const SearchInput: FunctionComponent<Props> = ({
     }, [localValue, formatMessage, blockForbiddenChars]);
 
     useEffect(() => {
-        onErrorChange(hasError);
-    }, [hasError, onErrorChange]);
+        onErrorChange(hasTextSearchError);
+    }, [hasTextSearchError, onErrorChange]);
 
     return (
         <FormControl errors={textSearchErrors}>
@@ -98,12 +108,12 @@ const SearchInput: FunctionComponent<Props> = ({
                 label={label}
                 required={required}
                 shrink={value !== undefined && value !== null && value !== ''}
-                error={hasErrors || hasError}
+                error={hasErrors || hasTextSearchError}
             />
             <OutlinedInput
                 autoComplete={autoComplete}
                 disabled={disabled}
-                error={hasErrors || hasError}
+                error={hasErrors || hasTextSearchError}
                 id={uid ? `search-${uid}` : `search-${keyValue}`}
                 value={localValue}
                 placeholder=""
@@ -113,7 +123,7 @@ const SearchInput: FunctionComponent<Props> = ({
                         event.keyCode === 13 ||
                         event.key === 'Enter'
                     ) {
-                        !hasError ? onEnterPressed() : null;
+                        onPressed();
                     }
                 }}
                 classes={{
@@ -135,9 +145,7 @@ const SearchInput: FunctionComponent<Props> = ({
                             className={classes.searchIconWrapper}
                             tabIndex={0}
                             role="button"
-                            onClick={() =>
-                                !hasError ? onEnterPressed() : null
-                            }
+                            onClick={() => onPressed()}
                         >
                             <SearchIcon />
                         </div>

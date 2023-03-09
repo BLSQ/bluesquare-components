@@ -1,48 +1,79 @@
-import React, { useState, useMemo } from 'react';
-import { defineMessages } from 'react-intl';
-import PropTypes from 'prop-types';
-import { OutlinedInput, withStyles } from '@material-ui/core';
+import React, {
+    FunctionComponent,
+    useState,
+    useEffect,
+    useMemo,
+    useCallback,
+} from 'react';
+
+import { OutlinedInput } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import { IconButton as IconButtonComponent } from '../../buttons/IconButton';
 import { FormControl } from '../FormControl';
 import { InputLabel } from '../InputLabel';
 
-import { styles } from './styles';
+import { useStyles } from './styles';
 import { useSkipEffectOnMount } from '../../../utils/useSkipEffectOnMount';
+import { containsForbiddenCharacter } from '../../../utils/containsForbiddenChars';
+import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { IntlFormatMessage } from '../../../types/types';
 
-const MESSAGES = defineMessages({
-    clear: {
-        id: 'blsq.treeview.search.options.label.clear',
-        defaultMessage: 'clear',
-    },
-    search: {
-        id: 'blsq.table.filter.search',
-        defaultMessage: 'search',
-    },
-});
+import MESSAGES from './messages';
 
-const SearchInput = ({
+type Props = {
+    uid: string;
+    label: string;
+    keyValue: string;
+    required?: boolean;
+    disabled?: boolean;
+    clearable?: boolean;
+    onEnterPressed: () => void;
+    // eslint-disable-next-line no-unused-vars
+    onChange: (newValue: string) => void;
+    // eslint-disable-next-line no-unused-vars
+    onErrorChange: (hasError: boolean) => void;
+    blockForbiddenChars: boolean;
+    value: string;
+    errors: [];
+    autoComplete: string;
+};
+
+const SearchInput: FunctionComponent<Props> = ({
+    uid,
     label,
-    required,
+    required = false,
     keyValue,
-    disabled,
-    clearable,
-    value,
+    disabled = false,
+    clearable = false,
+    value = '',
     onEnterPressed,
     onChange,
-    classes,
-    uid,
+    onErrorChange,
     errors = [],
     autoComplete,
+    blockForbiddenChars = false,
 }) => {
     const hasErrors = errors.length >= 1;
 
     // use local state to avoid re render on value prop change, avoiding special chars combinaison like "ê", "î" => IA-1432
-    const [localValue, setLocalValue] = useState(value || '');
+    const [localValue, setLocalValue] = useState(value);
     const hasClearIcon = useMemo(() => value !== '', [value]);
+    const [textSearchErrors, setTextSearchErrors] = useState<Array<string>>([]);
+    const [hasTextSearchError, setHasTextSearchError] =
+        useState<boolean>(false);
+    const classes: Record<string, any> = useStyles();
+    const { formatMessage }: { formatMessage: IntlFormatMessage } =
+        useSafeIntl();
+
     const onClear = () => {
         setLocalValue('');
     };
+
+    const onPressed = useCallback(() => {
+        if (!hasTextSearchError) {
+            onEnterPressed();
+        }
+    }, [hasTextSearchError, onEnterPressed]);
 
     useSkipEffectOnMount(() => {
         onChange(localValue);
@@ -54,19 +85,35 @@ const SearchInput = ({
         }
     }, [value]);
 
+    useEffect(() => {
+        if (blockForbiddenChars) {
+            const hasForbiddenChar = containsForbiddenCharacter(localValue);
+            setHasTextSearchError(hasForbiddenChar);
+
+            const newErrors = hasForbiddenChar
+                ? [formatMessage(MESSAGES.forbiddenChars)]
+                : [];
+            setTextSearchErrors(newErrors);
+        }
+    }, [localValue, formatMessage, blockForbiddenChars]);
+
+    useEffect(() => {
+        onErrorChange(hasTextSearchError);
+    }, [hasTextSearchError, onErrorChange]);
+
     return (
-        <FormControl errors={errors}>
+        <FormControl errors={textSearchErrors}>
             <InputLabel
                 htmlFor={`search-${keyValue}`}
                 label={label}
                 required={required}
                 shrink={value !== undefined && value !== null && value !== ''}
-                error={hasErrors}
+                error={hasErrors || hasTextSearchError}
             />
             <OutlinedInput
                 autoComplete={autoComplete}
                 disabled={disabled}
-                error={hasErrors}
+                error={hasErrors || hasTextSearchError}
                 id={uid ? `search-${uid}` : `search-${keyValue}`}
                 value={localValue}
                 placeholder=""
@@ -76,7 +123,7 @@ const SearchInput = ({
                         event.keyCode === 13 ||
                         event.key === 'Enter'
                     ) {
-                        onEnterPressed();
+                        onPressed();
                     }
                 }}
                 classes={{
@@ -98,7 +145,7 @@ const SearchInput = ({
                             className={classes.searchIconWrapper}
                             tabIndex={0}
                             role="button"
-                            onClick={() => onEnterPressed()}
+                            onClick={() => onPressed()}
                         >
                             <SearchIcon />
                         </div>
@@ -113,33 +160,4 @@ const SearchInput = ({
     );
 };
 
-SearchInput.defaultProps = {
-    value: '',
-    disabled: false,
-    clearable: true,
-    required: false,
-    onEnterPressed: () => {},
-    onChange: () => {},
-    uid: '',
-    label: '',
-    errors: [],
-    autoComplete: 'off',
-};
-
-SearchInput.propTypes = {
-    keyValue: PropTypes.string.isRequired,
-    label: PropTypes.string,
-    required: PropTypes.bool,
-    disabled: PropTypes.bool,
-    clearable: PropTypes.bool,
-    value: PropTypes.string,
-    onEnterPressed: PropTypes.func,
-    onChange: PropTypes.func,
-    uid: PropTypes.string,
-    classes: PropTypes.object.isRequired,
-    errors: PropTypes.arrayOf(PropTypes.string),
-    autoComplete: PropTypes.string,
-};
-
-const styledSearchInput = withStyles(styles)(SearchInput);
-export { styledSearchInput as SearchInput };
+export { SearchInput };

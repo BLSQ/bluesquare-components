@@ -7,7 +7,7 @@ import Delete from '@material-ui/icons/Delete';
 import FilterList from '@material-ui/icons/FilterList';
 import CallMerge from '@material-ui/icons/CallMerge';
 import RemoveRedEye from '@material-ui/icons/RemoveRedEye';
-import Edit from '@material-ui/icons/Edit';
+import Edit from '@material-ui/icons/Settings';
 import History from '@material-ui/icons/History';
 import Map from '@material-ui/icons/Map';
 import CachedRoundedIcon from '@material-ui/icons/CachedRounded';

@@ -45,7 +45,7 @@ const SearchInput: FunctionComponent<Props> = ({
     keyValue,
     disabled = false,
     clearable = false,
-    value = undefined || '',
+    value = '',
     onEnterPressed,
     onChange,
     onErrorChange,

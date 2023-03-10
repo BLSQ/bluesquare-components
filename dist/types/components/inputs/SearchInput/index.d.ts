@@ -8,7 +8,7 @@ declare type Props = {
     clearable?: boolean;
     onEnterPressed: () => void;
     onChange: (newValue: string) => void;
-    onErrorChange: (hasError: boolean) => void;
+    onErrorChange?: (hasError: boolean) => void;
     blockForbiddenChars: boolean;
     value: string;
     errors: [];

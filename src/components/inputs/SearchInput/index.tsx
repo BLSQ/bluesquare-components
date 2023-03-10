@@ -31,7 +31,7 @@ type Props = {
     // eslint-disable-next-line no-unused-vars
     onChange: (newValue: string) => void;
     // eslint-disable-next-line no-unused-vars
-    onErrorChange: (hasError: boolean) => void;
+    onErrorChange?: (hasError: boolean) => void;
     blockForbiddenChars: boolean;
     value: string;
     errors: [];
@@ -48,7 +48,7 @@ const SearchInput: FunctionComponent<Props> = ({
     value = '',
     onEnterPressed,
     onChange,
-    onErrorChange,
+    onErrorChange = () => null,
     errors = [],
     autoComplete,
     blockForbiddenChars = false,

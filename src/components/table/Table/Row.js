@@ -31,7 +31,14 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Row = ({ row, rowProps, subComponent, sortBy, onRowClick }) => {
+const Row = ({
+    row,
+    rowProps,
+    subComponent,
+    sortBy,
+    onRowClick,
+    cellProps: userCellProps,
+}) => {
     const classes = useStyles();
     const [isExpanded, setIsExpanded] = useState(false);
     useEffect(() => {
@@ -47,17 +54,21 @@ const Row = ({ row, rowProps, subComponent, sortBy, onRowClick }) => {
                 className={classNames(
                     classes.row,
                     Boolean(onRowClick) && classes.rowClickable,
+                    rowProps.className ?? '',
                 )}
                 key={rowProps.key}
             >
                 {row.cells.map(cell => {
-                    const cellProps = cell.getCellProps();
+                    const cellProps = cell.getCellProps(userCellProps(cell));
                     const align = cell.column.align || 'center';
                     return (
                         <TableCell
                             {...cellProps}
                             key={cellProps.key}
-                            className={classes.cell}
+                            className={classNames(
+                                classes.cell,
+                                cellProps.className ?? '',
+                            )}
                             align={
                                 cell.column.id === 'actions' ? 'center' : align
                             }
@@ -93,6 +104,7 @@ Row.defaultProps = {
     subComponent: undefined,
     sortBy: [],
     onRowClick: undefined,
+    cellProps: () => {},
 };
 
 Row.propTypes = {
@@ -101,6 +113,7 @@ Row.propTypes = {
     rowProps: PropTypes.object.isRequired,
     subComponent: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
     onRowClick: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+    cellProps: PropTypes.func,
 };
 
 export { Row };

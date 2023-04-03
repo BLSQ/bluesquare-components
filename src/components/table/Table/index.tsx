@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
 import MuiTable from '@material-ui/core/Table';
 import Paper from '@material-ui/core/Paper';
@@ -34,12 +33,12 @@ import { Select, getSelectionCol } from './Select';
 import { NoResult } from './NoResult';
 import { Count } from './Count';
 import { Pagination } from './Pagination';
-import { LoadingSpinner } from '../../LoadingSpinner/index.tsx';
+import { LoadingSpinner } from '../../LoadingSpinner/index';
 import { useKeyPressListener } from '../../../utils/useKeyPressListener';
 import { useSkipEffectOnMount } from '../../../utils/useSkipEffectOnMount';
 /**
  * TableComponent component, no redux, no fetch, just displaying.
- * Multi selection is optionnal, if set to true you can add custom actions
+ * Multi selection is optional, if set to true you can add custom actions
  * Required props in order to work:
  * @param {Object} params
  * @param {Array} data
@@ -47,7 +46,7 @@ import { useSkipEffectOnMount } from '../../../utils/useSkipEffectOnMount';
  * @param {Number} pages
  * @param {Function} redirectTo
  *
- * Optionnal props:
+ * Optional props:
  * @param {Number} count
  * @param {String} baseUrl
  * @param {Array} marginTop
@@ -58,11 +57,11 @@ import { useSkipEffectOnMount } from '../../../utils/useSkipEffectOnMount';
  * @param {String} paramPrefix
  * @param {Function} onRowClick  Pass this function to the table and each row of the table will be clickable.
  *                               It will return the value of the row and the event as second argument.
- *                               Please do not use a action column and a clickable row, it can be a bit confusing.
- *                               For complex cases you can always check the origin of the click with event.target
+ *                               Please do not use an action column and a clickable row, it can be a bit confusing.
+ *                               For complex cases you can always check the origin of the click with `event.target`
  *                               and decide or not propagate the click.
  *
- * Multi selection is optionnal
+ * Multi selection is optional
  * Selection props:
  * @param {Boolean} multiSelect
  * if set to true you can add custom actions, an array of object(s):
@@ -71,7 +70,7 @@ import { useSkipEffectOnMount } from '../../../utils/useSkipEffectOnMount';
  *       @param {String} label
  *       @param {Function} onClick
  *       @param {Boolean} disabled
- * You need aslo to maintain selection state in parent component
+ * You need also to maintain selection state in parent component
  * You can use selectionInitialState and setTableSelection from Iaso/utils/tableUtils.js
  *   @param {Object} selection
  *   @param {Function} setTableSelection
@@ -85,32 +84,82 @@ const useStyles = makeStyles(() => ({
         position: 'relative',
     },
 }));
-const TableComponent = props => {
+
+export interface Column {
+    id?: string;
+    Header?: React.FC<any>;
+    accessor: string;
+    Cell?: React.FC<any>;
+    width?: number;
+    minWidth?: number;
+    maxWidth?: number;
+    align?: 'left' | 'center' | 'right';
+    sortable?: boolean;
+}
+
+export interface TableComponentProps {
+    params: Record<string, any>;
+    count?: number;
+    data: Record<string, any>[];
+    columns: Column[];
+    baseUrl?: string;
+    pages?: number;
+    countOnTop?: boolean;
+    marginTop?: boolean;
+    marginBottom?: boolean;
+    multiSelect?: boolean;
+    selectionActions?: any[];
+    setTableSelection?: () => any;
+    selection?: Record<string, any>;
+    selectionActionMessage?: string;
+    showPagination?: boolean;
+    showFooter?: boolean;
+    onTableParamsChange?: Function;
+    defaultSorted?: any[];
+    resetPageToOne?: string;
+    elevation?: number;
+    onRowClick?: Function;
+    rowProps?: () => any;
+    cellProps?: () => any;
+    extraProps?: {
+        loading?: boolean;
+        SubComponent?: React.FC<any>;
+        defaultPageSize?: number;
+    };
+    paramsPrefix?: string;
+    redirectTo: Function;
+}
+
+const TableComponent: React.FC<TableComponentProps> = props => {
     const {
-        params,
-        count,
-        extraProps,
-        paramsPrefix,
+        params = {
+            pageSize: 10,
+            page: 1,
+            order: '-created_at',
+        },
+        count = 0,
+        extraProps = { loading: false },
+        paramsPrefix = '',
         redirectTo,
-        baseUrl,
-        pages,
-        countOnTop,
-        marginTop,
-        marginBottom,
-        multiSelect,
-        selectionActions,
-        setTableSelection,
-        selection,
-        selectionActionMessage,
-        showPagination,
-        showFooter,
-        onTableParamsChange,
-        defaultSorted,
-        resetPageToOne,
-        elevation,
+        baseUrl = '',
+        pages = 0,
+        countOnTop = true,
+        marginTop = true,
+        marginBottom = true,
+        multiSelect = false,
+        selectionActions = [],
+        setTableSelection = () => null,
+        selection = selectionInitialState,
+        selectionActionMessage = null,
+        showPagination = true,
+        showFooter = false,
+        onTableParamsChange = () => null,
+        defaultSorted = getOrderArray(DEFAULT_ORDER),
+        resetPageToOne = '',
+        elevation = 3,
         onRowClick,
-        rowProps,
-        cellProps,
+        rowProps = () => {},
+        cellProps = () => {},
     } = props;
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -288,67 +337,6 @@ const TableComponent = props => {
         </Box>
     );
 };
-TableComponent.defaultProps = {
-    count: 0,
-    pages: 0,
-    baseUrl: '',
-    countOnTop: true,
-    marginTop: true,
-    marginBottom: true,
-    multiSelect: false,
-    selectionActions: [],
-    selection: selectionInitialState,
-    setTableSelection: () => null,
-    redirectTo: () => null,
-    extraProps: {
-        loading: false,
-    },
-    paramsPrefix: '',
-    params: {
-        pageSize: 10,
-        page: 1,
-        order: '-created_at',
-    },
-    selectionActionMessage: null,
-    showPagination: true,
-    showFooter: false,
-    onTableParamsChange: () => null,
-    defaultSorted: getOrderArray(DEFAULT_ORDER),
-    resetPageToOne: '',
-    elevation: 3,
-    onRowClick: undefined,
-    rowProps: () => {},
-    cellProps: () => {},
-};
-
-TableComponent.propTypes = {
-    params: PropTypes.object,
-    count: PropTypes.number,
-    pages: PropTypes.number,
-    data: PropTypes.array.isRequired,
-    columns: PropTypes.array.isRequired,
-    baseUrl: PropTypes.string,
-    countOnTop: PropTypes.bool,
-    marginTop: PropTypes.bool,
-    marginBottom: PropTypes.bool,
-    multiSelect: PropTypes.bool,
-    selectionActions: PropTypes.array,
-    redirectTo: PropTypes.func,
-    setTableSelection: PropTypes.func,
-    selection: PropTypes.object,
-    extraProps: PropTypes.object,
-    paramsPrefix: PropTypes.string,
-    selectionActionMessage: PropTypes.string,
-    showPagination: PropTypes.bool,
-    showFooter: PropTypes.bool,
-    onTableParamsChange: PropTypes.func,
-    defaultSorted: PropTypes.array,
-    resetPageToOne: PropTypes.string,
-    elevation: PropTypes.number,
-    onRowClick: PropTypes.func,
-    rowProps: PropTypes.func,
-    cellProps: PropTypes.func,
-};
 
 const Table = React.memo(TableComponent, (props, prevProps) => {
     const newColumns = getSimplifiedColumns(props.columns);
@@ -357,13 +345,13 @@ const Table = React.memo(TableComponent, (props, prevProps) => {
         !isEqual(props.data, prevProps.data) ||
         !isEqual(newColumns, oldColumns) ||
         !isEqual(
-            props.selection.selectedItems,
-            prevProps.selection.selectedItems,
+            props.selection?.selectedItems,
+            prevProps.selection?.selectedItems,
         ) ||
-        !isEqual(props.selection.selectAll, prevProps.selection.selectAll) ||
+        !isEqual(props.selection?.selectAll, prevProps.selection?.selectAll) ||
         !isEqual(
-            props.selection.unSelectedItems,
-            prevProps.selection.unSelectedItems,
+            props.selection?.unSelectedItems,
+            prevProps.selection?.unSelectedItems,
         ) ||
         !isEqual(props.extraProps, prevProps.extraProps)
     );

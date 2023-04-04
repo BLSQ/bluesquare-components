@@ -37,6 +37,9 @@ const styles = theme => ({
             {
                 boxSizing: 'border-box',
             },
+        '& .query-builder .widget--valuesrc': {
+            opacity: '1 !important',
+        },
         '& body.qb-dragging .ant-tooltip': { display: 'none' },
         '& .query-builder.qb-dragging': {
             cursor: ['-webkit-grabbing !important', 'grabbing !important'],
@@ -385,6 +388,10 @@ const styles = theme => ({
             width: '300px !important',
             minWidth: '300px !important',
         },
+    },
+    radio: {
+        position: 'relative',
+        top: 4,
     },
 });
 

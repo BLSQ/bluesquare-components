@@ -3,8 +3,8 @@
     "blsq.button.label.displayPassword": "Display the password",
     "blsq.button.label.export": "Export",
     "blsq.button.label.noOptions": "No result found",
-    "blsq.button.label.valueNotFound": "Value not found in possible options",
     "blsq.button.label.oneValueNotFound": "Value \"{value}\" not found in possible options",
+    "blsq.button.label.valueNotFound": "Value not found in possible options",
     "blsq.comment.button.label.addReply": "Add reply",
     "blsq.comment.button.label.collapse": "Hide thread",
     "blsq.comment.button.label.expand": "Show thread",
@@ -37,6 +37,7 @@
     "blsq.queryBuilder.countLessOrEqual": "Count <=",
     "blsq.queryBuilder.countNotBetween": "Count not between",
     "blsq.queryBuilder.countNotEqual": "Count !=",
+    "blsq.queryBuilder.currentDate": "Current date",
     "blsq.queryBuilder.date": "Date",
     "blsq.queryBuilder.dateFrom": "Date from",
     "blsq.queryBuilder.dateFromPlaceholder": "Enter date from",
@@ -115,6 +116,7 @@
     "blsq.queryBuilder.values": "Values",
     "blsq.queryBuilder.valueSourcesPopupTitle": "Select value source",
     "blsq.queryBuilder.yes": "Yes",
+    "blsq.select.label.loadingText": "Loading...",
     "blsq.table.columnSelect.tooltip": "Select visible columns",
     "blsq.table.details": "Details",
     "blsq.table.filter.search": "Search",
@@ -147,6 +149,5 @@
     "blsq.treeview.search.options.label.clear": "Clear",
     "blsq.treeview.search.options.label.noOptions": "No result found",
     "blsq.treeview.search.results.label.display": "Display",
-    "blsq.treeview.search.results.label.resultsLower": "result(s)",
-    "blsq.select.label.loadingText": "Loading..."
+    "blsq.treeview.search.results.label.resultsLower": "result(s)"
 }

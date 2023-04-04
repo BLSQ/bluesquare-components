@@ -1,13 +1,19 @@
+import React, { useMemo, Dispatch, SetStateAction } from 'react';
 import moment from 'moment';
 
 import MaterialConfig from 'react-awesome-query-builder/lib/config/material';
-import { Config } from 'react-awesome-query-builder';
+import { Config, Fields } from 'react-awesome-query-builder';
 
-import { useMemo } from 'react';
+import { QueryBuilderDatePicker } from '../components/QueryBuilderDatePicker';
+
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { MESSAGES } from '../messages';
+import { apiDateFormat } from '../constants';
 
-export const useTranslatedConfig = (): Config => {
+export const useTranslatedConfig = (
+    setCurrentFields: Dispatch<SetStateAction<Fields>> = () => null,
+    fields: Fields,
+): Config => {
     const { formatMessage } = useSafeIntl();
     return useMemo(
         () => ({
@@ -178,8 +184,18 @@ export const useTranslatedConfig = (): Config => {
                 },
                 date: {
                     ...MaterialConfig.widgets.date,
+                    factory: props => {
+                        console.log('props', props);
+                        return (
+                            <QueryBuilderDatePicker
+                                {...props}
+                                setCurrentFields={setCurrentFields}
+                                fields={fields}
+                            />
+                        );
+                    },
                     dateFormat: 'DD.MM.YYYY',
-                    valueFormat: 'YYYY-MM-DD',
+                    valueFormat: apiDateFormat,
                     valueLabel: formatMessage(MESSAGES.date),
                     valuePlaceholder: formatMessage(MESSAGES.datePlaceholder),
                     valueLabels: [

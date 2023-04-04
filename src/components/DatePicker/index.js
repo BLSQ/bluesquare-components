@@ -33,6 +33,7 @@ const DatePicker = ({
     errors,
     hideError,
     disabled,
+    clearable,
 }) => {
     const classes = useStyles();
     const [dateError, setDateError] = useState(null);
@@ -66,7 +67,7 @@ const DatePicker = ({
                 onChange={onChange}
                 onError={error => setDateError(error)}
             />
-            {currentDate && (
+            {clearable && clearMessage && currentDate && (
                 <span className={classes.clearDateButton}>
                     <IconButton
                         disabled={disabled}
@@ -87,6 +88,8 @@ DatePicker.defaultProps = {
     errors: [],
     hideError: false,
     disabled: false,
+    clearMessage: undefined,
+    clearable: true,
 };
 
 DatePicker.propTypes = {
@@ -110,7 +113,7 @@ DatePicker.propTypes = {
     /**
      * A message object to use with react-intl. Displays when hovering over the clear icon
      */
-    clearMessage: PropTypes.object.isRequired,
+    clearMessage: PropTypes.object,
     /**
      * display a star in the label if required
      */
@@ -120,6 +123,7 @@ DatePicker.propTypes = {
      */
     hideError: PropTypes.bool,
     disabled: PropTypes.bool,
+    clearable: PropTypes.bool,
 };
 
 export { DatePicker };

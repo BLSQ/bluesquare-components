@@ -4,6 +4,8 @@ import React, {
     FunctionComponent,
     useMemo,
     useCallback,
+    Dispatch,
+    SetStateAction,
 } from 'react';
 import {
     JsonGroup,
@@ -28,6 +30,8 @@ type Props = {
         // eslint-disable-next-line no-unused-vars
         jsonLogic: JsonLogicTree,
     ) => void;
+
+    setCurrentFields?: Dispatch<SetStateAction<Fields>>;
 };
 
 const queryValue: JsonGroup = { id: QbUtils.uuid(), type: 'group' };
@@ -36,8 +40,10 @@ export const QueryBuilder: FunctionComponent<Props> = ({
     logic,
     fields,
     onChange,
+    setCurrentFields = () => null,
 }) => {
-    const translatedConfig = useTranslatedConfig();
+    console.log('fields', fields);
+    const translatedConfig = useTranslatedConfig(setCurrentFields, fields);
     const config: Config = useMemo(
         () => ({
             ...translatedConfig,

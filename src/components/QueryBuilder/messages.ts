@@ -404,6 +404,14 @@ const MESSAGES = defineMessages({
         id: 'blsq.queryBuilder.invalidJson',
         defaultMessage: 'Invalid JSON',
     },
+    clear: {
+        id: 'iaso.label.clear',
+        defaultMessage: 'Clear',
+    },
+    currentDate: {
+        id: 'blsq.queryBuilder.currentDate',
+        defaultMessage: 'Current date',
+    },
 });
 
 export { MESSAGES };

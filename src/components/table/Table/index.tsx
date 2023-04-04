@@ -99,6 +99,7 @@ export interface Column {
     align?: 'left' | 'center' | 'right';
     sortable?: boolean;
     label?: string; // for search
+    getToggleHiddenProps: () => any;
 }
 
 export interface TableComponentProps {
@@ -220,6 +221,7 @@ const TableComponent: React.FC<TableComponentProps> = props => {
         setPageSize,
         setSortBy,
         page,
+        columns: columnsFromUse,
 
         state: { pageSize, pageIndex, sortBy, hiddenColumns },
         toggleHideColumn,
@@ -307,7 +309,7 @@ const TableComponent: React.FC<TableComponentProps> = props => {
                     <Count count={count} selectCount={selection.selectCount} />
                 )}
                 <ColumnsSelectGeneric
-                    columns={columns}
+                    columns={columnsFromUse}
                     hiddenColumns={hiddenColumns}
                     toggleHideColumn={toggleHideColumn}
                 />

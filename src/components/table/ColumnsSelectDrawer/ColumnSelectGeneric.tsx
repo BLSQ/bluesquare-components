@@ -46,7 +46,6 @@ const filterResults = (searchString, columns: Column[]) => {
 
 type Props = {
     columns: Column[];
-    toggleHideColumn: (_columnId: string, _value?: boolean) => void;
     hiddenColumns: string[];
     minColumns?: number;
 };
@@ -64,40 +63,28 @@ const useToggle = (initialState = false): [boolean, () => void] => {
 
 type ListItemProps = {
     inView;
-    activeOptionsCount: number;
-    minColumns: number;
-    hiddenColumns: string[];
-    handleChangeOptions: (_columnId: string) => (_event) => void;
+    minReached: boolean;
     o: Column;
 };
 
-const OptionListItem: React.FC<ListItemProps> = ({
-    inView,
-    activeOptionsCount,
-    minColumns,
-    hiddenColumns,
-    handleChangeOptions,
-    o,
-}) => {
-    const isVisible = !hiddenColumns.includes(o.id);
+const OptionListItem: React.FC<ListItemProps> = ({ inView, minReached, o }) => {
     const classes = useStyles();
+    const toggleHiddenProps = o.getToggleHiddenProps();
+
     return (
         <ListItem className={classes.listItem}>
             {inView && (
                 <>
                     <Switch
-                        disabled={
-                            activeOptionsCount === minColumns && isVisible
-                        }
+                        disabled={minReached && toggleHiddenProps.checked}
                         size="small"
-                        checked={isVisible}
-                        onChange={handleChangeOptions(o.id)}
                         color="primary"
                         inputProps={{
                             'aria-label':
                                 typeof o.Header === 'string' ? o.Header : o.id,
                         }}
                         className={classes.switch}
+                        {...toggleHiddenProps}
                     />
                     <ListItemText primary={o.Header} />
                 </>
@@ -114,18 +101,9 @@ const OptionListItem: React.FC<ListItemProps> = ({
 
 type OptionListProps = {
     columns: Column[];
-    activeOptionsCount: number;
-    minColumns: number;
-    hiddenColumns: string[];
-    handleChangeOptions: (_columnId: string) => (_event) => void;
+    minReached: boolean;
 };
-const OptionsList: React.FC<OptionListProps> = ({
-    columns,
-    activeOptionsCount,
-    minColumns,
-    hiddenColumns,
-    handleChangeOptions,
-}) => {
+const OptionsList: React.FC<OptionListProps> = ({ columns, minReached }) => {
     // If it has sub-columns make a section and call yourself recursively
     // The inview is to not calculate the column not present
     return (
@@ -145,14 +123,7 @@ const OptionsList: React.FC<OptionListProps> = ({
                                         >
                                             <OptionsList
                                                 columns={o.columns}
-                                                activeOptionsCount={
-                                                    activeOptionsCount
-                                                }
-                                                minColumns={minColumns}
-                                                hiddenColumns={hiddenColumns}
-                                                handleChangeOptions={
-                                                    handleChangeOptions
-                                                }
+                                                minReached={minReached}
                                             />
                                         </div>
                                     </>
@@ -160,13 +131,8 @@ const OptionsList: React.FC<OptionListProps> = ({
                                 {!o.columns && (
                                     <OptionListItem
                                         inView={inView}
-                                        activeOptionsCount={activeOptionsCount}
-                                        minColumns={minColumns}
-                                        hiddenColumns={hiddenColumns}
-                                        handleChangeOptions={
-                                            handleChangeOptions
-                                        }
                                         o={o}
+                                        minReached={minReached}
                                     />
                                 )}
                             </div>
@@ -180,7 +146,6 @@ const OptionsList: React.FC<OptionListProps> = ({
 
 const ColumnsSelectGeneric: React.FC<Props> = ({
     columns,
-    toggleHideColumn,
     hiddenColumns,
     minColumns = 2,
 }) => {
@@ -196,11 +161,9 @@ const ColumnsSelectGeneric: React.FC<Props> = ({
         };
 
     const activeOptionsCount = columns.length - hiddenColumns.length;
-
-    const handleChangeOptions = (columnId: string) => event => {
-        const visible = Boolean(event.target.checked);
-        toggleHideColumn(columnId, !visible);
-    };
+    // When the minimum of visible column is reached
+    // column can only be toggled to show
+    const minReached = activeOptionsCount === minColumns;
 
     const displayedOptions = filterResults(searchString, columns);
     return (
@@ -247,10 +210,7 @@ const ColumnsSelectGeneric: React.FC<Props> = ({
                     <div className={classes.list}>
                         <OptionsList
                             columns={displayedOptions}
-                            activeOptionsCount={activeOptionsCount}
-                            minColumns={minColumns}
-                            hiddenColumns={hiddenColumns}
-                            handleChangeOptions={handleChangeOptions}
+                            minReached={minReached}
                         />
                     </div>
                 </div>
@@ -259,4 +219,4 @@ const ColumnsSelectGeneric: React.FC<Props> = ({
     );
 };
 
-export { ColumnsSelectGeneric };
+export { ColumnsSelectGeneric, Props };

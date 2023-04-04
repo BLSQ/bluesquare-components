@@ -64,12 +64,16 @@ const useToggle = (initialState = false): [boolean, () => void] => {
 type ListItemProps = {
     inView;
     minReached: boolean;
-    o: Column;
+    column: Column;
 };
 
-const OptionListItem: React.FC<ListItemProps> = ({ inView, minReached, o }) => {
+const OptionListItem: React.FC<ListItemProps> = ({
+    inView,
+    minReached,
+    column,
+}) => {
     const classes = useStyles();
-    const toggleHiddenProps = o.getToggleHiddenProps();
+    const toggleHiddenProps = column.getToggleHiddenProps();
 
     return (
         <ListItem className={classes.listItem}>
@@ -81,12 +85,14 @@ const OptionListItem: React.FC<ListItemProps> = ({ inView, minReached, o }) => {
                         color="primary"
                         inputProps={{
                             'aria-label':
-                                typeof o.Header === 'string' ? o.Header : o.id,
+                                typeof column.Header === 'string'
+                                    ? column.Header
+                                    : column.id,
                         }}
                         className={classes.switch}
                         {...toggleHiddenProps}
                     />
-                    <ListItemText primary={o.Header} />
+                    <ListItemText primary={column.Header} />
                 </>
             )}
             {!inView && (
@@ -108,30 +114,30 @@ const OptionsList: React.FC<OptionListProps> = ({ columns, minReached }) => {
     // The inview is to not calculate the column not present
     return (
         <List>
-            {columns.map(o => (
-                <InView key={o.id}>
+            {columns.map(column => (
+                <InView key={column.id}>
                     {({ inView, ref }) => {
                         return (
-                            <div ref={ref} id={o.id}>
-                                {o.columns && (
+                            <div ref={ref} id={column.id}>
+                                {column.columns && (
                                     <>
-                                        <ListItem>{o.Header}</ListItem>
+                                        <ListItem>{column.Header}</ListItem>
                                         <div
                                             style={{
                                                 padding: 6,
                                             }}
                                         >
                                             <OptionsList
-                                                columns={o.columns}
+                                                columns={column.columns}
                                                 minReached={minReached}
                                             />
                                         </div>
                                     </>
                                 )}
-                                {!o.columns && (
+                                {!column.columns && (
                                     <OptionListItem
                                         inView={inView}
-                                        o={o}
+                                        column={column}
                                         minReached={minReached}
                                     />
                                 )}

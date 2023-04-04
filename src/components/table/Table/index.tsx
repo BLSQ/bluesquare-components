@@ -36,6 +36,8 @@ import { Pagination } from './Pagination';
 import { LoadingSpinner } from '../../LoadingSpinner/index';
 import { useKeyPressListener } from '../../../utils/useKeyPressListener';
 import { useSkipEffectOnMount } from '../../../utils/useSkipEffectOnMount';
+import { Grid } from '@material-ui/core';
+import { ColumnsSelectGeneric } from '../ColumnsSelectDrawer/ColumnSelectGeneric';
 /**
  * TableComponent component, no redux, no fetch, just displaying.
  * Multi selection is optional, if set to true you can add custom actions
@@ -86,8 +88,9 @@ const useStyles = makeStyles(() => ({
 }));
 
 export interface Column {
-    id?: string;
-    Header?: React.FC<any>;
+    columns?: Column[];
+    id: string;
+    Header?: React.FC<any> | string;
     accessor: string;
     Cell?: React.FC<any>;
     width?: number;
@@ -95,6 +98,7 @@ export interface Column {
     maxWidth?: number;
     align?: 'left' | 'center' | 'right';
     sortable?: boolean;
+    label?: string; // for search
 }
 
 export interface TableComponentProps {
@@ -216,7 +220,9 @@ const TableComponent: React.FC<TableComponentProps> = props => {
         setPageSize,
         setSortBy,
         page,
-        state: { pageSize, pageIndex, sortBy },
+
+        state: { pageSize, pageIndex, sortBy, hiddenColumns },
+        toggleHideColumn,
     } = useTable(
         {
             columns,
@@ -296,9 +302,16 @@ const TableComponent: React.FC<TableComponentProps> = props => {
                 setTableSelection={setTableSelection}
                 selectionActionMessage={selectionActionMessage}
             />
-            {countOnTop && (
-                <Count count={count} selectCount={selection.selectCount} />
-            )}
+            <Grid container justifyContent="flex-end">
+                {countOnTop && (
+                    <Count count={count} selectCount={selection.selectCount} />
+                )}
+                <ColumnsSelectGeneric
+                    columns={columns}
+                    hiddenColumns={hiddenColumns}
+                    toggleHideColumn={toggleHideColumn}
+                />
+            </Grid>
 
             <Paper elevation={elevation} className={classes.paper}>
                 {loading && <LoadingSpinner absolute />}

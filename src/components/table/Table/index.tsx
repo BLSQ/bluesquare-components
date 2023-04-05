@@ -225,7 +225,6 @@ const TableComponent: React.FC<TableComponentProps> = props => {
         page,
         columns: columnsFromUse,
         state: { pageSize, pageIndex, sortBy, hiddenColumns },
-        toggleHideColumn,
     } = useTable(
         {
             columns,
@@ -313,7 +312,6 @@ const TableComponent: React.FC<TableComponentProps> = props => {
                     <ColumnsSelectGeneric
                         columns={columnsFromUse}
                         hiddenColumns={hiddenColumns}
-                        toggleHideColumn={toggleHideColumn}
                     />
                 )}
             </Grid>

@@ -135,6 +135,7 @@ export interface TableComponentProps {
     paramsPrefix?: string;
     // eslint-disable-next-line no-unused-vars
     redirectTo?: (url: string, newParams: Record<string, string>) => void;
+    columnSelectorEnabled: boolean;
 }
 
 const TableComponent: React.FC<TableComponentProps> = props => {
@@ -167,6 +168,7 @@ const TableComponent: React.FC<TableComponentProps> = props => {
         onRowClick,
         rowProps = () => ({}),
         cellProps = () => ({}),
+        columnSelectorEnabled = true,
     } = props;
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -222,7 +224,6 @@ const TableComponent: React.FC<TableComponentProps> = props => {
         setSortBy,
         page,
         columns: columnsFromUse,
-
         state: { pageSize, pageIndex, sortBy, hiddenColumns },
         toggleHideColumn,
     } = useTable(
@@ -308,11 +309,13 @@ const TableComponent: React.FC<TableComponentProps> = props => {
                 {countOnTop && (
                     <Count count={count} selectCount={selection.selectCount} />
                 )}
-                <ColumnsSelectGeneric
-                    columns={columnsFromUse}
-                    hiddenColumns={hiddenColumns}
-                    toggleHideColumn={toggleHideColumn}
-                />
+                {columnSelectorEnabled && (
+                    <ColumnsSelectGeneric
+                        columns={columnsFromUse}
+                        hiddenColumns={hiddenColumns}
+                        toggleHideColumn={toggleHideColumn}
+                    />
+                )}
             </Grid>
 
             <Paper elevation={elevation} className={classes.paper}>

@@ -114,20 +114,22 @@ export interface TableComponentProps {
     selectionActionMessage?: string;
     showPagination?: boolean;
     showFooter?: boolean;
-    onTableParamsChange?: Function;
+    // eslint-disable-next-line no-unused-vars
+    onTableParamsChange?: (newParams: Record<string, string>) => void;
     defaultSorted?: any[];
     resetPageToOne?: string;
     elevation?: number;
-    onRowClick?: Function;
-    rowProps?: () => any;
-    cellProps?: () => any;
+    onRowClick?: () => void;
+    rowProps?: () => void;
+    cellProps?: () => void;
     extraProps?: {
         loading?: boolean;
         SubComponent?: React.FC<any>;
         defaultPageSize?: number;
     };
     paramsPrefix?: string;
-    redirectTo: Function;
+    // eslint-disable-next-line no-unused-vars
+    redirectTo?: (url: string, newParams: Record<string, string>) => void;
 }
 
 const TableComponent: React.FC<TableComponentProps> = props => {
@@ -158,8 +160,8 @@ const TableComponent: React.FC<TableComponentProps> = props => {
         resetPageToOne = '',
         elevation = 3,
         onRowClick,
-        rowProps = () => {},
-        cellProps = () => {},
+        rowProps = () => ({}),
+        cellProps = () => ({}),
     } = props;
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -249,7 +251,9 @@ const TableComponent: React.FC<TableComponentProps> = props => {
             gotoPage(value - 1);
         }
         // FIXME In time we should get rid of redirectTo
-        redirectTo(baseUrl, newParams);
+        if (redirectTo) {
+            redirectTo(baseUrl, newParams);
+        }
         onTableParamsChange(newParams);
     };
 

@@ -1,8 +1,8 @@
-import React, { useMemo, Dispatch, SetStateAction } from 'react';
+import React, { useMemo } from 'react';
 import moment from 'moment';
 
 import MaterialConfig from 'react-awesome-query-builder/lib/config/material';
-import { Config, Fields } from 'react-awesome-query-builder';
+import { Config } from 'react-awesome-query-builder';
 
 import { QueryBuilderDatePicker } from '../components/QueryBuilderDatePicker';
 
@@ -10,10 +10,7 @@ import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { MESSAGES } from '../messages';
 import { apiDateFormat } from '../constants';
 
-export const useTranslatedConfig = (
-    setCurrentFields: Dispatch<SetStateAction<Fields>> = () => null,
-    fields: Fields,
-): Config => {
+export const useTranslatedConfig = (): Config => {
     const { formatMessage } = useSafeIntl();
     return useMemo(
         () => ({
@@ -184,16 +181,13 @@ export const useTranslatedConfig = (
                 },
                 date: {
                     ...MaterialConfig.widgets.date,
-                    factory: props => {
-                        console.log('props', props);
-                        return (
-                            <QueryBuilderDatePicker
-                                {...props}
-                                setCurrentFields={setCurrentFields}
-                                fields={fields}
-                            />
-                        );
-                    },
+                    // @ts-ignore
+                    factory: ({ setValue, value }) => (
+                        <QueryBuilderDatePicker
+                            setValue={setValue}
+                            value={value}
+                        />
+                    ),
                     dateFormat: 'DD.MM.YYYY',
                     valueFormat: apiDateFormat,
                     valueLabel: formatMessage(MESSAGES.date),
@@ -212,6 +206,19 @@ export const useTranslatedConfig = (
                             ),
                         },
                     ],
+                },
+                date_current_date: {
+                    ...MaterialConfig.widgets.text,
+                    // @ts-ignore
+                    factory: ({ setValue, value }) => (
+                        <QueryBuilderDatePicker
+                            setValue={setValue}
+                            value={value}
+                            withCurrentDate
+                        />
+                    ),
+                    valueLabel: formatMessage(MESSAGES.date),
+                    valuePlaceholder: formatMessage(MESSAGES.datePlaceholder),
                 },
                 time: {
                     ...MaterialConfig.widgets.time,
@@ -257,6 +264,19 @@ export const useTranslatedConfig = (
                             ),
                         },
                     ],
+                },
+                datetime_current_date: {
+                    ...MaterialConfig.widgets.text,
+                    // @ts-ignore
+                    factory: ({ setValue, value }) => (
+                        <QueryBuilderDatePicker
+                            setValue={setValue}
+                            value={value}
+                            withCurrentDate
+                        />
+                    ),
+                    valueLabel: formatMessage(MESSAGES.date),
+                    valuePlaceholder: formatMessage(MESSAGES.datePlaceholder),
                 },
                 boolean: {
                     ...MaterialConfig.widgets.boolean,
@@ -335,6 +355,58 @@ export const useTranslatedConfig = (
                                     ),
                                 },
                             },
+                        },
+                    },
+                },
+                date_current_date: {
+                    defaultOperator: 'equal',
+                    mainWidget: 'date_current_date',
+                    widgets: {
+                        date_current_date: {
+                            operators: [
+                                'equal',
+                                'not_equal',
+                                'like',
+                                'not_like',
+                                'starts_with',
+                                'ends_with',
+                                'proximity',
+                                'is_empty',
+                                'is_not_empty',
+                                'is_null',
+                                'is_not_null',
+                            ],
+                            widgetProps: {},
+                            opProps: {},
+                        },
+                        field: {
+                            operators: ['equal', 'not_equal', 'proximity'],
+                        },
+                    },
+                },
+                datetime_current_date: {
+                    defaultOperator: 'equal',
+                    mainWidget: 'date_current_date',
+                    widgets: {
+                        date_current_date: {
+                            operators: [
+                                'equal',
+                                'not_equal',
+                                'like',
+                                'not_like',
+                                'starts_with',
+                                'ends_with',
+                                'proximity',
+                                'is_empty',
+                                'is_not_empty',
+                                'is_null',
+                                'is_not_null',
+                            ],
+                            widgetProps: {},
+                            opProps: {},
+                        },
+                        field: {
+                            operators: ['equal', 'not_equal', 'proximity'],
                         },
                     },
                 },

@@ -32,6 +32,7 @@ type Props = {
     ) => void;
 
     setCurrentFields?: Dispatch<SetStateAction<Fields>>;
+    withCurrentDate: boolean;
 };
 
 const queryValue: JsonGroup = { id: QbUtils.uuid(), type: 'group' };
@@ -40,10 +41,8 @@ export const QueryBuilder: FunctionComponent<Props> = ({
     logic,
     fields,
     onChange,
-    setCurrentFields = () => null,
 }) => {
-    console.log('fields', fields);
-    const translatedConfig = useTranslatedConfig(setCurrentFields, fields);
+    const translatedConfig = useTranslatedConfig();
     const config: Config = useMemo(
         () => ({
             ...translatedConfig,

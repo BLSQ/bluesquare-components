@@ -1,12 +1,6 @@
-import React, {
-    FunctionComponent,
-    useCallback,
-    Dispatch,
-    SetStateAction,
-} from 'react';
+import React, { FunctionComponent, useCallback } from 'react';
 import { RadioGroup, FormControlLabel, Radio, Box } from '@material-ui/core';
 import moment from 'moment';
-import { Fields } from 'react-awesome-query-builder';
 
 import { DatePicker } from '../../DatePicker';
 import { MESSAGES } from '../messages';
@@ -19,40 +13,22 @@ type Props = {
     setValue: (newDate: string) => void;
     value: string;
     withCurrentDate?: boolean;
-    setCurrentFields?: Dispatch<SetStateAction<Fields>>;
-    fields: Fields;
-    field: string;
 };
 
 export const QueryBuilderDatePicker: FunctionComponent<Props> = ({
     setValue,
     value,
-    withCurrentDate = true,
-    setCurrentFields = () => null,
-    fields,
-    field,
+    withCurrentDate = false,
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes: Record<string, string> = useStyles();
     const [radioValue, setRadioValue] = React.useState(
-        value === 'current_date' ? 'currentDate' : 'default',
+        value === 'current_time' ? 'currentDate' : 'default',
     );
-    console.log('setCurrentFields', setCurrentFields);
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const newValue = (event.target as HTMLInputElement).value;
-        if (newValue === 'currentDate') {
-            setValue('current_date');
-        }
-        if (value !== newValue) {
-            setCurrentFields({
-                ...fields,
-                [field]: {
-                    ...fields[field],
-                    type: newValue === 'currentDate' ? 'text' : 'date',
-                },
-            });
-        }
         setRadioValue(newValue);
+        setValue(newValue === 'currentDate' ? 'current_time' : '');
     };
     const renderDatePicker = useCallback(
         (disabled = false) => (
@@ -61,13 +37,13 @@ export const QueryBuilderDatePicker: FunctionComponent<Props> = ({
                     setValue(moment(newValue).format(apiDateFormat));
                 }}
                 label=""
-                currentDate={value}
+                currentDate={radioValue !== 'currentDate' ? value : undefined}
                 clearMessage={MESSAGES.clear}
                 clearable={false}
                 disabled={disabled}
             />
         ),
-        [setValue, value],
+        [radioValue, setValue, value],
     );
     if (!withCurrentDate) return renderDatePicker();
     return (

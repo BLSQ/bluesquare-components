@@ -12,6 +12,7 @@ import { apiDateFormat } from '../constants';
 
 export const useTranslatedConfig = (): Config => {
     const { formatMessage } = useSafeIntl();
+    console.log('MaterialConfig.types', MaterialConfig.types);
     return useMemo(
         () => ({
             ...MaterialConfig,
@@ -375,21 +376,11 @@ export const useTranslatedConfig = (): Config => {
                             operators: [
                                 'equal',
                                 'not_equal',
-                                'like',
-                                'not_like',
-                                'starts_with',
-                                'ends_with',
-                                'proximity',
-                                'is_empty',
-                                'is_not_empty',
-                                'is_null',
-                                'is_not_null',
+                                'greater_or_equal',
+                                'less_or_equal',
                             ],
                             widgetProps: {},
                             opProps: {},
-                        },
-                        field: {
-                            operators: ['equal', 'not_equal', 'proximity'],
                         },
                     },
                 },
@@ -401,21 +392,11 @@ export const useTranslatedConfig = (): Config => {
                             operators: [
                                 'equal',
                                 'not_equal',
-                                'like',
-                                'not_like',
-                                'starts_with',
-                                'ends_with',
-                                'proximity',
-                                'is_empty',
-                                'is_not_empty',
-                                'is_null',
-                                'is_not_null',
+                                'greater_or_equal',
+                                'less_or_equal',
                             ],
                             widgetProps: {},
                             opProps: {},
-                        },
-                        field: {
-                            operators: ['equal', 'not_equal', 'proximity'],
                         },
                     },
                 },

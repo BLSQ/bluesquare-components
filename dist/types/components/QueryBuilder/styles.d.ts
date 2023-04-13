@@ -445,7 +445,7 @@ declare const styles: (theme: any) => {
             width: string;
             minWidth: string;
         };
-        '& .rule--widget--DATETIME_CURRENT_DATETIME .widget--valuesrc': {
+        '& .rule--widget--CURRENTDATETIME .widget--valuesrc': {
             display: string;
         };
     };

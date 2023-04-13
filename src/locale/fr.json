@@ -37,6 +37,7 @@
     "blsq.queryBuilder.countNotBetween": "Compte pas entre",
     "blsq.queryBuilder.countNotEqual": "Compte !=",
     "blsq.queryBuilder.currentDate": "Date d'aujourd'hui",
+    "blsq.queryBuilder.currentDateTime": "Date et heure d'aujourd'hui",
     "blsq.queryBuilder.date": "Date",
     "blsq.queryBuilder.dateFrom": "Date à partir de",
     "blsq.queryBuilder.dateFromPlaceholder": "Entrez une date à partir de",

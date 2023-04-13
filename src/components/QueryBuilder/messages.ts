@@ -412,6 +412,10 @@ const MESSAGES = defineMessages({
         id: 'blsq.queryBuilder.currentDate',
         defaultMessage: 'Current date',
     },
+    currentDateTime: {
+        id: 'blsq.queryBuilder.currentDateTime',
+        defaultMessage: 'Current date time',
+    },
 });
 
 export { MESSAGES };

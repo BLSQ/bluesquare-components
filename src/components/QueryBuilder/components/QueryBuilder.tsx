@@ -4,8 +4,6 @@ import React, {
     FunctionComponent,
     useMemo,
     useCallback,
-    Dispatch,
-    SetStateAction,
 } from 'react';
 import {
     JsonGroup,
@@ -30,9 +28,6 @@ type Props = {
         // eslint-disable-next-line no-unused-vars
         jsonLogic: JsonLogicTree,
     ) => void;
-
-    setCurrentFields?: Dispatch<SetStateAction<Fields>>;
-    withCurrentDate: boolean;
 };
 
 const queryValue: JsonGroup = { id: QbUtils.uuid(), type: 'group' };

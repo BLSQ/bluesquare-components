@@ -388,6 +388,9 @@ const styles = theme => ({
             width: '300px !important',
             minWidth: '300px !important',
         },
+        '& .rule--widget--DATETIME_CURRENT_DATETIME .widget--valuesrc': {
+            display: 'none',
+        },
     },
     radio: {
         position: 'relative',

@@ -33,6 +33,9 @@ declare const styles: (theme: any) => {
         '& .query-builder *, .query-builder *::before, .query-builder *::after': {
             boxSizing: string;
         };
+        '& .query-builder .widget--valuesrc': {
+            opacity: string;
+        };
         '& body.qb-dragging .ant-tooltip': {
             display: string;
         };
@@ -442,7 +445,14 @@ declare const styles: (theme: any) => {
             width: string;
             minWidth: string;
         };
+        '& .rule--widget--DATETIME_CURRENT_DATETIME .widget--valuesrc': {
+            display: string;
+        };
+    };
+    radio: {
+        position: string;
+        top: number;
     };
 };
-declare const useStyles: (props?: any) => import("@material-ui/styles").ClassNameMap<"root">;
+declare const useStyles: (props?: any) => import("@material-ui/styles").ClassNameMap<"radio" | "root">;
 export { styles, useStyles };

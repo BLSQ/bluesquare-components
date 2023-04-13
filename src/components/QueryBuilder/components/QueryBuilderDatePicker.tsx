@@ -3,9 +3,10 @@ import { RadioGroup, FormControlLabel, Radio, Box } from '@material-ui/core';
 import moment from 'moment';
 
 import { DatePicker } from '../../DatePicker';
+import { DateTimePicker } from '../../DateTimePicker';
 import { MESSAGES } from '../messages';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
-import { apiDateFormat } from '../constants';
+import { apiDateFormat, apiDateTimeFormat } from '../constants';
 import { useStyles } from '../styles';
 
 type Props = {
@@ -13,12 +14,14 @@ type Props = {
     setValue: (newDate: string) => void;
     value: string;
     withCurrentDate?: boolean;
+    withTime?: boolean;
 };
 
 export const QueryBuilderDatePicker: FunctionComponent<Props> = ({
     setValue,
     value,
     withCurrentDate = false,
+    withTime = false,
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes: Record<string, string> = useStyles();
@@ -31,19 +34,39 @@ export const QueryBuilderDatePicker: FunctionComponent<Props> = ({
         setValue(newValue === 'currentDate' ? 'current_time' : '');
     };
     const renderDatePicker = useCallback(
-        (disabled = false) => (
-            <DatePicker
-                onChange={newValue => {
-                    setValue(moment(newValue).format(apiDateFormat));
-                }}
-                label=""
-                currentDate={radioValue !== 'currentDate' ? value : undefined}
-                clearMessage={MESSAGES.clear}
-                clearable={false}
-                disabled={disabled}
-            />
-        ),
-        [radioValue, setValue, value],
+        (disabled = false) => {
+            if (!withTime) {
+                return (
+                    <DatePicker
+                        onChange={newValue => {
+                            setValue(moment(newValue).format(apiDateFormat));
+                        }}
+                        label=""
+                        currentDate={
+                            radioValue !== 'currentDate' ? value : undefined
+                        }
+                        clearMessage={MESSAGES.clear}
+                        clearable={false}
+                        disabled={disabled}
+                    />
+                );
+            }
+            return (
+                <DateTimePicker
+                    onChange={newValue => {
+                        setValue(moment(newValue).format(apiDateTimeFormat));
+                    }}
+                    label=""
+                    currentDate={
+                        radioValue !== 'currentDate' ? value : undefined
+                    }
+                    clearMessage={MESSAGES.clear}
+                    clearable={false}
+                    disabled={disabled}
+                />
+            );
+        },
+        [radioValue, setValue, value, withTime],
     );
     if (!withCurrentDate) return renderDatePicker();
     return (
@@ -63,7 +86,9 @@ export const QueryBuilderDatePicker: FunctionComponent<Props> = ({
                     control={<Radio className={classes.radio} />}
                     label={
                         <Box position="relative" display="inline-block" top={5}>
-                            {formatMessage(MESSAGES.currentDate)}
+                            {withTime
+                                ? formatMessage(MESSAGES.currentDateTime)
+                                : formatMessage(MESSAGES.currentDate)}
                         </Box>
                     }
                 />

@@ -207,7 +207,7 @@ export const useTranslatedConfig = (): Config => {
                         },
                     ],
                 },
-                date_current_date: {
+                currentDate: {
                     ...MaterialConfig.widgets.text,
                     // @ts-ignore
                     factory: ({ setValue, value }) => (
@@ -215,6 +215,20 @@ export const useTranslatedConfig = (): Config => {
                             setValue={setValue}
                             value={value}
                             withCurrentDate
+                        />
+                    ),
+                    valueLabel: formatMessage(MESSAGES.date),
+                    valuePlaceholder: formatMessage(MESSAGES.datePlaceholder),
+                },
+                currentDatetime: {
+                    ...MaterialConfig.widgets.text,
+                    // @ts-ignore
+                    factory: ({ setValue, value }) => (
+                        <QueryBuilderDatePicker
+                            setValue={setValue}
+                            value={value}
+                            withCurrentDate
+                            withTime
                         />
                     ),
                     valueLabel: formatMessage(MESSAGES.date),
@@ -246,6 +260,14 @@ export const useTranslatedConfig = (): Config => {
                     timeFormat: 'HH:mm',
                     dateFormat: 'DD.MM.YYYY',
                     valueFormat: 'YYYY-MM-DD HH:mm:ss',
+                    // @ts-ignore
+                    factory: ({ setValue, value }) => (
+                        <QueryBuilderDatePicker
+                            setValue={setValue}
+                            value={value}
+                            withTime
+                        />
+                    ),
                     valueLabel: formatMessage(MESSAGES.datetime),
                     valuePlaceholder: formatMessage(
                         MESSAGES.datetimePlaceholder,
@@ -264,19 +286,6 @@ export const useTranslatedConfig = (): Config => {
                             ),
                         },
                     ],
-                },
-                datetime_current_date: {
-                    ...MaterialConfig.widgets.text,
-                    // @ts-ignore
-                    factory: ({ setValue, value }) => (
-                        <QueryBuilderDatePicker
-                            setValue={setValue}
-                            value={value}
-                            withCurrentDate
-                        />
-                    ),
-                    valueLabel: formatMessage(MESSAGES.date),
-                    valuePlaceholder: formatMessage(MESSAGES.datePlaceholder),
                 },
                 boolean: {
                     ...MaterialConfig.widgets.boolean,
@@ -358,11 +367,11 @@ export const useTranslatedConfig = (): Config => {
                         },
                     },
                 },
-                date_current_date: {
+                currentDate: {
                     defaultOperator: 'equal',
-                    mainWidget: 'date_current_date',
+                    mainWidget: 'currentDate',
                     widgets: {
-                        date_current_date: {
+                        currentDate: {
                             operators: [
                                 'equal',
                                 'not_equal',
@@ -384,11 +393,11 @@ export const useTranslatedConfig = (): Config => {
                         },
                     },
                 },
-                datetime_current_date: {
+                currentDatetime: {
                     defaultOperator: 'equal',
-                    mainWidget: 'date_current_date',
+                    mainWidget: 'currentDatetime',
                     widgets: {
-                        date_current_date: {
+                        currentDatetime: {
                             operators: [
                                 'equal',
                                 'not_equal',

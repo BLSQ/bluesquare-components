@@ -16,66 +16,57 @@ const styles = theme => ({
     tabs: {
         ...commonStyles(theme).tabs,
         paddingRight: 0,
+        '& .MuiTab-wrapper': {
+            flexDirection: 'row-reverse',
+        },
     },
     mainContainer: {
         display: 'flex',
         position: 'relative',
     },
     tabsContainer: {
-        position: 'relative',
+        maxWidth: '95vw',
     },
     iconButton: {
         color: 'white !important',
         height: 30,
         position: 'relative',
-        top: 8,
+        top: 21,
     },
     removeIconButton: {
         color: 'white !important',
+        height: 30,
+        width: 30,
+        borderRadius: 30,
         position: 'relative',
-        top: 19,
-        right: 15,
-        height: 20,
+        marginBottom: ' 0 !important',
+        display: 'flex',
+        top: -1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginLeft: theme.spacing(1),
         '& svg': {
             width: 14,
             height: 14,
         },
-    },
-    removeContainer: {
-        padding: 0,
-        margin: 0,
-        position: 'absolute',
-        left: theme.spacing(4),
-        top: -5,
-        minHeight: 0,
-        height: 1,
-        width: `calc(100% - ${theme.spacing(4)}px)`,
-        display: 'flex',
-        listStyleType: 'none',
-        zIndex: 100000,
-    },
-    removeContainerItem: {
-        display: 'inline-flex',
-        justifyContent: 'flex-end',
-        minWidth: 160,
-        fontSize: 5,
+        '&:hover': {
+            backgroundColor: 'rgba(255, 255, 255, 0.4)',
+        },
     },
     roundColor: {
         display: 'inline-block',
         width: 15,
         height: 15,
         borderRadius: 15,
-        position: 'absolute',
-        top: 16,
-        left: theme.spacing(2),
-    },
-    tabContentAlone: {
-        paddingRight: theme.spacing(2),
-        paddingLeft: theme.spacing(4),
+        position: 'relative',
+        top: -1,
+        marginRight: theme.spacing(1),
     },
     tabContent: {
-        paddingRight: theme.spacing(6),
-        paddingLeft: theme.spacing(6),
+        height: 30,
+        display: 'flex',
+        alignItems: 'center',
+        marginBottom: ' 0 !important',
     },
 });
 
@@ -84,7 +75,6 @@ class DynamicTabs extends Component {
         super(props);
         this.state = {
             tabIndex: parseInt(props.params[props.tabParamKey], 10) || 0,
-            tabsWidth: [],
         };
     }
 
@@ -140,18 +130,6 @@ class DynamicTabs extends Component {
         this.setState(newState);
     }
 
-    setTabsElement(element, index) {
-        const { tabsWidth } = this.state;
-        const newWidth = element.getBoundingClientRect().width;
-        if (newWidth !== tabsWidth[index]) {
-            const newArray = [...tabsWidth];
-            newArray[index] = newWidth;
-            this.setState({
-                tabsWidth: newArray,
-            });
-        }
-    }
-
     render() {
         const {
             classes,
@@ -164,100 +142,88 @@ class DynamicTabs extends Component {
             addMessage,
             deleteMessage,
         } = this.props;
-        const { tabIndex, tabsWidth } = this.state;
+        const { tabIndex } = this.state;
         const itemsList = JSON.parse(params[paramKey]);
         return (
             <section className={classes.mainContainer}>
                 <div className={classes.tabsContainer}>
-                    {itemsList.length > 1 && (
-                        <ul className={classes.removeContainer}>
-                            {itemsList.map((item, currentTabIndex) => (
-                                <li
-                                    className={classes.removeContainerItem}
-                                    key={currentTabIndex}
-                                    style={{
-                                        width: `${tabsWidth[currentTabIndex]}px`,
-                                    }}
-                                >
-                                    <Tooltip
-                                        size="small"
-                                        title={
-                                            <>
-                                                <FormattedMessage
-                                                    {...deleteMessage}
-                                                />
-                                                {` ${baseLabel.toLowerCase()}`}
-                                            </>
-                                        }
-                                    >
-                                        <IconButton
-                                            onClick={() =>
-                                                this.handleDeleteTab(
-                                                    currentTabIndex,
-                                                )
-                                            }
-                                            className={classes.removeIconButton}
-                                            size="small"
-                                        >
-                                            <Remove />
-                                        </IconButton>
-                                    </Tooltip>
-                                </li>
-                            ))}
-                        </ul>
-                    )}
                     <Tabs
+                        variant="scrollable"
                         value={tabIndex}
                         classes={{
                             root: classes.tabs,
                             indicator: classes.indicator,
                         }}
-                        onChange={(event, newtab) =>
-                            this.handleTabChange(newtab)
-                        }
+                        onChange={(_, newtab) => {
+                            this.handleTabChange(newtab);
+                        }}
                     >
-                        {itemsList.map((item, currentTabIndex) => (
-                            <Tab
-                                ref={ref => {
-                                    if (ref)
-                                        this.setTabsElement(
-                                            ref,
-                                            currentTabIndex,
-                                        );
-                                }}
-                                key={currentTabIndex}
-                                value={currentTabIndex}
-                                label={
-                                    <span
-                                        className={
-                                            itemsList.length > 1
-                                                ? classes.tabContent
-                                                : classes.tabContentAlone
-                                        }
-                                    >
-                                        <span
-                                            style={
-                                                item.color
-                                                    ? {
-                                                          backgroundColor: `#${item.color}`,
-                                                          border: `2px solid ${Color(
-                                                              `#${item.color}`,
-                                                          ).darken(0.5)}`,
-                                                      }
-                                                    : {}
-                                            }
-                                            className={classes.roundColor}
-                                        />
-                                        {baseLabel}
-                                        {displayCounts &&
-                                            counts[currentTabIndex] &&
-                                            ` (${formatThousand(
-                                                counts[currentTabIndex].count,
-                                            )})`}
-                                    </span>
-                                }
-                            />
-                        ))}
+                        {itemsList.map((item, currentTabIndex) => {
+                            let tabStyle = {};
+                            if (item.color) {
+                                tabStyle = {
+                                    backgroundColor: `#${item.color}`,
+                                    border: `2px solid ${Color(
+                                        `#${item.color}`,
+                                    ).darken(0.5)}`,
+                                };
+                            }
+                            return (
+                                <Tab
+                                    key={currentTabIndex}
+                                    value={currentTabIndex}
+                                    label={
+                                        <span className={classes.tabContent}>
+                                            <span
+                                                style={tabStyle}
+                                                className={classes.roundColor}
+                                            />
+                                            {baseLabel}
+                                            {displayCounts &&
+                                                counts[currentTabIndex] &&
+                                                ` (${formatThousand(
+                                                    counts[currentTabIndex]
+                                                        .count,
+                                                )})`}
+                                        </span>
+                                    }
+                                    icon={
+                                        <>
+                                            {itemsList.length > 1 && (
+                                                <Tooltip
+                                                    size="small"
+                                                    title={
+                                                        <>
+                                                            <FormattedMessage
+                                                                {...deleteMessage}
+                                                            />
+                                                            {` ${baseLabel.toLowerCase()}`}
+                                                        </>
+                                                    }
+                                                >
+                                                    <span
+                                                        role="button"
+                                                        tabIndex={0}
+                                                        onClick={e => {
+                                                            e.stopPropagation();
+                                                            this.handleDeleteTab(
+                                                                currentTabIndex,
+                                                            );
+                                                        }}
+                                                        className={
+                                                            classes.removeIconButton
+                                                        }
+                                                        size="small"
+                                                    >
+                                                        <Remove />
+                                                    </span>
+                                                </Tooltip>
+                                            )}
+                                        </>
+                                    }
+                                />
+                            );
+                        })}
                     </Tabs>
                 </div>
                 {itemsList.length < maxItems && (

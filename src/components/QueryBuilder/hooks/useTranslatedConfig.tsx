@@ -10,7 +10,10 @@ import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { MESSAGES } from '../messages';
 import { apiDateFormat } from '../constants';
 
-export const useTranslatedConfig = (currentDateString?: string): Config => {
+export const useTranslatedConfig = (
+    currentDateString?: string,
+    currentDateTimeString?: string,
+): Config => {
     const { formatMessage } = useSafeIntl();
     return useMemo(
         () => ({
@@ -230,7 +233,7 @@ export const useTranslatedConfig = (currentDateString?: string): Config => {
                             value={value}
                             withCurrentDate
                             withTime
-                            currentDateString={currentDateString}
+                            currentDateString={currentDateTimeString}
                         />
                     ),
                     valueLabel: formatMessage(MESSAGES.date),

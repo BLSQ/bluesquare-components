@@ -5,6 +5,7 @@ declare type Props = {
     fields: Fields;
     onChange: (jsonLogic: JsonLogicTree) => void;
     currentDateString?: string;
+    currentDateTimeString?: string;
 };
 export declare const QueryBuilder: FunctionComponent<Props>;
 export {};

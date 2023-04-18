@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { KeyboardDatePicker } from '@material-ui/pickers';
+import { KeyboardDateTimePicker } from '@material-ui/pickers';
 import EventIcon from '@material-ui/icons/Event';
 import { makeStyles } from '@material-ui/core';
 import PropTypes from 'prop-types';
@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const DatePicker = ({
+const DateTimePicker = ({
     label,
     onChange,
     currentDate,
@@ -42,7 +42,7 @@ const DatePicker = ({
 
     return (
         <FormControl errors={errors} hideError={hideError}>
-            <KeyboardDatePicker
+            <KeyboardDateTimePicker
                 autoOk
                 disableToolbar
                 inputVariant="outlined"
@@ -61,7 +61,7 @@ const DatePicker = ({
                     error: isOnError,
                 }}
                 helperText={null}
-                format="DD/MM/YYYY" // This one need be set by user locale
+                format="DD/MM/YYYY HH:mm" // This one need be set by user locale
                 label={`${label}`}
                 value={currentDate}
                 onChange={onChange}
@@ -82,7 +82,7 @@ const DatePicker = ({
     );
 };
 
-DatePicker.defaultProps = {
+DateTimePicker.defaultProps = {
     currentDate: null,
     required: false,
     errors: [],
@@ -92,7 +92,7 @@ DatePicker.defaultProps = {
     clearable: true,
 };
 
-DatePicker.propTypes = {
+DateTimePicker.propTypes = {
     /**
      * A label. Required
      */
@@ -103,7 +103,7 @@ DatePicker.propTypes = {
      */
     onChange: PropTypes.func.isRequired,
     /**
-     * The date to initialize the DatePicker with
+     * The date to initialize the DateTimePicker with
      */
     currentDate: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     /**
@@ -126,4 +126,4 @@ DatePicker.propTypes = {
     clearable: PropTypes.bool,
 };
 
-export { DatePicker };
+export { DateTimePicker };

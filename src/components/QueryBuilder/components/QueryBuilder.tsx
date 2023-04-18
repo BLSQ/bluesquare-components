@@ -28,6 +28,7 @@ type Props = {
         // eslint-disable-next-line no-unused-vars
         jsonLogic: JsonLogicTree,
     ) => void;
+    currentDateString?: string;
 };
 
 const queryValue: JsonGroup = { id: QbUtils.uuid(), type: 'group' };
@@ -36,8 +37,9 @@ export const QueryBuilder: FunctionComponent<Props> = ({
     logic,
     fields,
     onChange,
+    currentDateString,
 }) => {
-    const translatedConfig = useTranslatedConfig();
+    const translatedConfig = useTranslatedConfig(currentDateString);
     const config: Config = useMemo(
         () => ({
             ...translatedConfig,

@@ -4,6 +4,7 @@ declare type Props = {
     value: string;
     withCurrentDate?: boolean;
     withTime?: boolean;
+    currentDateString?: string;
 };
 export declare const QueryBuilderDatePicker: FunctionComponent<Props>;
 export {};

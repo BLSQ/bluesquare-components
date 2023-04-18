@@ -1,13 +1,12 @@
-import React, { FunctionComponent, useCallback } from 'react';
+import React, { FunctionComponent, useState, ChangeEvent } from 'react';
 import { RadioGroup, FormControlLabel, Radio, Box } from '@material-ui/core';
-import moment from 'moment';
 
-import { DatePicker } from '../../DatePicker';
-import { DateTimePicker } from '../../DateTimePicker';
+import { DateOrDateTime } from './DateOrDateTime';
 import { MESSAGES } from '../messages';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
-import { apiDateFormat, apiDateTimeFormat } from '../constants';
 import { useStyles } from '../styles';
+
+type RadioValue = 'current' | 'default';
 
 type Props = {
     // eslint-disable-next-line no-unused-vars
@@ -15,6 +14,7 @@ type Props = {
     value: string;
     withCurrentDate?: boolean;
     withTime?: boolean;
+    currentDateString?: string;
 };
 
 export const QueryBuilderDatePicker: FunctionComponent<Props> = ({
@@ -22,53 +22,30 @@ export const QueryBuilderDatePicker: FunctionComponent<Props> = ({
     value,
     withCurrentDate = false,
     withTime = false,
+    currentDateString,
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes: Record<string, string> = useStyles();
-    const [radioValue, setRadioValue] = React.useState(
-        value === 'current_time' ? 'currentDate' : 'default',
+    const [radioValue, setRadioValue] = useState<RadioValue>(
+        value === currentDateString ? 'current' : 'default',
     );
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const newValue = (event.target as HTMLInputElement).value;
-        setRadioValue(newValue);
-        setValue(newValue === 'currentDate' ? 'current_time' : '');
+        setRadioValue(newValue as RadioValue);
+        setValue(
+            newValue === 'current' && currentDateString
+                ? currentDateString
+                : '',
+        );
     };
-    const renderDatePicker = useCallback(
-        (disabled = false) => {
-            if (!withTime) {
-                return (
-                    <DatePicker
-                        onChange={newValue => {
-                            setValue(moment(newValue).format(apiDateFormat));
-                        }}
-                        label=""
-                        currentDate={
-                            radioValue !== 'currentDate' ? value : undefined
-                        }
-                        clearMessage={MESSAGES.clear}
-                        clearable={false}
-                        disabled={disabled}
-                    />
-                );
-            }
-            return (
-                <DateTimePicker
-                    onChange={newValue => {
-                        setValue(moment(newValue).format(apiDateTimeFormat));
-                    }}
-                    label=""
-                    currentDate={
-                        radioValue !== 'currentDate' ? value : undefined
-                    }
-                    clearMessage={MESSAGES.clear}
-                    clearable={false}
-                    disabled={disabled}
-                />
-            );
-        },
-        [radioValue, setValue, value, withTime],
-    );
-    if (!withCurrentDate) return renderDatePicker();
+    if (!withCurrentDate)
+        return (
+            <DateOrDateTime
+                setValue={setValue}
+                dateValue={value || undefined}
+                withTime={withTime}
+            />
+        );
     return (
         <Box position="relative" top={4}>
             <RadioGroup value={radioValue} onChange={handleChange}>
@@ -77,12 +54,19 @@ export const QueryBuilderDatePicker: FunctionComponent<Props> = ({
                     control={<Radio className={classes.radio} />}
                     label={
                         <Box display="inline-block">
-                            {renderDatePicker(radioValue !== 'default')}
+                            <DateOrDateTime
+                                setValue={setValue}
+                                dateValue={
+                                    radioValue !== 'current' ? value : undefined
+                                }
+                                withTime={withTime}
+                                disabled={radioValue !== 'default'}
+                            />
                         </Box>
                     }
                 />
                 <FormControlLabel
-                    value="currentDate"
+                    value="current"
                     control={<Radio className={classes.radio} />}
                     label={
                         <Box position="relative" display="inline-block" top={5}>

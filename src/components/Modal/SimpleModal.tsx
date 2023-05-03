@@ -76,7 +76,12 @@ export const SimpleModal: FunctionComponent<SimpleDialogProps> = ({
                 classes={{
                     paper: classes.paper,
                 }}
-                onClose={onClose}
+                onClose={(_, reason) => {
+                    if (reason === 'backdropClick') {
+                        closeDialog();
+                    }
+                    onClose();
+                }}
                 scroll="body"
                 id={id}
                 data-test={dataTestId}

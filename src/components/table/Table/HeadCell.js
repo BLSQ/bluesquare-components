@@ -56,7 +56,10 @@ const HeadCell = ({
 }) => {
     const classes = useStyles();
     const { formatMessage } = useSafeIntl();
-    const isSortable = column.sortable !== false && !column.isResizing;
+    const isSortable =
+        column.Header.length > 0 &&
+        column.sortable !== false &&
+        !column.isResizing;
     let direction;
     let title = MESSAGES.sortAsc;
 

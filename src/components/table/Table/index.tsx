@@ -13,6 +13,7 @@ import {
     useResizeColumns,
 } from 'react-table';
 
+import { Grid } from '@material-ui/core';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 
 import { DEFAULT_PAGE_SIZE, DEFAULT_PAGE, DEFAULT_ORDER } from './constants';
@@ -36,7 +37,6 @@ import { Pagination } from './Pagination';
 import { LoadingSpinner } from '../../LoadingSpinner/index';
 import { useKeyPressListener } from '../../../utils/useKeyPressListener';
 import { useSkipEffectOnMount } from '../../../utils/useSkipEffectOnMount';
-import { Grid } from '@material-ui/core';
 import { ColumnsSelectGeneric } from '../ColumnsSelectDrawer/ColumnSelectGeneric';
 /**
  * TableComponent component, no redux, no fetch, just displaying.
@@ -89,6 +89,20 @@ const useStyles = makeStyles(() => ({
 
 export interface Column {
     columns?: Column[];
+    id: string;
+    Header?: React.FC<any> | string;
+    accessor: string;
+    Cell?: React.FC<any>;
+    width?: number;
+    minWidth?: number;
+    maxWidth?: number;
+    align?: 'left' | 'center' | 'right';
+    sortable?: boolean;
+    label?: string; // for search
+}
+
+export interface ColumnFromReactTable {
+    columns?: ColumnFromReactTable[];
     id: string;
     Header?: React.FC<any> | string;
     accessor: string;

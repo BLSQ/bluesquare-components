@@ -15,7 +15,7 @@ import { IconButton as IconButtonComponent } from '../../buttons/IconButton';
 
 import { MESSAGES } from './messages';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
-import { Column } from '../Table';
+import { ColumnFromReactTable } from '../Table';
 import { useToggle } from '../../../utils/useToggle';
 import { OptionsList } from './OptionList';
 import { styles } from './styles';
@@ -24,7 +24,7 @@ import { styles } from './styles';
 // @ts-ignore
 export const useStyles = makeStyles(styles);
 
-const filterResults = (searchString, columns: Column[]) => {
+const filterResults = (searchString, columns: ColumnFromReactTable[]) => {
     if (!searchString) {
         return columns;
     }
@@ -40,7 +40,7 @@ const filterResults = (searchString, columns: Column[]) => {
 };
 
 type Props = {
-    columns: Column[];
+    columns: ColumnFromReactTable[];
     hiddenColumns: string[];
     minColumns?: number;
 };

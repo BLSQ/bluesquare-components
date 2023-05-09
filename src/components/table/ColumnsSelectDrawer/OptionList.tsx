@@ -1,9 +1,9 @@
-import { Column } from '../Table';
 import { makeStyles } from '@material-ui/core/styles';
-import { styles } from './styles';
 import React from 'react';
 import { List, ListItem, ListItemText, Switch } from '@material-ui/core';
 import { InView } from 'react-intersection-observer';
+import { styles } from './styles';
+import { ColumnFromReactTable } from '../Table';
 import { BlockPlaceholder } from '../../BlockPlaceholder';
 
 // Weird error with overflowX property but it match the type in doc?
@@ -13,7 +13,7 @@ const useStyles = makeStyles(styles);
 type ListItemProps = {
     inView;
     minReached: boolean;
-    column: Column;
+    column: ColumnFromReactTable;
 };
 const OptionListItem: React.FC<ListItemProps> = ({
     inView,
@@ -53,7 +53,7 @@ const OptionListItem: React.FC<ListItemProps> = ({
     );
 };
 type OptionListProps = {
-    columns: Column[];
+    columns: ColumnFromReactTable[];
     minReached: boolean;
 };
 export const OptionsList: React.FC<OptionListProps> = ({

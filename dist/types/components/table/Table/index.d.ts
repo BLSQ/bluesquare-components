@@ -1,7 +1,8 @@
 import React from 'react';
 export interface Column {
-    id?: string;
-    Header?: React.FC<any>;
+    columns?: Column[];
+    id: string;
+    Header?: React.FC<any> | string;
     accessor: string;
     Cell?: React.FC<any>;
     width?: number;
@@ -9,6 +10,21 @@ export interface Column {
     maxWidth?: number;
     align?: 'left' | 'center' | 'right';
     sortable?: boolean;
+    label?: string;
+}
+export interface ColumnFromReactTable {
+    columns?: ColumnFromReactTable[];
+    id: string;
+    Header?: React.FC<any> | string;
+    accessor: string;
+    Cell?: React.FC<any>;
+    width?: number;
+    minWidth?: number;
+    maxWidth?: number;
+    align?: 'left' | 'center' | 'right';
+    sortable?: boolean;
+    label?: string;
+    getToggleHiddenProps: () => any;
 }
 export interface TableComponentProps {
     params: Record<string, any>;
@@ -41,6 +57,7 @@ export interface TableComponentProps {
     };
     paramsPrefix?: string;
     redirectTo?: (url: string, newParams: Record<string, string>) => void;
+    columnSelectorEnabled: boolean;
 }
 declare const Table: React.NamedExoticComponent<TableComponentProps>;
 export { Table };

@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import TableContainer from '@material-ui/core/TableContainer';
 import { makeStyles } from '@material-ui/core/styles';
 import isEqual from 'lodash/isEqual';
+import { Grid } from '@material-ui/core';
 
 import {
     useTable,
@@ -36,7 +37,6 @@ import { Pagination } from './Pagination';
 import { LoadingSpinner } from '../../LoadingSpinner/index';
 import { useKeyPressListener } from '../../../utils/useKeyPressListener';
 import { useSkipEffectOnMount } from '../../../utils/useSkipEffectOnMount';
-import { Grid } from '@material-ui/core';
 import { ColumnsSelectGeneric } from '../ColumnsSelectDrawer/ColumnSelectGeneric';
 /**
  * TableComponent component, no redux, no fetch, just displaying.
@@ -99,7 +99,7 @@ export interface Column {
     align?: 'left' | 'center' | 'right';
     sortable?: boolean;
     label?: string; // for search
-    getToggleHiddenProps: () => any;
+    getToggleHiddenProps?: () => any;
 }
 
 export interface TableComponentProps {

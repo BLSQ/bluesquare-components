@@ -1,0 +1,1 @@
+export declare const useStyles: (props?: any) => import("@material-ui/styles").ClassNameMap<"indicator" | "tabs" | "iconButton" | "mainContainer" | "tabsContainer" | "removeIconButton" | "roundColor" | "tabContent">;

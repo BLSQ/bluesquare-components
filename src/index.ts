@@ -81,6 +81,7 @@ import { QueryBuilderListToReplace } from './components/QueryBuilder/types';
 import { useHumanReadableJsonLogic } from './components/QueryBuilder/hooks/useHumanReadableJsonLogic';
 import { SortableList } from './components/Sortable/list';
 import { SortableTable } from './components/Sortable/table';
+import { ExpandableItem } from './components/ExpandableItem/ExpandableItem';
 // Types
 import { IntlFormatMessage, IntlMessage } from './types/types';
 
@@ -174,4 +175,5 @@ export {
     QueryBuilderField,
     SortableList,
     SortableTable,
+    ExpandableItem,
 };

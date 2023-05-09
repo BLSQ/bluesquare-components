@@ -1,33 +1,28 @@
 /* eslint-disable no-unused-vars */
-import React, { useCallback, useState } from 'react';
-import { InView } from 'react-intersection-observer';
+import React, { useState } from 'react';
 import {
+    Divider,
     Drawer,
     IconButton,
-    List,
-    ListItem,
-    ListItemText,
-    Divider,
-    Switch,
     InputBase,
     Tooltip,
 } from '@material-ui/core';
 import Close from '@material-ui/icons/Close';
 import ArrowBack from '@material-ui/icons/ArrowBack';
 import ViewColumnIcon from '@material-ui/icons/ViewColumn';
-
 import { makeStyles } from '@material-ui/core/styles';
 import { IconButton as IconButtonComponent } from '../../buttons/IconButton';
-import { BlockPlaceholder } from '../../BlockPlaceholder';
 
 import { MESSAGES } from './messages';
-import { styles } from './styles';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { Column } from '../Table';
+import { useToggle } from '../../../utils/useToggle';
+import { OptionsList } from './OptionList';
+import { styles } from './styles';
 
-// Weird error with overflowX property but it match the type in doc?
+// Weird error with overflowX property, but it matches the type in doc?
 // @ts-ignore
-const useStyles = makeStyles(styles);
+export const useStyles = makeStyles(styles);
 
 const filterResults = (searchString, columns: Column[]) => {
     if (!searchString) {
@@ -48,106 +43,6 @@ type Props = {
     columns: Column[];
     hiddenColumns: string[];
     minColumns?: number;
-};
-
-const useToggle = (initialState = false): [boolean, () => void] => {
-    // Initialize the state
-    const [state, setState] = useState<boolean>(initialState);
-
-    // Define and memorize toggler function in case we pass down the component,
-    // This function change the boolean value to it's opposite value
-    const toggle = useCallback(() => setState(s => !s), []);
-
-    return [state, toggle];
-};
-
-type ListItemProps = {
-    inView;
-    minReached: boolean;
-    column: Column;
-};
-
-const OptionListItem: React.FC<ListItemProps> = ({
-    inView,
-    minReached,
-    column,
-}) => {
-    const classes = useStyles();
-    const toggleHiddenProps = column.getToggleHiddenProps();
-
-    return (
-        <ListItem className={classes.listItem}>
-            {inView && (
-                <>
-                    <Switch
-                        disabled={minReached && toggleHiddenProps.checked}
-                        size="small"
-                        color="primary"
-                        inputProps={{
-                            'aria-label':
-                                typeof column.Header === 'string'
-                                    ? column.Header
-                                    : column.id,
-                        }}
-                        className={classes.switch}
-                        {...toggleHiddenProps}
-                    />
-                    <ListItemText primary={column.Header} />
-                </>
-            )}
-            {!inView && (
-                <>
-                    <BlockPlaceholder width="30px" />
-                    <BlockPlaceholder />
-                </>
-            )}
-        </ListItem>
-    );
-};
-
-type OptionListProps = {
-    columns: Column[];
-    minReached: boolean;
-};
-const OptionsList: React.FC<OptionListProps> = ({ columns, minReached }) => {
-    // If it has sub-columns make a section and call yourself recursively
-    // The inview is to not calculate the column not present
-    return (
-        <List>
-            {columns.map(column => (
-                <InView key={column.id}>
-                    {({ inView, ref }) => {
-                        return (
-                            <div ref={ref} id={column.id}>
-                                {column.columns && (
-                                    <>
-                                        <ListItem>{column.Header}</ListItem>
-                                        <div
-                                            style={{
-                                                padding: 6,
-                                            }}
-                                        >
-                                            <OptionsList
-                                                columns={column.columns}
-                                                minReached={minReached}
-                                            />
-                                        </div>
-                                    </>
-                                )}
-                                {!column.columns && (
-                                    <OptionListItem
-                                        inView={inView}
-                                        column={column}
-                                        minReached={minReached}
-                                    />
-                                )}
-                            </div>
-                        );
-                    }}
-                </InView>
-            ))}
-        </List>
-    );
 };
 
 const ColumnsSelectGeneric: React.FC<Props> = ({

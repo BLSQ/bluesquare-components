@@ -53,6 +53,7 @@ export type SimpleDialogProps = {
     children: ReactNode;
     closeDialog: () => void;
     buttons: FunctionComponent<unknown & { closeDialog: () => void }>;
+    backdropClick?: boolean;
 };
 
 export const SimpleModal: FunctionComponent<SimpleDialogProps> = ({
@@ -65,6 +66,7 @@ export const SimpleModal: FunctionComponent<SimpleDialogProps> = ({
     children,
     closeDialog,
     buttons,
+    backdropClick = true,
 }) => {
     const classes: Record<string, string> = useStyles();
     return (
@@ -77,7 +79,7 @@ export const SimpleModal: FunctionComponent<SimpleDialogProps> = ({
                     paper: classes.paper,
                 }}
                 onClose={(_, reason) => {
-                    if (reason === 'backdropClick') {
+                    if (reason === 'backdropClick' && backdropClick) {
                         closeDialog();
                     }
                     onClose();

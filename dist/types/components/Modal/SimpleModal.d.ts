@@ -13,5 +13,6 @@ export declare type SimpleDialogProps = {
     buttons: FunctionComponent<unknown & {
         closeDialog: () => void;
     }>;
+    backdropClick?: boolean;
 };
 export declare const SimpleModal: FunctionComponent<SimpleDialogProps>;

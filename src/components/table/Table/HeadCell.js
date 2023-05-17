@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { isValidElement } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
@@ -56,7 +56,10 @@ const HeadCell = ({
 }) => {
     const classes = useStyles();
     const { formatMessage } = useSafeIntl();
-    const isColumnNotEmpty = column.Header.length > 0 || column.parent;
+    const isColumnNotEmpty =
+        column.Header.length > 0 ||
+        isValidElement(column.Header) ||
+        column.parent;
     const isSortable =
         isColumnNotEmpty && column.sortable !== false && !column.isResizing;
     let direction;

@@ -54,6 +54,7 @@ import { CustomInput } from './components/inputs/CustomInput/CustomInput';
 import { FilesUpload } from './components/inputs/FileUpload/FilesUpload';
 import { ConfirmCancelButtons } from './components/Modal/ConfirmCancelButtons';
 import { ConfirmCancelModal } from './components/Modal/ConfirmCancelModal';
+import { BackdropClickModal } from './components/Modal/BackdropClickModal/BackdropClickModal';
 import { makeFullModal } from './components/Modal/ModalWithButton';
 import {
     LinkProvider,
@@ -167,6 +168,7 @@ export {
     ConfirmCancelModal,
     ConfirmCancelButtons,
     makeFullModal,
+    BackdropClickModal,
     IntlFormatMessage,
     IntlMessage,
     QueryBuilderFields,

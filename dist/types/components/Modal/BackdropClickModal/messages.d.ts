@@ -1,19 +1,19 @@
 declare const MESSAGES: {
-    clickOrDragFile: {
+    doYouWantToClose: {
         id: string;
         defaultMessage: string;
     };
-    clicktoOpenFileSelect: {
+    unsavedDataWillBeLost: {
         id: string;
         defaultMessage: string;
     };
-    files: {
+    proceed: {
         id: string;
         defaultMessage: string;
     };
-    dropHere: {
-        id: string;
+    cancel: {
         defaultMessage: string;
+        id: string;
     };
 };
 export default MESSAGES;

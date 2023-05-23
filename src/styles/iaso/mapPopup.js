@@ -1,6 +1,6 @@
 const mapPopupStyles = theme => ({
     popup: {
-        // margin: 0,
+        zIndex: 1000,
         '& .leaflet-popup-content-wrapper': {
             padding: 0,
         },
@@ -19,11 +19,19 @@ const mapPopupStyles = theme => ({
         '& a.leaflet-popup-close-button': {
             color: 'white',
             backgroundColor: theme.palette.primary.main,
-            padding: '1px 0 0 0',
+            padding: 0,
             top: '8px',
             right: '8px',
             borderRadius: '20px',
             height: '18px',
+            width: '18px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+        },
+        '& a.leaflet-popup-close-button span': {
+            position: 'relative',
+            top: '-1px',
         },
         '& a.leaflet-popup-close-button:hover': {
             color: theme.palette.primary.main,

@@ -45,7 +45,7 @@ import { ColumnsSelectDrawer } from './components/table/ColumnsSelectDrawer';
 import { HeaderRowIcon } from './components/table/HeaderRowIcon';
 import { InfoHeader } from './components/table/InfoHeader';
 import { SelectionSpeedDials } from './components/table/SelectionSpeedDials';
-import { Table } from './components/table/Table';
+import { Table, TableComponentProps } from './components/table/Table';
 import { PageRowSelect } from './components/table/Table/PageRowSelect';
 import { Expander } from './components/table/Table/Expander';
 import { ErrorBoundaryWithMessage } from './components/ErrorBoundary/ErrorBoundaryWithMessage';
@@ -178,4 +178,5 @@ export {
     SortableList,
     SortableTable,
     ExpandableItem,
+    TableComponentProps,
 };

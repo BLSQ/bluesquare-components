@@ -1,7 +1,7 @@
 import React from 'react';
 import { Column } from './types';
 export interface TableComponentProps {
-    params: Record<string, any>;
+    params?: Record<string, any>;
     count?: number;
     data: Record<string, any>[];
     columns: Column[];

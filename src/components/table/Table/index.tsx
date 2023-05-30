@@ -87,7 +87,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 export interface TableComponentProps {
-    params: Record<string, any>;
+    params?: Record<string, any>;
     count?: number;
     data: Record<string, any>[];
     columns: Column[];

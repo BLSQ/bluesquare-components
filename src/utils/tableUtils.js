@@ -4,7 +4,7 @@ import AddIcon from '@material-ui/icons/Add';
 import { capitalize } from './index';
 import { InfoHeader } from '../components/table/InfoHeader';
 
-const getTableUrl = (
+export const getTableUrl = (
     urlKey,
     params,
     toExport = false,
@@ -43,8 +43,6 @@ const getTableUrl = (
 
     return url;
 };
-
-export { getTableUrl };
 
 const getOrderValue = obj => (!obj.desc ? obj.id : `-${obj.id}`);
 

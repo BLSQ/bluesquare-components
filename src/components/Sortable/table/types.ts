@@ -3,14 +3,13 @@ import { ReactElement } from 'react';
 import { PartialBy } from '../../../types/types';
 
 export type ColumnWithAccessor = {
-    Header: string;
+    Header: string | ReactElement;
     accessor: string;
     // eslint-disable-next-line no-unused-vars
     Cell?: (s: any) => ReactElement | string;
 };
 
 export type Column = PartialBy<ColumnWithAccessor, 'accessor'> & {
-    Header: string | ReactElement;
     id?: string;
     sortable?: boolean;
     resizable?: boolean;

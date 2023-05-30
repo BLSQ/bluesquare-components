@@ -85,7 +85,6 @@ import { SortableTable } from './components/Sortable/table';
 import { ExpandableItem } from './components/ExpandableItem/ExpandableItem';
 
 // utils
-
 import {
     substituteVars,
     capitalize,
@@ -94,7 +93,6 @@ import {
     addPositionIndex,
     removePositionIndex,
 } from './utils';
-
 import {
     getTableUrl,
     getSort,
@@ -108,17 +106,21 @@ import {
     tableInitialResult,
     getColumnsHeadersInfos,
 } from './utils/tableUtils';
+import {
+    textPlaceholder,
+    MENU_HEIGHT_WITHOUT_TABS,
+    MENU_HEIGHT_WITH_TABS,
+    SIDEBAR_WIDTH,
+} from './constants/iaso/uiConstants';
+
 // Types
-// import { IntlFormatMessage, IntlMessage } from './types/types';
 export * from './types/types';
 export * from './components/Sortable/types';
 export * from './components/Sortable/list/types';
 export * from './components/table/Table/types';
 export * from './components/QueryBuilder/types';
-// export * from './utils';
 export * from './utils/intlUtils';
 export * from './utils/fetchData';
-export * from './constants/iaso/uiConstants';
 
 export {
     LazyImage,
@@ -224,4 +226,8 @@ export {
     getTableParams,
     tableInitialResult,
     getColumnsHeadersInfos,
+    textPlaceholder,
+    MENU_HEIGHT_WITHOUT_TABS,
+    MENU_HEIGHT_WITH_TABS,
+    SIDEBAR_WIDTH,
 };

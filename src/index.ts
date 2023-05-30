@@ -94,6 +94,20 @@ import {
     addPositionIndex,
     removePositionIndex,
 } from './utils';
+
+import {
+    getTableUrl,
+    getSort,
+    getOrderArray,
+    getSimplifiedColumns,
+    defaultSelectionActions,
+    selectionInitialState,
+    setTableSelection,
+    getParamsKey,
+    getTableParams,
+    tableInitialResult,
+    getColumnsHeadersInfos,
+} from './utils/tableUtils';
 // Types
 // import { IntlFormatMessage, IntlMessage } from './types/types';
 export * from './types/types';
@@ -103,7 +117,6 @@ export * from './components/Sortable/table/types';
 export * from './components/QueryBuilder/types';
 // export * from './utils';
 export * from './utils/intlUtils';
-export * from './utils/tableUtils';
 export * from './utils/fetchData';
 export * from './constants/iaso/uiConstants';
 
@@ -200,4 +213,15 @@ export {
     truncateText,
     addPositionIndex,
     removePositionIndex,
+    getTableUrl,
+    getSort,
+    getOrderArray,
+    getSimplifiedColumns,
+    defaultSelectionActions,
+    selectionInitialState,
+    setTableSelection,
+    getParamsKey,
+    getTableParams,
+    tableInitialResult,
+    getColumnsHeadersInfos,
 };

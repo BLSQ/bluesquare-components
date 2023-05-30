@@ -28,7 +28,7 @@ export interface TableComponentProps {
         loading?: boolean;
         SubComponent?: React.FC<any>;
         defaultPageSize?: number;
-    };
+    } & Record<Exclude<string, 'loading' | 'SubComponent' | 'defaultPageSize'>, any>;
     paramsPrefix?: string;
     redirectTo?: (url: string, newParams: Record<string, string>) => void;
 }

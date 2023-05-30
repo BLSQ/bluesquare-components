@@ -6,7 +6,7 @@ export type ColumnWithAccessor = {
     Header: string;
     accessor: string;
     // eslint-disable-next-line no-unused-vars
-    Cell?: (s: any) => ReactElement;
+    Cell?: (s: any) => ReactElement | string;
 };
 
 export type Column = PartialBy<ColumnWithAccessor, 'accessor'> & {

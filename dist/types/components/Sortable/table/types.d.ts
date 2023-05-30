@@ -3,7 +3,7 @@ import { PartialBy } from '../../../types/types';
 export declare type ColumnWithAccessor = {
     Header: string;
     accessor: string;
-    Cell?: (s: any) => ReactElement;
+    Cell?: (s: any) => ReactElement | string;
 };
 export declare type Column = PartialBy<ColumnWithAccessor, 'accessor'> & {
     Header: string | ReactElement;

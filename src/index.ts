@@ -78,14 +78,20 @@ import { LazyImage } from './components/LazyProgressiveImage';
 import { QueryBuilder } from './components/QueryBuilder/components/QueryBuilder';
 import { FakeInput } from './components/inputs/FakeInput';
 import { QueryBuilderInput } from './components/QueryBuilder/components/QueryBuilderInput';
-import { QueryBuilderListToReplace } from './components/QueryBuilder/types';
+// import { QueryBuilderListToReplace } from './components/QueryBuilder/types';
 import { useHumanReadableJsonLogic } from './components/QueryBuilder/hooks/useHumanReadableJsonLogic';
 import { SortableList } from './components/Sortable/list';
 import { SortableTable } from './components/Sortable/table';
 import { ExpandableItem } from './components/ExpandableItem/ExpandableItem';
 // Types
-import { IntlFormatMessage, IntlMessage } from './types/types';
+// import { IntlFormatMessage, IntlMessage } from './types/types';
+export * from './types/types';
+export * from './components/Sortable/types';
+export * from './components/Sortable/list/types';
+export * from './components/Sortable/table/types';
+export * from './components/QueryBuilder/types';
 
+// utils
 export * from './utils';
 export * from './utils/intlUtils';
 export * from './utils/tableUtils';
@@ -170,10 +176,10 @@ export {
     ConfirmCancelButtons,
     makeFullModal,
     BackdropClickModal,
-    IntlFormatMessage,
-    IntlMessage,
+    // IntlFormatMessage,
+    // IntlMessage,
     QueryBuilderFields,
-    QueryBuilderListToReplace,
+    // QueryBuilderListToReplace,
     QueryBuilderField,
     SortableList,
     SortableTable,

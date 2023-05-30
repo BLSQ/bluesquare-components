@@ -1,10 +1,11 @@
 import React, { FunctionComponent } from 'react';
 import { TableCell } from '@material-ui/core';
 
-import { Column, Item } from './types';
+import { ColumnWithAccessor } from './types';
+import { Item } from '../types';
 
 type Props = {
-    columns: Column[];
+    columns: ColumnWithAccessor[];
     item: Item;
 };
 

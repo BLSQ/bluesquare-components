@@ -1,7 +1,8 @@
 import { FunctionComponent } from 'react';
-import { Column, Item } from './types';
+import { ColumnWithAccessor } from './types';
+import { Item } from '../types';
 declare type Props = {
-    columns: Column[];
+    columns: ColumnWithAccessor[];
     item: Item;
 };
 export declare const SortableCells: FunctionComponent<Props>;

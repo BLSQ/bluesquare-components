@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { ReactElement } from 'react';
 import { PartialBy } from '../../../types/types';
 
@@ -19,6 +20,7 @@ export type Column = PartialBy<ColumnWithAccessor, 'accessor'> & {
     minWidth?: number;
     maxWidth?: number;
     align?: 'left' | 'center' | 'right';
+    columns?: Column[];
 };
 export type Pagination = {
     pages: number;

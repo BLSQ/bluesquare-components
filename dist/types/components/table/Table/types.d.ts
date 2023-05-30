@@ -15,6 +15,7 @@ export declare type Column = PartialBy<ColumnWithAccessor, 'accessor'> & {
     minWidth?: number;
     maxWidth?: number;
     align?: 'left' | 'center' | 'right';
+    columns?: Column[];
 };
 export declare type Pagination = {
     pages: number;

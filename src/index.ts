@@ -83,6 +83,17 @@ import { useHumanReadableJsonLogic } from './components/QueryBuilder/hooks/useHu
 import { SortableList } from './components/Sortable/list';
 import { SortableTable } from './components/Sortable/table';
 import { ExpandableItem } from './components/ExpandableItem/ExpandableItem';
+
+// utils
+
+import {
+    substituteVars,
+    capitalize,
+    formatThousand,
+    truncateText,
+    addPositionIndex,
+    removePositionIndex,
+} from './utils';
 // Types
 // import { IntlFormatMessage, IntlMessage } from './types/types';
 export * from './types/types';
@@ -90,9 +101,7 @@ export * from './components/Sortable/types';
 export * from './components/Sortable/list/types';
 export * from './components/Sortable/table/types';
 export * from './components/QueryBuilder/types';
-
-// utils
-export * from './utils';
+// export * from './utils';
 export * from './utils/intlUtils';
 export * from './utils/tableUtils';
 export * from './utils/fetchData';
@@ -185,4 +194,10 @@ export {
     SortableTable,
     ExpandableItem,
     TableComponentProps,
+    substituteVars,
+    capitalize,
+    formatThousand,
+    truncateText,
+    addPositionIndex,
+    removePositionIndex,
 };

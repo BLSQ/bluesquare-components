@@ -1,15 +1,5 @@
 import React from 'react';
-export interface Column {
-    id?: string;
-    Header?: React.FC<any>;
-    accessor: string;
-    Cell?: React.FC<any>;
-    width?: number;
-    minWidth?: number;
-    maxWidth?: number;
-    align?: 'left' | 'center' | 'right';
-    sortable?: boolean;
-}
+import { Column } from './types';
 export interface TableComponentProps {
     params: Record<string, any>;
     count?: number;

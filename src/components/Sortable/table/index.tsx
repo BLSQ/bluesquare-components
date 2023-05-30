@@ -26,8 +26,8 @@ import { DragItem } from './DragItem';
 import { Head } from './Head';
 import { Placeholder } from './Placeholder';
 
-import { ColumnWithAccessor } from './types';
 import { Item } from '../types';
+import { ColumnWithAccessor } from '../../table/Table/types';
 
 type Props = {
     items: Item[];

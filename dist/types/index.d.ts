@@ -78,7 +78,7 @@ import { getTableUrl, getSort, getOrderArray, getSimplifiedColumns, defaultSelec
 export * from './types/types';
 export * from './components/Sortable/types';
 export * from './components/Sortable/list/types';
-export * from './components/Sortable/table/types';
+export * from './components/table/Table/types';
 export * from './components/QueryBuilder/types';
 export * from './utils/intlUtils';
 export * from './utils/fetchData';

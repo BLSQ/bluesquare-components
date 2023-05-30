@@ -36,6 +36,7 @@ import { Pagination } from './Pagination';
 import { LoadingSpinner } from '../../LoadingSpinner/index';
 import { useKeyPressListener } from '../../../utils/useKeyPressListener';
 import { useSkipEffectOnMount } from '../../../utils/useSkipEffectOnMount';
+import { Column } from './types';
 /**
  * TableComponent component, no redux, no fetch, just displaying.
  * Multi selection is optional, if set to true you can add custom actions
@@ -84,18 +85,6 @@ const useStyles = makeStyles(() => ({
         position: 'relative',
     },
 }));
-
-export interface Column {
-    id?: string;
-    Header?: React.FC<any>;
-    accessor: string;
-    Cell?: React.FC<any>;
-    width?: number;
-    minWidth?: number;
-    maxWidth?: number;
-    align?: 'left' | 'center' | 'right';
-    sortable?: boolean;
-}
 
 export interface TableComponentProps {
     params: Record<string, any>;

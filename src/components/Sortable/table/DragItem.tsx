@@ -7,8 +7,8 @@ import { Active } from '@dnd-kit/core';
 
 import { SortableCells } from './Cells';
 import { Head } from './Head';
-import { ColumnWithAccessor } from './types';
 import { Item } from '../types';
+import { ColumnWithAccessor } from '../../table/Table/types';
 
 type Props = {
     items: Item[];

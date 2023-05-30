@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
-import { ColumnWithAccessor } from './types';
 import { Item } from '../types';
+import { ColumnWithAccessor } from '../../table/Table/types';
 declare type Props = {
     items: Item[];
     onChange: (items: Item[]) => void;

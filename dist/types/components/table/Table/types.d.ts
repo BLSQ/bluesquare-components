@@ -11,8 +11,10 @@ export declare type Column = PartialBy<ColumnWithAccessor, 'accessor'> & {
     resizable?: boolean;
     headerInfo?: string;
     width?: number;
-    align?: string;
     class?: string;
+    minWidth?: number;
+    maxWidth?: number;
+    align?: 'left' | 'center' | 'right';
     columns?: Column[];
 };
 export declare type Pagination = {

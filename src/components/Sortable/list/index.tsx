@@ -22,7 +22,8 @@ import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
 import { SortableItem } from './Item';
 import { Placeholder } from './Placeholder';
 
-import { Item, RenderProps } from './types';
+import { RenderProps } from './types';
+import { Item } from '../types';
 
 type Props = {
     items: any[];

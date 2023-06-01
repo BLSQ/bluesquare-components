@@ -1,6 +1,5 @@
 import { defineMessages } from 'react-intl';
 
-// TODO when moving to blsq-comp, change translation keys and add to custom translations
 const MESSAGES = defineMessages({
     doYouWantToClose: {
         id: 'blsq.dialog.doYouWantToClose',

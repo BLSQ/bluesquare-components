@@ -1,17 +1,7 @@
 import React from 'react';
-export interface Column {
-    id?: string;
-    Header?: React.FC<any>;
-    accessor: string;
-    Cell?: React.FC<any>;
-    width?: number;
-    minWidth?: number;
-    maxWidth?: number;
-    align?: 'left' | 'center' | 'right';
-    sortable?: boolean;
-}
+import { Column } from './types';
 export interface TableComponentProps {
-    params: Record<string, any>;
+    params?: Record<string, any>;
     count?: number;
     data: Record<string, any>[];
     columns: Column[];
@@ -38,7 +28,7 @@ export interface TableComponentProps {
         loading?: boolean;
         SubComponent?: React.FC<any>;
         defaultPageSize?: number;
-    };
+    } & Record<Exclude<string, 'loading' | 'SubComponent' | 'defaultPageSize'>, any>;
     paramsPrefix?: string;
     redirectTo?: (url: string, newParams: Record<string, string>) => void;
 }

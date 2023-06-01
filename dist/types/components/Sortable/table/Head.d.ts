@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import { Column } from './types';
+import { Column } from '../../table/Table/types';
 declare type Props = {
     columns: Column[];
     hidden?: boolean;

@@ -1,21 +1,28 @@
+/* eslint-disable camelcase */
 import { ReactElement } from 'react';
 import { PartialBy } from '../../../types/types';
-export declare type ColumnWithAccessor = {
+
+export type ColumnWithAccessor = {
     Header: string | ReactElement;
     accessor: string;
+    // eslint-disable-next-line no-unused-vars
     Cell?: (s: any) => ReactElement | string;
 };
-export declare type Column = PartialBy<ColumnWithAccessor, 'accessor'> & {
+
+export type Column = PartialBy<ColumnWithAccessor, 'accessor'> & {
     id?: string;
     sortable?: boolean;
     resizable?: boolean;
     headerInfo?: string;
     width?: number;
-    align?: string;
     class?: string;
+    // columns?: Column[];
+    minWidth?: number;
+    maxWidth?: number;
+    align?: 'left' | 'center' | 'right';
     columns?: Column[];
 };
-export declare type Pagination = {
+export type Pagination = {
     pages: number;
     page: number;
     count: number;
@@ -23,26 +30,32 @@ export declare type Pagination = {
     has_next: boolean;
     has_previous: boolean;
 };
+
 export interface Paginated<T> extends Pagination {
     results: T[];
 }
-export declare type UrlParams = {
+
+export type UrlParams = {
     pageSize: string;
     order: string;
     page: string;
     search?: string;
 };
-export declare type ApiParams = {
+
+export type ApiParams = {
     limit: string;
     order: string;
     page: string;
     search?: string;
 };
-declare type Row<T> = {
+
+type Row<T> = {
     original: T;
 };
-export declare type Setting<T> = {
+
+export type Setting<T> = {
     row: Row<T>;
 };
-export declare type RenderCell = (settings: Record<string, any>) => ReactElement;
-export {};
+
+// eslint-disable-next-line no-unused-vars
+export type RenderCell = (settings: Record<string, any>) => ReactElement;

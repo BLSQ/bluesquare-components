@@ -2,8 +2,7 @@ import React, { FunctionComponent } from 'react';
 import classNames from 'classnames';
 import { TableRow, TableHead, TableCell } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-
-import { Column } from './types';
+import { Column } from '../../table/Table/types';
 
 type Props = {
     columns: Column[];

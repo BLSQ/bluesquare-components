@@ -45,7 +45,7 @@ import { ColumnsSelectDrawer } from './components/table/ColumnsSelectDrawer';
 import { HeaderRowIcon } from './components/table/HeaderRowIcon';
 import { InfoHeader } from './components/table/InfoHeader';
 import { SelectionSpeedDials } from './components/table/SelectionSpeedDials';
-import { Table } from './components/table/Table';
+import { Table, TableComponentProps } from './components/table/Table';
 import { PageRowSelect } from './components/table/Table/PageRowSelect';
 import { Expander } from './components/table/Table/Expander';
 import { ErrorBoundaryWithMessage } from './components/ErrorBoundary/ErrorBoundaryWithMessage';
@@ -78,19 +78,49 @@ import { LazyImage } from './components/LazyProgressiveImage';
 import { QueryBuilder } from './components/QueryBuilder/components/QueryBuilder';
 import { FakeInput } from './components/inputs/FakeInput';
 import { QueryBuilderInput } from './components/QueryBuilder/components/QueryBuilderInput';
-import { QueryBuilderListToReplace } from './components/QueryBuilder/types';
+// import { QueryBuilderListToReplace } from './components/QueryBuilder/types';
 import { useHumanReadableJsonLogic } from './components/QueryBuilder/hooks/useHumanReadableJsonLogic';
 import { SortableList } from './components/Sortable/list';
 import { SortableTable } from './components/Sortable/table';
 import { ExpandableItem } from './components/ExpandableItem/ExpandableItem';
-// Types
-import { IntlFormatMessage, IntlMessage } from './types/types';
 
-export * from './utils';
+// utils
+import {
+    substituteVars,
+    capitalize,
+    formatThousand,
+    truncateText,
+    addPositionIndex,
+    removePositionIndex,
+} from './utils';
+import {
+    getTableUrl,
+    getSort,
+    getOrderArray,
+    getSimplifiedColumns,
+    defaultSelectionActions,
+    selectionInitialState,
+    setTableSelection,
+    getParamsKey,
+    getTableParams,
+    tableInitialResult,
+    getColumnsHeadersInfos,
+} from './utils/tableUtils';
+import {
+    textPlaceholder,
+    MENU_HEIGHT_WITHOUT_TABS,
+    MENU_HEIGHT_WITH_TABS,
+    SIDEBAR_WIDTH,
+} from './constants/iaso/uiConstants';
+
+// Types
+export * from './types/types';
+export * from './components/Sortable/types';
+export * from './components/Sortable/list/types';
+export * from './components/table/Table/types';
+export * from './components/QueryBuilder/types';
 export * from './utils/intlUtils';
-export * from './utils/tableUtils';
 export * from './utils/fetchData';
-export * from './constants/iaso/uiConstants';
 
 export {
     LazyImage,
@@ -170,12 +200,34 @@ export {
     ConfirmCancelButtons,
     makeFullModal,
     BackdropClickModal,
-    IntlFormatMessage,
-    IntlMessage,
+    // IntlFormatMessage,
+    // IntlMessage,
     QueryBuilderFields,
-    QueryBuilderListToReplace,
+    // QueryBuilderListToReplace,
     QueryBuilderField,
     SortableList,
     SortableTable,
     ExpandableItem,
+    TableComponentProps,
+    substituteVars,
+    capitalize,
+    formatThousand,
+    truncateText,
+    addPositionIndex,
+    removePositionIndex,
+    getTableUrl,
+    getSort,
+    getOrderArray,
+    getSimplifiedColumns,
+    defaultSelectionActions,
+    selectionInitialState,
+    setTableSelection,
+    getParamsKey,
+    getTableParams,
+    tableInitialResult,
+    getColumnsHeadersInfos,
+    textPlaceholder,
+    MENU_HEIGHT_WITHOUT_TABS,
+    MENU_HEIGHT_WITH_TABS,
+    SIDEBAR_WIDTH,
 };

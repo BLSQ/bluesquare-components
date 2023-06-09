@@ -18,6 +18,7 @@ function AddButtonComponent({
     id,
     dataTestId,
     size,
+    disabled = false,
 }) {
     const intl = useSafeIntl();
     return (
@@ -29,6 +30,7 @@ function AddButtonComponent({
             id={id}
             data-test={dataTestId}
             size={size}
+            disabled={disabled}
         >
             <Add className={classes.buttonIcon} />
             {intl.formatMessage(message)}
@@ -40,6 +42,7 @@ AddButtonComponent.defaultProps = {
     id: '',
     dataTestId: '',
     size: 'medium',
+    disabled: false,
 };
 AddButtonComponent.propTypes = {
     classes: PropTypes.object.isRequired,
@@ -48,6 +51,7 @@ AddButtonComponent.propTypes = {
     id: PropTypes.string,
     dataTestId: PropTypes.string,
     size: PropTypes.string,
+    disabled: PropTypes.bool,
 };
 
 const styledAddButton = withStyles(styles)(AddButtonComponent);

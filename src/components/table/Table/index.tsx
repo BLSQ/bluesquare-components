@@ -226,6 +226,7 @@ const TableComponent: React.FC<TableComponentProps> = props => {
         useResizeColumns,
         usePagination,
     );
+    const correctedPageIndex = pageIndex < pages ? pageIndex : pages;
     const handleTableParamsChange = (key, value) => {
         const newParams = {
             ...params,
@@ -324,7 +325,7 @@ const TableComponent: React.FC<TableComponentProps> = props => {
                     <Pagination
                         count={count}
                         rowsPerPage={rowsPerPage}
-                        pageIndex={pageIndex}
+                        pageIndex={correctedPageIndex}
                         onTableParamsChange={handleTableParamsChange}
                         pages={pages}
                         countOnTop={countOnTop}

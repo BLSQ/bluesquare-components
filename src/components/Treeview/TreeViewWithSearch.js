@@ -115,6 +115,7 @@ const TreeViewWithSearch = ({
     const onSearchSelect = useCallback(
         // this is an org unit so you can access the parents here
         searchSelection => {
+            console.log('selection', searchSelection);
             const ancestors = parseNodeIds(searchSelection);
             const idsToExpand = Array.from(ancestors.keys()).map(id =>
                 id.toString(),

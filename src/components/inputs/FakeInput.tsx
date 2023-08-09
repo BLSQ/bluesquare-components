@@ -36,7 +36,7 @@ const useStyles = makeStyles(theme => ({
         paddingRight: theme.spacing(2),
         paddingLeft: theme.spacing(2),
         borderRadius: theme.shape.borderRadius,
-        minHeight: 54,
+        minHeight: 56,
         cursor: 'pointer',
         '&:hover': {
             // @ts-ignore

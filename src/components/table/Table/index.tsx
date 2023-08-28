@@ -176,7 +176,7 @@ const TableComponent: React.FC<TableComponentProps> = props => {
         onRowClick,
         rowProps = () => ({}),
         cellProps = () => ({}),
-        columnSelectorEnabled = true,
+        columnSelectorEnabled = false,
     } = props;
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();

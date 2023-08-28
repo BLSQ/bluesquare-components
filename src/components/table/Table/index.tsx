@@ -13,6 +13,7 @@ import {
     useResizeColumns,
 } from 'react-table';
 
+import { Grid } from '@material-ui/core';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 
 import { DEFAULT_PAGE_SIZE, DEFAULT_PAGE, DEFAULT_ORDER } from './constants';
@@ -36,7 +37,10 @@ import { Pagination } from './Pagination';
 import { LoadingSpinner } from '../../LoadingSpinner/index';
 import { useKeyPressListener } from '../../../utils/useKeyPressListener';
 import { useSkipEffectOnMount } from '../../../utils/useSkipEffectOnMount';
+import { ColumnsSelectGeneric } from '../ColumnsSelectDrawer/ColumnSelectGeneric';
+
 import { Column } from './types';
+
 /**
  * TableComponent component, no redux, no fetch, just displaying.
  * Multi selection is optional, if set to true you can add custom actions
@@ -86,6 +90,21 @@ const useStyles = makeStyles(() => ({
     },
 }));
 
+export interface ColumnFromReactTable {
+    columns?: ColumnFromReactTable[];
+    id: string;
+    Header?: React.FC<any> | string;
+    accessor: string;
+    Cell?: React.FC<any>;
+    width?: number;
+    minWidth?: number;
+    maxWidth?: number;
+    align?: 'left' | 'center' | 'right';
+    sortable?: boolean;
+    label?: string; // for search
+    getToggleHiddenProps: () => any;
+}
+
 export interface TableComponentProps {
     params?: Record<string, any>;
     count?: number;
@@ -124,6 +143,7 @@ export interface TableComponentProps {
     paramsPrefix?: string;
     // eslint-disable-next-line no-unused-vars
     redirectTo?: (url: string, newParams: Record<string, string>) => void;
+    columnSelectorEnabled: boolean;
 }
 
 const TableComponent: React.FC<TableComponentProps> = props => {
@@ -156,6 +176,7 @@ const TableComponent: React.FC<TableComponentProps> = props => {
         onRowClick,
         rowProps = () => ({}),
         cellProps = () => ({}),
+        columnSelectorEnabled = true,
     } = props;
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -210,7 +231,8 @@ const TableComponent: React.FC<TableComponentProps> = props => {
         setPageSize,
         setSortBy,
         page,
-        state: { pageSize, pageIndex, sortBy },
+        columns: columnsFromUse,
+        state: { pageSize, pageIndex, sortBy, hiddenColumns },
     } = useTable(
         {
             columns,
@@ -290,9 +312,17 @@ const TableComponent: React.FC<TableComponentProps> = props => {
                 setTableSelection={setTableSelection}
                 selectionActionMessage={selectionActionMessage}
             />
-            {countOnTop && (
-                <Count count={count} selectCount={selection.selectCount} />
-            )}
+            <Grid container justifyContent="flex-end">
+                {countOnTop && (
+                    <Count count={count} selectCount={selection.selectCount} />
+                )}
+                {columnSelectorEnabled && (
+                    <ColumnsSelectGeneric
+                        columns={columnsFromUse}
+                        hiddenColumns={hiddenColumns}
+                    />
+                )}
+            </Grid>
 
             <Paper elevation={elevation} className={classes.paper}>
                 {loading && <LoadingSpinner absolute />}

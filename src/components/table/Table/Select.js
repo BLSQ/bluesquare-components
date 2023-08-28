@@ -63,6 +63,7 @@ const getSelectionCol = (
 ) => ({
     Header: formatMessage(MESSAGES.selection),
     accessor: 'selected',
+    id: 'selectionColumn',
     width: 100,
     sortable: false,
     Cell: settings => (

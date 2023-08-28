@@ -26,13 +26,14 @@ import { DragItem } from './DragItem';
 import { Head } from './Head';
 import { Placeholder } from './Placeholder';
 
-import { Column, Item } from './types';
+import { Item } from '../types';
+import { ColumnWithAccessor } from '../../table/Table/types';
 
 type Props = {
     items: Item[];
     // eslint-disable-next-line no-unused-vars
     onChange: (items: Item[]) => void;
-    columns: Column[];
+    columns: ColumnWithAccessor[];
     disabled?: boolean;
 };
 

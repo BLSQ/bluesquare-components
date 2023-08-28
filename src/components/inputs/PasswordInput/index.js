@@ -6,7 +6,7 @@ import {
     IconButton,
     withStyles,
 } from '@material-ui/core';
-import Edit from '@material-ui/icons/Edit';
+import Edit from '@material-ui/icons/RemoveRedEye';
 import { FormControl } from '../FormControl';
 import { InputLabel } from '../InputLabel';
 import { useSafeIntl } from '../../../utils/useSafeIntl';

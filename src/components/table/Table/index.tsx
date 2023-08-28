@@ -38,6 +38,9 @@ import { LoadingSpinner } from '../../LoadingSpinner/index';
 import { useKeyPressListener } from '../../../utils/useKeyPressListener';
 import { useSkipEffectOnMount } from '../../../utils/useSkipEffectOnMount';
 import { ColumnsSelectGeneric } from '../ColumnsSelectDrawer/ColumnSelectGeneric';
+
+import { Column } from './types';
+
 /**
  * TableComponent component, no redux, no fetch, just displaying.
  * Multi selection is optional, if set to true you can add custom actions
@@ -87,20 +90,6 @@ const useStyles = makeStyles(() => ({
     },
 }));
 
-export interface Column {
-    columns?: Column[];
-    id: string;
-    Header?: React.FC<any> | string;
-    accessor: string;
-    Cell?: React.FC<any>;
-    width?: number;
-    minWidth?: number;
-    maxWidth?: number;
-    align?: 'left' | 'center' | 'right';
-    sortable?: boolean;
-    label?: string; // for search
-}
-
 export interface ColumnFromReactTable {
     columns?: ColumnFromReactTable[];
     id: string;
@@ -117,7 +106,7 @@ export interface ColumnFromReactTable {
 }
 
 export interface TableComponentProps {
-    params: Record<string, any>;
+    params?: Record<string, any>;
     count?: number;
     data: Record<string, any>[];
     columns: Column[];
@@ -145,7 +134,12 @@ export interface TableComponentProps {
         loading?: boolean;
         SubComponent?: React.FC<any>;
         defaultPageSize?: number;
-    };
+        // Allowing for other props in the extraProps object
+    } & Record<
+        Exclude<string, 'loading' | 'SubComponent' | 'defaultPageSize'>,
+        any
+    >;
+
     paramsPrefix?: string;
     // eslint-disable-next-line no-unused-vars
     redirectTo?: (url: string, newParams: Record<string, string>) => void;

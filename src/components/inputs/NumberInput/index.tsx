@@ -51,7 +51,7 @@ export const NumberInput: FunctionComponent<Props> = ({
             value={formattedValue}
             disabled={disabled}
             prefix={prefix}
-            thousandSeparator={false}
+            thousandSeparator
             customInput={CustomInput}
             onChange={handleChange}
             autoComplete={autoComplete}
@@ -64,6 +64,7 @@ export const NumberInput: FunctionComponent<Props> = ({
             label={label}
             isAllowed={values => {
                 const { floatValue } = values;
+                if (values.value === '-' || values.value === '') return true;
                 if (!floatValue) return false;
                 return floatValue >= min && floatValue <= max;
             }}

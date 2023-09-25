@@ -51,7 +51,7 @@ export const NumberInput: FunctionComponent<Props> = ({
             value={formattedValue}
             disabled={disabled}
             prefix={prefix}
-            thousandSeparator
+            thousandSeparator={false}
             customInput={CustomInput}
             onChange={handleChange}
             autoComplete={autoComplete}

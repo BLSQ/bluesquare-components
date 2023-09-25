@@ -2,7 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Checkbox, FormControlLabel } from '@material-ui/core';
 
-const CheckboxComponent = ({ value, disabled, label, onChange, keyValue }) => (
+const CheckboxComponent = ({
+    value,
+    disabled,
+    label,
+    onChange,
+    keyValue,
+    required,
+}) => (
     <FormControlLabel
         disabled={disabled}
         control={
@@ -15,13 +22,14 @@ const CheckboxComponent = ({ value, disabled, label, onChange, keyValue }) => (
                 disabled={disabled}
             />
         }
-        label={label}
+        label={`${label}${required ? '*' : ''}`}
     />
 );
 
 CheckboxComponent.defaultProps = {
     value: false,
     disabled: false,
+    required: false,
     onChange: () => {},
     label: '',
 };
@@ -29,6 +37,7 @@ CheckboxComponent.defaultProps = {
 CheckboxComponent.propTypes = {
     value: PropTypes.bool,
     disabled: PropTypes.bool,
+    required: PropTypes.bool,
     label: PropTypes.string,
     onChange: PropTypes.func,
     keyValue: PropTypes.string.isRequired,

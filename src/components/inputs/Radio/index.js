@@ -16,6 +16,7 @@ const RadioComponent = ({
     label,
     errors,
     className,
+    required,
 }) => (
     <FormControl
         component="fieldset"
@@ -23,7 +24,7 @@ const RadioComponent = ({
         variant="outlined"
     >
         <FormLabel component="legend" style={{ fontSize: 12 }}>
-            {label}
+            {`${label}${required ? '*' : ''}`}
         </FormLabel>
 
         <RadioGroup
@@ -54,6 +55,7 @@ RadioComponent.defaultProps = {
     label: '',
     errors: [],
     className: '',
+    required: false,
 };
 RadioComponent.propTypes = {
     options: PropTypes.array,
@@ -63,6 +65,7 @@ RadioComponent.propTypes = {
     label: PropTypes.string,
     errors: PropTypes.arrayOf(PropTypes.string),
     className: PropTypes.string,
+    required: PropTypes.bool,
 };
 
 export { RadioComponent as Radio };

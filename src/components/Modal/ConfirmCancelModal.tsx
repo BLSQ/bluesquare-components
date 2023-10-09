@@ -26,6 +26,7 @@ export const ConfirmCancelModal: FunctionComponent<ConfirmCancelModalProps> = ({
     additionalMessage,
     onAdditionalButtonClick,
     allowConfirmAdditionalButton = true,
+    closeOnConfirm = true,
 }) => {
     const Buttons = ({ closeDialog }) => (
         <ConfirmCancelButtons
@@ -39,6 +40,7 @@ export const ConfirmCancelModal: FunctionComponent<ConfirmCancelModalProps> = ({
             additionalMessage={additionalMessage}
             onAdditionalButtonClick={onAdditionalButtonClick}
             allowConfirmAdditionalButton={allowConfirmAdditionalButton}
+            closeOnConfirm={closeOnConfirm}
         />
     );
     return (

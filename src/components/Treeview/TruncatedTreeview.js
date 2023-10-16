@@ -80,7 +80,6 @@ const TruncatedTreeview = ({ selectedItems, label, redirect, disabled }) => {
             disabled,
             style,
         );
-        console.log('CLASSNAME', className);
         return (
             <TreeItem
                 key={item[0].toString() + nextItems.size.toString()}

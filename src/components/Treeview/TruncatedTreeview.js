@@ -52,7 +52,7 @@ const styles = theme => ({
     },
 });
 const determineClassName = (items, nextItems, disabled, style) => {
-    const baseClass = disabled ? ` ${style.disabled}` : '';
+    const baseClass = disabled ? `${style.disabled} ` : '';
     if (items.size === 1) return `${baseClass}${style.singleTreeItem}`;
     if (nextItems.size === 0) return `${baseClass}${style.lastTreeItem}`;
     return `${baseClass}${style.truncatedTreeviewItem}`;

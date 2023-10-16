@@ -45,7 +45,7 @@ const styles = theme => ({
         },
     },
     disabled: {
-        '& .MuiTreeItem-label:hover': {
+        '&.MuiTreeItem-label:hover': {
             backgroundColor: 'white',
         },
     },

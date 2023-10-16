@@ -47,6 +47,7 @@ const styles = theme => ({
     disabled: {
         '&.MuiTreeItem-label:hover': {
             backgroundColor: 'white',
+            cursor: 'default',
         },
     },
 });

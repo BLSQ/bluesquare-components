@@ -12,5 +12,6 @@ export declare type ConfirmCancelButtonsProps = {
     additionalMessage?: IntlMessage;
     onAdditionalButtonClick?: Callback;
     allowConfirmAdditionalButton?: boolean;
+    closeOnConfirm?: boolean;
 };
 export declare const ConfirmCancelButtons: FunctionComponent<ConfirmCancelButtonsProps>;

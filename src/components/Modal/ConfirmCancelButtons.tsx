@@ -17,6 +17,7 @@ export type ConfirmCancelButtonsProps = {
     additionalMessage?: IntlMessage;
     onAdditionalButtonClick?: Callback;
     allowConfirmAdditionalButton?: boolean;
+    closeOnConfirm?: boolean;
 };
 
 export const ConfirmCancelButtons: FunctionComponent<ConfirmCancelButtonsProps> =
@@ -31,6 +32,7 @@ export const ConfirmCancelButtons: FunctionComponent<ConfirmCancelButtonsProps> 
         additionalMessage,
         onAdditionalButtonClick,
         allowConfirmAdditionalButton = true,
+        closeOnConfirm = true,
     }) => (
         <>
             <Button
@@ -47,7 +49,9 @@ export const ConfirmCancelButtons: FunctionComponent<ConfirmCancelButtonsProps> 
                 data-test="confirm-button"
                 onClick={() => {
                     onConfirm();
-                    closeDialog();
+                    if (closeOnConfirm) {
+                        closeDialog();
+                    }
                 }}
                 disabled={!allowConfirm}
                 color="primary"

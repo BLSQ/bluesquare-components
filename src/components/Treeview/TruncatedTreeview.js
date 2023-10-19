@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { func, any } from 'prop-types';
+import { func, any, bool } from 'prop-types';
 import { TreeView, TreeItem } from '@material-ui/lab';
 import { makeStyles } from '@material-ui/core/styles';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
@@ -44,15 +44,22 @@ const styles = theme => ({
             display: 'none',
         },
     },
+    disabled: {
+        '& .MuiTreeItem-label:hover': {
+            backgroundColor: 'white',
+            cursor: 'default',
+        },
+    },
 });
-const determineClassName = (items, nextItems, style) => {
-    if (items.size === 1) return style.singleTreeItem;
-    if (nextItems.size === 0) return style.lastTreeItem;
-    return style.truncatedTreeviewItem;
+const determineClassName = (items, nextItems, disabled, style) => {
+    const baseClass = disabled ? `${style.disabled} ` : '';
+    if (items.size === 1) return `${baseClass}${style.singleTreeItem}`;
+    if (nextItems.size === 0) return `${baseClass}${style.lastTreeItem}`;
+    return `${baseClass}${style.truncatedTreeviewItem}`;
 };
 const useStyles = makeStyles(styles);
 
-const TruncatedTreeview = ({ selectedItems, label, redirect }) => {
+const TruncatedTreeview = ({ selectedItems, label, redirect, disabled }) => {
     const style = useStyles();
     const mouseDownTime = useRef();
     const onLabelClick = id => e => {
@@ -67,7 +74,13 @@ const TruncatedTreeview = ({ selectedItems, label, redirect }) => {
         // first entry of the map in the form of an array: [key,value]
         const item = nextItems.entries().next().value;
         nextItems.delete(item[0]);
-        const className = determineClassName(initialItems, nextItems, style);
+        const className = determineClassName(
+            initialItems,
+            nextItems,
+            disabled,
+            style,
+        );
+        console.log('CLASSNAME', className);
         return (
             <TreeItem
                 key={item[0].toString() + nextItems.size.toString()}
@@ -112,10 +125,12 @@ TruncatedTreeview.propTypes = {
     selectedItems: any,
     label: func.isRequired,
     redirect: func,
+    disabled: bool,
 };
 TruncatedTreeview.defaultProps = {
     selectedItems: null,
     redirect: () => null,
+    disabled: false,
 };
 
 export { TruncatedTreeview };

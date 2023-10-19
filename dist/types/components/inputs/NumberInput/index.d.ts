@@ -10,8 +10,9 @@ declare type Props = {
     autoComplete?: string;
     min?: number;
     max?: number;
-    onChange: (newValue: number) => void;
+    onChange: (newValue: number | undefined) => void;
     prefix?: string;
+    decimalScale?: number;
 };
 export declare const NumberInput: FunctionComponent<Props>;
 export {};

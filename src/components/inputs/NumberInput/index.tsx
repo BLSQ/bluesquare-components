@@ -35,13 +35,10 @@ export const NumberInput: FunctionComponent<Props> = ({
     prefix = '',
     decimalScale = 10,
 }) => {
-    const [formattedValue, setFormattedValue] = useState(value);
     const handleChange = useCallback(
         event => {
-            const newValue = event.target.value;
-            const newValueAsNumber = parseFloat(newValue);
+            const newValueAsNumber = parseFloat(event.target.value);
             if (value !== newValueAsNumber) {
-                setFormattedValue(newValue);
                 onChange(
                     Number.isNaN(newValueAsNumber)
                         ? undefined
@@ -53,7 +50,7 @@ export const NumberInput: FunctionComponent<Props> = ({
     );
     return (
         <NumericFormat
-            value={formattedValue}
+            value={value}
             disabled={disabled}
             prefix={prefix}
             thousandSeparator={false}

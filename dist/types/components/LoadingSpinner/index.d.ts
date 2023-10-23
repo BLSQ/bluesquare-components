@@ -32,11 +32,11 @@ declare const styledSpinner: React.ComponentType<Pick<Pick<PropTypes.InferProps<
      */
     padding: PropTypes.Requireable<number>;
     classes: PropTypes.Validator<object>;
-}>, "size" | "transparent" | "fixed" | "absolute" | "padding">> & Partial<Pick<{
+}>, "size" | "fixed" | "padding" | "transparent" | "absolute">> & Partial<Pick<{
     size: number;
     transparent: boolean;
     fixed: boolean;
     absolute: boolean;
     padding: number;
-}, never>>, "size" | "transparent" | "fixed" | "absolute" | "padding"> & import("@material-ui/core").StyledComponentProps<string>>;
+}, never>>, "size" | "fixed" | "padding" | "transparent" | "absolute"> & import("@material-ui/core").StyledComponentProps<string>>;
 export { styledSpinner as LoadingSpinner };

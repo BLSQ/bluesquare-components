@@ -8,7 +8,7 @@ import {
     array,
     oneOfType,
 } from 'prop-types';
-import { TreeItem } from '@mui/lab';
+import { TreeItem } from '@mui/x-tree-view';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import CheckBoxOutlineBlankOutlinedIcon from '@mui/icons-material/CheckBoxOutlineBlankOutlined';
@@ -79,13 +79,20 @@ const EnrichedTreeItem = ({
         );
     };
 
-    const makeLabel = (child, hasCheckbox, hasBeenTicked, tickedParent) => (
+    const makeLabel = (
+        child,
+        hasCheckbox,
+        hasBeenTicked,
+        tickedParent,
+        handleClick = () => null,
+    ) => (
         <div
             style={{
                 display: 'inline-flex',
                 alignItems: 'center',
                 verticalAlign: 'middle',
             }}
+            onClick={handleClick}
         >
             {makeIcon(hasCheckbox, hasBeenTicked, tickedParent)}
             {child}
@@ -164,13 +171,13 @@ const EnrichedTreeItem = ({
                         withCheckbox,
                         isTicked,
                         isTickedParent,
+                        handleLabelClick,
                     )}
                     nodeId={id}
                     collapseIcon={
                         <ArrowDropDownIcon style={{ fontSize: '24px' }} />
                     }
                     expandIcon={<ArrowRightIcon style={{ fontSize: '24px' }} />}
-                    onLabelClick={handleLabelClick}
                 >
                     {childrenData && isExpanded && makeSubTree(childrenData)}
                     {!isExpanded && <div />}
@@ -187,13 +194,18 @@ const EnrichedTreeItem = ({
                         : classes.unselectableTreeItem,
                 }}
                 ref={ref}
-                label={makeLabel(label(data), withCheckbox, isTicked)}
+                label={makeLabel(
+                    label(data),
+                    withCheckbox,
+                    isTicked,
+                    undefined,
+                    handleLabelClick,
+                )}
                 nodeId={id}
                 collapseIcon={
                     <ArrowDropDownIcon style={{ fontSize: '24px' }} />
                 }
                 expandIcon={<ArrowRightIcon style={{ fontSize: '24px' }} />}
-                onLabelClick={handleLabelClick}
             />
         </div>
     );

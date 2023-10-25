@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { func, any, bool } from 'prop-types';
-import { TreeView, TreeItem } from '@mui/lab';
+import { TreeItem, TreeView } from '@mui/x-tree-view';
 import { makeStyles } from '@mui/styles';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
@@ -80,7 +80,6 @@ const TruncatedTreeview = ({ selectedItems, label, redirect, disabled }) => {
             disabled,
             style,
         );
-        console.log('CLASSNAME', className);
         return (
             <TreeItem
                 key={item[0].toString() + nextItems.size.toString()}

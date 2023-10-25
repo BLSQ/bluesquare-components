@@ -8,7 +8,7 @@ import {
     object,
 } from 'prop-types';
 import React, { useCallback } from 'react';
-import { TreeView } from '@mui/lab';
+import { TreeView } from '@mui/x-tree-view';
 import { makeStyles } from '@mui/styles';
 import { CircularProgress, Box } from '@mui/material';
 import { EnrichedTreeItem } from './EnrichedTreeItem';

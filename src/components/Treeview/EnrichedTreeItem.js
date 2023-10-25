@@ -8,13 +8,13 @@ import {
     array,
     oneOfType,
 } from 'prop-types';
-import { TreeItem } from '@material-ui/lab';
-import ArrowRightIcon from '@material-ui/icons/ArrowRight';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import CheckBoxOutlineBlankOutlinedIcon from '@material-ui/icons/CheckBoxOutlineBlankOutlined';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
-import IndeterminateCheckBoxIcon from '@material-ui/icons/IndeterminateCheckBox';
-import { makeStyles } from '@material-ui/core/styles';
+import { TreeItem } from '@mui/lab';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import CheckBoxOutlineBlankOutlinedIcon from '@mui/icons-material/CheckBoxOutlineBlankOutlined';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox';
+import { makeStyles } from '@mui/styles';
 import { useChildrenData } from './requests';
 
 const styles = theme => ({

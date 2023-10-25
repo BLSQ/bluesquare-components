@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
-import Box from '@material-ui/core/Box';
-import MuiTable from '@material-ui/core/Table';
-import Paper from '@material-ui/core/Paper';
-import TableContainer from '@material-ui/core/TableContainer';
-import { makeStyles } from '@material-ui/core/styles';
+import Box from '@mui/material/Box';
+import MuiTable from '@mui/material/Table';
+import Paper from '@mui/material/Paper';
+import TableContainer from '@mui/material/TableContainer';
+import { makeStyles } from '@mui/styles';
 import isEqual from 'lodash/isEqual';
 
 import {
@@ -13,7 +13,7 @@ import {
     useResizeColumns,
 } from 'react-table';
 
-import { Grid } from '@material-ui/core';
+import { Grid } from '@mui/material';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 
 import { DEFAULT_PAGE_SIZE, DEFAULT_PAGE, DEFAULT_ORDER } from './constants';

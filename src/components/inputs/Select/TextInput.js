@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TextField from '@material-ui/core/TextField';
-import { CircularProgress } from '@material-ui/core';
+import TextField from '@mui/material/TextField';
+import { CircularProgress } from '@mui/material';
 
 import { FormControl } from '../FormControl';
 import { useStyles } from '../styles';

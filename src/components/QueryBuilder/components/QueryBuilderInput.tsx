@@ -1,5 +1,5 @@
 import React, { FunctionComponent, ReactNode, useState } from 'react';
-import { Tabs, Tab, Box, useTheme } from '@material-ui/core';
+import { Tabs, Tab, Box, useTheme } from '@mui/material';
 import {
     JsonLogicTree,
     JsonLogicResult,

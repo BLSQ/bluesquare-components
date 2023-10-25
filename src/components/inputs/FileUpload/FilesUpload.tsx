@@ -1,15 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { FunctionComponent, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
-import AttachmentIcon from '@material-ui/icons/Attachment';
-import {
-    Box,
-    Grid,
-    makeStyles,
-    Paper,
-    Tooltip,
-    Typography,
-} from '@material-ui/core';
+import AttachmentIcon from '@mui/icons-material/Attachment';
+import { Box, Grid, Paper, Tooltip, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { FormattedMessage } from 'react-intl';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import MESSAGES from './messages';

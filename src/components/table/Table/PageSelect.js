@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Box from '@material-ui/core/Box';
-import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import { makeStyles } from '@mui/styles';
 import { FormattedMessage } from 'react-intl';
 import classNames from 'classnames';
 

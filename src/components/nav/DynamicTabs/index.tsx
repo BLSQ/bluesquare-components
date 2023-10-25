@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useCallback, useState } from 'react';
-import { Tabs, Tab, IconButton, Tooltip } from '@material-ui/core';
-import Add from '@material-ui/icons/Add';
-import Remove from '@material-ui/icons/Clear';
+import { Tabs, Tab, IconButton, Tooltip } from '@mui/material';
+import Add from '@mui/icons-material/Add';
+import Remove from '@mui/icons-material/Clear';
 import Color from 'color';
 
 import { formatThousand } from '../../../utils';

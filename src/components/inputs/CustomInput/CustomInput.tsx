@@ -1,8 +1,8 @@
 import React, { FunctionComponent, ReactNode } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 import classnames from 'classnames';
 // @ts-ignore
-import { Paper, InputLabel, Box } from '@material-ui/core';
+import { Paper, InputLabel, Box } from '@mui/material';
 import { FormControl } from '../FormControl';
 
 const childrenStyle = theme => ({

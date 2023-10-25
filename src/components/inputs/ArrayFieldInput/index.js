@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { IconButton, withStyles, Box, List, Grid } from '@material-ui/core';
-import ListItem from '@material-ui/core/ListItem';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import Fab from '@material-ui/core/Fab';
+import { IconButton, Box, List, Grid } from '@mui/material';
+import { withStyles } from '@mui/styles';
+import ListItem from '@mui/material/ListItem';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import Fab from '@mui/material/Fab';
 
-import DeleteIcon from '@material-ui/icons/Delete';
-import Add from '@material-ui/icons/Add';
+import DeleteIcon from '@mui/icons-material/Delete';
+import Add from '@mui/icons-material/Add';
 
 import { commonStyles } from '../../../styles/iaso/common';
 

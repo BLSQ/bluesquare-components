@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ChangeEvent } from 'react';
-import { OutlinedInput, Tooltip } from '@material-ui/core';
-import InfoIcon from '@material-ui/icons/Info';
+import { OutlinedInput, Tooltip } from '@mui/material';
+import InfoIcon from '@mui/icons-material/Info';
 
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { FormControl } from '../FormControl';

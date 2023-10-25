@@ -1,8 +1,8 @@
 import React, { isValidElement } from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import TableCell from '@material-ui/core/TableCell';
-import TableSortLabel from '@material-ui/core/TableSortLabel';
+import { makeStyles } from '@mui/styles';
+import TableCell from '@mui/material/TableCell';
+import TableSortLabel from '@mui/material/TableSortLabel';
 import classNames from 'classnames';
 
 import { useSafeIntl } from '../../../utils/useSafeIntl';

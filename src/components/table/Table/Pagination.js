@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TablePagination from '@material-ui/core/TablePagination';
-import { makeStyles } from '@material-ui/core/styles';
+import TablePagination from '@mui/material/TablePagination';
+import { makeStyles } from '@mui/styles';
 
 import { ROWS_PER_PAGE_OPTIONS } from './constants';
 import { TablePaginationActions } from './TablePaginationActions';

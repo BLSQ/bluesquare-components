@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
 import { func, any, bool } from 'prop-types';
-import { TreeView, TreeItem } from '@material-ui/lab';
-import { makeStyles } from '@material-ui/core/styles';
-import ArrowRightIcon from '@material-ui/icons/ArrowRight';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import { TreeView, TreeItem } from '@mui/lab';
+import { makeStyles } from '@mui/styles';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 const alignTailIcon = { display: 'flex', alignItems: 'center' };
 const removeBackgroundOnTabNav = {

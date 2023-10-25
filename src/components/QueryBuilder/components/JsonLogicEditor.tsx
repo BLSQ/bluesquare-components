@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
-import { Button, Box } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { Button, Box } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { JsonLogicTree } from 'react-awesome-query-builder';
 import classNames from 'classnames';
 

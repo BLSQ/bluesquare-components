@@ -1,4 +1,4 @@
-import { TextareaAutosize, Button, Grid } from '@material-ui/core';
+import { TextareaAutosize, Button, Grid } from '@mui/material';
 import PropTypes from 'prop-types';
 import React, { useCallback, useState } from 'react';
 import { useSafeIntl } from '../../../utils/useSafeIntl';

@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import moment from 'moment';
 
-import MaterialConfig from 'react-awesome-query-builder/lib/config/material';
+import MaterialConfig from 'react-awesome-query-builder/lib/config/mui';
 import { Config } from 'react-awesome-query-builder';
 
 import { QueryBuilderDatePicker } from '../components/QueryBuilderDatePicker';

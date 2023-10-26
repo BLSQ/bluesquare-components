@@ -24,33 +24,33 @@ const styles = theme => ({
     },
     list: {
         width: '100%',
-        padding: '0',
+        padding: '0 !important',
     },
     listItem: {
         height: 55,
-        width: '100%',
-        position: 'relative',
-        display: 'flex',
-        alignItems: 'center',
-        padding: '0',
+        width: '100% !important',
+        position: 'relative !important',
+        display: 'flex !important',
+        alignItems: 'center !important',
+        padding: '0 !important',
         marginBottom: theme.spacing(1),
     },
     addListItem: {
         height: 55,
-        width: '100%',
-        position: 'relative',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        padding: '0',
+        width: '100% !important',
+        position: 'relative !important',
+        display: 'flex !important',
+        alignItems: 'center !important',
+        justifyContent: 'flex-end !important',
+        padding: '0 !important',
         marginBottom: theme.spacing(2),
     },
     input: {
-        width: '95%',
+        width: '95% ',
         marginLeft: '5%',
     },
     deleteIcon: {
-        position: 'absolute',
+        position: 'absolute !important',
         right: theme.spacing(1),
     },
 });
@@ -98,7 +98,7 @@ class ArrayFieldInput extends Component {
             fieldList.length > 0 &&
             fieldList[fieldList.length - 1].value === '';
         return (
-            <Grid container spacing={0} className={classes.marginTop}>
+            <Grid container spacing={0}>
                 <Grid item xs={1}>
                     <span className={classes.label}>{label}:</span>
                 </Grid>

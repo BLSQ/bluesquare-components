@@ -17,6 +17,7 @@ const TextInput = ({
     helperText,
     loading,
     autoComplete,
+    placeholder,
 }) => {
     const classes = useStyles();
     const paramsCopy = {
@@ -42,7 +43,7 @@ const TextInput = ({
                 {...paramsCopy}
                 variant="outlined"
                 disabled={disabled}
-                label={`${label}${required ? '*' : ''}`}
+                label={label ? `${label}${required ? '*' : ''}` : undefined}
                 onBlur={onBlur}
                 error={errors.length > 0}
                 InputLabelProps={{
@@ -55,6 +56,7 @@ const TextInput = ({
                 InputProps={{
                     ...params.InputProps,
                     autoComplete,
+                    placeholder,
                     endAdornment: (
                         <>
                             {loading ? (
@@ -74,13 +76,14 @@ TextInput.defaultProps = {
     helperText: null,
     renderOption: null,
     autoComplete: 'off',
+    label: undefined,
 };
 
 TextInput.propTypes = {
     renderOption: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
     params: PropTypes.object.isRequired,
     disabled: PropTypes.bool.isRequired,
-    label: PropTypes.string.isRequired,
+    label: PropTypes.string,
     required: PropTypes.bool.isRequired,
     onBlur: PropTypes.func.isRequired,
     errors: PropTypes.array.isRequired,

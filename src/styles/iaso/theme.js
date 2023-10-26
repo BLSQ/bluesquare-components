@@ -41,12 +41,16 @@ const rawTheme = {
             main: '#FFD835',
         },
     },
-    props: {
-        MuiTextField: {
-            variant: 'outlined',
+    components: {
+        MuiInputBase: {
+            defaultProps: {
+                variant: 'outlined',
+            },
         },
         MuiSelect: {
-            variant: 'outlined',
+            defaultProps: {
+                variant: 'outlined',
+            },
         },
     },
 };

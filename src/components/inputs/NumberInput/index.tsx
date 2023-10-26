@@ -1,4 +1,4 @@
-import React, { useState, FunctionComponent, useCallback } from 'react';
+import React, { FunctionComponent, useCallback } from 'react';
 import { NumericFormat } from 'react-number-format';
 import { CustomInput } from './Input';
 
@@ -19,10 +19,11 @@ type Props = {
     ) => void;
     prefix?: string;
     decimalScale?: number;
+    placeholder?: string;
 };
 export const NumberInput: FunctionComponent<Props> = ({
     keyValue,
-    label = '',
+    label,
     errors = [],
     required = false,
     value = '',
@@ -34,6 +35,7 @@ export const NumberInput: FunctionComponent<Props> = ({
     max = Infinity,
     prefix = '',
     decimalScale = 10,
+    placeholder,
 }) => {
     const handleChange = useCallback(
         event => {
@@ -62,6 +64,7 @@ export const NumberInput: FunctionComponent<Props> = ({
             min={min}
             max={max}
             errors={errors}
+            placeholder={placeholder}
             keyValue={keyValue}
             label={label}
             decimalScale={decimalScale}

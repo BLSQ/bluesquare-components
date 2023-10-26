@@ -92,10 +92,11 @@ const EnrichedTreeItem = ({
                 alignItems: 'center',
                 verticalAlign: 'middle',
             }}
-            onClick={handleClick}
         >
             {makeIcon(hasCheckbox, hasBeenTicked, tickedParent)}
-            {child}
+            <span onClick={handleClick} tabIndex={0} role="button">
+                {child}
+            </span>
         </div>
     );
 

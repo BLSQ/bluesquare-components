@@ -68,16 +68,16 @@ const commonStyles = theme => ({
         marginBottom: theme.spacing(4),
     },
     marginLeft: {
-        marginLeft: theme.spacing(2),
+        marginLeft: `${theme.spacing(2)} !important`,
     },
     marginRight: {
-        marginRight: theme.spacing(2),
+        marginRight: `${theme.spacing(2)} !important`,
     },
     marginTop: {
-        marginTop: theme.spacing(2),
+        marginTop: `${theme.spacing(2)} !important`,
     },
     marginTopBig: {
-        marginTop: theme.spacing(4),
+        marginTop: `${theme.spacing(4)} !important`,
     },
     justifyFlexEnd: {
         display: 'flex',

@@ -24,17 +24,17 @@ const useStyles = makeStyles(theme => ({
     },
     headerCell: {
         borderRight: `2px solid ${theme.palette.ligthGray.border}`,
-        position: 'relative',
+        position: 'relative !important',
         overflow: 'hidden',
-        textAlign: 'center',
-        backgroundColor: 'white',
+        textAlign: 'center !important',
+        backgroundColor: 'white !important',
     },
     lastHeaderCell: {
         borderRight: 'none',
     },
     sortLabel: {
-        display: 'inline-block',
-        width: '80%',
+        display: 'inline-block !important',
+        width: '80% !important',
     },
     icon: {
         color: `${theme.palette.primary.main}!important`,

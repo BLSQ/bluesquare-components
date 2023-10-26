@@ -104,6 +104,8 @@ const DynamicTabs: FunctionComponent<Props> = ({
             <div className={classes.tabsContainer}>
                 <Tabs
                     variant="scrollable"
+                    textColor="inherit"
+                    indicatorColor="secondary"
                     value={tabIndex}
                     classes={{
                         root: classes.tabs,
@@ -125,6 +127,7 @@ const DynamicTabs: FunctionComponent<Props> = ({
                         }
                         return (
                             <Tab
+                                className={classes.tab}
                                 key={currentTabIndex}
                                 value={currentTabIndex}
                                 label={

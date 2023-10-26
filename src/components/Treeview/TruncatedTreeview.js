@@ -58,7 +58,19 @@ const determineClassName = (items, nextItems, disabled, style) => {
     return `${baseClass}${style.truncatedTreeviewItem}`;
 };
 const useStyles = makeStyles(styles);
-
+const makeLabel = (child, handleClick = () => null) => (
+    <div
+        style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            verticalAlign: 'middle',
+        }}
+    >
+        <span onClick={handleClick} tabIndex={0} role="button">
+            {child}
+        </span>
+    </div>
+);
 const TruncatedTreeview = ({ selectedItems, label, redirect, disabled }) => {
     const style = useStyles();
     const mouseDownTime = useRef();
@@ -84,13 +96,11 @@ const TruncatedTreeview = ({ selectedItems, label, redirect, disabled }) => {
             <TreeItem
                 key={item[0].toString() + nextItems.size.toString()}
                 className={className}
-                onIconClick={e => e.preventDefault()}
-                onLabelClick={onLabelClick(item[0])}
                 collapseIcon={
                     <ArrowDropDownIcon style={{ fontSize: 'large' }} />
                 }
                 expandIcon={<ArrowRightIcon style={{ fontSize: 'large' }} />}
-                label={label(item[1])}
+                label={makeLabel(label(item[1]), () => onLabelClick(item[0]))}
                 nodeId={item[0]}
                 disabled
             >

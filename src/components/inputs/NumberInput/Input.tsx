@@ -27,7 +27,7 @@ type Props = {
     keyValue: string;
     errors: string[];
     value: string | number;
-    label: string;
+    label?: string;
     required: boolean;
     disabled: boolean;
     multiline?: boolean;
@@ -38,6 +38,7 @@ type Props = {
         // eslint-disable-next-line no-unused-vars
         event: ChangeEvent<HTMLInputElement>,
     ) => void;
+    placeholder?: string;
 };
 
 export const CustomInput: FunctionComponent<Props> = ({
@@ -52,18 +53,21 @@ export const CustomInput: FunctionComponent<Props> = ({
     autoComplete,
     min,
     max,
+    placeholder,
 }) => {
     const hasErrors = errors.length >= 1;
     const tooltipMessage = useTooltipMessage(min, max);
     return (
         <FormControl errors={errors}>
-            <InputLabel
-                htmlFor={`input-text-${keyValue}`}
-                label={label}
-                required={required}
-                error={hasErrors}
-                shrink={value !== ''}
-            />
+            {label && (
+                <InputLabel
+                    htmlFor={`input-text-${keyValue}`}
+                    label={label}
+                    required={required}
+                    error={hasErrors}
+                    shrink={value !== ''}
+                />
+            )}
             <OutlinedInput
                 autoComplete={autoComplete}
                 multiline={multiline}
@@ -80,6 +84,7 @@ export const CustomInput: FunctionComponent<Props> = ({
                 }
                 onChange={onChange}
                 error={hasErrors}
+                placeholder={placeholder}
             />
         </FormControl>
     );

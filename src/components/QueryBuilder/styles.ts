@@ -232,8 +232,12 @@ const styles = theme => ({
             alignItems: 'center',
             marginRight: '8px',
         },
-        '& .rule--field': {
+        '& .rule--field-wrapper': {
             width: '40%',
+            display: 'inline-block',
+        },
+        '& .rule--field': {
+            width: '100%',
         },
         '& .rule--value': {
             width: '45%',

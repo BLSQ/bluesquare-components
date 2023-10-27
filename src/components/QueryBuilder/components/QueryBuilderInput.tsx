@@ -4,7 +4,7 @@ import {
     JsonLogicTree,
     JsonLogicResult,
     Fields,
-} from 'react-awesome-query-builder';
+} from '@react-awesome-query-builder/mui';
 
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 

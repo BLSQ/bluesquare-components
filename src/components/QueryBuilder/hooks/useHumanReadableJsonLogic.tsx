@@ -6,7 +6,7 @@ import {
     Fields,
     JsonLogicTree,
     JsonGroup,
-} from 'react-awesome-query-builder';
+} from '@react-awesome-query-builder/mui';
 import isEmpty from 'lodash/isEmpty';
 
 import { useTranslatedConfig } from './useTranslatedConfig';

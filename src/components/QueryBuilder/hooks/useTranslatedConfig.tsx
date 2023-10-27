@@ -1,8 +1,7 @@
 import React, { useMemo } from 'react';
 import moment from 'moment';
 
-import MuiConfig from 'react-awesome-query-builder/lib/config/mui';
-import { Config } from 'react-awesome-query-builder';
+import { Config, MuiConfig } from '@react-awesome-query-builder/mui';
 
 import { useTheme } from '@mui/styles';
 import { Box } from '@mui/material';
@@ -147,7 +146,7 @@ export const useTranslatedConfig = (
                     // @ts-ignore
                     factory: ({ setValue, value, field }) => (
                         <TextInput
-                            keyValue={field}
+                            keyValue={`${field}`}
                             onChange={setValue}
                             value={value}
                             placeholder={formatMessage(
@@ -161,7 +160,7 @@ export const useTranslatedConfig = (
                     // @ts-ignore
                     factory: ({ setValue, value, field }) => (
                         <TextInput
-                            keyValue={field}
+                            keyValue={`${field}`}
                             onChange={setValue}
                             value={value}
                             multiline
@@ -177,7 +176,7 @@ export const useTranslatedConfig = (
                     factory: ({ setValue, value, field }) => (
                         <Box display="inline-block" width="150px">
                             <NumberInput
-                                keyValue={field}
+                                keyValue={`${field}`}
                                 onChange={setValue}
                                 value={value}
                                 placeholder={formatMessage(
@@ -202,7 +201,7 @@ export const useTranslatedConfig = (
                                     MESSAGES.selectValue,
                                 )}
                                 value={value}
-                                keyValue={field}
+                                keyValue={`${field}`}
                                 multi={false}
                                 options={(listValues || []).map(listValue => ({
                                     value: listValue.value,
@@ -224,7 +223,7 @@ export const useTranslatedConfig = (
                                     MESSAGES.selectValues,
                                 )}
                                 value={value}
-                                keyValue={field}
+                                keyValue={`${field}`}
                                 multi
                                 options={(listValues || []).map(listValue => ({
                                     value: listValue.value,
@@ -401,43 +400,44 @@ export const useTranslatedConfig = (
                     ...MuiConfig.types['!group'],
                     widgets: {
                         ...MuiConfig.types['!group'].widgets,
-                        number: {
-                            ...MuiConfig.types['!group'].widgets.number,
-                            opProps: {
-                                equal: {
-                                    label: formatMessage(MESSAGES.countEqual),
-                                },
-                                not_equal: {
-                                    label: formatMessage(
-                                        MESSAGES.countNotEqual,
-                                    ),
-                                },
-                                less: {
-                                    label: formatMessage(MESSAGES.countLess),
-                                },
-                                less_or_equal: {
-                                    label: formatMessage(
-                                        MESSAGES.countLessOrEqual,
-                                    ),
-                                },
-                                greater: {
-                                    label: formatMessage(MESSAGES.countGreater),
-                                },
-                                greater_or_equal: {
-                                    label: formatMessage(
-                                        MESSAGES.countGreaterOrEqual,
-                                    ),
-                                },
-                                between: {
-                                    label: formatMessage(MESSAGES.countBetween),
-                                },
-                                not_between: {
-                                    label: formatMessage(
-                                        MESSAGES.countNotBetween,
-                                    ),
-                                },
-                            },
-                        },
+                        // comment this as unused for now
+                        // number: {
+                        //     ...MuiConfig.types['!group'].widgets.number,
+                        //     opProps: {
+                        //         equal: {
+                        //             label: formatMessage(MESSAGES.countEqual),
+                        //         },
+                        //         not_equal: {
+                        //             label: formatMessage(
+                        //                 MESSAGES.countNotEqual,
+                        //             ),
+                        //         },
+                        //         less: {
+                        //             label: formatMessage(MESSAGES.countLess),
+                        //         },
+                        //         less_or_equal: {
+                        //             label: formatMessage(
+                        //                 MESSAGES.countLessOrEqual,
+                        //             ),
+                        //         },
+                        //         greater: {
+                        //             label: formatMessage(MESSAGES.countGreater),
+                        //         },
+                        //         greater_or_equal: {
+                        //             label: formatMessage(
+                        //                 MESSAGES.countGreaterOrEqual,
+                        //             ),
+                        //         },
+                        //         between: {
+                        //             label: formatMessage(MESSAGES.countBetween),
+                        //         },
+                        //         not_between: {
+                        //             label: formatMessage(
+                        //                 MESSAGES.countNotBetween,
+                        //             ),
+                        //         },
+                        //     },
+                        // },
                     },
                 },
                 currentDate: {
@@ -501,7 +501,7 @@ export const useTranslatedConfig = (
                     <Box display="inline-block" width="100%">
                         <Select
                             placeholder={formatMessage(MESSAGES.selectField)}
-                            keyValue={id}
+                            keyValue={`${id}`}
                             multi={false}
                             options={(items || []).map(item => ({
                                 value: item.key,
@@ -518,7 +518,7 @@ export const useTranslatedConfig = (
                         <Select
                             placeholder={formatMessage(MESSAGES.selectField)}
                             clearable={false}
-                            keyValue={id}
+                            keyValue={`${id}`}
                             multi={false}
                             options={(items || []).map(item => ({
                                 value: item.key,

@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-declare type Props = {
+type Props = {
     multi?: boolean;
     onFilesSelect: (files: File[]) => void;
     files: File[];

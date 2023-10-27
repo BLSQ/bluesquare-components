@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react';
 import { Item } from '../types';
 import { ColumnWithAccessor } from '../../table/Table/types';
-declare type Props = {
+type Props = {
     columns: ColumnWithAccessor[];
     item: Item;
 };

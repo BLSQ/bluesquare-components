@@ -1,7 +1,7 @@
 import React from 'react';
 import { ColumnFromReactTable } from '../Table';
-export declare const useStyles: (props?: any) => import("@material-ui/styles").ClassNameMap<"toolbar" | "search" | "input" | "switch" | "list" | "listItem" | "placeholder" | "root">;
-declare type Props = {
+export declare const useStyles: (props?: any) => import("@mui/styles").ClassNameMap<"toolbar" | "placeholder" | "list" | "listItem" | "input" | "root" | "search" | "switch">;
+type Props = {
     columns: ColumnFromReactTable[];
     hiddenColumns: string[];
     minColumns?: number;

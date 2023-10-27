@@ -40,6 +40,8 @@ const OptionListItem: React.FC<ListItemProps> = ({
                         className={classes.switch}
                         {...toggleHiddenProps}
                     />
+
+                    {/* @ts-ignore */}
                     <ListItemText primary={column.Header} />
                 </>
             )}
@@ -69,6 +71,7 @@ export const OptionsList: React.FC<OptionListProps> = ({
                     <div ref={ref} id={column.id}>
                         {column.columns && (
                             <>
+                                {/* @ts-ignore */}
                                 <ListItem>{column.Header}</ListItem>
                                 <div
                                     style={{

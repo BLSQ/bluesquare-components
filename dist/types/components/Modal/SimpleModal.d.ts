@@ -1,7 +1,7 @@
 import { FunctionComponent, ReactNode } from 'react';
 import { IntlMessage } from '../../types/types';
-export declare type MuiWidth = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-export declare type SimpleDialogProps = {
+export type MuiWidth = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type SimpleDialogProps = {
     open: boolean;
     maxWidth?: MuiWidth;
     onClose: () => void;

@@ -1,9 +1,9 @@
 import { FunctionComponent, ChangeEvent } from 'react';
-declare type Props = {
+type Props = {
     keyValue: string;
     errors: string[];
     value: string | number;
-    label: string;
+    label?: string;
     required: boolean;
     disabled: boolean;
     multiline?: boolean;
@@ -11,6 +11,7 @@ declare type Props = {
     min: number;
     max: number;
     onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+    placeholder?: string;
 };
 export declare const CustomInput: FunctionComponent<Props>;
 export {};

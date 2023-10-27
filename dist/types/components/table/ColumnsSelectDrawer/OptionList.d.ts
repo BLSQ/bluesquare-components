@@ -1,6 +1,6 @@
 import React from 'react';
 import { ColumnFromReactTable } from '../Table';
-declare type OptionListProps = {
+type OptionListProps = {
     columns: ColumnFromReactTable[];
     minReached: boolean;
 };

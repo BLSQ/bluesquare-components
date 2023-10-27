@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 import { RenderProps } from './types';
-declare type Props = {
+type Props = {
     items: any[];
     onChange: (items: any[]) => void;
     RenderItem: FunctionComponent<RenderProps>;

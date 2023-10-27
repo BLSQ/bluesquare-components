@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react';
 import { IntlMessage } from '../../types/types';
-export declare type Callback = () => void;
-export declare type ConfirmCancelButtonsProps = {
+export type Callback = () => void;
+export type ConfirmCancelButtonsProps = {
     closeDialog: Callback;
     onConfirm: Callback;
     onCancel: Callback;

@@ -1,7 +1,7 @@
 import { DraggableAttributes } from '@dnd-kit/core';
 import { SyntheticListenerMap } from '@dnd-kit/core/dist/hooks/utilities';
-export declare type HandleProps = DraggableAttributes & SyntheticListenerMap;
-export declare type RenderProps = {
+export type HandleProps = DraggableAttributes & SyntheticListenerMap;
+export type RenderProps = {
     item: any;
     index: number;
     handleProps?: HandleProps;

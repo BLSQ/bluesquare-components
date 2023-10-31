@@ -144,6 +144,8 @@ export interface TableComponentProps {
     // eslint-disable-next-line no-unused-vars
     redirectTo?: (url: string, newParams: Record<string, string>) => void;
     columnSelectorEnabled: boolean;
+    columnSelectorButtonDisabled: boolean;
+    columnSelectorButtonType: 'button' | 'icon';
 }
 
 const TableComponent: React.FC<TableComponentProps> = props => {
@@ -177,6 +179,8 @@ const TableComponent: React.FC<TableComponentProps> = props => {
         rowProps = () => ({}),
         cellProps = () => ({}),
         columnSelectorEnabled = false,
+        columnSelectorButtonDisabled = false,
+        columnSelectorButtonType = 'icon',
     } = props;
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -320,6 +324,8 @@ const TableComponent: React.FC<TableComponentProps> = props => {
                     <ColumnsSelectGeneric
                         columns={columnsFromUse}
                         hiddenColumns={hiddenColumns}
+                        disabled={columnSelectorButtonDisabled}
+                        buttonType={columnSelectorButtonType}
                     />
                 )}
             </Grid>

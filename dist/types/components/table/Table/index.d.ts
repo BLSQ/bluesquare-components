@@ -46,6 +46,8 @@ export interface TableComponentProps {
     paramsPrefix?: string;
     redirectTo?: (url: string, newParams: Record<string, string>) => void;
     columnSelectorEnabled: boolean;
+    columnSelectorButtonDisabled: boolean;
+    columnSelectorButtonType: 'button' | 'icon';
 }
 declare const Table: React.NamedExoticComponent<TableComponentProps>;
 export { Table };

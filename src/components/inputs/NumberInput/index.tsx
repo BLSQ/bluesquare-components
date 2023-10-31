@@ -15,9 +15,10 @@ type Props = {
     max?: number;
     onChange: (
         // eslint-disable-next-line no-unused-vars
-        newValue: number,
+        newValue: number | undefined,
     ) => void;
     prefix?: string;
+    decimalScale?: number;
 };
 export const NumberInput: FunctionComponent<Props> = ({
     keyValue,
@@ -32,23 +33,24 @@ export const NumberInput: FunctionComponent<Props> = ({
     min = -Infinity,
     max = Infinity,
     prefix = '',
+    decimalScale = 10,
 }) => {
-    const [formattedValue, setFormattedValue] = useState(value);
     const handleChange = useCallback(
         event => {
-            const newValue = event.target.value;
-            setFormattedValue(newValue);
-            const newValueAsNumber = parseFloat(newValue);
+            const newValueAsNumber = parseFloat(event.target.value);
             if (value !== newValueAsNumber) {
-                onChange(newValueAsNumber);
+                onChange(
+                    Number.isNaN(newValueAsNumber)
+                        ? undefined
+                        : newValueAsNumber,
+                );
             }
         },
         [onChange, value],
     );
-
     return (
         <NumericFormat
-            value={formattedValue}
+            value={value}
             disabled={disabled}
             prefix={prefix}
             thousandSeparator={false}
@@ -62,11 +64,13 @@ export const NumberInput: FunctionComponent<Props> = ({
             errors={errors}
             keyValue={keyValue}
             label={label}
+            decimalScale={decimalScale}
             isAllowed={values => {
                 const { floatValue } = values;
-                if (values.value === '-' || values.value === '') return true;
-                if (!floatValue) return false;
-                return floatValue >= min && floatValue <= max;
+                return (
+                    (floatValue && floatValue <= max && floatValue >= min) ||
+                    !floatValue
+                );
             }}
         />
     );

@@ -316,7 +316,7 @@ const TableComponent: React.FC<TableComponentProps> = props => {
                 setTableSelection={setTableSelection}
                 selectionActionMessage={selectionActionMessage}
             />
-            <Grid container justifyContent="flex-end">
+            <Grid container justifyContent="flex-end" spacing={2}>
                 {countOnTop && (
                     <Count count={count} selectCount={selection.selectCount} />
                 )}

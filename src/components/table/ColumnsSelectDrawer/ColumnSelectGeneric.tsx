@@ -90,6 +90,7 @@ const ColumnsSelectGeneric: React.FC<Props> = ({
                     variant="contained"
                     color="primary"
                     onClick={toggleDrawer}
+                    size="medium"
                     id="ColumnsSelectDrawer-toggleDrawer"
                 >
                     <Box mr={1} display="inline-flex">

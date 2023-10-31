@@ -316,20 +316,32 @@ const TableComponent: React.FC<TableComponentProps> = props => {
                 setTableSelection={setTableSelection}
                 selectionActionMessage={selectionActionMessage}
             />
-            <Grid container justifyContent="flex-end" spacing={2}>
+            {columnSelectorEnabled && columnSelectorButtonType === 'button' && (
+                <Grid container justifyContent="flex-end">
+                    <Box mb={2} mt={2}>
+                        <ColumnsSelectGeneric
+                            columns={columnsFromUse}
+                            hiddenColumns={hiddenColumns}
+                            disabled={columnSelectorButtonDisabled}
+                            buttonType={columnSelectorButtonType}
+                        />
+                    </Box>
+                </Grid>
+            )}
+            <Grid container justifyContent="flex-end">
                 {countOnTop && (
                     <Count count={count} selectCount={selection.selectCount} />
                 )}
-                {columnSelectorEnabled && (
-                    <ColumnsSelectGeneric
-                        columns={columnsFromUse}
-                        hiddenColumns={hiddenColumns}
-                        disabled={columnSelectorButtonDisabled}
-                        buttonType={columnSelectorButtonType}
-                    />
-                )}
+                {columnSelectorEnabled &&
+                    columnSelectorButtonType === 'icon' && (
+                        <ColumnsSelectGeneric
+                            columns={columnsFromUse}
+                            hiddenColumns={hiddenColumns}
+                            disabled={columnSelectorButtonDisabled}
+                            buttonType={columnSelectorButtonType}
+                        />
+                    )}
             </Grid>
-
             <Paper elevation={elevation} className={classes.paper}>
                 {loading && <LoadingSpinner absolute />}
                 <TableContainer className={classes.tableContainer}>

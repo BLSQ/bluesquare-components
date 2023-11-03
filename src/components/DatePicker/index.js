@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
-import { DatePicker as MuiDatePicker } from '@mui/x-date-pickers';
-import EventIcon from '@mui/icons-material/Event';
+import { DesktopDatePicker as MuiDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { makeStyles } from '@mui/styles';
 import PropTypes from 'prop-types';
 

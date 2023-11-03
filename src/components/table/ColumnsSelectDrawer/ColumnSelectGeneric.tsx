@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import {
+    Box,
+    Button,
     Divider,
     Drawer,
     IconButton,
@@ -43,12 +45,16 @@ type Props = {
     columns: ColumnFromReactTable[];
     hiddenColumns: string[];
     minColumns?: number;
+    disabled?: boolean;
+    buttonType?: 'button' | 'icon';
 };
 
 const ColumnsSelectGeneric: React.FC<Props> = ({
     columns,
     hiddenColumns,
     minColumns = 2,
+    disabled = false,
+    buttonType = 'icon',
 }) => {
     const classes = useStyles();
     const { formatMessage } = useSafeIntl();
@@ -69,12 +75,30 @@ const ColumnsSelectGeneric: React.FC<Props> = ({
     const displayedOptions = filterResults(searchString, columns);
     return (
         <>
-            <IconButtonComponent
-                onClick={toggleDrawer}
-                overrideIcon={ViewColumnIcon}
-                color="primary"
-                tooltipMessage={MESSAGES.columnSelectTooltip}
-            />
+            {buttonType === 'icon' && (
+                <IconButtonComponent
+                    onClick={toggleDrawer}
+                    overrideIcon={ViewColumnIcon}
+                    color="primary"
+                    tooltipMessage={MESSAGES.columnSelect}
+                    disabled={disabled}
+                />
+            )}
+            {buttonType === 'button' && (
+                <Button
+                    disabled={disabled}
+                    variant="contained"
+                    color="primary"
+                    onClick={toggleDrawer}
+                    size="medium"
+                    id="ColumnsSelectDrawer-toggleDrawer"
+                >
+                    <Box mr={1} display="inline-flex">
+                        <ViewColumnIcon />
+                    </Box>
+                    {formatMessage(MESSAGES.columnSelect)}
+                </Button>
+            )}
             <Drawer anchor="right" open={isOpen} onClose={toggleDrawer}>
                 <div className={classes.root}>
                     <div className={classes.toolbar}>

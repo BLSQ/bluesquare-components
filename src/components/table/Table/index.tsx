@@ -144,6 +144,8 @@ export interface TableComponentProps {
     // eslint-disable-next-line no-unused-vars
     redirectTo?: (url: string, newParams: Record<string, string>) => void;
     columnSelectorEnabled: boolean;
+    columnSelectorButtonDisabled: boolean;
+    columnSelectorButtonType: 'button' | 'icon';
 }
 
 const TableComponent: React.FC<TableComponentProps> = props => {
@@ -177,6 +179,8 @@ const TableComponent: React.FC<TableComponentProps> = props => {
         rowProps = () => ({}),
         cellProps = () => ({}),
         columnSelectorEnabled = false,
+        columnSelectorButtonDisabled = false,
+        columnSelectorButtonType = 'icon',
     } = props;
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -312,18 +316,32 @@ const TableComponent: React.FC<TableComponentProps> = props => {
                 setTableSelection={setTableSelection}
                 selectionActionMessage={selectionActionMessage}
             />
+            {columnSelectorEnabled && columnSelectorButtonType === 'button' && (
+                <Grid container justifyContent="flex-end">
+                    <Box mb={2} mt={2}>
+                        <ColumnsSelectGeneric
+                            columns={columnsFromUse}
+                            hiddenColumns={hiddenColumns}
+                            disabled={columnSelectorButtonDisabled}
+                            buttonType={columnSelectorButtonType}
+                        />
+                    </Box>
+                </Grid>
+            )}
             <Grid container justifyContent="flex-end">
                 {countOnTop && (
                     <Count count={count} selectCount={selection.selectCount} />
                 )}
-                {columnSelectorEnabled && (
-                    <ColumnsSelectGeneric
-                        columns={columnsFromUse}
-                        hiddenColumns={hiddenColumns}
-                    />
-                )}
+                {columnSelectorEnabled &&
+                    columnSelectorButtonType === 'icon' && (
+                        <ColumnsSelectGeneric
+                            columns={columnsFromUse}
+                            hiddenColumns={hiddenColumns}
+                            disabled={columnSelectorButtonDisabled}
+                            buttonType={columnSelectorButtonType}
+                        />
+                    )}
             </Grid>
-
             <Paper elevation={elevation} className={classes.paper}>
                 {loading && <LoadingSpinner absolute />}
                 <TableContainer className={classes.tableContainer}>

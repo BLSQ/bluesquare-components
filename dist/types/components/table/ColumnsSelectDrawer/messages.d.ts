@@ -15,7 +15,7 @@ export namespace MESSAGES {
         const defaultMessage_2: string;
         export { defaultMessage_2 as defaultMessage };
     }
-    namespace columnSelectTooltip {
+    namespace columnSelect {
         const id_3: string;
         export { id_3 as id };
         const defaultMessage_3: string;

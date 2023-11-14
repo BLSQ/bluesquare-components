@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles, Typography, Box } from '@material-ui/core';
 import FormControl from '@material-ui/core/FormControl';
+import classNames from 'classnames';
 
 const styles = theme => ({
     formControl: {
@@ -42,7 +43,12 @@ function FormControlComponent({ classes, children, errors, id, hideError }) {
         >
             {children}
             {errors.length > 0 && !hideError && (
-                <Box className={classes.errorContainer}>
+                <Box
+                    className={classNames(
+                        classes.errorContainer,
+                        'error-container',
+                    )}
+                >
                     {errors
                         .filter(error => !!error)
                         .map(error => (

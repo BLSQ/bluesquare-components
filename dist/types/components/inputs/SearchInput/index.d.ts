@@ -11,7 +11,7 @@ declare type Props = {
     onErrorChange?: (hasError: boolean) => void;
     blockForbiddenChars: boolean;
     value: string;
-    errors: [];
+    errors?: string[];
     autoComplete: string;
 };
 declare const SearchInput: FunctionComponent<Props>;

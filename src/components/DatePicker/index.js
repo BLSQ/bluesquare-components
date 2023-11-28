@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { IconButton } from '../buttons/IconButton';
 import { FormControl } from '../inputs/FormControl';
 
-import { commonStyles } from '../../styles/iaso/common';
+import { commonStyles } from '../../styles/iaso/common.ts';
 
 const useStyles = makeStyles(theme => ({
     ...commonStyles(theme),

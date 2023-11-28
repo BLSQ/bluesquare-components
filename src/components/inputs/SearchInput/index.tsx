@@ -34,7 +34,7 @@ type Props = {
     onErrorChange?: (hasError: boolean) => void;
     blockForbiddenChars: boolean;
     value: string;
-    errors: [];
+    errors?: string[];
     autoComplete: string;
 };
 

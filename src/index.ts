@@ -22,7 +22,7 @@ import { useSafeIntl } from './utils/useSafeIntl';
 import { useSkipEffectOnMount } from './utils/useSkipEffectOnMount';
 import { theme, rawTheme } from './styles/iaso/theme';
 import { testTS } from './utils/test';
-import { commonStyles } from './styles/iaso/common';
+import { commonStyles, CommonStyles } from './styles/iaso/common';
 import { mapStyles } from './styles/iaso/map';
 import { mapPopupStyles } from './styles/iaso/mapPopup';
 import { AddButton } from './components/buttons/AddButton';
@@ -145,6 +145,7 @@ export {
     useSafeIntl,
     useSkipEffectOnMount,
     commonStyles,
+    CommonStyles,
     mapStyles,
     mapPopupStyles,
     AddButton,

@@ -1,10 +1,19 @@
+import { CSSProperties } from '@material-ui/core/styles/withStyles';
+import { Theme } from '@material-ui/core/styles';
 import { mapStyles } from './map';
 import {
     MENU_HEIGHT_WITH_TABS,
     MENU_HEIGHT_WITHOUT_TABS,
 } from '../../constants/iaso/uiConstants';
 
-const commonStyles = theme => ({
+export type CommonStyles = {
+    // eslint-disable-next-line no-unused-vars
+    (theme: Theme): {
+        [key: string]: CSSProperties;
+    };
+};
+
+export const commonStyles: CommonStyles = theme => ({
     ...mapStyles(theme),
     containerFullHeight: {
         width: '100%',
@@ -120,7 +129,7 @@ const commonStyles = theme => ({
         alignItems: 'center',
     },
     popperFixed: {
-        position: 'fixed !important',
+        position: 'fixed',
     },
     iconButton: {
         padding: 0,
@@ -141,5 +150,3 @@ const commonStyles = theme => ({
         },
     },
 });
-
-export { commonStyles };

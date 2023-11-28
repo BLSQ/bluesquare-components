@@ -9,7 +9,7 @@ import Fab from '@material-ui/core/Fab';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Add from '@material-ui/icons/Add';
 
-import { commonStyles } from '../../../styles/iaso/common';
+import { commonStyles } from '../../../styles/iaso/common.ts';
 
 import { addPositionIndex, removePositionIndex } from '../../../utils';
 

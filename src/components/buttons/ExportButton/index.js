@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CallMade from '@material-ui/icons/CallMade';
 import { withStyles, Button } from '@material-ui/core';
-import { commonStyles } from '../../../styles/iaso/common';
+import { commonStyles } from '../../../styles/iaso/common.ts';
 import { injectIntl } from '../../../utils/injectIntl';
 import { MESSAGES } from './messages';
 

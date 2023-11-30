@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Typography, Box } from '@mui/material';
-import { withStyles } from '@mui/styles';
 import FormControl from '@mui/material/FormControl';
+import { withStyles } from '@mui/styles';
+import { Typography, Box } from '@mui/material';
+import classNames from 'classnames';
 
 const styles = theme => ({
     formControl: {
@@ -43,7 +44,12 @@ function FormControlComponent({ classes, children, errors, id, hideError }) {
         >
             {children}
             {errors.length > 0 && !hideError && (
-                <Box className={classes.errorContainer}>
+                <Box
+                    className={classNames(
+                        classes.errorContainer,
+                        'error-container',
+                    )}
+                >
                     {errors
                         .filter(error => !!error)
                         .map(error => (

@@ -14,6 +14,7 @@ type Props = {
     prefix?: string;
     decimalScale?: number;
     placeholder?: string;
+    setFieldError?: (keyValue: string, message: string) => void;
 };
 export declare const NumberInput: FunctionComponent<Props>;
 export {};

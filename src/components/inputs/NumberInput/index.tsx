@@ -1,6 +1,23 @@
 import React, { FunctionComponent, useCallback } from 'react';
 import { NumericFormat } from 'react-number-format';
+import { defineMessages } from 'react-intl';
 import { CustomInput } from './Input';
+import { useSafeIntl } from '../../../utils/useSafeIntl';
+
+const MESSAGES = defineMessages({
+    max: {
+        id: 'blsq.numberInput.error.max',
+        defaultMessage: 'Input exceeds {value}',
+    },
+    min: {
+        id: 'blsq.numberInput.error.min',
+        defaultMessage: 'Input is less than {value}',
+    },
+    invalid: {
+        id: 'blsq.numberInput.error.invalid',
+        defaultMessage: 'Invalid number',
+    },
+});
 
 type Props = {
     keyValue: string;
@@ -20,6 +37,12 @@ type Props = {
     prefix?: string;
     decimalScale?: number;
     placeholder?: string;
+    setFieldError?: (
+        // eslint-disable-next-line no-unused-vars
+        keyValue: string,
+        // eslint-disable-next-line no-unused-vars
+        message: string,
+    ) => void;
 };
 export const NumberInput: FunctionComponent<Props> = ({
     keyValue,
@@ -36,19 +59,33 @@ export const NumberInput: FunctionComponent<Props> = ({
     prefix = '',
     decimalScale = 10,
     placeholder,
+    setFieldError = () => null,
 }) => {
+    const { formatMessage } = useSafeIntl();
     const handleChange = useCallback(
         event => {
             const newValueAsNumber = parseFloat(event.target.value);
-            if (value !== newValueAsNumber) {
+            if (newValueAsNumber <= max && newValueAsNumber >= min) {
                 onChange(
                     Number.isNaN(newValueAsNumber)
                         ? undefined
                         : newValueAsNumber,
                 );
+            } else if (newValueAsNumber > max) {
+                setFieldError(
+                    keyValue,
+                    formatMessage(MESSAGES.max, { value: max }),
+                );
+            } else if (newValueAsNumber < min) {
+                setFieldError(
+                    keyValue,
+                    formatMessage(MESSAGES.min, { value: min }),
+                );
+            } else if (Number.isNaN(newValueAsNumber) && required) {
+                setFieldError(keyValue, formatMessage(MESSAGES.invalid));
             }
         },
-        [onChange, value],
+        [max, min, required, onChange, setFieldError, keyValue, formatMessage],
     );
     return (
         <NumericFormat
@@ -68,13 +105,6 @@ export const NumberInput: FunctionComponent<Props> = ({
             keyValue={keyValue}
             label={label}
             decimalScale={decimalScale}
-            isAllowed={values => {
-                const { floatValue } = values;
-                return (
-                    (floatValue && floatValue <= max && floatValue >= min) ||
-                    !floatValue
-                );
-            }}
         />
     );
 };

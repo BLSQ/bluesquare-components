@@ -1,5 +1,5 @@
 import { makeStyles } from '@mui/styles';
-import { commonStyles } from '../../styles/iaso/common';
+import { commonStyles } from '../../styles/iaso/common.ts';
 
 const styles = theme => ({
     ...commonStyles(theme),

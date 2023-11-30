@@ -4,7 +4,7 @@ import Add from '@mui/icons-material/Add';
 import { Button } from '@mui/material';
 
 import { withStyles } from '@mui/styles';
-import { commonStyles } from '../../../styles/iaso/common';
+import { commonStyles } from '../../../styles/iaso/common.ts';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { MESSAGES } from './messages';
 

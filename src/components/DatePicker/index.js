@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { DesktopDatePicker as MuiDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { makeStyles } from '@mui/styles';
 import PropTypes from 'prop-types';
+import EventIcon from '@mui/icons-material/Event';
 
 import { TextField } from '@mui/material';
 import { IconButton } from '../buttons/IconButton';

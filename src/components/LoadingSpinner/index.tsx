@@ -20,12 +20,12 @@ const styles = () => ({
     rootFixed: {
         ...baseRoot,
         position: 'fixed',
-        zIndex: '1000',
+        zIndex: '10000',
     },
     rootAbsolute: {
         ...baseRoot,
         position: 'absolute',
-        zIndex: '500',
+        zIndex: '10000',
     },
     root: {
         ...baseRoot,

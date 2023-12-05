@@ -79,6 +79,7 @@ const DynamicTabs: FunctionComponent<Props> = ({
             newParams[paramKey] = JSON.stringify(newItems);
             if (newIndex > newItems.length - 1) {
                 newParams[tabParamKey] = (newItems.length - 1).toString();
+                // go to previous tab, code should prevent to delete tif the list contain only one item
                 setTabIndex(newIndex - 1);
             }
             onTabsDeleted(newParams);

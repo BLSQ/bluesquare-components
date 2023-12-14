@@ -1,8 +1,10 @@
 import { FunctionComponent } from 'react';
+import { Accept } from 'react-dropzone';
 declare type Props = {
     multi?: boolean;
     onFilesSelect: (files: File[]) => void;
     files: File[];
+    accept?: Accept;
     placeholder?: string;
     required?: boolean;
     errors?: string[];

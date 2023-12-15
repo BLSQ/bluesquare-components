@@ -1,9 +1,8 @@
 import React, { useRef } from 'react';
 import { func, any, bool } from 'prop-types';
-import { TreeView, TreeItem } from '@material-ui/lab';
+import { TreeView } from '@material-ui/lab';
 import { makeStyles } from '@material-ui/core/styles';
-import ArrowRightIcon from '@material-ui/icons/ArrowRight';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import TreeItems from './TreeItems';
 
 const alignTailIcon = { display: 'flex', alignItems: 'center' };
 const removeBackgroundOnTabNav = {
@@ -51,12 +50,7 @@ const styles = theme => ({
         },
     },
 });
-const determineClassName = (items, nextItems, disabled, style) => {
-    const baseClass = disabled ? `${style.disabled} ` : '';
-    if (items.size === 1) return `${baseClass}${style.singleTreeItem}`;
-    if (nextItems.size === 0) return `${baseClass}${style.lastTreeItem}`;
-    return `${baseClass}${style.truncatedTreeviewItem}`;
-};
+
 const useStyles = makeStyles(styles);
 
 const TruncatedTreeview = ({ selectedItems, label, redirect, disabled }) => {
@@ -67,38 +61,6 @@ const TruncatedTreeview = ({ selectedItems, label, redirect, disabled }) => {
         if (new Date() - mouseDownTime.current < 150) {
             redirect(id);
         }
-    };
-    const makeTreeItems = (items, initialItems) => {
-        if (items.size === 0) return null;
-        const nextItems = new Map(items);
-        // first entry of the map in the form of an array: [key,value]
-        const item = nextItems.entries().next().value;
-        nextItems.delete(item[0]);
-        const className = determineClassName(
-            initialItems,
-            nextItems,
-            disabled,
-            style,
-        );
-        return (
-            <TreeItem
-                key={item[0].toString() + nextItems.size.toString()}
-                className={className}
-                onIconClick={e => e.preventDefault()}
-                onLabelClick={onLabelClick(item[0])}
-                collapseIcon={
-                    <ArrowDropDownIcon style={{ fontSize: 'large' }} />
-                }
-                expandIcon={<ArrowRightIcon style={{ fontSize: 'large' }} />}
-                label={label(item[1])}
-                nodeId={item[0]}
-                disabled
-            >
-                {items.size >= 1
-                    ? makeTreeItems(nextItems, initialItems)
-                    : null}
-            </TreeItem>
-        );
     };
     const expanded =
         Array.from(selectedItems.keys()).map(item => item.toString()) ?? [];
@@ -114,7 +76,14 @@ const TruncatedTreeview = ({ selectedItems, label, redirect, disabled }) => {
             }}
             className={style.truncatedTreeview}
         >
-            {makeTreeItems(selectedItems, selectedItems)}
+            <TreeItems
+                items={selectedItems}
+                initialItems={selectedItems}
+                disabled={disabled}
+                style={style}
+                label={label}
+                onLabelClick={onLabelClick}
+            />
         </TreeView>
     );
 };

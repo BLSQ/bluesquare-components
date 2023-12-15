@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { FunctionComponent, useState } from 'react';
-import { useDropzone } from 'react-dropzone';
+import { Accept, useDropzone } from 'react-dropzone';
+import { makeStyles } from '@mui/styles';
 import AttachmentIcon from '@mui/icons-material/Attachment';
 import { Box, Grid, Paper, Tooltip, Typography } from '@mui/material';
-import { makeStyles } from '@mui/styles';
 import { FormattedMessage } from 'react-intl';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import MESSAGES from './messages';
@@ -17,6 +17,7 @@ type Props = {
     // eslint-disable-next-line no-unused-vars
     onFilesSelect: (files: File[]) => void;
     files: File[];
+    accept?: Accept;
     placeholder?: string;
     required?: boolean;
     errors?: string[];
@@ -68,11 +69,13 @@ export const FilesUpload: FunctionComponent<Props> = ({
     multi = true,
     onFilesSelect = () => null,
     files = [],
+    accept = {},
     required = false,
     errors = [],
 }) => {
     const [showDropZone, setShowDropzone] = useState<boolean>(false);
     const { getRootProps, getInputProps } = useDropzone({
+        accept,
         onDrop: onFilesSelect,
         multiple: multi,
         onDragLeave: () => {

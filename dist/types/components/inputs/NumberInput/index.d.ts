@@ -14,6 +14,7 @@ declare type Props = {
     prefix?: string;
     decimalScale?: number;
     setFieldError?: (keyValue: string, message: string) => void;
+    thousandsGroupStyle?: 'thousand' | 'lakh' | 'wan';
 };
 export declare const NumberInput: FunctionComponent<Props>;
 export {};

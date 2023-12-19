@@ -42,6 +42,7 @@ type Props = {
         // eslint-disable-next-line no-unused-vars
         message: string,
     ) => void;
+    thousandsGroupStyle?: 'thousand' | 'lakh' | 'wan';
 };
 export const NumberInput: FunctionComponent<Props> = ({
     keyValue,
@@ -58,6 +59,7 @@ export const NumberInput: FunctionComponent<Props> = ({
     prefix = '',
     decimalScale = 10,
     setFieldError = () => null,
+    thousandsGroupStyle = 'thousand',
 }) => {
     const { formatMessage } = useSafeIntl();
     const handleChange = useCallback(
@@ -102,6 +104,7 @@ export const NumberInput: FunctionComponent<Props> = ({
             keyValue={keyValue}
             label={label}
             decimalScale={decimalScale}
+            thousandsGroupStyle={thousandsGroupStyle}
         />
     );
 };

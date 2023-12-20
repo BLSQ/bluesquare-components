@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Divider, Paper, Button } from '@material-ui/core';
+import { Divider, Paper, Button } from '@mui/material';
 import { useStyles } from '../styles';
 import { MESSAGES } from './messages';
 import { useSafeIntl } from '../../../utils/useSafeIntl';

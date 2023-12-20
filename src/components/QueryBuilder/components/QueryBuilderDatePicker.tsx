@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState, ChangeEvent } from 'react';
-import { RadioGroup, FormControlLabel, Radio, Box } from '@material-ui/core';
+import { RadioGroup, FormControlLabel, Radio, Box } from '@mui/material';
 
 import { DateOrDateTime } from './DateOrDateTime';
 import { MESSAGES } from '../messages';

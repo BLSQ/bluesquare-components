@@ -1,3 +1,3 @@
-export declare type Item = {
+export type Item = {
     id: string | number;
 };

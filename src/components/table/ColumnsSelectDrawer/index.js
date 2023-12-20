@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { InView } from 'react-intersection-observer';
 import {
-    withStyles,
     Drawer,
     IconButton,
     List,
@@ -12,9 +11,10 @@ import {
     Switch,
     InputBase,
     Tooltip,
-} from '@material-ui/core';
-import Close from '@material-ui/icons/Close';
-import ArrowBack from '@material-ui/icons/ArrowBack';
+} from '@mui/material';
+import { withStyles } from '@mui/styles';
+import Close from '@mui/icons-material/Close';
+import ArrowBack from '@mui/icons-material/ArrowBack';
 
 import { IconButton as IconButtonComponent } from '../../buttons/IconButton';
 import { BlockPlaceholder } from '../../BlockPlaceholder';

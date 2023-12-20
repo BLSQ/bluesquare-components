@@ -8,9 +8,9 @@ import {
     object,
 } from 'prop-types';
 import React, { useCallback } from 'react';
-import { TreeView } from '@material-ui/lab';
-import { makeStyles } from '@material-ui/core/styles';
-import { CircularProgress, Box } from '@material-ui/core';
+import { TreeView } from '@mui/x-tree-view';
+import { makeStyles } from '@mui/styles';
+import { CircularProgress, Box } from '@mui/material';
 import { EnrichedTreeItem } from './EnrichedTreeItem';
 import { useRootData } from './requests';
 

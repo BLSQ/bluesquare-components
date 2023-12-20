@@ -1,5 +1,5 @@
 import { ReactNode, FunctionComponent } from 'react';
-declare type Props = {
+type Props = {
     id: string | number;
     children: ReactNode;
 };

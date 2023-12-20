@@ -1,6 +1,6 @@
 import React from 'react';
-import RemoveIcon from '@material-ui/icons/Remove';
-import AddIcon from '@material-ui/icons/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+import AddIcon from '@mui/icons-material/Add';
 import { capitalize } from './index';
 import { InfoHeader } from '../components/table/InfoHeader';
 

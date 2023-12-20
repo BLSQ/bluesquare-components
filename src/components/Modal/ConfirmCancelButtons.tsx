@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { Button } from '@material-ui/core';
+import { Button } from '@mui/material';
 import React, { FunctionComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { IntlMessage } from '../../types/types';

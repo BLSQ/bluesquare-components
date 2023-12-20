@@ -6,7 +6,7 @@ import {
     FormLabel,
     FormControlLabel,
     Radio,
-} from '@material-ui/core';
+} from '@mui/material';
 
 const RadioComponent = ({
     options,

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Box from '@material-ui/core/Box';
-import MenuItem from '@material-ui/core/MenuItem';
-import { makeStyles } from '@material-ui/core/styles';
-import Select from '@material-ui/core/Select';
-import FormControl from '@material-ui/core/FormControl';
+import Box from '@mui/material/Box';
+import MenuItem from '@mui/material/MenuItem';
+import { makeStyles } from '@mui/styles';
+import Select from '@mui/material/Select';
+import FormControl from '@mui/material/FormControl';
 import classNames from 'classnames';
 
 import { useSafeIntl } from '../../../utils/useSafeIntl';

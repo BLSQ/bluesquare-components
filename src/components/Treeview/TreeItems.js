@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TreeItem } from '@material-ui/lab';
-import ArrowRightIcon from '@material-ui/icons/ArrowRight';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import { TreeItem } from '@mui/x-tree-view';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 const determineClassName = (items, nextItems, disabled, style) => {
     const baseClass = disabled ? `${style.disabled} ` : '';

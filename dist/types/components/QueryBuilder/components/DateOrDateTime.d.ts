@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-declare type Props = {
+type Props = {
     setValue: (newDate: string) => void;
     dateValue: string | undefined;
     withTime?: boolean;

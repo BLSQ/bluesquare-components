@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles, Typography, Box } from '@material-ui/core';
-import FormControl from '@material-ui/core/FormControl';
+import FormControl from '@mui/material/FormControl';
+import { withStyles } from '@mui/styles';
+import { Typography, Box } from '@mui/material';
 import classNames from 'classnames';
 
 const styles = theme => ({

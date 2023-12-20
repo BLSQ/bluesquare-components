@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { IconButton, withStyles, Box, List, Grid } from '@material-ui/core';
-import ListItem from '@material-ui/core/ListItem';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import Fab from '@material-ui/core/Fab';
+import { IconButton, Box, List, Grid } from '@mui/material';
+import { withStyles } from '@mui/styles';
+import ListItem from '@mui/material/ListItem';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import Fab from '@mui/material/Fab';
 
-import DeleteIcon from '@material-ui/icons/Delete';
-import Add from '@material-ui/icons/Add';
+import DeleteIcon from '@mui/icons-material/Delete';
+import Add from '@mui/icons-material/Add';
 
 import { commonStyles } from '../../../styles/iaso/common.ts';
 
@@ -23,33 +24,33 @@ const styles = theme => ({
     },
     list: {
         width: '100%',
-        padding: '0',
+        padding: '0 !important',
     },
     listItem: {
         height: 55,
-        width: '100%',
-        position: 'relative',
-        display: 'flex',
-        alignItems: 'center',
-        padding: '0',
+        width: '100% !important',
+        position: 'relative !important',
+        display: 'flex !important',
+        alignItems: 'center !important',
+        padding: '0 !important',
         marginBottom: theme.spacing(1),
     },
     addListItem: {
         height: 55,
-        width: '100%',
-        position: 'relative',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        padding: '0',
+        width: '100% !important',
+        position: 'relative !important',
+        display: 'flex !important',
+        alignItems: 'center !important',
+        justifyContent: 'flex-end !important',
+        padding: '0 !important',
         marginBottom: theme.spacing(2),
     },
     input: {
-        width: '95%',
+        width: '95% ',
         marginLeft: '5%',
     },
     deleteIcon: {
-        position: 'absolute',
+        position: 'absolute !important',
         right: theme.spacing(1),
     },
 });
@@ -97,7 +98,7 @@ class ArrayFieldInput extends Component {
             fieldList.length > 0 &&
             fieldList[fieldList.length - 1].value === '';
         return (
-            <Grid container spacing={0} className={classes.marginTop}>
+            <Grid container spacing={0}>
                 <Grid item xs={1}>
                     <span className={classes.label}>{label}:</span>
                 </Grid>

@@ -2,7 +2,8 @@ import React, { FunctionComponent } from 'react';
 import { defineMessages } from 'react-intl';
 import classNames from 'classnames';
 
-import { Box, makeStyles, Typography, InputLabel } from '@material-ui/core';
+import { Box, Typography, InputLabel } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { FormControl } from './FormControl';
 
 import { IconButton as IconButtonComponent } from '../buttons/IconButton';

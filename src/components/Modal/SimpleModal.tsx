@@ -5,8 +5,8 @@ import {
     DialogActions,
     DialogContent,
     DialogTitle,
-    makeStyles,
-} from '@material-ui/core';
+} from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { FormattedMessage } from 'react-intl';
 import { commonStyles } from '../../styles/iaso/common';
 import { IntlMessage } from '../../types/types';

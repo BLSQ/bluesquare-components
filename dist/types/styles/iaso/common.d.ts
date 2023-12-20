@@ -1,6 +1,6 @@
-import { CSSProperties } from '@material-ui/core/styles/withStyles';
-import { Theme } from '@material-ui/core/styles';
-export declare type CommonStyles = {
+import { CSSProperties } from '@mui/material/styles/createTypography';
+import { Theme } from '@mui/material/styles';
+export type CommonStyles = {
     (theme: Theme): {
         [key: string]: CSSProperties;
     };

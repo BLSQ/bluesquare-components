@@ -1,5 +1,5 @@
 import React from 'react';
-import Chip from '@material-ui/core/Chip';
+import Chip from '@mui/material/Chip';
 
 export const defaultRenderTags = getLabel => (tagValue, getTagProps) =>
     tagValue.map((option, index) => (
@@ -22,7 +22,7 @@ export const getExtraProps = (
     const extraProps = {
         getOptionLabel:
             getOptionLabel || (option => option?.label ?? option.toString()),
-        getOptionSelected:
+        isOptionEqualToValue:
             getOptionSelected ||
             ((option, val) => {
                 if (val?.value) {

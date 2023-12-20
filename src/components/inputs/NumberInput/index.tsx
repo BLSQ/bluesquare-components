@@ -36,6 +36,7 @@ type Props = {
     ) => void;
     prefix?: string;
     decimalScale?: number;
+    placeholder?: string;
     setFieldError?: (
         // eslint-disable-next-line no-unused-vars
         keyValue: string,
@@ -45,7 +46,7 @@ type Props = {
 };
 export const NumberInput: FunctionComponent<Props> = ({
     keyValue,
-    label = '',
+    label,
     errors = [],
     required = false,
     value = '',
@@ -57,6 +58,7 @@ export const NumberInput: FunctionComponent<Props> = ({
     max = Infinity,
     prefix = '',
     decimalScale = 10,
+    placeholder,
     setFieldError = () => null,
 }) => {
     const { formatMessage } = useSafeIntl();
@@ -99,6 +101,7 @@ export const NumberInput: FunctionComponent<Props> = ({
             min={min}
             max={max}
             errors={errors}
+            placeholder={placeholder}
             keyValue={keyValue}
             label={label}
             decimalScale={decimalScale}

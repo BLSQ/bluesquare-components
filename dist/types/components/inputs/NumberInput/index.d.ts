@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-declare type Props = {
+type Props = {
     keyValue: string;
     errors?: string[];
     value?: string | number;
@@ -13,6 +13,7 @@ declare type Props = {
     onChange: (newValue: number | undefined) => void;
     prefix?: string;
     decimalScale?: number;
+    placeholder?: string;
     setFieldError?: (keyValue: string, message: string) => void;
 };
 export declare const NumberInput: FunctionComponent<Props>;

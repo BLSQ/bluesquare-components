@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Tooltip, withStyles } from '@material-ui/core';
+import { Tooltip } from '@mui/material';
+import { withStyles } from '@mui/styles';
 import { styles } from './styles';
 
 function HeaderRowIcon({ IconComponent, title, classes }) {

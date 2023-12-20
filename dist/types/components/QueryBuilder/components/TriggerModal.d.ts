@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 import { IntlMessage } from '../../../types/types';
-declare type Props = {
+type Props = {
     label: IntlMessage;
     value: string;
     onClick: () => void;

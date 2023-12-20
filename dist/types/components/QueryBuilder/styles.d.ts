@@ -268,6 +268,25 @@ declare const styles: (theme: any) => {
             alignItems: string;
             marginRight: string;
         };
+        '& .rule--field-wrapper': {
+            width: string;
+            display: string;
+        };
+        '& .rule--field': {
+            width: string;
+        };
+        '& .rule--value': {
+            width: string;
+        };
+        '& .rule--widget': {
+            width: string;
+        };
+        '& .MuiAutocomplete-clearIndicator': {
+            top: string;
+        };
+        '& .widget--widget': {
+            width: string;
+        };
         '& .rule--field, .group--field, .rule--operator, .rule--value, .rule--operator-options, .rule--widget, .widget--widget, .widget--valuesrc, .widget--sep, .operator--options--sep, .rule--before-widget, .rule--after-widget': {
             display: string;
         };
@@ -441,9 +460,8 @@ declare const styles: (theme: any) => {
         '& .MuiOutlinedInput-input': {
             padding: string;
         };
-        '& .MuiAutocomplete-root': {
-            width: string;
-            minWidth: string;
+        '& .MuiInputBase-root': {
+            minHeight: number;
         };
         '& .rule--widget--CURRENTDATETIME .widget--valuesrc': {
             display: string;
@@ -454,5 +472,5 @@ declare const styles: (theme: any) => {
         top: number;
     };
 };
-declare const useStyles: (props?: any) => import("@material-ui/styles").ClassNameMap<"radio" | "root">;
+declare const useStyles: (props?: any) => import("@mui/styles").ClassNameMap<"radio" | "root">;
 export { styles, useStyles };

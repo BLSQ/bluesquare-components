@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Avatar, Grid, Typography } from '@material-ui/core';
+import { Avatar, Grid, Typography } from '@mui/material';
 import moment from 'moment';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { MESSAGES } from './messages';

@@ -1,6 +1,6 @@
 import React from 'react';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import { withStyles } from '@material-ui/core';
+import CircularProgress from '@mui/material/CircularProgress';
+import { withStyles } from '@mui/styles';
 
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -20,12 +20,12 @@ const styles = () => ({
     rootFixed: {
         ...baseRoot,
         position: 'fixed',
-        zIndex: '1000',
+        zIndex: '10000',
     },
     rootAbsolute: {
         ...baseRoot,
         position: 'absolute',
-        zIndex: '500',
+        zIndex: '10000',
     },
     root: {
         ...baseRoot,

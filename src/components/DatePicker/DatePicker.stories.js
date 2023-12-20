@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { IntlProvider } from 'react-intl';
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import { MuiPickersUtilsProvider } from '@mui/x-date-pickers';
 import MomentUtils from '@date-io/moment';
 import { DatePicker } from './index';
 

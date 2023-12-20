@@ -1,4 +1,4 @@
-export declare type QueryBuilderListToReplace = {
+export type QueryBuilderListToReplace = {
     color: string;
     items: string[];
 };

@@ -1,5 +1,5 @@
-import { CSSProperties } from '@material-ui/core/styles/withStyles';
-import { Theme } from '@material-ui/core/styles';
+import { CSSProperties } from '@mui/material/styles/createTypography';
+import { Theme } from '@mui/material/styles';
 import { mapStyles } from './map';
 import {
     MENU_HEIGHT_WITH_TABS,
@@ -77,16 +77,16 @@ export const commonStyles: CommonStyles = theme => ({
         marginBottom: theme.spacing(4),
     },
     marginLeft: {
-        marginLeft: theme.spacing(2),
+        marginLeft: `${theme.spacing(2)} !important`,
     },
     marginRight: {
-        marginRight: theme.spacing(2),
+        marginRight: `${theme.spacing(2)} !important`,
     },
     marginTop: {
-        marginTop: theme.spacing(2),
+        marginTop: `${theme.spacing(2)} !important`,
     },
     marginTopBig: {
-        marginTop: theme.spacing(4),
+        marginTop: `${theme.spacing(4)} !important`,
     },
     justifyFlexEnd: {
         display: 'flex',

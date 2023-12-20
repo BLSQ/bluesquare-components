@@ -1,14 +1,14 @@
 import React, { ComponentType, FunctionComponent } from 'react';
-declare type ModalComponentProps = {
+type ModalComponentProps = {
     closeDialog: () => void;
     isOpen: boolean;
 };
-declare type ButtonComponentProps = {
+type ButtonComponentProps = {
     onClick: () => void;
 };
-declare type ModalProps<T extends ModalComponentProps> = Omit<T, 'closeDialog' | 'isOpen'>;
-declare type ButtonProps<T extends ButtonComponentProps> = Omit<T, 'onClick'>;
-declare type FullModalProps<T extends ModalComponentProps, U extends ButtonComponentProps> = ModalProps<T> & {
+type ModalProps<T extends ModalComponentProps> = Omit<T, 'closeDialog' | 'isOpen'>;
+type ButtonProps<T extends ButtonComponentProps> = Omit<T, 'onClick'>;
+type FullModalProps<T extends ModalComponentProps, U extends ButtonComponentProps> = ModalProps<T> & {
     defaultOpen?: boolean;
     iconProps: ButtonProps<U>;
 };

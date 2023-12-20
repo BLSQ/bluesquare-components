@@ -1,94 +1,100 @@
 import React, { useMemo } from 'react';
 import moment from 'moment';
 
-import MaterialConfig from 'react-awesome-query-builder/lib/config/material';
-import { Config } from 'react-awesome-query-builder';
+import { Config, MuiConfig } from '@react-awesome-query-builder/mui';
 
+import { useTheme } from '@mui/styles';
+import { Box } from '@mui/material';
 import { QueryBuilderDatePicker } from '../components/QueryBuilderDatePicker';
 
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { MESSAGES } from '../messages';
 import { apiDateFormat } from '../constants';
+import { TextInput } from '../../inputs/TextInput';
+import { NumberInput } from '../../inputs/NumberInput';
+import { Select } from '../../inputs/Select';
+import { TimePicker } from '../../inputs/TimePicker';
 
 export const useTranslatedConfig = (
     currentDateString?: string,
     currentDateTimeString?: string,
 ): Config => {
     const { formatMessage } = useSafeIntl();
+    const theme = useTheme();
     return useMemo(
         () => ({
-            ...MaterialConfig,
+            ...MuiConfig,
             conjunctions: {
-                ...MaterialConfig.conjunctions,
+                ...MuiConfig.conjunctions,
                 AND: {
-                    ...MaterialConfig.conjunctions.AND,
+                    ...MuiConfig.conjunctions.AND,
                     label: 'And',
                 },
                 OR: {
-                    ...MaterialConfig.conjunctions.OR,
+                    ...MuiConfig.conjunctions.OR,
                     label: 'Or',
                 },
             },
             operators: {
-                ...MaterialConfig.operators,
+                ...MuiConfig.operators,
                 like: {
-                    ...MaterialConfig.operators.like,
+                    ...MuiConfig.operators.like,
                     label: formatMessage(MESSAGES.contains),
                 },
                 not_like: {
-                    ...MaterialConfig.operators.not_like,
+                    ...MuiConfig.operators.not_like,
                     label: formatMessage(MESSAGES.notLike),
                 },
                 starts_with: {
-                    ...MaterialConfig.operators.starts_with,
+                    ...MuiConfig.operators.starts_with,
                     label: formatMessage(MESSAGES.startsWith),
                 },
                 ends_with: {
-                    ...MaterialConfig.operators.ends_with,
+                    ...MuiConfig.operators.ends_with,
                     label: formatMessage(MESSAGES.endsWith),
                 },
                 between: {
-                    ...MaterialConfig.operators.between,
+                    ...MuiConfig.operators.between,
                     label: formatMessage(MESSAGES.between),
                 },
                 not_between: {
-                    ...MaterialConfig.operators.not_between,
+                    ...MuiConfig.operators.not_between,
                     label: formatMessage(MESSAGES.notBetween),
                 },
                 is_empty: {
-                    ...MaterialConfig.operators.is_empty,
+                    ...MuiConfig.operators.is_empty,
                     label: formatMessage(MESSAGES.isEmpty),
                 },
                 is_not_empty: {
-                    ...MaterialConfig.operators.is_not_empty,
+                    ...MuiConfig.operators.is_not_empty,
                     label: formatMessage(MESSAGES.isNotEmpty),
                 },
                 is_null: {
-                    ...MaterialConfig.operators.is_null,
+                    ...MuiConfig.operators.is_null,
                     label: formatMessage(MESSAGES.isNull),
                 },
                 is_not_null: {
-                    ...MaterialConfig.operators.is_not_null,
+                    ...MuiConfig.operators.is_not_null,
                     label: formatMessage(MESSAGES.isNotNull),
                 },
                 select_any_in: {
-                    ...MaterialConfig.operators.select_any_in,
+                    ...MuiConfig.operators.select_any_in,
                     label: formatMessage(MESSAGES.anyIn),
                 },
                 select_not_any_in: {
-                    ...MaterialConfig.operators.select_not_any_in,
+                    ...MuiConfig.operators.select_not_any_in,
                     label: formatMessage(MESSAGES.notAnyIn),
                 },
                 multiselect_equals: {
-                    ...MaterialConfig.operators.multiselect_equals,
+                    ...MuiConfig.operators.multiselect_equals,
                     label: formatMessage(MESSAGES.equals),
                 },
                 multiselect_not_equals: {
-                    ...MaterialConfig.operators.multiselect_not_equals,
+                    ...MuiConfig.operators.multiselect_not_equals,
                     label: formatMessage(MESSAGES.notEquals),
                 },
                 proximity: {
-                    ...MaterialConfig.operators.proximity,
+                    ...MuiConfig.operators.proximity,
                     label: formatMessage(MESSAGES.proximity),
                     valueLabels: [
                         {
@@ -105,7 +111,7 @@ export const useTranslatedConfig = (
                         },
                     ],
                     options: {
-                        ...MaterialConfig.operators.proximity.options,
+                        ...MuiConfig.operators.proximity.options,
                         optionLabel: formatMessage(
                             MESSAGES.proximityOptionsLabel,
                         ),
@@ -119,71 +125,117 @@ export const useTranslatedConfig = (
                 },
                 some: {
                     // @ts-ignore
-                    ...MaterialConfig.operators.some,
+                    ...MuiConfig.operators.some,
                     label: formatMessage(MESSAGES.some),
                 },
                 all: {
                     // @ts-ignore
-                    ...MaterialConfig.operators.all,
+                    ...MuiConfig.operators.all,
                     label: formatMessage(MESSAGES.all),
                 },
                 none: {
                     // @ts-ignore
-                    ...MaterialConfig.operators.none,
+                    ...MuiConfig.operators.none,
                     label: formatMessage(MESSAGES.none),
                 },
             },
             widgets: {
-                ...MaterialConfig.widgets,
+                ...MuiConfig.widgets,
                 text: {
-                    ...MaterialConfig.widgets.text,
-                    valueLabel: formatMessage(MESSAGES.textLabel),
-                    valuePlaceholder: formatMessage(MESSAGES.textPlaceholder),
+                    ...MuiConfig.widgets.text,
+                    // @ts-ignore
+                    factory: ({ setValue, value, field }) => (
+                        <TextInput
+                            keyValue={`${field}`}
+                            onChange={setValue}
+                            value={value}
+                            placeholder={formatMessage(
+                                MESSAGES.textPlaceholder,
+                            )}
+                        />
+                    ),
                 },
                 textarea: {
-                    ...MaterialConfig.widgets.textarea,
-                    valueLabel: formatMessage(MESSAGES.texareaLabel),
-                    valuePlaceholder: formatMessage(
-                        MESSAGES.textareaPlaceholder,
+                    ...MuiConfig.widgets.textarea,
+                    // @ts-ignore
+                    factory: ({ setValue, value, field }) => (
+                        <TextInput
+                            keyValue={`${field}`}
+                            onChange={setValue}
+                            value={value}
+                            multiline
+                            placeholder={formatMessage(
+                                MESSAGES.textareaPlaceholder,
+                            )}
+                        />
                     ),
                 },
                 number: {
-                    ...MaterialConfig.widgets.number,
-                    valueLabel: formatMessage(MESSAGES.numberLabel),
-                    valuePlaceholder: formatMessage(MESSAGES.numberPlaceholder),
-                    // valuePlaceholder: ' ',
-                    valueLabels: [
-                        {
-                            label: formatMessage(MESSAGES.numberFromLabel),
-                            placeholder: formatMessage(
-                                MESSAGES.numberFromPlaceholder,
-                            ),
-                        },
-                        {
-                            label: formatMessage(MESSAGES.numberToLabel),
-                            placeholder: formatMessage(
-                                MESSAGES.numberToPlaceholder,
-                            ),
-                        },
-                    ],
+                    ...MuiConfig.widgets.number,
+                    // @ts-ignore
+                    factory: ({ setValue, value, field }) => (
+                        <Box display="inline-block" width="150px">
+                            <NumberInput
+                                keyValue={`${field}`}
+                                onChange={setValue}
+                                value={value}
+                                placeholder={formatMessage(
+                                    MESSAGES.numberPlaceholder,
+                                )}
+                            />
+                        </Box>
+                    ),
                 },
                 slider: {
-                    ...MaterialConfig.widgets.slider,
+                    ...MuiConfig.widgets.slider,
                     valueLabel: formatMessage(MESSAGES.numberLabel),
                     valuePlaceholder: formatMessage(MESSAGES.sliderPlaceholder),
                 },
                 select: {
-                    ...MaterialConfig.widgets.select,
-                    valueLabel: formatMessage(MESSAGES.value),
-                    valuePlaceholder: formatMessage(MESSAGES.selectValue),
+                    ...MuiConfig.widgets.select,
+                    // @ts-ignore
+                    factory: ({ setValue, value, field, listValues }) => (
+                        <Box display="inline-block" width="100%">
+                            <Select
+                                placeholder={formatMessage(
+                                    MESSAGES.selectValue,
+                                )}
+                                value={value}
+                                keyValue={`${field}`}
+                                multi={false}
+                                options={(listValues || []).map(listValue => ({
+                                    value: listValue.value,
+                                    label: listValue.title,
+                                }))}
+                                onChange={setValue}
+                            />
+                        </Box>
+                    ),
                 },
                 multiselect: {
-                    ...MaterialConfig.widgets.multiselect,
-                    valueLabel: formatMessage(MESSAGES.values),
+                    ...MuiConfig.widgets.multiselect,
                     valuePlaceholder: formatMessage(MESSAGES.selectValues),
+                    // @ts-ignore
+                    factory: ({ setValue, value, field, listValues }) => (
+                        <Box display="inline-block" width="100%">
+                            <Select
+                                placeholder={formatMessage(
+                                    MESSAGES.selectValues,
+                                )}
+                                value={value}
+                                keyValue={`${field}`}
+                                multi
+                                options={(listValues || []).map(listValue => ({
+                                    value: listValue.value,
+                                    label: listValue.title,
+                                }))}
+                                onChange={setValue}
+                            />
+                        </Box>
+                    ),
                 },
                 date: {
-                    ...MaterialConfig.widgets.date,
+                    ...MuiConfig.widgets.date,
                     // @ts-ignore
                     factory: ({ setValue, value }) => (
                         <QueryBuilderDatePicker
@@ -211,7 +263,7 @@ export const useTranslatedConfig = (
                     ],
                 },
                 currentDate: {
-                    ...MaterialConfig.widgets.text,
+                    ...MuiConfig.widgets.text,
                     // @ts-ignore
                     factory: ({ setValue, value }) => (
                         <QueryBuilderDatePicker
@@ -225,7 +277,7 @@ export const useTranslatedConfig = (
                     valuePlaceholder: formatMessage(MESSAGES.datePlaceholder),
                 },
                 currentDatetime: {
-                    ...MaterialConfig.widgets.text,
+                    ...MuiConfig.widgets.text,
                     // @ts-ignore
                     factory: ({ setValue, value }) => (
                         <QueryBuilderDatePicker
@@ -240,7 +292,7 @@ export const useTranslatedConfig = (
                     valuePlaceholder: formatMessage(MESSAGES.datePlaceholder),
                 },
                 time: {
-                    ...MaterialConfig.widgets.time,
+                    ...MuiConfig.widgets.time,
                     timeFormat: 'HH:mm',
                     valueFormat: 'HH:mm:ss',
                     valueLabel: formatMessage(MESSAGES.time),
@@ -259,9 +311,24 @@ export const useTranslatedConfig = (
                             ),
                         },
                     ],
+                    // @ts-ignore
+                    factory: ({ setValue, value }) => (
+                        <Box display="inline-block" width={150}>
+                            <TimePicker
+                                value={value ? moment(value, 'HH:mm') : null}
+                                onChange={newValue =>
+                                    setValue(
+                                        newValue
+                                            ? newValue.format('HH:mm')
+                                            : undefined,
+                                    )
+                                }
+                            />
+                        </Box>
+                    ),
                 },
                 datetime: {
-                    ...MaterialConfig.widgets.datetime,
+                    ...MuiConfig.widgets.datetime,
                     timeFormat: 'HH:mm',
                     dateFormat: 'DD.MM.YYYY',
                     valueFormat: 'YYYY-MM-DD HH:mm:ss',
@@ -293,22 +360,22 @@ export const useTranslatedConfig = (
                     ],
                 },
                 boolean: {
-                    ...MaterialConfig.widgets.boolean,
+                    ...MuiConfig.widgets.boolean,
                     labelYes: formatMessage(MESSAGES.yes),
                     labelNo: formatMessage(MESSAGES.no),
                 },
                 field: {
-                    ...MaterialConfig.widgets.field,
+                    ...MuiConfig.widgets.field,
                     valueLabel: formatMessage(MESSAGES.fieldCompare),
                     valuePlaceholder: formatMessage(MESSAGES.fieldPlaceholder),
                 },
                 func: {
-                    ...MaterialConfig.widgets.func,
+                    ...MuiConfig.widgets.func,
                     valueLabel: formatMessage(MESSAGES.function),
                     valuePlaceholder: formatMessage(MESSAGES.selectFunction),
                 },
                 rangeslider: {
-                    ...MaterialConfig.widgets.rangeslider,
+                    ...MuiConfig.widgets.rangeslider,
                     valueLabel: formatMessage(MESSAGES.function),
                     valuePlaceholder: formatMessage(MESSAGES.selectFunction),
                     valueLabels: [
@@ -328,48 +395,49 @@ export const useTranslatedConfig = (
                 },
             },
             types: {
-                ...MaterialConfig.types,
+                ...MuiConfig.types,
                 '!group': {
-                    ...MaterialConfig.types['!group'],
+                    ...MuiConfig.types['!group'],
                     widgets: {
-                        ...MaterialConfig.types['!group'].widgets,
-                        number: {
-                            ...MaterialConfig.types['!group'].widgets.number,
-                            opProps: {
-                                equal: {
-                                    label: formatMessage(MESSAGES.countEqual),
-                                },
-                                not_equal: {
-                                    label: formatMessage(
-                                        MESSAGES.countNotEqual,
-                                    ),
-                                },
-                                less: {
-                                    label: formatMessage(MESSAGES.countLess),
-                                },
-                                less_or_equal: {
-                                    label: formatMessage(
-                                        MESSAGES.countLessOrEqual,
-                                    ),
-                                },
-                                greater: {
-                                    label: formatMessage(MESSAGES.countGreater),
-                                },
-                                greater_or_equal: {
-                                    label: formatMessage(
-                                        MESSAGES.countGreaterOrEqual,
-                                    ),
-                                },
-                                between: {
-                                    label: formatMessage(MESSAGES.countBetween),
-                                },
-                                not_between: {
-                                    label: formatMessage(
-                                        MESSAGES.countNotBetween,
-                                    ),
-                                },
-                            },
-                        },
+                        ...MuiConfig.types['!group'].widgets,
+                        // comment this as unused for now
+                        // number: {
+                        //     ...MuiConfig.types['!group'].widgets.number,
+                        //     opProps: {
+                        //         equal: {
+                        //             label: formatMessage(MESSAGES.countEqual),
+                        //         },
+                        //         not_equal: {
+                        //             label: formatMessage(
+                        //                 MESSAGES.countNotEqual,
+                        //             ),
+                        //         },
+                        //         less: {
+                        //             label: formatMessage(MESSAGES.countLess),
+                        //         },
+                        //         less_or_equal: {
+                        //             label: formatMessage(
+                        //                 MESSAGES.countLessOrEqual,
+                        //             ),
+                        //         },
+                        //         greater: {
+                        //             label: formatMessage(MESSAGES.countGreater),
+                        //         },
+                        //         greater_or_equal: {
+                        //             label: formatMessage(
+                        //                 MESSAGES.countGreaterOrEqual,
+                        //             ),
+                        //         },
+                        //         between: {
+                        //             label: formatMessage(MESSAGES.countBetween),
+                        //         },
+                        //         not_between: {
+                        //             label: formatMessage(
+                        //                 MESSAGES.countNotBetween,
+                        //             ),
+                        //         },
+                        //     },
+                        // },
                     },
                 },
                 currentDate: {
@@ -406,9 +474,12 @@ export const useTranslatedConfig = (
                 },
             },
             settings: {
-                ...MaterialConfig.settings,
+                ...MuiConfig.settings,
+                theme: {
+                    mui: theme,
+                },
                 valueSourcesInfo: {
-                    ...MaterialConfig.settings.valueSourcesInfo,
+                    ...MuiConfig.settings.valueSourcesInfo,
                     value: {
                         label: formatMessage(MESSAGES.value),
                     },
@@ -422,9 +493,42 @@ export const useTranslatedConfig = (
                     },
                 },
                 locale: {
-                    ...MaterialConfig.settings.locale,
+                    ...MuiConfig.settings.locale,
                     moment: moment.locale(),
                 },
+                // @ts-ignore
+                renderField: ({ items, setField, id, selectedKey }) => (
+                    <Box display="inline-block" width="100%">
+                        <Select
+                            placeholder={formatMessage(MESSAGES.selectField)}
+                            keyValue={`${id}`}
+                            multi={false}
+                            options={(items || []).map(item => ({
+                                value: item.key,
+                                label: item.label,
+                            }))}
+                            onChange={setField}
+                            value={selectedKey}
+                        />
+                    </Box>
+                ),
+                // @ts-ignore
+                renderOperator: ({ items, setField, id, selectedKey }) => (
+                    <Box display="inline-block" width={95}>
+                        <Select
+                            placeholder={formatMessage(MESSAGES.selectField)}
+                            clearable={false}
+                            keyValue={`${id}`}
+                            multi={false}
+                            options={(items || []).map(item => ({
+                                value: item.key,
+                                label: item.label,
+                            }))}
+                            onChange={setField}
+                            value={selectedKey}
+                        />
+                    </Box>
+                ),
                 valueLabel: formatMessage(MESSAGES.value),
                 valuePlaceholder: formatMessage(MESSAGES.value),
                 fieldLabel: formatMessage(MESSAGES.field),
@@ -447,6 +551,6 @@ export const useTranslatedConfig = (
                 ),
             },
         }),
-        [formatMessage],
+        [currentDateString, currentDateTimeString, formatMessage, theme],
     );
 };

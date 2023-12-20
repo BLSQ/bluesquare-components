@@ -8,13 +8,13 @@ import {
     array,
     oneOfType,
 } from 'prop-types';
-import { TreeItem } from '@material-ui/lab';
-import ArrowRightIcon from '@material-ui/icons/ArrowRight';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import CheckBoxOutlineBlankOutlinedIcon from '@material-ui/icons/CheckBoxOutlineBlankOutlined';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
-import IndeterminateCheckBoxIcon from '@material-ui/icons/IndeterminateCheckBox';
-import { makeStyles } from '@material-ui/core/styles';
+import { TreeItem } from '@mui/x-tree-view';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import CheckBoxOutlineBlankOutlinedIcon from '@mui/icons-material/CheckBoxOutlineBlankOutlined';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox';
+import { makeStyles } from '@mui/styles';
 import { useChildrenData } from './requests';
 
 const styles = theme => ({
@@ -79,7 +79,13 @@ const EnrichedTreeItem = ({
         );
     };
 
-    const makeLabel = (child, hasCheckbox, hasBeenTicked, tickedParent) => (
+    const makeLabel = (
+        child,
+        hasCheckbox,
+        hasBeenTicked,
+        tickedParent,
+        handleClick = () => null,
+    ) => (
         <div
             style={{
                 display: 'inline-flex',
@@ -88,7 +94,9 @@ const EnrichedTreeItem = ({
             }}
         >
             {makeIcon(hasCheckbox, hasBeenTicked, tickedParent)}
-            {child}
+            <span onClick={handleClick} tabIndex={0} role="button">
+                {child}
+            </span>
         </div>
     );
 
@@ -164,13 +172,13 @@ const EnrichedTreeItem = ({
                         withCheckbox,
                         isTicked,
                         isTickedParent,
+                        handleLabelClick,
                     )}
                     nodeId={id}
                     collapseIcon={
                         <ArrowDropDownIcon style={{ fontSize: '24px' }} />
                     }
                     expandIcon={<ArrowRightIcon style={{ fontSize: '24px' }} />}
-                    onLabelClick={handleLabelClick}
                 >
                     {childrenData && isExpanded && makeSubTree(childrenData)}
                     {!isExpanded && <div />}
@@ -187,13 +195,18 @@ const EnrichedTreeItem = ({
                         : classes.unselectableTreeItem,
                 }}
                 ref={ref}
-                label={makeLabel(label(data), withCheckbox, isTicked)}
+                label={makeLabel(
+                    label(data),
+                    withCheckbox,
+                    isTicked,
+                    undefined,
+                    handleLabelClick,
+                )}
                 nodeId={id}
                 collapseIcon={
                     <ArrowDropDownIcon style={{ fontSize: '24px' }} />
                 }
                 expandIcon={<ArrowRightIcon style={{ fontSize: '24px' }} />}
-                onLabelClick={handleLabelClick}
             />
         </div>
     );

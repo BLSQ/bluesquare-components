@@ -1,6 +1,6 @@
 import { ReactNode, FunctionComponent } from 'react';
 import { HandleProps } from './types';
-declare type Props = {
+type Props = {
     id: string;
     children: (handleProps?: HandleProps) => ReactNode;
     handle?: boolean;

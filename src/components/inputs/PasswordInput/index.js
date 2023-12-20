@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import {
-    OutlinedInput,
-    Tooltip,
-    IconButton,
-    withStyles,
-} from '@material-ui/core';
-import Edit from '@material-ui/icons/RemoveRedEye';
+import { OutlinedInput, Tooltip, IconButton } from '@mui/material';
+import { withStyles } from '@mui/styles';
+import Edit from '@mui/icons-material/RemoveRedEye';
 import { FormControl } from '../FormControl';
 import { InputLabel } from '../InputLabel';
 import { useSafeIntl } from '../../../utils/useSafeIntl';

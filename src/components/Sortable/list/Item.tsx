@@ -1,6 +1,6 @@
 import React, { ReactNode, FunctionComponent } from 'react';
 import { useSortable } from '@dnd-kit/sortable';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 import { CSS, Transform } from '@dnd-kit/utilities';
 import classNames from 'classnames';
 

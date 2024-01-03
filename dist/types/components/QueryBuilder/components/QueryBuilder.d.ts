@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
-import { JsonLogicTree, Fields } from 'react-awesome-query-builder';
-declare type Props = {
+import { JsonLogicTree, Fields } from '@react-awesome-query-builder/mui';
+type Props = {
     logic?: JsonLogicTree;
     fields: Fields;
     onChange: (jsonLogic: JsonLogicTree) => void;

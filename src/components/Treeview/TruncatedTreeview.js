@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { func, any, bool } from 'prop-types';
-import { TreeView } from '@material-ui/lab';
-import { makeStyles } from '@material-ui/core/styles';
+import { TreeView } from '@mui/x-tree-view';
+import { makeStyles } from '@mui/styles';
 import TreeItems from './TreeItems';
 
 const alignTailIcon = { display: 'flex', alignItems: 'center' };
@@ -50,9 +50,7 @@ const styles = theme => ({
         },
     },
 });
-
 const useStyles = makeStyles(styles);
-
 const TruncatedTreeview = ({ selectedItems, label, redirect, disabled }) => {
     const style = useStyles();
     const mouseDownTime = useRef();

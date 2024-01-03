@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import { defineMessages } from 'react-intl';
 
-import { makeStyles } from '@material-ui/core/styles';
-import { Box } from '@material-ui/core';
+import { makeStyles } from '@mui/styles';
+import { Box } from '@mui/material';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 
 const MESSAGES = defineMessages({

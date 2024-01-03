@@ -8,11 +8,11 @@ import {
     IconButton,
     InputBase,
     Tooltip,
-} from '@material-ui/core';
-import Close from '@material-ui/icons/Close';
-import ArrowBack from '@material-ui/icons/ArrowBack';
-import ViewColumnIcon from '@material-ui/icons/ViewColumn';
-import { makeStyles } from '@material-ui/core/styles';
+} from '@mui/material';
+import Close from '@mui/icons-material//Close';
+import ArrowBack from '@mui/icons-material//ArrowBack';
+import ViewColumnIcon from '@mui/icons-material//ViewColumn';
+import { makeStyles } from '@mui/styles';
 import { IconButton as IconButtonComponent } from '../../buttons/IconButton';
 
 import { MESSAGES } from './messages';

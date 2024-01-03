@@ -1,6 +1,7 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 import { commonStyles } from '../../../styles/iaso/common';
 
+// @ts-ignore
 export const useStyles = makeStyles(theme => ({
     tabs: {
         ...commonStyles(theme).tabs,
@@ -59,5 +60,9 @@ export const useStyles = makeStyles(theme => ({
         display: 'flex',
         alignItems: 'center',
         marginBottom: ' 0 !important',
+    },
+    tab: {
+        display: 'flex !important',
+        flexDirection: 'row-reverse !important',
     },
 }));

@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ClickAwayListener } from '@material-ui/core';
-import { SpeedDial, SpeedDialAction } from '@material-ui/lab';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import { ClickAwayListener, SpeedDial, SpeedDialAction } from '@mui/material';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import { useStyles } from './styles';
 
 const SelectionSpeedDials = ({

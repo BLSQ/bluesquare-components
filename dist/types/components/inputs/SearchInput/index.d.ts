@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-declare type Props = {
+type Props = {
     uid: string;
     label: string;
     keyValue: string;

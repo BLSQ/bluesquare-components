@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
-import Checkbox from '@material-ui/core/Checkbox';
+import Checkbox from '@mui/material/Checkbox';
 
 import { SelectionSpeedDials } from '../SelectionSpeedDials';
 import { useSafeIntl } from '../../../utils/useSafeIntl';

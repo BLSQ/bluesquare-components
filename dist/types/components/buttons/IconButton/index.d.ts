@@ -1,0 +1,67 @@
+export { styledIconButton as IconButton };
+declare const styledIconButton: React.JSXElementConstructor<Omit<Pick<Pick<{
+    classes: any;
+    disabled: any;
+    onClick: any;
+    url: any;
+    icon: any;
+    overrideIcon: any;
+    tooltipMessage: any;
+    color: any;
+    size: any;
+    id: any;
+    dataTestId: any;
+    iconSize: any;
+}, never> & Pick<PropTypes.InferProps<{
+    size: PropTypes.Requireable<string>;
+    classes: PropTypes.Validator<object>;
+    onClick: PropTypes.Requireable<(...args: any[]) => any>;
+    url: PropTypes.Requireable<string>;
+    disabled: PropTypes.Requireable<boolean>;
+    icon: PropTypes.Requireable<string>;
+    color: PropTypes.Requireable<string>;
+    overrideIcon: PropTypes.Requireable<any>;
+    tooltipMessage: PropTypes.Validator<object>;
+    id: PropTypes.Requireable<string>;
+    dataTestId: PropTypes.Requireable<string>;
+    iconSize: PropTypes.Requireable<string>;
+}>, "size" | "onClick" | "id" | "dataTestId" | "color" | "icon" | "disabled" | "url" | "overrideIcon" | "iconSize" | PropTypes.RequiredKeys<{
+    size: PropTypes.Requireable<string>;
+    classes: PropTypes.Validator<object>;
+    onClick: PropTypes.Requireable<(...args: any[]) => any>;
+    url: PropTypes.Requireable<string>;
+    disabled: PropTypes.Requireable<boolean>;
+    icon: PropTypes.Requireable<string>;
+    color: PropTypes.Requireable<string>;
+    overrideIcon: PropTypes.Requireable<any>;
+    tooltipMessage: PropTypes.Validator<object>;
+    id: PropTypes.Requireable<string>;
+    dataTestId: PropTypes.Requireable<string>;
+    iconSize: PropTypes.Requireable<string>;
+}>>, PropTypes.RequiredKeys<{
+    size: PropTypes.Requireable<string>;
+    classes: PropTypes.Validator<object>;
+    onClick: PropTypes.Requireable<(...args: any[]) => any>;
+    url: PropTypes.Requireable<string>;
+    disabled: PropTypes.Requireable<boolean>;
+    icon: PropTypes.Requireable<string>;
+    color: PropTypes.Requireable<string>;
+    overrideIcon: PropTypes.Requireable<any>;
+    tooltipMessage: PropTypes.Validator<object>;
+    id: PropTypes.Requireable<string>;
+    dataTestId: PropTypes.Requireable<string>;
+    iconSize: PropTypes.Requireable<string>;
+}>> & {
+    size?: string | null | undefined;
+    onClick?: ((...args: any[]) => any) | null | undefined;
+    id?: string | null | undefined;
+    dataTestId?: string | null | undefined;
+    color?: string | null | undefined;
+    icon?: string | null | undefined;
+    disabled?: boolean | null | undefined;
+    url?: string | null | undefined;
+    overrideIcon?: any;
+    iconSize?: string | null | undefined;
+} & {}, "classes"> & import("@mui/styles").StyledComponentProps<"white" | "popperFixed"> & object>;
+import PropTypes from "prop-types";
+import React from "react";

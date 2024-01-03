@@ -1,8 +1,8 @@
 import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import Box from '@material-ui/core/Box';
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import ClearIcon from '@material-ui/icons/Clear';
+import Box from '@mui/material/Box';
+import Autocomplete from '@mui/material/Autocomplete';
+import ClearIcon from '@mui/icons-material/Clear';
 
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { useKeyPressListener } from '../../../utils/useKeyPressListener';
@@ -61,7 +61,7 @@ const MultiSelect = ({
                 const missingValueError = !getMultiOption(
                     val,
                     options,
-                    extraProps.getOptionSelected,
+                    extraProps.isOptionEqualToValue,
                 );
                 if (missingValueError) {
                     tempErrors.push(
@@ -111,7 +111,7 @@ const MultiSelect = ({
                 onChange={handleChange}
                 loading={loading}
                 loadingText={formatMessage(loadingText)}
-                closeIcon={<ClearIcon />}
+                clearIcon={<ClearIcon />}
                 renderTags={renderTags}
                 renderInput={params => (
                     <TextInput

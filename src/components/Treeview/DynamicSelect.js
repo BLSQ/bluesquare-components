@@ -1,7 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import {
-    withStyles,
     Box,
     List,
     ListItem,
@@ -10,10 +9,11 @@ import {
     ClickAwayListener,
     Divider,
     Button,
-} from '@material-ui/core';
+} from '@mui/material';
+import { withStyles } from '@mui/styles';
 import { FormattedMessage } from 'react-intl';
 
-import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import { useSafeIntl } from '../../utils/useSafeIntl';
 import { SearchInput } from '../inputs/SearchInput';
 import { rawTheme } from '../../styles/iaso/theme';

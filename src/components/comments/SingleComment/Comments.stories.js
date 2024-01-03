@@ -1,4 +1,4 @@
-import { ThemeProvider } from '@material-ui/core';
+import { ThemeProvider } from '@mui/material';
 import { arrayOf, string } from 'prop-types';
 import React from 'react';
 import { IntlProvider } from 'react-intl';

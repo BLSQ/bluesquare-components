@@ -10,8 +10,8 @@ import {
     Active,
     DragOverlay,
 } from '@dnd-kit/core';
-import { makeStyles } from '@material-ui/core/styles';
-import { Table, TableBody } from '@material-ui/core';
+import { makeStyles } from '@mui/styles';
+import { Table, TableBody } from '@mui/material';
 import {
     arrayMove,
     SortableContext,

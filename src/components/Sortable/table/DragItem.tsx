@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Table, TableBody, TableRow, TableCell, Box } from '@material-ui/core';
-import DragIndicatorIcon from '@material-ui/icons/DragIndicator';
+import { makeStyles } from '@mui/styles';
+import { Table, TableBody, TableRow, TableCell, Box } from '@mui/material';
+import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 import classNames from 'classnames';
 import { Active } from '@dnd-kit/core';
 

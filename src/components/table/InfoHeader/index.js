@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Tooltip, Box } from '@material-ui/core';
-import InfoIcon from '@material-ui/icons/Info';
+import { Tooltip, Box } from '@mui/material';
+import InfoIcon from '@mui/icons-material/Info';
 import { useStyles } from './styles';
 
 const InfoHeader = ({ message, children }) => {

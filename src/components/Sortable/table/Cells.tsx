@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { TableCell } from '@material-ui/core';
+import { TableCell } from '@mui/material';
 
 import { Item } from '../types';
 import { ColumnWithAccessor } from '../../table/Table/types';

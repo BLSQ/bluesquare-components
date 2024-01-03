@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 
-import { KeyboardDateTimePicker } from '@material-ui/pickers';
-import EventIcon from '@material-ui/icons/Event';
-import { makeStyles } from '@material-ui/core';
+import { DateTimePicker as MuiDateTimePicker } from '@mui/x-date-pickers';
+import EventIcon from '@mui/icons-material/Event';
+import { makeStyles } from '@mui/styles';
 import PropTypes from 'prop-types';
 
+import { TextField } from '@mui/material';
 import { IconButton } from '../buttons/IconButton';
 import { FormControl } from '../inputs/FormControl';
 
@@ -42,8 +43,9 @@ const DateTimePicker = ({
 
     return (
         <FormControl errors={errors} hideError={hideError}>
-            <KeyboardDateTimePicker
+            <MuiDateTimePicker
                 autoOk
+                renderInput={props => <TextField {...props} />}
                 disableToolbar
                 inputVariant="outlined"
                 required={required}

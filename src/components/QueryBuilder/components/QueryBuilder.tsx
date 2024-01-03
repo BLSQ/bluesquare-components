@@ -15,7 +15,7 @@ import {
     Utils as QbUtils,
     JsonLogicTree,
     Fields,
-} from 'react-awesome-query-builder';
+} from '@react-awesome-query-builder/mui';
 
 import { useTranslatedConfig } from '../hooks/useTranslatedConfig';
 

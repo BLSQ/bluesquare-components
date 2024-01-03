@@ -1,10 +1,10 @@
 import { FunctionComponent } from 'react';
 import { IntlMessage } from '../../../types/types';
-declare type Count = {
+type Count = {
     index: number;
     count: number;
 };
-declare type Props = {
+type Props = {
     params: Record<string, string>;
     paramKey: string;
     addMessage: IntlMessage;

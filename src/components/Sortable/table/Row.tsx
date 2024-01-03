@@ -1,9 +1,9 @@
 import React, { ReactNode, FunctionComponent } from 'react';
-import DragIndicatorIcon from '@material-ui/icons/DragIndicator';
+import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { TableRow, IconButton, TableCell } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { TableRow, IconButton, TableCell } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
 type Props = {
     id: string | number;

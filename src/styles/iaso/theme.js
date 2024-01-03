@@ -1,4 +1,4 @@
-import { createTheme } from '@material-ui/core/styles';
+import { createTheme } from '@mui/material/styles';
 
 const rawTheme = {
     typography: {
@@ -41,12 +41,16 @@ const rawTheme = {
             main: '#FFD835',
         },
     },
-    props: {
-        MuiTextField: {
-            variant: 'outlined',
+    components: {
+        MuiInputBase: {
+            defaultProps: {
+                variant: 'outlined',
+            },
         },
         MuiSelect: {
-            variant: 'outlined',
+            defaultProps: {
+                variant: 'outlined',
+            },
         },
     },
 };

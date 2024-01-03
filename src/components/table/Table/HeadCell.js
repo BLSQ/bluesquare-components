@@ -1,8 +1,8 @@
 import React, { isValidElement } from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import TableCell from '@material-ui/core/TableCell';
-import TableSortLabel from '@material-ui/core/TableSortLabel';
+import { makeStyles } from '@mui/styles';
+import TableCell from '@mui/material/TableCell';
+import TableSortLabel from '@mui/material/TableSortLabel';
 import classNames from 'classnames';
 
 import { useSafeIntl } from '../../../utils/useSafeIntl';
@@ -24,17 +24,17 @@ const useStyles = makeStyles(theme => ({
     },
     headerCell: {
         borderRight: `2px solid ${theme.palette.ligthGray.border}`,
-        position: 'relative',
+        position: 'relative !important',
         overflow: 'hidden',
-        textAlign: 'center',
-        backgroundColor: 'white',
+        textAlign: 'center !important',
+        backgroundColor: 'white !important',
     },
     lastHeaderCell: {
         borderRight: 'none',
     },
     sortLabel: {
-        display: 'inline-block',
-        width: '80%',
+        display: 'inline-block !important',
+        width: '80% !important',
     },
     icon: {
         color: `${theme.palette.primary.main}!important`,

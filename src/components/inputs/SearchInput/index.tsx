@@ -6,8 +6,8 @@ import React, {
     useCallback,
 } from 'react';
 
-import { OutlinedInput } from '@material-ui/core';
-import SearchIcon from '@material-ui/icons/Search';
+import { OutlinedInput } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
 import { IconButton as IconButtonComponent } from '../../buttons/IconButton';
 import { FormControl } from '../FormControl';
 import { InputLabel } from '../InputLabel';

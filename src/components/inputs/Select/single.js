@@ -1,8 +1,8 @@
 import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import Box from '@material-ui/core/Box';
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import ClearIcon from '@material-ui/icons/Clear';
+import Box from '@mui/material/Box';
+import Autocomplete from '@mui/material/Autocomplete';
+import ClearIcon from '@mui/icons-material/Clear';
 
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 
@@ -33,6 +33,7 @@ const SingleSelect = ({
     renderTags,
     returnFullObject,
     helperText,
+    placeholder,
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -75,7 +76,7 @@ const SingleSelect = ({
                 onChange={handleChange}
                 loading={loading}
                 loadingText={formatMessage(loadingText)}
-                closeIcon={<ClearIcon />}
+                clearIcon={<ClearIcon />}
                 renderTags={renderTags}
                 renderInput={params => (
                     <TextInput
@@ -85,6 +86,7 @@ const SingleSelect = ({
                         label={label}
                         required={required}
                         onBlur={onBlur}
+                        placeholder={placeholder}
                         errors={displayedErrors}
                         helperText={helperText}
                         loading={loading}
@@ -104,7 +106,7 @@ const SingleSelect = ({
 SingleSelect.defaultProps = {
     value: undefined,
     errors: [],
-    label: '',
+    label: undefined,
     disabled: false,
     clearable: true,
     required: false,
@@ -119,6 +121,7 @@ SingleSelect.defaultProps = {
     helperText: undefined,
     renderTags: defaultRenderTags(o => (o?.label ? o.label : '')),
     returnFullObject: false, // use this one if you pass array of objects as options and want an array of objects as sected items, not a string of id's
+    placeholder: undefined,
 };
 
 SingleSelect.propTypes = {
@@ -141,6 +144,7 @@ SingleSelect.propTypes = {
     renderOption: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
     renderTags: PropTypes.func,
     returnFullObject: PropTypes.bool,
+    placeholder: PropTypes.string,
 };
 
 export { SingleSelect };

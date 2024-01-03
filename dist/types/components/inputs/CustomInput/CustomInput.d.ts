@@ -1,6 +1,6 @@
 import { FunctionComponent, ReactNode } from 'react';
-export declare const useCustomInputTextStyle: (props?: any) => import("@material-ui/styles").ClassNameMap<"textStyle">;
-declare type Props = {
+export declare const useCustomInputTextStyle: (props?: any) => import("@mui/styles").ClassNameMap<"textStyle">;
+type Props = {
     placeholder: string;
     disabled?: boolean;
     required?: boolean;

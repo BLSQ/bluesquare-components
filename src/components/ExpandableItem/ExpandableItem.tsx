@@ -4,14 +4,9 @@ import React, {
     ReactNode,
     useState,
 } from 'react';
-import {
-    Collapse,
-    ListItem,
-    ListItemText,
-    Typography,
-} from '@material-ui/core';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
+import { Collapse, ListItem, ListItemText, Typography } from '@mui/material';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
 
 type Props = {
     openOnMount?: boolean;
@@ -28,21 +23,21 @@ type Props = {
         | 'error'
         | undefined;
     titleVariant?:
+        | 'body1'
+        | 'body2'
+        | 'button'
+        | 'caption'
         | 'h1'
         | 'h2'
         | 'h3'
         | 'h4'
         | 'h5'
         | 'h6'
+        | 'inherit'
+        | 'overline'
         | 'subtitle1'
         | 'subtitle2'
-        | 'body1'
-        | 'body2'
-        | 'caption'
-        | 'button'
-        | 'overline'
-        | 'srOnly'
-        | 'inherit';
+        | string;
     backgroundColor?: string;
 };
 
@@ -67,6 +62,7 @@ export const ExpandableItem: FunctionComponent<Props> = ({
                 disableRipple={preventCollapse}
             >
                 <ListItemText>
+                    {/* @ts-ignore */}
                     <Typography variant={titleVariant} color={titleColor}>
                         {label}
                     </Typography>
@@ -75,6 +71,7 @@ export const ExpandableItem: FunctionComponent<Props> = ({
                 {!open && !preventCollapse && <ExpandMore />}
             </ListItem>
             <Collapse in={open || preventCollapse} timeout="auto" unmountOnExit>
+                {/* @ts-ignore */}
                 {children}
             </Collapse>
         </>

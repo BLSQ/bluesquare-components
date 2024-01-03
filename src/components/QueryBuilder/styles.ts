@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 
 const styles = theme => ({
     root: {
@@ -232,6 +232,25 @@ const styles = theme => ({
             alignItems: 'center',
             marginRight: '8px',
         },
+        '& .rule--field-wrapper': {
+            width: '40%',
+            display: 'inline-block',
+        },
+        '& .rule--field': {
+            width: '100%',
+        },
+        '& .rule--value': {
+            width: '45%',
+        },
+        '& .rule--widget': {
+            width: '100%',
+        },
+        '& .MuiAutocomplete-clearIndicator': {
+            top: '-2px',
+        },
+        '& .widget--widget': {
+            width: 'calc(100% - 50px)',
+        },
         '& .rule--field, .group--field, .rule--operator, .rule--value, .rule--operator-options, .rule--widget, .widget--widget, .widget--valuesrc, .widget--sep, .operator--options--sep, .rule--before-widget, .rule--after-widget':
             {
                 display: 'inline-block',
@@ -382,11 +401,10 @@ const styles = theme => ({
             top: 7,
         },
         '& .MuiOutlinedInput-input': {
-            padding: '17.5px 14px',
+            padding: '19.5px 14px',
         },
-        '& .MuiAutocomplete-root': {
-            width: '300px !important',
-            minWidth: '300px !important',
+        '& .MuiInputBase-root': {
+            minHeight: 0,
         },
         '& .rule--widget--CURRENTDATETIME .widget--valuesrc': {
             display: 'none',

@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-declare type Props = {
+type Props = {
     value: string;
     onClick: () => void;
     dataTestId?: string;

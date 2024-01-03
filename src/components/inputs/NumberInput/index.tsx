@@ -68,48 +68,51 @@ export const NumberInput: FunctionComponent<Props> = ({
     decimalSeparator = '.',
 }) => {
     const { formatMessage } = useSafeIntl();
-    const handleChange = useCallback(
-        event => {
-            const newValueAsNumber = parseFloat(event.target.value);
-            if (newValueAsNumber <= max && newValueAsNumber >= min) {
-                console.log(
-                    'new value as number',
-                    event.target.value,
-                    newValueAsNumber,
-                );
-                onChange(
-                    Number.isNaN(newValueAsNumber)
-                        ? undefined
-                        : newValueAsNumber,
-                );
-            } else if (newValueAsNumber > max) {
-                setFieldError(
-                    keyValue,
-                    formatMessage(MESSAGES.max, { value: max }),
-                );
-            } else if (newValueAsNumber < min) {
-                setFieldError(
-                    keyValue,
-                    formatMessage(MESSAGES.min, { value: min }),
-                );
-            } else if (Number.isNaN(newValueAsNumber) && required) {
-                setFieldError(keyValue, formatMessage(MESSAGES.invalid));
-            }
-        },
-        [max, min, required, onChange, setFieldError, keyValue, formatMessage],
-    );
+    // const handleChange = useCallback(
+    //     event => {
+    //         const newValueAsNumber = parseFloat(event.target.value);
+    //         if (newValueAsNumber <= max && newValueAsNumber >= min) {
+    //             console.log(
+    //                 'new value as number',
+    //                 event.target.value,
+    //                 newValueAsNumber,
+    //             );
+    //             onChange(
+    //                 Number.isNaN(newValueAsNumber)
+    //                     ? undefined
+    //                     : newValueAsNumber,
+    //             );
+    //         } else if (newValueAsNumber > max) {
+    //             setFieldError(
+    //                 keyValue,
+    //                 formatMessage(MESSAGES.max, { value: max }),
+    //             );
+    //         } else if (newValueAsNumber < min) {
+    //             setFieldError(
+    //                 keyValue,
+    //                 formatMessage(MESSAGES.min, { value: min }),
+    //             );
+    //         } else if (Number.isNaN(newValueAsNumber) && required) {
+    //             setFieldError(keyValue, formatMessage(MESSAGES.invalid));
+    //         }
+    //     },
+    //     [max, min, required, onChange, setFieldError, keyValue, formatMessage],
+    // );
     return (
         <NumericFormat
             value={value}
             disabled={disabled}
             prefix={prefix}
             customInput={CustomInput}
-            onChange={handleChange}
+            onChange={() => null}
             autoComplete={autoComplete}
             multiline={multiline}
             required={required}
             min={min}
             max={max}
+            onValueChange={(values, sourceInfo) => {
+                console.log('value', values, 'source', sourceInfo);
+            }}
             errors={errors}
             placeholder={placeholder}
             keyValue={keyValue}

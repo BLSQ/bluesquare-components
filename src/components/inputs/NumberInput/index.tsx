@@ -72,6 +72,11 @@ export const NumberInput: FunctionComponent<Props> = ({
         event => {
             const newValueAsNumber = parseFloat(event.target.value);
             if (newValueAsNumber <= max && newValueAsNumber >= min) {
+                console.log(
+                    'new value as number',
+                    event.target.value,
+                    newValueAsNumber,
+                );
                 onChange(
                     Number.isNaN(newValueAsNumber)
                         ? undefined

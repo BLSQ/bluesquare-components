@@ -68,36 +68,27 @@ export const NumberInput: FunctionComponent<Props> = ({
     decimalSeparator = '.',
 }) => {
     const { formatMessage } = useSafeIntl();
-    // const handleChange = useCallback(
-    //     event => {
-    //         const newValueAsNumber = parseFloat(event.target.value);
-    //         if (newValueAsNumber <= max && newValueAsNumber >= min) {
-    //             console.log(
-    //                 'new value as number',
-    //                 event.target.value,
-    //                 newValueAsNumber,
-    //             );
-    //             onChange(
-    //                 Number.isNaN(newValueAsNumber)
-    //                     ? undefined
-    //                     : newValueAsNumber,
-    //             );
-    //         } else if (newValueAsNumber > max) {
-    //             setFieldError(
-    //                 keyValue,
-    //                 formatMessage(MESSAGES.max, { value: max }),
-    //             );
-    //         } else if (newValueAsNumber < min) {
-    //             setFieldError(
-    //                 keyValue,
-    //                 formatMessage(MESSAGES.min, { value: min }),
-    //             );
-    //         } else if (Number.isNaN(newValueAsNumber) && required) {
-    //             setFieldError(keyValue, formatMessage(MESSAGES.invalid));
-    //         }
-    //     },
-    //     [max, min, required, onChange, setFieldError, keyValue, formatMessage],
-    // );
+    const handleChange = useCallback(
+        values => {
+            const newValueAsNumber = values.floatValue;
+            if (newValueAsNumber <= max && newValueAsNumber >= min) {
+                onChange(newValueAsNumber);
+            } else if (newValueAsNumber > max) {
+                setFieldError(
+                    keyValue,
+                    formatMessage(MESSAGES.max, { value: max }),
+                );
+            } else if (newValueAsNumber < min) {
+                setFieldError(
+                    keyValue,
+                    formatMessage(MESSAGES.min, { value: min }),
+                );
+            } else if (Number.isNaN(newValueAsNumber) && required) {
+                setFieldError(keyValue, formatMessage(MESSAGES.invalid));
+            }
+        },
+        [max, min, required, onChange, setFieldError, keyValue, formatMessage],
+    );
     return (
         <NumericFormat
             value={value}
@@ -110,8 +101,9 @@ export const NumberInput: FunctionComponent<Props> = ({
             required={required}
             min={min}
             max={max}
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
             onValueChange={(values, sourceInfo) => {
-                console.log('value', values, 'source', sourceInfo);
+                handleChange(values);
             }}
             errors={errors}
             placeholder={placeholder}

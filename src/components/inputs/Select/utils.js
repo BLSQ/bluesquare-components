@@ -2,17 +2,19 @@ import React from 'react';
 import Chip from '@mui/material/Chip';
 
 export const defaultRenderTags = getLabel => (tagValue, getTagProps) =>
-    tagValue.map((option, index) => (
-        <Chip
-            color="secondary"
-            style={{
-                backgroundColor: option.color,
-                color: 'white',
-            }}
-            label={getLabel(option)}
-            {...getTagProps({ index })}
-        />
-    ));
+    tagValue
+        .sort((a, b) => getLabel(a).localeCompare(getLabel(b)))
+        .map((option, index) => (
+            <Chip
+                color="secondary"
+                style={{
+                    backgroundColor: option.color,
+                    color: 'white',
+                }}
+                label={getLabel(option)}
+                {...getTagProps({ index })}
+            />
+        ));
 
 export const getExtraProps = (
     getOptionLabel,

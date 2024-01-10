@@ -95,6 +95,7 @@ module.exports = {
     resolve: {
         fallback: {
             fs: false,
+            perf_hooks: false,
         },
         extensions: ['.tsx', '.ts', '.js'],
     },

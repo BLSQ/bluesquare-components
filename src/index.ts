@@ -1,7 +1,3 @@
-import {
-    Fields as QueryBuilderFields,
-    Field as QueryBuilderField,
-} from '@react-awesome-query-builder/mui';
 import { LoadingSpinner } from './components/LoadingSpinner';
 import { CsvSvg } from './svg/CsvSvgComponent';
 import { DHIS2Svg } from './svg/DHIS2SvgComponent';
@@ -22,7 +18,7 @@ import { useSafeIntl } from './utils/useSafeIntl';
 import { useSkipEffectOnMount } from './utils/useSkipEffectOnMount';
 import { theme, rawTheme } from './styles/iaso/theme';
 import { testTS } from './utils/test';
-import { commonStyles, CommonStyles } from './styles/iaso/common';
+import { commonStyles } from './styles/iaso/common';
 import { mapStyles } from './styles/iaso/map';
 import { mapPopupStyles } from './styles/iaso/mapPopup';
 import { AddButton } from './components/buttons/AddButton';
@@ -45,7 +41,7 @@ import { ColumnsSelectDrawer } from './components/table/ColumnsSelectDrawer';
 import { HeaderRowIcon } from './components/table/HeaderRowIcon';
 import { InfoHeader } from './components/table/InfoHeader';
 import { SelectionSpeedDials } from './components/table/SelectionSpeedDials';
-import { Table, TableComponentProps } from './components/table/Table';
+import { Table } from './components/table/Table';
 import { PageRowSelect } from './components/table/Table/PageRowSelect';
 import { Expander } from './components/table/Table/Expander';
 import { ErrorBoundaryWithMessage } from './components/ErrorBoundary/ErrorBoundaryWithMessage';
@@ -122,6 +118,15 @@ export * from './components/QueryBuilder/types';
 export * from './utils/intlUtils';
 export * from './utils/fetchData';
 
+export type { CommonStyles } from './styles/iaso/common';
+
+export type {
+    Fields as QueryBuilderFields,
+    Field as QueryBuilderField,
+} from '@react-awesome-query-builder/mui';
+
+export type { TableComponentProps } from './components/table/Table';
+
 export {
     LazyImage,
     french,
@@ -145,7 +150,6 @@ export {
     useSafeIntl,
     useSkipEffectOnMount,
     commonStyles,
-    CommonStyles,
     mapStyles,
     mapPopupStyles,
     AddButton,
@@ -203,13 +207,10 @@ export {
     BackdropClickModal,
     // IntlFormatMessage,
     // IntlMessage,
-    QueryBuilderFields,
     // QueryBuilderListToReplace,
-    QueryBuilderField,
     SortableList,
     SortableTable,
     ExpandableItem,
-    TableComponentProps,
     substituteVars,
     capitalize,
     formatThousand,

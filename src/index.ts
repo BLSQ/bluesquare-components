@@ -79,6 +79,7 @@ import { useHumanReadableJsonLogic } from './components/QueryBuilder/hooks/useHu
 import { SortableList } from './components/Sortable/list';
 import { SortableTable } from './components/Sortable/table';
 import { ExpandableItem } from './components/ExpandableItem/ExpandableItem';
+import { FormattedNumber } from './components/Formatted/FormattedNumber';
 
 // utils
 import {
@@ -164,6 +165,7 @@ export {
     TextInput,
     PasswordInput,
     NumberInput,
+    FormattedNumber,
     ArrayFieldInput,
     SearchInput,
     Checkbox,

@@ -43,6 +43,9 @@ type Props = {
         // eslint-disable-next-line no-unused-vars
         message: string,
     ) => void;
+    thousandsGroupStyle?: 'thousand' | 'lakh' | 'wan';
+    thousandSeparator?: ',' | '.';
+    decimalSeparator?: ',' | '.';
 };
 export const NumberInput: FunctionComponent<Props> = ({
     keyValue,
@@ -60,17 +63,16 @@ export const NumberInput: FunctionComponent<Props> = ({
     decimalScale = 10,
     placeholder,
     setFieldError = () => null,
+    thousandsGroupStyle = 'thousand',
+    thousandSeparator = ',',
+    decimalSeparator = '.',
 }) => {
     const { formatMessage } = useSafeIntl();
     const handleChange = useCallback(
-        event => {
-            const newValueAsNumber = parseFloat(event.target.value);
+        values => {
+            const newValueAsNumber = values.floatValue;
             if (newValueAsNumber <= max && newValueAsNumber >= min) {
-                onChange(
-                    Number.isNaN(newValueAsNumber)
-                        ? undefined
-                        : newValueAsNumber,
-                );
+                onChange(newValueAsNumber);
             } else if (newValueAsNumber > max) {
                 setFieldError(
                     keyValue,
@@ -92,19 +94,25 @@ export const NumberInput: FunctionComponent<Props> = ({
             value={value}
             disabled={disabled}
             prefix={prefix}
-            thousandSeparator={false}
             customInput={CustomInput}
-            onChange={handleChange}
+            onChange={() => null}
             autoComplete={autoComplete}
             multiline={multiline}
             required={required}
             min={min}
             max={max}
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
+            onValueChange={(values, sourceInfo) => {
+                handleChange(values);
+            }}
             errors={errors}
             placeholder={placeholder}
             keyValue={keyValue}
             label={label}
             decimalScale={decimalScale}
+            thousandsGroupStyle={thousandsGroupStyle}
+            thousandSeparator={thousandSeparator}
+            decimalSeparator={decimalSeparator}
         />
     );
 };

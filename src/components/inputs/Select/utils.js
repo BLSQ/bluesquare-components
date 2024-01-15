@@ -3,7 +3,11 @@ import Chip from '@mui/material/Chip';
 
 export const defaultRenderTags = getLabel => (tagValue, getTagProps) =>
     tagValue
-        .sort((a, b) => getLabel(a).localeCompare(getLabel(b)))
+        .sort((a, b) =>
+            getLabel(a).localeCompare(b.label, undefined, {
+                sensitivity: 'accent',
+            }),
+        )
         .map((option, index) => (
             <Chip
                 color="secondary"

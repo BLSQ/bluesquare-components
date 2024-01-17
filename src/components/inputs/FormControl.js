@@ -46,7 +46,7 @@ function FormControlComponent({ classes, children, errors, id, hideError }) {
             {errors.length > 0 && !hideError && (
                 <Box
                     className={classNames(
-                        classes.errorContainer,
+                        // classes.errorContainer,
                         'error-container',
                     )}
                 >

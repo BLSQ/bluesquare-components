@@ -20,7 +20,7 @@ const styles = theme => ({
         zIndex: 'auto',
     },
     errorContainer: {
-        paddingLeft: theme.spacing(1),
+        paddingLeft: theme.spacing(2),
         // paddingTop: theme.spacing(1),
     },
     error: {

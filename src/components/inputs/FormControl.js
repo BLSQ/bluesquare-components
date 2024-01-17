@@ -53,7 +53,11 @@ function FormControlComponent({ classes, children, errors, id, hideError }) {
                     {errors
                         .filter(error => !!error)
                         .map(error => (
-                            <Typography key={error} className={classes.error}>
+                            <Typography
+                                variant="caption"
+                                key={error}
+                                className={classes.error}
+                            >
                                 {error}
                             </Typography>
                         ))}

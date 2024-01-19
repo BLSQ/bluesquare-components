@@ -35,6 +35,7 @@ type Props = {
         newValue: number | undefined,
     ) => void;
     prefix?: string;
+    suffix?: string;
     decimalScale?: number;
     placeholder?: string;
     setFieldError?: (
@@ -60,6 +61,7 @@ export const NumberInput: FunctionComponent<Props> = ({
     min = -Infinity,
     max = Infinity,
     prefix = '',
+    suffix = '',
     decimalScale = 10,
     placeholder,
     setFieldError = () => null,
@@ -94,6 +96,7 @@ export const NumberInput: FunctionComponent<Props> = ({
             value={value}
             disabled={disabled}
             prefix={prefix}
+            suffix={suffix}
             customInput={CustomInput}
             onChange={() => null}
             autoComplete={autoComplete}

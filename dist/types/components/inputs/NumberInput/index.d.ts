@@ -12,6 +12,7 @@ type Props = {
     max?: number;
     onChange: (newValue: number | undefined) => void;
     prefix?: string;
+    suffix?: string;
     decimalScale?: number;
     placeholder?: string;
     setFieldError?: (keyValue: string, message: string) => void;

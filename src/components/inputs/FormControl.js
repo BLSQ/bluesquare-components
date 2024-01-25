@@ -20,8 +20,8 @@ const styles = theme => ({
         zIndex: 'auto',
     },
     errorContainer: {
-        paddingLeft: theme.spacing(2),
-        paddingTop: theme.spacing(1),
+        paddingLeft: theme.spacing(1.6),
+        paddingTop: theme.spacing(0.5),
     },
     error: {
         color: theme.palette.error.main,
@@ -53,7 +53,11 @@ function FormControlComponent({ classes, children, errors, id, hideError }) {
                     {errors
                         .filter(error => !!error)
                         .map(error => (
-                            <Typography key={error} className={classes.error}>
+                            <Typography
+                                variant="caption"
+                                key={error}
+                                className={classes.error}
+                            >
                                 {error}
                             </Typography>
                         ))}

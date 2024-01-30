@@ -73,7 +73,10 @@ export const NumberInput: FunctionComponent<Props> = ({
     const handleChange = useCallback(
         values => {
             const newValueAsNumber = values.floatValue;
-            if (newValueAsNumber <= max && newValueAsNumber >= min) {
+            if (
+                (newValueAsNumber <= max && newValueAsNumber >= min) ||
+                newValueAsNumber === undefined
+            ) {
                 onChange(newValueAsNumber);
             } else if (newValueAsNumber > max) {
                 setFieldError(

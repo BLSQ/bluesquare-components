@@ -40,28 +40,29 @@ const DatePicker = ({
     const [dateError, setDateError] = useState(null);
 
     const isOnError = errors.length > 0 || Boolean(dateError);
-
     return (
         <FormControl errors={errors} hideError={hideError}>
             <MuiDatePicker
                 autoOk
                 disableToolbar
-                inputVariant="outlined"
-                required={required}
-                renderInput={props => <TextField {...props} />}
+                // with mui 5 InputLabelProps and InputProps can't be directly passed to the DatePicker
+                renderInput={props => (
+                    <TextField
+                        {...props}
+                        InputLabelProps={{
+                            error: isOnError,
+                            shrink: Boolean(currentDate),
+                        }}
+                        InputProps={{ error: isOnError }}
+                        required={required}
+                        error={isOnError}
+                    />
+                )}
                 disabled={disabled}
-                InputLabelProps={{
-                    className: classes.label,
-                    shrink: Boolean(currentDate),
-                    error: isOnError,
-                }}
                 KeyboardButtonProps={{
                     size: 'small',
                 }}
                 keyboardIcon={<EventIcon size="small" />}
-                InputProps={{
-                    error: isOnError,
-                }}
                 helperText={null}
                 format="DD/MM/YYYY" // This one need be set by user locale
                 label={`${label}`}

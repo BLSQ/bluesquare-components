@@ -24,7 +24,7 @@ import { DHIS2Svg } from '../../../svg/DHIS2SvgComponent';
 import { OrgUnitSvg } from '../../../svg/OrgUnitSvgComponent';
 import { ExcellSvg } from '../../../svg/ExcellSvgComponent';
 
-import { commonStyles } from '../../../styles/iaso/common';
+import { commonStyles } from '../../../styles/iaso/common.ts';
 import { useLink } from '../../LinkProvider';
 
 const ICON_VARIANTS = {

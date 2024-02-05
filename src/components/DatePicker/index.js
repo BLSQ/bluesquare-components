@@ -53,7 +53,6 @@ const DatePicker = ({
                             error: isOnError,
                             shrink: Boolean(currentDate),
                         }}
-                        InputProps={{ error: isOnError }}
                         required={required}
                         error={isOnError}
                     />

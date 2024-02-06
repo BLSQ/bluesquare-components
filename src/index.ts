@@ -32,7 +32,12 @@ import { NumberInput } from './components/inputs/NumberInput';
 import { PasswordInput } from './components/inputs/PasswordInput';
 import { Radio } from './components/inputs/Radio';
 import { SearchInput } from './components/inputs/SearchInput';
-import { Select, renderTags } from './components/inputs/Select';
+import {
+    Select,
+    renderTags,
+    renderTagsWithTooltip,
+    baseRenderTagsWithTooltip,
+} from './components/inputs/Select';
 import { TextInput } from './components/inputs/TextInput';
 import { FormControl } from './components/inputs/FormControl';
 import { ErrorBoundary } from './components/ErrorBoundary';
@@ -160,6 +165,8 @@ export {
     DatePicker,
     Select,
     renderTags,
+    renderTagsWithTooltip,
+    baseRenderTagsWithTooltip,
     PageRowSelect,
     ErrorBoundary,
     TextInput,

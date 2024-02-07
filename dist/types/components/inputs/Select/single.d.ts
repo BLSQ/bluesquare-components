@@ -22,30 +22,30 @@ export function SingleSelect({ value, keyValue, label, errors, onChange, options
 }): React.JSX.Element;
 export namespace SingleSelect {
     namespace defaultProps {
-        const value: undefined;
-        const errors: never[];
-        const label: undefined;
-        const disabled: boolean;
-        const clearable: boolean;
-        const required: boolean;
-        const loading: boolean;
-        const options: never[];
-        function onBlur(): void;
-        const getOptionSelected: null;
-        const getOptionLabel: null;
-        const renderOption: null;
-        const noOptionsText: {
+        export const value: undefined;
+        export const errors: never[];
+        export const label: undefined;
+        export const disabled: boolean;
+        export const clearable: boolean;
+        export const required: boolean;
+        export const loading: boolean;
+        export const options: never[];
+        export function onBlur(): void;
+        export const getOptionSelected: null;
+        export const getOptionLabel: null;
+        export const renderOption: null;
+        export const noOptionsText: {
             id: string;
             defaultMessage: string;
         };
-        const loadingText: {
+        export const loadingText: {
             id: string;
             defaultMessage: string;
         };
-        const helperText: undefined;
-        const renderTags: (tagValue: any, getTagProps: any) => any;
-        const returnFullObject: boolean;
-        const placeholder: undefined;
+        export const helperText: undefined;
+        export { defaultRenderTags as renderTags };
+        export const returnFullObject: boolean;
+        export const placeholder: undefined;
     }
     namespace propTypes {
         const errors_1: PropTypes.Requireable<(string | null | undefined)[]>;
@@ -80,8 +80,7 @@ export namespace SingleSelect {
         export { getOptionSelected_1 as getOptionSelected };
         const renderOption_1: PropTypes.Requireable<object>;
         export { renderOption_1 as renderOption };
-        const renderTags_1: PropTypes.Requireable<(...args: any[]) => any>;
-        export { renderTags_1 as renderTags };
+        export const renderTags: PropTypes.Requireable<(...args: any[]) => any>;
         const returnFullObject_1: PropTypes.Requireable<boolean>;
         export { returnFullObject_1 as returnFullObject };
         const placeholder_1: PropTypes.Requireable<string>;
@@ -89,4 +88,5 @@ export namespace SingleSelect {
     }
 }
 import React from "react";
+import { defaultRenderTags } from "./utils";
 import PropTypes from "prop-types";

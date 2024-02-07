@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 
 import { SingleSelect } from './single';
 import { MultiSelect } from './multi';
-import { defaultRenderTags } from './utils';
+import {
+    baseRenderTags,
+    defaultRenderTags,
+    renderTagsWithTooltip,
+    baseRenderTagsWithTooltip,
+} from './utils';
 import { MESSAGES } from './messages';
 
 const SelectCustom = props => {
@@ -30,7 +35,7 @@ SelectCustom.defaultProps = {
     noOptionsText: MESSAGES.noOptions,
     loadingText: MESSAGES.loadingOptions,
     helperText: undefined,
-    renderTags: defaultRenderTags(o => (o?.label ? o.label : '')),
+    renderTags: defaultRenderTags,
     returnFullObject: false, // use this one if you pass array of objects as options and want an array of objects as sected items, not a string of id's
     placeholder: undefined,
 };
@@ -59,4 +64,9 @@ SelectCustom.propTypes = {
     placeholder: PropTypes.string,
 };
 
-export { SelectCustom as Select, defaultRenderTags as renderTags };
+export {
+    SelectCustom as Select,
+    baseRenderTags as renderTags,
+    renderTagsWithTooltip,
+    baseRenderTagsWithTooltip,
+};

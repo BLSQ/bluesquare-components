@@ -119,7 +119,7 @@ SingleSelect.defaultProps = {
     noOptionsText: MESSAGES.noOptions,
     loadingText: MESSAGES.loadingOptions,
     helperText: undefined,
-    renderTags: defaultRenderTags(o => (o?.label ? o.label : '')),
+    renderTags: defaultRenderTags,
     returnFullObject: false, // use this one if you pass array of objects as options and want an array of objects as sected items, not a string of id's
     placeholder: undefined,
 };

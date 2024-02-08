@@ -11,6 +11,7 @@ type Props = {
     onChange: (value: string, countryData?: BaseCountryData) => void;
     disabled?: boolean;
     required?: boolean;
+    label?: string;
 };
 export declare const PhoneInput: FunctionComponent<Props>;
 export {};

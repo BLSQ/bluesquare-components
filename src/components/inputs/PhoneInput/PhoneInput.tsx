@@ -19,6 +19,7 @@ type Props = {
     onChange: (value: string, countryData?: BaseCountryData) => void;
     disabled?: boolean;
     required?: boolean;
+    label?: string;
 };
 const getLocalization = (lang?: LangOptions) => {
     if (lang === 'en' || !lang) return undefined;
@@ -29,7 +30,7 @@ const getLocalization = (lang?: LangOptions) => {
 
 export const PhoneInput: FunctionComponent<Props> = props => {
     const { formatMessage } = useSafeIntl();
-    const { lang, onChange, className, ...restProps } = props;
+    const { lang, onChange, className, label, ...restProps } = props;
     const localization = getLocalization(lang);
     return (
         <ReactPhoneInput
@@ -45,6 +46,7 @@ export const PhoneInput: FunctionComponent<Props> = props => {
                 };
                 onChange(value, baseCountryData);
             }}
+            label={label}
             inputClass={className}
             {...restProps}
         />

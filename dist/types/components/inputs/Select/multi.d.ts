@@ -21,29 +21,29 @@ export function MultiSelect({ value, keyValue, label, errors, onChange, options,
 }): React.JSX.Element;
 export namespace MultiSelect {
     namespace defaultProps {
-        const value: undefined;
-        const errors: never[];
-        const label: string;
-        const disabled: boolean;
-        const clearable: boolean;
-        const required: boolean;
-        const loading: boolean;
-        const options: never[];
-        function onBlur(): void;
-        const getOptionSelected: null;
-        const getOptionLabel: null;
-        const renderOption: null;
-        const loadingText: {
+        export const value: undefined;
+        export const errors: never[];
+        export const label: string;
+        export const disabled: boolean;
+        export const clearable: boolean;
+        export const required: boolean;
+        export const loading: boolean;
+        export const options: never[];
+        export function onBlur(): void;
+        export const getOptionSelected: null;
+        export const getOptionLabel: null;
+        export const renderOption: null;
+        export const loadingText: {
             id: string;
             defaultMessage: string;
         };
-        const noOptionsText: {
+        export const noOptionsText: {
             id: string;
             defaultMessage: string;
         };
-        const helperText: undefined;
-        const renderTags: (tagValue: any, getTagProps: any) => any;
-        const returnFullObject: boolean;
+        export const helperText: undefined;
+        export { defaultRenderTags as renderTags };
+        export const returnFullObject: boolean;
     }
     namespace propTypes {
         const errors_1: PropTypes.Requireable<(string | null | undefined)[]>;
@@ -78,11 +78,11 @@ export namespace MultiSelect {
         export { getOptionSelected_1 as getOptionSelected };
         const renderOption_1: PropTypes.Requireable<object>;
         export { renderOption_1 as renderOption };
-        const renderTags_1: PropTypes.Requireable<(...args: any[]) => any>;
-        export { renderTags_1 as renderTags };
+        export const renderTags: PropTypes.Requireable<(...args: any[]) => any>;
         const returnFullObject_1: PropTypes.Requireable<boolean>;
         export { returnFullObject_1 as returnFullObject };
     }
 }
 import React from "react";
+import { defaultRenderTags } from "./utils";
 import PropTypes from "prop-types";

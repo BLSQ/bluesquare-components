@@ -23,6 +23,7 @@
     "blsq.numberInput.error.invalid": "Nombre invalide",
     "blsq.numberInput.error.max": "La saisie dépasse {value}",
     "blsq.numberInput.error.min": "La saisie est inférieure à {value}",
+    "blsq.phoneInput.countryNotFound": "Aucun pays trouvé",
     "blsq.queryBuilder.addCondition": "Ajouter une condition",
     "blsq.queryBuilder.addDefaultCase": "Ajouter une condition par défaut",
     "blsq.queryBuilder.addGroup": "Ajouter un groupe",

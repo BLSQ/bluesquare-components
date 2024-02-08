@@ -109,6 +109,7 @@ import {
     MENU_HEIGHT_WITH_TABS,
     SIDEBAR_WIDTH,
 } from './constants/iaso/uiConstants';
+import { PhoneInput } from './components/inputs/PhoneInput/PhoneInput';
 
 // Types
 export * from './types/types';
@@ -118,6 +119,7 @@ export * from './components/table/Table/types';
 export * from './components/QueryBuilder/types';
 export * from './utils/intlUtils';
 export * from './utils/fetchData';
+export * from './components/inputs/PhoneInput/types';
 
 export type { CommonStyles } from './styles/iaso/common';
 
@@ -195,6 +197,7 @@ export {
     IasoTreeView,
     EnrichedTreeItem,
     DynamicSelect,
+    PhoneInput,
     QueryBuilder,
     QueryBuilderInput,
     useHumanReadableJsonLogic,

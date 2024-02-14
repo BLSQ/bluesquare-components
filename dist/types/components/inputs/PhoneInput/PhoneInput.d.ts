@@ -14,6 +14,8 @@ type Props = {
     required?: boolean;
     label?: string;
     placeholder?: string;
+    autoFormat?: boolean;
+    countryCodeEditable?: boolean;
 };
 export declare const PhoneInput: FunctionComponent<Props>;
 export {};

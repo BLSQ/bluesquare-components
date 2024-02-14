@@ -1,4 +1,5 @@
 import { FunctionComponent } from 'react';
+import 'react-phone-input-material-ui/lib/style.css';
 import { BaseCountryData, LangOptions } from './types';
 type Props = {
     onlyCountries?: string[];
@@ -12,6 +13,7 @@ type Props = {
     disabled?: boolean;
     required?: boolean;
     label?: string;
+    placeholder?: string;
 };
 export declare const PhoneInput: FunctionComponent<Props>;
 export {};

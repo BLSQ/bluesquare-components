@@ -14,6 +14,7 @@
     "blsq.comment.confirmComment": "Confirmer",
     "blsq.comment.postingTime": "Publié",
     "blsq.comment.textArea.placeholder": "Laisser un commentaire",
+    "blsq.phoneInput.phoneNumber": "Numéro de téléphone",
     "blsq.dialog.doYouWantToClose": "Fermer?",
     "blsq.dialog.unsavedDataWillBeLost": "Les données non-sauvegardées seront perdues",
     "blsq.input.label.max": "Maximum",

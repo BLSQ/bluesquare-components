@@ -1,11 +1,29 @@
 import { TextField } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import React, { FunctionComponent } from 'react';
 import ReactPhoneInput from 'react-phone-input-material-ui';
+import 'react-phone-input-material-ui/lib/style.css';
 import fr from 'react-phone-input-material-ui/lang/fr.json';
 import pt from 'react-phone-input-material-ui/lang/pt.json';
+import classnames from 'classnames';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import MESSAGES from './messages';
 import { BaseCountryData, LangOptions } from './types';
+
+const useStyles = makeStyles(theme => ({
+    inputMargin: {
+        '& .MuiInputBase-input': {
+            // @ts-ignore
+            marginLeft: `${theme.spacing(1)} !important`,
+        },
+    },
+    dropdownMargin: {
+        '& > .flag-dropdown': {
+            // @ts-ignore
+            marginLeft: `${theme.spacing(1)} !important`,
+        },
+    },
+}));
 
 type Props = {
     onlyCountries?: string[];
@@ -20,6 +38,8 @@ type Props = {
     disabled?: boolean;
     required?: boolean;
     label?: string;
+    placeholder?: string;
+    autoFormat?: boolean;
 };
 const getLocalization = (lang?: LangOptions) => {
     if (lang === 'en' || !lang) return undefined;
@@ -30,8 +50,21 @@ const getLocalization = (lang?: LangOptions) => {
 
 export const PhoneInput: FunctionComponent<Props> = props => {
     const { formatMessage } = useSafeIntl();
-    const { lang, onChange, className, label, ...restProps } = props;
+    const {
+        lang,
+        onChange,
+        className,
+        label,
+        country,
+        placeholder,
+        required,
+        disabled,
+        autoFormat = false,
+        ...restProps
+    } = props;
     const localization = getLocalization(lang);
+    const classes: Record<string, string> = useStyles();
+
     return (
         <ReactPhoneInput
             component={TextField}
@@ -47,7 +80,13 @@ export const PhoneInput: FunctionComponent<Props> = props => {
                 onChange(value, baseCountryData);
             }}
             label={label}
-            inputClass={className}
+            autoFormat={autoFormat}
+            inputClass={classes.inputMargin}
+            inputProps={{ required, disabled }}
+            containerClass={classnames(classes.dropdownMargin, className)}
+            country={country}
+            countryCodeEditable={false}
+            placeholder={placeholder ?? formatMessage(MESSAGES.phoneNumber)}
             {...restProps}
         />
     );

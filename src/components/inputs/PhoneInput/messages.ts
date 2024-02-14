@@ -9,6 +9,10 @@ const MESSAGES = defineMessages({
         id: 'blsq.phoneInput.countryNotFound',
         defaultMessage: 'Country not found',
     },
+    phoneNumber: {
+        id: 'blsq.phoneInput.phoneNumber',
+        defaultMessage: 'Phone number',
+    },
 });
 
 export default MESSAGES;

@@ -85,6 +85,7 @@ import { SortableList } from './components/Sortable/list';
 import { SortableTable } from './components/Sortable/table';
 import { ExpandableItem } from './components/ExpandableItem/ExpandableItem';
 import { FormattedNumber } from './components/Formatted/FormattedNumber';
+import { AlertModal } from './components/Modal/AlertModal/AlertModal';
 
 // utils
 import {
@@ -241,4 +242,5 @@ export {
     MENU_HEIGHT_WITHOUT_TABS,
     MENU_HEIGHT_WITH_TABS,
     SIDEBAR_WIDTH,
+    AlertModal,
 };

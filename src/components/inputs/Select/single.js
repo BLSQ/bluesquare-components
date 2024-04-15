@@ -54,10 +54,7 @@ const SingleSelect = ({
     );
 
     const handleChange = useCallback(
-        (e, newValue) => {
-            const val = freeSolo ? newValue : newValue?.value ?? null;
-            return onChange(val);
-        },
+        (e, newValue) =>  onChange(newValue?.value ?? null),
         [onChange, returnFullObject],
     );
 
@@ -66,13 +63,16 @@ const SingleSelect = ({
         getOptionSelected,
         renderOption,
     );
+    const handleInputChange = useCallback((event, newInputValue) => 
+        freeSolo && onChange(newInputValue), [onChange, returnFullObject],
+    );
 
     return (
         <Box>
             <Autocomplete
                 disabled={disabled}
                 freeSolo={freeSolo}
-                autoSelect={freeSolo}
+                onInputChange={handleInputChange}
                 noOptionsText={formatMessage(noOptionsText)}
                 multiple={false}
                 id={keyValue}

@@ -1,4 +1,4 @@
-export function MultiSelect({ value, keyValue, label, errors, onChange, options, onBlur, disabled, clearable, required, noOptionsText, getOptionLabel, getOptionSelected, loading, renderOption, renderTags, returnFullObject, helperText, loadingText, freeSolo, }: {
+export function MultiSelect({ value, keyValue, label, errors, onChange, options, onBlur, disabled, clearable, required, noOptionsText, getOptionLabel, getOptionSelected, loading, renderOption, renderTags, returnFullObject, helperText, loadingText, }: {
     value: any;
     keyValue: any;
     label: any;
@@ -18,7 +18,6 @@ export function MultiSelect({ value, keyValue, label, errors, onChange, options,
     returnFullObject: any;
     helperText: any;
     loadingText: any;
-    freeSolo: any;
 }): React.JSX.Element;
 export namespace MultiSelect {
     namespace defaultProps {
@@ -45,7 +44,6 @@ export namespace MultiSelect {
         export const helperText: undefined;
         export { defaultRenderTags as renderTags };
         export const returnFullObject: boolean;
-        export const freeSolo: boolean;
     }
     namespace propTypes {
         const errors_1: PropTypes.Requireable<(string | null | undefined)[]>;
@@ -83,8 +81,6 @@ export namespace MultiSelect {
         export const renderTags: PropTypes.Requireable<(...args: any[]) => any>;
         const returnFullObject_1: PropTypes.Requireable<boolean>;
         export { returnFullObject_1 as returnFullObject };
-        const freeSolo_1: PropTypes.Requireable<boolean>;
-        export { freeSolo_1 as freeSolo };
     }
 }
 import React from "react";

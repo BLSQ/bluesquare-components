@@ -54,7 +54,7 @@ const SingleSelect = ({
     );
 
     const handleChange = useCallback(
-        (e, newValue) =>  onChange(newValue?.value ?? null),
+        (e, newValue) => onChange(newValue?.value ?? null),
         [onChange, returnFullObject],
     );
 
@@ -63,8 +63,9 @@ const SingleSelect = ({
         getOptionSelected,
         renderOption,
     );
-    const handleInputChange = useCallback((event, newInputValue) => 
-        freeSolo && onChange(newInputValue), [onChange, returnFullObject],
+    const handleInputChange = useCallback(
+        (_, newInputValue) => freeSolo && onChange(newInputValue),
+        [onChange, returnFullObject],
     );
 
     return (
@@ -156,4 +157,3 @@ SingleSelect.propTypes = {
 };
 
 export { SingleSelect };
-

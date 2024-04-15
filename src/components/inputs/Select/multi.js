@@ -1,23 +1,23 @@
-import React, { useCallback, useMemo } from 'react';
-import PropTypes from 'prop-types';
-import Box from '@mui/material/Box';
-import Autocomplete from '@mui/material/Autocomplete';
 import ClearIcon from '@mui/icons-material/Clear';
+import Autocomplete from '@mui/material/Autocomplete';
+import Box from '@mui/material/Box';
+import PropTypes from 'prop-types';
+import React, { useCallback, useMemo } from 'react';
 
-import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { useKeyPressListener } from '../../../utils/useKeyPressListener';
+import { useSafeIntl } from '../../../utils/useSafeIntl';
 
 import { MESSAGES } from './messages';
 
 import { useStyles } from '../styles';
 
+import { TextInput } from './TextInput';
 import {
     defaultRenderTags,
     getExtraProps,
     getMultiOption,
     getOption,
 } from './utils';
-import { TextInput } from './TextInput';
 
 const MultiSelect = ({
     value,
@@ -39,6 +39,7 @@ const MultiSelect = ({
     returnFullObject,
     helperText,
     loadingText,
+    freeSolo,
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -103,6 +104,7 @@ const MultiSelect = ({
                 disabled={disabled}
                 noOptionsText={formatMessage(noOptionsText)}
                 multiple
+                freeSolo={freeSolo}
                 disableCloseOnSelect={shiftKeyIsDown}
                 id={keyValue}
                 disableClearable={!clearable}
@@ -155,6 +157,7 @@ MultiSelect.defaultProps = {
     helperText: undefined,
     renderTags: defaultRenderTags,
     returnFullObject: false, // use this one if you pass array of objects as options and want an array of objects as sected items, not a string of id's
+    freeSolo: false,
 };
 
 MultiSelect.propTypes = {
@@ -177,6 +180,8 @@ MultiSelect.propTypes = {
     renderOption: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
     renderTags: PropTypes.func,
     returnFullObject: PropTypes.bool,
+    freeSolo: PropTypes.bool,
 };
 
 export { MultiSelect };
+

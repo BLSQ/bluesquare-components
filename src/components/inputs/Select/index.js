@@ -1,15 +1,15 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
-import { SingleSelect } from './single';
+import { MESSAGES } from './messages';
 import { MultiSelect } from './multi';
+import { SingleSelect } from './single';
 import {
     baseRenderTags,
+    baseRenderTagsWithTooltip,
     defaultRenderTags,
     renderTagsWithTooltip,
-    baseRenderTagsWithTooltip,
 } from './utils';
-import { MESSAGES } from './messages';
 
 const SelectCustom = props => {
     if (props.multi) {
@@ -38,6 +38,7 @@ SelectCustom.defaultProps = {
     renderTags: defaultRenderTags,
     returnFullObject: false, // use this one if you pass array of objects as options and want an array of objects as sected items, not a string of id's
     placeholder: undefined,
+    freeSolo: false,
 };
 
 SelectCustom.propTypes = {
@@ -62,11 +63,11 @@ SelectCustom.propTypes = {
     renderTags: PropTypes.func,
     returnFullObject: PropTypes.bool,
     placeholder: PropTypes.string,
+    freeSolo: PropTypes.bool,
 };
 
 export {
-    SelectCustom as Select,
-    baseRenderTags as renderTags,
-    renderTagsWithTooltip,
-    baseRenderTagsWithTooltip,
+    SelectCustom as Select, baseRenderTagsWithTooltip, baseRenderTags as renderTags,
+    renderTagsWithTooltip
 };
+

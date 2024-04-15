@@ -1,8 +1,8 @@
-import React, { useCallback, useMemo } from 'react';
-import PropTypes from 'prop-types';
-import Box from '@mui/material/Box';
-import Autocomplete from '@mui/material/Autocomplete';
 import ClearIcon from '@mui/icons-material/Clear';
+import Autocomplete from '@mui/material/Autocomplete';
+import Box from '@mui/material/Box';
+import PropTypes from 'prop-types';
+import React, { useCallback, useMemo } from 'react';
 
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 
@@ -10,8 +10,8 @@ import { MESSAGES } from './messages';
 
 import { useStyles } from '../styles';
 
-import { defaultRenderTags, getExtraProps, getOption } from './utils';
 import { TextInput } from './TextInput';
+import { defaultRenderTags, getExtraProps, getOption } from './utils';
 
 const SingleSelect = ({
     value,
@@ -34,6 +34,7 @@ const SingleSelect = ({
     returnFullObject,
     helperText,
     placeholder,
+    freeSolo,
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -62,11 +63,17 @@ const SingleSelect = ({
         getOptionSelected,
         renderOption,
     );
+    const handleInputChange = useCallback(
+        (_, newInputValue) => freeSolo && onChange(newInputValue),
+        [onChange, returnFullObject],
+    );
 
     return (
         <Box>
             <Autocomplete
                 disabled={disabled}
+                freeSolo={freeSolo}
+                onInputChange={handleInputChange}
                 noOptionsText={formatMessage(noOptionsText)}
                 multiple={false}
                 id={keyValue}
@@ -87,7 +94,7 @@ const SingleSelect = ({
                         required={required}
                         onBlur={onBlur}
                         placeholder={placeholder}
-                        errors={displayedErrors}
+                        errors={!freeSolo ? displayedErrors : []}
                         helperText={helperText}
                         loading={loading}
                     />
@@ -122,6 +129,7 @@ SingleSelect.defaultProps = {
     renderTags: defaultRenderTags,
     returnFullObject: false, // use this one if you pass array of objects as options and want an array of objects as sected items, not a string of id's
     placeholder: undefined,
+    freeSolo: false,
 };
 
 SingleSelect.propTypes = {
@@ -145,6 +153,7 @@ SingleSelect.propTypes = {
     renderTags: PropTypes.func,
     returnFullObject: PropTypes.bool,
     placeholder: PropTypes.string,
+    freeSolo: PropTypes.bool,
 };
 
 export { SingleSelect };

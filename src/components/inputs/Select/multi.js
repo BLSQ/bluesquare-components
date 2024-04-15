@@ -1,23 +1,23 @@
-import React, { useCallback, useMemo } from 'react';
-import PropTypes from 'prop-types';
-import Box from '@mui/material/Box';
-import Autocomplete from '@mui/material/Autocomplete';
 import ClearIcon from '@mui/icons-material/Clear';
+import Autocomplete from '@mui/material/Autocomplete';
+import Box from '@mui/material/Box';
+import PropTypes from 'prop-types';
+import React, { useCallback, useMemo } from 'react';
 
-import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { useKeyPressListener } from '../../../utils/useKeyPressListener';
+import { useSafeIntl } from '../../../utils/useSafeIntl';
 
 import { MESSAGES } from './messages';
 
 import { useStyles } from '../styles';
 
+import { TextInput } from './TextInput';
 import {
     defaultRenderTags,
     getExtraProps,
     getMultiOption,
     getOption,
 } from './utils';
-import { TextInput } from './TextInput';
 
 const MultiSelect = ({
     value,
@@ -180,3 +180,4 @@ MultiSelect.propTypes = {
 };
 
 export { MultiSelect };
+

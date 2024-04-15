@@ -26,6 +26,7 @@ declare namespace SelectCustom {
         export { defaultRenderTags as renderTags };
         export const returnFullObject: boolean;
         export const placeholder: undefined;
+        export const freeSolo: boolean;
     }
     namespace propTypes {
         const multi_1: PropTypes.Requireable<boolean>;
@@ -67,12 +68,14 @@ declare namespace SelectCustom {
         export { returnFullObject_1 as returnFullObject };
         const placeholder_1: PropTypes.Requireable<string>;
         export { placeholder_1 as placeholder };
+        const freeSolo_1: PropTypes.Requireable<boolean>;
+        export { freeSolo_1 as freeSolo };
     }
 }
+import { baseRenderTagsWithTooltip } from "./utils";
 import { baseRenderTags } from "./utils";
 import { renderTagsWithTooltip } from "./utils";
-import { baseRenderTagsWithTooltip } from "./utils";
 import React from "react";
 import { defaultRenderTags } from "./utils";
 import PropTypes from "prop-types";
-export { SelectCustom as Select, baseRenderTags as renderTags, renderTagsWithTooltip, baseRenderTagsWithTooltip };
+export { SelectCustom as Select, baseRenderTagsWithTooltip, baseRenderTags as renderTags, renderTagsWithTooltip };

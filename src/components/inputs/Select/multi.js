@@ -39,7 +39,6 @@ const MultiSelect = ({
     returnFullObject,
     helperText,
     loadingText,
-    freeSolo,
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -104,7 +103,6 @@ const MultiSelect = ({
                 disabled={disabled}
                 noOptionsText={formatMessage(noOptionsText)}
                 multiple
-                freeSolo={freeSolo}
                 disableCloseOnSelect={shiftKeyIsDown}
                 id={keyValue}
                 disableClearable={!clearable}
@@ -157,7 +155,6 @@ MultiSelect.defaultProps = {
     helperText: undefined,
     renderTags: defaultRenderTags,
     returnFullObject: false, // use this one if you pass array of objects as options and want an array of objects as sected items, not a string of id's
-    freeSolo: false,
 };
 
 MultiSelect.propTypes = {
@@ -180,7 +177,6 @@ MultiSelect.propTypes = {
     renderOption: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
     renderTags: PropTypes.func,
     returnFullObject: PropTypes.bool,
-    freeSolo: PropTypes.bool,
 };
 
 export { MultiSelect };

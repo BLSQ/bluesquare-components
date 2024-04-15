@@ -54,7 +54,10 @@ const SingleSelect = ({
     );
 
     const handleChange = useCallback(
-        (e, newValue) => onChange(newValue?.value ?? null),
+        (e, newValue) => {
+            const val = freeSolo ? newValue : newValue?.value ?? null;
+            return onChange(val);
+        },
         [onChange, returnFullObject],
     );
 
@@ -69,6 +72,7 @@ const SingleSelect = ({
             <Autocomplete
                 disabled={disabled}
                 freeSolo={freeSolo}
+                autoSelect={freeSolo}
                 noOptionsText={formatMessage(noOptionsText)}
                 multiple={false}
                 id={keyValue}
@@ -89,7 +93,7 @@ const SingleSelect = ({
                         required={required}
                         onBlur={onBlur}
                         placeholder={placeholder}
-                        errors={displayedErrors}
+                        errors={!freeSolo ? displayedErrors : []}
                         helperText={helperText}
                         loading={loading}
                     />

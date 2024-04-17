@@ -1,16 +1,17 @@
+import { Box, CircularProgress } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import { TreeView } from '@mui/x-tree-view';
 import {
-    string,
-    bool,
-    arrayOf,
-    func,
+    any,
     array,
-    oneOfType,
+    arrayOf,
+    bool,
+    func,
     object,
+    oneOfType,
+    string,
 } from 'prop-types';
 import React, { useCallback } from 'react';
-import { TreeView } from '@mui/x-tree-view';
-import { makeStyles } from '@mui/styles';
-import { CircularProgress, Box } from '@mui/material';
 import { EnrichedTreeItem } from './EnrichedTreeItem';
 import { useRootData } from './requests';
 
@@ -51,12 +52,14 @@ const IasoTreeView = ({
     allowSelection,
     queryOptions = {},
     childrenQueryOptions = {},
+    dependency,
 }) => {
     const classes = useStyles();
     const fetchChildrenData = useCallback(getChildrenData, [getChildrenData]);
     const { data: rootData, isFetching } = useRootData(
         getRootData,
         queryOptions,
+        dependency,
     );
     const onNodeToggle = (_event, nodeIds) => {
         onToggle(nodeIds);
@@ -115,7 +118,7 @@ const IasoTreeView = ({
             onNodeSelect={onNodeSelect}
             onNodeToggle={onNodeToggle}
         >
-            {!isFetching && rootData && makeChildren(rootData)}
+            {rootData && makeChildren(rootData)}
             {isFetching && (
                 <Box
                     display="flex"
@@ -148,6 +151,7 @@ IasoTreeView.propTypes = {
     allowSelection: func,
     queryOptions: object,
     childrenQueryOptions: object,
+    dependency: any,
 };
 
 IasoTreeView.defaultProps = {
@@ -165,6 +169,8 @@ IasoTreeView.defaultProps = {
     allowSelection: () => true,
     queryOptions: {},
     childrenQueryOptions: {},
+    dependency: undefined,
 };
 
 export { IasoTreeView };
+

@@ -1,26 +1,26 @@
-import React, { useState, useCallback } from 'react';
-import PropTypes from 'prop-types';
 import {
     Box,
+    Button,
+    ClickAwayListener,
+    Divider,
     List,
     ListItem,
     ListItemText,
     Typography,
-    ClickAwayListener,
-    Divider,
-    Button,
 } from '@mui/material';
 import { withStyles } from '@mui/styles';
+import PropTypes from 'prop-types';
+import React, { useCallback, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import { useSafeIntl } from '../../utils/useSafeIntl';
-import { SearchInput } from '../inputs/SearchInput';
 import { rawTheme } from '../../styles/iaso/theme';
+import { useSafeIntl } from '../../utils/useSafeIntl';
+import { LoadingSpinner } from '../LoadingSpinner';
+import { SearchInput } from '../inputs/SearchInput';
+import { TreeViewResultsCountSelect } from './TreeViewResultsCountSelect';
 import { MESSAGES } from './messages';
 import { useTreeviewSearch } from './requests';
-import { LoadingSpinner } from '../LoadingSpinner';
-import { TreeViewResultsCountSelect } from './TreeViewResultsCountSelect';
 
 const styles = theme => ({
     root: {
@@ -74,7 +74,11 @@ const styles = theme => ({
         padding: theme.spacing(0, 4),
     },
     countContainer: {
-        marginTop: '7px',
+        marginTop: theme.spacing(1),
+        marginBottom: 5,
+        '& >div': {
+            marginRight: 0,
+        },
     },
     iconButton: {
         height: 25,
@@ -106,6 +110,7 @@ const DynamicSelect = ({
     request,
     makeDropDownText,
     toolTip,
+    dependency,
 }) => {
     const { formatMessage } = useSafeIntl();
     const [searchValue, setSearchValue] = useState('');
@@ -122,6 +127,7 @@ const DynamicSelect = ({
         searchValue,
         resultsCount,
         options: { enabled: isSearchActive && searchSent },
+        dependency,
     });
     const onChangeSearch = newSearchValue => {
         setSearchValue(newSearchValue);
@@ -238,7 +244,7 @@ const DynamicSelect = ({
                                         setSelectCountIsFocused(false)
                                     }
                                 >
-                                    <div
+                                    <Box
                                         className={classes.countContainer}
                                         onFocus={() =>
                                             setSelectCountIsFocused(true)
@@ -250,7 +256,7 @@ const DynamicSelect = ({
                                             }
                                             resultsCount={resultsCount}
                                         />
-                                    </div>
+                                    </Box>
                                 </ClickAwayListener>
                             </Box>
                         </Box>
@@ -267,6 +273,7 @@ DynamicSelect.defaultProps = {
     withSearchButton: false,
     toolTip: null,
     onSelect: () => {},
+    dependency: undefined,
 };
 
 DynamicSelect.propTypes = {
@@ -278,8 +285,10 @@ DynamicSelect.propTypes = {
     request: PropTypes.func.isRequired,
     makeDropDownText: PropTypes.func.isRequired,
     toolTip: PropTypes.func,
+    dependency: PropTypes.any,
 };
 
 const dynamicSelect = withStyles(styles)(DynamicSelect);
 
 export { dynamicSelect as DynamicSelect };
+

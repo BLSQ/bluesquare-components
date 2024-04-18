@@ -1,4 +1,4 @@
-export function IasoTreeView({ getChildrenData, getRootData, label, multiselect, expanded, selected, onToggle, toggleOnLabelClick, onSelect, onCheckBoxClick, onLabelClick, ticked, parentsTicked, scrollIntoView, allowSelection, queryOptions, childrenQueryOptions, }: {
+export function IasoTreeView({ getChildrenData, getRootData, label, multiselect, expanded, selected, onToggle, toggleOnLabelClick, onSelect, onCheckBoxClick, onLabelClick, ticked, parentsTicked, scrollIntoView, allowSelection, queryOptions, childrenQueryOptions, dependency, }: {
     getChildrenData: any;
     getRootData: any;
     label: any;
@@ -16,6 +16,7 @@ export function IasoTreeView({ getChildrenData, getRootData, label, multiselect,
     allowSelection: any;
     queryOptions?: {} | undefined;
     childrenQueryOptions?: {} | undefined;
+    dependency: any;
 }): React.JSX.Element;
 export namespace IasoTreeView {
     namespace propTypes {
@@ -36,6 +37,7 @@ export namespace IasoTreeView {
         export { func as allowSelection };
         export { object as queryOptions };
         export { object as childrenQueryOptions };
+        export { any as dependency };
     }
     namespace defaultProps {
         export function getChildrenData(): void;
@@ -54,6 +56,7 @@ export namespace IasoTreeView {
         export function allowSelection(): boolean;
         export const queryOptions: {};
         export const childrenQueryOptions: {};
+        export const dependency: undefined;
     }
 }
 import React from "react";
@@ -62,3 +65,4 @@ import { bool } from "prop-types";
 import { array } from "prop-types";
 import { string } from "prop-types";
 import { object } from "prop-types";
+import { any } from "prop-types";

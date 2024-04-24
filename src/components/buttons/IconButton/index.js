@@ -18,14 +18,13 @@ import RestoreFromTrash from '@mui/icons-material/RestoreFromTrash';
 import PublicIcon from '@mui/icons-material/Public';
 import ClearIcon from '@mui/icons-material/Clear';
 import ClearAllIcon from '@mui/icons-material/ClearAll';
-
+import { Link } from 'react-router-dom';
 import { XmlSvg } from '../../../svg/XmlSvgComponent';
 import { DHIS2Svg } from '../../../svg/DHIS2SvgComponent';
 import { OrgUnitSvg } from '../../../svg/OrgUnitSvgComponent';
 import { ExcellSvg } from '../../../svg/ExcellSvgComponent';
 
 import { commonStyles } from '../../../styles/iaso/common.ts';
-import { useLink } from '../../LinkProvider';
 
 const ICON_VARIANTS = {
     delete: Delete,
@@ -114,6 +113,7 @@ function IconButtonComponent({
     id,
     dataTestId,
     iconSize,
+    location,
 }) {
     if ((onClick === null) === (url === null)) {
         console.error(
@@ -123,7 +123,6 @@ function IconButtonComponent({
     if (!iconName && !overrideIcon) {
         console.error('IconButtonComponent has to be provided with an icon');
     }
-    const Link = useLink();
     const icon = overrideIcon ?? ICON_VARIANTS[iconName];
     // The <span> is needed so the tooltip correctly display when the button is disabled
     return (
@@ -145,7 +144,12 @@ function IconButtonComponent({
                     data-test={dataTestId}
                 >
                     {url ? (
-                        <Link to={url} className={classes.linkButton}>
+                        <Link
+                            to={url}
+                            className={classes.linkButton}
+                            replace={false}
+                            state={location ? { location } : undefined}
+                        >
                             <ButtonIcon
                                 icon={icon}
                                 color={color}
@@ -177,6 +181,7 @@ IconButtonComponent.defaultProps = {
     id: '',
     dataTestId: '',
     iconSize: 'medium',
+    location: undefined,
 };
 IconButtonComponent.propTypes = {
     size: PropTypes.string,
@@ -197,6 +202,7 @@ IconButtonComponent.propTypes = {
         'default',
         'inherit',
     ]),
+    location: PropTypes.string,
 };
 
 const styledIconButton = withStyles(styles)(IconButtonComponent);

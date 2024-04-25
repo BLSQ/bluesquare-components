@@ -12,6 +12,7 @@ declare const styledIconButton: React.JSXElementConstructor<Omit<Pick<Pick<{
     id: any;
     dataTestId: any;
     iconSize: any;
+    location: any;
 }, never> & Pick<PropTypes.InferProps<{
     size: PropTypes.Requireable<string>;
     classes: PropTypes.Validator<object>;
@@ -25,7 +26,8 @@ declare const styledIconButton: React.JSXElementConstructor<Omit<Pick<Pick<{
     id: PropTypes.Requireable<string>;
     dataTestId: PropTypes.Requireable<string>;
     iconSize: PropTypes.Requireable<string>;
-}>, "size" | "onClick" | "id" | "dataTestId" | "disabled" | "url" | "icon" | "overrideIcon" | "color" | "iconSize" | PropTypes.RequiredKeys<{
+    location: PropTypes.Requireable<string>;
+}>, "size" | "onClick" | "id" | "dataTestId" | "disabled" | "url" | "icon" | "overrideIcon" | "color" | "iconSize" | "location" | PropTypes.RequiredKeys<{
     size: PropTypes.Requireable<string>;
     classes: PropTypes.Validator<object>;
     onClick: PropTypes.Requireable<(...args: any[]) => any>;
@@ -38,6 +40,7 @@ declare const styledIconButton: React.JSXElementConstructor<Omit<Pick<Pick<{
     id: PropTypes.Requireable<string>;
     dataTestId: PropTypes.Requireable<string>;
     iconSize: PropTypes.Requireable<string>;
+    location: PropTypes.Requireable<string>;
 }>>, PropTypes.RequiredKeys<{
     size: PropTypes.Requireable<string>;
     classes: PropTypes.Validator<object>;
@@ -51,6 +54,7 @@ declare const styledIconButton: React.JSXElementConstructor<Omit<Pick<Pick<{
     id: PropTypes.Requireable<string>;
     dataTestId: PropTypes.Requireable<string>;
     iconSize: PropTypes.Requireable<string>;
+    location: PropTypes.Requireable<string>;
 }>> & {
     size?: string | null | undefined;
     onClick?: ((...args: any[]) => any) | null | undefined;
@@ -62,6 +66,7 @@ declare const styledIconButton: React.JSXElementConstructor<Omit<Pick<Pick<{
     overrideIcon?: any;
     color?: string | null | undefined;
     iconSize?: string | null | undefined;
+    location?: string | null | undefined;
 } & {}, "classes"> & import("@mui/styles").StyledComponentProps<string> & object>;
 import PropTypes from "prop-types";
 import React from "react";

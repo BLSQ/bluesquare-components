@@ -1,17 +1,17 @@
-import React, { useState, useCallback } from 'react';
 import {
-    string,
+    any,
+    array,
     bool,
     func,
-    object,
     number,
+    object,
     oneOfType,
-    array,
-    any,
+    string,
 } from 'prop-types';
+import React, { useCallback, useState } from 'react';
 import { DynamicSelect } from './DynamicSelect';
-import { MESSAGES } from './messages';
 import { IasoTreeView } from './IasoTreeView';
+import { MESSAGES } from './messages';
 import { adaptMap } from './utils';
 
 const formatInitialSelectedData = selectedData => {
@@ -39,6 +39,9 @@ const TreeViewWithSearch = ({
     preexpanded, // TODO rename
     selectedData,
     allowSelection,
+    dependency,
+    childrenDependency,
+    queryOptions = {},
 }) => {
     const [data, setData] = useState(formatInitialSelectedData(selectedData));
     const [selected, setSelected] = useState(
@@ -152,6 +155,7 @@ const TreeViewWithSearch = ({
                 request={request}
                 makeDropDownText={makeDropDownText}
                 toolTip={toolTip}
+                dependency={childrenDependency}
             />
             <IasoTreeView
                 label={label}
@@ -168,6 +172,8 @@ const TreeViewWithSearch = ({
                 parentsTicked={adaptMap(parentsTicked)}
                 scrollIntoView={scrollIntoView}
                 allowSelection={allowSelection}
+                dependency={dependency}
+                queryOptions={queryOptions}
             />
         </>
     );
@@ -193,6 +199,9 @@ TreeViewWithSearch.propTypes = {
     selectedData: oneOfType([object, array]),
     label: func.isRequired,
     allowSelection: func,
+    dependency: any,
+    childrenDependency: any,
+    queryOptions: object,
 };
 
 TreeViewWithSearch.defaultProps = {
@@ -210,6 +219,10 @@ TreeViewWithSearch.defaultProps = {
     preexpanded: null,
     selectedData: [],
     allowSelection: () => true,
+    dependency: undefined,
+    childrenDependency: undefined,
+    queryOptions: {},
 };
 
 export { TreeViewWithSearch };
+

@@ -127,9 +127,12 @@ export interface TableComponentProps {
     defaultSorted?: any[];
     resetPageToOne?: string;
     elevation?: number;
-    onRowClick?: () => void;
-    rowProps?: () => void;
-    cellProps?: () => void;
+    // eslint-disable-next-line no-unused-vars
+    onRowClick?: (row?: any) => void;
+    // eslint-disable-next-line no-unused-vars
+    rowProps?: (row?: any) => void;
+    // eslint-disable-next-line no-unused-vars
+    cellProps?: (row?: any) => void;
     extraProps?: {
         loading?: boolean;
         SubComponent?: React.FC<any>;
@@ -143,9 +146,9 @@ export interface TableComponentProps {
     paramsPrefix?: string;
     // eslint-disable-next-line no-unused-vars
     redirectTo?: (url: string, newParams: Record<string, string>) => void;
-    columnSelectorEnabled: boolean;
-    columnSelectorButtonDisabled: boolean;
-    columnSelectorButtonType: 'button' | 'icon';
+    columnSelectorEnabled?: boolean;
+    columnSelectorButtonDisabled?: boolean;
+    columnSelectorButtonType?: 'button' | 'icon';
 }
 
 const TableComponent: React.FC<TableComponentProps> = props => {

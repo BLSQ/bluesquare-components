@@ -13,7 +13,8 @@ declare const styledIconButton: React.JSXElementConstructor<Omit<Pick<Pick<{
     dataTestId: any;
     iconSize: any;
     location: any;
-}, never> & Pick<PropTypes.InferProps<{
+    reloadDocument?: boolean | undefined;
+}, "reloadDocument"> & Pick<PropTypes.InferProps<{
     size: PropTypes.Requireable<string>;
     classes: PropTypes.Validator<object>;
     onClick: PropTypes.Requireable<(...args: any[]) => any>;
@@ -27,6 +28,7 @@ declare const styledIconButton: React.JSXElementConstructor<Omit<Pick<Pick<{
     dataTestId: PropTypes.Requireable<string>;
     iconSize: PropTypes.Requireable<string>;
     location: PropTypes.Requireable<string>;
+    reloadDocument: PropTypes.Requireable<boolean>;
 }>, "size" | "onClick" | "id" | "dataTestId" | "disabled" | "url" | "icon" | "overrideIcon" | "color" | "iconSize" | "location" | PropTypes.RequiredKeys<{
     size: PropTypes.Requireable<string>;
     classes: PropTypes.Validator<object>;
@@ -41,7 +43,23 @@ declare const styledIconButton: React.JSXElementConstructor<Omit<Pick<Pick<{
     dataTestId: PropTypes.Requireable<string>;
     iconSize: PropTypes.Requireable<string>;
     location: PropTypes.Requireable<string>;
-}>>, PropTypes.RequiredKeys<{
+    reloadDocument: PropTypes.Requireable<boolean>;
+}>> & Pick<{
+    classes: any;
+    disabled: any;
+    onClick: any;
+    url: any;
+    icon: any;
+    overrideIcon: any;
+    tooltipMessage: any;
+    color: any;
+    size: any;
+    id: any;
+    dataTestId: any;
+    iconSize: any;
+    location: any;
+    reloadDocument?: boolean | undefined;
+}, never>, PropTypes.RequiredKeys<{
     size: PropTypes.Requireable<string>;
     classes: PropTypes.Validator<object>;
     onClick: PropTypes.Requireable<(...args: any[]) => any>;
@@ -55,6 +73,7 @@ declare const styledIconButton: React.JSXElementConstructor<Omit<Pick<Pick<{
     dataTestId: PropTypes.Requireable<string>;
     iconSize: PropTypes.Requireable<string>;
     location: PropTypes.Requireable<string>;
+    reloadDocument: PropTypes.Requireable<boolean>;
 }>> & {
     size?: string | null | undefined;
     onClick?: ((...args: any[]) => any) | null | undefined;
@@ -67,6 +86,7 @@ declare const styledIconButton: React.JSXElementConstructor<Omit<Pick<Pick<{
     color?: string | null | undefined;
     iconSize?: string | null | undefined;
     location?: string | null | undefined;
+    reloadDocument?: boolean | undefined;
 } & {}, "classes"> & import("@mui/styles").StyledComponentProps<string> & object>;
 import PropTypes from "prop-types";
 import React from "react";

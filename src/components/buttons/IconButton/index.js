@@ -114,6 +114,7 @@ function IconButtonComponent({
     dataTestId,
     iconSize,
     location,
+    reloadDocument = false,
 }) {
     if ((onClick === null) === (url === null)) {
         console.error(
@@ -149,6 +150,7 @@ function IconButtonComponent({
                             className={classes.linkButton}
                             replace={false}
                             state={location ? { location } : undefined}
+                            reloadDocument={reloadDocument}
                         >
                             <ButtonIcon
                                 icon={icon}
@@ -182,6 +184,7 @@ IconButtonComponent.defaultProps = {
     dataTestId: '',
     iconSize: 'medium',
     location: undefined,
+    reloadDocument: undefined,
 };
 IconButtonComponent.propTypes = {
     size: PropTypes.string,
@@ -203,6 +206,7 @@ IconButtonComponent.propTypes = {
         'inherit',
     ]),
     location: PropTypes.string,
+    reloadDocument: PropTypes.bool,
 };
 
 const styledIconButton = withStyles(styles)(IconButtonComponent);

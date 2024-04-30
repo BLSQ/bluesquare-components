@@ -14,7 +14,8 @@ declare const styledIconButton: React.JSXElementConstructor<Omit<Pick<Pick<{
     iconSize: any;
     location: any;
     reloadDocument?: boolean | undefined;
-}, "reloadDocument"> & Pick<PropTypes.InferProps<{
+    replace?: boolean | undefined;
+}, "replace" | "reloadDocument"> & Pick<PropTypes.InferProps<{
     size: PropTypes.Requireable<string>;
     classes: PropTypes.Validator<object>;
     onClick: PropTypes.Requireable<(...args: any[]) => any>;
@@ -29,6 +30,7 @@ declare const styledIconButton: React.JSXElementConstructor<Omit<Pick<Pick<{
     iconSize: PropTypes.Requireable<string>;
     location: PropTypes.Requireable<string>;
     reloadDocument: PropTypes.Requireable<boolean>;
+    replace: PropTypes.Requireable<boolean>;
 }>, "size" | "onClick" | "id" | "dataTestId" | "disabled" | "url" | "icon" | "overrideIcon" | "color" | "iconSize" | "location" | PropTypes.RequiredKeys<{
     size: PropTypes.Requireable<string>;
     classes: PropTypes.Validator<object>;
@@ -44,6 +46,7 @@ declare const styledIconButton: React.JSXElementConstructor<Omit<Pick<Pick<{
     iconSize: PropTypes.Requireable<string>;
     location: PropTypes.Requireable<string>;
     reloadDocument: PropTypes.Requireable<boolean>;
+    replace: PropTypes.Requireable<boolean>;
 }>> & Pick<{
     classes: any;
     disabled: any;
@@ -59,6 +62,7 @@ declare const styledIconButton: React.JSXElementConstructor<Omit<Pick<Pick<{
     iconSize: any;
     location: any;
     reloadDocument?: boolean | undefined;
+    replace?: boolean | undefined;
 }, never>, PropTypes.RequiredKeys<{
     size: PropTypes.Requireable<string>;
     classes: PropTypes.Validator<object>;
@@ -74,11 +78,13 @@ declare const styledIconButton: React.JSXElementConstructor<Omit<Pick<Pick<{
     iconSize: PropTypes.Requireable<string>;
     location: PropTypes.Requireable<string>;
     reloadDocument: PropTypes.Requireable<boolean>;
+    replace: PropTypes.Requireable<boolean>;
 }>> & {
     size?: string | null | undefined;
     onClick?: ((...args: any[]) => any) | null | undefined;
     id?: string | null | undefined;
     dataTestId?: string | null | undefined;
+    replace?: boolean | undefined;
     disabled?: boolean | null | undefined;
     url?: string | null | undefined;
     icon?: string | null | undefined;

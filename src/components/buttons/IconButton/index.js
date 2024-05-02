@@ -23,7 +23,6 @@ import { XmlSvg } from '../../../svg/XmlSvgComponent';
 import { DHIS2Svg } from '../../../svg/DHIS2SvgComponent';
 import { OrgUnitSvg } from '../../../svg/OrgUnitSvgComponent';
 import { ExcellSvg } from '../../../svg/ExcellSvgComponent';
-
 import { commonStyles } from '../../../styles/iaso/common.ts';
 
 const ICON_VARIANTS = {
@@ -116,6 +115,7 @@ function IconButtonComponent({
     location,
     reloadDocument = false,
     replace = false,
+    target = '_self',
 }) {
     if ((onClick === null) === (url === null)) {
         console.error(
@@ -146,12 +146,18 @@ function IconButtonComponent({
                     data-test={dataTestId}
                 >
                     {url ? (
+                        // TODO access location directly
                         <Link
                             to={url}
                             className={classes.linkButton}
                             replace={replace}
-                            state={location ? { location } : undefined}
+                            state={
+                                location
+                                    ? { location: location.pathname }
+                                    : undefined
+                            }
                             reloadDocument={reloadDocument}
+                            target={target}
                         >
                             <ButtonIcon
                                 icon={icon}
@@ -187,6 +193,7 @@ IconButtonComponent.defaultProps = {
     location: undefined,
     reloadDocument: undefined,
     replace: undefined,
+    target: undefined,
 };
 IconButtonComponent.propTypes = {
     size: PropTypes.string,
@@ -210,6 +217,7 @@ IconButtonComponent.propTypes = {
     location: PropTypes.string,
     reloadDocument: PropTypes.bool,
     replace: PropTypes.bool,
+    target: PropTypes.bool,
 };
 
 const styledIconButton = withStyles(styles)(IconButtonComponent);

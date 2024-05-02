@@ -217,7 +217,7 @@ IconButtonComponent.propTypes = {
     location: PropTypes.string,
     reloadDocument: PropTypes.bool,
     replace: PropTypes.bool,
-    target: PropTypes.bool,
+    target: PropTypes.string,
 };
 
 const styledIconButton = withStyles(styles)(IconButtonComponent);

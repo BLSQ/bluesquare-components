@@ -1,20 +1,21 @@
-import React, { useCallback, useRef, useEffect } from 'react';
-import {
-    string,
-    func,
-    arrayOf,
-    bool,
-    object,
-    array,
-    oneOfType,
-} from 'prop-types';
-import { TreeItem } from '@mui/x-tree-view';
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import CheckBoxOutlineBlankOutlinedIcon from '@mui/icons-material/CheckBoxOutlineBlankOutlined';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import CheckBoxOutlineBlankOutlinedIcon from '@mui/icons-material/CheckBoxOutlineBlankOutlined';
 import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox';
 import { makeStyles } from '@mui/styles';
+import { TreeItem } from '@mui/x-tree-view';
+import {
+    any,
+    array,
+    arrayOf,
+    bool,
+    func,
+    object,
+    oneOfType,
+    string,
+} from 'prop-types';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { useChildrenData } from './requests';
 
 const styles = theme => ({
@@ -55,6 +56,7 @@ const EnrichedTreeItem = ({
     scrollIntoView,
     allowSelection,
     queryOptions = {},
+    dependency,
 }) => {
     const classes = useStyles();
     const isExpanded = expanded.includes(id);
@@ -65,6 +67,7 @@ const EnrichedTreeItem = ({
         request: fetchChildrenData,
         id,
         options: { ...queryOptions, enabled: isExpanded },
+        dependency,
     });
     const ref = useRef();
     const hasChildren = data.has_children;
@@ -226,6 +229,7 @@ EnrichedTreeItem.propTypes = {
     scrollIntoView: string,
     allowSelection: func,
     queryOptions: object,
+    dependency: any,
 };
 
 EnrichedTreeItem.defaultProps = {
@@ -239,6 +243,8 @@ EnrichedTreeItem.defaultProps = {
     scrollIntoView: null,
     allowSelection: () => true,
     queryOptions: {},
+    dependency: undefined,
 };
 
 export { EnrichedTreeItem };
+

@@ -1,10 +1,10 @@
-import { CSSProperties } from '@mui/material/styles/createTypography';
 import { Theme } from '@mui/material/styles';
-import { mapStyles } from './map';
+import { CSSProperties } from '@mui/material/styles/createTypography';
 import {
     MENU_HEIGHT_WITH_TABS,
     MENU_HEIGHT_WITHOUT_TABS,
 } from '../../constants/iaso/uiConstants';
+import { mapStyles } from './map';
 
 export type CommonStyles = {
     // eslint-disable-next-line no-unused-vars
@@ -140,8 +140,8 @@ export const commonStyles: CommonStyles = theme => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        height: theme.spacing(6),
-        width: theme.spacing(6),
+        minWidth: '30px',
+        minHeight: '30px',
     },
     capitalize: {
         display: 'inline-block',

@@ -18,12 +18,12 @@ import RestoreFromTrash from '@mui/icons-material/RestoreFromTrash';
 import PublicIcon from '@mui/icons-material/Public';
 import ClearIcon from '@mui/icons-material/Clear';
 import ClearAllIcon from '@mui/icons-material/ClearAll';
-import { Link, useLocation } from 'react-router-dom';
 import { XmlSvg } from '../../../svg/XmlSvgComponent';
 import { DHIS2Svg } from '../../../svg/DHIS2SvgComponent';
 import { OrgUnitSvg } from '../../../svg/OrgUnitSvgComponent';
 import { ExcellSvg } from '../../../svg/ExcellSvgComponent';
 import { commonStyles } from '../../../styles/iaso/common.ts';
+import { LinkWithLocation } from '../../Routing/LinkWithLocation.tsx';
 
 const ICON_VARIANTS = {
     delete: Delete,
@@ -116,7 +116,6 @@ function IconButtonComponent({
     target = '_self',
     download = false,
 }) {
-    const { pathname: location } = useLocation();
     if ((onClick === null) === (url === null)) {
         console.error(
             'IconButtonComponent needs either the onClick or the url property',
@@ -146,12 +145,10 @@ function IconButtonComponent({
                     data-test={dataTestId}
                 >
                     {url ? (
-                        // TODO access location directly
-                        <Link
+                        <LinkWithLocation
                             to={url}
                             className={classes.linkButton}
                             replace={replace}
-                            state={{ location }}
                             reloadDocument={reloadDocument}
                             target={target}
                             download={download}
@@ -162,7 +159,7 @@ function IconButtonComponent({
                                 disabled={disabled}
                                 fontSize={iconSize}
                             />
-                        </Link>
+                        </LinkWithLocation>
                     ) : (
                         <ButtonIcon
                             icon={icon}

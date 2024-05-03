@@ -18,7 +18,7 @@ import RestoreFromTrash from '@mui/icons-material/RestoreFromTrash';
 import PublicIcon from '@mui/icons-material/Public';
 import ClearIcon from '@mui/icons-material/Clear';
 import ClearAllIcon from '@mui/icons-material/ClearAll';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { XmlSvg } from '../../../svg/XmlSvgComponent';
 import { DHIS2Svg } from '../../../svg/DHIS2SvgComponent';
 import { OrgUnitSvg } from '../../../svg/OrgUnitSvgComponent';
@@ -69,7 +69,6 @@ const ButtonIcon = ({ icon: Icon, color, onClick, disabled, fontSize }) => {
         color: color === 'white' ? color : undefined,
         opacity: disabled ? 0.5 : 1,
     };
-    // const iconStyles = color === 'white' ? { color: 'white' } : {};
 
     return (
         <Icon
@@ -112,11 +111,12 @@ function IconButtonComponent({
     id,
     dataTestId,
     iconSize,
-    location,
     reloadDocument = false,
     replace = false,
     target = '_self',
+    download = false,
 }) {
+    const { pathname: location } = useLocation();
     if ((onClick === null) === (url === null)) {
         console.error(
             'IconButtonComponent needs either the onClick or the url property',
@@ -151,13 +151,10 @@ function IconButtonComponent({
                             to={url}
                             className={classes.linkButton}
                             replace={replace}
-                            state={
-                                location
-                                    ? { location: location.pathname }
-                                    : undefined
-                            }
+                            state={{ location }}
                             reloadDocument={reloadDocument}
                             target={target}
+                            download={download}
                         >
                             <ButtonIcon
                                 icon={icon}
@@ -190,10 +187,10 @@ IconButtonComponent.defaultProps = {
     id: '',
     dataTestId: '',
     iconSize: 'medium',
-    location: undefined,
     reloadDocument: undefined,
     replace: undefined,
     target: undefined,
+    download: undefined,
 };
 IconButtonComponent.propTypes = {
     size: PropTypes.string,
@@ -214,9 +211,9 @@ IconButtonComponent.propTypes = {
         'default',
         'inherit',
     ]),
-    location: PropTypes.string,
     reloadDocument: PropTypes.bool,
     replace: PropTypes.bool,
+    download: PropTypes.bool,
     target: PropTypes.string,
 };
 

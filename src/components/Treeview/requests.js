@@ -6,6 +6,7 @@ export const useChildrenData = ({ request, id, options, dependency }) =>
         async () => request(id),
         {
             retry: false,
+            keepPreviousData: false,
             ...options,
         },
     );

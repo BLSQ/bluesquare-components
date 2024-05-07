@@ -137,6 +137,7 @@ const EnrichedTreeItem = ({
                 scrollIntoView={scrollIntoView}
                 allowSelection={allowSelection}
                 queryOptions={queryOptions}
+                dependency={dependency}
             />
         ));
     };
@@ -247,4 +248,3 @@ EnrichedTreeItem.defaultProps = {
 };
 
 export { EnrichedTreeItem };
-

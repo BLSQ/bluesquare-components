@@ -42,6 +42,7 @@ const TreeViewWithSearch = ({
     dependency,
     childrenDependency,
     queryOptions = {},
+    childrenQueryOptions = {},
 }) => {
     const [data, setData] = useState(formatInitialSelectedData(selectedData));
     const [selected, setSelected] = useState(
@@ -174,6 +175,7 @@ const TreeViewWithSearch = ({
                 allowSelection={allowSelection}
                 dependency={dependency}
                 queryOptions={queryOptions}
+                childrenQueryOptions={childrenQueryOptions}
             />
         </>
     );
@@ -202,6 +204,7 @@ TreeViewWithSearch.propTypes = {
     dependency: any,
     childrenDependency: any,
     queryOptions: object,
+    childrenQueryOptions: object,
 };
 
 TreeViewWithSearch.defaultProps = {
@@ -222,7 +225,7 @@ TreeViewWithSearch.defaultProps = {
     dependency: undefined,
     childrenDependency: undefined,
     queryOptions: {},
+    childrenQueryOptions: {},
 };
 
 export { TreeViewWithSearch };
-

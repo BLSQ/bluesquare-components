@@ -1,4 +1,4 @@
-export function EnrichedTreeItem({ label, id, fetchChildrenData, expanded, toggleOnLabelClick, onLabelClick, data, withCheckbox, ticked, parentsTicked, scrollIntoView, allowSelection, queryOptions, }: {
+export function EnrichedTreeItem({ label, id, fetchChildrenData, expanded, toggleOnLabelClick, onLabelClick, data, withCheckbox, ticked, parentsTicked, scrollIntoView, allowSelection, queryOptions, dependency, }: {
     label: any;
     id: any;
     fetchChildrenData: any;
@@ -12,6 +12,7 @@ export function EnrichedTreeItem({ label, id, fetchChildrenData, expanded, toggl
     scrollIntoView: any;
     allowSelection: any;
     queryOptions?: {} | undefined;
+    dependency: any;
 }): React.JSX.Element;
 export namespace EnrichedTreeItem {
     namespace propTypes {
@@ -28,6 +29,7 @@ export namespace EnrichedTreeItem {
         export { string as scrollIntoView };
         export { func as allowSelection };
         export { object as queryOptions };
+        export { any as dependency };
     }
     namespace defaultProps {
         export function fetchChildrenData(): void;
@@ -42,6 +44,7 @@ export namespace EnrichedTreeItem {
         export const scrollIntoView: null;
         export function allowSelection(): boolean;
         export const queryOptions: {};
+        export const dependency: undefined;
     }
 }
 import React from "react";
@@ -50,3 +53,4 @@ import { bool } from "prop-types";
 import { array } from "prop-types";
 import { string } from "prop-types";
 import { object } from "prop-types";
+import { any } from "prop-types";

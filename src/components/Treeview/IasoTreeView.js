@@ -77,6 +77,7 @@ const IasoTreeView = ({
                     data={item}
                     key={`RootTreeItem ${item.id}`}
                     fetchChildrenData={fetchChildrenData}
+                    dependency={dependency}
                     expanded={expanded}
                     selected={selected}
                     toggleOnLabelClick={toggleOnLabelClick}
@@ -173,4 +174,3 @@ IasoTreeView.defaultProps = {
 };
 
 export { IasoTreeView };
-

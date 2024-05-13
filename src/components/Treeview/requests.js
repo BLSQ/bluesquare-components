@@ -1,25 +1,41 @@
 import { useQuery } from 'react-query';
 
-export const useChildrenData = ({ request, id, options }) =>
-    useQuery(['getChildrenData', request, id], async () => request(id), {
-        retry: false,
-        ...options,
-    });
+export const useChildrenData = ({ request, id, options, dependency }) =>
+    useQuery(
+        ['getChildrenData', request, id, ...(dependency ? [dependency] : [])],
+        async () => request(id),
+        {
+            retry: false,
+            keepPreviousData: false,
+            ...options,
+        },
+    );
 
-export const useRootData = (request, options = {}) =>
-    useQuery(['getRootData', request], async () => request(), {
-        retry: false,
-        ...options,
-        keepPreviousData: false,
-    });
+export const useRootData = (request, options = {}, dependency) =>
+    useQuery(
+        ['getRootData', request, ...(dependency ? [dependency] : [])],
+        async () => request(),
+        {
+            retry: false,
+            keepPreviousData: false,
+            ...options,
+        },
+    );
 export const useTreeviewSearch = ({
     request,
     searchValue,
     resultsCount,
     options,
+    dependency,
 }) =>
     useQuery(
-        ['TreeviewSearch', request, searchValue, resultsCount],
+        [
+            'TreeviewSearch',
+            request,
+            searchValue,
+            resultsCount,
+            ...(dependency ? [dependency] : []),
+        ],
         async () => {
             const queryResult = await request(searchValue, resultsCount);
             return queryResult;

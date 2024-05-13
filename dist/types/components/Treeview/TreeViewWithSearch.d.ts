@@ -1,4 +1,4 @@
-export function TreeViewWithSearch({ label, getChildrenData, getRootData, toggleOnLabelClick, onSelect, minResultCount, inputLabelObject, withSearchButton, request, makeDropDownText, toolTip, parseNodeIds, onUpdate, multiselect, preselected, preexpanded, selectedData, allowSelection, }: {
+export function TreeViewWithSearch({ label, getChildrenData, getRootData, toggleOnLabelClick, onSelect, minResultCount, inputLabelObject, withSearchButton, request, makeDropDownText, toolTip, parseNodeIds, onUpdate, multiselect, preselected, preexpanded, selectedData, allowSelection, dependency, childrenDependency, queryOptions, childrenQueryOptions, }: {
     label: any;
     getChildrenData: any;
     getRootData: any;
@@ -17,6 +17,10 @@ export function TreeViewWithSearch({ label, getChildrenData, getRootData, toggle
     preexpanded: any;
     selectedData: any;
     allowSelection: any;
+    dependency: any;
+    childrenDependency: any;
+    queryOptions?: {} | undefined;
+    childrenQueryOptions?: {} | undefined;
 }): React.JSX.Element;
 export namespace TreeViewWithSearch {
     namespace propTypes {
@@ -38,6 +42,10 @@ export namespace TreeViewWithSearch {
         export const selectedData: import("prop-types").Requireable<object>;
         export const label: import("prop-types").Validator<(...args: any[]) => any>;
         export { func as allowSelection };
+        export { any as dependency };
+        export { any as childrenDependency };
+        export { object as queryOptions };
+        export { object as childrenQueryOptions };
     }
     namespace defaultProps {
         export function getChildrenData(): void;
@@ -59,6 +67,10 @@ export namespace TreeViewWithSearch {
         const selectedData_1: never[];
         export { selectedData_1 as selectedData };
         export function allowSelection(): boolean;
+        export const dependency: undefined;
+        export const childrenDependency: undefined;
+        export const queryOptions: {};
+        export const childrenQueryOptions: {};
     }
 }
 import React from "react";

@@ -18,14 +18,12 @@ import RestoreFromTrash from '@mui/icons-material/RestoreFromTrash';
 import PublicIcon from '@mui/icons-material/Public';
 import ClearIcon from '@mui/icons-material/Clear';
 import ClearAllIcon from '@mui/icons-material/ClearAll';
-
 import { XmlSvg } from '../../../svg/XmlSvgComponent';
 import { DHIS2Svg } from '../../../svg/DHIS2SvgComponent';
 import { OrgUnitSvg } from '../../../svg/OrgUnitSvgComponent';
 import { ExcellSvg } from '../../../svg/ExcellSvgComponent';
-
 import { commonStyles } from '../../../styles/iaso/common.ts';
-import { useLink } from '../../LinkProvider';
+import { LinkWithLocation } from '../../Routing/LinkWithLocation.tsx';
 
 const ICON_VARIANTS = {
     delete: Delete,
@@ -71,7 +69,6 @@ const ButtonIcon = ({ icon: Icon, color, onClick, disabled, fontSize }) => {
         color: color === 'white' ? color : undefined,
         opacity: disabled ? 0.5 : 1,
     };
-    // const iconStyles = color === 'white' ? { color: 'white' } : {};
 
     return (
         <Icon
@@ -114,6 +111,10 @@ function IconButtonComponent({
     id,
     dataTestId,
     iconSize,
+    reloadDocument = false,
+    replace = false,
+    target = '_self',
+    download = false,
 }) {
     if ((onClick === null) === (url === null)) {
         console.error(
@@ -123,7 +124,6 @@ function IconButtonComponent({
     if (!iconName && !overrideIcon) {
         console.error('IconButtonComponent has to be provided with an icon');
     }
-    const Link = useLink();
     const icon = overrideIcon ?? ICON_VARIANTS[iconName];
     // The <span> is needed so the tooltip correctly display when the button is disabled
     return (
@@ -145,14 +145,21 @@ function IconButtonComponent({
                     data-test={dataTestId}
                 >
                     {url ? (
-                        <Link to={url} className={classes.linkButton}>
+                        <LinkWithLocation
+                            to={url}
+                            className={classes.linkButton}
+                            replace={replace}
+                            reloadDocument={reloadDocument}
+                            target={target}
+                            download={download}
+                        >
                             <ButtonIcon
                                 icon={icon}
                                 color={color}
                                 disabled={disabled}
                                 fontSize={iconSize}
                             />
-                        </Link>
+                        </LinkWithLocation>
                     ) : (
                         <ButtonIcon
                             icon={icon}
@@ -177,6 +184,10 @@ IconButtonComponent.defaultProps = {
     id: '',
     dataTestId: '',
     iconSize: 'medium',
+    reloadDocument: undefined,
+    replace: undefined,
+    target: undefined,
+    download: undefined,
 };
 IconButtonComponent.propTypes = {
     size: PropTypes.string,
@@ -197,6 +208,10 @@ IconButtonComponent.propTypes = {
         'default',
         'inherit',
     ]),
+    reloadDocument: PropTypes.bool,
+    replace: PropTypes.bool,
+    download: PropTypes.bool,
+    target: PropTypes.string,
 };
 
 const styledIconButton = withStyles(styles)(IconButtonComponent);

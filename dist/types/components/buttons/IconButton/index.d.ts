@@ -12,11 +12,11 @@ declare const styledIconButton: React.JSXElementConstructor<Omit<Pick<Pick<{
     id: any;
     dataTestId: any;
     iconSize: any;
-    location: any;
     reloadDocument?: boolean | undefined;
     replace?: boolean | undefined;
     target?: string | undefined;
-}, "replace" | "reloadDocument" | "target"> & Pick<PropTypes.InferProps<{
+    download?: boolean | undefined;
+}, "replace" | "reloadDocument" | "target" | "download"> & Pick<PropTypes.InferProps<{
     size: PropTypes.Requireable<string>;
     classes: PropTypes.Validator<object>;
     onClick: PropTypes.Requireable<(...args: any[]) => any>;
@@ -29,11 +29,11 @@ declare const styledIconButton: React.JSXElementConstructor<Omit<Pick<Pick<{
     id: PropTypes.Requireable<string>;
     dataTestId: PropTypes.Requireable<string>;
     iconSize: PropTypes.Requireable<string>;
-    location: PropTypes.Requireable<string>;
     reloadDocument: PropTypes.Requireable<boolean>;
     replace: PropTypes.Requireable<boolean>;
+    download: PropTypes.Requireable<boolean>;
     target: PropTypes.Requireable<string>;
-}>, "size" | "onClick" | "id" | "dataTestId" | "disabled" | "url" | "icon" | "overrideIcon" | "color" | "iconSize" | "location" | PropTypes.RequiredKeys<{
+}>, "size" | "onClick" | "id" | "dataTestId" | "disabled" | "url" | "icon" | "overrideIcon" | "color" | "iconSize" | PropTypes.RequiredKeys<{
     size: PropTypes.Requireable<string>;
     classes: PropTypes.Validator<object>;
     onClick: PropTypes.Requireable<(...args: any[]) => any>;
@@ -46,9 +46,9 @@ declare const styledIconButton: React.JSXElementConstructor<Omit<Pick<Pick<{
     id: PropTypes.Requireable<string>;
     dataTestId: PropTypes.Requireable<string>;
     iconSize: PropTypes.Requireable<string>;
-    location: PropTypes.Requireable<string>;
     reloadDocument: PropTypes.Requireable<boolean>;
     replace: PropTypes.Requireable<boolean>;
+    download: PropTypes.Requireable<boolean>;
     target: PropTypes.Requireable<string>;
 }>> & Pick<{
     classes: any;
@@ -63,10 +63,10 @@ declare const styledIconButton: React.JSXElementConstructor<Omit<Pick<Pick<{
     id: any;
     dataTestId: any;
     iconSize: any;
-    location: any;
     reloadDocument?: boolean | undefined;
     replace?: boolean | undefined;
     target?: string | undefined;
+    download?: boolean | undefined;
 }, never>, PropTypes.RequiredKeys<{
     size: PropTypes.Requireable<string>;
     classes: PropTypes.Validator<object>;
@@ -80,9 +80,9 @@ declare const styledIconButton: React.JSXElementConstructor<Omit<Pick<Pick<{
     id: PropTypes.Requireable<string>;
     dataTestId: PropTypes.Requireable<string>;
     iconSize: PropTypes.Requireable<string>;
-    location: PropTypes.Requireable<string>;
     reloadDocument: PropTypes.Requireable<boolean>;
     replace: PropTypes.Requireable<boolean>;
+    download: PropTypes.Requireable<boolean>;
     target: PropTypes.Requireable<string>;
 }>> & {
     size?: string | null | undefined;
@@ -96,9 +96,9 @@ declare const styledIconButton: React.JSXElementConstructor<Omit<Pick<Pick<{
     overrideIcon?: any;
     color?: string | null | undefined;
     iconSize?: string | null | undefined;
-    location?: string | null | undefined;
     reloadDocument?: boolean | undefined;
     target?: string | undefined;
+    download?: boolean | undefined;
 } & {}, "classes"> & import("@mui/styles").StyledComponentProps<string> & object>;
 import PropTypes from "prop-types";
 import React from "react";

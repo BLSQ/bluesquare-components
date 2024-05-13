@@ -18,12 +18,12 @@ import RestoreFromTrash from '@mui/icons-material/RestoreFromTrash';
 import PublicIcon from '@mui/icons-material/Public';
 import ClearIcon from '@mui/icons-material/Clear';
 import ClearAllIcon from '@mui/icons-material/ClearAll';
-import { Link } from 'react-router-dom';
 import { XmlSvg } from '../../../svg/XmlSvgComponent';
 import { DHIS2Svg } from '../../../svg/DHIS2SvgComponent';
 import { OrgUnitSvg } from '../../../svg/OrgUnitSvgComponent';
 import { ExcellSvg } from '../../../svg/ExcellSvgComponent';
 import { commonStyles } from '../../../styles/iaso/common.ts';
+import { LinkWithLocation } from '../../Routing/LinkWithLocation.tsx';
 
 const ICON_VARIANTS = {
     delete: Delete,
@@ -69,7 +69,6 @@ const ButtonIcon = ({ icon: Icon, color, onClick, disabled, fontSize }) => {
         color: color === 'white' ? color : undefined,
         opacity: disabled ? 0.5 : 1,
     };
-    // const iconStyles = color === 'white' ? { color: 'white' } : {};
 
     return (
         <Icon
@@ -112,10 +111,10 @@ function IconButtonComponent({
     id,
     dataTestId,
     iconSize,
-    location,
     reloadDocument = false,
     replace = false,
     target = '_self',
+    download = false,
 }) {
     if ((onClick === null) === (url === null)) {
         console.error(
@@ -146,18 +145,13 @@ function IconButtonComponent({
                     data-test={dataTestId}
                 >
                     {url ? (
-                        // TODO access location directly
-                        <Link
+                        <LinkWithLocation
                             to={url}
                             className={classes.linkButton}
                             replace={replace}
-                            state={
-                                location
-                                    ? { location: location.pathname }
-                                    : undefined
-                            }
                             reloadDocument={reloadDocument}
                             target={target}
+                            download={download}
                         >
                             <ButtonIcon
                                 icon={icon}
@@ -165,7 +159,7 @@ function IconButtonComponent({
                                 disabled={disabled}
                                 fontSize={iconSize}
                             />
-                        </Link>
+                        </LinkWithLocation>
                     ) : (
                         <ButtonIcon
                             icon={icon}
@@ -190,10 +184,10 @@ IconButtonComponent.defaultProps = {
     id: '',
     dataTestId: '',
     iconSize: 'medium',
-    location: undefined,
     reloadDocument: undefined,
     replace: undefined,
     target: undefined,
+    download: undefined,
 };
 IconButtonComponent.propTypes = {
     size: PropTypes.string,
@@ -214,9 +208,9 @@ IconButtonComponent.propTypes = {
         'default',
         'inherit',
     ]),
-    location: PropTypes.string,
     reloadDocument: PropTypes.bool,
     replace: PropTypes.bool,
+    download: PropTypes.bool,
     target: PropTypes.string,
 };
 

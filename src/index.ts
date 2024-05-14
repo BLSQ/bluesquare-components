@@ -80,6 +80,10 @@ import { SortableTable } from './components/Sortable/table';
 import { ExpandableItem } from './components/ExpandableItem/ExpandableItem';
 import { FormattedNumber } from './components/Formatted/FormattedNumber';
 import { AlertModal } from './components/Modal/AlertModal/AlertModal';
+import { LinkWithLocation } from './Routing/LinkWithLocation';
+import { LinkButton } from './Routing/LinkButton';
+import { useRedirectTo, useRedirectToReplace } from './Routing/redirections';
+import { useParamsObject } from './Routing/useParamsObject';
 
 // utils
 import {
@@ -90,6 +94,9 @@ import {
     addPositionIndex,
     removePositionIndex,
 } from './utils';
+
+import { convertObjectToUrlParams, makeRedirectionUrl } from './Routing/utils';
+
 import {
     getTableUrl,
     getSort,
@@ -236,4 +243,11 @@ export {
     MENU_HEIGHT_WITH_TABS,
     SIDEBAR_WIDTH,
     AlertModal,
+    makeRedirectionUrl,
+    convertObjectToUrlParams,
+    useRedirectToReplace,
+    useRedirectTo,
+    useParamsObject,
+    LinkButton,
+    LinkWithLocation,
 };

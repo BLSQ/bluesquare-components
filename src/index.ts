@@ -82,7 +82,11 @@ import { FormattedNumber } from './components/Formatted/FormattedNumber';
 import { AlertModal } from './components/Modal/AlertModal/AlertModal';
 import { LinkWithLocation } from './Routing/LinkWithLocation';
 import { LinkButton } from './Routing/LinkButton';
-import { useRedirectTo, useRedirectToReplace } from './Routing/redirections';
+import {
+    useRedirectTo,
+    useRedirectToReplace,
+    useGoBack,
+} from './Routing/redirections';
 import { useParamsObject } from './Routing/useParamsObject';
 
 // utils
@@ -250,4 +254,5 @@ export {
     useParamsObject,
     LinkButton,
     LinkWithLocation,
+    useGoBack,
 };

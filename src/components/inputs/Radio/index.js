@@ -17,6 +17,7 @@ const RadioComponent = ({
     errors,
     className,
     required,
+    dataTestId,
 }) => (
     <FormControl
         component="fieldset"
@@ -34,6 +35,7 @@ const RadioComponent = ({
             onChange={event => {
                 onChange(event.target.value);
             }}
+            data-test={dataTestId}
         >
             {options.map(o => (
                 <FormControlLabel
@@ -56,6 +58,7 @@ RadioComponent.defaultProps = {
     errors: [],
     className: '',
     required: false,
+    dataTestId: undefined,
 };
 RadioComponent.propTypes = {
     options: PropTypes.array,
@@ -65,6 +68,7 @@ RadioComponent.propTypes = {
     label: PropTypes.string,
     errors: PropTypes.arrayOf(PropTypes.string),
     className: PropTypes.string,
+    dataTestId: PropTypes.string,
     required: PropTypes.bool,
 };
 

@@ -47,6 +47,7 @@ type Props = {
     thousandsGroupStyle?: 'thousand' | 'lakh' | 'wan';
     thousandSeparator?: ',' | '.';
     decimalSeparator?: ',' | '.';
+    dataTestId?: string;
 };
 export const NumberInput: FunctionComponent<Props> = ({
     keyValue,
@@ -68,6 +69,7 @@ export const NumberInput: FunctionComponent<Props> = ({
     thousandsGroupStyle = 'thousand',
     thousandSeparator = ',',
     decimalSeparator = '.',
+    dataTestId,
 }) => {
     const { formatMessage } = useSafeIntl();
     const handleChange = useCallback(
@@ -119,6 +121,7 @@ export const NumberInput: FunctionComponent<Props> = ({
             thousandsGroupStyle={thousandsGroupStyle}
             thousandSeparator={thousandSeparator}
             decimalSeparator={decimalSeparator}
+            data-test={dataTestId}
         />
     );
 };

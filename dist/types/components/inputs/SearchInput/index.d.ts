@@ -13,6 +13,7 @@ type Props = {
     value: string;
     errors?: string[];
     autoComplete: string;
+    dataTestId: string;
 };
 declare const SearchInput: FunctionComponent<Props>;
 export { SearchInput };

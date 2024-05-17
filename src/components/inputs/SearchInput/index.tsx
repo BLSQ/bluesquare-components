@@ -36,7 +36,7 @@ type Props = {
     value: string;
     errors?: string[];
     autoComplete: string;
-    dataTestId: string;
+    dataTestId?: string;
 };
 
 const SearchInput: FunctionComponent<Props> = ({

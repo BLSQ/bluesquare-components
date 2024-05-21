@@ -57,12 +57,6 @@ import { ConfirmCancelButtons } from './components/Modal/ConfirmCancelButtons';
 import { ConfirmCancelModal } from './components/Modal/ConfirmCancelModal';
 import { BackdropClickModal } from './components/Modal/BackdropClickModal/BackdropClickModal';
 import { makeFullModal } from './components/Modal/ModalWithButton';
-import {
-    LinkProvider,
-    LinkContext,
-    withLink,
-    useLink,
-} from './components/LinkProvider';
 import { SingleComment } from './components/comments/SingleComment';
 import { CommentWithThread } from './components/comments/CommentWithThread';
 import { AddComment } from './components/comments/AddComment';
@@ -86,6 +80,14 @@ import { SortableTable } from './components/Sortable/table';
 import { ExpandableItem } from './components/ExpandableItem/ExpandableItem';
 import { FormattedNumber } from './components/Formatted/FormattedNumber';
 import { AlertModal } from './components/Modal/AlertModal/AlertModal';
+import { LinkWithLocation } from './Routing/LinkWithLocation';
+import { LinkButton } from './Routing/LinkButton';
+import {
+    useRedirectTo,
+    useRedirectToReplace,
+    useGoBack,
+} from './Routing/redirections';
+import { useParamsObject } from './Routing/useParamsObject';
 
 // utils
 import {
@@ -96,6 +98,9 @@ import {
     addPositionIndex,
     removePositionIndex,
 } from './utils';
+
+import { convertObjectToUrlParams, makeRedirectionUrl } from './Routing/utils';
+
 import {
     getTableUrl,
     getSort,
@@ -188,10 +193,6 @@ export {
     InfoHeader,
     SelectionSpeedDials,
     Table,
-    LinkProvider,
-    LinkContext,
-    withLink,
-    useLink,
     SingleComment,
     CommentWithThread,
     AddComment,
@@ -246,4 +247,12 @@ export {
     MENU_HEIGHT_WITH_TABS,
     SIDEBAR_WIDTH,
     AlertModal,
+    makeRedirectionUrl,
+    convertObjectToUrlParams,
+    useRedirectToReplace,
+    useRedirectTo,
+    useParamsObject,
+    LinkButton,
+    LinkWithLocation,
+    useGoBack,
 };

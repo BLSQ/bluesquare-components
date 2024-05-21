@@ -1,4 +1,4 @@
-export function TextInput({ keyValue, label, errors, required, value, disabled, onChange, multiline, autoComplete, placeholder, }: {
+export function TextInput({ keyValue, label, errors, required, value, disabled, onChange, multiline, autoComplete, placeholder, dataTestId, }: {
     keyValue: any;
     label: any;
     errors: any;
@@ -9,6 +9,7 @@ export function TextInput({ keyValue, label, errors, required, value, disabled, 
     multiline: any;
     autoComplete: any;
     placeholder: any;
+    dataTestId: any;
 }): React.JSX.Element;
 export namespace TextInput {
     namespace defaultProps {
@@ -21,6 +22,7 @@ export namespace TextInput {
         const label: undefined;
         const autoComplete: string;
         const placeholder: undefined;
+        const dataTestId: undefined;
     }
     namespace propTypes {
         const errors_1: PropTypes.Requireable<(string | null | undefined)[]>;
@@ -42,6 +44,8 @@ export namespace TextInput {
         export { autoComplete_1 as autoComplete };
         const placeholder_1: PropTypes.Requireable<string>;
         export { placeholder_1 as placeholder };
+        const dataTestId_1: PropTypes.Requireable<string>;
+        export { dataTestId_1 as dataTestId };
     }
 }
 import React from "react";

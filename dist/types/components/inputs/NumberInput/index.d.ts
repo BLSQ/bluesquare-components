@@ -19,6 +19,7 @@ type Props = {
     thousandsGroupStyle?: 'thousand' | 'lakh' | 'wan';
     thousandSeparator?: ',' | '.';
     decimalSeparator?: ',' | '.';
+    dataTestId?: string;
 };
 export declare const NumberInput: FunctionComponent<Props>;
 export {};

@@ -6,7 +6,6 @@ export const useParamsObject = (
     configs: Record<string, string[]>,
 ): Record<string, string | Record<string, unknown> | undefined> => {
     const params = useParams()['*'] ?? '';
-    // const configs = useParamsConfig();
     return useMemo(() => {
         const paramsList = params.split('/');
         // Even indexes are the params key

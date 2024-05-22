@@ -9,6 +9,11 @@ export type RedirectFn = (
     params?: Record<string, string | undefined>,
 ) => void;
 
+/**
+ *
+ * @returns A callback function that takes and url (without leading slash) and a params object and will redirect.
+ * The current location (origin) will be saved in the location state under the `location` key
+ */
 export const useRedirectTo = (): RedirectFn => {
     const navigate = useNavigate();
     const { pathname } = useLocation();
@@ -20,6 +25,14 @@ export const useRedirectTo = (): RedirectFn => {
         [navigate, pathname],
     );
 };
+
+/**
+ *
+ * @returns A callback function that takes and url (without leading slash) and a params object and will redirect.
+ * The current location (origin) will not be kept in the navigation history. This is useful when deep linking e.g. filters,
+ * so users won't have to browse through past searches when using the `back` button
+ * The origin of the current location (the location before the currebnt location) will be saved in the location state under the `location` key
+ */
 export const useRedirectToReplace = (): RedirectFn => {
     const navigate = useNavigate();
     // When replacing, we pass the old state to avoid losing the point of origin

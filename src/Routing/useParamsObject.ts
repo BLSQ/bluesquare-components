@@ -1,6 +1,11 @@
 import { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
-
+/**
+ *
+ * @param baseUrl the url to find the params for. Without leading slash
+ * @param configs an array of configs: [{url:"home", params:["userId", accountId]}]
+ * @returns an object. key is the param name, value is a string. Arrays and objects (json) will need additional parsing to be used as such
+ */
 export const useParamsObject = (
     baseUrl: string,
     configs: Record<string, string[]>,

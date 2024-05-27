@@ -142,7 +142,7 @@ export const IconButton: FunctionComponent<Props> = ({
     download = false,
 }) => {
     const classes: Record<string, string> = useStyles();
-    if ((onClick === null) === (url === null)) {
+    if (!onClick && !url) {
         console.error(
             'IconButtonComponent needs either the onClick or the url property',
         );

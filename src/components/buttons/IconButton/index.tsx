@@ -1,9 +1,8 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FunctionComponent, HTMLAttributeAnchorTarget } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { IconButton, Tooltip } from '@mui/material';
-import { withStyles } from '@mui/styles';
+import { IconButton as MuiIconButton, Tooltip } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import Delete from '@mui/icons-material/Delete';
 import FilterList from '@mui/icons-material/FilterList';
 import CallMerge from '@mui/icons-material/CallMerge';
@@ -18,12 +17,14 @@ import RestoreFromTrash from '@mui/icons-material/RestoreFromTrash';
 import PublicIcon from '@mui/icons-material/Public';
 import ClearIcon from '@mui/icons-material/Clear';
 import ClearAllIcon from '@mui/icons-material/ClearAll';
+import { SvgIconComponent } from '@mui/icons-material';
 import { XmlSvg } from '../../../svg/XmlSvgComponent';
 import { DHIS2Svg } from '../../../svg/DHIS2SvgComponent';
 import { OrgUnitSvg } from '../../../svg/OrgUnitSvgComponent';
 import { ExcellSvg } from '../../../svg/ExcellSvgComponent';
-import { commonStyles } from '../../../styles/iaso/common.ts';
-import { LinkWithLocation } from '../../../Routing/LinkWithLocation.tsx';
+import { commonStyles } from '../../../styles/iaso/common';
+import { LinkWithLocation } from '../../../Routing/LinkWithLocation';
+import { IntlMessage } from '../../../types/types';
 
 const ICON_VARIANTS = {
     delete: Delete,
@@ -46,7 +47,7 @@ const ICON_VARIANTS = {
     clearAll: ClearAllIcon,
 };
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
     ...commonStyles(theme),
     white: {
         color: 'white',
@@ -55,15 +56,21 @@ const styles = theme => ({
         ...commonStyles(theme).popperFixed,
         marginTop: theme.spacing(1),
     },
-});
+}));
 
-const ButtonIcon = ({ icon: Icon, color, onClick, disabled, fontSize }) => {
-    if (Icon === undefined) {
-        return 'wrong icon';
-    }
+type ButtonIconProps = {
+    icon: any;
+    color: string;
+    disabled?: boolean;
+    fontSize?: 'small' | 'medium' | 'large' | 'default' | 'inherit';
+};
 
-    const iconProps = onClick !== null ? { onClick } : {};
-
+const ButtonIcon: FunctionComponent<ButtonIconProps> = ({
+    icon: Icon,
+    color,
+    disabled = false,
+    fontSize = 'medium',
+}) => {
     // special override for white color, which is not a "theme" variant such as primary, secondary or action
     const iconStyles = {
         color: color === 'white' ? color : undefined,
@@ -72,50 +79,69 @@ const ButtonIcon = ({ icon: Icon, color, onClick, disabled, fontSize }) => {
 
     return (
         <Icon
-            {...iconProps}
             color={color === 'white' ? 'inherit' : color}
             style={iconStyles}
             fontSize={fontSize}
         />
     );
 };
-ButtonIcon.defaultProps = {
-    onClick: null,
-    disabled: false,
-    fontSize: 'medium',
-};
-ButtonIcon.propTypes = {
-    onClick: PropTypes.func,
-    icon: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired,
-    color: PropTypes.string.isRequired,
-    disabled: PropTypes.bool,
-    fontSize: PropTypes.oneOf([
-        'small',
-        'medium',
-        'large',
-        'default',
-        'inherit',
-    ]),
+
+export type IconButtonBuiltInIcon =
+    | 'delete'
+    | 'filter-list'
+    | 'call-merge'
+    | 'remove-red-eye'
+    | 'restore-from-trash'
+    | 'edit'
+    | 'history'
+    | 'map'
+    | 'xml'
+    | 'dhis'
+    | 'orgUnit'
+    | 'refresh'
+    | 'stop'
+    | 'xls'
+    | 'download'
+    | 'globe'
+    | 'clear'
+    | 'clearAll';
+
+type Props = {
+    size?: 'small' | 'medium' | 'large';
+    onClick?: () => void;
+    url?: string;
+    disabled?: boolean;
+    icon?: IconButtonBuiltInIcon;
+    color?: string;
+    overrideIcon?: SvgIconComponent;
+    tooltipMessage: IntlMessage;
+    id?: string;
+    dataTestId?: string;
+    iconSize?: 'small' | 'medium' | 'large' | 'default' | 'inherit';
+    reloadDocument?: boolean;
+    replace?: boolean;
+    download?: boolean;
+    target?: HTMLAttributeAnchorTarget;
 };
 
-function IconButtonComponent({
-    classes,
-    disabled,
+export const IconButton: FunctionComponent<Props> = ({
     onClick,
     url,
-    icon: iconName,
+    icon: iconName = '',
     overrideIcon,
     tooltipMessage,
-    color,
-    size,
     id,
     dataTestId,
-    iconSize,
+    disabled = false,
+    color = 'action',
+    size = 'medium',
+    iconSize = 'medium',
     reloadDocument = false,
     replace = false,
     target = '_self',
     download = false,
-}) {
+}) => {
+    const classes: Record<string, string> = useStyles();
     if ((onClick === null) === (url === null)) {
         console.error(
             'IconButtonComponent needs either the onClick or the url property',
@@ -137,7 +163,7 @@ function IconButtonComponent({
         >
             {/* Wrapping the button in a span to prevent tooltip from crashing as it needs a DOm element to position itself  */}
             <span id={id}>
-                <IconButton
+                <MuiIconButton
                     className={url && classes.iconButton}
                     disabled={disabled}
                     onClick={onClick}
@@ -168,52 +194,8 @@ function IconButtonComponent({
                             fontSize={iconSize}
                         />
                     )}
-                </IconButton>
+                </MuiIconButton>
             </span>
         </Tooltip>
     );
-}
-IconButtonComponent.defaultProps = {
-    disabled: false,
-    url: null,
-    onClick: null,
-    color: 'action',
-    size: 'medium',
-    overrideIcon: null,
-    icon: null,
-    id: '',
-    dataTestId: '',
-    iconSize: 'medium',
-    reloadDocument: undefined,
-    replace: undefined,
-    target: undefined,
-    download: undefined,
 };
-IconButtonComponent.propTypes = {
-    size: PropTypes.string,
-    classes: PropTypes.object.isRequired,
-    onClick: PropTypes.func,
-    url: PropTypes.string,
-    disabled: PropTypes.bool,
-    icon: PropTypes.oneOf(Object.keys(ICON_VARIANTS)),
-    color: PropTypes.string,
-    overrideIcon: PropTypes.any,
-    tooltipMessage: PropTypes.object.isRequired, // TODO: refactor IASO to pass the translation directly
-    id: PropTypes.string,
-    dataTestId: PropTypes.string,
-    iconSize: PropTypes.oneOf([
-        'small',
-        'medium',
-        'large',
-        'default',
-        'inherit',
-    ]),
-    reloadDocument: PropTypes.bool,
-    replace: PropTypes.bool,
-    download: PropTypes.bool,
-    target: PropTypes.string,
-};
-
-const styledIconButton = withStyles(styles)(IconButtonComponent);
-
-export { styledIconButton as IconButton };

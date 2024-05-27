@@ -23,7 +23,10 @@ import { mapStyles } from './styles/iaso/map';
 import { mapPopupStyles } from './styles/iaso/mapPopup';
 import { AddButton } from './components/buttons/AddButton';
 import { ExportButton } from './components/buttons/ExportButton';
-import { IconButton } from './components/buttons/IconButton';
+import {
+    IconButton,
+    IconButtonBuiltInIcon,
+} from './components/buttons/IconButton';
 import { DynamicTabs } from './components/nav/DynamicTabs';
 import { DatePicker } from './components/DatePicker';
 import { ArrayFieldInput } from './components/inputs/ArrayFieldInput';
@@ -121,6 +124,8 @@ import {
     SIDEBAR_WIDTH,
 } from './constants/iaso/uiConstants';
 import { PhoneInput } from './components/inputs/PhoneInput/PhoneInput';
+import { ExternalLinkIconButton } from './Routing/ExternalLinkIconButton';
+import { ExternalLink } from './Routing/ExternalLink';
 
 // Types
 export * from './types/types';
@@ -169,6 +174,7 @@ export {
     AddButton,
     ExportButton,
     IconButton,
+    IconButtonBuiltInIcon,
     DynamicTabs,
     DatePicker,
     Select,
@@ -255,4 +261,6 @@ export {
     LinkButton,
     LinkWithLocation,
     useGoBack,
+    ExternalLinkIconButton,
+    ExternalLink,
 };

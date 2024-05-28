@@ -35,6 +35,7 @@ const SingleSelect = ({
     helperText,
     placeholder,
     freeSolo,
+    dataTestId,
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -97,6 +98,7 @@ const SingleSelect = ({
                         errors={!freeSolo ? displayedErrors : []}
                         helperText={helperText}
                         loading={loading}
+                        dataTestId={dataTestId}
                     />
                 )}
                 classes={{
@@ -129,6 +131,7 @@ SingleSelect.defaultProps = {
     renderTags: defaultRenderTags,
     returnFullObject: false, // use this one if you pass array of objects as options and want an array of objects as sected items, not a string of id's
     placeholder: undefined,
+    dataTestId: undefined,
     freeSolo: false,
 };
 
@@ -153,6 +156,7 @@ SingleSelect.propTypes = {
     renderTags: PropTypes.func,
     returnFullObject: PropTypes.bool,
     placeholder: PropTypes.string,
+    dataTestId: PropTypes.string,
     freeSolo: PropTypes.bool,
 };
 

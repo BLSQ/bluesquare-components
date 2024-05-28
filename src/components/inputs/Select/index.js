@@ -39,6 +39,7 @@ SelectCustom.defaultProps = {
     returnFullObject: false, // use this one if you pass array of objects as options and want an array of objects as sected items, not a string of id's
     placeholder: undefined,
     freeSolo: false,
+    dataTestId: undefined,
 };
 
 SelectCustom.propTypes = {
@@ -64,10 +65,12 @@ SelectCustom.propTypes = {
     returnFullObject: PropTypes.bool,
     placeholder: PropTypes.string,
     freeSolo: PropTypes.bool,
+    dataTestId: PropTypes.string,
 };
 
 export {
-    SelectCustom as Select, baseRenderTagsWithTooltip, baseRenderTags as renderTags,
-    renderTagsWithTooltip
+    SelectCustom as Select,
+    baseRenderTagsWithTooltip,
+    baseRenderTags as renderTags,
+    renderTagsWithTooltip,
 };
-

@@ -35,9 +35,9 @@ export interface TableComponentProps {
     defaultSorted?: any[];
     resetPageToOne?: string;
     elevation?: number;
-    onRowClick?: () => void;
-    rowProps?: () => void;
-    cellProps?: () => void;
+    onRowClick?: (row?: any) => void;
+    rowProps?: (row?: any) => void;
+    cellProps?: (row?: any) => void;
     extraProps?: {
         loading?: boolean;
         SubComponent?: React.FC<any>;
@@ -45,9 +45,9 @@ export interface TableComponentProps {
     } & Record<Exclude<string, 'loading' | 'SubComponent' | 'defaultPageSize'>, any>;
     paramsPrefix?: string;
     redirectTo?: (url: string, newParams: Record<string, string>) => void;
-    columnSelectorEnabled: boolean;
-    columnSelectorButtonDisabled: boolean;
-    columnSelectorButtonType: 'button' | 'icon';
+    columnSelectorEnabled?: boolean;
+    columnSelectorButtonDisabled?: boolean;
+    columnSelectorButtonType?: 'button' | 'icon';
 }
 declare const Table: React.NamedExoticComponent<TableComponentProps>;
 export { Table };

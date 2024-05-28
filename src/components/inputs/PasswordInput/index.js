@@ -21,6 +21,7 @@ const PasswordInput = ({
     displayPassword,
     classes,
     autoComplete,
+    dataTestId,
 }) => {
     const hasErrors = errors.length >= 1;
     const [showPassword, setShowPassword] = useState(displayPassword);
@@ -46,6 +47,7 @@ const PasswordInput = ({
                 onChange={event => onChange(event.target.value)}
                 error={hasErrors}
                 className={classes.passwordInput}
+                date-test={dataTestId}
             />
             <Tooltip
                 className={classes.displayPassword}
@@ -80,6 +82,7 @@ PasswordInput.defaultProps = {
     displayPassword: false,
     label: '',
     autoComplete: 'new-password',
+    dataTestId: undefined,
 };
 
 PasswordInput.propTypes = {
@@ -95,6 +98,7 @@ PasswordInput.propTypes = {
     // tooltipMessage: PropTypes.string,
     classes: PropTypes.object.isRequired,
     autoComplete: PropTypes.string,
+    dataTestId: PropTypes.string,
 };
 
 const styledPasswordInput = withStyles(styles)(PasswordInput);

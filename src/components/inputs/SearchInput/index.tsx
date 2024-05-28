@@ -36,6 +36,7 @@ type Props = {
     value: string;
     errors?: string[];
     autoComplete: string;
+    dataTestId?: string;
 };
 
 const SearchInput: FunctionComponent<Props> = ({
@@ -52,6 +53,7 @@ const SearchInput: FunctionComponent<Props> = ({
     errors = [],
     autoComplete,
     blockForbiddenChars = false,
+    dataTestId,
 }) => {
     const hasErrors = errors.length >= 1;
 
@@ -153,6 +155,7 @@ const SearchInput: FunctionComponent<Props> = ({
                 }
                 inputProps={{
                     'aria-label': 'search',
+                    'data-test': dataTestId,
                 }}
                 onChange={event => setLocalValue(event.target.value)}
             />

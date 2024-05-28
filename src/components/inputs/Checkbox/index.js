@@ -9,12 +9,14 @@ const CheckboxComponent = ({
     onChange,
     keyValue,
     required,
+    dataTestId,
 }) => (
     <FormControlLabel
         disabled={disabled}
         control={
             <Checkbox
                 id={`check-box-${keyValue}`}
+                data-test={dataTestId}
                 color="primary"
                 checked={value === true}
                 onChange={event => onChange(event.target.checked)}
@@ -32,6 +34,7 @@ CheckboxComponent.defaultProps = {
     required: false,
     onChange: () => {},
     label: '',
+    dataTestId: undefined,
 };
 
 CheckboxComponent.propTypes = {
@@ -39,6 +42,7 @@ CheckboxComponent.propTypes = {
     disabled: PropTypes.bool,
     required: PropTypes.bool,
     label: PropTypes.string,
+    dataTestId: PropTypes.string,
     onChange: PropTypes.func,
     keyValue: PropTypes.string.isRequired,
 };

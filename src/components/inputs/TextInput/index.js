@@ -23,6 +23,7 @@ const TextInput = ({
     multiline,
     autoComplete,
     placeholder,
+    dataTestId,
 }) => {
     const hasErrors = errors.length >= 1;
     const classes = useStyles();
@@ -49,6 +50,7 @@ const TextInput = ({
                 onChange={event => onChange(event.target.value)}
                 error={hasErrors}
                 placeholder={placeholder}
+                data-test={dataTestId ?? ''}
             />
         </FormControl>
     );
@@ -64,6 +66,7 @@ TextInput.defaultProps = {
     label: undefined,
     autoComplete: 'off',
     placeholder: undefined,
+    dataTestId: undefined,
 };
 
 TextInput.propTypes = {
@@ -77,6 +80,7 @@ TextInput.propTypes = {
     onChange: PropTypes.func,
     autoComplete: PropTypes.string,
     placeholder: PropTypes.string,
+    dataTestId: PropTypes.string,
 };
 
 export { TextInput };

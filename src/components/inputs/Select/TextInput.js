@@ -18,6 +18,7 @@ const TextInput = ({
     loading,
     autoComplete,
     placeholder,
+    dataTestId,
 }) => {
     const classes = useStyles();
     const paramsCopy = {
@@ -57,6 +58,7 @@ const TextInput = ({
                     ...params.InputProps,
                     autoComplete,
                     placeholder,
+                    'data-test': dataTestId,
                     endAdornment: (
                         <>
                             {loading ? (
@@ -77,6 +79,8 @@ TextInput.defaultProps = {
     renderOption: null,
     autoComplete: 'off',
     label: undefined,
+    dataTestId: undefined,
+    placeholder: '',
 };
 
 TextInput.propTypes = {
@@ -90,5 +94,7 @@ TextInput.propTypes = {
     helperText: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     loading: PropTypes.bool.isRequired,
     autoComplete: PropTypes.string,
+    placeholder: PropTypes.string,
+    dataTestId: PropTypes.string,
 };
 export { TextInput };

@@ -27,6 +27,7 @@ declare namespace SelectCustom {
         export const returnFullObject: boolean;
         export const placeholder: undefined;
         export const freeSolo: boolean;
+        export const dataTestId: undefined;
     }
     namespace propTypes {
         const multi_1: PropTypes.Requireable<boolean>;
@@ -70,6 +71,8 @@ declare namespace SelectCustom {
         export { placeholder_1 as placeholder };
         const freeSolo_1: PropTypes.Requireable<boolean>;
         export { freeSolo_1 as freeSolo };
+        const dataTestId_1: PropTypes.Requireable<string>;
+        export { dataTestId_1 as dataTestId };
     }
 }
 import { baseRenderTagsWithTooltip } from "./utils";

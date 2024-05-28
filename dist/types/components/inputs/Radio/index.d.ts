@@ -1,5 +1,5 @@
 export { RadioComponent as Radio };
-declare function RadioComponent({ options, name, onChange, value, label, errors, className, required, }: {
+declare function RadioComponent({ options, name, onChange, value, label, errors, className, required, dataTestId, }: {
     options: any;
     name: any;
     onChange: any;
@@ -8,6 +8,7 @@ declare function RadioComponent({ options, name, onChange, value, label, errors,
     errors: any;
     className: any;
     required: any;
+    dataTestId: any;
 }): React.JSX.Element;
 declare namespace RadioComponent {
     namespace defaultProps {
@@ -18,6 +19,7 @@ declare namespace RadioComponent {
         const errors: never[];
         const className: string;
         const required: boolean;
+        const dataTestId: undefined;
     }
     namespace propTypes {
         const options_1: PropTypes.Requireable<any[]>;
@@ -33,6 +35,8 @@ declare namespace RadioComponent {
         export { errors_1 as errors };
         const className_1: PropTypes.Requireable<string>;
         export { className_1 as className };
+        const dataTestId_1: PropTypes.Requireable<string>;
+        export { dataTestId_1 as dataTestId };
         const required_1: PropTypes.Requireable<boolean>;
         export { required_1 as required };
     }

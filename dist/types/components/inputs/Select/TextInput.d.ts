@@ -1,4 +1,4 @@
-export function TextInput({ params, renderOption, disabled, label, required, onBlur, errors, helperText, loading, autoComplete, placeholder, }: {
+export function TextInput({ params, renderOption, disabled, label, required, onBlur, errors, helperText, loading, autoComplete, placeholder, dataTestId, }: {
     params: any;
     renderOption: any;
     disabled: any;
@@ -10,6 +10,7 @@ export function TextInput({ params, renderOption, disabled, label, required, onB
     loading: any;
     autoComplete: any;
     placeholder: any;
+    dataTestId: any;
 }): React.JSX.Element;
 export namespace TextInput {
     namespace defaultProps {
@@ -17,6 +18,8 @@ export namespace TextInput {
         const renderOption: null;
         const autoComplete: string;
         const label: undefined;
+        const dataTestId: undefined;
+        const placeholder: string;
     }
     namespace propTypes {
         const renderOption_1: PropTypes.Requireable<object>;
@@ -33,6 +36,10 @@ export namespace TextInput {
         export const loading: PropTypes.Validator<boolean>;
         const autoComplete_1: PropTypes.Requireable<string>;
         export { autoComplete_1 as autoComplete };
+        const placeholder_1: PropTypes.Requireable<string>;
+        export { placeholder_1 as placeholder };
+        const dataTestId_1: PropTypes.Requireable<string>;
+        export { dataTestId_1 as dataTestId };
     }
 }
 import React from "react";

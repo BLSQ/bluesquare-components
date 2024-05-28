@@ -92,7 +92,7 @@ class ArrayFieldInput extends Component {
     }
 
     render() {
-        const { baseId, label, classes, autoComplete } = this.props;
+        const { baseId, label, classes, autoComplete, dataTestId } = this.props;
         const { fieldList } = this.state;
         const addFieldButtonDisabled =
             fieldList.length > 0 &&
@@ -103,7 +103,12 @@ class ArrayFieldInput extends Component {
                     <span className={classes.label}>{label}:</span>
                 </Grid>
                 <Grid item xs={11}>
-                    <Box id={`array-input-field-list-${baseId}`}>
+                    <Box
+                        id={`array-input-field-list-${baseId}`}
+                        data-test={
+                            dataTestId ?? `array-input-field-list-${baseId}`
+                        }
+                    >
                         <List className={classes.list}>
                             {fieldList.map((a, fieldIndex) => (
                                 <ListItem
@@ -156,6 +161,7 @@ ArrayFieldInput.defaultProps = {
     fieldList: [],
     label: '',
     autoComplete: 'off',
+    dataTestId: undefined,
 };
 // TODO type/document classes prop
 ArrayFieldInput.propTypes = {
@@ -165,6 +171,7 @@ ArrayFieldInput.propTypes = {
     classes: PropTypes.object.isRequired,
     label: PropTypes.string,
     autoComplete: PropTypes.string,
+    dataTestId: PropTypes.string,
 };
 
 const styledArrayFieldInput = withStyles(styles)(ArrayFieldInput);

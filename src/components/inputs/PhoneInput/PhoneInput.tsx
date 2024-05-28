@@ -41,6 +41,7 @@ type Props = {
     placeholder?: string;
     autoFormat?: boolean;
     countryCodeEditable?: boolean;
+    dataTestId?: string;
 };
 const getLocalization = (lang?: LangOptions) => {
     if (lang === 'en' || !lang) return undefined;

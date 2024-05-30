@@ -27,6 +27,7 @@ export const ConfirmCancelModal: FunctionComponent<ConfirmCancelModalProps> = ({
     onAdditionalButtonClick,
     allowConfirmAdditionalButton = true,
     closeOnConfirm = true,
+    sx,
 }) => {
     const Buttons = ({ closeDialog }) => (
         <ConfirmCancelButtons
@@ -53,6 +54,7 @@ export const ConfirmCancelModal: FunctionComponent<ConfirmCancelModalProps> = ({
             titleMessage={titleMessage}
             closeDialog={closeDialogProp}
             buttons={Buttons}
+            sx={sx}
         >
             {children}
         </SimpleModal>

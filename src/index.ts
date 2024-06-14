@@ -1,4 +1,5 @@
 import { LoadingSpinner } from './components/LoadingSpinner';
+import * as IasoChipColors from './constants/iaso/chipColors';
 import { CsvSvg } from './svg/CsvSvgComponent';
 import { DHIS2Svg } from './svg/DHIS2SvgComponent';
 import { ExcellSvg } from './svg/ExcellSvgComponent';
@@ -8,259 +9,256 @@ import { ShapeSvg } from './svg/ShapeSvgComponent';
 import { TextSvg } from './svg/TextSvgComponent';
 import { WordSvg } from './svg/WordSvgComponent';
 import { XmlSvg } from './svg/XmlSvgComponent';
-import * as IasoChipColors from './constants/iaso/chipColors';
 // TODO check if individual snackbars can still be imported
-import * as SnackBar from './constants/iaso/snackBars';
-import * as IasoUiConstants from './constants/iaso/uiConstants';
-import { injectIntl } from './utils/injectIntl';
-import { patchIntl } from './utils/patchIntl';
-import { useSafeIntl } from './utils/useSafeIntl';
-import { useSkipEffectOnMount } from './utils/useSkipEffectOnMount';
-import { theme, rawTheme } from './styles/iaso/theme';
-import { testTS } from './utils/test';
-import { commonStyles } from './styles/iaso/common';
-import { mapStyles } from './styles/iaso/map';
-import { mapPopupStyles } from './styles/iaso/mapPopup';
-import { AddButton } from './components/buttons/AddButton';
-import { ExportButton } from './components/buttons/ExportButton';
-import {
-    IconButton,
-    IconButtonBuiltInIcon,
-} from './components/buttons/IconButton';
-import { DynamicTabs } from './components/nav/DynamicTabs';
-import { DatePicker } from './components/DatePicker';
-import { ArrayFieldInput } from './components/inputs/ArrayFieldInput';
-import { Checkbox } from './components/inputs/Checkbox';
-import { NumberInput } from './components/inputs/NumberInput';
-import { PasswordInput } from './components/inputs/PasswordInput';
-import { Radio } from './components/inputs/Radio';
-import { SearchInput } from './components/inputs/SearchInput';
-import {
-    Select,
-    renderTags,
-    renderTagsWithTooltip,
-    baseRenderTagsWithTooltip,
-} from './components/inputs/Select';
-import { TextInput } from './components/inputs/TextInput';
-import { FormControl } from './components/inputs/FormControl';
-import { ErrorBoundary } from './components/ErrorBoundary';
 import { BlockPlaceholder } from './components/BlockPlaceholder';
-import { ColumnsSelectDrawer } from './components/table/ColumnsSelectDrawer';
-import { HeaderRowIcon } from './components/table/HeaderRowIcon';
-import { InfoHeader } from './components/table/InfoHeader';
-import { SelectionSpeedDials } from './components/table/SelectionSpeedDials';
-import { Table } from './components/table/Table';
-import { PageRowSelect } from './components/table/Table/PageRowSelect';
-import { Expander } from './components/table/Table/Expander';
+import { DatePicker } from './components/DatePicker';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { ErrorBoundaryWithMessage } from './components/ErrorBoundary/ErrorBoundaryWithMessage';
-import { SimpleModal } from './components/Modal/SimpleModal';
-import { CustomInput } from './components/inputs/CustomInput/CustomInput';
-import { FilesUpload } from './components/inputs/FileUpload/FilesUpload';
+import { LazyImage } from './components/LazyProgressiveImage';
+import { BackdropClickModal } from './components/Modal/BackdropClickModal/BackdropClickModal';
 import { ConfirmCancelButtons } from './components/Modal/ConfirmCancelButtons';
 import { ConfirmCancelModal } from './components/Modal/ConfirmCancelModal';
-import { BackdropClickModal } from './components/Modal/BackdropClickModal/BackdropClickModal';
 import { makeFullModal } from './components/Modal/ModalWithButton';
-import { SingleComment } from './components/comments/SingleComment';
-import { CommentWithThread } from './components/comments/CommentWithThread';
-import { AddComment } from './components/comments/AddComment';
-import { InputLabel } from './components/inputs/InputLabel';
-import { useKeyPressListener } from './utils/useKeyPressListener';
+import { SimpleModal } from './components/Modal/SimpleModal';
+import { QueryBuilder } from './components/QueryBuilder/components/QueryBuilder';
+import { QueryBuilderInput } from './components/QueryBuilder/components/QueryBuilderInput';
 import { DynamicSelect } from './components/Treeview/DynamicSelect';
 import { EnrichedTreeItem } from './components/Treeview/EnrichedTreeItem';
 import { IasoTreeView } from './components/Treeview/IasoTreeView';
 import { TreeViewResultsCountSelect } from './components/Treeview/TreeViewResultsCountSelect';
 import { TreeViewWithSearch } from './components/Treeview/TreeViewWithSearch';
 import { TruncatedTreeview } from './components/Treeview/TruncatedTreeview';
-import { french, english } from './locale';
-import { LazyImage } from './components/LazyProgressiveImage';
-import { QueryBuilder } from './components/QueryBuilder/components/QueryBuilder';
+import { AddButton } from './components/buttons/AddButton';
+import { ExportButton } from './components/buttons/ExportButton';
+import { IconButton } from './components/buttons/IconButton';
+import { AddComment } from './components/comments/AddComment';
+import { CommentWithThread } from './components/comments/CommentWithThread';
+import { SingleComment } from './components/comments/SingleComment';
+import { ArrayFieldInput } from './components/inputs/ArrayFieldInput';
+import { Checkbox } from './components/inputs/Checkbox';
+import { CustomInput } from './components/inputs/CustomInput/CustomInput';
 import { FakeInput } from './components/inputs/FakeInput';
-import { QueryBuilderInput } from './components/QueryBuilder/components/QueryBuilderInput';
+import { FilesUpload } from './components/inputs/FileUpload/FilesUpload';
+import { FormControl } from './components/inputs/FormControl';
+import { InputLabel } from './components/inputs/InputLabel';
+import { NumberInput } from './components/inputs/NumberInput';
+import { PasswordInput } from './components/inputs/PasswordInput';
+import { Radio } from './components/inputs/Radio';
+import { SearchInput } from './components/inputs/SearchInput';
+import {
+    Select,
+    baseRenderTagsWithTooltip,
+    renderTags,
+    renderTagsWithTooltip,
+} from './components/inputs/Select';
+import { TextInput } from './components/inputs/TextInput';
+import { DynamicTabs } from './components/nav/DynamicTabs';
+import { ColumnsSelectDrawer } from './components/table/ColumnsSelectDrawer';
+import { HeaderRowIcon } from './components/table/HeaderRowIcon';
+import { InfoHeader } from './components/table/InfoHeader';
+import { SelectionSpeedDials } from './components/table/SelectionSpeedDials';
+import { Table } from './components/table/Table';
+import { Expander } from './components/table/Table/Expander';
+import { PageRowSelect } from './components/table/Table/PageRowSelect';
+import * as SnackBar from './constants/iaso/snackBars';
+import * as IasoUiConstants from './constants/iaso/uiConstants';
+import { english, french } from './locale';
+import { commonStyles } from './styles/iaso/common';
+import { mapStyles } from './styles/iaso/map';
+import { mapPopupStyles } from './styles/iaso/mapPopup';
+import { rawTheme, theme } from './styles/iaso/theme';
+import { injectIntl } from './utils/injectIntl';
+import { patchIntl } from './utils/patchIntl';
+import { testTS } from './utils/test';
+import { useKeyPressListener } from './utils/useKeyPressListener';
+import { useSafeIntl } from './utils/useSafeIntl';
+import { useSkipEffectOnMount } from './utils/useSkipEffectOnMount';
 // import { QueryBuilderListToReplace } from './components/QueryBuilder/types';
-import { useHumanReadableJsonLogic } from './components/QueryBuilder/hooks/useHumanReadableJsonLogic';
-import { SortableList } from './components/Sortable/list';
-import { SortableTable } from './components/Sortable/table';
+import { LinkButton } from './Routing/LinkButton';
+import { LinkWithLocation } from './Routing/LinkWithLocation';
+import {
+    useGoBack,
+    useRedirectTo,
+    useRedirectToReplace,
+} from './Routing/redirections';
+import { useParamsObject } from './Routing/useParamsObject';
 import { ExpandableItem } from './components/ExpandableItem/ExpandableItem';
 import { FormattedNumber } from './components/Formatted/FormattedNumber';
 import { AlertModal } from './components/Modal/AlertModal/AlertModal';
-import { LinkWithLocation } from './Routing/LinkWithLocation';
-import { LinkButton } from './Routing/LinkButton';
-import {
-    useRedirectTo,
-    useRedirectToReplace,
-    useGoBack,
-} from './Routing/redirections';
-import { useParamsObject } from './Routing/useParamsObject';
+import { useHumanReadableJsonLogic } from './components/QueryBuilder/hooks/useHumanReadableJsonLogic';
+import { SortableList } from './components/Sortable/list';
+import { SortableTable } from './components/Sortable/table';
 
 // utils
 import {
-    substituteVars,
+    addPositionIndex,
     capitalize,
     formatThousand,
-    truncateText,
-    addPositionIndex,
     removePositionIndex,
+    substituteVars,
+    truncateText,
 } from './utils';
 
 import { convertObjectToUrlParams, makeRedirectionUrl } from './Routing/utils';
 
+import { ExternalLink } from './Routing/ExternalLink';
+import { ExternalLinkIconButton } from './Routing/ExternalLinkIconButton';
+import { PhoneInput } from './components/inputs/PhoneInput/PhoneInput';
 import {
-    getTableUrl,
-    getSort,
-    getOrderArray,
-    getSimplifiedColumns,
-    defaultSelectionActions,
-    selectionInitialState,
-    setTableSelection,
-    getParamsKey,
-    getTableParams,
-    tableInitialResult,
-    getColumnsHeadersInfos,
-} from './utils/tableUtils';
-import {
-    textPlaceholder,
     MENU_HEIGHT_WITHOUT_TABS,
     MENU_HEIGHT_WITH_TABS,
     SIDEBAR_WIDTH,
+    textPlaceholder,
 } from './constants/iaso/uiConstants';
-import { PhoneInput } from './components/inputs/PhoneInput/PhoneInput';
-import { ExternalLinkIconButton } from './Routing/ExternalLinkIconButton';
-import { ExternalLink } from './Routing/ExternalLink';
+import {
+    defaultSelectionActions,
+    getColumnsHeadersInfos,
+    getOrderArray,
+    getParamsKey,
+    getSimplifiedColumns,
+    getSort,
+    getTableParams,
+    getTableUrl,
+    selectionInitialState,
+    setTableSelection,
+    tableInitialResult,
+} from './utils/tableUtils';
 
 // Types
-export * from './types/types';
-export * from './components/Sortable/types';
-export * from './components/Sortable/list/types';
-export * from './components/table/Table/types';
 export * from './components/QueryBuilder/types';
-export * from './utils/intlUtils';
-export * from './utils/fetchData';
+export * from './components/Sortable/list/types';
+export * from './components/Sortable/types';
 export * from './components/inputs/PhoneInput/types';
+export * from './components/table/Table/types';
+export * from './types/types';
+export * from './utils/fetchData';
+export * from './utils/intlUtils';
 
 export type { CommonStyles } from './styles/iaso/common';
 
 export type {
-    Fields as QueryBuilderFields,
     Field as QueryBuilderField,
+    Fields as QueryBuilderFields,
 } from '@react-awesome-query-builder/mui';
 
 export type { TableComponentProps } from './components/table/Table';
 
+export type { IconButtonBuiltInIcon } from './components/buttons/IconButton';
+
 export {
-    LazyImage,
-    french,
-    english,
-    testTS,
-    LoadingSpinner,
-    CsvSvg,
-    DHIS2Svg,
-    ExcellSvg,
-    OrgUnitSvg,
-    PdfSvg,
-    ShapeSvg,
-    TextSvg,
-    WordSvg,
-    XmlSvg,
-    IasoChipColors,
-    SnackBar,
-    IasoUiConstants,
-    injectIntl,
-    patchIntl,
-    useSafeIntl,
-    useSkipEffectOnMount,
-    commonStyles,
-    mapStyles,
-    mapPopupStyles,
     AddButton,
-    ExportButton,
-    IconButton,
-    IconButtonBuiltInIcon,
-    DynamicTabs,
-    DatePicker,
-    Select,
-    renderTags,
-    renderTagsWithTooltip,
-    baseRenderTagsWithTooltip,
-    PageRowSelect,
-    ErrorBoundary,
-    TextInput,
-    PasswordInput,
-    NumberInput,
-    FormattedNumber,
-    ArrayFieldInput,
-    SearchInput,
-    Checkbox,
-    Radio,
-    theme,
-    rawTheme,
-    BlockPlaceholder,
-    ColumnsSelectDrawer,
-    HeaderRowIcon,
-    InfoHeader,
-    SelectionSpeedDials,
-    Table,
-    SingleComment,
-    CommentWithThread,
     AddComment,
-    InputLabel,
-    Expander,
-    FormControl,
-    useKeyPressListener,
-    TruncatedTreeview,
-    TreeViewWithSearch,
-    TreeViewResultsCountSelect,
-    IasoTreeView,
-    EnrichedTreeItem,
+    AlertModal,
+    ArrayFieldInput,
+    BackdropClickModal,
+    BlockPlaceholder,
+    Checkbox,
+    ColumnsSelectDrawer,
+    CommentWithThread,
+    ConfirmCancelButtons,
+    ConfirmCancelModal,
+    CsvSvg,
+    CustomInput,
+    DHIS2Svg,
+    DatePicker,
     DynamicSelect,
+    DynamicTabs,
+    EnrichedTreeItem,
+    ErrorBoundary,
+    ErrorBoundaryWithMessage,
+    ExcellSvg,
+    ExpandableItem,
+    Expander,
+    ExportButton,
+    ExternalLink,
+    ExternalLinkIconButton,
+    FakeInput,
+    FilesUpload,
+    FormControl,
+    FormattedNumber,
+    HeaderRowIcon,
+    IasoChipColors,
+    IasoTreeView,
+    IasoUiConstants,
+    IconButton,
+    InfoHeader,
+    InputLabel,
+    LazyImage,
+    LinkButton,
+    LinkWithLocation,
+    LoadingSpinner,
+    MENU_HEIGHT_WITHOUT_TABS,
+    MENU_HEIGHT_WITH_TABS,
+    NumberInput,
+    OrgUnitSvg,
+    PageRowSelect,
+    PasswordInput,
+    PdfSvg,
     PhoneInput,
     QueryBuilder,
     QueryBuilderInput,
-    useHumanReadableJsonLogic,
-    FakeInput,
-    ErrorBoundaryWithMessage,
-    CustomInput,
-    FilesUpload,
+    Radio,
+    SIDEBAR_WIDTH,
+    SearchInput,
+    Select,
+    SelectionSpeedDials,
+    ShapeSvg,
     SimpleModal,
-    ConfirmCancelModal,
-    ConfirmCancelButtons,
-    makeFullModal,
-    BackdropClickModal,
+    SingleComment,
+    SnackBar,
     // IntlFormatMessage,
     // IntlMessage,
     // QueryBuilderListToReplace,
     SortableList,
     SortableTable,
-    ExpandableItem,
-    substituteVars,
-    capitalize,
-    formatThousand,
-    truncateText,
+    Table,
+    TextInput,
+    TextSvg,
+    TreeViewResultsCountSelect,
+    TreeViewWithSearch,
+    TruncatedTreeview,
+    WordSvg,
+    XmlSvg,
     addPositionIndex,
-    removePositionIndex,
-    getTableUrl,
-    getSort,
-    getOrderArray,
-    getSimplifiedColumns,
+    baseRenderTagsWithTooltip,
+    capitalize,
+    commonStyles,
+    convertObjectToUrlParams,
     defaultSelectionActions,
+    english,
+    formatThousand,
+    french,
+    getColumnsHeadersInfos,
+    getOrderArray,
+    getParamsKey,
+    getSimplifiedColumns,
+    getSort,
+    getTableParams,
+    getTableUrl,
+    injectIntl,
+    makeFullModal,
+    makeRedirectionUrl,
+    mapPopupStyles,
+    mapStyles,
+    patchIntl,
+    rawTheme,
+    removePositionIndex,
+    renderTags,
+    renderTagsWithTooltip,
     selectionInitialState,
     setTableSelection,
-    getParamsKey,
-    getTableParams,
+    substituteVars,
     tableInitialResult,
-    getColumnsHeadersInfos,
+    testTS,
     textPlaceholder,
-    MENU_HEIGHT_WITHOUT_TABS,
-    MENU_HEIGHT_WITH_TABS,
-    SIDEBAR_WIDTH,
-    AlertModal,
-    makeRedirectionUrl,
-    convertObjectToUrlParams,
-    useRedirectToReplace,
-    useRedirectTo,
-    useParamsObject,
-    LinkButton,
-    LinkWithLocation,
+    theme,
+    truncateText,
     useGoBack,
-    ExternalLinkIconButton,
-    ExternalLink,
+    useHumanReadableJsonLogic,
+    useKeyPressListener,
+    useParamsObject,
+    useRedirectTo,
+    useRedirectToReplace,
+    useSafeIntl,
+    useSkipEffectOnMount,
 };

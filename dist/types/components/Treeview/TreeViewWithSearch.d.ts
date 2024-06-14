@@ -1,4 +1,4 @@
-export function TreeViewWithSearch({ label, getChildrenData, getRootData, toggleOnLabelClick, onSelect, minResultCount, inputLabelObject, withSearchButton, request, makeDropDownText, toolTip, parseNodeIds, onUpdate, multiselect, preselected, preexpanded, selectedData, allowSelection, dependency, childrenDependency, queryOptions, childrenQueryOptions, }: {
+export function TreeViewWithSearch({ label, getChildrenData, getRootData, toggleOnLabelClick, onSelect, minResultCount, inputLabelObject, withSearchButton, request, makeDropDownText, toolTip, parseNodeIds, onUpdate, multiselect, preselected, preexpanded, selectedData, allowSelection, dependency, childrenDependency, queryOptions, childrenQueryOptions, fetchDetails, }: {
     label: any;
     getChildrenData: any;
     getRootData: any;
@@ -21,6 +21,7 @@ export function TreeViewWithSearch({ label, getChildrenData, getRootData, toggle
     childrenDependency: any;
     queryOptions?: {} | undefined;
     childrenQueryOptions?: {} | undefined;
+    fetchDetails: any;
 }): React.JSX.Element;
 export namespace TreeViewWithSearch {
     namespace propTypes {
@@ -46,6 +47,7 @@ export namespace TreeViewWithSearch {
         export { any as childrenDependency };
         export { object as queryOptions };
         export { object as childrenQueryOptions };
+        export { func as fetchDetails };
     }
     namespace defaultProps {
         export function getChildrenData(): void;
@@ -71,6 +73,7 @@ export namespace TreeViewWithSearch {
         export const childrenDependency: undefined;
         export const queryOptions: {};
         export const childrenQueryOptions: {};
+        export function fetchDetails(item: any): any;
     }
 }
 import React from "react";

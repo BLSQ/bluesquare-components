@@ -152,6 +152,7 @@
     "blsq.treeview.label.selectMultiple": "Select org unit(s)",
     "blsq.treeview.label.selectSingle": "Select an org unit",
     "blsq.treeview.loading": "Loading",
+    "blsq.treeview.results.noData": "No data",
     "blsq.treeview.search.cancel": "Cancel",
     "blsq.treeview.search.confirm": "Confirm",
     "blsq.treeview.search.inputLabelObject": "Enter search term",

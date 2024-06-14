@@ -19,8 +19,8 @@ declare const styledSpinner: React.JSXElementConstructor<Omit<Pick<PropTypes.Inf
 }>, "classes"> & {
     size?: number | null | undefined;
     transparent?: boolean | null | undefined;
-    fixed?: boolean | null | undefined;
-    absolute?: boolean | null | undefined;
     padding?: number | null | undefined;
+    absolute?: boolean | null | undefined;
+    fixed?: boolean | null | undefined;
 } & {}, "classes"> & (import("@mui/styles").StyledComponentProps<any> | (import("@mui/styles").StyledComponentProps<any> & object))>;
 export { styledSpinner as LoadingSpinner };

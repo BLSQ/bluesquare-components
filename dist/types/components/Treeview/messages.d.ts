@@ -57,4 +57,10 @@ export namespace MESSAGES {
         const defaultMessage_9: string;
         export { defaultMessage_9 as defaultMessage };
     }
+    namespace noData {
+        const id_10: string;
+        export { id_10 as id };
+        const defaultMessage_10: string;
+        export { defaultMessage_10 as defaultMessage };
+    }
 }

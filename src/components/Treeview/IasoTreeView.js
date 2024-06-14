@@ -12,7 +12,9 @@ import {
     string,
 } from 'prop-types';
 import React, { useCallback } from 'react';
+import { useSafeIntl } from '../../utils/useSafeIntl';
 import { EnrichedTreeItem } from './EnrichedTreeItem';
+import { MESSAGES } from './messages';
 import { useRootData } from './requests';
 
 const styles = theme => ({
@@ -55,6 +57,7 @@ const IasoTreeView = ({
     dependency,
 }) => {
     const classes = useStyles();
+    const { formatMessage } = useSafeIntl();
     const fetchChildrenData = useCallback(getChildrenData, [getChildrenData]);
     const { data: rootData, isFetching } = useRootData(
         getRootData,
@@ -77,6 +80,7 @@ const IasoTreeView = ({
                     data={item}
                     key={`RootTreeItem ${item.id}`}
                     fetchChildrenData={fetchChildrenData}
+                    dependency={dependency}
                     expanded={expanded}
                     selected={selected}
                     toggleOnLabelClick={toggleOnLabelClick}
@@ -119,6 +123,11 @@ const IasoTreeView = ({
             onNodeToggle={onNodeToggle}
         >
             {rootData && makeChildren(rootData)}
+            {rootData && !isFetching && rootData.length === 0 && (
+                <Box display="flex" alignItems="center" justifyContent="center" height={100}>
+                    {formatMessage(MESSAGES.noData)}
+                </Box>
+            )}
             {isFetching && (
                 <Box
                     display="flex"
@@ -173,4 +182,3 @@ IasoTreeView.defaultProps = {
 };
 
 export { IasoTreeView };
-

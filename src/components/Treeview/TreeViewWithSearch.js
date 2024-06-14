@@ -42,6 +42,8 @@ const TreeViewWithSearch = ({
     dependency,
     childrenDependency,
     queryOptions = {},
+    childrenQueryOptions = {},
+    fetchDetails,
 }) => {
     const [data, setData] = useState(formatInitialSelectedData(selectedData));
     const [selected, setSelected] = useState(
@@ -117,8 +119,9 @@ const TreeViewWithSearch = ({
 
     const onSearchSelect = useCallback(
         // this is an org unit so you can access the parents here
-        searchSelection => {
-            const ancestors = parseNodeIds(searchSelection);
+        async searchSelection => {
+            const details = await fetchDetails(searchSelection);
+            const ancestors = parseNodeIds(details);
             const idsToExpand = Array.from(ancestors.keys()).map(id =>
                 id.toString(),
             );
@@ -142,7 +145,15 @@ const TreeViewWithSearch = ({
             }
             setScrollIntoView(currentId);
         },
-        [parseNodeIds, onNodeSelect, selected, onUpdate, expanded, multiselect],
+        [
+            parseNodeIds,
+            onNodeSelect,
+            selected,
+            onUpdate,
+            expanded,
+            multiselect,
+            dependency,
+        ],
     );
 
     return (
@@ -174,6 +185,7 @@ const TreeViewWithSearch = ({
                 allowSelection={allowSelection}
                 dependency={dependency}
                 queryOptions={queryOptions}
+                childrenQueryOptions={childrenQueryOptions}
             />
         </>
     );
@@ -202,6 +214,8 @@ TreeViewWithSearch.propTypes = {
     dependency: any,
     childrenDependency: any,
     queryOptions: object,
+    childrenQueryOptions: object,
+    fetchDetails: func,
 };
 
 TreeViewWithSearch.defaultProps = {
@@ -222,7 +236,8 @@ TreeViewWithSearch.defaultProps = {
     dependency: undefined,
     childrenDependency: undefined,
     queryOptions: {},
+    childrenQueryOptions: {},
+    fetchDetails: item => item,
 };
 
 export { TreeViewWithSearch };
-

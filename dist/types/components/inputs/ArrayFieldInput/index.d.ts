@@ -6,6 +6,7 @@ declare const styledArrayFieldInput: React.JSXElementConstructor<Omit<Pick<PropT
     classes: PropTypes.Validator<object>;
     label: PropTypes.Requireable<string>;
     autoComplete: PropTypes.Requireable<string>;
+    dataTestId: PropTypes.Requireable<string>;
 }>, PropTypes.RequiredKeys<{
     fieldList: PropTypes.Requireable<any[]>;
     baseId: PropTypes.Validator<string>;
@@ -13,7 +14,9 @@ declare const styledArrayFieldInput: React.JSXElementConstructor<Omit<Pick<PropT
     classes: PropTypes.Validator<object>;
     label: PropTypes.Requireable<string>;
     autoComplete: PropTypes.Requireable<string>;
+    dataTestId: PropTypes.Requireable<string>;
 }>> & {
+    dataTestId?: string | null | undefined;
     label?: string | null | undefined;
     autoComplete?: string | null | undefined;
     fieldList?: any[] | null | undefined;

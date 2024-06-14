@@ -1,10 +1,15 @@
 import { useQuery } from 'react-query';
 
-export const useChildrenData = ({ request, id, options }) =>
-    useQuery(['getChildrenData', request, id], async () => request(id), {
-        retry: false,
-        ...options,
-    });
+export const useChildrenData = ({ request, id, options, dependency }) =>
+    useQuery(
+        ['getChildrenData', request, id, ...(dependency ? [dependency] : [])],
+        async () => request(id),
+        {
+            retry: false,
+            keepPreviousData: false,
+            ...options,
+        },
+    );
 
 export const useRootData = (request, options = {}, dependency) =>
     useQuery(

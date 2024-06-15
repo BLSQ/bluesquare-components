@@ -40,6 +40,7 @@ SelectCustom.defaultProps = {
     placeholder: undefined,
     freeSolo: false,
     dataTestId: undefined,
+    MenuProps: undefined,
 };
 
 SelectCustom.propTypes = {
@@ -66,6 +67,7 @@ SelectCustom.propTypes = {
     placeholder: PropTypes.string,
     freeSolo: PropTypes.bool,
     dataTestId: PropTypes.string,
+    MenuProps: PropTypes.object,
 };
 
 export {

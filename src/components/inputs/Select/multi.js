@@ -40,6 +40,7 @@ const MultiSelect = ({
     helperText,
     loadingText,
     dataTestId,
+    MenuProps,
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -134,6 +135,7 @@ const MultiSelect = ({
                     hasClearIcon: classes.hasClearIcon,
                 }}
                 {...extraProps}
+                MenuProps={MenuProps}
             />
         </Box>
     );
@@ -158,6 +160,7 @@ MultiSelect.defaultProps = {
     renderTags: defaultRenderTags,
     returnFullObject: false, // use this one if you pass array of objects as options and want an array of objects as sected items, not a string of id's
     dataTestId: undefined,
+    MenuProps: undefined,
 };
 
 MultiSelect.propTypes = {
@@ -181,6 +184,7 @@ MultiSelect.propTypes = {
     renderTags: PropTypes.func,
     returnFullObject: PropTypes.bool,
     dataTestId: PropTypes.string,
+    MenuProps: PropTypes.object,
 };
 
 export { MultiSelect };

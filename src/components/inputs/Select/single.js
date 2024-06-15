@@ -36,6 +36,7 @@ const SingleSelect = ({
     placeholder,
     freeSolo,
     dataTestId,
+    MenuProps,
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -107,6 +108,7 @@ const SingleSelect = ({
                     hasClearIcon: classes.hasClearIcon,
                 }}
                 {...extraProps}
+                MenuProps={MenuProps}
             />
         </Box>
     );
@@ -133,6 +135,7 @@ SingleSelect.defaultProps = {
     placeholder: undefined,
     dataTestId: undefined,
     freeSolo: false,
+    MenuProps: undefined,
 };
 
 SingleSelect.propTypes = {
@@ -158,6 +161,7 @@ SingleSelect.propTypes = {
     placeholder: PropTypes.string,
     dataTestId: PropTypes.string,
     freeSolo: PropTypes.bool,
+    MenuProps: PropTypes.object,
 };
 
 export { SingleSelect };

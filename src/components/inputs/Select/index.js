@@ -41,6 +41,7 @@ SelectCustom.defaultProps = {
     freeSolo: false,
     dataTestId: undefined,
     MenuProps: undefined,
+    listboxClass: undefined,
 };
 
 SelectCustom.propTypes = {
@@ -68,6 +69,7 @@ SelectCustom.propTypes = {
     freeSolo: PropTypes.bool,
     dataTestId: PropTypes.string,
     MenuProps: PropTypes.object,
+    listboxClass: PropTypes.object,
 };
 
 export {

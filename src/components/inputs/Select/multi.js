@@ -1,7 +1,7 @@
 import ClearIcon from '@mui/icons-material/Clear';
 import Autocomplete from '@mui/material/Autocomplete';
 import Box from '@mui/material/Box';
-import PropTypes from 'prop-types';
+import PropTypes, { object } from 'prop-types';
 import React, { useCallback, useMemo } from 'react';
 
 import { useKeyPressListener } from '../../../utils/useKeyPressListener';
@@ -41,6 +41,7 @@ const MultiSelect = ({
     loadingText,
     dataTestId,
     MenuProps,
+    listboxClass,
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -133,6 +134,7 @@ const MultiSelect = ({
                     popupIndicator: classes.popupIndicator,
                     clearIndicator: classes.clearIndicator,
                     hasClearIcon: classes.hasClearIcon,
+                    listbox: listboxClass.listbox
                 }}
                 {...extraProps}
                 MenuProps={MenuProps}
@@ -161,6 +163,7 @@ MultiSelect.defaultProps = {
     returnFullObject: false, // use this one if you pass array of objects as options and want an array of objects as sected items, not a string of id's
     dataTestId: undefined,
     MenuProps: undefined,
+    listboxClass: undefined,
 };
 
 MultiSelect.propTypes = {
@@ -185,6 +188,7 @@ MultiSelect.propTypes = {
     returnFullObject: PropTypes.bool,
     dataTestId: PropTypes.string,
     MenuProps: PropTypes.object,
+    listboxClass: PropTypes.object,
 };
 
 export { MultiSelect };

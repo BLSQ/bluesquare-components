@@ -1,4 +1,4 @@
-export function SingleSelect({ value, keyValue, label, errors, onChange, options, onBlur, disabled, clearable, required, noOptionsText, getOptionLabel, getOptionSelected, loading, loadingText, renderOption, renderTags, returnFullObject, helperText, placeholder, freeSolo, dataTestId, MenuProps, }: {
+export function SingleSelect({ value, keyValue, label, errors, onChange, options, onBlur, disabled, clearable, required, noOptionsText, getOptionLabel, getOptionSelected, loading, loadingText, renderOption, renderTags, returnFullObject, helperText, placeholder, freeSolo, dataTestId, MenuProps, listboxClass, }: {
     value: any;
     keyValue: any;
     label: any;
@@ -22,6 +22,7 @@ export function SingleSelect({ value, keyValue, label, errors, onChange, options
     freeSolo: any;
     dataTestId: any;
     MenuProps: any;
+    listboxClass: any;
 }): React.JSX.Element;
 export namespace SingleSelect {
     namespace defaultProps {
@@ -52,6 +53,7 @@ export namespace SingleSelect {
         export const dataTestId: undefined;
         export const freeSolo: boolean;
         export const MenuProps: undefined;
+        export const listboxClass: undefined;
     }
     namespace propTypes {
         const errors_1: PropTypes.Requireable<(string | null | undefined)[]>;
@@ -97,6 +99,8 @@ export namespace SingleSelect {
         export { freeSolo_1 as freeSolo };
         const MenuProps_1: PropTypes.Requireable<object>;
         export { MenuProps_1 as MenuProps };
+        const listboxClass_1: PropTypes.Requireable<object>;
+        export { listboxClass_1 as listboxClass };
     }
 }
 import React from "react";

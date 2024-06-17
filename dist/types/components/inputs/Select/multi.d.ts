@@ -1,4 +1,4 @@
-export function MultiSelect({ value, keyValue, label, errors, onChange, options, onBlur, disabled, clearable, required, noOptionsText, getOptionLabel, getOptionSelected, loading, renderOption, renderTags, returnFullObject, helperText, loadingText, dataTestId, MenuProps, }: {
+export function MultiSelect({ value, keyValue, label, errors, onChange, options, onBlur, disabled, clearable, required, noOptionsText, getOptionLabel, getOptionSelected, loading, renderOption, renderTags, returnFullObject, helperText, loadingText, dataTestId, MenuProps, listboxClass, }: {
     value: any;
     keyValue: any;
     label: any;
@@ -20,6 +20,7 @@ export function MultiSelect({ value, keyValue, label, errors, onChange, options,
     loadingText: any;
     dataTestId: any;
     MenuProps: any;
+    listboxClass: any;
 }): React.JSX.Element;
 export namespace MultiSelect {
     namespace defaultProps {
@@ -48,6 +49,7 @@ export namespace MultiSelect {
         export const returnFullObject: boolean;
         export const dataTestId: undefined;
         export const MenuProps: undefined;
+        export const listboxClass: undefined;
     }
     namespace propTypes {
         const errors_1: PropTypes.Requireable<(string | null | undefined)[]>;
@@ -89,6 +91,8 @@ export namespace MultiSelect {
         export { dataTestId_1 as dataTestId };
         const MenuProps_1: PropTypes.Requireable<object>;
         export { MenuProps_1 as MenuProps };
+        const listboxClass_1: PropTypes.Requireable<object>;
+        export { listboxClass_1 as listboxClass };
     }
 }
 import React from "react";

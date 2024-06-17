@@ -37,6 +37,7 @@ const SingleSelect = ({
     freeSolo,
     dataTestId,
     MenuProps,
+    listboxClass,
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -106,6 +107,7 @@ const SingleSelect = ({
                     popupIndicator: classes.popupIndicator,
                     clearIndicator: classes.clearIndicator,
                     hasClearIcon: classes.hasClearIcon,
+                    listbox: listboxClass,
                 }}
                 {...extraProps}
                 MenuProps={MenuProps}
@@ -136,6 +138,7 @@ SingleSelect.defaultProps = {
     dataTestId: undefined,
     freeSolo: false,
     MenuProps: undefined,
+    listboxClass: undefined,
 };
 
 SingleSelect.propTypes = {
@@ -162,6 +165,7 @@ SingleSelect.propTypes = {
     dataTestId: PropTypes.string,
     freeSolo: PropTypes.bool,
     MenuProps: PropTypes.object,
+    listboxClass: PropTypes.object,
 };
 
 export { SingleSelect };

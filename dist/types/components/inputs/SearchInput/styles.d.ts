@@ -1,1 +1,1 @@
-export declare const useStyles: (props?: any) => import("@mui/styles").ClassNameMap<"search" | "icon" | "inputRoot" | "inputInput" | "searchIconWrapper">;
+export declare const useStyles: (props?: any) => import("@mui/styles").ClassNameMap<"icon" | "search" | "inputRoot" | "inputInput" | "searchIconWrapper">;

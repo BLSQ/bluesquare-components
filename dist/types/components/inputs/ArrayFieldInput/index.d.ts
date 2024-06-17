@@ -17,9 +17,9 @@ declare const styledArrayFieldInput: React.JSXElementConstructor<Omit<Pick<PropT
     dataTestId: PropTypes.Requireable<string>;
 }>> & {
     dataTestId?: string | null | undefined;
+    fieldList?: any[] | null | undefined;
     label?: string | null | undefined;
     autoComplete?: string | null | undefined;
-    fieldList?: any[] | null | undefined;
 } & {}, "classes"> & import("@mui/styles").StyledComponentProps<string> & object>;
 import PropTypes from "prop-types";
 import React from "react";

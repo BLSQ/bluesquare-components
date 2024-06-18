@@ -1,3 +1,4 @@
+/* eslint-disable react/function-component-definition */
 import React from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import { withStyles } from '@mui/styles';
@@ -20,12 +21,12 @@ const styles = () => ({
     rootFixed: {
         ...baseRoot,
         position: 'fixed',
-        zIndex: '10000',
+        zIndex: '1000',
     },
     rootAbsolute: {
         ...baseRoot,
         position: 'absolute',
-        zIndex: '10000',
+        zIndex: '1000',
     },
     root: {
         ...baseRoot,

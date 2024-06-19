@@ -40,6 +40,7 @@ const MultiSelect = ({
     helperText,
     loadingText,
     dataTestId,
+    disablePortal,
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -101,6 +102,7 @@ const MultiSelect = ({
     return (
         <Box>
             <Autocomplete
+                disablePortal={disablePortal}
                 disabled={disabled}
                 noOptionsText={formatMessage(noOptionsText)}
                 multiple
@@ -158,6 +160,7 @@ MultiSelect.defaultProps = {
     renderTags: defaultRenderTags,
     returnFullObject: false, // use this one if you pass array of objects as options and want an array of objects as sected items, not a string of id's
     dataTestId: undefined,
+    disablePortal: false,
 };
 
 MultiSelect.propTypes = {
@@ -181,6 +184,7 @@ MultiSelect.propTypes = {
     renderTags: PropTypes.func,
     returnFullObject: PropTypes.bool,
     dataTestId: PropTypes.string,
+    disablePortal: PropTypes.bool
 };
 
 export { MultiSelect };

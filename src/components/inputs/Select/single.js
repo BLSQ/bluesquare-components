@@ -36,6 +36,7 @@ const SingleSelect = ({
     placeholder,
     freeSolo,
     dataTestId,
+    disablePortal,
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -72,6 +73,7 @@ const SingleSelect = ({
     return (
         <Box>
             <Autocomplete
+                disablePortal={disablePortal}
                 disabled={disabled}
                 freeSolo={freeSolo}
                 onInputChange={handleInputChange}
@@ -133,6 +135,7 @@ SingleSelect.defaultProps = {
     placeholder: undefined,
     dataTestId: undefined,
     freeSolo: false,
+    disablePortal: false,
 };
 
 SingleSelect.propTypes = {
@@ -158,6 +161,7 @@ SingleSelect.propTypes = {
     placeholder: PropTypes.string,
     dataTestId: PropTypes.string,
     freeSolo: PropTypes.bool,
+    disablePortal: PropTypes.bool,
 };
 
 export { SingleSelect };

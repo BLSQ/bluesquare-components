@@ -5,7 +5,7 @@ import { PartialBy } from '../../../types/types';
 export type ColumnWithAccessor = {
     Header: string | ReactElement;
     // eslint-disable-next-line no-unused-vars
-    accessor: string | ((row: Row<any>) => unknown);
+    accessor: string | ((row: Record<string, any>) => unknown);
     // eslint-disable-next-line no-unused-vars
     Cell?: (s: any) => ReactElement | string;
 };

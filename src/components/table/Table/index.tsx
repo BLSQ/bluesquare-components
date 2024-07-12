@@ -131,7 +131,7 @@ export interface TableComponentProps {
         // eslint-disable-next-line no-unused-vars
         row?: any,
         // eslint-disable-next-line no-unused-vars
-        event?: MouseEvent<HTMLElement, MouseEvent>,
+        event?: MouseEvent<HTMLElement>,
     ) => void;
     // eslint-disable-next-line no-unused-vars
     rowProps?: (row?: any) => void;

@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 import { PartialBy } from '../../../types/types';
 export type ColumnWithAccessor = {
     Header: string | ReactElement;
-    accessor: string;
+    accessor: string | ((row: Row<any>) => unknown);
     Cell?: (s: any) => ReactElement | string;
 };
 export type Column = PartialBy<ColumnWithAccessor, 'accessor'> & {

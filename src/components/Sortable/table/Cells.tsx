@@ -12,16 +12,17 @@ type Props = {
 export const SortableCells: FunctionComponent<Props> = ({ columns, item }) => (
     <>
         {columns.map(column => {
-            const value = item[column.accessor];
+            // This will error if we use a function accessor
+            const value = item[column.accessor as string];
             if (!column.Cell) {
                 return (
-                    <TableCell key={column.accessor} align="center">
+                    <TableCell key={`${column.accessor}`} align="center">
                         <>{value}</>
                     </TableCell>
                 );
             }
             return (
-                <TableCell key={column.accessor} align="center">
+                <TableCell key={`${column.accessor}`} align="center">
                     <>{column.Cell({ value })}</>
                 </TableCell>
             );

@@ -5,7 +5,7 @@ export type ColumnWithAccessor = {
     accessor: string | ((row: Record<string, any>) => unknown);
     Cell?: (s: any) => ReactElement | string;
 };
-export type Column = PartialBy<ColumnWithAccessor, 'accessor'> & {
+export type Column = PartialBy<ColumnWithAccessor, 'accessor' | 'Header'> & {
     id?: string;
     sortable?: boolean;
     resizable?: boolean;

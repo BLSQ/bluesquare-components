@@ -128,7 +128,7 @@ export interface TableComponentProps {
     resetPageToOne?: string;
     elevation?: number;
     // eslint-disable-next-line no-unused-vars
-    onRowClick?: (row?: any) => void;
+    onRowClick?: (row?: any, event?: Event) => void;
     // eslint-disable-next-line no-unused-vars
     rowProps?: (row?: any) => void;
     // eslint-disable-next-line no-unused-vars

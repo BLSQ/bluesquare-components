@@ -35,7 +35,7 @@ export interface TableComponentProps {
     defaultSorted?: any[];
     resetPageToOne?: string;
     elevation?: number;
-    onRowClick?: (row?: any) => void;
+    onRowClick?: (row?: any, event?: Event) => void;
     rowProps?: (row?: any) => void;
     cellProps?: (row?: any) => void;
     extraProps?: {

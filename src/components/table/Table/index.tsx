@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { MouseEvent, useMemo } from 'react';
 import Box from '@mui/material/Box';
 import MuiTable from '@mui/material/Table';
 import Paper from '@mui/material/Paper';
@@ -127,8 +127,12 @@ export interface TableComponentProps {
     defaultSorted?: any[];
     resetPageToOne?: string;
     elevation?: number;
-    // eslint-disable-next-line no-unused-vars
-    onRowClick?: (row?: any, event?: Event) => void;
+    onRowClick?: (
+        // eslint-disable-next-line no-unused-vars
+        row?: any,
+        // eslint-disable-next-line no-unused-vars
+        event?: MouseEvent<HTMLElement, MouseEvent>,
+    ) => void;
     // eslint-disable-next-line no-unused-vars
     rowProps?: (row?: any) => void;
     // eslint-disable-next-line no-unused-vars

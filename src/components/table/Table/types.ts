@@ -4,12 +4,13 @@ import { PartialBy } from '../../../types/types';
 
 export type ColumnWithAccessor = {
     Header: string | ReactElement;
-    accessor: string;
+    // eslint-disable-next-line no-unused-vars
+    accessor: string | ((row: Record<string, any>) => unknown);
     // eslint-disable-next-line no-unused-vars
     Cell?: (s: any) => ReactElement | string;
 };
 
-export type Column = PartialBy<ColumnWithAccessor, 'accessor'> & {
+export type Column = PartialBy<ColumnWithAccessor, 'accessor' | 'Header'> & {
     id?: string;
     sortable?: boolean;
     resizable?: boolean;

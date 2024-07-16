@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import { Column } from './types';
 export interface ColumnFromReactTable {
     columns?: ColumnFromReactTable[];
@@ -35,7 +35,7 @@ export interface TableComponentProps {
     defaultSorted?: any[];
     resetPageToOne?: string;
     elevation?: number;
-    onRowClick?: (row?: any) => void;
+    onRowClick?: (row?: any, event?: MouseEvent<HTMLElement>) => void;
     rowProps?: (row?: any) => void;
     cellProps?: (row?: any) => void;
     extraProps?: {

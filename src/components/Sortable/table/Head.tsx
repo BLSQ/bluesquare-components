@@ -40,7 +40,7 @@ export const Head: FunctionComponent<Props> = ({ columns, hidden }) => {
                 />
                 {columns.map((col, ind) => (
                     <TableCell
-                        key={col.accessor}
+                        key={`${col.accessor}`}
                         className={classNames(
                             classes.headerCell,
                             ind + 1 === columns.length &&

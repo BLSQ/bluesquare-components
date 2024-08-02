@@ -50,7 +50,7 @@ const styles = theme => ({
         overflow: 'hidden',
     },
     list: {
-        maxHeight: '300px',
+        maxHeight: '250px',
         overflow: 'auto',
     },
     noResult: {

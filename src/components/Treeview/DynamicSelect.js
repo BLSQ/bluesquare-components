@@ -50,8 +50,8 @@ const styles = theme => ({
         overflow: 'hidden',
     },
     list: {
-        maxHeight: '30vh',
-        overflow: 'visible',
+        maxHeight: '300px',
+        overflow: 'auto',
     },
     noResult: {
         backgroundColor: 'white',

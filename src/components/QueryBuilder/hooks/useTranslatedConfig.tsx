@@ -497,21 +497,25 @@ export const useTranslatedConfig = (
                     moment: moment.locale(),
                 },
                 // @ts-ignore
-                renderField: ({ items, setField, id, selectedKey }) => (
-                    <Box display="inline-block" width="100%">
-                        <Select
-                            placeholder={formatMessage(MESSAGES.selectField)}
-                            keyValue={`${id}`}
-                            multi={false}
-                            options={(items || []).map(item => ({
-                                value: item.key,
-                                label: item.label,
-                            }))}
-                            onChange={setField}
-                            value={selectedKey}
-                        />
-                    </Box>
-                ),
+                renderField: ({ items, setField, id, selectedKey }) => {
+                    return (
+                        <Box display="inline-block" width="100%">
+                            <Select
+                                placeholder={formatMessage(
+                                    MESSAGES.selectField,
+                                )}
+                                keyValue={`${id}`}
+                                multi={false}
+                                options={(items || []).map(item => ({
+                                    value: item.path,
+                                    label: item.label,
+                                }))}
+                                onChange={setField}
+                                value={selectedKey}
+                            />
+                        </Box>
+                    );
+                },
                 // @ts-ignore
                 renderOperator: ({ items, setField, id, selectedKey }) => (
                     <Box display="inline-block" width={95}>

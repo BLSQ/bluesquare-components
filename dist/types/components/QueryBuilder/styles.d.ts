@@ -268,11 +268,11 @@ declare const styles: (theme: any) => {
             alignItems: string;
             marginRight: string;
         };
-        '& .rule--field-wrapper': {
+        '& .rule--field-wrapper, .rule--field': {
             width: string;
             display: string;
         };
-        '& .rule--field': {
+        '& .rule--field-wrapper > .rule--field': {
             width: string;
         };
         '& .rule--value': {
@@ -280,9 +280,6 @@ declare const styles: (theme: any) => {
         };
         '& .rule--widget': {
             width: string;
-        };
-        '& .MuiAutocomplete-clearIndicator': {
-            top: string;
         };
         '& .widget--widget': {
             width: string;
@@ -451,9 +448,6 @@ declare const styles: (theme: any) => {
         '& .MuiFormControl-root .MuiAutocomplete-inputRoot': {
             padding: any;
         };
-        '& .MuiFormControl-root .MuiAutocomplete-endAdornment': {
-            top: number;
-        };
         '& .MuiFormControl-root .MuiSelect-icon': {
             top: number;
         };
@@ -465,6 +459,17 @@ declare const styles: (theme: any) => {
         };
         '& .rule--widget--CURRENTDATETIME .widget--valuesrc': {
             display: string;
+        };
+        '& .group--field--count--rule': {
+            marginLeft: string;
+            width: string;
+        };
+        '& .group--field--count--rule .rule--field .MuiInputBase-root': {
+            fontWeight: string;
+        };
+        '& .group--field--count--rule .rule--operator .MuiInputBase-root': {
+            fontWeight: string;
+            minWidth: string;
         };
     };
     radio: {

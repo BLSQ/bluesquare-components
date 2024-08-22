@@ -1,5 +1,6 @@
 import moment from 'moment';
 import { useSafeIntl } from './useSafeIntl';
+import { textPlaceholder } from '../constants/iaso/uiConstants';
 /**
  * Accept options either with a string label or an intl MessageDescriptor label
  * and translate if needed
@@ -34,4 +35,4 @@ export const useTranslatedOptions = options => {
  */
 
 export const displayDateFromTimestamp = timestamp =>
-    moment.unix(timestamp).format('LTS');
+    timestamp ? moment.unix(timestamp).format('LTS') : textPlaceholder;

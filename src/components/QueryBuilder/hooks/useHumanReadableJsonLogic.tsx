@@ -25,7 +25,7 @@ const getColor = (
 ): string => {
     const color: string =
         listToReplace.find(toReplaceConfig =>
-            toReplaceConfig.items.some(item => ` ${item} ` === part),
+            toReplaceConfig.items.some(item => item === part),
         )?.color || 'inherit';
     return color;
 };
@@ -53,17 +53,18 @@ const withListToReplace = (
     initialQuery: string,
     listToReplace: QueryBuilderListToReplace[],
 ): ReactElement<any, any>[] => {
-    const toReplaceItems = listToReplace.flatMap(toReplaceConfig =>
-        toReplaceConfig.items.map(item => `\\s${item}\\s`),
+    const toReplaceItems = listToReplace.flatMap(
+        toReplaceConfig => toReplaceConfig.items,
     );
     const term = new RegExp(`(${toReplaceItems.join('|')})`, 'g');
+
     return initialQuery.split(term).map((substring, index) => {
         if (index % 2 === 0)
             return <Fragment key={index}>{substring}</Fragment>;
         return (
             <span
                 style={{
-                    color: getColor(`${substring}`, listToReplace),
+                    color: getColor(substring, listToReplace),
                 }}
                 key={index}
             >

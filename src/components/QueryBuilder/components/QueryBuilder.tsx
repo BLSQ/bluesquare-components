@@ -47,6 +47,7 @@ export const QueryBuilder: FunctionComponent<Props> = ({
         currentDateString,
         currentDateTimeString,
     );
+
     const config: Config = useMemo(
         () => ({
             ...translatedConfig,
@@ -70,13 +71,18 @@ export const QueryBuilder: FunctionComponent<Props> = ({
         [onChange],
     );
 
-    const renderBuilder = (props: BuilderProps) => (
-        <div className="query-builder-container" style={{ padding: '10px' }}>
-            <div className="query-builder qb-lite">
-                <Builder {...props} />
+    const renderBuilder = useCallback((props: BuilderProps) => {
+        return (
+            <div
+                className="query-builder-container"
+                style={{ padding: '10px' }}
+            >
+                <div className="query-builder qb-lite">
+                    <Builder {...props} />
+                </div>
             </div>
-        </div>
-    );
+        );
+    }, []);
 
     const classes: Record<string, string> = useStyles();
 
@@ -85,6 +91,7 @@ export const QueryBuilder: FunctionComponent<Props> = ({
             <Query
                 {...config}
                 value={tree}
+                onInit={handleChange}
                 onChange={handleChange}
                 renderBuilder={renderBuilder}
             />

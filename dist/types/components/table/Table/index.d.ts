@@ -48,6 +48,7 @@ export interface TableComponentProps {
     columnSelectorEnabled?: boolean;
     columnSelectorButtonDisabled?: boolean;
     columnSelectorButtonType?: 'button' | 'icon';
+    getIsSelectionDisabled?: () => boolean;
 }
 declare const Table: React.NamedExoticComponent<TableComponentProps>;
 export { Table };

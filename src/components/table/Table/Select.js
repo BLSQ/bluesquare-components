@@ -1,15 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import isEqual from 'lodash/isEqual';
 import Checkbox from '@mui/material/Checkbox';
+import isEqual from 'lodash/isEqual';
+import PropTypes from 'prop-types';
+import React from 'react';
 
-import { SelectionSpeedDials } from '../SelectionSpeedDials';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { SelectionSpeedDials } from '../SelectionSpeedDials';
 import { MESSAGES } from './messages';
 
 import {
-    selectionInitialState,
     defaultSelectionActions,
+    selectionInitialState,
 } from '../../../utils/tableUtils';
 
 const onSelect = ({
@@ -60,6 +60,7 @@ const getSelectionCol = (
     setTableSelection,
     count,
     formatMessage,
+    getIsSelectionDisabled = () => false,
 ) => ({
     Header: formatMessage(MESSAGES.selection),
     accessor: 'selected',
@@ -69,6 +70,7 @@ const getSelectionCol = (
     Cell: settings => (
         <Checkbox
             color="primary"
+            disabled={getIsSelectionDisabled(settings.cell.row.original)}
             checked={isItemSelected(settings.cell.row.original, selection)}
             onChange={event =>
                 onSelect({
@@ -134,4 +136,5 @@ Select.propTypes = {
     selectionActionMessage: PropTypes.string,
 };
 
-export { Select, onSelect, isItemSelected, getSelectionCol };
+export { getSelectionCol, isItemSelected, onSelect, Select };
+

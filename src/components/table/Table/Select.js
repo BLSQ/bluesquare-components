@@ -1,7 +1,7 @@
 import Checkbox from '@mui/material/Checkbox';
 import isEqual from 'lodash/isEqual';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { SelectionSpeedDials } from '../SelectionSpeedDials';
@@ -55,34 +55,41 @@ const isItemSelected = (item, selection, selector = 'id') => {
     return !unSelectedItems.find(el => el[selector] === item[selector]);
 };
 
+
 const getSelectionCol = (
     selection,
     setTableSelection,
     count,
     formatMessage,
-    getIsSelectionDisabled = () => false,
+    getIsSelectionDisabled = row => false,
 ) => ({
     Header: formatMessage(MESSAGES.selection),
     accessor: 'selected',
     id: 'selectionColumn',
     width: 100,
     sortable: false,
-    Cell: settings => (
-        <Checkbox
-            color="primary"
-            disabled={getIsSelectionDisabled(settings.cell.row.original)}
-            checked={isItemSelected(settings.cell.row.original, selection)}
-            onChange={event =>
+    Cell: settings => {
+        const handleSelect = useCallback(
+            event => {
                 onSelect({
                     isSelected: event.target.checked,
                     item: settings.cell.row.original,
                     selection,
                     setTableSelection,
                     count,
-                })
-            }
-        />
-    ),
+                });
+            },
+            [selection, setTableSelection, count, settings.cell.row.original]
+        );
+        return (
+            <Checkbox
+                color="primary"
+                disabled={getIsSelectionDisabled(settings.cell.row.original)}
+                checked={isItemSelected(settings.cell.row.original, selection)}
+                onChange={handleSelect}
+            />
+        );
+    },
 });
 
 const Select = ({

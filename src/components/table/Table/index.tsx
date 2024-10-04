@@ -153,7 +153,7 @@ export interface TableComponentProps {
     columnSelectorEnabled?: boolean;
     columnSelectorButtonDisabled?: boolean;
     columnSelectorButtonType?: 'button' | 'icon';
-    getIsSelectionDisabled?: () => boolean;
+    getIsSelectionDisabled?: (row:any) => boolean;
 }
 
 const TableComponent: React.FC<TableComponentProps> = props => {
@@ -212,7 +212,7 @@ const TableComponent: React.FC<TableComponentProps> = props => {
             );
         }
         return getColumnsHeadersInfos(temp);
-    }, [props.columns, multiSelect, selection, getIsSelectionDisabled]);
+    }, [props.columns, multiSelect, selection]);
 
     const data = useMemo(() => props.data, [props.data]);
 

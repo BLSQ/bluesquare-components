@@ -1,4 +1,4 @@
-export function getSelectionCol(selection: any, setTableSelection: any, count: any, formatMessage: any, getIsSelectionDisabled?: () => boolean): {
+export function getSelectionCol(selection: any, setTableSelection: any, count: any, formatMessage: any, getIsSelectionDisabled?: (row: any) => boolean): {
     Header: any;
     accessor: string;
     id: string;

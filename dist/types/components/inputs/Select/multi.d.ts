@@ -1,4 +1,4 @@
-export function MultiSelect({ value, keyValue, label, errors, onChange, options, onBlur, disabled, clearable, required, noOptionsText, getOptionLabel, getOptionSelected, loading, renderOption, renderTags, returnFullObject, helperText, loadingText, dataTestId, }: {
+export function MultiSelect({ value, keyValue, label, errors, onChange, options, onBlur, disabled, clearable, required, noOptionsText, getOptionLabel, getOptionSelected, loading, renderOption, renderTags, returnFullObject, helperText, loadingText, dataTestId, placeholder }: {
     value: any;
     keyValue: any;
     label: any;
@@ -19,6 +19,7 @@ export function MultiSelect({ value, keyValue, label, errors, onChange, options,
     helperText: any;
     loadingText: any;
     dataTestId: any;
+    placeholder: any;
 }): React.JSX.Element;
 export namespace MultiSelect {
     namespace defaultProps {

@@ -42,9 +42,11 @@ const SingleSelect = ({
 
     const displayedErrors = useMemo(() => {
         const tempErrors = [...errors];
-        const missingValueError = !getOption(value, options);
-        if (value && !loading && missingValueError) {
-            tempErrors.push(formatMessage(MESSAGES.valueNotFound));
+        if(!freeSolo){
+            const missingValueError = !getOption(value, options);
+            if (value && !loading && missingValueError) {
+                tempErrors.push(formatMessage(MESSAGES.valueNotFound));
+            }
         }
         return tempErrors;
     }, [value, options, errors, loading]);
@@ -95,7 +97,8 @@ const SingleSelect = ({
                         required={required}
                         onBlur={onBlur}
                         placeholder={placeholder}
-                        errors={!freeSolo ? displayedErrors : []}
+                        errors={ displayedErrors }
+                        // errors={!freeSolo ? displayedErrors : []}
                         helperText={helperText}
                         loading={loading}
                         dataTestId={dataTestId}

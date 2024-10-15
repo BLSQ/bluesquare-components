@@ -1,15 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import isEqual from 'lodash/isEqual';
 import Checkbox from '@mui/material/Checkbox';
+import isEqual from 'lodash/isEqual';
+import PropTypes from 'prop-types';
+import React, { useCallback } from 'react';
 
-import { SelectionSpeedDials } from '../SelectionSpeedDials';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { SelectionSpeedDials } from '../SelectionSpeedDials';
 import { MESSAGES } from './messages';
 
 import {
-    selectionInitialState,
     defaultSelectionActions,
+    selectionInitialState,
 } from '../../../utils/tableUtils';
 
 const onSelect = ({
@@ -55,32 +55,41 @@ const isItemSelected = (item, selection, selector = 'id') => {
     return !unSelectedItems.find(el => el[selector] === item[selector]);
 };
 
+
 const getSelectionCol = (
     selection,
     setTableSelection,
     count,
     formatMessage,
+    getIsSelectionDisabled = row => false,
 ) => ({
     Header: formatMessage(MESSAGES.selection),
     accessor: 'selected',
     id: 'selectionColumn',
     width: 100,
     sortable: false,
-    Cell: settings => (
-        <Checkbox
-            color="primary"
-            checked={isItemSelected(settings.cell.row.original, selection)}
-            onChange={event =>
+    Cell: settings => {
+        const handleSelect = useCallback(
+            event => {
                 onSelect({
                     isSelected: event.target.checked,
                     item: settings.cell.row.original,
                     selection,
                     setTableSelection,
                     count,
-                })
-            }
-        />
-    ),
+                });
+            },
+            [selection, setTableSelection, count, settings.cell.row.original]
+        );
+        return (
+            <Checkbox
+                color="primary"
+                disabled={getIsSelectionDisabled(settings.cell.row.original)}
+                checked={isItemSelected(settings.cell.row.original, selection)}
+                onChange={handleSelect}
+            />
+        );
+    },
 });
 
 const Select = ({
@@ -134,4 +143,5 @@ Select.propTypes = {
     selectionActionMessage: PropTypes.string,
 };
 
-export { Select, onSelect, isItemSelected, getSelectionCol };
+export { getSelectionCol, isItemSelected, onSelect, Select };
+

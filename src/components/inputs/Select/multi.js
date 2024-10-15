@@ -40,6 +40,7 @@ const MultiSelect = ({
     helperText,
     loadingText,
     dataTestId,
+    placeholder
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -126,6 +127,7 @@ const MultiSelect = ({
                         helperText={helperText}
                         loading={loading}
                         dataTestId={dataTestId}
+                        placeholder={placeholder}
                     />
                 )}
                 classes={{

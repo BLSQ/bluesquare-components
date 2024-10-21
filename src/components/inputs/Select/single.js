@@ -98,7 +98,6 @@ const SingleSelect = ({
                         onBlur={onBlur}
                         placeholder={placeholder}
                         errors={ displayedErrors }
-                        // errors={!freeSolo ? displayedErrors : []}
                         helperText={helperText}
                         loading={loading}
                         dataTestId={dataTestId}

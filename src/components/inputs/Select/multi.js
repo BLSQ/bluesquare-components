@@ -67,7 +67,7 @@ const MultiSelect = ({
                     options,
                     extraProps.isOptionEqualToValue,
                 );
-                const missingValueError = Boolean(multiOption) && multiOption !== 0
+                const missingValueError = !Boolean(multiOption) && multiOption !== 0
                 if (missingValueError) {
                     tempErrors.push(
                         formatMessage(MESSAGES.oneValueNotFound, {

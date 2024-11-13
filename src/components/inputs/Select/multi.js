@@ -62,11 +62,12 @@ const MultiSelect = ({
         const tempErrors = [...errors];
         if (hasValue && !loading) {
             valuesList.forEach(val => {
-                const missingValueError = !getMultiOption(
+                const multiOption = getMultiOption(
                     val,
                     options,
                     extraProps.isOptionEqualToValue,
                 );
+                const missingValueError = Boolean(multiOption) && multiOption !== 0
                 if (missingValueError) {
                     tempErrors.push(
                         formatMessage(MESSAGES.oneValueNotFound, {

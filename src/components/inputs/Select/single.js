@@ -39,21 +39,23 @@ const SingleSelect = ({
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
+    //  Handle numeric 0 as value
+    const hasValue = Boolean(value)|| value === 0
 
     const displayedErrors = useMemo(() => {
         const tempErrors = [...errors];
         if(!freeSolo){
             const missingValueError = !getOption(value, options);
-            if (value && !loading && missingValueError) {
+            if (hasValue && !loading && missingValueError) {
                 tempErrors.push(formatMessage(MESSAGES.valueNotFound));
             }
         }
         return tempErrors;
-    }, [value, options, errors, loading]);
+    }, [value, options, errors, loading, hasValue]);
 
     const fixedValue = useMemo(
-        () => (value ? getOption(value, options) ?? value : null),
-        [value, options],
+        () => (hasValue ? getOption(value, options) ?? value : null),
+        [value, options, hasValue],
     );
 
     const handleChange = useCallback(

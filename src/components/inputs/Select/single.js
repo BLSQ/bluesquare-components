@@ -40,7 +40,7 @@ const SingleSelect = ({
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
     //  Handle numeric 0 as value
-    const hasValue = Boolean(value)|| value === 0
+    const hasValue = Boolean(value) || value === 0
 
     const displayedErrors = useMemo(() => {
         const tempErrors = [...errors];

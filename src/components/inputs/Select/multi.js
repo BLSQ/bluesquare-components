@@ -46,7 +46,7 @@ const MultiSelect = ({
     const classes = useStyles();
     const shiftKeyIsDown = useKeyPressListener('Shift');
     //  Handle numeric 0 as value
-    const hasValue = Boolean(value)|| value === 0
+    const hasValue = Boolean(value) || value === 0
 
     const valuesList = useMemo(() => {
         if (!hasValue) return [];

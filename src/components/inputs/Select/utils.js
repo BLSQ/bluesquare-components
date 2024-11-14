@@ -63,10 +63,12 @@ export const getExtraProps = (
         isOptionEqualToValue:
             getOptionSelected ||
             ((option, val) => {
-                if (val?.value) {
+                // Handle zero as value
+                if (val?.value || val?.value === 0) {
                     return `${option.value}` === `${val.value}`;
                 }
-                if (val) {
+                // Handle zero as value
+                if (val || val === 0) {
                     return `${option.value}` === `${val}`;
                 }
                 return false;
@@ -79,8 +81,10 @@ export const getExtraProps = (
     return extraProps;
 };
 
-export const getOption = (value, options) =>
-    options.find(o => `${o.value}` === `${value}`);
+export const getOption = (value, options) =>{
+    return options.find(o => `${o.value}` === `${value}`);
+
+}
 
 export const getMultiOption = (value, options, getOptionSelected) =>
     options.find(option => getOptionSelected(option, value));

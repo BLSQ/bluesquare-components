@@ -18,6 +18,7 @@ const rawTheme = {
         },
         mediumGray: {
             main: '#A2A2A2',
+            border:'rgb(224, 224, 224)'
         },
         ligthGray: {
             main: '#F7F7F7',

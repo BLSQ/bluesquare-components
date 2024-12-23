@@ -124,6 +124,7 @@ import {
     tableInitialResult,
 } from './utils/tableUtils';
 import { TextArea } from './components/inputs/TextArea/TextArea';
+import { InputWithInfos } from './components/inputs/InputWithInfos/InputWithInfos';
 
 // Types
 export * from './components/QueryBuilder/types';
@@ -184,6 +185,7 @@ export {
     IconButton,
     InfoHeader,
     InputLabel,
+    InputWithInfos,
     LazyImage,
     LinkButton,
     LinkWithLocation,

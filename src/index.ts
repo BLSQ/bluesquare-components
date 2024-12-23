@@ -123,6 +123,7 @@ import {
     setTableSelection,
     tableInitialResult,
 } from './utils/tableUtils';
+import { TextArea } from './components/inputs/TextArea/TextArea';
 
 // Types
 export * from './components/QueryBuilder/types';
@@ -212,6 +213,7 @@ export {
     SortableList,
     SortableTable,
     Table,
+    TextArea,
     TextInput,
     TextSvg,
     TreeViewResultsCountSelect,

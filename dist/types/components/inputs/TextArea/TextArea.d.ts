@@ -8,6 +8,7 @@ type Props = {
     debounceTime?: number;
     disabled?: boolean;
     helperText?: string;
+    dataTestId?: string;
 };
 export declare const TextArea: FunctionComponent<Props>;
 export {};

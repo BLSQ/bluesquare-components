@@ -18,6 +18,7 @@ type Props = {
     debounceTime?: number; // debounce time in ms
     disabled?: boolean;
     helperText?: string;
+    dataTestId?:string
 };
 
 const useStyles = makeStyles(theme => ({
@@ -77,6 +78,7 @@ export const TextArea: FunctionComponent<Props> = ({
     value,
     onChange,
     label,
+    dataTestId='textarea',
     errors = [],
     required = false,
     debounceTime = 0,
@@ -135,6 +137,7 @@ export const TextArea: FunctionComponent<Props> = ({
                 }}
                 value={textValue}
                 disabled={disabled}
+                data-test={dataTestId}
             />
             <FormHelperText>{helperText}</FormHelperText>
         </FormControl>

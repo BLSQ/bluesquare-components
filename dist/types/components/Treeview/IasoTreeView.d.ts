@@ -22,16 +22,16 @@ export namespace IasoTreeView {
     namespace propTypes {
         export { func as getChildrenData };
         export { func as getRootData };
-        export const label: import("prop-types").Validator<(...args: any[]) => any>;
+        export let label: import("prop-types").Validator<(...args: any[]) => any>;
         export { bool as multiselect };
         export { bool as toggleOnLabelClick };
-        export const expanded: import("prop-types").Validator<(string | null | undefined)[]>;
-        export const onToggle: import("prop-types").Validator<(...args: any[]) => any>;
+        export let expanded: import("prop-types").Validator<(string | null | undefined)[]>;
+        export let onToggle: import("prop-types").Validator<(...args: any[]) => any>;
         export { func as onSelect };
         export { func as onCheckBoxClick };
         export { func as onLabelClick };
-        export const selected: import("prop-types").Requireable<NonNullable<string | (string | null | undefined)[] | null | undefined>>;
-        export const ticked: import("prop-types").Requireable<NonNullable<string | (string | null | undefined)[] | null | undefined>>;
+        export let selected: import("prop-types").Requireable<NonNullable<string | (string | null | undefined)[] | null | undefined>>;
+        export let ticked: import("prop-types").Requireable<NonNullable<string | (string | null | undefined)[] | null | undefined>>;
         export { array as parentsTicked };
         export { string as scrollIntoView };
         export { func as allowSelection };
@@ -42,27 +42,27 @@ export namespace IasoTreeView {
     namespace defaultProps {
         export function getChildrenData(): void;
         export function getRootData(): void;
-        export const multiselect: boolean;
-        export const toggleOnLabelClick: boolean;
+        export let multiselect: boolean;
+        export let toggleOnLabelClick: boolean;
         export function onSelect(): void;
         export function onCheckBoxClick(): void;
         export function onLabelClick(): void;
-        const selected_1: undefined;
+        let selected_1: undefined;
         export { selected_1 as selected };
-        const ticked_1: never[];
+        let ticked_1: never[];
         export { ticked_1 as ticked };
-        export const parentsTicked: never[];
-        export const scrollIntoView: null;
+        export let parentsTicked: never[];
+        export let scrollIntoView: null;
         export function allowSelection(): boolean;
-        export const queryOptions: {};
-        export const childrenQueryOptions: {};
-        export const dependency: undefined;
+        export let queryOptions: {};
+        export let childrenQueryOptions: {};
+        export let dependency: undefined;
     }
 }
-import React from "react";
-import { func } from "prop-types";
-import { bool } from "prop-types";
-import { array } from "prop-types";
-import { string } from "prop-types";
-import { object } from "prop-types";
-import { any } from "prop-types";
+import React from 'react';
+import { func } from 'prop-types';
+import { bool } from 'prop-types';
+import { array } from 'prop-types';
+import { string } from 'prop-types';
+import { object } from 'prop-types';
+import { any } from 'prop-types';

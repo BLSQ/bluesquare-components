@@ -6,15 +6,15 @@ export function Header({ user, onLogin, onLogout, onCreateAccount }: {
 }): React.JSX.Element;
 export namespace Header {
     namespace propTypes {
-        const user: PropTypes.Requireable<PropTypes.InferProps<{}>>;
-        const onLogin: PropTypes.Validator<(...args: any[]) => any>;
-        const onLogout: PropTypes.Validator<(...args: any[]) => any>;
-        const onCreateAccount: PropTypes.Validator<(...args: any[]) => any>;
+        let user: PropTypes.Requireable<PropTypes.InferProps<{}>>;
+        let onLogin: PropTypes.Validator<(...args: any[]) => any>;
+        let onLogout: PropTypes.Validator<(...args: any[]) => any>;
+        let onCreateAccount: PropTypes.Validator<(...args: any[]) => any>;
     }
     namespace defaultProps {
-        const user_1: null;
+        let user_1: null;
         export { user_1 as user };
     }
 }
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';

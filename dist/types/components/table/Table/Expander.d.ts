@@ -4,15 +4,15 @@ export function Expander({ isExpanded, setIsExpanded }: {
 }): React.JSX.Element;
 export namespace Expander {
     namespace defaultProps {
-        const isExpanded: boolean;
+        let isExpanded: boolean;
         function setIsExpanded(): null;
     }
     namespace propTypes {
-        const isExpanded_1: PropTypes.Requireable<boolean>;
+        let isExpanded_1: PropTypes.Requireable<boolean>;
         export { isExpanded_1 as isExpanded };
-        const setIsExpanded_1: PropTypes.Requireable<(...args: any[]) => any>;
+        let setIsExpanded_1: PropTypes.Requireable<(...args: any[]) => any>;
         export { setIsExpanded_1 as setIsExpanded };
     }
 }
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';

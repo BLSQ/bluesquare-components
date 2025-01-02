@@ -16,15 +16,15 @@ export function EnrichedTreeItem({ label, id, fetchChildrenData, expanded, toggl
 }): React.JSX.Element;
 export namespace EnrichedTreeItem {
     namespace propTypes {
-        export const label: import("prop-types").Validator<(...args: any[]) => any>;
-        export const id: import("prop-types").Validator<string>;
+        export let label: import("prop-types").Validator<(...args: any[]) => any>;
+        export let id: import("prop-types").Validator<string>;
         export { func as fetchChildrenData };
-        export const expanded: import("prop-types").Requireable<(string | null | undefined)[]>;
+        export let expanded: import("prop-types").Requireable<(string | null | undefined)[]>;
         export { bool as toggleOnLabelClick };
-        export const data: import("prop-types").Validator<object>;
+        export let data: import("prop-types").Validator<object>;
         export { func as onLabelClick };
         export { bool as withCheckbox };
-        export const ticked: import("prop-types").Requireable<NonNullable<string | any[] | null | undefined>>;
+        export let ticked: import("prop-types").Requireable<NonNullable<string | any[] | null | undefined>>;
         export { array as parentsTicked };
         export { string as scrollIntoView };
         export { func as allowSelection };
@@ -33,24 +33,24 @@ export namespace EnrichedTreeItem {
     }
     namespace defaultProps {
         export function fetchChildrenData(): void;
-        const expanded_1: never[];
+        let expanded_1: never[];
         export { expanded_1 as expanded };
-        export const toggleOnLabelClick: boolean;
+        export let toggleOnLabelClick: boolean;
         export function onLabelClick(): void;
-        export const withCheckbox: boolean;
-        const ticked_1: never[];
+        export let withCheckbox: boolean;
+        let ticked_1: never[];
         export { ticked_1 as ticked };
-        export const parentsTicked: never[];
-        export const scrollIntoView: null;
+        export let parentsTicked: never[];
+        export let scrollIntoView: null;
         export function allowSelection(): boolean;
-        export const queryOptions: {};
-        export const dependency: undefined;
+        export let queryOptions: {};
+        export let dependency: undefined;
     }
 }
-import React from "react";
-import { func } from "prop-types";
-import { bool } from "prop-types";
-import { array } from "prop-types";
-import { string } from "prop-types";
-import { object } from "prop-types";
-import { any } from "prop-types";
+import React from 'react';
+import { func } from 'prop-types';
+import { bool } from 'prop-types';
+import { array } from 'prop-types';
+import { string } from 'prop-types';
+import { object } from 'prop-types';
+import { any } from 'prop-types';

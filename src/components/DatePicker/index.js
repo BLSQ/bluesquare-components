@@ -35,6 +35,8 @@ const DatePicker = ({
     hideError,
     disabled,
     clearable,
+    minDate,
+    maxDate
 }) => {
     const classes = useStyles();
     const [dateError, setDateError] = useState(null);
@@ -68,6 +70,8 @@ const DatePicker = ({
                 value={currentDate}
                 onChange={onChange}
                 onError={error => setDateError(error)}
+                minDate={minDate}
+                maxDate={maxDate}
             />
             {clearable && clearMessage && currentDate && (
                 <span className={classes.clearDateButton}>
@@ -92,6 +96,8 @@ DatePicker.defaultProps = {
     disabled: false,
     clearMessage: undefined,
     clearable: true,
+    minDate: undefined,
+    maxDate: undefined
 };
 
 DatePicker.propTypes = {
@@ -126,6 +132,8 @@ DatePicker.propTypes = {
     hideError: PropTypes.bool,
     disabled: PropTypes.bool,
     clearable: PropTypes.bool,
+    minDate: PropTypes.any,
+    maxDate: PropTypes.any,
 };
 
 export { DatePicker };

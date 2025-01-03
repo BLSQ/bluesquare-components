@@ -144,6 +144,9 @@ DateTimePicker.propTypes = {
     hideError: PropTypes.bool,
     disabled: PropTypes.bool,
     clearable: PropTypes.bool,
+    /** Use moment to pass these props
+     * https://github.com/mui/material-ui-pickers/issues/1506
+     */
     maxTime: PropTypes.any,
     maxDateTime: PropTypes.any,
     maxDate: PropTypes.any,

@@ -7,20 +7,20 @@ export function SelectionSpeedDials({ hidden, actions, selection, reset, actionM
 }): React.JSX.Element;
 export namespace SelectionSpeedDials {
     namespace defaultProps {
-        const hidden: boolean;
-        const actions: never[];
+        let hidden: boolean;
+        let actions: never[];
         function reset(): null;
     }
     namespace propTypes {
-        const hidden_1: PropTypes.Requireable<boolean>;
+        let hidden_1: PropTypes.Requireable<boolean>;
         export { hidden_1 as hidden };
-        const actions_1: PropTypes.Requireable<any[]>;
+        let actions_1: PropTypes.Requireable<any[]>;
         export { actions_1 as actions };
-        export const selection: PropTypes.Validator<object>;
-        const reset_1: PropTypes.Requireable<(...args: any[]) => any>;
+        export let selection: PropTypes.Validator<object>;
+        let reset_1: PropTypes.Requireable<(...args: any[]) => any>;
         export { reset_1 as reset };
-        export const actionMessage: PropTypes.Validator<string>;
+        export let actionMessage: PropTypes.Validator<string>;
     }
 }
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';

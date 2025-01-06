@@ -9,20 +9,20 @@ declare function InputLabelComponent({ htmlFor, label, required, shrink, error }
 }): React.JSX.Element;
 declare namespace InputLabelComponent {
     namespace defaultProps {
-        const shrink: boolean;
-        const error: boolean;
-        const label: string;
+        let shrink: boolean;
+        let error: boolean;
+        let label: string;
     }
     namespace propTypes {
-        export const htmlFor: PropTypes.Validator<string>;
-        const label_1: PropTypes.Requireable<string>;
+        export let htmlFor: PropTypes.Validator<string>;
+        let label_1: PropTypes.Requireable<string>;
         export { label_1 as label };
-        export const required: PropTypes.Validator<boolean>;
-        const shrink_1: PropTypes.Requireable<boolean>;
+        export let required: PropTypes.Validator<boolean>;
+        let shrink_1: PropTypes.Requireable<boolean>;
         export { shrink_1 as shrink };
-        const error_1: PropTypes.Requireable<boolean>;
+        let error_1: PropTypes.Requireable<boolean>;
         export { error_1 as error };
     }
 }
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';

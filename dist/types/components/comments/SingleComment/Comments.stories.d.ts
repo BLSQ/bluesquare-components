@@ -1,7 +1,7 @@
 declare namespace _default {
-    const title: string;
-    const component: {
-        new (data?: string | undefined): Comment;
+    let title: string;
+    let component: {
+        new (data?: string): Comment;
         prototype: Comment;
     };
     namespace argTypes {
@@ -9,9 +9,9 @@ declare namespace _default {
         export { string as author };
         export { string as content };
         export { string as postingTime };
-        export const classNames: import("prop-types").Requireable<(string | null | undefined)[]>;
+        export let classNames: import("prop-types").Requireable<(string | null | undefined)[]>;
     }
 }
 export default _default;
 export const NoAvatar: any;
-import { string } from "prop-types";
+import { string } from 'prop-types';

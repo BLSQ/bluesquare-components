@@ -8,10 +8,10 @@ export function defaultSelectionActions(selectAll: any, unSelectAll: any, format
     onClick: () => any;
 }[];
 export namespace selectionInitialState {
-    const selectedItems: never[];
-    const unSelectedItems: never[];
-    const selectAll: boolean;
-    const selectCount: number;
+    let selectedItems: never[];
+    let unSelectedItems: never[];
+    let selectAll: boolean;
+    let selectCount: number;
 }
 export function setTableSelection(selection: any, selectionType: any, items?: any[], totalCount?: number): any;
 export function getParamsKey(paramsPrefix: any, key: any): any;
@@ -20,9 +20,9 @@ export function getTableParams(params: any, paramsPrefix: any, filters: any, api
     desc: boolean;
 }[], defaultPageSize?: number): any;
 export namespace tableInitialResult {
-    const data: never[];
-    const pages: number;
-    const count: number;
+    let data: never[];
+    let pages: number;
+    let count: number;
 }
 export function getColumnsHeadersInfos(columns: any): any[];
-import React from "react";
+import React from 'react';

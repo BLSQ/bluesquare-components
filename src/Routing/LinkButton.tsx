@@ -9,6 +9,7 @@ type Props = LinkProps &
         children: ReactNode;
         className?: string;
         buttonClassName?: string;
+        unstable_viewTransition?:any
     };
 
 export const LinkButton: FunctionComponent<Props> = props => {

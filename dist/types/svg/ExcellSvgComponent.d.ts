@@ -1,2 +1,2 @@
 export function ExcellSvg(props: any): React.JSX.Element;
-import React from "react";
+import React from 'react';

@@ -3,12 +3,12 @@ export function NoResult({ loading }: {
 }): React.JSX.Element;
 export namespace NoResult {
     namespace defaultProps {
-        const loading: boolean;
+        let loading: boolean;
     }
     namespace propTypes {
-        const loading_1: PropTypes.Requireable<boolean>;
+        let loading_1: PropTypes.Requireable<boolean>;
         export { loading_1 as loading };
     }
 }
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';

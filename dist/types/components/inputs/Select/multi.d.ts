@@ -23,71 +23,71 @@ export function MultiSelect({ value, keyValue, label, errors, onChange, options,
 }): React.JSX.Element;
 export namespace MultiSelect {
     namespace defaultProps {
-        export const value: undefined;
-        export const errors: never[];
-        export const label: string;
-        export const disabled: boolean;
-        export const clearable: boolean;
-        export const required: boolean;
-        export const loading: boolean;
-        export const options: never[];
+        export let value: undefined;
+        export let errors: never[];
+        export let label: string;
+        export let disabled: boolean;
+        export let clearable: boolean;
+        export let required: boolean;
+        export let loading: boolean;
+        export let options: never[];
         export function onBlur(): void;
-        export const getOptionSelected: null;
-        export const getOptionLabel: null;
-        export const renderOption: null;
-        export const loadingText: {
+        export let getOptionSelected: null;
+        export let getOptionLabel: null;
+        export let renderOption: null;
+        export let loadingText: {
             id: string;
             defaultMessage: string;
         };
-        export const noOptionsText: {
+        export let noOptionsText: {
             id: string;
             defaultMessage: string;
         };
-        export const helperText: undefined;
+        export let helperText: undefined;
         export { defaultRenderTags as renderTags };
-        export const returnFullObject: boolean;
-        export const dataTestId: undefined;
+        export let returnFullObject: boolean;
+        export let dataTestId: undefined;
     }
     namespace propTypes {
-        const errors_1: PropTypes.Requireable<(string | null | undefined)[]>;
+        let errors_1: PropTypes.Requireable<(string | null | undefined)[]>;
         export { errors_1 as errors };
-        export const keyValue: PropTypes.Validator<string>;
-        const label_1: PropTypes.Requireable<string>;
+        export let keyValue: PropTypes.Validator<string>;
+        let label_1: PropTypes.Requireable<string>;
         export { label_1 as label };
-        const required_1: PropTypes.Requireable<boolean>;
+        let required_1: PropTypes.Requireable<boolean>;
         export { required_1 as required };
-        const disabled_1: PropTypes.Requireable<boolean>;
+        let disabled_1: PropTypes.Requireable<boolean>;
         export { disabled_1 as disabled };
-        const clearable_1: PropTypes.Requireable<boolean>;
+        let clearable_1: PropTypes.Requireable<boolean>;
         export { clearable_1 as clearable };
-        const value_1: PropTypes.Requireable<any>;
+        let value_1: PropTypes.Requireable<any>;
         export { value_1 as value };
-        const onBlur_1: PropTypes.Requireable<(...args: any[]) => any>;
+        let onBlur_1: PropTypes.Requireable<(...args: any[]) => any>;
         export { onBlur_1 as onBlur };
-        const loadingText_1: PropTypes.Requireable<NonNullable<string | object | null | undefined>>;
+        let loadingText_1: PropTypes.Requireable<NonNullable<string | object | null | undefined>>;
         export { loadingText_1 as loadingText };
-        const noOptionsText_1: PropTypes.Requireable<NonNullable<string | object | null | undefined>>;
+        let noOptionsText_1: PropTypes.Requireable<NonNullable<string | object | null | undefined>>;
         export { noOptionsText_1 as noOptionsText };
-        const helperText_1: PropTypes.Requireable<NonNullable<string | object | null | undefined>>;
+        let helperText_1: PropTypes.Requireable<NonNullable<string | object | null | undefined>>;
         export { helperText_1 as helperText };
-        const options_1: PropTypes.Requireable<any[]>;
+        let options_1: PropTypes.Requireable<any[]>;
         export { options_1 as options };
-        const loading_1: PropTypes.Requireable<boolean>;
+        let loading_1: PropTypes.Requireable<boolean>;
         export { loading_1 as loading };
-        export const onChange: PropTypes.Validator<(...args: any[]) => any>;
-        const getOptionLabel_1: PropTypes.Requireable<object>;
+        export let onChange: PropTypes.Validator<(...args: any[]) => any>;
+        let getOptionLabel_1: PropTypes.Requireable<object>;
         export { getOptionLabel_1 as getOptionLabel };
-        const getOptionSelected_1: PropTypes.Requireable<object>;
+        let getOptionSelected_1: PropTypes.Requireable<object>;
         export { getOptionSelected_1 as getOptionSelected };
-        const renderOption_1: PropTypes.Requireable<object>;
+        let renderOption_1: PropTypes.Requireable<object>;
         export { renderOption_1 as renderOption };
-        export const renderTags: PropTypes.Requireable<(...args: any[]) => any>;
-        const returnFullObject_1: PropTypes.Requireable<boolean>;
+        export let renderTags: PropTypes.Requireable<(...args: any[]) => any>;
+        let returnFullObject_1: PropTypes.Requireable<boolean>;
         export { returnFullObject_1 as returnFullObject };
-        const dataTestId_1: PropTypes.Requireable<string>;
+        let dataTestId_1: PropTypes.Requireable<string>;
         export { dataTestId_1 as dataTestId };
     }
 }
-import React from "react";
-import { defaultRenderTags } from "./utils";
-import PropTypes from "prop-types";
+import React from 'react';
+import { defaultRenderTags } from './utils';
+import PropTypes from 'prop-types';

@@ -1,4 +1,4 @@
-import { ComponentType, FunctionComponent } from 'react';
+import React, { ComponentType, FunctionComponent } from 'react';
 type ModalComponentProps = {
     closeDialog: () => void;
     isOpen: boolean;
@@ -12,5 +12,5 @@ type FullModalProps<T extends ModalComponentProps, U extends ButtonComponentProp
     defaultOpen?: boolean;
     iconProps: ButtonProps<U>;
 };
-export declare const makeFullModal: <T extends ModalComponentProps, U extends ButtonComponentProps>(ModalComponent: ComponentType<T>, ButtonComponent: ComponentType<U>) => FunctionComponent<FullModalProps<T, U>>;
+export declare const makeFullModal: <T extends ModalComponentProps, U extends ButtonComponentProps>(ModalComponent: React.ComponentType<T>, ButtonComponent: React.ComponentType<U>) => React.FunctionComponent<FullModalProps<T, U>>;
 export {};

@@ -32,16 +32,16 @@ export namespace TreeViewWithSearch {
         export { number as minResultCount };
         export { object as inputLabelObject };
         export { bool as withSearchButton };
-        export let request: import("prop-types").Validator<(...args: any[]) => any>;
-        export let makeDropDownText: import("prop-types").Validator<(...args: any[]) => any>;
+        export const request: import("prop-types").Validator<(...args: any[]) => any>;
+        export const makeDropDownText: import("prop-types").Validator<(...args: any[]) => any>;
         export { func as toolTip };
-        export let parseNodeIds: import("prop-types").Validator<(...args: any[]) => any>;
+        export const parseNodeIds: import("prop-types").Validator<(...args: any[]) => any>;
         export { func as onUpdate };
         export { bool as multiselect };
-        export let preselected: import("prop-types").Requireable<NonNullable<string | any[] | null | undefined>>;
+        export const preselected: import("prop-types").Requireable<NonNullable<string | any[] | null | undefined>>;
         export { any as preexpanded };
-        export let selectedData: import("prop-types").Requireable<object>;
-        export let label: import("prop-types").Validator<(...args: any[]) => any>;
+        export const selectedData: import("prop-types").Requireable<object>;
+        export const label: import("prop-types").Validator<(...args: any[]) => any>;
         export { func as allowSelection };
         export { any as dependency };
         export { any as childrenDependency };
@@ -52,33 +52,33 @@ export namespace TreeViewWithSearch {
     namespace defaultProps {
         export function getChildrenData(): void;
         export function getRootData(): void;
-        export let toggleOnLabelClick: boolean;
+        export const toggleOnLabelClick: boolean;
         export function onSelect(): void;
-        export let minResultCount: number;
-        export let inputLabelObject: {
+        export const minResultCount: number;
+        export const inputLabelObject: {
             id: string;
             defaultMessage: string;
         };
-        export let withSearchButton: boolean;
-        export let toolTip: null;
+        export const withSearchButton: boolean;
+        export const toolTip: null;
         export function onUpdate(): void;
-        export let multiselect: boolean;
-        let preselected_1: null;
+        export const multiselect: boolean;
+        const preselected_1: null;
         export { preselected_1 as preselected };
-        export let preexpanded: null;
-        let selectedData_1: never[];
+        export const preexpanded: null;
+        const selectedData_1: never[];
         export { selectedData_1 as selectedData };
         export function allowSelection(): boolean;
-        export let dependency: undefined;
-        export let childrenDependency: undefined;
-        export let queryOptions: {};
-        export let childrenQueryOptions: {};
+        export const dependency: undefined;
+        export const childrenDependency: undefined;
+        export const queryOptions: {};
+        export const childrenQueryOptions: {};
         export function fetchDetails(item: any): any;
     }
 }
-import React from 'react';
-import { func } from 'prop-types';
-import { bool } from 'prop-types';
-import { number } from 'prop-types';
-import { object } from 'prop-types';
-import { any } from 'prop-types';
+import React from "react";
+import { func } from "prop-types";
+import { bool } from "prop-types";
+import { number } from "prop-types";
+import { object } from "prop-types";
+import { any } from "prop-types";

@@ -11,36 +11,36 @@ export function AddComment({ placeholder, minRows, maxRows, onChange, className,
 }): React.JSX.Element;
 export namespace AddComment {
     namespace propTypes {
-        let placeholder: PropTypes.Requireable<string>;
-        let className: PropTypes.Requireable<string>;
-        let minRows: PropTypes.Requireable<number>;
-        let maxRows: PropTypes.Requireable<number>;
-        let onChange: PropTypes.Requireable<(...args: any[]) => any>;
-        let onConfirm: PropTypes.Requireable<(...args: any[]) => any>;
-        let buttonText: PropTypes.Requireable<string>;
-        let position: PropTypes.Requireable<string>;
-        let inline: PropTypes.Requireable<boolean>;
+        const placeholder: PropTypes.Requireable<string>;
+        const className: PropTypes.Requireable<string>;
+        const minRows: PropTypes.Requireable<number>;
+        const maxRows: PropTypes.Requireable<number>;
+        const onChange: PropTypes.Requireable<(...args: any[]) => any>;
+        const onConfirm: PropTypes.Requireable<(...args: any[]) => any>;
+        const buttonText: PropTypes.Requireable<string>;
+        const position: PropTypes.Requireable<string>;
+        const inline: PropTypes.Requireable<boolean>;
     }
     namespace defaultProps {
-        let placeholder_1: null;
+        const placeholder_1: null;
         export { placeholder_1 as placeholder };
-        let minRows_1: number;
+        const minRows_1: number;
         export { minRows_1 as minRows };
-        let maxRows_1: number;
+        const maxRows_1: number;
         export { maxRows_1 as maxRows };
         export function onChange_1(): void;
         export { onChange_1 as onChange };
-        let className_1: null;
+        const className_1: null;
         export { className_1 as className };
-        let buttonText_1: null;
+        const buttonText_1: null;
         export { buttonText_1 as buttonText };
         export function onConfirm_1(): void;
         export { onConfirm_1 as onConfirm };
-        let position_1: string;
+        const position_1: string;
         export { position_1 as position };
-        let inline_1: boolean;
+        const inline_1: boolean;
         export { inline_1 as inline };
     }
 }
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";

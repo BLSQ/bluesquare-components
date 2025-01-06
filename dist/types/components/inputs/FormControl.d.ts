@@ -27,6 +27,6 @@ declare const styledComponent: React.JSXElementConstructor<Omit<Pick<Pick<{
     id?: NonNullable<string | object | null | undefined> | null | undefined;
     errors?: string[] | null | undefined;
     hideError?: boolean | null | undefined;
-} & {}, "classes"> & import("@mui/styles").StyledComponentProps<"error" | "formControl" | "errorContainer"> & object>;
-import PropTypes from 'prop-types';
-import React from 'react';
+} & {}, "classes"> & import("@mui/styles").StyledComponentProps<"formControl" | "errorContainer" | "error"> & object>;
+import PropTypes from "prop-types";
+import React from "react";

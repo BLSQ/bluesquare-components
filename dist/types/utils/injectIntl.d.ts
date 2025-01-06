@@ -4,4 +4,4 @@
  *
  */
 export function injectIntl(Component: any): React.ForwardRefExoticComponent<React.RefAttributes<any>>;
-import React from 'react';
+import React from "react";

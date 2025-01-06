@@ -24,27 +24,27 @@ export function Select({ count, multiSelect, selectionActions, setTableSelection
 }): React.JSX.Element;
 export namespace Select {
     namespace defaultProps {
-        export let count: number;
-        export let multiSelect: boolean;
-        export let selectionActions: never[];
+        export const count: number;
+        export const multiSelect: boolean;
+        export const selectionActions: never[];
         export { selectionInitialState as selection };
         export function setTableSelection(): null;
-        export let selectionActionMessage: null;
+        export const selectionActionMessage: null;
     }
     namespace propTypes {
-        let count_1: PropTypes.Requireable<number>;
+        const count_1: PropTypes.Requireable<number>;
         export { count_1 as count };
-        let multiSelect_1: PropTypes.Requireable<boolean>;
+        const multiSelect_1: PropTypes.Requireable<boolean>;
         export { multiSelect_1 as multiSelect };
-        let selectionActions_1: PropTypes.Requireable<any[]>;
+        const selectionActions_1: PropTypes.Requireable<any[]>;
         export { selectionActions_1 as selectionActions };
-        let setTableSelection_1: PropTypes.Requireable<(...args: any[]) => any>;
+        const setTableSelection_1: PropTypes.Requireable<(...args: any[]) => any>;
         export { setTableSelection_1 as setTableSelection };
-        export let selection: PropTypes.Requireable<object>;
-        let selectionActionMessage_1: PropTypes.Requireable<string>;
+        export const selection: PropTypes.Requireable<object>;
+        const selectionActionMessage_1: PropTypes.Requireable<string>;
         export { selectionActionMessage_1 as selectionActionMessage };
     }
 }
-import React from 'react';
-import { selectionInitialState } from '../../../utils/tableUtils';
-import PropTypes from 'prop-types';
+import React from "react";
+import { selectionInitialState } from "../../../utils/tableUtils";
+import PropTypes from "prop-types";

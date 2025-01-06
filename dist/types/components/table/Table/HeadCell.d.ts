@@ -8,13 +8,13 @@ export function HeadCell({ column, columnsProps, setSortBy, multiSortEnabled, so
 }): React.JSX.Element;
 export namespace HeadCell {
     namespace propTypes {
-        let column: PropTypes.Validator<object>;
-        let columnsProps: PropTypes.Validator<object>;
-        let setSortBy: PropTypes.Validator<(...args: any[]) => any>;
-        let multiSortEnabled: PropTypes.Validator<boolean>;
-        let sortBy: PropTypes.Validator<any[]>;
-        let isLastCell: PropTypes.Validator<boolean>;
+        const column: PropTypes.Validator<object>;
+        const columnsProps: PropTypes.Validator<object>;
+        const setSortBy: PropTypes.Validator<(...args: any[]) => any>;
+        const multiSortEnabled: PropTypes.Validator<boolean>;
+        const sortBy: PropTypes.Validator<any[]>;
+        const isLastCell: PropTypes.Validator<boolean>;
     }
 }
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";

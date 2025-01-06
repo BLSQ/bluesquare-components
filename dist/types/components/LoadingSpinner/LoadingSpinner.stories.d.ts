@@ -1,5 +1,5 @@
 declare namespace _default {
-    export let title: string;
+    export const title: string;
     export { LoadingSpinner as component };
     export namespace argTypes {
         export { number as size };
@@ -12,7 +12,7 @@ declare namespace _default {
 export default _default;
 export const Default: any;
 export const Transparent: any;
-import { LoadingSpinner } from './index';
-import { number } from 'prop-types';
-import { bool } from 'prop-types';
-import { object } from 'prop-types';
+import { LoadingSpinner } from "./index";
+import { number } from "prop-types";
+import { bool } from "prop-types";
+import { object } from "prop-types";

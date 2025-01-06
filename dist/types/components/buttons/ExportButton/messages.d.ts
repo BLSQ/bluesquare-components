@@ -1,7 +1,7 @@
 export namespace MESSAGES {
     export namespace _export {
-        let id: string;
-        let defaultMessage: string;
+        const id: string;
+        const defaultMessage: string;
     }
     export { _export as export };
 }

@@ -11,16 +11,16 @@ export function TablePaginationActions({ count, pageIndex, rowsPerPage, onPageCh
 }): React.JSX.Element;
 export namespace TablePaginationActions {
     namespace propTypes {
-        let pages: PropTypes.Validator<number>;
-        let count: PropTypes.Validator<number>;
-        let onPageChange: PropTypes.Validator<(...args: any[]) => any>;
-        let pageIndex: PropTypes.Validator<number>;
-        let rowsPerPage: PropTypes.Validator<number>;
-        let rowsPerPageOptions: PropTypes.Validator<any[]>;
-        let selectRowsPerPage: PropTypes.Validator<(...args: any[]) => any>;
-        let countOnTop: PropTypes.Validator<boolean>;
-        let selectCount: PropTypes.Validator<number>;
+        const pages: PropTypes.Validator<number>;
+        const count: PropTypes.Validator<number>;
+        const onPageChange: PropTypes.Validator<(...args: any[]) => any>;
+        const pageIndex: PropTypes.Validator<number>;
+        const rowsPerPage: PropTypes.Validator<number>;
+        const rowsPerPageOptions: PropTypes.Validator<any[]>;
+        const selectRowsPerPage: PropTypes.Validator<(...args: any[]) => any>;
+        const countOnTop: PropTypes.Validator<boolean>;
+        const selectCount: PropTypes.Validator<number>;
     }
 }
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";

@@ -6,15 +6,15 @@ export function Page({ user, onLogin, onLogout, onCreateAccount }: {
 }): React.JSX.Element;
 export namespace Page {
     namespace propTypes {
-        let user: PropTypes.Requireable<PropTypes.InferProps<{}>>;
-        let onLogin: PropTypes.Validator<(...args: any[]) => any>;
-        let onLogout: PropTypes.Validator<(...args: any[]) => any>;
-        let onCreateAccount: PropTypes.Validator<(...args: any[]) => any>;
+        const user: PropTypes.Requireable<PropTypes.InferProps<{}>>;
+        const onLogin: PropTypes.Validator<(...args: any[]) => any>;
+        const onLogout: PropTypes.Validator<(...args: any[]) => any>;
+        const onCreateAccount: PropTypes.Validator<(...args: any[]) => any>;
     }
     namespace defaultProps {
-        let user_1: null;
+        const user_1: null;
         export { user_1 as user };
     }
 }
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";

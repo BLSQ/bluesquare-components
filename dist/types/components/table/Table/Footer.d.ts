@@ -3,12 +3,12 @@ export function Footer({ footerGroups }: {
 }): React.JSX.Element;
 export namespace Footer {
     namespace defaultProps {
-        let footerGroups: never[];
+        const footerGroups: never[];
     }
     namespace propTypes {
-        let footerGroups_1: PropTypes.Requireable<any[]>;
+        const footerGroups_1: PropTypes.Requireable<any[]>;
         export { footerGroups_1 as footerGroups };
     }
 }
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";

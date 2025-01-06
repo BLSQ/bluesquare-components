@@ -10,29 +10,29 @@ export function SingleComment({ avatar, author, content, postingTime, classNames
 }): React.JSX.Element;
 export namespace SingleComment {
     namespace propTypes {
-        let avatar: PropTypes.Requireable<string>;
-        let author: PropTypes.Validator<string>;
-        let content: PropTypes.Validator<string>;
-        let postingTime: PropTypes.Requireable<string>;
-        let classNames: PropTypes.Requireable<(string | null | undefined)[]>;
-        let actionText: PropTypes.Requireable<string>;
-        let onAddComment: PropTypes.Requireable<(...args: any[]) => any>;
-        let id: PropTypes.Requireable<number>;
+        const avatar: PropTypes.Requireable<string>;
+        const author: PropTypes.Validator<string>;
+        const content: PropTypes.Validator<string>;
+        const postingTime: PropTypes.Requireable<string>;
+        const classNames: PropTypes.Requireable<(string | null | undefined)[]>;
+        const actionText: PropTypes.Requireable<string>;
+        const onAddComment: PropTypes.Requireable<(...args: any[]) => any>;
+        const id: PropTypes.Requireable<number>;
     }
     namespace defaultProps {
-        let avatar_1: null;
+        const avatar_1: null;
         export { avatar_1 as avatar };
-        let postingTime_1: string;
+        const postingTime_1: string;
         export { postingTime_1 as postingTime };
-        let classNames_1: null;
+        const classNames_1: null;
         export { classNames_1 as classNames };
-        let actionText_1: null;
+        const actionText_1: null;
         export { actionText_1 as actionText };
         export function onAddComment_1(): void;
         export { onAddComment_1 as onAddComment };
-        let id_1: null;
+        const id_1: null;
         export { id_1 as id };
     }
 }
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";

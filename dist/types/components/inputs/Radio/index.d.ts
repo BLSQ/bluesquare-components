@@ -12,34 +12,34 @@ declare function RadioComponent({ options, name, onChange, value, label, errors,
 }): React.JSX.Element;
 declare namespace RadioComponent {
     namespace defaultProps {
-        let options: never[];
+        const options: never[];
         function onChange(): void;
-        let value: string;
-        let label: string;
-        let errors: never[];
-        let className: string;
-        let required: boolean;
-        let dataTestId: undefined;
+        const value: string;
+        const label: string;
+        const errors: never[];
+        const className: string;
+        const required: boolean;
+        const dataTestId: undefined;
     }
     namespace propTypes {
-        let options_1: PropTypes.Requireable<any[]>;
+        const options_1: PropTypes.Requireable<any[]>;
         export { options_1 as options };
-        export let name: PropTypes.Validator<string>;
-        let onChange_1: PropTypes.Requireable<(...args: any[]) => any>;
+        export const name: PropTypes.Validator<string>;
+        const onChange_1: PropTypes.Requireable<(...args: any[]) => any>;
         export { onChange_1 as onChange };
-        let value_1: PropTypes.Requireable<NonNullable<string | boolean | null | undefined>>;
+        const value_1: PropTypes.Requireable<NonNullable<string | boolean | null | undefined>>;
         export { value_1 as value };
-        let label_1: PropTypes.Requireable<string>;
+        const label_1: PropTypes.Requireable<string>;
         export { label_1 as label };
-        let errors_1: PropTypes.Requireable<(string | null | undefined)[]>;
+        const errors_1: PropTypes.Requireable<(string | null | undefined)[]>;
         export { errors_1 as errors };
-        let className_1: PropTypes.Requireable<string>;
+        const className_1: PropTypes.Requireable<string>;
         export { className_1 as className };
-        let dataTestId_1: PropTypes.Requireable<string>;
+        const dataTestId_1: PropTypes.Requireable<string>;
         export { dataTestId_1 as dataTestId };
-        let required_1: PropTypes.Requireable<boolean>;
+        const required_1: PropTypes.Requireable<boolean>;
         export { required_1 as required };
     }
 }
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";

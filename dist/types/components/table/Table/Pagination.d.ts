@@ -9,26 +9,26 @@ export function Pagination({ count, rowsPerPage, pageIndex, onTableParamsChange,
 }): React.JSX.Element;
 export namespace Pagination {
     namespace defaultProps {
-        let count: number;
-        let rowsPerPage: number;
-        let pageIndex: number;
-        let pages: number;
-        let selectCount: number;
+        const count: number;
+        const rowsPerPage: number;
+        const pageIndex: number;
+        const pages: number;
+        const selectCount: number;
     }
     namespace propTypes {
-        let count_1: PropTypes.Requireable<number>;
+        const count_1: PropTypes.Requireable<number>;
         export { count_1 as count };
-        let rowsPerPage_1: PropTypes.Requireable<number>;
+        const rowsPerPage_1: PropTypes.Requireable<number>;
         export { rowsPerPage_1 as rowsPerPage };
-        let pageIndex_1: PropTypes.Requireable<number>;
+        const pageIndex_1: PropTypes.Requireable<number>;
         export { pageIndex_1 as pageIndex };
-        let pages_1: PropTypes.Requireable<number>;
+        const pages_1: PropTypes.Requireable<number>;
         export { pages_1 as pages };
-        export let onTableParamsChange: PropTypes.Validator<(...args: any[]) => any>;
-        export let countOnTop: PropTypes.Validator<boolean>;
-        let selectCount_1: PropTypes.Requireable<number>;
+        export const onTableParamsChange: PropTypes.Validator<(...args: any[]) => any>;
+        export const countOnTop: PropTypes.Validator<boolean>;
+        const selectCount_1: PropTypes.Requireable<number>;
         export { selectCount_1 as selectCount };
     }
 }
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";

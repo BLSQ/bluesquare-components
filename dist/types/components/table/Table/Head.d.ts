@@ -6,19 +6,19 @@ export function Head({ headerGroups, setSortBy, multiSortEnabled, sortBy }: {
 }): React.JSX.Element;
 export namespace Head {
     namespace defaultProps {
-        let headerGroups: never[];
-        let sortBy: never[];
+        const headerGroups: never[];
+        const sortBy: never[];
         function setSortBy(): null;
     }
     namespace propTypes {
-        let headerGroups_1: PropTypes.Requireable<any[]>;
+        const headerGroups_1: PropTypes.Requireable<any[]>;
         export { headerGroups_1 as headerGroups };
-        let setSortBy_1: PropTypes.Requireable<(...args: any[]) => any>;
+        const setSortBy_1: PropTypes.Requireable<(...args: any[]) => any>;
         export { setSortBy_1 as setSortBy };
-        let sortBy_1: PropTypes.Requireable<any[]>;
+        const sortBy_1: PropTypes.Requireable<any[]>;
         export { sortBy_1 as sortBy };
-        export let multiSortEnabled: PropTypes.Validator<boolean>;
+        export const multiSortEnabled: PropTypes.Validator<boolean>;
     }
 }
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";

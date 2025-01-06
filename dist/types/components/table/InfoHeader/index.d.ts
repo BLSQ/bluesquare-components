@@ -4,9 +4,9 @@ export function InfoHeader({ message, children }: {
 }): React.JSX.Element;
 export namespace InfoHeader {
     namespace propTypes {
-        let message: PropTypes.Validator<string>;
-        let children: PropTypes.Validator<NonNullable<NonNullable<PropTypes.ReactNodeLike>>>;
+        const message: PropTypes.Validator<string>;
+        const children: PropTypes.Validator<NonNullable<NonNullable<PropTypes.ReactNodeLike>>>;
     }
 }
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";

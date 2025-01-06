@@ -1,6 +1,6 @@
 export namespace MESSAGES {
     namespace reply {
-        let id: string;
-        let defaultMessage: string;
+        const id: string;
+        const defaultMessage: string;
     }
 }

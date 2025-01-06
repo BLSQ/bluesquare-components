@@ -8,5 +8,5 @@ declare const styled: React.JSXElementConstructor<Omit<Pick<Pick<{
 }>, "classes" | "width">, "classes"> & {
     width?: string | null | undefined;
 } & {}, "classes"> & import("@mui/styles").StyledComponentProps<"placeholder"> & object>;
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from "prop-types";
+import React from "react";

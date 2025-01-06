@@ -20,12 +20,14 @@ export namespace rawTheme {
         export namespace mediumGray {
             const main_2: string;
             export { main_2 as main };
+            const border_1: string;
+            export { border_1 as border };
         }
         export namespace ligthGray {
             const main_3: string;
             export { main_3 as main };
-            const border_1: string;
-            export { border_1 as border };
+            const border_2: string;
+            export { border_2 as border };
             const background_2: string;
             export { background_2 as background };
         }
@@ -42,12 +44,12 @@ export namespace rawTheme {
             const background_4: string;
             export { background_4 as background };
         }
-        export namespace border_2 {
+        export namespace border_3 {
             const main_6: string;
             export { main_6 as main };
             export const hover: string;
         }
-        export { border_2 as border };
+        export { border_3 as border };
         export namespace yellow {
             const main_7: string;
             export { main_7 as main };

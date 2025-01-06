@@ -35,6 +35,12 @@ const DateTimePicker = ({
     hideError,
     disabled,
     clearable,
+    maxTime,
+    maxDateTime,
+    maxDate,
+    minTime,
+    minDateTime,
+    minDate,
 }) => {
     const classes = useStyles();
     const [dateError, setDateError] = useState(null);
@@ -68,6 +74,12 @@ const DateTimePicker = ({
                 value={currentDate}
                 onChange={onChange}
                 onError={error => setDateError(error)}
+                minDate={minDate}
+                minDateTime={minDateTime}
+                minTime={minTime}
+                maxDate={maxDate}
+                maxDateTime={maxDateTime}
+                maxTime={maxTime}
             />
             {clearable && clearMessage && currentDate && (
                 <span className={classes.clearDateButton}>
@@ -92,6 +104,12 @@ DateTimePicker.defaultProps = {
     disabled: false,
     clearMessage: undefined,
     clearable: true,
+    maxTime:undefined,
+    maxDateTime:undefined,
+    maxDate:undefined,
+    minTime:undefined,
+    minDateTime:undefined,
+    minDate:undefined,
 };
 
 DateTimePicker.propTypes = {
@@ -126,6 +144,15 @@ DateTimePicker.propTypes = {
     hideError: PropTypes.bool,
     disabled: PropTypes.bool,
     clearable: PropTypes.bool,
+    /** Use moment to pass these props
+     * https://github.com/mui/material-ui-pickers/issues/1506
+     */
+    maxTime: PropTypes.any,
+    maxDateTime: PropTypes.any,
+    maxDate: PropTypes.any,
+    minTime: PropTypes.any,
+    minDateTime: PropTypes.any,
+    minDate: PropTypes.any,
 };
 
 export { DateTimePicker };

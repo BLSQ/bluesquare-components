@@ -20,13 +20,21 @@ export namespace rawTheme {
         export namespace mediumGray {
             let main_2: string;
             export { main_2 as main };
+            const border_1: string;
+            export { border_1 as border };
         }
         export namespace ligthGray {
             let main_3: string;
             export { main_3 as main };
+<<<<<<< HEAD
             let border_1: string;
             export { border_1 as border };
             let background_2: string;
+=======
+            const border_2: string;
+            export { border_2 as border };
+            const background_2: string;
+>>>>>>> IA-2850_react-router_update_dev
             export { background_2 as background };
         }
         export namespace error {
@@ -42,12 +50,17 @@ export namespace rawTheme {
             let background_4: string;
             export { background_4 as background };
         }
+<<<<<<< HEAD
         export namespace border_2 {
             let main_6: string;
+=======
+        export namespace border_3 {
+            const main_6: string;
+>>>>>>> IA-2850_react-router_update_dev
             export { main_6 as main };
             export let hover: string;
         }
-        export { border_2 as border };
+        export { border_3 as border };
         export namespace yellow {
             let main_7: string;
             export { main_7 as main };

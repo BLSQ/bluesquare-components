@@ -1,4 +1,4 @@
-export function DatePicker({ label, onChange, currentDate, clearMessage, required, errors, hideError, disabled, clearable, }: {
+export function DatePicker({ label, onChange, currentDate, clearMessage, required, errors, hideError, disabled, clearable, minDate, maxDate }: {
     label: any;
     onChange: any;
     currentDate: any;
@@ -8,9 +8,12 @@ export function DatePicker({ label, onChange, currentDate, clearMessage, require
     hideError: any;
     disabled: any;
     clearable: any;
+    minDate: any;
+    maxDate: any;
 }): React.JSX.Element;
 export namespace DatePicker {
     namespace defaultProps {
+<<<<<<< HEAD
         let currentDate: null;
         let required: boolean;
         let errors: never[];
@@ -18,6 +21,17 @@ export namespace DatePicker {
         let disabled: boolean;
         let clearMessage: undefined;
         let clearable: boolean;
+=======
+        const currentDate: null;
+        const required: boolean;
+        const errors: never[];
+        const hideError: boolean;
+        const disabled: boolean;
+        const clearMessage: undefined;
+        const clearable: boolean;
+        const minDate: undefined;
+        const maxDate: undefined;
+>>>>>>> IA-2850_react-router_update_dev
     }
     namespace propTypes {
         export let label: PropTypes.Validator<string>;
@@ -36,6 +50,10 @@ export namespace DatePicker {
         export { disabled_1 as disabled };
         let clearable_1: PropTypes.Requireable<boolean>;
         export { clearable_1 as clearable };
+        const minDate_1: PropTypes.Requireable<any>;
+        export { minDate_1 as minDate };
+        const maxDate_1: PropTypes.Requireable<any>;
+        export { maxDate_1 as maxDate };
     }
 }
 import React from 'react';

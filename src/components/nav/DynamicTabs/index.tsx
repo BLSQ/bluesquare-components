@@ -1,14 +1,14 @@
-import React, { FunctionComponent, useCallback, useState } from 'react';
-import { Tabs, Tab, IconButton, Tooltip } from '@mui/material';
 import Add from '@mui/icons-material/Add';
 import Remove from '@mui/icons-material/Clear';
+import { IconButton, Tab, Tabs, Tooltip } from '@mui/material';
 import Color from 'color';
+import React, { FunctionComponent, useCallback, useState } from 'react';
 
 import { formatThousand } from '../../../utils';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 
-import { useStyles } from './styles';
 import { IntlMessage } from '../../../types/types';
+import { useStyles } from './styles';
 
 type Count = {
     index: number;
@@ -69,18 +69,18 @@ const DynamicTabs: FunctionComponent<Props> = ({
     }, [defaultItem, onTabsAdded, paramKey, params, tabParamKey]);
 
     const handleDeleteTab = useCallback(
-        newIndex => {
+        clickedIndex => {
             const newItems = JSON.parse(params[paramKey]);
-            newItems.splice(newIndex, 1);
+            newItems.splice(clickedIndex, 1);
             const newParams = {
                 ...params,
             };
 
             newParams[paramKey] = JSON.stringify(newItems);
-            if (newIndex > newItems.length - 1) {
+            if (tabIndex > newItems.length - 1) {
                 newParams[tabParamKey] = (newItems.length - 1).toString();
                 // go to previous tab, code should prevent to delete tif the list contain only one item
-                setTabIndex(newIndex - 1);
+                setTabIndex(tabIndex - 1);
             }
             onTabsDeleted(newParams);
         },

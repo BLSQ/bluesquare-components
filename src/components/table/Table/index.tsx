@@ -117,7 +117,7 @@ export interface TableComponentProps {
     marginBottom?: boolean;
     multiSelect?: boolean;
     selectionActions?: any[];
-    setTableSelection?: () => any;
+    setTableSelection?: (selectionType: string, items: any[], totalCount?: number) => any;
     selection?: Record<string, any>;
     selectionActionMessage?: string;
     showPagination?: boolean;

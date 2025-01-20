@@ -39,7 +39,9 @@ type Props = {
         newValue: number | undefined,
     ) => void;
     onBlur?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
-
+    onFocus?:
+        | FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>
+        | undefined;
     prefix?: string;
     suffix?: string;
     decimalScale?: number;
@@ -60,6 +62,7 @@ export const NumberInput: FunctionComponent<Props> = ({
     label,
     onChange,
     onBlur,
+    onFocus,
     placeholder,
     dataTestId,
     errors = [],
@@ -121,6 +124,7 @@ export const NumberInput: FunctionComponent<Props> = ({
                 handleChange(values);
             }}
             onBlur={onBlur}
+            onFocus={onFocus}
             errors={errors}
             placeholder={placeholder}
             keyValue={keyValue}

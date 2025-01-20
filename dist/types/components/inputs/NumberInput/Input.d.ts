@@ -12,6 +12,7 @@ type Props = {
     max: number;
     onChange: (event: ChangeEvent<HTMLInputElement>) => void;
     onBlur?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
+    onFocus?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement> | undefined;
     placeholder?: string;
 };
 export declare const CustomInput: FunctionComponent<Props>;

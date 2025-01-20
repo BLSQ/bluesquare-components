@@ -12,6 +12,7 @@ type Props = {
     max?: number;
     onChange: (newValue: number | undefined) => void;
     onBlur?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
+    onFocus?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement> | undefined;
     prefix?: string;
     suffix?: string;
     decimalScale?: number;

@@ -43,6 +43,9 @@ type Props = {
         event: ChangeEvent<HTMLInputElement>,
     ) => void;
     onBlur?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
+    onFocus?:
+        | FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>
+        | undefined;
     placeholder?: string;
 };
 
@@ -55,6 +58,7 @@ export const CustomInput: FunctionComponent<Props> = ({
     disabled,
     onChange,
     onBlur,
+    onFocus,
     multiline,
     autoComplete,
     min,
@@ -92,6 +96,7 @@ export const CustomInput: FunctionComponent<Props> = ({
                 error={hasErrors}
                 placeholder={placeholder}
                 onBlur={onBlur}
+                onFocus={onFocus}
             />
         </FormControl>
     );

@@ -1,4 +1,4 @@
-import { FunctionComponent, ChangeEvent } from 'react';
+import { ChangeEvent, FocusEventHandler, FunctionComponent } from 'react';
 type Props = {
     keyValue: string;
     errors: string[];
@@ -11,6 +11,7 @@ type Props = {
     min: number;
     max: number;
     onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+    onBlur?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
     placeholder?: string;
 };
 export declare const CustomInput: FunctionComponent<Props>;

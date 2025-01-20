@@ -1,6 +1,10 @@
-import React, { FunctionComponent, ChangeEvent } from 'react';
-import { OutlinedInput, Tooltip } from '@mui/material';
 import InfoIcon from '@mui/icons-material/Info';
+import { OutlinedInput, Tooltip } from '@mui/material';
+import React, {
+    ChangeEvent,
+    FocusEventHandler,
+    FunctionComponent,
+} from 'react';
 
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { FormControl } from '../FormControl';
@@ -38,6 +42,7 @@ type Props = {
         // eslint-disable-next-line no-unused-vars
         event: ChangeEvent<HTMLInputElement>,
     ) => void;
+    onBlur?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
     placeholder?: string;
 };
 
@@ -49,6 +54,7 @@ export const CustomInput: FunctionComponent<Props> = ({
     value,
     disabled,
     onChange,
+    onBlur,
     multiline,
     autoComplete,
     min,
@@ -85,6 +91,7 @@ export const CustomInput: FunctionComponent<Props> = ({
                 onChange={onChange}
                 error={hasErrors}
                 placeholder={placeholder}
+                onBlur={onBlur}
             />
         </FormControl>
     );

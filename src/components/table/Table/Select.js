@@ -3,7 +3,7 @@ import isEqual from 'lodash/isEqual';
 import PropTypes from 'prop-types';
 import React, { useCallback } from 'react';
 
-import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { SelectionSpeedDials } from '../SelectionSpeedDials';
 import { MESSAGES } from './messages';
 
@@ -55,7 +55,6 @@ const isItemSelected = (item, selection, selector = 'id') => {
     return !unSelectedItems.find(el => el[selector] === item[selector]);
 };
 
-
 const getSelectionCol = (
     selection,
     setTableSelection,
@@ -79,7 +78,7 @@ const getSelectionCol = (
                     count,
                 });
             },
-            [selection, setTableSelection, count, settings.cell.row.original]
+            [selection, setTableSelection, count, settings.cell.row.original],
         );
         return (
             <Checkbox
@@ -144,4 +143,3 @@ Select.propTypes = {
 };
 
 export { getSelectionCol, isItemSelected, onSelect, Select };
-

@@ -14,7 +14,6 @@ import {
 } from 'react-table';
 
 import { Grid } from '@mui/material';
-import { useSafeIntl } from '../../../utils/useSafeIntl';
 
 import { DEFAULT_ORDER, DEFAULT_PAGE, DEFAULT_PAGE_SIZE } from './constants';
 
@@ -40,6 +39,7 @@ import { Pagination } from './Pagination';
 import { Select, getSelectionCol } from './Select';
 
 import { Column } from './types';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 
 /**
  * TableComponent component, no redux, no fetch, just displaying.
@@ -117,7 +117,11 @@ export interface TableComponentProps {
     marginBottom?: boolean;
     multiSelect?: boolean;
     selectionActions?: any[];
-    setTableSelection?: (selectionType: string, items: any[], totalCount?: number) => any;
+    setTableSelection?: (
+        selectionType: string,
+        items: any[],
+        totalCount?: number,
+    ) => any;
     selection?: Record<string, any>;
     selectionActionMessage?: string;
     showPagination?: boolean;
@@ -153,7 +157,7 @@ export interface TableComponentProps {
     columnSelectorEnabled?: boolean;
     columnSelectorButtonDisabled?: boolean;
     columnSelectorButtonType?: 'button' | 'icon';
-    getIsSelectionDisabled?: (row:any) => boolean;
+    getIsSelectionDisabled?: (row: any) => boolean;
 }
 
 const TableComponent: React.FC<TableComponentProps> = props => {

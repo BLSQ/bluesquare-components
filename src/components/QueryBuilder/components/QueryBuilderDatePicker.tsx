@@ -3,7 +3,7 @@ import { RadioGroup, FormControlLabel, Radio, Box } from '@mui/material';
 
 import { DateOrDateTime } from './DateOrDateTime';
 import { MESSAGES } from '../messages';
-import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { useStyles } from '../styles';
 
 type RadioValue = 'current' | 'default';

@@ -5,7 +5,7 @@ import Color from 'color';
 import React, { FunctionComponent, useCallback, useState } from 'react';
 
 import { formatThousand } from '../../../utils';
-import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 
 import { IntlMessage } from '../../../types/types';
 import { useStyles } from './styles';

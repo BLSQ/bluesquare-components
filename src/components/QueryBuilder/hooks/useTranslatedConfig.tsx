@@ -7,7 +7,7 @@ import { useTheme } from '@mui/styles';
 import { Box } from '@mui/material';
 import { QueryBuilderDatePicker } from '../components/QueryBuilderDatePicker';
 
-import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { MESSAGES } from '../messages';
 import { apiDateFormat } from '../constants';
 import { TextInput } from '../../inputs/TextInput';

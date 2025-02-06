@@ -6,7 +6,7 @@ import {
     Fields,
 } from '@react-awesome-query-builder/mui';
 
-import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 
 import { ConfirmCancelModal } from '../../Modal/ConfirmCancelModal';
 import { makeFullModal } from '../../Modal/ModalWithButton';

@@ -5,7 +5,7 @@ import { makeStyles } from '@mui/styles';
 import AttachmentIcon from '@mui/icons-material/Attachment';
 import { Box, Grid, Paper, Tooltip, Typography } from '@mui/material';
 import { FormattedMessage } from 'react-intl';
-import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 import MESSAGES from './messages';
 import {
     CustomInput,

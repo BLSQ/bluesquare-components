@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import React, { useCallback, useMemo } from 'react';
 
 import { useKeyPressListener } from '../../../utils/useKeyPressListener';
-import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 
 import { MESSAGES } from './messages';
 
@@ -40,18 +40,18 @@ const MultiSelect = ({
     helperText,
     loadingText,
     dataTestId,
-    placeholder
+    placeholder,
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
     const shiftKeyIsDown = useKeyPressListener('Shift');
     //  Handle numeric 0 as value
-    const hasValue = Boolean(value) || value === 0
+    const hasValue = Boolean(value) || value === 0;
 
     const valuesList = useMemo(() => {
         if (!hasValue) return [];
         return Array.isArray(value) ? value : value.split(',');
-    }, [value,hasValue]);
+    }, [value, hasValue]);
 
     const extraProps = getExtraProps(
         getOptionLabel,
@@ -67,7 +67,8 @@ const MultiSelect = ({
                     options,
                     extraProps.isOptionEqualToValue,
                 );
-                const missingValueError = !Boolean(multiOption) && multiOption !== 0
+                const missingValueError =
+                    !Boolean(multiOption) && multiOption !== 0;
                 if (missingValueError) {
                     tempErrors.push(
                         formatMessage(MESSAGES.oneValueNotFound, {
@@ -88,7 +89,7 @@ const MultiSelect = ({
             return valuesList.map(v => getOption(v, options)).filter(o => o);
         }
         return [];
-    }, [options, hasValue,valuesList]);
+    }, [options, hasValue, valuesList]);
 
     const handleChange = useCallback(
         (e, newValue) => {

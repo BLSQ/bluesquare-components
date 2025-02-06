@@ -63,15 +63,15 @@ import { PageRowSelect } from './components/table/Table/PageRowSelect';
 import * as SnackBar from './constants/iaso/snackBars';
 import * as IasoUiConstants from './constants/iaso/uiConstants';
 import { english, french } from './locale';
+import { injectIntl } from './localization/injectIntl';
+import { patchIntl } from './localization/patchIntl';
 import { commonStyles } from './styles/iaso/common';
 import { mapStyles } from './styles/iaso/map';
 import { mapPopupStyles } from './styles/iaso/mapPopup';
 import { rawTheme, theme } from './styles/iaso/theme';
-import { injectIntl } from './utils/injectIntl';
-import { patchIntl } from './utils/patchIntl';
 import { testTS } from './utils/test';
 import { useKeyPressListener } from './utils/useKeyPressListener';
-import { useSafeIntl } from './utils/useSafeIntl';
+import { useSafeIntl } from './localization/useSafeIntl';
 import { useSkipEffectOnMount } from './utils/useSkipEffectOnMount';
 // import { QueryBuilderListToReplace } from './components/QueryBuilder/types';
 import { LinkButton } from './Routing/LinkButton';
@@ -103,7 +103,9 @@ import { convertObjectToUrlParams, makeRedirectionUrl } from './Routing/utils';
 
 import { ExternalLink } from './Routing/ExternalLink';
 import { ExternalLinkIconButton } from './Routing/ExternalLinkIconButton';
+import { InputWithInfos } from './components/inputs/InputWithInfos/InputWithInfos';
 import { PhoneInput } from './components/inputs/PhoneInput/PhoneInput';
+import { TextArea } from './components/inputs/TextArea/TextArea';
 import {
     MENU_HEIGHT_WITHOUT_TABS,
     MENU_HEIGHT_WITH_TABS,
@@ -123,8 +125,16 @@ import {
     setTableSelection,
     tableInitialResult,
 } from './utils/tableUtils';
-import { TextArea } from './components/inputs/TextArea/TextArea';
-import { InputWithInfos } from './components/inputs/InputWithInfos/InputWithInfos';
+import { usePageTitle } from './components/nav/usePageTitle';
+import {
+    SidebarProvider,
+    useSidebar,
+} from './contexts/SideBarContext/SideBarContext';
+import { LocalizationProvider } from './localization/LocalizationProvider/LocalizationProvider';
+import { EventDispatcher } from './snackbars/EventDispatcher';
+import { PageError } from './components/PageError/PageError';
+import { TopBar } from './components/nav/TopBar/TopBar';
+import SnackBarButton from './snackbars/SnackBarButton';
 
 // Types
 export * from './components/QueryBuilder/types';
@@ -134,7 +144,7 @@ export * from './components/inputs/PhoneInput/types';
 export * from './components/table/Table/types';
 export * from './types/types';
 export * from './utils/fetchData';
-export * from './utils/intlUtils';
+export * from './localization/intlUtils';
 
 export type { CommonStyles } from './styles/iaso/common';
 
@@ -265,4 +275,12 @@ export {
     useRedirectToReplace,
     useSafeIntl,
     useSkipEffectOnMount,
+    usePageTitle,
+    SidebarProvider,
+    useSidebar,
+    LocalizationProvider,
+    EventDispatcher,
+    PageError,
+    TopBar,
+    SnackBarButton,
 };

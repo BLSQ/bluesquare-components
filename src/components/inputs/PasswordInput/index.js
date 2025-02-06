@@ -5,7 +5,7 @@ import { withStyles } from '@mui/styles';
 import Edit from '@mui/icons-material/RemoveRedEye';
 import { FormControl } from '../FormControl';
 import { InputLabel } from '../InputLabel';
-import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { MESSAGES } from './messages';
 import { styles } from './styles';
 

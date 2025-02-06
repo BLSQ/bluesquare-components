@@ -1,0 +1,17 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+declare const SnackBarErrorMessage: {
+    ({ errorLog, id }: {
+        errorLog: any;
+        id: any;
+    }): React.JSX.Element | null;
+    defaultProps: {
+        errorLog: null;
+        id: null;
+    };
+    propTypes: {
+        errorLog: PropTypes.Requireable<any>;
+        id: PropTypes.Requireable<NonNullable<string | object | null | undefined>>;
+    };
+};
+export default SnackBarErrorMessage;

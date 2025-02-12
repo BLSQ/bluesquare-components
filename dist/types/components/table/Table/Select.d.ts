@@ -14,17 +14,17 @@ export function onSelect({ isSelected, item, selection, setTableSelection, count
     setTableSelection: any;
     count: any;
 }): void;
-export function Select({ count, multiSelect, selectionActions, setTableSelection, selection, selectionActionMessage, }: {
-    count: any;
+export function Select({ multiSelect, selectionActions, setTableSelection, selection, selectionActionMessage, selectAllCount, }: {
     multiSelect: any;
     selectionActions: any;
     setTableSelection: any;
     selection: any;
     selectionActionMessage: any;
+    selectAllCount: any;
 }): React.JSX.Element;
 export namespace Select {
     namespace defaultProps {
-        export let count: number;
+        export let selectAllCount: number;
         export let multiSelect: boolean;
         export let selectionActions: never[];
         export { selectionInitialState as selection };
@@ -32,8 +32,8 @@ export namespace Select {
         export let selectionActionMessage: null;
     }
     namespace propTypes {
-        let count_1: PropTypes.Requireable<number>;
-        export { count_1 as count };
+        let selectAllCount_1: PropTypes.Requireable<number>;
+        export { selectAllCount_1 as selectAllCount };
         let multiSelect_1: PropTypes.Requireable<boolean>;
         export { multiSelect_1 as multiSelect };
         let selectionActions_1: PropTypes.Requireable<any[]>;

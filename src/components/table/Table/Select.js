@@ -1,7 +1,7 @@
 import Checkbox from '@mui/material/Checkbox';
 import isEqual from 'lodash/isEqual';
 import PropTypes from 'prop-types';
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { SelectionSpeedDials } from '../SelectionSpeedDials';
@@ -81,11 +81,13 @@ const getSelectionCol = (
             },
             [selection, setTableSelection, count, settings.cell.row.original]
         );
+        const isDisabled = getIsSelectionDisabled(settings.cell.row.original);
+        const isChecked = !isDisabled && isItemSelected(settings.cell.row.original, selection);
         return (
             <Checkbox
                 color="primary"
-                disabled={getIsSelectionDisabled(settings.cell.row.original)}
-                checked={isItemSelected(settings.cell.row.original, selection)}
+                disabled={isDisabled}
+                checked={isChecked}
                 onChange={handleSelect}
             />
         );
@@ -93,18 +95,18 @@ const getSelectionCol = (
 });
 
 const Select = ({
-    count,
     multiSelect,
     selectionActions,
     setTableSelection,
     selection,
     selectionActionMessage,
+    selectAllCount,
 }) => {
     const { formatMessage } = useSafeIntl();
 
     let actions = [
         ...defaultSelectionActions(
-            () => setTableSelection('selectAll', [], count),
+            () => setTableSelection('selectAll', [], selectAllCount),
             () => setTableSelection('reset'),
             formatMessage,
         ),
@@ -126,7 +128,7 @@ const Select = ({
 };
 
 Select.defaultProps = {
-    count: 0,
+    selectAllCount: 0,
     multiSelect: false,
     selectionActions: [],
     selection: selectionInitialState,
@@ -135,7 +137,7 @@ Select.defaultProps = {
 };
 
 Select.propTypes = {
-    count: PropTypes.number,
+    selectAllCount: PropTypes.number,
     multiSelect: PropTypes.bool,
     selectionActions: PropTypes.array,
     setTableSelection: PropTypes.func,

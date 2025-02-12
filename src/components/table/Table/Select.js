@@ -87,7 +87,7 @@ const getSelectionCol = (
             <Checkbox
                 color="primary"
                 disabled={isDisabled}
-                checked={!isDisabled && isItemSelected(settings.cell.row.original, selection)}
+                checked={isChecked}
                 onChange={handleSelect}
             />
         );

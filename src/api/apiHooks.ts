@@ -18,7 +18,7 @@ import { useSafeIntl } from '../localization/useSafeIntl';
 import { openSnackBar } from '../snackbars/EventDispatcher';
 import { errorSnackBar, succesfullSnackBar } from '../snackbars/snackBars';
 
-const MESSAGES = defineMessages({
+export const MESSAGES = defineMessages({
     permissionError: {
         id: 'iaso.snackBar.permissionError',
         defaultMessage:
@@ -58,7 +58,7 @@ const MESSAGES = defineMessages({
  *   standard useMutation Options
  * @returns {UseMutationResult<mutationFn, options, void, unknown>}
  */
-type SnackMutationDict<Data, Error, Variables, Context> = {
+export type SnackMutationDict<Data, Error, Variables, Context> = {
     mutationFn: MutationFunction<Data, any>;
     snackSuccessMessage?: IntlMessage;
     snackErrorMsg?: IntlMessage;
@@ -84,7 +84,7 @@ type SnackMutationDict<Data, Error, Variables, Context> = {
     };
 };
 
-const useBaseSnackMutation = <
+export const useBaseSnackMutation = <
     Data = unknown,
     Error = unknown,
     Variables = void,
@@ -261,7 +261,7 @@ export const useSnackMutation = <
  * @returns UseQueryResult<Data, Error>;
  */
 
-const useBaseSnackQuery = <
+export const useBaseSnackQuery = <
     QueryFnData = unknown,
     Error = unknown,
     Data = QueryFnData,
@@ -290,7 +290,11 @@ const useBaseSnackQuery = <
     return query;
 };
 
-type SnackQueryDict<QueryFnData, Data, QueryKeyExtended extends QueryKey> = {
+export type SnackQueryDict<
+    QueryFnData,
+    Data,
+    QueryKeyExtended extends QueryKey,
+> = {
     queryKey: QueryKey;
     queryFn: QueryFunction<QueryFnData>;
     snackErrorMsg?: IntlMessage;

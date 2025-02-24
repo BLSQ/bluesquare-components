@@ -5,6 +5,9 @@ export declare class ApiError extends Error {
     details: any;
     constructor(message: string, response?: Response, json?: Record<string, any>);
 }
+export declare const tryJson: (response: any) => Promise<any>;
+export declare const defaultErrorHandler: (error: any) => Response;
+export declare const defaultResponseHandler: (response: any, url: string, method: string) => Promise<any>;
 /**
  *
 A wrapper on JS native fetch method with custom error handling

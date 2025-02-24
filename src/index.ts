@@ -89,6 +89,26 @@ import { useHumanReadableJsonLogic } from './components/QueryBuilder/hooks/useHu
 import { SortableList } from './components/Sortable/list';
 import { SortableTable } from './components/Sortable/table';
 
+// API
+import {
+    useSnackQuery,
+    useSnackMutation,
+    useSnackQueries,
+    useAbortController,
+} from './api/apiHooks';
+
+import {
+    blsqFetch,
+    basePostRequest,
+    postRequest,
+    getRequest,
+    getRequestImage,
+    putRequest,
+    patchRequest,
+    optionsRequest,
+    deleteRequest,
+    ApiError,
+} from './api/Api';
 // utils
 import {
     addPositionIndex,
@@ -157,27 +177,6 @@ export type {
 export type { TableComponentProps } from './components/table/Table';
 
 export type { IconButtonBuiltInIcon } from './components/buttons/IconButton';
-
-// API
-// export * from './api/Api';
-import {
-    useSnackQuery,
-    useSnackMutation,
-    useSnackQueries,
-    useAbortController,
-} from './api/apiHooks';
-// export * from './api/apiHooks';
-import {
-    blsqFetch,
-    basePostRequest,
-    postRequest,
-    getRequest,
-    putRequest,
-    patchRequest,
-    optionsRequest,
-    deleteRequest,
-    ApiError,
-} from './api/Api';
 
 export {
     AddButton,
@@ -313,6 +312,7 @@ export {
     basePostRequest,
     postRequest,
     getRequest,
+    getRequestImage,
     putRequest,
     patchRequest,
     optionsRequest,

@@ -9,7 +9,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { usePageTitle } from '../usePageTitle';
 import { useSidebar } from '../../../contexts/SideBarContext/SideBarContext';
 
-const styles = theme => ({
+export const styles = theme => ({
     menuButton: {
         [theme.breakpoints.up('md')]: {
             marginRight: `${theme.spacing(2)} !important`,
@@ -32,9 +32,9 @@ const styles = theme => ({
     },
 });
 
-const useStyles = makeStyles(styles);
+export const useStyles = makeStyles(styles);
 
-type Props = {
+export type Props = {
     title?: string;
     appTitle?: string;
     children: ReactNode;

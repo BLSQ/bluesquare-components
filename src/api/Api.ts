@@ -32,7 +32,7 @@ export class ApiError extends Error {
     }
 }
 
-const tryJson = async response => {
+export const tryJson = async response => {
     try {
         return await response.json();
     } catch (e) {
@@ -41,7 +41,7 @@ const tryJson = async response => {
     }
 };
 
-const defaultErrorHandler = error => {
+export const defaultErrorHandler = error => {
     // ignoring errors from cancelled fetch
     if (error.name !== 'AbortError') {
         const apiError = new ApiError(error.message);
@@ -54,7 +54,7 @@ const defaultErrorHandler = error => {
     return emptyRes;
 };
 
-const defaultResponseHandler = async (
+export const defaultResponseHandler = async (
     response,
     url: string,
     method: string,

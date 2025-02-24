@@ -1,5 +1,4 @@
 import { useRef } from 'react';
-import { isArray } from 'lodash';
 import { defineMessages } from 'react-intl';
 import {
     MutationFunction,

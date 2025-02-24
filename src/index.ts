@@ -60,7 +60,7 @@ import { SelectionSpeedDials } from './components/table/SelectionSpeedDials';
 import { Table } from './components/table/Table';
 import { Expander } from './components/table/Table/Expander';
 import { PageRowSelect } from './components/table/Table/PageRowSelect';
-import * as SnackBar from './constants/iaso/snackBars';
+import * as SnackBar from './snackbars/snackBars';
 import * as IasoUiConstants from './constants/iaso/uiConstants';
 import { english, french } from './locale';
 import { injectIntl } from './localization/injectIntl';
@@ -145,6 +145,7 @@ export * from './components/table/Table/types';
 export * from './types/types';
 export * from './utils/fetchData';
 export * from './localization/intlUtils';
+export * from './api/types';
 
 export type { CommonStyles } from './styles/iaso/common';
 
@@ -156,6 +157,10 @@ export type {
 export type { TableComponentProps } from './components/table/Table';
 
 export type { IconButtonBuiltInIcon } from './components/buttons/IconButton';
+
+// API
+export * from './api/Api';
+export * from './api/apiHooks';
 
 export {
     AddButton,

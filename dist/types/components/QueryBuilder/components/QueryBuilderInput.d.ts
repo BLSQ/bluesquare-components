@@ -6,8 +6,8 @@ declare const modalWithButton: React.FunctionComponent<{
     id?: string | undefined;
     onChange: (logic?: JsonLogicTree) => void;
     dataTestId?: string | undefined;
-    fields: Fields;
     initialLogic?: JsonLogicTree | undefined;
+    fields: Fields;
     InfoPopper?: React.ReactNode;
 } & {
     defaultOpen?: boolean;

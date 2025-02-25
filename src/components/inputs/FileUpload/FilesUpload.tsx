@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useCallback, useState } from 'react';
 import { Accept, useDropzone } from 'react-dropzone';
 import { makeStyles } from '@mui/styles';
 import AttachmentIcon from '@mui/icons-material/Attachment';
@@ -76,9 +76,15 @@ export const FilesUpload: FunctionComponent<Props> = ({
     disabled = false,
 }) => {
     const [showDropZone, setShowDropzone] = useState<boolean>(false);
+    const onDrop = useCallback((file)=>{
+        if (!disabled) {
+            onFilesSelect(file);
+        }
+    }, [disabled, onFilesSelect]);
+
     const { getRootProps, getInputProps } = useDropzone({
         accept,
-        onDrop: onFilesSelect,
+        onDrop,
         multiple: multi,
         onDragLeave: () => {
             setShowDropzone(false);

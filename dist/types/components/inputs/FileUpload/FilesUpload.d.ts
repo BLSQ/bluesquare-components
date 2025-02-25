@@ -8,6 +8,7 @@ type Props = {
     placeholder?: string;
     required?: boolean;
     errors?: string[];
+    disabled?: boolean;
 };
 export declare const dragzoneStyle: (theme: any) => {
     outlined: {

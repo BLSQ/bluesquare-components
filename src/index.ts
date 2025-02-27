@@ -90,12 +90,7 @@ import { SortableList } from './components/Sortable/list';
 import { SortableTable } from './components/Sortable/table';
 
 // API
-import {
-    useSnackQuery,
-    useSnackMutation,
-    useSnackQueries,
-    useAbortController,
-} from './api/apiHooks';
+import { makeApiHooks } from './api/apiHooks';
 
 import {
     blsqFetch,
@@ -324,10 +319,7 @@ export {
     PageError,
     TopBar,
     SnackBarButton,
-    useSnackQuery,
-    useSnackMutation,
-    useSnackQueries,
-    useAbortController,
+    makeApiHooks,
     blsqFetch,
     basePostRequest,
     postRequest,

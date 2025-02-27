@@ -55,33 +55,6 @@ export type SnackMutationDict<Data, Error, Variables, Context> = {
         };
     };
 };
-export declare const useBaseSnackMutation: <Data = unknown, Error = unknown, Variables = void, Context = unknown>(mutationFn: MutationFunction<Data, any>, snackSuccessMessage?: IntlMessage, snackErrorMsg?: IntlMessage, invalidateQueryKey?: QueryKey | undefined, options?: Omit<UseMutationOptions<Data, Error, Variables, Context>, "mutationFn"> | undefined, showSucessSnackBar?: boolean, ignoreErrorCodes?: number[], successSnackBar?: (msg: IntlMessage, data: any) => {
-    messageKey: string;
-    messageObject: any;
-    options: {
-        variant: string;
-        persist: boolean;
-    };
-}) => UseMutationResult<Data, Error, Variables, Context>;
-export declare const useSnackMutation: <Data = unknown, Error = unknown, Variables = void, Context = unknown>(mutationArg: MutationFunction<Data, any> | SnackMutationDict<Data, Error, Variables, Context>, snackSuccessMessage?: IntlMessage, snackErrorMsg?: IntlMessage, invalidateQueryKey?: QueryKey | undefined, options?: Omit<UseMutationOptions<Data, Error, Variables, Context>, "mutationFn"> | undefined, showSucessSnackBar?: boolean, ignoreErrorCodes?: number[], successSnackBar?: (msg: IntlMessage, data: any) => {
-    messageKey: string;
-    messageObject: any;
-    options: {
-        variant: string;
-        persist: boolean;
-    };
-}) => UseMutationResult<Data, Error, Variables, Context>;
-/**
- * Mix a useQuery from react-query and snackbar message in case of error
- * @param queryKey
- * @param queryFn
- * @param snackErrorMsg
- *  Translatable Formatjs Message object. null to suppress, undefined for default.
- * @param options
- * @param {boolean} dispatchOnError
- * @returns UseQueryResult<Data, Error>;
- */
-export declare const useBaseSnackQuery: <QueryFnData = unknown, Error = unknown, Data = QueryFnData, QueryKeyExtended extends QueryKey = QueryKey>(queryKey: QueryKey, queryFn: QueryFunction<QueryFnData>, snackErrorMsg?: IntlMessage | undefined, options?: UseQueryOptions<QueryFnData, Error, Data, QueryKeyExtended>, dispatchOnError?: boolean, ignoreErrorCodes?: number[]) => UseQueryResult<Data, Error>;
 export type SnackQueryDict<QueryFnData, Data, QueryKeyExtended extends QueryKey> = {
     queryKey: QueryKey;
     queryFn: QueryFunction<QueryFnData>;
@@ -90,16 +63,38 @@ export type SnackQueryDict<QueryFnData, Data, QueryKeyExtended extends QueryKey>
     dispatchOnError?: boolean;
     ignoreErrorCodes?: number[];
 };
-export declare const useSnackQuery: <QueryFnData = any, Error = unknown, Data = QueryFnData, QueryKeyExtended extends QueryKey = QueryKey>(queryArg: QueryKey | SnackQueryDict<QueryFnData, Data, QueryKeyExtended>, queryFn?: QueryFunction<QueryFnData>, snackErrorMsg?: IntlMessage | undefined, options?: UseQueryOptions<QueryFnData, Error, Data, QueryKeyExtended>, dispatchOnError?: boolean, ignoreErrorCodes?: number[]) => UseQueryResult<Data, Error>;
-/**
- * Mix a useQueries from react-query and snackbar message in case of error
- * @param queries
- */
-export declare const useSnackQueries: <QueryFnData>(queries: {
-    queryKey: QueryKey;
-    queryFn: QueryFunction<QueryFnData>;
-    snackErrorMsg?: IntlMessage;
-    options: UseQueryOptions;
-    dispatchOnError?: boolean;
-}[]) => Array<UseQueryResult<unknown, unknown>>;
-export declare const useAbortController: () => AbortController | Record<string, never>;
+export declare const makeApiHooks: (dispatcher?: import("../snackbars/EventDispatcher").EventDispatcher, errorSnackBar?: (messageKey: any, messageObject: any, errorLog: any) => {
+    messageKey: any;
+    messageObject: any;
+    options: {
+        variant: string;
+        persist: boolean;
+    };
+    errorLog: any;
+    id: string;
+}, succesfullSnackBar?: (messageKey: any, messageObject: any) => {
+    messageKey: any;
+    messageObject: any;
+    options: {
+        variant: string;
+        persist: boolean;
+    };
+}) => {
+    useSnackQuery: <QueryFnData = any, Error = unknown, Data = QueryFnData, QueryKeyExtended extends QueryKey = QueryKey>(queryArg: QueryKey | SnackQueryDict<QueryFnData, Data, QueryKeyExtended>, queryFn?: QueryFunction<QueryFnData>, snackErrorMsg?: IntlMessage | undefined, options?: UseQueryOptions<QueryFnData, Error, Data, QueryKeyExtended>, dispatchOnError?: boolean, ignoreErrorCodes?: number[]) => UseQueryResult<Data, Error>;
+    useSnackMutation: <Data = unknown, Error = unknown, Variables = void, Context = unknown>(mutationArg: MutationFunction<Data, any> | SnackMutationDict<Data, Error, Variables, Context>, snackSuccessMessage?: IntlMessage, snackErrorMsg?: IntlMessage, invalidateQueryKey?: QueryKey | undefined, options?: Omit<UseMutationOptions<Data, Error, Variables, Context>, "mutationFn"> | undefined, showSucessSnackBar?: boolean, ignoreErrorCodes?: number[], successSnackBar?: (msg: IntlMessage, data: any) => {
+        messageKey: string;
+        messageObject: any;
+        options: {
+            variant: string;
+            persist: boolean;
+        };
+    }) => UseMutationResult<Data, Error, Variables, Context>;
+    useSnackQueries: <QueryFnData>(queries: {
+        queryKey: QueryKey;
+        queryFn: QueryFunction<QueryFnData>;
+        snackErrorMsg?: IntlMessage;
+        options: UseQueryOptions;
+        dispatchOnError?: boolean;
+    }[]) => Array<UseQueryResult<unknown, unknown>>;
+    useAbortController: () => AbortController | Record<string, never>;
+};

@@ -155,6 +155,7 @@ import { EventDispatcher } from './snackbars/EventDispatcher';
 import { PageError } from './components/PageError/PageError';
 import { TopBar } from './components/nav/TopBar/TopBar';
 import SnackBarButton from './snackbars/SnackBarButton';
+import { LocaleProvider, useLocale } from './localization/useLocale';
 
 // Types
 export * from './components/QueryBuilder/types';
@@ -318,4 +319,6 @@ export {
     optionsRequest,
     deleteRequest,
     ApiError,
+    LocaleProvider,
+    useLocale,
 };

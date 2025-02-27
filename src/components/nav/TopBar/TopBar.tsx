@@ -37,7 +37,7 @@ export const useStyles = makeStyles(styles);
 export type Props = {
     title?: string;
     appTitle?: string;
-    children: ReactNode;
+    children?: ReactNode;
     rightEndComponent?: FunctionComponent | ComponentClass;
     displayBackButton?: boolean;
     goBack?: () => void;

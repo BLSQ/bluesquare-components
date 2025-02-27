@@ -24,7 +24,7 @@ export declare const useStyles: (props?: any) => import("@mui/styles").ClassName
 export type Props = {
     title?: string;
     appTitle?: string;
-    children: ReactNode;
+    children?: ReactNode;
     rightEndComponent?: FunctionComponent | ComponentClass;
     displayBackButton?: boolean;
     goBack?: () => void;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { EventDispatcher } from './EventDispatcher';
 type Notification = {
     key: string;
     messageKey: string;
@@ -16,5 +17,5 @@ type Notification = {
     };
 };
 export declare const useTranslateMessage: () => (notification: Notification) => any;
-export declare const useSnackBars: (dispatcher?: import("./EventDispatcher").EventDispatcher) => void;
+export declare const useSnackBars: (dispatcher: EventDispatcher) => void;
 export {};

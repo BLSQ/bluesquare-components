@@ -146,11 +146,7 @@ import {
     useSidebar,
 } from './contexts/SideBarContext/SideBarContext';
 import { LocalizationProvider } from './localization/LocalizationProvider/LocalizationProvider';
-import {
-    dispatcher,
-    EventDispatcher,
-    openSnackBar,
-} from './snackbars/EventDispatcher';
+import { EventDispatcher } from './snackbars/EventDispatcher';
 import { PageError } from './components/PageError/PageError';
 import { TopBar } from './components/nav/TopBar/TopBar';
 import SnackBarButton from './snackbars/SnackBarButton';
@@ -314,8 +310,6 @@ export {
     useSidebar,
     LocalizationProvider,
     EventDispatcher,
-    dispatcher,
-    openSnackBar,
     PageError,
     TopBar,
     SnackBarButton,

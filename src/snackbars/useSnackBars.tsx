@@ -1,8 +1,8 @@
 import { useSnackbar } from 'notistack';
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 
 import { useSafeIntl } from '../localization/useSafeIntl';
-import { dispatcher as defaultDispatcher } from './EventDispatcher';
+import { EventDispatcher } from './EventDispatcher';
 import MESSAGES from './messages';
 import SnackBarButton from './SnackBarButton';
 import SnackBarErrorMessage from './SnackBarErrorMessage';
@@ -50,7 +50,7 @@ export const useTranslateMessage = () => {
     };
 };
 
-export const useSnackBars = (dispatcher = defaultDispatcher) => {
+export const useSnackBars = (dispatcher: EventDispatcher) => {
     const { enqueueSnackbar } = useSnackbar();
     const translateMessage = useTranslateMessage();
     useEffect(() => {

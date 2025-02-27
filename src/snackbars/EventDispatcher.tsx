@@ -26,9 +26,3 @@ export class EventDispatcher {
         }
     }
 }
-
-// TODO check if this should be instantiated in project, i.o library
-export const dispatcher = new EventDispatcher();
-
-export const openSnackBar = (data: any) =>
-    dispatcher.dispatch('snackbar', data);

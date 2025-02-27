@@ -5,5 +5,3 @@ export declare class EventDispatcher {
     removeEventListener(event: any, callback: any): void;
     dispatch(event: any, data: any): void;
 }
-export declare const dispatcher: EventDispatcher;
-export declare const openSnackBar: (data: any) => void;

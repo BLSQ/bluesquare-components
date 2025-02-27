@@ -165,6 +165,10 @@ import {
 import { useSnackBars, useTranslateMessage } from './snackbars/useSnackBars';
 import SnackBarErrorMessage from './snackbars/SnackBarErrorMessage';
 import { useFilterState } from './utils/useFilterState';
+import { useObjectState } from './utils/useObjectState';
+import { useArrayState } from './utils/useArrayState';
+import { useTabs } from './utils/useTabs';
+import { cleanupParams } from './api/utils';
 
 // Types
 export * from './components/QueryBuilder/types';
@@ -340,4 +344,8 @@ export {
     useTranslateMessage,
     SnackBarErrorMessage,
     useFilterState,
+    useObjectState,
+    useArrayState,
+    useTabs,
+    cleanupParams,
 };

@@ -22,7 +22,7 @@ type Notification = {
     };
 };
 
-const useTranslateMessage = () => {
+export const useTranslateMessage = () => {
     const { formatMessage } = useSafeIntl();
 
     return (notification: Notification) => {

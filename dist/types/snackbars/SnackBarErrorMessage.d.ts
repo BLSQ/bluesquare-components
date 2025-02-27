@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-declare const SnackBarErrorMessage: {
+export declare const SnackBarErrorMessage: {
     ({ errorLog, id }: {
         errorLog: any;
         id: any;

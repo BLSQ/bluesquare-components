@@ -171,7 +171,8 @@ import {
     succesfullSnackBar,
     warningSnackBar,
 } from './snackbars/snackBars';
-import { useSnackBars } from './snackbars/useSnackBars';
+import { useSnackBars, useTranslateMessage } from './snackbars/useSnackBars';
+import SnackBarErrorMessage from './snackbars/SnackBarErrorMessage';
 
 // Types
 export * from './components/QueryBuilder/types';
@@ -349,4 +350,6 @@ export {
     formErrorMessageKey,
     formSuccessFullMessageKey,
     useSnackBars,
+    useTranslateMessage,
+    SnackBarErrorMessage,
 };

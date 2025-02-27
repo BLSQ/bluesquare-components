@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const SnackBarErrorMessage = ({ errorLog, id }) => {
+export const SnackBarErrorMessage = ({ errorLog, id }) => {
     const classes = useStyles();
     const { formatMessage } = useSafeIntl();
     const { closeSnackbar } = useSnackbar();

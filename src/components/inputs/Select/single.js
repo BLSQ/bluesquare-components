@@ -111,8 +111,8 @@ const SingleSelect = ({
                     hasClearIcon: classes.hasClearIcon,
                 }}
                 renderOption={(props, option) => (
-                    <li {...props} key={option.value}>
-                        {option.label}
+                    <li {...props} key={`${props.id || option.value || option.id}`}>
+                        {extraProps.getOptionLabel(option)}
                     </li>
                 )}
                 {...extraProps}

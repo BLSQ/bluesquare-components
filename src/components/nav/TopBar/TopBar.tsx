@@ -112,12 +112,12 @@ export const TopBar: FunctionComponent<Props> = ({
                             {title}
                         </Typography>
                     </Grid>
-                    {/* TODO make this configurable, like inoput adornments */}
-                    {/*{RightEndComponent && (
+                    {/* TODO make this configurable, like input adornments */}
+                    {RightEndComponent && (
                         <Grid container item xs={5} justifyContent="flex-end">
                             <RightEndComponent />
                         </Grid>
-                    )} */}
+                    )}
                 </Grid>
             </Toolbar>
             {children}

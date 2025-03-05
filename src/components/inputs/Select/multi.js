@@ -19,6 +19,7 @@ import {
     getOption,
 } from './utils';
 
+
 const MultiSelect = ({
     value,
     keyValue,
@@ -140,7 +141,7 @@ const MultiSelect = ({
                 }}
                 renderOption={(props, option) => (
                     <li {...props} key={option.value}>
-                        {option.label}
+                        {extraProps.getOptionLabel(option)}
                     </li>
                 )}
                 {...extraProps}

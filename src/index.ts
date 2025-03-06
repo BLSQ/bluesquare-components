@@ -164,7 +164,7 @@ import {
 } from './snackbars/snackBars';
 import { useSnackBars, useTranslateMessage } from './snackbars/useSnackBars';
 import SnackBarErrorMessage from './snackbars/SnackBarErrorMessage';
-import { useFilterState } from './utils/useFilterState';
+import { useCheckBoxFilter, useFilterState } from './utils/useFilterState';
 import { useObjectState } from './utils/useObjectState';
 import { useArrayState } from './utils/useArrayState';
 import { useTabs } from './utils/useTabs';
@@ -349,4 +349,5 @@ export {
     useArrayState,
     useTabs,
     cleanupParams,
+    useCheckBoxFilter,
 };

@@ -120,13 +120,13 @@ export const useFilterState = ({
     }, [filters, handleChange, handleSearch, filtersUpdated, updateFilters]);
 };
 
-type CheckBoxFilterArgs = {
+export type CheckBoxFilterArgs = {
     keyValue: string;
     handleChange: (key: string, value: boolean) => void;
     initialValue?: boolean;
 };
 
-type CheckBoxFilter = {
+export type CheckBoxFilter = {
     handleCheckboxChange: (key: string, value: boolean) => void;
     checkBoxValue: boolean;
 };

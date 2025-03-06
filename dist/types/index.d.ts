@@ -113,6 +113,7 @@ export * from './types/types';
 export * from './utils/fetchData';
 export * from './localization/intlUtils';
 export * from './api/types';
+export { CheckBoxFilter, CheckBoxFilterArgs } from './utils/useFilterState';
 export type { CommonStyles } from './styles/iaso/common';
 export type { Field as QueryBuilderField, Fields as QueryBuilderFields, } from '@react-awesome-query-builder/mui';
 export type { TableComponentProps } from './components/table/Table';

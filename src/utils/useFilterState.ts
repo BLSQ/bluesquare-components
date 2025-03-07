@@ -2,6 +2,7 @@ import { isEqual } from 'lodash';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useRedirectTo, useRedirectToReplace } from '../Routing/redirections';
 import { useSearchParams } from 'react-router-dom';
+import { cleanupParams } from '../api/utils';
 
 export type FilterState = {
     filters: Record<string, any>;
@@ -73,7 +74,7 @@ export const useFilterState = ({
                     redirectToReplace(baseUrl, tempParams);
                 }
             } else {
-                setSearchParams(tempParams);
+                setSearchParams(cleanupParams(tempParams));
             }
         }
     }, [

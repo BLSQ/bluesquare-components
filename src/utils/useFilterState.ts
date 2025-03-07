@@ -1,7 +1,7 @@
 import { isEqual } from 'lodash';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useRedirectTo, useRedirectToReplace } from '../Routing/redirections';
-import { useSearchParams, URLSearchParamsInit } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 export type FilterState = {
     filters: Record<string, any>;
@@ -12,7 +12,7 @@ export type FilterState = {
     setFilters: React.Dispatch<Record<string, any>>;
 };
 
-type FilterStateParams = {
+export type FilterStateParams = {
     baseUrl: string;
     params: Record<string, unknown>;
     withPagination?: boolean;

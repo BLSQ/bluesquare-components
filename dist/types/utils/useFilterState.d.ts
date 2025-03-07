@@ -7,7 +7,7 @@ export type FilterState = {
     setFiltersUpdated: (updated: boolean) => void;
     setFilters: React.Dispatch<Record<string, any>>;
 };
-type FilterStateParams = {
+export type FilterStateParams = {
     baseUrl: string;
     params: Record<string, unknown>;
     withPagination?: boolean;
@@ -27,4 +27,3 @@ export type CheckBoxFilter = {
     checkBoxValue: boolean;
 };
 export declare const useCheckBoxFilter: ({ keyValue, handleChange, initialValue, }: CheckBoxFilterArgs) => CheckBoxFilter;
-export {};

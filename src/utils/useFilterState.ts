@@ -1,6 +1,7 @@
 import { isEqual } from 'lodash';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useRedirectTo, useRedirectToReplace } from '../Routing/redirections';
+import { useSearchParams, URLSearchParamsInit } from 'react-router-dom';
 
 export type FilterState = {
     filters: Record<string, any>;
@@ -18,6 +19,7 @@ type FilterStateParams = {
     saveSearchInHistory?: boolean;
     searchActive?: string; // the key of the params used to activate search. If no such param exists, and the hook is used with a table, the table will load data onMount
     searchAlwaysEnabled?: boolean; // to be used with searchActive when we want to allow users to launch a search with empty filters
+    withPathParams?: boolean; // if true, will use path params i.o routers' searchParams
 };
 
 const paginationParams = ['pageSize', 'page', 'order'];
@@ -39,10 +41,14 @@ export const useFilterState = ({
     withPagination = true,
     saveSearchInHistory = true,
     searchAlwaysEnabled = false,
+    withPathParams = true,
 }: FilterStateParams): FilterState => {
     const [filtersUpdated, setFiltersUpdated] = useState(false);
     const redirectTo = useRedirectTo();
     const redirectToReplace = useRedirectToReplace();
+    const [_searchParams, setSearchParams] = useSearchParams(
+        params as Record<string, string>,
+    );
     const [filters, setFilters] = useState({
         ...removePaginationParams(params),
     });
@@ -50,7 +56,7 @@ export const useFilterState = ({
     const handleSearch = useCallback(() => {
         if (filtersUpdated || searchAlwaysEnabled) {
             setFiltersUpdated(false);
-            const tempParams = {
+            const tempParams: Record<string, string> = {
                 ...params,
                 ...filters,
             };
@@ -60,10 +66,14 @@ export const useFilterState = ({
             if (searchActive && Object.keys(params).includes(searchActive)) {
                 tempParams[searchActive] = 'true';
             }
-            if (saveSearchInHistory) {
-                redirectTo(baseUrl, tempParams);
+            if (withPathParams) {
+                if (saveSearchInHistory) {
+                    redirectTo(baseUrl, tempParams);
+                } else {
+                    redirectToReplace(baseUrl, tempParams);
+                }
             } else {
-                redirectToReplace(baseUrl, tempParams);
+                setSearchParams(tempParams);
             }
         }
     }, [
@@ -77,6 +87,8 @@ export const useFilterState = ({
         redirectTo,
         baseUrl,
         redirectToReplace,
+        withPathParams,
+        setSearchParams,
     ]);
 
     const updateFilters = useCallback(

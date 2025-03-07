@@ -14,8 +14,9 @@ type FilterStateParams = {
     saveSearchInHistory?: boolean;
     searchActive?: string;
     searchAlwaysEnabled?: boolean;
+    withPathParams?: boolean;
 };
-export declare const useFilterState: ({ baseUrl, params, searchActive, withPagination, saveSearchInHistory, searchAlwaysEnabled, }: FilterStateParams) => FilterState;
+export declare const useFilterState: ({ baseUrl, params, searchActive, withPagination, saveSearchInHistory, searchAlwaysEnabled, withPathParams, }: FilterStateParams) => FilterState;
 export type CheckBoxFilterArgs = {
     keyValue: string;
     handleChange: (key: string, value: boolean) => void;

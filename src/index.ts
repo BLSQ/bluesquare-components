@@ -112,6 +112,7 @@ import {
     removePositionIndex,
     substituteVars,
     truncateText,
+    waitFor,
 } from './utils';
 
 import { convertObjectToUrlParams, makeRedirectionUrl } from './Routing/utils';
@@ -357,4 +358,5 @@ export {
     useCheckBoxFilter,
     FilterState,
     FilterStateParams,
+    waitFor,
 };

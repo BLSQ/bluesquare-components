@@ -67,7 +67,7 @@ export const CheckBoxSelectGroup: FunctionComponent<Props> = ({
                                     filterState.filters[keyValue] ?? ''
                                 )
                                     .split(',')
-                                    .includes(option.value)}
+                                    .includes(option.value.toString())}
                                 disabled={isLoading}
                                 option={option}
                                 filterState={filterState}

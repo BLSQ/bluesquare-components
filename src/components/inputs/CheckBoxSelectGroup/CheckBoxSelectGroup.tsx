@@ -53,7 +53,7 @@ export const CheckBoxSelectGroup: FunctionComponent<Props> = ({
                     <Typography variant="subtitle1">{title}</Typography>
                 </Grid>
             )}
-            {isLoading && <LoadingSpinner fixed={false} />}
+            {isLoading && <LoadingSpinner fixed={false} size={30} />}
             {(options ?? []).map((option, index) => {
                 if (showAll || index < defaultItemCount) {
                     return (

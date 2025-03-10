@@ -175,6 +175,8 @@ import { useObjectState } from './utils/useObjectState';
 import { useArrayState } from './utils/useArrayState';
 import { useTabs } from './utils/useTabs';
 import { cleanupParams } from './api/utils';
+import { CheckBoxSelectGroup } from './components/inputs/CheckBoxSelectGroup/CheckBoxSelectGroup';
+import { CheckBoxFilterItem } from './components/inputs/CheckBoxSelectGroup/CheckBoxFilterItem';
 
 // Types
 export * from './components/QueryBuilder/types';
@@ -359,4 +361,6 @@ export {
     FilterState,
     FilterStateParams,
     waitFor,
+    CheckBoxFilterItem,
+    CheckBoxSelectGroup,
 };

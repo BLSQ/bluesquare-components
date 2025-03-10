@@ -1,6 +1,11 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { Box, Grid, Typography } from '@mui/material';
-import { DropdownOptions, FilterState, useSafeIntl } from '../../..';
+import {
+    DropdownOptions,
+    FilterState,
+    LoadingSpinner,
+    useSafeIntl,
+} from '../../..';
 import { CheckBoxFilterItem } from './CheckBoxFilterItem';
 import { MESSAGES } from './messages';
 
@@ -40,9 +45,7 @@ export const CheckBoxSelectGroup: FunctionComponent<Props> = ({
             setShowAll(true);
         }
     }, [filterState.filters[keyValue]]);
-    if (!options) {
-        return <div>WAITING for Options</div>;
-    }
+
     return (
         <Grid container mb={2}>
             {title && (
@@ -50,7 +53,8 @@ export const CheckBoxSelectGroup: FunctionComponent<Props> = ({
                     <Typography variant="subtitle1">{title}</Typography>
                 </Grid>
             )}
-            {options.map((option, index) => {
+            {isLoading && <LoadingSpinner fixed={false} />}
+            {(options ?? []).map((option, index) => {
                 if (showAll || index < defaultItemCount) {
                     return (
                         <Grid item xs={12}>
@@ -68,7 +72,7 @@ export const CheckBoxSelectGroup: FunctionComponent<Props> = ({
                 }
             })}
             {!Boolean(filterState.filters[keyValue]) &&
-                (options.length ?? 0) > defaultItemCount && (
+                (options?.length ?? 0) > defaultItemCount && (
                     <Grid item xs={12}>
                         <Box onClick={() => setShowAll(value => !value)}>
                             <Typography

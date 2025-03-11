@@ -1,4 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+
+// Shared ref to track active key listeners across all hook instances
+const activeKeys = new Set();
 
 export const useKeyPressListener = key => {
     const [isEnabled, setIsEnabled] = useState(false);
@@ -14,15 +17,25 @@ export const useKeyPressListener = key => {
         const disable = e => {
             enableListeners(e, false);
         };
-        document.addEventListener('keydown', enable);
-        document.addEventListener('keyup', disable);
-        document.addEventListener('blur', disable);
+
+        // Only add listeners if this is the first instance for this key
+        if (!activeKeys.has(key)) {
+            activeKeys.add(key);
+            document.addEventListener('keydown', enable);
+            document.addEventListener('keyup', disable);
+            document.addEventListener('blur', disable);
+        }
+
         return () => {
-            document.removeEventListener('keydown', enable);
-            document.removeEventListener('keyup', disable);
-            document.removeEventListener('blur', disable);
+            // Only remove listeners if this is the last instance for this key
+            if (activeKeys.has(key)) {
+                activeKeys.delete(key);
+                document.removeEventListener('keydown', enable);
+                document.removeEventListener('keyup', disable);
+                document.removeEventListener('blur', disable);
+            }
         };
-    }, [isEnabled]);
+    }, [key, activeKeys, isEnabled]);
 
     return isEnabled;
 };

@@ -22,6 +22,7 @@
     "blsq.input.label.min": "Minimum",
     "blsq.label.cancel": "Annuler",
     "blsq.label.close": "Fermer",
+    "blsq.label.FilesSelected": "fichier(s) sélectionné(s)",
     "blsq.label.proceed": "continuer",
     "blsq.numberInput.error.invalid": "Nombre invalide",
     "blsq.numberInput.error.max": "La saisie dépasse {value}",

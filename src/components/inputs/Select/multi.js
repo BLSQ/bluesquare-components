@@ -19,6 +19,7 @@ import {
     getOption,
 } from './utils';
 
+
 const MultiSelect = ({
     value,
     keyValue,
@@ -139,6 +140,11 @@ const MultiSelect = ({
                     clearIndicator: classes.clearIndicator,
                     hasClearIcon: classes.hasClearIcon,
                 }}
+                renderOption={(props, option) => (
+                    <li {...props} key={`${props.id || option.value || option.id}`}>
+                        {extraProps.getOptionLabel(option)}
+                    </li>
+                )}
                 {...extraProps}
             />
         </Box>

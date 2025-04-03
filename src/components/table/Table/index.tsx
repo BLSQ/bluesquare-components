@@ -158,6 +158,7 @@ export interface TableComponentProps {
     columnSelectorButtonDisabled?: boolean;
     columnSelectorButtonType?: 'button' | 'icon';
     getIsSelectionDisabled?: (row: any) => boolean;
+    selectAllCount?: number;
 }
 
 const TableComponent: React.FC<TableComponentProps> = props => {
@@ -194,6 +195,7 @@ const TableComponent: React.FC<TableComponentProps> = props => {
         columnSelectorButtonDisabled = false,
         columnSelectorButtonType = 'icon',
         getIsSelectionDisabled = () => false,
+        selectAllCount = count,
     } = props;
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -322,7 +324,7 @@ const TableComponent: React.FC<TableComponentProps> = props => {
     return (
         <Box mt={marginTop ? 4 : 0} mb={marginBottom ? 4 : 0}>
             <Select
-                count={count}
+                selectAllCount={selectAllCount}
                 multiSelect={multiSelect}
                 selectionActions={selectionActions}
                 selection={selection}

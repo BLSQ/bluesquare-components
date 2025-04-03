@@ -110,6 +110,11 @@ const SingleSelect = ({
                     clearIndicator: classes.clearIndicator,
                     hasClearIcon: classes.hasClearIcon,
                 }}
+                renderOption={(props, option) => (
+                    <li {...props} key={`${props.id || option.value || option.id}`}>
+                        {extraProps.getOptionLabel(option)}
+                    </li>
+                )}
                 {...extraProps}
             />
         </Box>

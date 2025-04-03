@@ -3,7 +3,7 @@ import React, { FunctionComponent, useCallback, useState } from 'react';
 import { Accept, useDropzone } from 'react-dropzone';
 import { makeStyles } from '@mui/styles';
 import AttachmentIcon from '@mui/icons-material/Attachment';
-import { Box, Grid, Paper, Tooltip, Typography } from '@mui/material';
+import { Box, Grid, Paper, SxProps, Tooltip, Typography } from '@mui/material';
 import { FormattedMessage } from 'react-intl';
 import { useSafeIntl } from '../../../localization/useSafeIntl';
 import MESSAGES from './messages';
@@ -22,6 +22,8 @@ type Props = {
     required?: boolean;
     errors?: string[];
     disabled?: boolean;
+    sxInput?: SxProps;
+    sxText?: SxProps;
 };
 
 const Icon = (
@@ -67,6 +69,8 @@ const DragZone = () => {
 };
 export const FilesUpload: FunctionComponent<Props> = ({
     placeholder,
+    sxInput,
+    sxText,
     multi = true,
     onFilesSelect = () => null,
     files = [],
@@ -76,11 +80,14 @@ export const FilesUpload: FunctionComponent<Props> = ({
     disabled = false,
 }) => {
     const [showDropZone, setShowDropzone] = useState<boolean>(false);
-    const onDrop = useCallback((file)=>{
-        if (!disabled) {
-            onFilesSelect(file);
-        }
-    }, [disabled, onFilesSelect]);
+    const onDrop = useCallback(
+        file => {
+            if (!disabled) {
+                onFilesSelect(file);
+            }
+        },
+        [disabled, onFilesSelect],
+    );
 
     const { getRootProps, getInputProps } = useDropzone({
         accept,
@@ -98,6 +105,8 @@ export const FilesUpload: FunctionComponent<Props> = ({
     });
     const { formatMessage } = useSafeIntl();
     const placeHolderText = placeholder ?? formatMessage(MESSAGES.files);
+    const text = formatMessage(MESSAGES.filesSelected);
+    console.log('files', files);
 
     const contentStyle = useCustomInputTextStyle();
 
@@ -113,10 +122,11 @@ export const FilesUpload: FunctionComponent<Props> = ({
                     required={required}
                     errors={errors}
                     disabled={disabled}
+                    sx={sxInput}
                 >
                     {files.length > 0 && (
-                        <Box className={contentStyle.textStyle}>
-                            {`${files.length} files selected`}
+                        <Box className={contentStyle.textStyle} sx={sxText}>
+                            {`${files.length} ${text}`}
                         </Box>
                     )}
                 </CustomInput>

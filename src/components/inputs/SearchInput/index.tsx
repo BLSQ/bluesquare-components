@@ -119,7 +119,7 @@ const SearchInput: FunctionComponent<Props> = ({
                 id={uid ? `search-${uid}` : `search-${keyValue}`}
                 value={localValue}
                 placeholder=""
-                onKeyPress={event => {
+                onKeyDown={event => {
                     if (
                         event.which === 13 ||
                         event.keyCode === 13 ||

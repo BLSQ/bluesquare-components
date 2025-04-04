@@ -105,7 +105,6 @@ export const FilesUpload: FunctionComponent<Props> = ({
     });
     const { formatMessage } = useSafeIntl();
     const placeHolderText = placeholder ?? formatMessage(MESSAGES.files);
-    const text = formatMessage(MESSAGES.filesSelected);
     console.log('files', files);
 
     const contentStyle = useCustomInputTextStyle();
@@ -126,7 +125,15 @@ export const FilesUpload: FunctionComponent<Props> = ({
                 >
                     {files.length > 0 && (
                         <Box className={contentStyle.textStyle} sx={sxText}>
-                            {`${files.length} ${text}`}
+                            {files.map(file => {
+                                return (
+                                    <Box
+                                        key={`${file.name}${file.type}${file.lastModified}`}
+                                    >
+                                        {file.name}
+                                    </Box>
+                                );
+                            })}
                         </Box>
                     )}
                 </CustomInput>

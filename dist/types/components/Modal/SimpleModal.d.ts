@@ -16,5 +16,12 @@ export type SimpleDialogProps = {
     }>;
     backdropClick?: boolean;
     sx?: SxProps;
+    slotProps?: {
+        backdrop?: Function | Record<string, any>;
+        container?: Function | Record<string, any>;
+        paper?: Function | Record<string, any>;
+        root?: Function | Record<string, any>;
+        transition?: Function | Record<string, any>;
+    };
 };
 export declare const SimpleModal: FunctionComponent<SimpleDialogProps>;

@@ -56,6 +56,13 @@ export type SimpleDialogProps = {
     buttons: FunctionComponent<unknown & { closeDialog: () => void }>;
     backdropClick?: boolean;
     sx?: SxProps;
+    slotProps?: {
+        backdrop?: Function | Record<string, any>;
+        container?: Function | Record<string, any>;
+        paper?: Function | Record<string, any>;
+        root?: Function | Record<string, any>;
+        transition?: Function | Record<string, any>;
+    };
 };
 
 export const SimpleModal: FunctionComponent<SimpleDialogProps> = ({
@@ -69,6 +76,7 @@ export const SimpleModal: FunctionComponent<SimpleDialogProps> = ({
     closeDialog,
     buttons,
     sx,
+    slotProps,
     backdropClick = true,
 }) => {
     const classes: Record<string, string> = useStyles();
@@ -91,6 +99,7 @@ export const SimpleModal: FunctionComponent<SimpleDialogProps> = ({
                 id={id}
                 data-test={dataTestId}
                 sx={sx}
+                slotProps={slotProps}
             >
                 {titleMessage && (
                     <DialogTitle className={classes.title}>

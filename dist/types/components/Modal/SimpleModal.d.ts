@@ -1,4 +1,5 @@
 import { FunctionComponent, ReactNode } from 'react';
+import { SxProps } from '@mui/material';
 import { IntlMessage } from '../../types/types';
 export type MuiWidth = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export type SimpleDialogProps = {
@@ -14,5 +15,6 @@ export type SimpleDialogProps = {
         closeDialog: () => void;
     }>;
     backdropClick?: boolean;
+    sx?: SxProps;
 };
 export declare const SimpleModal: FunctionComponent<SimpleDialogProps>;

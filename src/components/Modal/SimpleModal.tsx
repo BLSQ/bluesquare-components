@@ -5,6 +5,7 @@ import {
     DialogActions,
     DialogContent,
     DialogTitle,
+    SxProps,
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { FormattedMessage } from 'react-intl';
@@ -54,6 +55,7 @@ export type SimpleDialogProps = {
     closeDialog: () => void;
     buttons: FunctionComponent<unknown & { closeDialog: () => void }>;
     backdropClick?: boolean;
+    sx?: SxProps;
 };
 
 export const SimpleModal: FunctionComponent<SimpleDialogProps> = ({
@@ -66,6 +68,7 @@ export const SimpleModal: FunctionComponent<SimpleDialogProps> = ({
     children,
     closeDialog,
     buttons,
+    sx,
     backdropClick = true,
 }) => {
     const classes: Record<string, string> = useStyles();
@@ -87,6 +90,7 @@ export const SimpleModal: FunctionComponent<SimpleDialogProps> = ({
                 scroll="body"
                 id={id}
                 data-test={dataTestId}
+                sx={sx}
             >
                 {titleMessage && (
                     <DialogTitle className={classes.title}>

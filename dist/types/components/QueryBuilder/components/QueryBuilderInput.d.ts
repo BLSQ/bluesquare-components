@@ -1,20 +1,20 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { JsonLogicTree, Fields } from '@react-awesome-query-builder/mui';
 import { IntlMessage } from '../../../types/types';
 declare const modalWithButton: React.FunctionComponent<{
-    id?: string | undefined;
-    dataTestId?: string | undefined;
     label: IntlMessage;
+    id?: string | undefined;
     onChange: (logic?: JsonLogicTree) => void;
-    initialLogic?: Object | undefined;
+    dataTestId?: string | undefined;
     fields: Fields;
-    InfoPopper?: ReactNode;
+    initialLogic?: JsonLogicTree | undefined;
+    InfoPopper?: React.ReactNode;
 } & {
-    defaultOpen?: boolean | undefined;
+    defaultOpen?: boolean;
     iconProps: {
-        dataTestId?: string | undefined;
         label: IntlMessage;
         value: string;
+        dataTestId?: string | undefined;
         onClear: () => void;
     };
 }>;

@@ -19,6 +19,7 @@ import {
     getOption,
 } from './utils';
 
+
 const MultiSelect = ({
     value,
     keyValue,
@@ -39,15 +40,19 @@ const MultiSelect = ({
     returnFullObject,
     helperText,
     loadingText,
+    dataTestId,
+    placeholder
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
     const shiftKeyIsDown = useKeyPressListener('Shift');
+    //  Handle numeric 0 as value
+    const hasValue = Boolean(value) || value === 0
 
     const valuesList = useMemo(() => {
-        if (!value) return [];
+        if (!hasValue) return [];
         return Array.isArray(value) ? value : value.split(',');
-    }, [value]);
+    }, [value,hasValue]);
 
     const extraProps = getExtraProps(
         getOptionLabel,
@@ -56,13 +61,14 @@ const MultiSelect = ({
     );
     const displayedErrors = useMemo(() => {
         const tempErrors = [...errors];
-        if (value && !loading) {
+        if (hasValue && !loading) {
             valuesList.forEach(val => {
-                const missingValueError = !getMultiOption(
+                const multiOption = getMultiOption(
                     val,
                     options,
                     extraProps.isOptionEqualToValue,
                 );
+                const missingValueError = !Boolean(multiOption) && multiOption !== 0
                 if (missingValueError) {
                     tempErrors.push(
                         formatMessage(MESSAGES.oneValueNotFound, {
@@ -73,17 +79,17 @@ const MultiSelect = ({
             });
         }
         return tempErrors;
-    }, [value, options, errors, loading]);
+    }, [value, options, errors, loading, hasValue, valuesList]);
 
     const fixedValue = useMemo(() => {
-        if (value) {
+        if (hasValue) {
             if (returnFullObject) {
                 return valuesList;
             }
             return valuesList.map(v => getOption(v, options)).filter(o => o);
         }
         return [];
-    }, [value, options]);
+    }, [options, hasValue,valuesList]);
 
     const handleChange = useCallback(
         (e, newValue) => {
@@ -124,6 +130,8 @@ const MultiSelect = ({
                         errors={displayedErrors}
                         helperText={helperText}
                         loading={loading}
+                        dataTestId={dataTestId}
+                        placeholder={placeholder}
                     />
                 )}
                 classes={{
@@ -131,6 +139,11 @@ const MultiSelect = ({
                     clearIndicator: classes.clearIndicator,
                     hasClearIcon: classes.hasClearIcon,
                 }}
+                renderOption={(props, option) => (
+                    <li {...props} key={`${props.id || option.value || option.id}`}>
+                        {extraProps.getOptionLabel(option)}
+                    </li>
+                )}
                 {...extraProps}
             />
         </Box>
@@ -155,6 +168,7 @@ MultiSelect.defaultProps = {
     helperText: undefined,
     renderTags: defaultRenderTags,
     returnFullObject: false, // use this one if you pass array of objects as options and want an array of objects as sected items, not a string of id's
+    dataTestId: undefined,
 };
 
 MultiSelect.propTypes = {
@@ -177,7 +191,7 @@ MultiSelect.propTypes = {
     renderOption: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
     renderTags: PropTypes.func,
     returnFullObject: PropTypes.bool,
+    dataTestId: PropTypes.string,
 };
 
 export { MultiSelect };
-

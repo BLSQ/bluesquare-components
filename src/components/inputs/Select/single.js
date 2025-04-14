@@ -35,22 +35,27 @@ const SingleSelect = ({
     helperText,
     placeholder,
     freeSolo,
+    dataTestId,
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
+    //  Handle numeric 0 as value
+    const hasValue = Boolean(value) || value === 0
 
     const displayedErrors = useMemo(() => {
         const tempErrors = [...errors];
-        const missingValueError = !getOption(value, options);
-        if (value && !loading && missingValueError) {
-            tempErrors.push(formatMessage(MESSAGES.valueNotFound));
+        if(!freeSolo){
+            const missingValueError = !getOption(value, options);
+            if (hasValue && !loading && missingValueError) {
+                tempErrors.push(formatMessage(MESSAGES.valueNotFound));
+            }
         }
         return tempErrors;
-    }, [value, options, errors, loading]);
+    }, [value, options, errors, loading, hasValue]);
 
     const fixedValue = useMemo(
-        () => (value ? getOption(value, options) ?? value : null),
-        [value, options],
+        () => (hasValue ? getOption(value, options) ?? value : null),
+        [value, options, hasValue],
     );
 
     const handleChange = useCallback(
@@ -94,9 +99,10 @@ const SingleSelect = ({
                         required={required}
                         onBlur={onBlur}
                         placeholder={placeholder}
-                        errors={!freeSolo ? displayedErrors : []}
+                        errors={ displayedErrors }
                         helperText={helperText}
                         loading={loading}
+                        dataTestId={dataTestId}
                     />
                 )}
                 classes={{
@@ -104,6 +110,11 @@ const SingleSelect = ({
                     clearIndicator: classes.clearIndicator,
                     hasClearIcon: classes.hasClearIcon,
                 }}
+                renderOption={(props, option) => (
+                    <li {...props} key={`${props.id || option.value || option.id}`}>
+                        {extraProps.getOptionLabel(option)}
+                    </li>
+                )}
                 {...extraProps}
             />
         </Box>
@@ -129,6 +140,7 @@ SingleSelect.defaultProps = {
     renderTags: defaultRenderTags,
     returnFullObject: false, // use this one if you pass array of objects as options and want an array of objects as sected items, not a string of id's
     placeholder: undefined,
+    dataTestId: undefined,
     freeSolo: false,
 };
 
@@ -153,6 +165,7 @@ SingleSelect.propTypes = {
     renderTags: PropTypes.func,
     returnFullObject: PropTypes.bool,
     placeholder: PropTypes.string,
+    dataTestId: PropTypes.string,
     freeSolo: PropTypes.bool,
 };
 

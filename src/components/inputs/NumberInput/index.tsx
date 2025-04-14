@@ -1,8 +1,12 @@
-import React, { FunctionComponent, useCallback } from 'react';
-import { NumericFormat } from 'react-number-format';
+import React, {
+    FocusEventHandler,
+    FunctionComponent,
+    useCallback,
+} from 'react';
 import { defineMessages } from 'react-intl';
-import { CustomInput } from './Input';
+import { NumericFormat } from 'react-number-format';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { CustomInput } from './Input';
 
 const MESSAGES = defineMessages({
     max: {
@@ -34,6 +38,10 @@ type Props = {
         // eslint-disable-next-line no-unused-vars
         newValue: number | undefined,
     ) => void;
+    onBlur?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
+    onFocus?:
+        | FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>
+        | undefined;
     prefix?: string;
     suffix?: string;
     decimalScale?: number;
@@ -47,15 +55,20 @@ type Props = {
     thousandsGroupStyle?: 'thousand' | 'lakh' | 'wan';
     thousandSeparator?: ',' | '.';
     decimalSeparator?: ',' | '.';
+    dataTestId?: string;
 };
 export const NumberInput: FunctionComponent<Props> = ({
     keyValue,
     label,
+    onChange,
+    onBlur,
+    onFocus,
+    placeholder,
+    dataTestId,
     errors = [],
     required = false,
     value = '',
     disabled = false,
-    onChange,
     multiline = false,
     autoComplete = 'off',
     min = -Infinity,
@@ -63,7 +76,6 @@ export const NumberInput: FunctionComponent<Props> = ({
     prefix = '',
     suffix = '',
     decimalScale = 10,
-    placeholder,
     setFieldError = () => null,
     thousandsGroupStyle = 'thousand',
     thousandSeparator = ',',
@@ -111,6 +123,8 @@ export const NumberInput: FunctionComponent<Props> = ({
             onValueChange={(values, sourceInfo) => {
                 handleChange(values);
             }}
+            onBlur={onBlur}
+            onFocus={onFocus}
             errors={errors}
             placeholder={placeholder}
             keyValue={keyValue}
@@ -119,6 +133,7 @@ export const NumberInput: FunctionComponent<Props> = ({
             thousandsGroupStyle={thousandsGroupStyle}
             thousandSeparator={thousandSeparator}
             decimalSeparator={decimalSeparator}
+            data-test={dataTestId}
         />
     );
 };

@@ -1,12 +1,12 @@
 export namespace MESSAGES {
     namespace min {
-        const id: string;
-        const defaultMessage: string;
+        let id: string;
+        let defaultMessage: string;
     }
     namespace max {
-        const id_1: string;
+        let id_1: string;
         export { id_1 as id };
-        const defaultMessage_1: string;
+        let defaultMessage_1: string;
         export { defaultMessage_1 as defaultMessage };
     }
 }

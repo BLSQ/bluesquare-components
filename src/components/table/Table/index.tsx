@@ -1,43 +1,43 @@
-import React, { useMemo } from 'react';
 import Box from '@mui/material/Box';
-import MuiTable from '@mui/material/Table';
 import Paper from '@mui/material/Paper';
+import MuiTable from '@mui/material/Table';
 import TableContainer from '@mui/material/TableContainer';
 import { makeStyles } from '@mui/styles';
 import isEqual from 'lodash/isEqual';
+import React, { MouseEvent, useMemo } from 'react';
 
 import {
-    useTable,
     usePagination,
-    useSortBy,
     useResizeColumns,
+    useSortBy,
+    useTable,
 } from 'react-table';
 
 import { Grid } from '@mui/material';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 
-import { DEFAULT_PAGE_SIZE, DEFAULT_PAGE, DEFAULT_ORDER } from './constants';
+import { DEFAULT_ORDER, DEFAULT_PAGE, DEFAULT_PAGE_SIZE } from './constants';
 
 import {
-    selectionInitialState,
-    getParamsKey,
-    getSort,
-    getOrderArray,
     getColumnsHeadersInfos,
+    getOrderArray,
+    getParamsKey,
     getSimplifiedColumns,
+    getSort,
+    selectionInitialState,
 } from '../../../utils/tableUtils';
 
-import { Head } from './Head';
-import { Body } from './Body';
-import { Footer } from './Footer';
-import { Select, getSelectionCol } from './Select';
-import { NoResult } from './NoResult';
-import { Count } from './Count';
-import { Pagination } from './Pagination';
-import { LoadingSpinner } from '../../LoadingSpinner/index';
 import { useKeyPressListener } from '../../../utils/useKeyPressListener';
 import { useSkipEffectOnMount } from '../../../utils/useSkipEffectOnMount';
+import { LoadingSpinner } from '../../LoadingSpinner/index';
 import { ColumnsSelectGeneric } from '../ColumnsSelectDrawer/ColumnSelectGeneric';
+import { Body } from './Body';
+import { Count } from './Count';
+import { Footer } from './Footer';
+import { Head } from './Head';
+import { NoResult } from './NoResult';
+import { Pagination } from './Pagination';
+import { Select, getSelectionCol } from './Select';
 
 import { Column } from './types';
 
@@ -117,7 +117,7 @@ export interface TableComponentProps {
     marginBottom?: boolean;
     multiSelect?: boolean;
     selectionActions?: any[];
-    setTableSelection?: () => any;
+    setTableSelection?: (selectionType: string, items: any[], totalCount?: number) => any;
     selection?: Record<string, any>;
     selectionActionMessage?: string;
     showPagination?: boolean;
@@ -127,9 +127,16 @@ export interface TableComponentProps {
     defaultSorted?: any[];
     resetPageToOne?: string;
     elevation?: number;
-    onRowClick?: () => void;
-    rowProps?: () => void;
-    cellProps?: () => void;
+    onRowClick?: (
+        // eslint-disable-next-line no-unused-vars
+        row?: any,
+        // eslint-disable-next-line no-unused-vars
+        event?: MouseEvent<HTMLElement>,
+    ) => void;
+    // eslint-disable-next-line no-unused-vars
+    rowProps?: (row?: any) => void;
+    // eslint-disable-next-line no-unused-vars
+    cellProps?: (row?: any) => void;
     extraProps?: {
         loading?: boolean;
         SubComponent?: React.FC<any>;
@@ -143,9 +150,11 @@ export interface TableComponentProps {
     paramsPrefix?: string;
     // eslint-disable-next-line no-unused-vars
     redirectTo?: (url: string, newParams: Record<string, string>) => void;
-    columnSelectorEnabled: boolean;
-    columnSelectorButtonDisabled: boolean;
-    columnSelectorButtonType: 'button' | 'icon';
+    columnSelectorEnabled?: boolean;
+    columnSelectorButtonDisabled?: boolean;
+    columnSelectorButtonType?: 'button' | 'icon';
+    getIsSelectionDisabled?: (row:any) => boolean;  
+    selectAllCount?: number;
 }
 
 const TableComponent: React.FC<TableComponentProps> = props => {
@@ -181,12 +190,13 @@ const TableComponent: React.FC<TableComponentProps> = props => {
         columnSelectorEnabled = false,
         columnSelectorButtonDisabled = false,
         columnSelectorButtonType = 'icon',
+        getIsSelectionDisabled = () => false,
+        selectAllCount = count,
     } = props;
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
 
     const multiSortEnabled = useKeyPressListener('Shift');
-
     const columns = useMemo(() => {
         const temp = [...props.columns];
         if (
@@ -199,6 +209,7 @@ const TableComponent: React.FC<TableComponentProps> = props => {
                     setTableSelection,
                     count,
                     formatMessage,
+                    getIsSelectionDisabled,
                 ),
             );
         }
@@ -309,7 +320,7 @@ const TableComponent: React.FC<TableComponentProps> = props => {
     return (
         <Box mt={marginTop ? 4 : 0} mb={marginBottom ? 4 : 0}>
             <Select
-                count={count}
+                selectAllCount={selectAllCount}
                 multiSelect={multiSelect}
                 selectionActions={selectionActions}
                 selection={selection}

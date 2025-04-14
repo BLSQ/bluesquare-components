@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FocusEventHandler, FunctionComponent } from 'react';
 type Props = {
     keyValue: string;
     errors?: string[];
@@ -11,6 +11,8 @@ type Props = {
     min?: number;
     max?: number;
     onChange: (newValue: number | undefined) => void;
+    onBlur?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
+    onFocus?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement> | undefined;
     prefix?: string;
     suffix?: string;
     decimalScale?: number;
@@ -19,6 +21,7 @@ type Props = {
     thousandsGroupStyle?: 'thousand' | 'lakh' | 'wan';
     thousandSeparator?: ',' | '.';
     decimalSeparator?: ',' | '.';
+    dataTestId?: string;
 };
 export declare const NumberInput: FunctionComponent<Props>;
 export {};

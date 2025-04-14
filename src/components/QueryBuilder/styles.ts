@@ -232,21 +232,18 @@ const styles = theme => ({
             alignItems: 'center',
             marginRight: '8px',
         },
-        '& .rule--field-wrapper': {
+        '& .rule--field-wrapper, .rule--field': {
             width: '40%',
             display: 'inline-block',
         },
-        '& .rule--field': {
+        '& .rule--field-wrapper > .rule--field': {
             width: '100%',
         },
         '& .rule--value': {
-            width: '45%',
+            width: '44%',
         },
         '& .rule--widget': {
             width: '100%',
-        },
-        '& .MuiAutocomplete-clearIndicator': {
-            top: '-2px',
         },
         '& .widget--widget': {
             width: 'calc(100% - 50px)',
@@ -394,9 +391,6 @@ const styles = theme => ({
         '& .MuiFormControl-root .MuiAutocomplete-inputRoot': {
             padding: theme.spacing(1, 5, 1, 1),
         },
-        '& .MuiFormControl-root .MuiAutocomplete-endAdornment': {
-            top: 5,
-        },
         '& .MuiFormControl-root .MuiSelect-icon': {
             top: 7,
         },
@@ -408,6 +402,17 @@ const styles = theme => ({
         },
         '& .rule--widget--CURRENTDATETIME .widget--valuesrc': {
             display: 'none',
+        },
+        '& .group--field--count--rule': {
+            marginLeft: '20px',
+            width: '100%',
+        },
+        '& .group--field--count--rule .rule--field .MuiInputBase-root': {
+            fontWeight: 'bold',
+        },
+        '& .group--field--count--rule .rule--operator .MuiInputBase-root': {
+            fontWeight: 'bold',
+            minWidth: '150px',
         },
     },
     radio: {

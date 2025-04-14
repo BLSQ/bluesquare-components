@@ -5,16 +5,16 @@ export function PageSelect({ pageIndex, pages, onPageChange }: {
 }): React.JSX.Element;
 export namespace PageSelect {
     namespace defaultProps {
-        const pages: number;
-        const pageIndex: number;
+        let pages: number;
+        let pageIndex: number;
     }
     namespace propTypes {
-        const pages_1: PropTypes.Requireable<number>;
+        let pages_1: PropTypes.Requireable<number>;
         export { pages_1 as pages };
-        const pageIndex_1: PropTypes.Requireable<number>;
+        let pageIndex_1: PropTypes.Requireable<number>;
         export { pageIndex_1 as pageIndex };
-        export const onPageChange: PropTypes.Validator<(...args: any[]) => any>;
+        export let onPageChange: PropTypes.Validator<(...args: any[]) => any>;
     }
 }
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';

@@ -100,7 +100,7 @@ const ColumnsSelectGeneric: React.FC<Props> = ({
                 </Button>
             )}
             <Drawer anchor="right" open={isOpen} onClose={toggleDrawer}>
-                <div className={classes.root}>
+                <Box className={classes.root} sx={{ overflowY: 'auto' }}>
                     <div className={classes.toolbar}>
                         <Tooltip title={formatMessage(MESSAGES.close)}>
                             <IconButton onClick={toggleDrawer}>
@@ -138,7 +138,7 @@ const ColumnsSelectGeneric: React.FC<Props> = ({
                             minReached={minReached}
                         />
                     </div>
-                </div>
+                </Box>
             </Drawer>
         </>
     );

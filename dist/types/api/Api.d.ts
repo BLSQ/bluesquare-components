@@ -16,8 +16,8 @@ default responseHandler and errorHAndler can be overridden to add e.g. Sentry lo
 export declare const blsqFetch: (resource: RequestInfo, init?: RequestInit, responseHandler?: (response: any, url: string, method: string) => Promise<any>, errorHandler?: (error: any) => Response) => Promise<Response>;
 export declare const getRequest: (url: string, signal?: Nullable<AbortSignal>) => Promise<any>;
 export declare const getRequestImage: (url: string, signal?: Nullable<AbortSignal>) => Promise<Blob>;
-export declare const basePostRequest: (url: string, data?: Record<string, any>, fileData?: Optional<Record<string, Blob | Blob[]>>, signal?: Nullable<AbortSignal>) => Promise<any>;
-export declare const postRequest: (arg1: string | PostArg, arg2?: Record<string, any>, arg3?: Record<string, Blob | Blob[]>, arg4?: AbortSignal | null) => Promise<any>;
+export declare const basePostRequest: (url: string, data?: Record<string, any>, fileData?: Optional<Record<string, Blob | Blob[]>>, headers?: Record<string, string>, signal?: Nullable<AbortSignal>) => Promise<any>;
+export declare const postRequest: (arg1: string | PostArg, arg2?: Record<string, any>, arg3?: Record<string, Blob | Blob[]>, arg4?: Record<string, any>, arg5?: AbortSignal | null) => Promise<any>;
 export declare const patchRequest: (url: string, data: unknown, signal?: Nullable<AbortSignal>) => Promise<any>;
 export declare const deleteRequest: (url: string, signal?: Nullable<AbortSignal>) => Promise<boolean>;
 export declare const restoreRequest: (url: string, signal?: Nullable<AbortSignal>) => Promise<boolean>;

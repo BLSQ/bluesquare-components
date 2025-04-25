@@ -137,12 +137,16 @@ export const basePostRequest = (
     url: string,
     data?: Record<string, any>,
     fileData?: Optional<Record<string, Blob | Blob[]>>,
+    headers?: Record<string, string>,
     signal?: Nullable<AbortSignal>,
 ): Promise<any> => {
     const nullSafeData = data ?? {};
     const nullSafeFileData = fileData ?? {};
     // Send as form if files included else in JSON
     let init: Record<string, unknown> = {};
+    if (headers) {
+        init = { headers };
+    }
     if (Object.keys(nullSafeFileData).length > 0) {
         const formData = new FormData();
         // multipart mode
@@ -161,6 +165,7 @@ export const basePostRequest = (
             }
         });
         init = {
+            ...init,
             method: 'POST',
             body: formData,
             signal,
@@ -171,6 +176,7 @@ export const basePostRequest = (
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
+                ...(init?.headers ?? {}),
                 'Content-Type': 'application/json',
                 'Accept-Language': moment.locale(),
             },
@@ -190,12 +196,19 @@ export const postRequest = (
     arg1: string | PostArg,
     arg2?: Record<string, any>,
     arg3?: Record<string, Blob | Blob[]>,
-    arg4?: AbortSignal | null,
+    arg4?: Record<string, any>,
+    arg5?: AbortSignal | null,
 ): Promise<any> => {
     if (typeof arg1 === 'string') {
-        return basePostRequest(arg1, arg2, arg3, arg4);
+        return basePostRequest(arg1, arg2, arg3, arg4, arg5);
     }
-    return basePostRequest(arg1.url, arg1.data, arg1.fileData, arg1.signal);
+    return basePostRequest(
+        arg1.url,
+        arg1.data,
+        arg1.fileData,
+        arg1.headers,
+        arg1.signal,
+    );
 };
 
 export const patchRequest = (

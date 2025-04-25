@@ -11,6 +11,7 @@ export type PostArg = {
     url: string;
     data: Record<string, any>;
     fileData?: Record<string, Blob | Blob[]>;
+    headers?: Record<string, string>;
     signal?: AbortSignal | null;
 };
 export type SnackMutationDict<Data, Error, Variables, Context> = {

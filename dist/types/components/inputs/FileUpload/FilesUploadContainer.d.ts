@@ -7,7 +7,8 @@ type Props = {
     accept?: Accept;
     disabled?: boolean;
     hideIfDropZone?: boolean;
-    children: React.ReactElement;
+    children: React.ReactNode;
+    dragZoneHeight?: string;
 };
 export declare const dragzoneStyle: (theme: any) => {
     outlined: {

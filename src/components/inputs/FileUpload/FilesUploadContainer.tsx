@@ -14,7 +14,8 @@ type Props = {
     accept?: Accept;
     disabled?: boolean;
     hideIfDropZone?: boolean;
-    children: React.ReactElement;
+    children: React.ReactNode;
+    dragZoneHeight?: string;
 };
 
 export const dragzoneStyle = theme => ({
@@ -28,14 +29,16 @@ export const dragzoneStyle = theme => ({
 });
 const useDragzoneStyles = makeStyles(dragzoneStyle);
 
-const DragZone = () => {
+const DragZone = ({ height }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useDragzoneStyles();
+    const dragzoneHeight = height ?? '200px';
     return (
         <Paper
             elevation={0}
             variant="outlined"
             classes={{ outlined: classes.outlined }}
+            sx={{ height: dragzoneHeight }}
         >
             <Grid
                 container
@@ -54,6 +57,7 @@ const DragZone = () => {
 export const FilesUploadContainer: FunctionComponent<Props> = ({
     children,
     multi = true,
+    dragZoneHeight,
     onFilesSelect = () => null,
     accept = {},
     disabled = false,
@@ -90,7 +94,7 @@ export const FilesUploadContainer: FunctionComponent<Props> = ({
         <div {...getRootProps()}>
             <input {...inputProps} />
             {showChildren && children}
-            {showDropZone && <DragZone />}
+            {showDropZone && <DragZone height={dragZoneHeight} />}
         </div>
     );
 };

@@ -22,6 +22,7 @@ export const dragzoneStyle = theme => ({
     outlined: {
         border: `2px dashed ${theme.palette.mediumGray.main}`,
         backgroundColor: theme.palette.ligthGray.main,
+        cursor: 'pointer',
     },
     text: {
         color: theme.palette.mediumGray.main,
@@ -33,12 +34,13 @@ const DragZone = ({ height }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useDragzoneStyles();
     const dragzoneHeight = height ?? '200px';
+    console.log('height', height);
     return (
         <Paper
             elevation={0}
             variant="outlined"
             classes={{ outlined: classes.outlined }}
-            sx={{ height: dragzoneHeight, cursor: 'pointer' }}
+            style={{ height: dragzoneHeight }}
         >
             <Grid
                 container

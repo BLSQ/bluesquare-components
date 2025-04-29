@@ -14,6 +14,7 @@ export declare const dragzoneStyle: (theme: any) => {
     outlined: {
         border: string;
         backgroundColor: any;
+        cursor: string;
     };
     text: {
         color: any;

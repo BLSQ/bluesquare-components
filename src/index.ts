@@ -177,6 +177,7 @@ import { useTabs } from './utils/useTabs';
 import { cleanupParams } from './api/utils';
 import { CheckBoxSelectGroup } from './components/inputs/CheckBoxSelectGroup/CheckBoxSelectGroup';
 import { CheckBoxFilterItem } from './components/inputs/CheckBoxSelectGroup/CheckBoxFilterItem';
+import { FilesUploadContainer } from './components/inputs/FileUpload/FilesUploadContainer';
 
 // Types
 export * from './components/QueryBuilder/types';
@@ -363,4 +364,5 @@ export {
     waitFor,
     CheckBoxFilterItem,
     CheckBoxSelectGroup,
+    FilesUploadContainer,
 };

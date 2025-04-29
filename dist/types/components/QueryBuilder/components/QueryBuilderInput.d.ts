@@ -12,8 +12,8 @@ declare const modalWithButton: React.FunctionComponent<{
 } & {
     defaultOpen?: boolean;
     iconProps: {
-        value: string;
         label: IntlMessage;
+        value: string;
         dataTestId?: string | undefined;
         onClear: () => void;
     };

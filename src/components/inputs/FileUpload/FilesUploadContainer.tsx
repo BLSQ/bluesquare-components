@@ -38,7 +38,7 @@ const DragZone = ({ height }) => {
             elevation={0}
             variant="outlined"
             classes={{ outlined: classes.outlined }}
-            sx={{ height: dragzoneHeight }}
+            sx={{ height: dragzoneHeight, cursor: 'pointer' }}
         >
             <Grid
                 container

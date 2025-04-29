@@ -13,7 +13,7 @@ declare const styledAddButton: React.JSXElementConstructor<Omit<Pick<Pick<{
     id: PropTypes.Requireable<string>;
     dataTestId: PropTypes.Requireable<string>;
     size: PropTypes.Requireable<string>;
-}>, "id" | "size" | "dataTestId" | "message" | PropTypes.RequiredKeys<{
+}>, "id" | "size" | "message" | "dataTestId" | PropTypes.RequiredKeys<{
     classes: PropTypes.Validator<object>;
     onClick: PropTypes.Validator<(...args: any[]) => any>;
     message: PropTypes.Requireable<object>;
@@ -30,8 +30,8 @@ declare const styledAddButton: React.JSXElementConstructor<Omit<Pick<Pick<{
 }>> & {
     id?: string | null | undefined;
     size?: string | null | undefined;
-    dataTestId?: string | null | undefined;
     message?: object | null | undefined;
+    dataTestId?: string | null | undefined;
 } & {}, "classes"> & import("@mui/styles").StyledComponentProps<string> & object>;
 import PropTypes from 'prop-types';
 import React from 'react';

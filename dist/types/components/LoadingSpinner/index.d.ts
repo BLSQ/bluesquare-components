@@ -17,9 +17,9 @@ declare const styledSpinner: React.JSXElementConstructor<Omit<Pick<PropTypes.Inf
     padding: PropTypes.Requireable<number>;
     classes: PropTypes.Validator<object>;
 }>, "classes"> & {
-    fixed?: boolean | null | undefined;
     padding?: number | null | undefined;
     size?: number | null | undefined;
+    fixed?: boolean | null | undefined;
     transparent?: boolean | null | undefined;
     absolute?: boolean | null | undefined;
 } & {}, "classes"> & (import("@mui/styles").StyledComponentProps<any> | (import("@mui/styles").StyledComponentProps<any> & object))>;

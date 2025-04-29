@@ -13,7 +13,6 @@ type Props = {
     files: File[];
     accept?: Accept;
     disabled?: boolean;
-    hideIfDropZone?: boolean;
     children: React.ReactNode;
     dragZoneHeight?: string;
 };
@@ -34,7 +33,6 @@ const DragZone = ({ height }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useDragzoneStyles();
     const dragzoneHeight = height ?? '200px';
-    console.log('height', height);
     return (
         <Paper
             elevation={0}
@@ -63,7 +61,6 @@ export const FilesUploadContainer: FunctionComponent<Props> = ({
     onFilesSelect = () => null,
     accept = {},
     disabled = false,
-    hideIfDropZone = false,
 }) => {
     const [showDropZone, setShowDropzone] = useState<boolean>(false);
     const onDrop = useCallback(
@@ -74,7 +71,6 @@ export const FilesUploadContainer: FunctionComponent<Props> = ({
         },
         [disabled, onFilesSelect],
     );
-    const showChildren = hideIfDropZone ? !showDropZone : true;
     const { getRootProps, getInputProps } = useDropzone({
         accept,
         onDrop,
@@ -95,7 +91,7 @@ export const FilesUploadContainer: FunctionComponent<Props> = ({
     return (
         <div {...getRootProps()}>
             <input {...inputProps} />
-            {showChildren && children}
+            {!showDropZone && children}
             {showDropZone && <DragZone height={dragZoneHeight} />}
         </div>
     );

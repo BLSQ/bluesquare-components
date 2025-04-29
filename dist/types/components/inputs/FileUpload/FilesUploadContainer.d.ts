@@ -6,7 +6,6 @@ type Props = {
     files: File[];
     accept?: Accept;
     disabled?: boolean;
-    hideIfDropZone?: boolean;
     children: React.ReactNode;
     dragZoneHeight?: string;
 };

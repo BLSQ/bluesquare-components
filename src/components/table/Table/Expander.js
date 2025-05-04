@@ -4,7 +4,7 @@ import { Tooltip, IconButton } from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { MESSAGES } from './messages';
 
 const Expander = ({ isExpanded, setIsExpanded }) => {

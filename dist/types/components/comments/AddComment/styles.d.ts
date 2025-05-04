@@ -28,4 +28,4 @@ export function styles(theme: any): {
         backgroundColor: string;
     };
 };
-export const useStyles: (props?: any) => import("@mui/styles").ClassNameMap<"button" | "left" | "right" | "center" | "textArea" | "textAreaContainer" | "commentConfirmButton">;
+export const useStyles: (props?: any) => import("@mui/styles").ClassNameMap<"button" | "center" | "left" | "right" | "textArea" | "textAreaContainer" | "commentConfirmButton">;

@@ -9,7 +9,7 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import LastPageIcon from '@mui/icons-material/LastPage';
 import classNames from 'classnames';
 
-import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 
 import { PageSelect } from './PageSelect';
 import { PageRowSelect } from './PageRowSelect';

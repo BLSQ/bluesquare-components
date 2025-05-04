@@ -11,6 +11,10 @@ declare const MESSAGES: {
         id: string;
         defaultMessage: string;
     };
+    filesSelected: {
+        id: string;
+        defaultMessage: string;
+    };
     dropHere: {
         id: string;
         defaultMessage: string;

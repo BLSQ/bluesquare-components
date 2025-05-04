@@ -1,4 +1,4 @@
-export function MultiSelect({ value, keyValue, label, errors, onChange, options, onBlur, disabled, clearable, required, noOptionsText, getOptionLabel, getOptionSelected, loading, renderOption, renderTags, returnFullObject, helperText, loadingText, dataTestId, placeholder }: {
+export function MultiSelect({ value, keyValue, label, errors, onChange, options, onBlur, disabled, clearable, required, noOptionsText, getOptionLabel, getOptionSelected, loading, renderOption, renderTags, returnFullObject, helperText, loadingText, dataTestId, placeholder, }: {
     value: any;
     keyValue: any;
     label: any;

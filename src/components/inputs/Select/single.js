@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
 import React, { useCallback, useMemo } from 'react';
 
-import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 
 import { MESSAGES } from './messages';
 
@@ -40,11 +40,11 @@ const SingleSelect = ({
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
     //  Handle numeric 0 as value
-    const hasValue = Boolean(value) || value === 0
+    const hasValue = Boolean(value) || value === 0;
 
     const displayedErrors = useMemo(() => {
         const tempErrors = [...errors];
-        if(!freeSolo){
+        if (!freeSolo) {
             const missingValueError = !getOption(value, options);
             if (hasValue && !loading && missingValueError) {
                 tempErrors.push(formatMessage(MESSAGES.valueNotFound));
@@ -54,7 +54,7 @@ const SingleSelect = ({
     }, [value, options, errors, loading, hasValue]);
 
     const fixedValue = useMemo(
-        () => (hasValue ? getOption(value, options) ?? value : null),
+        () => (hasValue ? (getOption(value, options) ?? value) : null),
         [value, options, hasValue],
     );
 
@@ -99,7 +99,7 @@ const SingleSelect = ({
                         required={required}
                         onBlur={onBlur}
                         placeholder={placeholder}
-                        errors={ displayedErrors }
+                        errors={displayedErrors}
                         helperText={helperText}
                         loading={loading}
                         dataTestId={dataTestId}

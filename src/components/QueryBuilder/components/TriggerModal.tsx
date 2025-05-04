@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { FakeInput } from '../../inputs/FakeInput';
 
 import { IntlMessage } from '../../../types/types';

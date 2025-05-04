@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { Paper, Button } from '@mui/material';
-import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { MESSAGES } from './messages';
 import { useStyles } from '../styles';
 import { AddComment } from '../AddComment';

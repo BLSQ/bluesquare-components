@@ -12,7 +12,7 @@ import {
     string,
 } from 'prop-types';
 import React, { useCallback } from 'react';
-import { useSafeIntl } from '../../utils/useSafeIntl';
+import { useSafeIntl } from '../../localization/useSafeIntl';
 import { EnrichedTreeItem } from './EnrichedTreeItem';
 import { MESSAGES } from './messages';
 import { useRootData } from './requests';
@@ -124,7 +124,12 @@ const IasoTreeView = ({
         >
             {rootData && makeChildren(rootData)}
             {rootData && !isFetching && rootData.length === 0 && (
-                <Box display="flex" alignItems="center" justifyContent="center" height={100}>
+                <Box
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    height={100}
+                >
                     {formatMessage(MESSAGES.noData)}
                 </Box>
             )}

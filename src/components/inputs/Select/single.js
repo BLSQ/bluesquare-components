@@ -49,8 +49,10 @@ const SingleSelect = ({
             const missingValueError = !getOption(value, options);
             if (hasValue && !loading && missingValueError) {
                 if (onError) {
+                    console.log('RIGHT PATH');
                     onError(formatMessage(MESSAGES.valueNotFound));
                 } else {
+                    console.log('WRONG PATH');
                     tempErrors.push(formatMessage(MESSAGES.valueNotFound));
                 }
             }

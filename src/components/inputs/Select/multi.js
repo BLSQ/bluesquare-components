@@ -87,7 +87,7 @@ const MultiSelect = ({
             });
         }
         return tempErrors;
-    }, [value, options, errors, loading, hasValue, valuesList]);
+    }, [value, options, errors, loading, hasValue, valuesList, onError]);
 
     const fixedValue = useMemo(() => {
         if (hasValue) {

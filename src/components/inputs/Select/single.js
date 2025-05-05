@@ -48,6 +48,7 @@ const SingleSelect = ({
         if (!freeSolo) {
             const missingValueError = !getOption(value, options);
             if (hasValue && !loading && missingValueError) {
+                console.log('ERROR FOUND');
                 if (onError) {
                     console.log('RIGHT PATH');
                     onError(formatMessage(MESSAGES.valueNotFound));
@@ -58,7 +59,7 @@ const SingleSelect = ({
             }
         }
         return tempErrors;
-    }, [value, options, errors, loading, hasValue]);
+    }, [value, options, errors, loading, hasValue, onError]);
 
     const fixedValue = useMemo(
         () => (hasValue ? (getOption(value, options) ?? value) : null),

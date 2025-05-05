@@ -47,6 +47,7 @@ export namespace MultiSelect {
         export { defaultRenderTags as renderTags };
         export let returnFullObject: boolean;
         export let dataTestId: undefined;
+        export let onError: undefined;
     }
     namespace propTypes {
         let errors_1: PropTypes.Requireable<(string | null | undefined)[]>;
@@ -86,6 +87,8 @@ export namespace MultiSelect {
         export { returnFullObject_1 as returnFullObject };
         let dataTestId_1: PropTypes.Requireable<string>;
         export { dataTestId_1 as dataTestId };
+        let onError_1: PropTypes.Requireable<(...args: any[]) => any>;
+        export { onError_1 as onError };
     }
 }
 import React from 'react';

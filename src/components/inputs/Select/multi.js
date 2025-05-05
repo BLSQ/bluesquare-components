@@ -19,7 +19,6 @@ import {
     getOption,
 } from './utils';
 
-
 const MultiSelect = ({
     value,
     keyValue,
@@ -71,11 +70,19 @@ const MultiSelect = ({
                 const missingValueError =
                     !Boolean(multiOption) && multiOption !== 0;
                 if (missingValueError) {
-                    tempErrors.push(
-                        formatMessage(MESSAGES.oneValueNotFound, {
-                            value: `${extraProps.getOptionLabel(val)}`,
-                        }),
-                    );
+                    if (onError) {
+                        onError(
+                            formatMessage(MESSAGES.oneValueNotFound, {
+                                value: `${extraProps.getOptionLabel(val)}`,
+                            }),
+                        );
+                    } else {
+                        tempErrors.push(
+                            formatMessage(MESSAGES.oneValueNotFound, {
+                                value: `${extraProps.getOptionLabel(val)}`,
+                            }),
+                        );
+                    }
                 }
             });
         }
@@ -141,7 +148,10 @@ const MultiSelect = ({
                     hasClearIcon: classes.hasClearIcon,
                 }}
                 renderOption={(props, option) => (
-                    <li {...props} key={`${props.id || option.value || option.id}`}>
+                    <li
+                        {...props}
+                        key={`${props.id || option.value || option.id}`}
+                    >
                         {extraProps.getOptionLabel(option)}
                     </li>
                 )}
@@ -170,6 +180,7 @@ MultiSelect.defaultProps = {
     renderTags: defaultRenderTags,
     returnFullObject: false, // use this one if you pass array of objects as options and want an array of objects as sected items, not a string of id's
     dataTestId: undefined,
+    onError: undefined,
 };
 
 MultiSelect.propTypes = {
@@ -193,6 +204,7 @@ MultiSelect.propTypes = {
     renderTags: PropTypes.func,
     returnFullObject: PropTypes.bool,
     dataTestId: PropTypes.string,
+    onError: PropTypes.func,
 };
 
 export { MultiSelect };

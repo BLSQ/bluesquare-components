@@ -36,6 +36,7 @@ const SingleSelect = ({
     placeholder,
     freeSolo,
     dataTestId,
+    onError,
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -47,7 +48,11 @@ const SingleSelect = ({
         if (!freeSolo) {
             const missingValueError = !getOption(value, options);
             if (hasValue && !loading && missingValueError) {
-                tempErrors.push(formatMessage(MESSAGES.valueNotFound));
+                if (onError) {
+                    onError(formatMessage(MESSAGES.valueNotFound));
+                } else {
+                    tempErrors.push(formatMessage(MESSAGES.valueNotFound));
+                }
             }
         }
         return tempErrors;
@@ -111,7 +116,10 @@ const SingleSelect = ({
                     hasClearIcon: classes.hasClearIcon,
                 }}
                 renderOption={(props, option) => (
-                    <li {...props} key={`${props.id || option.value || option.id}`}>
+                    <li
+                        {...props}
+                        key={`${props.id || option.value || option.id}`}
+                    >
                         {extraProps.getOptionLabel(option)}
                     </li>
                 )}
@@ -142,6 +150,7 @@ SingleSelect.defaultProps = {
     placeholder: undefined,
     dataTestId: undefined,
     freeSolo: false,
+    onError: undefined,
 };
 
 SingleSelect.propTypes = {
@@ -167,6 +176,7 @@ SingleSelect.propTypes = {
     placeholder: PropTypes.string,
     dataTestId: PropTypes.string,
     freeSolo: PropTypes.bool,
+    onError: PropTypes.func,
 };
 
 export { SingleSelect };

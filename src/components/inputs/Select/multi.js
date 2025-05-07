@@ -41,6 +41,7 @@ const MultiSelect = ({
     loadingText,
     dataTestId,
     placeholder,
+    useBuiltInErrors,
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -60,7 +61,7 @@ const MultiSelect = ({
     );
     const displayedErrors = useMemo(() => {
         const tempErrors = [...errors];
-        if (hasValue && !loading) {
+        if (hasValue && !loading && useBuiltInErrors) {
             valuesList.forEach(val => {
                 const multiOption = getMultiOption(
                     val,
@@ -69,25 +70,25 @@ const MultiSelect = ({
                 );
                 const missingValueError =
                     !Boolean(multiOption) && multiOption !== 0;
-                if (missingValueError) {
-                    if (onError) {
-                        onError(
-                            formatMessage(MESSAGES.oneValueNotFound, {
-                                value: `${extraProps.getOptionLabel(val)}`,
-                            }),
-                        );
-                    } else {
-                        tempErrors.push(
-                            formatMessage(MESSAGES.oneValueNotFound, {
-                                value: `${extraProps.getOptionLabel(val)}`,
-                            }),
-                        );
-                    }
+                if (missingValueError && useBuiltInErrors) {
+                    tempErrors.push(
+                        formatMessage(MESSAGES.oneValueNotFound, {
+                            value: `${extraProps.getOptionLabel(val)}`,
+                        }),
+                    );
                 }
             });
         }
         return tempErrors;
-    }, [value, options, errors, loading, hasValue, valuesList, onError]);
+    }, [
+        value,
+        options,
+        errors,
+        loading,
+        hasValue,
+        valuesList,
+        useBuiltInErrors,
+    ]);
 
     const fixedValue = useMemo(() => {
         if (hasValue) {
@@ -180,7 +181,7 @@ MultiSelect.defaultProps = {
     renderTags: defaultRenderTags,
     returnFullObject: false, // use this one if you pass array of objects as options and want an array of objects as sected items, not a string of id's
     dataTestId: undefined,
-    onError: undefined,
+    useBuiltInErrors: true,
 };
 
 MultiSelect.propTypes = {
@@ -204,7 +205,7 @@ MultiSelect.propTypes = {
     renderTags: PropTypes.func,
     returnFullObject: PropTypes.bool,
     dataTestId: PropTypes.string,
-    onError: PropTypes.func,
+    useBuiltInErrors: PropTypes.bool,
 };
 
 export { MultiSelect };

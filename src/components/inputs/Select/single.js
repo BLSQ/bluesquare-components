@@ -36,7 +36,7 @@ const SingleSelect = ({
     placeholder,
     freeSolo,
     dataTestId,
-    onError,
+    useBuiltInErrors,
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -47,19 +47,12 @@ const SingleSelect = ({
         const tempErrors = [...errors];
         if (!freeSolo) {
             const missingValueError = !getOption(value, options);
-            if (hasValue && !loading && missingValueError) {
-                console.log('ERROR FOUND');
-                if (onError) {
-                    console.log('RIGHT PATH');
-                    onError(formatMessage(MESSAGES.valueNotFound));
-                } else {
-                    console.log('WRONG PATH');
-                    tempErrors.push(formatMessage(MESSAGES.valueNotFound));
-                }
+            if (hasValue && !loading && missingValueError && useBuiltInErrors) {
+                tempErrors.push(formatMessage(MESSAGES.valueNotFound));
             }
         }
         return tempErrors;
-    }, [value, options, errors, loading, hasValue, onError]);
+    }, [value, options, errors, loading, hasValue, useBuiltInErrors]);
 
     const fixedValue = useMemo(
         () => (hasValue ? (getOption(value, options) ?? value) : null),
@@ -153,7 +146,7 @@ SingleSelect.defaultProps = {
     placeholder: undefined,
     dataTestId: undefined,
     freeSolo: false,
-    onError: undefined,
+    useBuiltInErrors: true,
 };
 
 SingleSelect.propTypes = {
@@ -179,7 +172,7 @@ SingleSelect.propTypes = {
     placeholder: PropTypes.string,
     dataTestId: PropTypes.string,
     freeSolo: PropTypes.bool,
-    onError: PropTypes.func,
+    useBuiltInErrors: PropTypes.bool,
 };
 
 export { SingleSelect };

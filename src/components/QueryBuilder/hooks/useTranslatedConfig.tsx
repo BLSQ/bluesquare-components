@@ -21,6 +21,7 @@ export const useTranslatedConfig = (
 ): Config => {
     const { formatMessage } = useSafeIntl();
     const theme = useTheme();
+    // @ts-ignore
     return useMemo(
         () => ({
             ...MuiConfig,

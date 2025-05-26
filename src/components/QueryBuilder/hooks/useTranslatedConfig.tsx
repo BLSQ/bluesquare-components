@@ -267,7 +267,11 @@ export const useTranslatedConfig = (
                     // @ts-ignore
                     factory: ({ setValue, value }) => (
                         <QueryBuilderDatePicker
-                            setValue={setValue}
+                            setValue={(newValue) => {
+                                console.log('QueryBuilderDatePicker newValue', newValue);
+                                console.log('typeof newValueal', typeof newValue);
+                                setValue(newValue);
+                            }}
                             value={value}
                         />
                     ),

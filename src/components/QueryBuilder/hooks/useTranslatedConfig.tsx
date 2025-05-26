@@ -277,11 +277,10 @@ export const useTranslatedConfig = (
                             <DatePicker
                                 onChange={newValue => {
                                     const timestamp = moment(newValue).unix().toString();
-                                    console.log('newValue', timestamp);
                                     setValue(timestamp);
                                 }}
                                 label=""
-                                currentDate={value ? moment.unix(Number(value)).format('DD/MM/YYYY') : undefined}
+                                currentDate={value ? moment(parseInt(value, 10)).format('DD/MM/YYYY') : undefined}
                                 clearMessage={MESSAGES.clear}
                                 clearable={false}
                             />
@@ -303,7 +302,7 @@ export const useTranslatedConfig = (
                                 setValue(timestamp);
                             }}
                             label=""
-                            currentDate={value ?  moment.unix(Number(value)).format('DD/MM/YYYY HH:mm') : undefined}
+                            currentDate={value ?  moment(parseInt(value, 10)).format('DD/MM/YYYY HH:mm') : undefined}
                             clearMessage={MESSAGES.clear}
                             clearable={false}
                         />

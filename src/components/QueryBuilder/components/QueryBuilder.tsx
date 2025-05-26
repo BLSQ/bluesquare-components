@@ -49,7 +49,7 @@ export const QueryBuilder: FunctionComponent<Props> = ({
             ? {
                 [currentDateString]: {
                     label: "Current date",
-                    type: "date",
+                    type: "currentDate",
                     valueSources: ['value', 'field'],
                 }
             }
@@ -58,7 +58,7 @@ export const QueryBuilder: FunctionComponent<Props> = ({
             ? {
                 [currentDateTimeString]: {
                     label: "Current datetime",
-                    type: "datetime",
+                    type: "currentDatetime",
                     valueSources: ['value', 'field'],
                 }
             }

@@ -274,7 +274,7 @@ export const useTranslatedConfig = (
                     factory: ({ setValue, value }) => (
                         <DatePicker
                             onChange={newValue => {
-                                console.log('newValue', newValue);
+                                console.log('newValue', moment(newValue).unix());
                                 setValue(moment(newValue).unix());
                             }}
                             label=""
@@ -286,7 +286,7 @@ export const useTranslatedConfig = (
                     valueLabel: formatMessage(MESSAGES.date),
                     valuePlaceholder: formatMessage(MESSAGES.datePlaceholder),
                     valueFormat: 'X',
-                    dateFormat: 'DD.MM.YYYY',
+                    dateFormat: 'DD/MM/YYYY',
                     valueSources: ['value', 'field'],
                 },
                 currentDatetime: {
@@ -307,7 +307,7 @@ export const useTranslatedConfig = (
                     valuePlaceholder: formatMessage(MESSAGES.datePlaceholder),
                     valueFormat: 'X', 
                     timeFormat: 'HH:mm',
-                    dateFormat: 'DD.MM.YYYY',
+                    dateFormat: 'DD/MM/YYYY',
                     valueSources: ['value', 'field'],
                 },
                 time: {

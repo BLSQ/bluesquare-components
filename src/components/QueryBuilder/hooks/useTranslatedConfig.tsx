@@ -289,7 +289,11 @@ export const useTranslatedConfig = (
                     // @ts-ignore
                     factory: ({ setValue, value }) => (
                         <QueryBuilderDatePicker
-                            setValue={setValue}
+                            // setValue={setValue}
+                            setValue={(newValue) => {
+                                console.log('QueryBuilderDatePicker newValue', newValue);
+                                setValue(newValue);
+                            }}
                             value={value}
                             withCurrentDate
                             withTime

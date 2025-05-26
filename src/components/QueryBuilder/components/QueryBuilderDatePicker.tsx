@@ -36,7 +36,7 @@ export const QueryBuilderDatePicker: FunctionComponent<Props> = ({
         console.log('newValue', newValue);
         setValue(
             newValue === 'current' && currentDateString
-                ? `{ "var": "${currentDateString}" }`
+                ? { "var": currentDateString }
                 : '',
         );
     };

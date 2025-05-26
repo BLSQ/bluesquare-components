@@ -39,7 +39,6 @@ export const QueryBuilder: FunctionComponent<Props> = ({
     fields,
     onChange,
 }) => {
-    const {formatMessage} = useSafeIntl();
 
     const translatedConfig = useTranslatedConfig();
 

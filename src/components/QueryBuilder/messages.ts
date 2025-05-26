@@ -408,14 +408,6 @@ const MESSAGES = defineMessages({
         id: 'iaso.label.clear',
         defaultMessage: 'Clear',
     },
-    currentDate: {
-        id: 'blsq.queryBuilder.currentDate',
-        defaultMessage: 'Current date (constant)',
-    },
-    currentDateTime: {
-        id: 'blsq.queryBuilder.currentDateTime',
-        defaultMessage: 'Current date time (constant)',
-    },
 });
 
 export { MESSAGES };

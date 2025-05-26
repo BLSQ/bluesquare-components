@@ -16,10 +16,7 @@ import { TimePicker } from '../../inputs/TimePicker';
 import { DatePicker } from '../../DatePicker';
 import { DateTimePicker } from '../../DateTimePicker';
 
-export const useTranslatedConfig = (
-    currentDateString?: string,
-    currentDateTimeString?: string,
-): Config => {
+export const useTranslatedConfig = (): Config => {
     const { formatMessage } = useSafeIntl();
     const theme = useTheme();
     return useMemo(
@@ -577,6 +574,6 @@ export const useTranslatedConfig = (
                 ),
             },
         }),
-        [currentDateString, currentDateTimeString, formatMessage, theme],
+        [formatMessage, theme],
     );
 };

@@ -30,10 +30,6 @@ type Props = {
         // eslint-disable-next-line no-unused-vars
         jsonLogic: JsonLogicTree,
     ) => void;
-    // those two fields are used to set the value of date or datetime while selecting current date or current date time
-    // required if CurrentDate and CurrentDatetime are used instead of date or datetime
-    currentDateString?: string;
-    currentDateTimeString?: string;
 };
 
 const queryValue: JsonGroup = { id: QbUtils.uuid(), type: 'group' };
@@ -42,43 +38,17 @@ export const QueryBuilder: FunctionComponent<Props> = ({
     logic,
     fields,
     onChange,
-    currentDateString,
-    currentDateTimeString,
 }) => {
     const {formatMessage} = useSafeIntl();
-    const extendedFields: Fields = useMemo(() => ({
-        ...fields,
-        ...(currentDateString
-            ? {
-                [currentDateString]: {
-                    label: formatMessage(MESSAGES.currentDate),
-                    type: "currentDate",
-                    valueSources: ['value', 'field'],
-                }
-            }
-            : {}),
-        ...(currentDateTimeString
-            ? {
-                [currentDateTimeString]: {
-                    label: formatMessage(MESSAGES.currentDateTime),
-                    type: "currentDatetime",
-                    valueSources: ['value', 'field'],
-                }
-            }
-            : {}),
-    }), [fields, currentDateString, currentDateTimeString]);
 
-    const translatedConfig = useTranslatedConfig(
-        currentDateString,
-        currentDateTimeString,
-    );
+    const translatedConfig = useTranslatedConfig();
 
     const config: Config = useMemo(
         () => ({
             ...translatedConfig,
-            fields: extendedFields,
+            fields,
         }),
-        [extendedFields, translatedConfig],
+        [fields, translatedConfig],
     );
     const [tree, setTree] = useState(
         QbUtils.checkTree(

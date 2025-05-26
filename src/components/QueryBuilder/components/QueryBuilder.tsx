@@ -16,10 +16,12 @@ import {
     JsonLogicTree,
     Fields,
 } from '@react-awesome-query-builder/mui';
+import { MESSAGES } from '../messages';
 
 import { useTranslatedConfig } from '../hooks/useTranslatedConfig';
 
 import { useStyles } from '../styles';
+import { useSafeIntl } from '../../../utils/useSafeIntl';
 
 type Props = {
     logic?: JsonLogicTree;
@@ -43,12 +45,13 @@ export const QueryBuilder: FunctionComponent<Props> = ({
     currentDateString,
     currentDateTimeString,
 }) => {
+    const {formatMessage} = useSafeIntl();
     const extendedFields: Fields = useMemo(() => ({
         ...fields,
         ...(currentDateString
             ? {
                 [currentDateString]: {
-                    label: "Current date",
+                    label: formatMessage(MESSAGES.currentDate),
                     type: "currentDate",
                     valueSources: ['value', 'field'],
                 }
@@ -57,7 +60,7 @@ export const QueryBuilder: FunctionComponent<Props> = ({
         ...(currentDateTimeString
             ? {
                 [currentDateTimeString]: {
-                    label: "Current datetime",
+                    label: formatMessage(MESSAGES.currentDateTime),
                     type: "currentDatetime",
                     valueSources: ['value', 'field'],
                 }
@@ -88,9 +91,6 @@ export const QueryBuilder: FunctionComponent<Props> = ({
     const handleChange = useCallback(
         (immutableTree: ImmutableTree, newConfig: Config) => {
             setTree(immutableTree);
-            console.log('immutableTree', immutableTree);
-            console.log('newConfig', newConfig);
-            console.log('QbUtils.jsonLogicFormat(immutableTree, newConfig)', QbUtils.jsonLogicFormat(immutableTree, newConfig));
             onChange(QbUtils.jsonLogicFormat(immutableTree, newConfig));
         },
         [onChange],

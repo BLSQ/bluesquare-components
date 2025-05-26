@@ -161,11 +161,7 @@ export const useTranslatedConfig = (
                     factory: ({ setValue, value, field }) => (
                         <TextInput
                             keyValue={`${field}`}
-                            onChange={(newValue, option) => {
-                                console.log('newValue', newValue);
-                                console.log('option', option);
-                                setValue(newValue);
-                            }}
+                            onChange={setValue}
                             value={value}
                             multiline
                             placeholder={formatMessage(
@@ -211,11 +207,7 @@ export const useTranslatedConfig = (
                                     value: listValue.value,
                                     label: listValue.title,
                                 }))}
-                                onChange={(newValue, option) => {
-                                    console.log('newValue', newValue);
-                                    console.log('option', option);
-                                    setValue(newValue);
-                                }}
+                                onChange={setValue}
                             />
                         </Box>
                     ),
@@ -273,19 +265,16 @@ export const useTranslatedConfig = (
                 currentDate: {
                     ...MuiConfig.widgets.date,
                     // @ts-ignore
-                    factory: ({ setValue, setValueSrc, value, valueSrc, valueIndex }) => (
+                    factory: ({ setValue, value }) => (
                         <QueryBuilderDatePicker
-                            setValue={(v) => setValue(v, valueIndex)}
-                            setValueSrc={setValueSrc ? (src) => setValueSrc(src, valueIndex) : undefined}
+                            setValue={setValue}
                             value={value}
-                            valueSrc={valueSrc}
-                            withCurrentDate
-                            currentDateString={currentDateString}
+                            withTime={true}
                         />
                     ),
                     valueLabel: formatMessage(MESSAGES.date),
                     valuePlaceholder: formatMessage(MESSAGES.datePlaceholder),
-                    valueFormat: apiDateFormat,
+                    valueFormat: 'X', // Unix timestamp format
                     dateFormat: 'DD.MM.YYYY',
                     valueSources: ['value', 'field'],
                 },
@@ -294,19 +283,16 @@ export const useTranslatedConfig = (
                     // @ts-ignore
                     factory: ({ setValue, value }) => (
                         <QueryBuilderDatePicker
-                            // setValue={setValue}
-                            setValue={(newValue) => {
-                                console.log('QueryBuilderDatePicker newValue', newValue);
-                                setValue(newValue);
-                            }}
+                            setValue={setValue}
                             value={value}
-                            withCurrentDate
-                            withTime
-                            currentDateString={currentDateTimeString}
+                            withTime={true}
                         />
                     ),
                     valueLabel: formatMessage(MESSAGES.date),
                     valuePlaceholder: formatMessage(MESSAGES.datePlaceholder),
+                    valueFormat: 'X', // Unix timestamp format
+                    dateFormat: 'DD.MM.YYYY',
+                    valueSources: ['value', 'field'],
                 },
                 time: {
                     ...MuiConfig.widgets.time,

@@ -43,6 +43,28 @@ export const QueryBuilder: FunctionComponent<Props> = ({
     currentDateString,
     currentDateTimeString,
 }) => {
+    const extendedFields: Fields = useMemo(() => ({
+        ...fields,
+        ...(currentDateString
+            ? {
+                [currentDateString]: {
+                    label: "Current date",
+                    type: "date",
+                    valueSources: ['value', 'field'],
+                }
+            }
+            : {}),
+        ...(currentDateTimeString
+            ? {
+                [currentDateTimeString]: {
+                    label: "Current datetime",
+                    type: "datetime",
+                    valueSources: ['value', 'field'],
+                }
+            }
+            : {}),
+    }), [fields, currentDateString, currentDateTimeString]);
+
     const translatedConfig = useTranslatedConfig(
         currentDateString,
         currentDateTimeString,
@@ -51,9 +73,9 @@ export const QueryBuilder: FunctionComponent<Props> = ({
     const config: Config = useMemo(
         () => ({
             ...translatedConfig,
-            fields,
+            fields: extendedFields,
         }),
-        [fields, translatedConfig],
+        [extendedFields, translatedConfig],
     );
     const [tree, setTree] = useState(
         QbUtils.checkTree(

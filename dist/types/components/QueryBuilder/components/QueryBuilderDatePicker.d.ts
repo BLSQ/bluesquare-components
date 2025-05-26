@@ -2,12 +2,10 @@ import { FunctionComponent } from 'react';
 type Props = {
     setValue: (newDate: string | {
         var: string;
-    } | {
-        type: 'field';
-        field: string;
-        valueSrc: 'field';
     }) => void;
+    setValueSrc?: (src: string) => void;
     value: string;
+    valueSrc?: string;
     withCurrentDate?: boolean;
     withTime?: boolean;
     currentDateString?: string;

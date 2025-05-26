@@ -273,10 +273,12 @@ export const useTranslatedConfig = (
                 currentDate: {
                     ...MuiConfig.widgets.date,
                     // @ts-ignore
-                    factory: ({ setValue, value }) => (
+                    factory: ({ setValue, setValueSrc, value, valueSrc }) => (
                         <QueryBuilderDatePicker
                             setValue={setValue}
+                            setValueSrc={setValueSrc}
                             value={value}
+                            valueSrc={valueSrc}
                             withCurrentDate
                             currentDateString={currentDateString}
                         />

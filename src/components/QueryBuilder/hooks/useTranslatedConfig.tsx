@@ -278,6 +278,8 @@ export const useTranslatedConfig = (
                     valueSources: ['value', 'field'],
                     valueProcessor: (val, fieldDef, op, opDef, rightFieldDef, config) => {
                         // If it's a field reference, return as is
+                        console.log('val', val);
+                        console.log('typeof val', typeof val);
                         if (
                             typeof val === 'string' &&
                             config &&

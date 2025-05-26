@@ -276,7 +276,7 @@ export const useTranslatedConfig = (
                     factory: ({ setValue, setValueSrc, value, valueSrc, valueIndex }) => (
                         <QueryBuilderDatePicker
                             setValue={(v) => setValue(v, valueIndex)}
-                            setValueSrc={(src) => setValueSrc(src, valueIndex)}
+                            setValueSrc={setValueSrc ? (src) => setValueSrc(src, valueIndex) : undefined}
                             value={value}
                             valueSrc={valueSrc}
                             withCurrentDate

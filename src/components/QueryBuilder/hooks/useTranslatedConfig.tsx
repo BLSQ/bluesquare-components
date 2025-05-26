@@ -269,7 +269,7 @@ export const useTranslatedConfig = (
                     ],
                 },
                 currentDate: {
-                    ...MuiConfig.widgets.date,
+                    ...MuiConfig.widgets.text,
                     // @ts-ignore
                     factory: ({ setValue, value }) => {
                         console.log('value', value);
@@ -280,7 +280,7 @@ export const useTranslatedConfig = (
                                     setValue(timestamp);
                                 }}
                                 label=""
-                                currentDate={value ? moment(parseInt(value, 10)).format('DD/MM/YYYY') : undefined}
+                                currentDate={value ? moment.unix(Number(value)).format('DD/MM/YYYY') : undefined}
                                 clearMessage={MESSAGES.clear}
                                 clearable={false}
                             />
@@ -288,12 +288,10 @@ export const useTranslatedConfig = (
                     },
                     valueLabel: formatMessage(MESSAGES.date),
                     valuePlaceholder: formatMessage(MESSAGES.datePlaceholder),
-                    valueFormat: 'X',
-                    dateFormat: 'DD/MM/YYYY',
                     valueSources: ['value', 'field'],
                 },
                 currentDatetime: {
-                    ...MuiConfig.widgets.datetime,
+                    ...MuiConfig.widgets.text,
                     // @ts-ignore
                     factory: ({ setValue, value }) => (
                         <DateTimePicker
@@ -302,16 +300,13 @@ export const useTranslatedConfig = (
                                 setValue(timestamp);
                             }}
                             label=""
-                            currentDate={value ?  moment(parseInt(value, 10)).format('DD/MM/YYYY HH:mm') : undefined}
+                            currentDate={value ? moment.unix(Number(value)).format('DD/MM/YYYY HH:mm') : undefined}
                             clearMessage={MESSAGES.clear}
                             clearable={false}
                         />
                     ),
                     valueLabel: formatMessage(MESSAGES.date),
                     valuePlaceholder: formatMessage(MESSAGES.datePlaceholder),
-                    valueFormat: 'X', 
-                    timeFormat: 'HH:mm',
-                    dateFormat: 'DD/MM/YYYY',
                     valueSources: ['value', 'field'],
                 },
                 time: {
@@ -478,10 +473,7 @@ export const useTranslatedConfig = (
                                 'greater_or_equal',
                                 'less_or_equal',
                             ],
-                            widgetProps: {
-                                valueFormat: 'X',
-                                dateFormat: 'DD/MM/YYYY',
-                            },
+                            widgetProps: {},
                             opProps: {},
                         },
                     },
@@ -497,10 +489,7 @@ export const useTranslatedConfig = (
                                 'greater_or_equal',
                                 'less_or_equal',
                             ],
-                            widgetProps: {
-                                valueFormat: 'X',
-                                dateFormat: 'DD/MM/YYYY',
-                            },
+                            widgetProps: {},
                             opProps: {},
                         },
                     },

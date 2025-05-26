@@ -275,7 +275,7 @@ export const useTranslatedConfig = (
                         console.log('value', value);
                         return (
                             <DatePicker
-                                onChange={newValue => { 
+                                onChange={newValue => {
                                     const timestamp = moment(newValue).unix();
                                     console.log('newValue', timestamp);
                                     setValue(timestamp);
@@ -478,7 +478,10 @@ export const useTranslatedConfig = (
                                 'greater_or_equal',
                                 'less_or_equal',
                             ],
-                            widgetProps: {},
+                            widgetProps: {
+                                valueFormat: 'X',
+                                dateFormat: 'DD/MM/YYYY',
+                            },
                             opProps: {},
                         },
                     },
@@ -494,7 +497,10 @@ export const useTranslatedConfig = (
                                 'greater_or_equal',
                                 'less_or_equal',
                             ],
-                            widgetProps: {},
+                            widgetProps: {
+                                valueFormat: 'X',
+                                dateFormat: 'DD/MM/YYYY',
+                            },
                             opProps: {},
                         },
                     },

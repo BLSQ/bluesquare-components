@@ -5,15 +5,16 @@ import { Config, MuiConfig } from '@react-awesome-query-builder/mui';
 
 import { useTheme } from '@mui/styles';
 import { Box } from '@mui/material';
-import { QueryBuilderDatePicker } from '../components/QueryBuilderDatePicker';
 
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { MESSAGES } from '../messages';
-import { apiDateFormat } from '../constants';
+import { apiDateFormat, apiDateTimeFormat } from '../constants';
 import { TextInput } from '../../inputs/TextInput';
 import { NumberInput } from '../../inputs/NumberInput';
 import { Select } from '../../inputs/Select';
 import { TimePicker } from '../../inputs/TimePicker';
+import { DatePicker } from '../../DatePicker';
+import { DateTimePicker } from '../../DateTimePicker';
 
 export const useTranslatedConfig = (
     currentDateString?: string,
@@ -238,9 +239,14 @@ export const useTranslatedConfig = (
                     ...MuiConfig.widgets.date,
                     // @ts-ignore
                     factory: ({ setValue, value }) => (
-                        <QueryBuilderDatePicker
-                            setValue={setValue}
-                            value={value}
+                        <DatePicker
+                            onChange={newValue => {
+                                setValue(moment(newValue).format(apiDateFormat));
+                            }}
+                            label=""
+                            currentDate={value}
+                            clearMessage={MESSAGES.clear}
+                            clearable={false}
                         />
                     ),
                     dateFormat: 'DD.MM.YYYY',
@@ -266,11 +272,14 @@ export const useTranslatedConfig = (
                     ...MuiConfig.widgets.date,
                     // @ts-ignore
                     factory: ({ setValue, value }) => (
-                        <QueryBuilderDatePicker
-                            setValue={val => {
-                                setValue(Math.floor(new Date(val).getTime() / 1000));
+                        <DatePicker
+                            onChange={newValue => {
+                                setValue(moment(newValue).unix());
                             }}
-                            value={value}
+                            label=""
+                            currentDate={moment(value).format('DD/MM/YYYY')}
+                            clearMessage={MESSAGES.clear}
+                            clearable={false}
                         />
                     ),
                     valueLabel: formatMessage(MESSAGES.date),
@@ -283,12 +292,14 @@ export const useTranslatedConfig = (
                     ...MuiConfig.widgets.datetime,
                     // @ts-ignore
                     factory: ({ setValue, value }) => (
-                        <QueryBuilderDatePicker
-                            setValue={val => {
-                                setValue(Math.floor(new Date(val).getTime() / 1000));
+                        <DateTimePicker
+                            onChange={newValue => {
+                                setValue(moment(newValue).unix());
                             }}
-                            value={value}
-                            withTime={true}
+                            label=""
+                            currentDate={moment(value).format('DD/MM/YYYY HH:mm')}
+                            clearMessage={MESSAGES.clear}
+                            clearable={false}
                         />
                     ),
                     valueLabel: formatMessage(MESSAGES.date),
@@ -341,10 +352,14 @@ export const useTranslatedConfig = (
                     valueFormat: 'YYYY-MM-DD HH:mm:ss',
                     // @ts-ignore
                     factory: ({ setValue, value }) => (
-                        <QueryBuilderDatePicker
-                            setValue={setValue}
-                            value={value}
-                            withTime
+                        <DateTimePicker
+                            onChange={newValue => {
+                                setValue(moment(newValue).format(apiDateTimeFormat));
+                            }}
+                            label=""
+                            currentDate={value}
+                            clearMessage={MESSAGES.clear}
+                            clearable={false}
                         />
                     ),
                     valueLabel: formatMessage(MESSAGES.datetime),

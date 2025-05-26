@@ -38,10 +38,10 @@ export const QueryBuilderDatePicker: FunctionComponent<Props> = ({
         console.log('currentDateString', currentDateString);
         console.log('newValue', newValue);
         if (newValue === 'current' && currentDateString) {
-            if (setValueSrc) setValueSrc('field');
+            if (typeof setValueSrc === 'function') setValueSrc('field');
             setValue(currentDateString);
         } else {
-            if (setValueSrc) setValueSrc('value');
+            if (typeof setValueSrc === 'function') setValueSrc('value');
             setValue('');
         }
     };

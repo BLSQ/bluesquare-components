@@ -65,6 +65,7 @@ export const QueryBuilder: FunctionComponent<Props> = ({
 
     const handleChange = useCallback(
         (immutableTree: ImmutableTree, newConfig: Config) => {
+            console.log('immutableTree', immutableTree);
             setTree(immutableTree);
             onChange(QbUtils.jsonLogicFormat(immutableTree, newConfig));
         },

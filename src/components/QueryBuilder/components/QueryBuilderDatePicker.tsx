@@ -34,7 +34,7 @@ export const QueryBuilderDatePicker: FunctionComponent<Props> = ({
         setRadioValue(newValue as RadioValue);
         setValue(
             newValue === 'current' && currentDateString
-                ? { var: currentDateString }
+                ? { "var": `"${currentDateString}"` }
                 : '',
         );
     };

@@ -269,17 +269,27 @@ export const useTranslatedConfig = (
                         <QueryBuilderDatePicker
                             setValue={setValue}
                             value={value}
-                            withTime={true}
                         />
                     ),
                     valueLabel: formatMessage(MESSAGES.date),
                     valuePlaceholder: formatMessage(MESSAGES.datePlaceholder),
-                    valueFormat: 'X', // Unix timestamp format
+                    valueFormat: 'X',
                     dateFormat: 'DD.MM.YYYY',
                     valueSources: ['value', 'field'],
+                    valueProcessor: (val, fieldDef) => {
+                        // If it's a field reference, return as is
+                        if (typeof val === 'string' && fieldDef && fieldDef.valueSources?.includes('field')) {
+                            return val;
+                        }
+                        // If it's a date string, convert to timestamp
+                        if (val && typeof val === 'string' && !isNaN(Date.parse(val))) {
+                            return Math.floor(new Date(val).getTime() / 1000); // Unix timestamp in seconds
+                        }
+                        return val;
+                    },
                 },
                 currentDatetime: {
-                    ...MuiConfig.widgets.text,
+                    ...MuiConfig.widgets.datetime,
                     // @ts-ignore
                     factory: ({ setValue, value }) => (
                         <QueryBuilderDatePicker
@@ -290,9 +300,21 @@ export const useTranslatedConfig = (
                     ),
                     valueLabel: formatMessage(MESSAGES.date),
                     valuePlaceholder: formatMessage(MESSAGES.datePlaceholder),
-                    valueFormat: 'X', // Unix timestamp format
+                    valueFormat: 'X', 
+                    timeFormat: 'HH:mm',
                     dateFormat: 'DD.MM.YYYY',
                     valueSources: ['value', 'field'],
+                    valueProcessor: (val, fieldDef) => {
+                        // If it's a field reference, return as is
+                        if (typeof val === 'string' && fieldDef && fieldDef.valueSources?.includes('field')) {
+                            return val;
+                        }
+                        // If it's a date string, convert to timestamp
+                        if (val && typeof val === 'string' && !isNaN(Date.parse(val))) {
+                            return Math.floor(new Date(val).getTime() / 1000); // Unix timestamp in seconds
+                        }
+                        return val;
+                    },
                 },
                 time: {
                     ...MuiConfig.widgets.time,

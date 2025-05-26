@@ -239,7 +239,17 @@ export const useTranslatedConfig = (
                     // @ts-ignore
                     factory: ({ setValue, value }) => (
                         <QueryBuilderDatePicker
-                            setValue={setValue}
+                            setValue={val => {
+                                let timestamp;
+                                if (typeof val === 'string' && !isNaN(Date.parse(val))) {
+                                    timestamp = Math.floor(new Date(val).getTime() / 1000);
+                                } else if (val instanceof Date && !isNaN(val.getTime())) {
+                                    timestamp = Math.floor(val.getTime() / 1000);
+                                } else {
+                                    timestamp = val;
+                                }
+                                setValue(timestamp);
+                            }}
                             value={value}
                         />
                     ),
@@ -267,10 +277,16 @@ export const useTranslatedConfig = (
                     // @ts-ignore
                     factory: ({ setValue, value }) => (
                         <QueryBuilderDatePicker
-                            setValue={(newValue) => {
-                                console.log('QueryBuilderDatePicker newValue', newValue);
-                                console.log('typeof newValueal', typeof newValue);
-                                setValue(newValue);
+                            setValue={val => {
+                                let timestamp;
+                                if (typeof val === 'string' && !isNaN(Date.parse(val))) {
+                                    timestamp = Math.floor(new Date(val).getTime() / 1000);
+                                } else if (val instanceof Date && !isNaN(val.getTime())) {
+                                    timestamp = Math.floor(val.getTime() / 1000);
+                                } else {
+                                    timestamp = val;
+                                }
+                                setValue(timestamp);
                             }}
                             value={value}
                         />
@@ -280,31 +296,23 @@ export const useTranslatedConfig = (
                     valueFormat: 'X',
                     dateFormat: 'DD.MM.YYYY',
                     valueSources: ['value', 'field'],
-                    valueProcessor: (val, fieldDef, op, opDef, rightFieldDef, config) => {
-                        // If it's a field reference, return as is
-                        console.log('val', val);
-                        console.log('typeof val', typeof val);
-                        if (
-                            typeof val === 'string' &&
-                            config &&
-                            config.fields &&
-                            Object.keys(config.fields).includes(val)
-                        ) {
-                            return val;
-                        }
-                        // If it's a date string, convert to timestamp
-                        if (val && typeof val === 'string' && !isNaN(Date.parse(val))) {
-                            return Math.floor(new Date(val).getTime() / 1000); // Unix timestamp in seconds
-                        }
-                        return val;
-                    },
                 },
                 currentDatetime: {
                     ...MuiConfig.widgets.datetime,
                     // @ts-ignore
                     factory: ({ setValue, value }) => (
                         <QueryBuilderDatePicker
-                            setValue={setValue}
+                            setValue={val => {
+                                let timestamp;
+                                if (typeof val === 'string' && !isNaN(Date.parse(val))) {
+                                    timestamp = Math.floor(new Date(val).getTime() / 1000);
+                                } else if (val instanceof Date && !isNaN(val.getTime())) {
+                                    timestamp = Math.floor(val.getTime() / 1000);
+                                } else {
+                                    timestamp = val;
+                                }
+                                setValue(timestamp);
+                            }}
                             value={value}
                             withTime={true}
                         />
@@ -315,22 +323,6 @@ export const useTranslatedConfig = (
                     timeFormat: 'HH:mm',
                     dateFormat: 'DD.MM.YYYY',
                     valueSources: ['value', 'field'],
-                    valueProcessor: (val, fieldDef, op, opDef, rightFieldDef, config) => {
-                        // If it's a field reference, return as is
-                        if (
-                            typeof val === 'string' &&
-                            config &&
-                            config.fields &&
-                            Object.keys(config.fields).includes(val)
-                        ) {
-                            return val;
-                        }
-                        // If it's a date string, convert to timestamp
-                        if (val && typeof val === 'string' && !isNaN(Date.parse(val))) {
-                            return Math.floor(new Date(val).getTime() / 1000); // Unix timestamp in seconds
-                        }
-                        return val;
-                    },
                 },
                 time: {
                     ...MuiConfig.widgets.time,
@@ -376,7 +368,17 @@ export const useTranslatedConfig = (
                     // @ts-ignore
                     factory: ({ setValue, value }) => (
                         <QueryBuilderDatePicker
-                            setValue={setValue}
+                            setValue={val => {
+                                let timestamp;
+                                if (typeof val === 'string' && !isNaN(Date.parse(val))) {
+                                    timestamp = Math.floor(new Date(val).getTime() / 1000);
+                                } else if (val instanceof Date && !isNaN(val.getTime())) {
+                                    timestamp = Math.floor(val.getTime() / 1000);
+                                } else {
+                                    timestamp = val;
+                                }
+                                setValue(timestamp);
+                            }}
                             value={value}
                             withTime
                         />

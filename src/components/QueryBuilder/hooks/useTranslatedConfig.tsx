@@ -271,7 +271,7 @@ export const useTranslatedConfig = (
                     ],
                 },
                 currentDate: {
-                    ...MuiConfig.widgets.text,
+                    ...MuiConfig.widgets.date,
                     // @ts-ignore
                     factory: ({ setValue, value }) => (
                         <QueryBuilderDatePicker

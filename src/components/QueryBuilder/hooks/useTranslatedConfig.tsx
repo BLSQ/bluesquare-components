@@ -274,6 +274,7 @@ export const useTranslatedConfig = (
                     factory: ({ setValue, value }) => (
                         <DatePicker
                             onChange={newValue => {
+                                console.log('newValue', newValue);
                                 setValue(moment(newValue).unix());
                             }}
                             label=""

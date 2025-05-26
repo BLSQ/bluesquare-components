@@ -161,7 +161,11 @@ export const useTranslatedConfig = (
                     factory: ({ setValue, value, field }) => (
                         <TextInput
                             keyValue={`${field}`}
-                            onChange={setValue}
+                            onChange={(newValue, option) => {
+                                console.log('newValue', newValue);
+                                console.log('option', option);
+                                setValue(newValue);
+                            }}
                             value={value}
                             multiline
                             placeholder={formatMessage(

@@ -1,8 +1,6 @@
 import { FunctionComponent } from 'react';
 type Props = {
-    setValue: (newDate: string | {
-        var: string;
-    }) => void;
+    setValue: (newDate: string) => void;
     value: string;
     withTime?: boolean;
 };

@@ -239,17 +239,7 @@ export const useTranslatedConfig = (
                     // @ts-ignore
                     factory: ({ setValue, value }) => (
                         <QueryBuilderDatePicker
-                            setValue={val => {
-                                let timestamp;
-                                if (typeof val === 'string' && !isNaN(Date.parse(val))) {
-                                    timestamp = Math.floor(new Date(val).getTime() / 1000);
-                                } else if (val instanceof Date && !isNaN(val.getTime())) {
-                                    timestamp = Math.floor(val.getTime() / 1000);
-                                } else {
-                                    timestamp = val;
-                                }
-                                setValue(timestamp);
-                            }}
+                            setValue={setValue}
                             value={value}
                         />
                     ),
@@ -278,15 +268,7 @@ export const useTranslatedConfig = (
                     factory: ({ setValue, value }) => (
                         <QueryBuilderDatePicker
                             setValue={val => {
-                                let timestamp;
-                                if (typeof val === 'string' && !isNaN(Date.parse(val))) {
-                                    timestamp = Math.floor(new Date(val).getTime() / 1000);
-                                } else if (val instanceof Date && !isNaN(val.getTime())) {
-                                    timestamp = Math.floor(val.getTime() / 1000);
-                                } else {
-                                    timestamp = val;
-                                }
-                                setValue(timestamp);
+                                setValue(Math.floor(new Date(val).getTime() / 1000));
                             }}
                             value={value}
                         />
@@ -303,15 +285,7 @@ export const useTranslatedConfig = (
                     factory: ({ setValue, value }) => (
                         <QueryBuilderDatePicker
                             setValue={val => {
-                                let timestamp;
-                                if (typeof val === 'string' && !isNaN(Date.parse(val))) {
-                                    timestamp = Math.floor(new Date(val).getTime() / 1000);
-                                } else if (val instanceof Date && !isNaN(val.getTime())) {
-                                    timestamp = Math.floor(val.getTime() / 1000);
-                                } else {
-                                    timestamp = val;
-                                }
-                                setValue(timestamp);
+                                setValue(Math.floor(new Date(val).getTime() / 1000));
                             }}
                             value={value}
                             withTime={true}
@@ -368,17 +342,7 @@ export const useTranslatedConfig = (
                     // @ts-ignore
                     factory: ({ setValue, value }) => (
                         <QueryBuilderDatePicker
-                            setValue={val => {
-                                let timestamp;
-                                if (typeof val === 'string' && !isNaN(Date.parse(val))) {
-                                    timestamp = Math.floor(new Date(val).getTime() / 1000);
-                                } else if (val instanceof Date && !isNaN(val.getTime())) {
-                                    timestamp = Math.floor(val.getTime() / 1000);
-                                } else {
-                                    timestamp = val;
-                                }
-                                setValue(timestamp);
-                            }}
+                            setValue={setValue}
                             value={value}
                             withTime
                         />

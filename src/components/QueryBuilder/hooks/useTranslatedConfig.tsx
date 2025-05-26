@@ -271,18 +271,21 @@ export const useTranslatedConfig = (
                 currentDate: {
                     ...MuiConfig.widgets.date,
                     // @ts-ignore
-                    factory: ({ setValue, value }) => (
-                        <DatePicker
-                            onChange={newValue => {
-                                console.log('newValue', moment(newValue).unix());
-                                setValue(moment(newValue).unix());
-                            }}
-                            label=""
-                            currentDate={value ? moment(value).format('DD/MM/YYYY') : undefined}
-                            clearMessage={MESSAGES.clear}
-                            clearable={false}
-                        />
-                    ),
+                    factory: ({ setValue, value }) => {
+                        console.log('value', value);
+                        return (
+                            <DatePicker
+                                onChange={newValue => {
+                                    console.log('newValue', moment(newValue).unix());
+                                    setValue(moment(newValue).unix());
+                                }}
+                                label=""
+                                currentDate={value ? moment(value).format('DD/MM/YYYY') : undefined}
+                                clearMessage={MESSAGES.clear}
+                                clearable={false}
+                            />
+                        )
+                    },
                     valueLabel: formatMessage(MESSAGES.date),
                     valuePlaceholder: formatMessage(MESSAGES.datePlaceholder),
                     valueFormat: 'X',

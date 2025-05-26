@@ -269,19 +269,19 @@ export const useTranslatedConfig = (
                     ],
                 },
                 currentDate: {
-                    ...MuiConfig.widgets.text,
+                    ...MuiConfig.widgets.date,
                     // @ts-ignore
                     factory: ({ setValue, value }) => {
                         console.log('value', value);
                         return (
                             <DatePicker
                                 onChange={newValue => {
-                                    const timestamp = moment(newValue).unix();
+                                    const timestamp = moment(newValue).unix().toString();
                                     console.log('newValue', timestamp);
                                     setValue(timestamp);
                                 }}
                                 label=""
-                                currentDate={value ? moment.unix(value).format('DD/MM/YYYY') : undefined}
+                                currentDate={value ? moment.unix(Number(value)).format('DD/MM/YYYY') : undefined}
                                 clearMessage={MESSAGES.clear}
                                 clearable={false}
                             />
@@ -289,24 +289,30 @@ export const useTranslatedConfig = (
                     },
                     valueLabel: formatMessage(MESSAGES.date),
                     valuePlaceholder: formatMessage(MESSAGES.datePlaceholder),
+                    valueFormat: 'X',
+                    dateFormat: 'DD/MM/YYYY',
                     valueSources: ['value', 'field'],
                 },
                 currentDatetime: {
-                    ...MuiConfig.widgets.text,
+                    ...MuiConfig.widgets.datetime,
                     // @ts-ignore
                     factory: ({ setValue, value }) => (
                         <DateTimePicker
                             onChange={newValue => {
-                                setValue(moment(newValue).unix());
+                                const timestamp = moment(newValue).unix().toString();
+                                setValue(timestamp);
                             }}
                             label=""
-                            currentDate={value ?  moment.unix(value).format('DD/MM/YYYY HH:mm') : undefined}
+                            currentDate={value ?  moment.unix(Number(value)).format('DD/MM/YYYY HH:mm') : undefined}
                             clearMessage={MESSAGES.clear}
                             clearable={false}
                         />
                     ),
                     valueLabel: formatMessage(MESSAGES.date),
                     valuePlaceholder: formatMessage(MESSAGES.datePlaceholder),
+                    valueFormat: 'X', 
+                    timeFormat: 'HH:mm',
+                    dateFormat: 'DD/MM/YYYY',
                     valueSources: ['value', 'field'],
                 },
                 time: {

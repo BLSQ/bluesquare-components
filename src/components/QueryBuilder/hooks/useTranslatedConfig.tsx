@@ -207,7 +207,11 @@ export const useTranslatedConfig = (
                                     value: listValue.value,
                                     label: listValue.title,
                                 }))}
-                                onChange={setValue}
+                                onChange={(newValue, option) => {
+                                    console.log('newValue', newValue);
+                                    console.log('option', option);
+                                    setValue(newValue);
+                                }}
                             />
                         </Box>
                     ),

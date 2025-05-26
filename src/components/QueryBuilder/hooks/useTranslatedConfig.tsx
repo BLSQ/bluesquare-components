@@ -276,9 +276,14 @@ export const useTranslatedConfig = (
                     valueFormat: 'X',
                     dateFormat: 'DD.MM.YYYY',
                     valueSources: ['value', 'field'],
-                    valueProcessor: (val, fieldDef) => {
+                    valueProcessor: (val, fieldDef, op, opDef, rightFieldDef, config) => {
                         // If it's a field reference, return as is
-                        if (typeof val === 'string' && fieldDef && fieldDef.valueSources?.includes('field')) {
+                        if (
+                            typeof val === 'string' &&
+                            config &&
+                            config.fields &&
+                            Object.keys(config.fields).includes(val)
+                        ) {
                             return val;
                         }
                         // If it's a date string, convert to timestamp
@@ -304,9 +309,14 @@ export const useTranslatedConfig = (
                     timeFormat: 'HH:mm',
                     dateFormat: 'DD.MM.YYYY',
                     valueSources: ['value', 'field'],
-                    valueProcessor: (val, fieldDef) => {
+                    valueProcessor: (val, fieldDef, op, opDef, rightFieldDef, config) => {
                         // If it's a field reference, return as is
-                        if (typeof val === 'string' && fieldDef && fieldDef.valueSources?.includes('field')) {
+                        if (
+                            typeof val === 'string' &&
+                            config &&
+                            config.fields &&
+                            Object.keys(config.fields).includes(val)
+                        ) {
                             return val;
                         }
                         // If it's a date string, convert to timestamp

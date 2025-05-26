@@ -10,7 +10,7 @@ type RadioValue = 'current' | 'default';
 
 type Props = {
     // eslint-disable-next-line no-unused-vars
-    setValue: (newDate: string | { var: string }) => void;
+    setValue: (newDate: string | { var: string } | { type: 'field'; field: string; valueSrc: 'field' }) => void;
     value: string;
     withCurrentDate?: boolean;
     withTime?: boolean;
@@ -35,7 +35,11 @@ export const QueryBuilderDatePicker: FunctionComponent<Props> = ({
         console.log('currentDateString', currentDateString);
         console.log('newValue', newValue);
         if (newValue === 'current' && currentDateString) {
-            setValue({ var: currentDateString });
+            setValue({
+                type: 'field',
+                field: currentDateString,
+                valueSrc: 'field'
+            });
         } else {
             setValue('');
         }

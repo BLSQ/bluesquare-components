@@ -286,12 +286,6 @@ export const useTranslatedConfig = (
                     valueFormat: apiDateFormat,
                     dateFormat: 'DD.MM.YYYY',
                     valueSources: ['value', 'field'],
-                    valueProcessing: (value, fieldDef) => {
-                        if (value && typeof value === 'object' && 'var' in value) {
-                            return { var: value.var };
-                        }
-                        return value ? moment(value).format(fieldDef.valueFormat) : undefined;
-                    }
                 },
                 currentDatetime: {
                     ...MuiConfig.widgets.text,

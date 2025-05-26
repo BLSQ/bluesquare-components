@@ -269,7 +269,7 @@ export const useTranslatedConfig = (
                     ],
                 },
                 currentDate: {
-                    ...MuiConfig.widgets.date,
+                    ...MuiConfig.widgets.text,
                     // @ts-ignore
                     factory: ({ setValue, value }) => {
                         console.log('value', value);
@@ -289,12 +289,10 @@ export const useTranslatedConfig = (
                     },
                     valueLabel: formatMessage(MESSAGES.date),
                     valuePlaceholder: formatMessage(MESSAGES.datePlaceholder),
-                    valueFormat: 'X',
-                    dateFormat: 'DD/MM/YYYY',
                     valueSources: ['value', 'field'],
                 },
                 currentDatetime: {
-                    ...MuiConfig.widgets.datetime,
+                    ...MuiConfig.widgets.text,
                     // @ts-ignore
                     factory: ({ setValue, value }) => (
                         <DateTimePicker
@@ -309,9 +307,6 @@ export const useTranslatedConfig = (
                     ),
                     valueLabel: formatMessage(MESSAGES.date),
                     valuePlaceholder: formatMessage(MESSAGES.datePlaceholder),
-                    valueFormat: 'X', 
-                    timeFormat: 'HH:mm',
-                    dateFormat: 'DD/MM/YYYY',
                     valueSources: ['value', 'field'],
                 },
                 time: {

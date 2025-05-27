@@ -193,6 +193,8 @@ const TableComponent: React.FC<TableComponentProps> = props => {
         getIsSelectionDisabled = () => false,
         selectAllCount = count,
     } = props;
+    console.log('props', props);
+    console.log('count', count);
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
 

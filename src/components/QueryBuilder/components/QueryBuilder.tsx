@@ -16,10 +16,12 @@ import {
     JsonLogicTree,
     Fields,
 } from '@react-awesome-query-builder/mui';
+import { MESSAGES } from '../messages';
 
 import { useTranslatedConfig } from '../hooks/useTranslatedConfig';
 
 import { useStyles } from '../styles';
+import { useSafeIntl } from '../../../utils/useSafeIntl';
 
 type Props = {
     logic?: JsonLogicTree;
@@ -28,10 +30,6 @@ type Props = {
         // eslint-disable-next-line no-unused-vars
         jsonLogic: JsonLogicTree,
     ) => void;
-    // those two fields are used to set the value of date or datetime while selecting current date or current date time
-    // required if CurrentDate and CurrentDatetime are used instead of date or datetime
-    currentDateString?: string;
-    currentDateTimeString?: string;
 };
 
 const queryValue: JsonGroup = { id: QbUtils.uuid(), type: 'group' };
@@ -40,13 +38,9 @@ export const QueryBuilder: FunctionComponent<Props> = ({
     logic,
     fields,
     onChange,
-    currentDateString,
-    currentDateTimeString,
 }) => {
-    const translatedConfig = useTranslatedConfig(
-        currentDateString,
-        currentDateTimeString,
-    );
+
+    const translatedConfig = useTranslatedConfig();
 
     const config: Config = useMemo(
         () => ({

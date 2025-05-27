@@ -399,13 +399,5 @@ declare const MESSAGES: {
         id: string;
         defaultMessage: string;
     };
-    currentDate: {
-        id: string;
-        defaultMessage: string;
-    };
-    currentDateTime: {
-        id: string;
-        defaultMessage: string;
-    };
 };
 export { MESSAGES };

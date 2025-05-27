@@ -5,20 +5,18 @@ import { Config, MuiConfig } from '@react-awesome-query-builder/mui';
 
 import { useTheme } from '@mui/styles';
 import { Box } from '@mui/material';
-import { QueryBuilderDatePicker } from '../components/QueryBuilderDatePicker';
 
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { MESSAGES } from '../messages';
-import { apiDateFormat } from '../constants';
+import { apiDateFormat, apiDateTimeFormat } from '../constants';
 import { TextInput } from '../../inputs/TextInput';
 import { NumberInput } from '../../inputs/NumberInput';
 import { Select } from '../../inputs/Select';
 import { TimePicker } from '../../inputs/TimePicker';
+import { DatePicker } from '../../DatePicker';
+import { DateTimePicker } from '../../DateTimePicker';
 
-export const useTranslatedConfig = (
-    currentDateString?: string,
-    currentDateTimeString?: string,
-): Config => {
+export const useTranslatedConfig = (): Config => {
     const { formatMessage } = useSafeIntl();
     const theme = useTheme();
     return useMemo(
@@ -238,9 +236,14 @@ export const useTranslatedConfig = (
                     ...MuiConfig.widgets.date,
                     // @ts-ignore
                     factory: ({ setValue, value }) => (
-                        <QueryBuilderDatePicker
-                            setValue={setValue}
-                            value={value}
+                        <DatePicker
+                            onChange={newValue => {
+                                setValue(moment(newValue).format(apiDateFormat));
+                            }}
+                            label=""
+                            currentDate={value}
+                            clearMessage={MESSAGES.clear}
+                            clearable={false}
                         />
                     ),
                     dateFormat: 'DD.MM.YYYY',
@@ -266,30 +269,39 @@ export const useTranslatedConfig = (
                     ...MuiConfig.widgets.text,
                     // @ts-ignore
                     factory: ({ setValue, value }) => (
-                        <QueryBuilderDatePicker
-                            setValue={setValue}
-                            value={value}
-                            withCurrentDate
-                            currentDateString={currentDateString}
+                        <DatePicker
+                            onChange={newValue => {
+                                const timestamp = moment(newValue).unix().toString();
+                                setValue(timestamp);
+                            }}
+                            label=""
+                            currentDate={value ? moment.unix(Number(value)).format('DD/MM/YYYY') : undefined}
+                            clearMessage={MESSAGES.clear}
+                            clearable={false}
                         />
                     ),
                     valueLabel: formatMessage(MESSAGES.date),
                     valuePlaceholder: formatMessage(MESSAGES.datePlaceholder),
+                    valueSources: ['value', 'field'],
                 },
                 currentDatetime: {
                     ...MuiConfig.widgets.text,
                     // @ts-ignore
                     factory: ({ setValue, value }) => (
-                        <QueryBuilderDatePicker
-                            setValue={setValue}
-                            value={value}
-                            withCurrentDate
-                            withTime
-                            currentDateString={currentDateTimeString}
+                        <DateTimePicker
+                            onChange={newValue => {
+                                const timestamp = moment(newValue).unix().toString();
+                                setValue(timestamp);
+                            }}
+                            label=""
+                            currentDate={value ? moment.unix(Number(value)).format('DD/MM/YYYY HH:mm') : undefined}
+                            clearMessage={MESSAGES.clear}
+                            clearable={false}
                         />
                     ),
                     valueLabel: formatMessage(MESSAGES.date),
                     valuePlaceholder: formatMessage(MESSAGES.datePlaceholder),
+                    valueSources: ['value', 'field'],
                 },
                 time: {
                     ...MuiConfig.widgets.time,
@@ -334,10 +346,14 @@ export const useTranslatedConfig = (
                     valueFormat: 'YYYY-MM-DD HH:mm:ss',
                     // @ts-ignore
                     factory: ({ setValue, value }) => (
-                        <QueryBuilderDatePicker
-                            setValue={setValue}
-                            value={value}
-                            withTime
+                        <DateTimePicker
+                            onChange={newValue => {
+                                setValue(moment(newValue).format(apiDateTimeFormat));
+                            }}
+                            label=""
+                            currentDate={value}
+                            clearMessage={MESSAGES.clear}
+                            clearable={false}
                         />
                     ),
                     valueLabel: formatMessage(MESSAGES.datetime),
@@ -555,6 +571,6 @@ export const useTranslatedConfig = (
                 ),
             },
         }),
-        [currentDateString, currentDateTimeString, formatMessage, theme],
+        [formatMessage, theme],
     );
 };

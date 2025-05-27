@@ -40,7 +40,6 @@ const DatePicker = ({
 }) => {
     const classes = useStyles();
     const [dateError, setDateError] = useState(null);
-
     const isOnError = errors.length > 0 || Boolean(dateError);
     return (
         <FormControl errors={errors} hideError={hideError}>

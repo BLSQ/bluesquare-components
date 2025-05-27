@@ -22,6 +22,7 @@ import { makeFullModal } from './components/Modal/ModalWithButton';
 import { SimpleModal } from './components/Modal/SimpleModal';
 import { QueryBuilder } from './components/QueryBuilder/components/QueryBuilder';
 import { QueryBuilderInput } from './components/QueryBuilder/components/QueryBuilderInput';
+import { JsonLogicEditor } from './components/QueryBuilder/components/JsonLogicEditor';
 import { DynamicSelect } from './components/Treeview/DynamicSelect';
 import { EnrichedTreeItem } from './components/Treeview/EnrichedTreeItem';
 import { IasoTreeView } from './components/Treeview/IasoTreeView';
@@ -200,6 +201,7 @@ export {
     PhoneInput,
     QueryBuilder,
     QueryBuilderInput,
+    JsonLogicEditor,
     Radio,
     SIDEBAR_WIDTH,
     SearchInput,

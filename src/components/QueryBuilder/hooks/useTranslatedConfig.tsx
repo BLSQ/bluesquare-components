@@ -276,7 +276,7 @@ export const useTranslatedConfig = (): Config => {
                                 setValue(timestamp);
                             }}
                             label=""
-                            currentDate={value ? moment.unix(Number(value)).format('DD/MM/YYYY') : undefined}
+                            currentDate={value ? moment(Number(value)).format('DD/MM/YYYY') : undefined}
                             clearMessage={MESSAGES.clear}
                             clearable={false}
                         />
@@ -295,7 +295,7 @@ export const useTranslatedConfig = (): Config => {
                                 setValue(timestamp);
                             }}
                             label=""
-                            currentDate={value ? moment.unix(Number(value)).format('DD/MM/YYYY HH:mm') : undefined}
+                            currentDate={value ? moment(Number(value)).format('DD/MM/YYYY HH:mm') : undefined}
                             clearMessage={MESSAGES.clear}
                             clearable={false}
                         />

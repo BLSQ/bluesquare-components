@@ -183,6 +183,7 @@ import {
     useAPIErrorValidator,
     useTranslatedErrors,
 } from './api/validation';
+import { Pagination } from './components/table/Table/Pagination';
 
 // Types
 export * from './components/QueryBuilder/types';
@@ -373,4 +374,5 @@ export {
     useApiErrorValidation,
     useAPIErrorValidator,
     useTranslatedErrors,
+    Pagination,
 };

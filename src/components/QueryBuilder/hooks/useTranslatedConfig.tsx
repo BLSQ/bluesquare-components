@@ -272,6 +272,7 @@ export const useTranslatedConfig = (): Config => {
                         <DatePicker
                             onChange={newValue => {
                                 const timestamp = moment(newValue, 'DD/MM/YYYY').valueOf().toString();
+                                console.log('timestamp', timestamp);
                                 setValue(timestamp);
                             }}
                             label=""

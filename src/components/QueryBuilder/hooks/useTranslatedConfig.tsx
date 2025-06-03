@@ -271,7 +271,7 @@ export const useTranslatedConfig = (): Config => {
                     factory: ({ setValue, value }) => (
                         <DatePicker
                             onChange={newValue => {
-                                const timestamp = moment(newValue).unix().toString();
+                                const timestamp = moment(newValue, 'DD/MM/YYYY').valueOf().toString();
                                 setValue(timestamp);
                             }}
                             label=""
@@ -290,7 +290,7 @@ export const useTranslatedConfig = (): Config => {
                     factory: ({ setValue, value }) => (
                         <DateTimePicker
                             onChange={newValue => {
-                                const timestamp = moment(newValue).unix().toString();
+                                const timestamp = moment(newValue, 'DD/MM/YYYY').valueOf().toString();
                                 setValue(timestamp);
                             }}
                             label=""

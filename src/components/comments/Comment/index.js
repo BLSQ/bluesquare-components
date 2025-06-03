@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Avatar, Grid, Typography } from '@mui/material';
 import moment from 'moment';
-import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { MESSAGES } from './messages';
 import { useStyles } from '../styles';
 import { truncateText } from '../../../utils';

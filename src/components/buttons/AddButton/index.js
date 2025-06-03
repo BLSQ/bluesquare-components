@@ -5,7 +5,7 @@ import { Button } from '@mui/material';
 
 import { withStyles } from '@mui/styles';
 import { commonStyles } from '../../../styles/iaso/common.ts';
-import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { MESSAGES } from './messages';
 
 const styles = theme => ({

@@ -13,6 +13,10 @@ const MESSAGES = defineMessages({
         id: 'blsq.label.Files',
         defaultMessage: 'Files',
     },
+    filesSelected: {
+        id: 'blsq.label.FilesSelected',
+        defaultMessage: 'file(s) selected',
+    },
     dropHere: {
         id: 'blsq.label.dropHere',
         defaultMessage: 'Drop files here',

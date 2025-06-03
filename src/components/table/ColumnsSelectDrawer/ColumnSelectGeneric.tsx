@@ -16,11 +16,11 @@ import { makeStyles } from '@mui/styles';
 import { IconButton as IconButtonComponent } from '../../buttons/IconButton';
 
 import { MESSAGES } from './messages';
-import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { ColumnFromReactTable } from '../Table';
 import { useToggle } from '../../../utils/useToggle';
 import { OptionsList } from './OptionList';
 import { styles } from './styles';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 
 // Weird error with overflowX property, but it matches the type in doc?
 // @ts-ignore

@@ -7,7 +7,7 @@ import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import classNames from 'classnames';
 
-import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 
 import { MESSAGES } from './messages';
 

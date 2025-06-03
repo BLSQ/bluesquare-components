@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
 import React, { useCallback, useMemo } from 'react';
 
-import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 
 import { MESSAGES } from './messages';
 
@@ -36,25 +36,26 @@ const SingleSelect = ({
     placeholder,
     freeSolo,
     dataTestId,
+    useBuiltInErrors,
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
     //  Handle numeric 0 as value
-    const hasValue = Boolean(value) || value === 0
+    const hasValue = Boolean(value) || value === 0;
 
     const displayedErrors = useMemo(() => {
         const tempErrors = [...errors];
-        if(!freeSolo){
+        if (!freeSolo) {
             const missingValueError = !getOption(value, options);
-            if (hasValue && !loading && missingValueError) {
+            if (hasValue && !loading && missingValueError && useBuiltInErrors) {
                 tempErrors.push(formatMessage(MESSAGES.valueNotFound));
             }
         }
         return tempErrors;
-    }, [value, options, errors, loading, hasValue]);
+    }, [value, options, errors, loading, hasValue, useBuiltInErrors]);
 
     const fixedValue = useMemo(
-        () => (hasValue ? getOption(value, options) ?? value : null),
+        () => (hasValue ? (getOption(value, options) ?? value) : null),
         [value, options, hasValue],
     );
 
@@ -99,7 +100,7 @@ const SingleSelect = ({
                         required={required}
                         onBlur={onBlur}
                         placeholder={placeholder}
-                        errors={ displayedErrors }
+                        errors={displayedErrors}
                         helperText={helperText}
                         loading={loading}
                         dataTestId={dataTestId}
@@ -111,7 +112,10 @@ const SingleSelect = ({
                     hasClearIcon: classes.hasClearIcon,
                 }}
                 renderOption={(props, option) => (
-                    <li {...props} key={`${props.id || option.value || option.id}`}>
+                    <li
+                        {...props}
+                        key={`${props.id || option.value || option.id}`}
+                    >
                         {extraProps.getOptionLabel(option)}
                     </li>
                 )}
@@ -142,6 +146,7 @@ SingleSelect.defaultProps = {
     placeholder: undefined,
     dataTestId: undefined,
     freeSolo: false,
+    useBuiltInErrors: true,
 };
 
 SingleSelect.propTypes = {
@@ -167,6 +172,7 @@ SingleSelect.propTypes = {
     placeholder: PropTypes.string,
     dataTestId: PropTypes.string,
     freeSolo: PropTypes.bool,
+    useBuiltInErrors: PropTypes.bool,
 };
 
 export { SingleSelect };

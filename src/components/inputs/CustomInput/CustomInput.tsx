@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactNode } from 'react';
 import { makeStyles } from '@mui/styles';
 import classnames from 'classnames';
 // @ts-ignore
-import { Paper, InputLabel, Box } from '@mui/material';
+import { Paper, InputLabel, Box, SxProps } from '@mui/material';
 import { FormControl } from '../FormControl';
 
 const childrenStyle = theme => ({
@@ -95,6 +95,7 @@ type Props = {
     children?: ReactNode;
     onClick?: () => void;
     icon?: ReactNode;
+    sx?: SxProps;
 };
 
 export const CustomInput: FunctionComponent<Props> = ({
@@ -105,6 +106,7 @@ export const CustomInput: FunctionComponent<Props> = ({
     children,
     onClick = noOp,
     icon,
+    sx,
 }) => {
     const classes = useStyles();
     const hasError = errors.length > 0;
@@ -129,6 +131,7 @@ export const CustomInput: FunctionComponent<Props> = ({
                 {placeholder}
             </InputLabel>
             <Paper
+                sx={sx}
                 variant="outlined"
                 elevation={0}
                 className={classnames(

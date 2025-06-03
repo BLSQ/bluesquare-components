@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import React, { useCallback, useMemo } from 'react';
 
 import { useKeyPressListener } from '../../../utils/useKeyPressListener';
-import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 
 import { MESSAGES } from './messages';
 
@@ -18,7 +18,6 @@ import {
     getMultiOption,
     getOption,
 } from './utils';
-
 
 const MultiSelect = ({
     value,
@@ -41,18 +40,19 @@ const MultiSelect = ({
     helperText,
     loadingText,
     dataTestId,
-    placeholder
+    placeholder,
+    useBuiltInErrors,
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
     const shiftKeyIsDown = useKeyPressListener('Shift');
     //  Handle numeric 0 as value
-    const hasValue = Boolean(value) || value === 0
+    const hasValue = Boolean(value) || value === 0;
 
     const valuesList = useMemo(() => {
         if (!hasValue) return [];
         return Array.isArray(value) ? value : value.split(',');
-    }, [value,hasValue]);
+    }, [value, hasValue]);
 
     const extraProps = getExtraProps(
         getOptionLabel,
@@ -61,15 +61,16 @@ const MultiSelect = ({
     );
     const displayedErrors = useMemo(() => {
         const tempErrors = [...errors];
-        if (hasValue && !loading) {
+        if (hasValue && !loading && useBuiltInErrors) {
             valuesList.forEach(val => {
                 const multiOption = getMultiOption(
                     val,
                     options,
                     extraProps.isOptionEqualToValue,
                 );
-                const missingValueError = !Boolean(multiOption) && multiOption !== 0
-                if (missingValueError) {
+                const missingValueError =
+                    !Boolean(multiOption) && multiOption !== 0;
+                if (missingValueError && useBuiltInErrors) {
                     tempErrors.push(
                         formatMessage(MESSAGES.oneValueNotFound, {
                             value: `${extraProps.getOptionLabel(val)}`,
@@ -79,7 +80,15 @@ const MultiSelect = ({
             });
         }
         return tempErrors;
-    }, [value, options, errors, loading, hasValue, valuesList]);
+    }, [
+        value,
+        options,
+        errors,
+        loading,
+        hasValue,
+        valuesList,
+        useBuiltInErrors,
+    ]);
 
     const fixedValue = useMemo(() => {
         if (hasValue) {
@@ -89,7 +98,7 @@ const MultiSelect = ({
             return valuesList.map(v => getOption(v, options)).filter(o => o);
         }
         return [];
-    }, [options, hasValue,valuesList]);
+    }, [options, hasValue, valuesList]);
 
     const handleChange = useCallback(
         (e, newValue) => {
@@ -140,7 +149,10 @@ const MultiSelect = ({
                     hasClearIcon: classes.hasClearIcon,
                 }}
                 renderOption={(props, option) => (
-                    <li {...props} key={`${props.id || option.value || option.id}`}>
+                    <li
+                        {...props}
+                        key={`${props.id || option.value || option.id}`}
+                    >
                         {extraProps.getOptionLabel(option)}
                     </li>
                 )}
@@ -169,6 +181,7 @@ MultiSelect.defaultProps = {
     renderTags: defaultRenderTags,
     returnFullObject: false, // use this one if you pass array of objects as options and want an array of objects as sected items, not a string of id's
     dataTestId: undefined,
+    useBuiltInErrors: true,
 };
 
 MultiSelect.propTypes = {
@@ -192,6 +205,7 @@ MultiSelect.propTypes = {
     renderTags: PropTypes.func,
     returnFullObject: PropTypes.bool,
     dataTestId: PropTypes.string,
+    useBuiltInErrors: PropTypes.bool,
 };
 
 export { MultiSelect };

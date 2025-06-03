@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Divider, Paper, Button } from '@mui/material';
 import { useStyles } from '../styles';
 import { MESSAGES } from './messages';
-import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { AddComment } from '../AddComment';
 import { Comment } from '../Comment';
 import { SingleComment } from '../SingleComment';

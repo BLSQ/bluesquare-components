@@ -1,7 +1,7 @@
 import { TextareaAutosize, Button, Grid } from '@mui/material';
 import PropTypes from 'prop-types';
 import React, { useCallback, useState } from 'react';
-import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { MESSAGES } from './messages';
 import { useStyles } from './styles';
 

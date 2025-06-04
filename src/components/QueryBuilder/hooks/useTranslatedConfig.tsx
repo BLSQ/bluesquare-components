@@ -280,7 +280,7 @@ export const useTranslatedConfig = (): Config => {
                                     setValue(timestamp);
                                 }}
                                 label=""
-                                currentDate={value ? moment(Number(value)).format('DD/MM/YYYY') : undefined}
+                                currentDate={value ? moment(Number(value)).format('YYYY-MM-DD') : undefined}
                                 clearMessage={MESSAGES.clear}
                                 clearable={false}
                             />

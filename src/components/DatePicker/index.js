@@ -38,6 +38,7 @@ const DatePicker = ({
     minDate,
     maxDate
 }) => {
+    console.log('currentDate', currentDate);
     const classes = useStyles();
     const [dateError, setDateError] = useState(null);
     const isOnError = errors.length > 0 || Boolean(dateError);

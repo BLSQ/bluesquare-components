@@ -270,6 +270,7 @@ export const useTranslatedConfig = (): Config => {
                     // @ts-ignore
                     factory: ({ setValue, value }) => {
                         console.log('value', value);
+                        console.log('value', value ? moment(Number(value)).format('DD/MM/YYYY') : undefined);
                         return (
                             <DatePicker
                                 onChange={newValue => {

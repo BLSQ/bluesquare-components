@@ -271,11 +271,11 @@ export const useTranslatedConfig = (): Config => {
                     factory: ({ setValue, value }) => (
                         <DatePicker
                             onChange={newValue => {
-                                const timestamp = moment(newValue).unix().toString();
+                                const timestamp = moment(newValue, 'DD/MM/YYYY').valueOf().toString();
                                 setValue(timestamp);
                             }}
                             label=""
-                            currentDate={value ? moment.unix(Number(value)).format('DD/MM/YYYY') : undefined}
+                            currentDate={value ? moment(Number(value)) : undefined}
                             clearMessage={MESSAGES.clear}
                             clearable={false}
                         />
@@ -290,11 +290,11 @@ export const useTranslatedConfig = (): Config => {
                     factory: ({ setValue, value }) => (
                         <DateTimePicker
                             onChange={newValue => {
-                                const timestamp = moment(newValue).unix().toString();
+                                const timestamp = moment(newValue, 'DD/MM/YYYY').valueOf().toString();
                                 setValue(timestamp);
                             }}
                             label=""
-                            currentDate={value ? moment.unix(Number(value)).format('DD/MM/YYYY HH:mm') : undefined}
+                            currentDate={value ? moment(Number(value)): undefined}
                             clearMessage={MESSAGES.clear}
                             clearable={false}
                         />

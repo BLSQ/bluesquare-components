@@ -25,6 +25,25 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
+/*
+ * DatePicker Component
+ *
+ * The `currentDate` prop accepts the following types:
+ *   - A JavaScript Date object
+ *   - A moment.js object (recommended)
+ *   - An ISO string in the format 'YYYY-MM-DD'
+ *
+ * For best compatibility with MUI DatePicker and to avoid parsing issues,
+ * it is recommended to pass a moment.js object as the value for `currentDate`.
+ *
+ * The `format` prop controls how the date is displayed and parsed in the UI,
+ * but the value you provide should be a Date, moment object, or ISO string.
+ *
+ * Example usage:
+ *   <DatePicker currentDate={moment()} ... />
+ *   <DatePicker currentDate={new Date()} ... />
+ *   <DatePicker currentDate={'2024-06-01'} ... />
+ */
 const DatePicker = ({
     label,
     onChange,

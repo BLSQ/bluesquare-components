@@ -268,19 +268,23 @@ export const useTranslatedConfig = (): Config => {
                 currentDate: {
                     ...MuiConfig.widgets.text,
                     // @ts-ignore
-                    factory: ({ setValue, value }) => (
-                        <DatePicker
-                            onChange={newValue => {
-                                const timestamp = moment(newValue, 'DD/MM/YYYY').valueOf().toString();
-                                console.log('timestamp', timestamp);
-                                setValue(timestamp);
-                            }}
-                            label=""
-                            currentDate={value ? moment(Number(value)).format('DD/MM/YYYY') : undefined}
-                            clearMessage={MESSAGES.clear}
-                            clearable={false}
-                        />
-                    ),
+                    factory: ({ setValue, value }) => {
+                        console.log('value', value);
+                        return (
+                            <DatePicker
+                                onChange={newValue => {
+                                    console.log('newValue', newValue);
+                                    const timestamp = moment(newValue, 'DD/MM/YYYY').valueOf().toString();
+                                    console.log('timestamp', timestamp);
+                                    setValue(timestamp);
+                                }}
+                                label=""
+                                currentDate={value ? moment(Number(value)).format('DD/MM/YYYY') : undefined}
+                                clearMessage={MESSAGES.clear}
+                                clearable={false}
+                            />
+                        )
+                    },
                     valueLabel: formatMessage(MESSAGES.date),
                     valuePlaceholder: formatMessage(MESSAGES.datePlaceholder),
                     valueSources: ['value', 'field'],
@@ -291,6 +295,7 @@ export const useTranslatedConfig = (): Config => {
                     factory: ({ setValue, value }) => (
                         <DateTimePicker
                             onChange={newValue => {
+                                console.log('newValue', newValue);
                                 const timestamp = moment(newValue, 'DD/MM/YYYY').valueOf().toString();
                                 setValue(timestamp);
                             }}

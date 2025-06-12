@@ -223,14 +223,13 @@ export const useTranslatedConfig = (): Config => {
                     // @ts-ignore
                     factory: ({ setValue, value, field, listValues }) => {
                         console.log('value', value);
-                        const safeValue = Array.isArray(value) ? value : [];
                         return (
                             <Box display="inline-block" width="100%">
                                 <Select
                                     placeholder={formatMessage(
                                         MESSAGES.selectValues,
                                     )}
-                                    value={safeValue}
+                                    value={value}
                                     keyValue={`${field}`}
                                     multi
                                     options={

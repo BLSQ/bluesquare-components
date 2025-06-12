@@ -221,30 +221,33 @@ export const useTranslatedConfig = (): Config => {
                     ...MuiConfig.widgets.multiselect,
                     valuePlaceholder: formatMessage(MESSAGES.selectValues),
                     // @ts-ignore
-                    factory: ({ setValue, value, field, listValues }) => (
-                        <Box display="inline-block" width="100%">
-                            <Select
-                                placeholder={formatMessage(
-                                    MESSAGES.selectValues,
-                                )}
-                                value={value}
-                                keyValue={`${field}`}
-                                multi
-                                options={
-                                    Array.isArray(listValues)
-                                        ? listValues.map(listValue => ({
-                                            value: listValue.value,
-                                            label: listValue.title,
-                                        }))
-                                        : Object.entries(listValues || {}).map(([value, title]) => ({
-                                            value,
-                                            label: title,
-                                        }))
-                                }
-                                onChange={setValue}
-                            />
-                        </Box>
-                    ),
+                    factory: ({ setValue, value, field, listValues }) => {
+                        const safeValue = Array.isArray(value) ? value : [];
+                        return (
+                            <Box display="inline-block" width="100%">
+                                <Select
+                                    placeholder={formatMessage(
+                                        MESSAGES.selectValues,
+                                    )}
+                                    value={safeValue}
+                                    keyValue={`${field}`}
+                                    multi
+                                    options={
+                                        Array.isArray(listValues)
+                                            ? listValues.map(listValue => ({
+                                                value: listValue.value,
+                                                label: listValue.title,
+                                            }))
+                                            : Object.entries(listValues || {}).map(([value, title]) => ({
+                                                value,
+                                                label: title,
+                                            }))
+                                    }
+                                    onChange={setValue}
+                                />
+                            </Box>
+                        );
+                    },
                 },
                 date: {
                     ...MuiConfig.widgets.date,

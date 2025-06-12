@@ -201,10 +201,17 @@ export const useTranslatedConfig = (): Config => {
                                 value={value}
                                 keyValue={`${field}`}
                                 multi={false}
-                                options={(listValues || []).map(listValue => ({
-                                    value: listValue.value,
-                                    label: listValue.title,
-                                }))}
+                                options={
+                                    Array.isArray(listValues)
+                                        ? listValues.map(listValue => ({
+                                            value: listValue.value,
+                                            label: listValue.title,
+                                        }))
+                                        : Object.entries(listValues || {}).map(([value, title]) => ({
+                                            value,
+                                            label: title,
+                                        }))
+                                }
                                 onChange={setValue}
                             />
                         </Box>
@@ -223,10 +230,17 @@ export const useTranslatedConfig = (): Config => {
                                 value={value}
                                 keyValue={`${field}`}
                                 multi
-                                options={(listValues || []).map(listValue => ({
-                                    value: listValue.value,
-                                    label: listValue.title,
-                                }))}
+                                options={
+                                    Array.isArray(listValues)
+                                        ? listValues.map(listValue => ({
+                                            value: listValue.value,
+                                            label: listValue.title,
+                                        }))
+                                        : Object.entries(listValues || {}).map(([value, title]) => ({
+                                            value,
+                                            label: title,
+                                        }))
+                                }
                                 onChange={setValue}
                             />
                         </Box>

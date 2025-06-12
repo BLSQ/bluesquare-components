@@ -86,17 +86,21 @@ export const useHumanReadableJsonLogic = (
                 ...translatedConfig,
                 fields,
             };
+            console.log('config', config);
             const tree: ImmutableTree = QbUtils.checkTree(
                 QbUtils.loadFromJsonLogic(logic, config) ||
                     QbUtils.loadTree(queryValue),
                 config,
             );
+            console.log('tree', tree);
             const queryString: string = makeQueryString(
                 QbUtils.queryString(tree, config, true),
             );
+            console.log('queryString', queryString);
             if (listToReplace && queryString) {
                 return withListToReplace(queryString, listToReplace);
             }
+            console.log('queryString replaced', queryString);
             return queryString;
         },
         [fields, listToReplace, translatedConfig],

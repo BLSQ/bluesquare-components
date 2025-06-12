@@ -229,7 +229,7 @@ export const useTranslatedConfig = (): Config => {
                                     placeholder={formatMessage(
                                         MESSAGES.selectValues,
                                     )}
-                                    value={value}
+                                    value={value.join(',')}
                                     keyValue={`${field}`}
                                     multi
                                     options={
@@ -243,7 +243,10 @@ export const useTranslatedConfig = (): Config => {
                                                 label: title,
                                             }))
                                     }
-                                    onChange={setValue}
+                                    onChange={newValue => {
+                                        console.log('newValue', newValue);
+                                        setValue(Array.isArray(newValue) ? newValue : [newValue]);
+                                    }}
                                 />
                             </Box>
                         );

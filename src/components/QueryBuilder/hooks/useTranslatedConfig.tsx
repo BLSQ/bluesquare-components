@@ -229,7 +229,7 @@ export const useTranslatedConfig = (): Config => {
                                     placeholder={formatMessage(
                                         MESSAGES.selectValues,
                                     )}
-                                    value={value.join(',')}
+                                    value={value?.join(',') || ''}
                                     keyValue={`${field}`}
                                     multi
                                     options={

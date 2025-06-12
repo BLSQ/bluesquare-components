@@ -245,7 +245,7 @@ export const useTranslatedConfig = (): Config => {
                                     }
                                     onChange={newValue => {
                                         console.log('newValue', newValue);
-                                        setValue(Array.isArray(newValue) ? newValue : [newValue]);
+                                        setValue(Array.isArray(newValue) ? newValue : newValue.split(','));
                                     }}
                                 />
                             </Box>
@@ -554,7 +554,7 @@ export const useTranslatedConfig = (): Config => {
                 },
                 // @ts-ignore
                 renderOperator: ({ items, setField, id, selectedKey }) => (
-                    <Box display="inline-block" width={95}>
+                    <Box display="inline-block" width={150}>
                         <Select
                             placeholder={formatMessage(MESSAGES.selectField)}
                             clearable={false}

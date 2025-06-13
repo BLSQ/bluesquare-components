@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import moment from 'moment';
 
 import { Config, MuiConfig } from '@react-awesome-query-builder/mui';
@@ -16,9 +16,24 @@ import { TimePicker } from '../../inputs/TimePicker';
 import { DatePicker } from '../../DatePicker';
 import { DateTimePicker } from '../../DateTimePicker';
 
+const transformListValuesToOptions = (listValues: any) => {
+    return Array.isArray(listValues)
+        ? listValues.map(listValue => ({
+            value: listValue.value,
+            label: listValue.title,
+        }))
+        : Object.entries(listValues || {}).map(([value, title]) => ({
+            value,
+            label: title,
+        }));
+};
+
 export const useTranslatedConfig = (): Config => {
     const { formatMessage } = useSafeIntl();
     const theme = useTheme();
+    const handleChangeMultiselect = useCallback((newValue: any, setValue: (value: any) => void) => {
+        setValue(Array.isArray(newValue) ? newValue : newValue?.split(',') || []);
+    }, []);
     return useMemo(
         () => ({
             ...MuiConfig,
@@ -201,10 +216,7 @@ export const useTranslatedConfig = (): Config => {
                                 value={value}
                                 keyValue={`${field}`}
                                 multi={false}
-                                options={(listValues || []).map(listValue => ({
-                                    value: listValue.value,
-                                    label: listValue.title,
-                                }))}
+                                options={transformListValuesToOptions(listValues)}
                                 onChange={setValue}
                             />
                         </Box>
@@ -214,23 +226,22 @@ export const useTranslatedConfig = (): Config => {
                     ...MuiConfig.widgets.multiselect,
                     valuePlaceholder: formatMessage(MESSAGES.selectValues),
                     // @ts-ignore
-                    factory: ({ setValue, value, field, listValues }) => (
-                        <Box display="inline-block" width="100%">
-                            <Select
-                                placeholder={formatMessage(
-                                    MESSAGES.selectValues,
-                                )}
-                                value={value}
-                                keyValue={`${field}`}
-                                multi
-                                options={(listValues || []).map(listValue => ({
-                                    value: listValue.value,
-                                    label: listValue.title,
-                                }))}
-                                onChange={setValue}
-                            />
-                        </Box>
-                    ),
+                    factory: ({ setValue, value, field, listValues }) => {
+                        return (
+                            <Box display="inline-block" width="100%">
+                                <Select
+                                    placeholder={formatMessage(
+                                        MESSAGES.selectValues,
+                                    )}
+                                    value={value?.join(',') || ''}
+                                    keyValue={`${field}`}
+                                    multi
+                                    options={transformListValuesToOptions(listValues)}
+                                    onChange={newValue => handleChangeMultiselect(newValue, setValue)}
+                                />
+                            </Box>
+                        );
+                    },
                 },
                 date: {
                     ...MuiConfig.widgets.date,
@@ -534,7 +545,7 @@ export const useTranslatedConfig = (): Config => {
                 },
                 // @ts-ignore
                 renderOperator: ({ items, setField, id, selectedKey }) => (
-                    <Box display="inline-block" width={95}>
+                    <Box display="inline-block" width={150}>
                         <Select
                             placeholder={formatMessage(MESSAGES.selectField)}
                             clearable={false}

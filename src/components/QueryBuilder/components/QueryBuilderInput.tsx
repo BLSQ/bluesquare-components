@@ -63,7 +63,7 @@ const QueryBuilderInput: FunctionComponent<Props> = ({
             onCancel={() => {
                 closeDialog();
             }}
-            maxWidth="md"
+            maxWidth="lg"
             cancelMessage={MESSAGES.cancel}
             confirmMessage={MESSAGES.confirm}
             open={isOpen}

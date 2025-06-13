@@ -222,7 +222,6 @@ export const useTranslatedConfig = (): Config => {
                     valuePlaceholder: formatMessage(MESSAGES.selectValues),
                     // @ts-ignore
                     factory: ({ setValue, value, field, listValues }) => {
-                        console.log('value', value);
                         return (
                             <Box display="inline-block" width="100%">
                                 <Select
@@ -244,8 +243,7 @@ export const useTranslatedConfig = (): Config => {
                                             }))
                                     }
                                     onChange={newValue => {
-                                        console.log('newValue', newValue);
-                                        setValue(Array.isArray(newValue) ? newValue : newValue.split(','));
+                                        setValue(Array.isArray(newValue) ? newValue : newValue?.split(',') || []);
                                     }}
                                 />
                             </Box>

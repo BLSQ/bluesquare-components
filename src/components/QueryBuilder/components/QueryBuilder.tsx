@@ -15,6 +15,7 @@ import {
     Utils as QbUtils,
     JsonLogicTree,
     Fields,
+    Settings,
 } from '@react-awesome-query-builder/mui';
 import { MESSAGES } from '../messages';
 
@@ -39,12 +40,12 @@ export const QueryBuilder: FunctionComponent<Props> = ({
     fields,
     onChange,
 }) => {
-
     const translatedConfig = useTranslatedConfig();
 
     const config: Config = useMemo(
         () => ({
             ...translatedConfig,
+            ...{ settings: { maxNesting: 2 } as Settings },
             fields,
         }),
         [fields, translatedConfig],

@@ -53,15 +53,15 @@ export const QueryBuilder: FunctionComponent<Props> = ({
             ...translatedConfig,
             settings: {
                 ...translatedConfig.settings,
-                ...(settings ? settings : {}),
+                ...(settings ?? {}),
             },
             conjunctions: {
                 ...translatedConfig.conjunctions,
-                ...(conjunctions ? conjunctions : {}),
+                ...(conjunctions ?? {}),
             },
             operators: {
                 ...translatedConfig.operators,
-                ...(operators ? operators : {}),
+                ...(operators ?? {}),
             },
             fields,
         }),

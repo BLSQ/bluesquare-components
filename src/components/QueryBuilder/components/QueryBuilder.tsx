@@ -16,17 +16,20 @@ import {
     JsonLogicTree,
     Fields,
     Settings,
+    Conjunctions,
+    Operators,
 } from '@react-awesome-query-builder/mui';
-import { MESSAGES } from '../messages';
 
 import { useTranslatedConfig } from '../hooks/useTranslatedConfig';
 
 import { useStyles } from '../styles';
-import { useSafeIntl } from '../../../utils/useSafeIntl';
 
 type Props = {
     logic?: JsonLogicTree;
     fields: Fields;
+    settings?: Settings;
+    conjunctions?: Conjunctions;
+    operators?: Operators;
     onChange: (
         // eslint-disable-next-line no-unused-vars
         jsonLogic: JsonLogicTree,
@@ -38,6 +41,9 @@ const queryValue: JsonGroup = { id: QbUtils.uuid(), type: 'group' };
 export const QueryBuilder: FunctionComponent<Props> = ({
     logic,
     fields,
+    settings,
+    conjunctions,
+    operators,
     onChange,
 }) => {
     const translatedConfig = useTranslatedConfig();
@@ -45,7 +51,18 @@ export const QueryBuilder: FunctionComponent<Props> = ({
     const config: Config = useMemo(
         () => ({
             ...translatedConfig,
-            ...{ settings: { maxNesting: 2 } as Settings },
+            settings: {
+                ...translatedConfig.settings,
+                ...(settings ? settings : {}),
+            },
+            conjunctions: {
+                ...translatedConfig.conjunctions,
+                ...(conjunctions ? conjunctions : {}),
+            },
+            operators: {
+                ...translatedConfig.operators,
+                ...(operators ? operators : {}),
+            },
             fields,
         }),
         [fields, translatedConfig],

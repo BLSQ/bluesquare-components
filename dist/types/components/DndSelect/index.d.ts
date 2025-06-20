@@ -6,11 +6,12 @@ type Option = {
 type Props = {
     options: Option[];
     label: string;
-    value: Option[];
+    value?: Option[];
     onChange: (value: string[]) => void;
     disabled?: boolean;
     isRequired?: boolean;
     helperText?: string;
+    keyValue: string;
 };
 export declare const DndSelect: FunctionComponent<Props>;
 export {};

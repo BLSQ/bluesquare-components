@@ -11,7 +11,7 @@ type SortableChipProps = {
     onDelete?: (e: React.MouseEvent) => void;
 };
 
-const styles: SxStyles = {
+export const sortableChipStyles: SxStyles = {
     container: {
         display: 'flex',
         alignItems: 'center',
@@ -32,27 +32,32 @@ const styles: SxStyles = {
         marginRight: 4,
         marginBottom: 4,
         color: 'white',
-        maxWidth: '100%',
     },
 };
 
 export const SortableChip: FunctionComponent<
     SortableChipProps & ComponentProps<typeof Chip>
 > = ({ id, label, onDelete, ...chipProps }) => {
-    const { attributes, listeners, setNodeRef, transform, transition } =
-        useSortable({ id });
+    const {
+        attributes,
+        listeners,
+        setNodeRef,
+        transform,
+        transition,
+        isDragging,
+    } = useSortable({ id });
     return (
         <Chip
             component="div"
             ref={setNodeRef}
             label={
-                <Box sx={styles.container}>
+                <Box sx={sortableChipStyles.container}>
                     <DragIndicatorIcon
                         {...attributes}
                         {...listeners}
-                        sx={styles.dragIcon}
+                        sx={sortableChipStyles.dragIcon}
                     />
-                    <Box component="span" sx={styles.label}>
+                    <Box component="span" sx={sortableChipStyles.label}>
                         {label}
                     </Box>
                 </Box>
@@ -60,9 +65,13 @@ export const SortableChip: FunctionComponent<
             color="secondary"
             {...chipProps}
             sx={{
-                transform: CSS.Transform.toString(transform),
+                transform: transform
+                    ? CSS.Translate.toString(transform)
+                    : undefined,
                 transition,
-                ...styles.chip,
+                ...sortableChipStyles.chip,
+                opacity: isDragging ? 0.4 : 1,
+                maxWidth: '100%',
             }}
             onDelete={onDelete}
         />

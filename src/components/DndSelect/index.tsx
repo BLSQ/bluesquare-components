@@ -1,21 +1,32 @@
-import React, { useCallback, FunctionComponent, SyntheticEvent } from 'react';
+import React, {
+    useState,
+    useCallback,
+    FunctionComponent,
+    SyntheticEvent,
+    useMemo,
+} from 'react';
 import {
     DndContext,
-    DragOverEvent,
-    closestCenter,
     PointerSensor,
     useSensor,
     useSensors,
-    DragEndEvent,
+    DragStartEvent,
+    DragOverlay,
+    pointerWithin,
+    CollisionDetection,
+    DragOverEvent,
 } from '@dnd-kit/core';
+import { arrayMove, SortableContext } from '@dnd-kit/sortable';
+import DragIndicator from '@mui/icons-material/DragIndicator';
 import {
-    arrayMove,
-    SortableContext,
-    verticalListSortingStrategy,
-} from '@dnd-kit/sortable';
-import { Autocomplete, TextField, FormHelperText, Box } from '@mui/material';
+    Autocomplete,
+    Box,
+    Chip,
+    FormHelperText,
+    TextField,
+} from '@mui/material';
 import { SxStyles } from '../../styles/iaso/types';
-import { SortableChip } from './SortableChip';
+import { SortableChip, sortableChipStyles } from './SortableChip';
 
 type Option = {
     label: string;
@@ -25,11 +36,12 @@ type Option = {
 type Props = {
     options: Option[];
     label: string;
-    value: Option[];
+    value?: Option[];
     onChange: (value: string[]) => void;
     disabled?: boolean;
     isRequired?: boolean;
     helperText?: string;
+    keyValue: string;
 };
 
 const styles: SxStyles = {
@@ -37,19 +49,24 @@ const styles: SxStyles = {
     helperText: { pl: 2, color: 'grey.500' },
 };
 
+const disableSortingStrategy = () => null;
+
 export const DndSelect: FunctionComponent<Props> = ({
     options,
     label,
-    value,
+    value = [],
     onChange,
     disabled,
     isRequired,
     helperText,
+    keyValue,
 }) => {
+    const [activeId, setActiveId] = useState<string | null>(null);
+
     const sensors = useSensors(
         useSensor(PointerSensor, {
             activationConstraint: {
-                distance: 5, // 5px tolerance before drag starts
+                distance: 5,
             },
         }),
     );
@@ -61,61 +78,68 @@ export const DndSelect: FunctionComponent<Props> = ({
         [onChange],
     );
 
+    const handleDragStart = useCallback((event: DragStartEvent) => {
+        setActiveId(event.active.id as string);
+    }, []);
+
     const handleDragOver = useCallback(
         (event: DragOverEvent) => {
             const { active, over } = event;
-            if (!over || active.id === over.id) return;
 
-            const oldIndex = value.findIndex(item => item.value === active.id);
-            const newIndex = value.findIndex(item => item.value === over.id);
-
-            const newOrder = arrayMove(value, oldIndex, newIndex);
-            onChange(newOrder.map(item => item.value));
+            if (over && active.id !== over.id) {
+                const oldIndex = value.findIndex(
+                    item => `${keyValue}-${item.value}` === active.id,
+                );
+                const newIndex = value.findIndex(
+                    item => `${keyValue}-${item.value}` === over.id,
+                );
+                if (oldIndex !== -1 && newIndex !== -1) {
+                    const newOrder = arrayMove(value, oldIndex, newIndex);
+                    onChange(newOrder.map(item => item.value));
+                }
+            }
         },
-        [value, onChange],
+        [value, onChange, keyValue],
     );
 
-    const handleDragEnd = useCallback(
-        (event: DragEndEvent) => {
-            const { active, over } = event;
-            if (!over || active.id === over.id) return;
-
-            const oldIndex = value.findIndex(item => item.value === active.id);
-            const newIndex = value.findIndex(item => item.value === over.id);
-
-            const newOrder = arrayMove(value, oldIndex, newIndex);
-            onChange(newOrder.map(item => item.value));
-        },
-        [value, onChange],
-    );
+    const handleDragEnd = useCallback(() => {
+        setActiveId(null);
+    }, []);
 
     const renderTags = useCallback(
         (currentValue: Option[], getTagProps: any) => (
-            <Box sx={styles.tagsContainer}>
-                <SortableContext
-                    items={currentValue.map(item => item.value)}
-                    strategy={verticalListSortingStrategy}
-                >
+            <SortableContext
+                items={currentValue.map(item => `${keyValue}-${item.value}`)}
+                strategy={disableSortingStrategy}
+            >
+                <Box sx={styles.tagsContainer}>
                     {currentValue.map((option, index) => (
                         <SortableChip
-                            key={option.value}
-                            id={option.value}
+                            key={`${keyValue}-${option.value}`}
+                            id={`${keyValue}-${option.value}`}
                             label={option.label}
                             {...getTagProps({ index })}
                         />
                     ))}
-                </SortableContext>
-            </Box>
+                </Box>
+            </SortableContext>
         ),
-        [],
+        [keyValue],
     );
+
+    const activeOption = useMemo(() => {
+        if (!activeId) return null;
+        return value.find(option => `${keyValue}-${option.value}` === activeId);
+    }, [activeId, value, keyValue]);
 
     return (
         <DndContext
             sensors={sensors}
-            collisionDetection={closestCenter}
+            collisionDetection={pointerWithin as CollisionDetection}
+            onDragStart={handleDragStart}
             onDragOver={handleDragOver}
             onDragEnd={handleDragEnd}
+            onDragCancel={handleDragEnd}
         >
             <Autocomplete
                 multiple
@@ -138,6 +162,35 @@ export const DndSelect: FunctionComponent<Props> = ({
                     {helperText}
                 </FormHelperText>
             )}
+            <DragOverlay wrapperElement="div" style={{ width: 'fit-content' }}>
+                {activeOption ? (
+                    <Chip
+                        label={
+                            <Box sx={sortableChipStyles.container}>
+                                <DragIndicator
+                                    sx={{
+                                        ...sortableChipStyles.dragIcon,
+                                        cursor: 'grabbing',
+                                    }}
+                                />
+                                <Box
+                                    component="span"
+                                    sx={sortableChipStyles.label}
+                                >
+                                    {activeOption.label}
+                                </Box>
+                            </Box>
+                        }
+                        color="secondary"
+                        sx={{
+                            ...sortableChipStyles.chip,
+                            margin: 0,
+                            cursor: 'grabbing',
+                        }}
+                        onDelete={() => {}}
+                    />
+                ) : null}
+            </DragOverlay>
         </DndContext>
     );
 };

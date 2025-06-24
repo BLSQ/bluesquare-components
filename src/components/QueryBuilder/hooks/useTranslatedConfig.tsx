@@ -16,24 +16,29 @@ import { TimePicker } from '../../inputs/TimePicker';
 import { DatePicker } from '../../DatePicker';
 import { DateTimePicker } from '../../DateTimePicker';
 
-const transformListValuesToOptions = (listValues: any) => {
-    return Array.isArray(listValues)
+const transformListValuesToOptions = (listValues: any) =>
+    Array.isArray(listValues)
         ? listValues.map(listValue => ({
-            value: listValue.value,
-            label: listValue.title,
-        }))
+              value: listValue.value,
+              label: listValue.title,
+          }))
         : Object.entries(listValues || {}).map(([value, title]) => ({
-            value,
-            label: title,
-        }));
-};
+              value,
+              label: title,
+          }));
 
 export const useTranslatedConfig = (): Config => {
     const { formatMessage } = useSafeIntl();
     const theme = useTheme();
-    const handleChangeMultiselect = useCallback((newValue: any, setValue: (value: any) => void) => {
-        setValue(Array.isArray(newValue) ? newValue : newValue?.split(',') || []);
-    }, []);
+    const handleChangeMultiselect = useCallback(
+        // eslint-disable-next-line no-unused-vars
+        (newValue: string[] | string, setValue: (value: string[]) => void) => {
+            setValue(
+                Array.isArray(newValue) ? newValue : newValue?.split(',') || [],
+            );
+        },
+        [],
+    );
     return useMemo(
         () => ({
             ...MuiConfig,
@@ -216,7 +221,9 @@ export const useTranslatedConfig = (): Config => {
                                 value={value}
                                 keyValue={`${field}`}
                                 multi={false}
-                                options={transformListValuesToOptions(listValues)}
+                                options={transformListValuesToOptions(
+                                    listValues,
+                                )}
                                 onChange={setValue}
                             />
                         </Box>
@@ -226,22 +233,24 @@ export const useTranslatedConfig = (): Config => {
                     ...MuiConfig.widgets.multiselect,
                     valuePlaceholder: formatMessage(MESSAGES.selectValues),
                     // @ts-ignore
-                    factory: ({ setValue, value, field, listValues }) => {
-                        return (
-                            <Box display="inline-block" width="100%">
-                                <Select
-                                    placeholder={formatMessage(
-                                        MESSAGES.selectValues,
-                                    )}
-                                    value={value?.join(',') || ''}
-                                    keyValue={`${field}`}
-                                    multi
-                                    options={transformListValuesToOptions(listValues)}
-                                    onChange={newValue => handleChangeMultiselect(newValue, setValue)}
-                                />
-                            </Box>
-                        );
-                    },
+                    factory: ({ setValue, value, field, listValues }) => (
+                        <Box display="inline-block" width="100%">
+                            <Select
+                                placeholder={formatMessage(
+                                    MESSAGES.selectValues,
+                                )}
+                                value={value?.join(',') || ''}
+                                keyValue={`${field}`}
+                                multi
+                                options={transformListValuesToOptions(
+                                    listValues,
+                                )}
+                                onChange={newValue =>
+                                    handleChangeMultiselect(newValue, setValue)
+                                }
+                            />
+                        </Box>
+                    ),
                 },
                 date: {
                     ...MuiConfig.widgets.date,
@@ -249,7 +258,9 @@ export const useTranslatedConfig = (): Config => {
                     factory: ({ setValue, value }) => (
                         <DatePicker
                             onChange={newValue => {
-                                setValue(moment(newValue).format(apiDateFormat));
+                                setValue(
+                                    moment(newValue).format(apiDateFormat),
+                                );
                             }}
                             label=""
                             currentDate={value}
@@ -282,11 +293,15 @@ export const useTranslatedConfig = (): Config => {
                     factory: ({ setValue, value }) => (
                         <DatePicker
                             onChange={newValue => {
-                                const timestamp = moment(newValue, 'DD/MM/YYYY').valueOf().toString();
+                                const timestamp = moment(newValue, 'DD/MM/YYYY')
+                                    .valueOf()
+                                    .toString();
                                 setValue(timestamp);
                             }}
                             label=""
-                            currentDate={value ? moment(Number(value)) : undefined}
+                            currentDate={
+                                value ? moment(Number(value)) : undefined
+                            }
                             clearMessage={MESSAGES.clear}
                             clearable={false}
                         />
@@ -301,11 +316,15 @@ export const useTranslatedConfig = (): Config => {
                     factory: ({ setValue, value }) => (
                         <DateTimePicker
                             onChange={newValue => {
-                                const timestamp = moment(newValue, 'DD/MM/YYYY').valueOf().toString();
+                                const timestamp = moment(newValue, 'DD/MM/YYYY')
+                                    .valueOf()
+                                    .toString();
                                 setValue(timestamp);
                             }}
                             label=""
-                            currentDate={value ? moment(Number(value)): undefined}
+                            currentDate={
+                                value ? moment(Number(value)) : undefined
+                            }
                             clearMessage={MESSAGES.clear}
                             clearable={false}
                         />
@@ -359,7 +378,9 @@ export const useTranslatedConfig = (): Config => {
                     factory: ({ setValue, value }) => (
                         <DateTimePicker
                             onChange={newValue => {
-                                setValue(moment(newValue).format(apiDateTimeFormat));
+                                setValue(
+                                    moment(newValue).format(apiDateTimeFormat),
+                                );
                             }}
                             label=""
                             currentDate={value}
@@ -524,25 +545,21 @@ export const useTranslatedConfig = (): Config => {
                     moment: moment.locale(),
                 },
                 // @ts-ignore
-                renderField: ({ items, setField, id, selectedKey }) => {
-                    return (
-                        <Box display="inline-block" width="100%">
-                            <Select
-                                placeholder={formatMessage(
-                                    MESSAGES.selectField,
-                                )}
-                                keyValue={`${id}`}
-                                multi={false}
-                                options={(items || []).map(item => ({
-                                    value: item.path,
-                                    label: item.label,
-                                }))}
-                                onChange={setField}
-                                value={selectedKey}
-                            />
-                        </Box>
-                    );
-                },
+                renderField: ({ items, setField, id, selectedKey }) => (
+                    <Box display="inline-block" width="100%">
+                        <Select
+                            placeholder={formatMessage(MESSAGES.selectField)}
+                            keyValue={`${id}`}
+                            multi={false}
+                            options={(items || []).map(item => ({
+                                value: item.path,
+                                label: item.label,
+                            }))}
+                            onChange={setField}
+                            value={selectedKey}
+                        />
+                    </Box>
+                ),
                 // @ts-ignore
                 renderOperator: ({ items, setField, id, selectedKey }) => (
                     <Box display="inline-block" width={150}>
@@ -582,6 +599,6 @@ export const useTranslatedConfig = (): Config => {
                 ),
             },
         }),
-        [formatMessage, theme],
+        [formatMessage, theme, handleChangeMultiselect],
     );
 };

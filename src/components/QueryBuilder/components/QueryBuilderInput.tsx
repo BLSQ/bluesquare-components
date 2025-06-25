@@ -16,6 +16,7 @@ import { JsonLogicEditor } from './JsonLogicEditor';
 
 import { IntlMessage } from '../../../types/types';
 import { MESSAGES } from '../messages';
+import { MuiWidth } from '../../Modal/SimpleModal';
 
 type Props = {
     label: IntlMessage;
@@ -28,6 +29,7 @@ type Props = {
     // eslint-disable-next-line no-unused-vars
     onChange: (logic?: JsonLogicTree) => void;
     InfoPopper?: ReactNode;
+    maxWidth?: MuiWidth;
 };
 
 const QueryBuilderInput: FunctionComponent<Props> = ({
@@ -40,6 +42,7 @@ const QueryBuilderInput: FunctionComponent<Props> = ({
     fields,
     onChange,
     InfoPopper,
+    maxWidth = 'lg',
 }) => {
     const { formatMessage } = useSafeIntl();
     const theme = useTheme();
@@ -63,7 +66,7 @@ const QueryBuilderInput: FunctionComponent<Props> = ({
             onCancel={() => {
                 closeDialog();
             }}
-            maxWidth="md"
+            maxWidth={maxWidth}
             cancelMessage={MESSAGES.cancel}
             confirmMessage={MESSAGES.confirm}
             open={isOpen}

@@ -89,6 +89,7 @@ import { AlertModal } from './components/Modal/AlertModal/AlertModal';
 import { useHumanReadableJsonLogic } from './components/QueryBuilder/hooks/useHumanReadableJsonLogic';
 import { SortableList } from './components/Sortable/list';
 import { SortableTable } from './components/Sortable/table';
+import { DndSelect } from './components/DndSelect';
 
 // utils
 import {
@@ -267,4 +268,5 @@ export {
     useRedirectToReplace,
     useSafeIntl,
     useSkipEffectOnMount,
+    DndSelect,
 };

@@ -55,17 +55,28 @@ const getFieldByPath = (fields, path) => {
 // Utility to extract all selected fields from the tree
 const extractSelectedFields = (tree, fields) => {
     const results: { field: string; value: any; fieldObj: any }[] = [];
-    const walk = node => {
+    const walk = (node, depth = 0) => {
         if (!node) return;
+        console.log(
+            `${' '.repeat(depth * 2)}Node type: ${node.type}, field: ${node.field}, value:`,
+            node.value,
+        );
         if (node.type === 'rule' && node.field) {
+            const fieldObj = getFieldByPath(fields, node.field);
+            console.log(
+                `${' '.repeat(depth * 2)}  -> getFieldByPath(${node.field}):`,
+                fieldObj,
+            );
             results.push({
                 field: node.field,
                 value: node.value,
-                fieldObj: getFieldByPath(fields, node.field),
+                fieldObj,
             });
         }
         if (node.children1) {
-            Object.values(node.children1).forEach(child => walk(child));
+            Object.values(node.children1).forEach(child =>
+                walk(child, depth + 1),
+            );
         }
     };
     walk(tree);

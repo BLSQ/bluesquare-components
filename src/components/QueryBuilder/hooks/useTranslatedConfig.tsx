@@ -27,15 +27,7 @@ const transformListValuesToOptions = (listValues: any) =>
               label: title,
           }));
 
-const getFieldByPath = (fields, path) => {
-    const parts = path.split('.');
-    let current = fields;
-    for (const part of parts) {
-        if (!current[part]) return null;
-        current = current[part].subfields || current[part];
-    }
-    return current;
-}
+const getFieldByPath = (fields, path) => fields[path] || null;
 
 export const useTranslatedConfig = (fields: Fields): Config => {
     const { formatMessage } = useSafeIntl();

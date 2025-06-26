@@ -16,7 +16,8 @@ type Props = {
  * @param {JsonLogicTree} [props.logic] - Initial logic for the query.
  * @param {Fields} props.fields - Fields available for building the query.
  * @param {Settings} [props.settings] - Settings for the query builder.
- * @param {Conjunctions} [props.conjunctions] - Conjunctions available in the query builder. This won't be translated by the component, meaning that this prop should contain the translated conjunctions.
+ * @param {Conjunctions} [props.conjunctions]
+ *  - Conjunctions available in the query builder. This won't be translated by the component, meaning that this prop should contain the translated conjunctions.
  * @param {Operators} [props.operators] - Operators available in the query builder. This won't be translated by the component, meaning that this prop should contain the translated operators.
  * @param {Function} props.onChange - Callback function to handle changes in the query.
  */

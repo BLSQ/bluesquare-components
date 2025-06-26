@@ -8,7 +8,6 @@ import React, {
 import {
     JsonGroup,
     Config,
-    ImmutableTree,
     BuilderProps,
     Query,
     Builder,
@@ -38,6 +37,41 @@ type Props = {
 
 const queryValue: JsonGroup = { id: QbUtils.uuid(), type: 'group' };
 
+// Utility to get field object by path (supports nested subfields)
+const getFieldByPath = (fields, path) => {
+    const parts = path.split('.');
+    let current = fields;
+    for (let i = 0; i < parts.length; i += 1) {
+        if (!current) return null;
+        current = current[parts[i]];
+        if (!current) return null;
+        if (i < parts.length - 1) {
+            current = current.subfields;
+        }
+    }
+    return current;
+};
+
+// Utility to extract all selected fields from the tree
+const extractSelectedFields = (tree, fields) => {
+    const results: { field: string; value: any; fieldObj: any }[] = [];
+    const walk = node => {
+        if (!node) return;
+        if (node.type === 'rule' && node.field) {
+            results.push({
+                field: node.field,
+                value: node.value,
+                fieldObj: getFieldByPath(fields, node.field),
+            });
+        }
+        if (node.children1) {
+            Object.values(node.children1).forEach(child => walk(child));
+        }
+    };
+    walk(tree);
+    return results;
+};
+
 /**
  * QueryBuilder component for building queries using a visual interface.
  * It allows users to create complex queries with fields, conjunctions, and operators.
@@ -46,7 +80,8 @@ const queryValue: JsonGroup = { id: QbUtils.uuid(), type: 'group' };
  * @param {JsonLogicTree} [props.logic] - Initial logic for the query.
  * @param {Fields} props.fields - Fields available for building the query.
  * @param {Settings} [props.settings] - Settings for the query builder.
- * @param {Conjunctions} [props.conjunctions] - Conjunctions available in the query builder. This won't be translated by the component, meaning that this prop should contain the translated conjunctions.
+ * @param {Conjunctions} [props.conjunctions]
+ *  - Conjunctions available in the query builder. This won't be translated by the component, meaning that this prop should contain the translated conjunctions.
  * @param {Operators} [props.operators] - Operators available in the query builder. This won't be translated by the component, meaning that this prop should contain the translated operators.
  * @param {Function} props.onChange - Callback function to handle changes in the query.
  */
@@ -77,7 +112,7 @@ export const QueryBuilder: FunctionComponent<Props> = ({
             },
             fields,
         }),
-        [fields, translatedConfig],
+        [conjunctions, fields, operators, settings, translatedConfig],
     );
     const [tree, setTree] = useState(
         QbUtils.checkTree(
@@ -88,15 +123,17 @@ export const QueryBuilder: FunctionComponent<Props> = ({
     );
 
     const handleChange = useCallback(
-        (immutableTree: ImmutableTree, newConfig: Config) => {
+        (immutableTree, newConfig) => {
             setTree(immutableTree);
+            const selectedFields = extractSelectedFields(immutableTree, fields);
+            console.log('All selected fields:', selectedFields);
             onChange(QbUtils.jsonLogicFormat(immutableTree, newConfig));
         },
-        [onChange],
+        [onChange, fields],
     );
 
-    const renderBuilder = useCallback((props: BuilderProps) => {
-        return (
+    const renderBuilder = useCallback(
+        (props: BuilderProps) => (
             <div
                 className="query-builder-container"
                 style={{ padding: '10px' }}
@@ -105,8 +142,9 @@ export const QueryBuilder: FunctionComponent<Props> = ({
                     <Builder {...props} />
                 </div>
             </div>
-        );
-    }, []);
+        ),
+        [],
+    );
 
     const classes: Record<string, string> = useStyles();
 

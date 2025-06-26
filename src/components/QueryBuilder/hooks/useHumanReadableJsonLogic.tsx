@@ -78,7 +78,7 @@ export const useHumanReadableJsonLogic = (
     fields: Fields,
     listToReplace?: QueryBuilderListToReplace[],
 ): getHumanReadableJsonLogicReturnFn => {
-    const translatedConfig = useTranslatedConfig();
+    const translatedConfig = useTranslatedConfig(fields);
     const getHumanReadableJsonLogic = useCallback(
         (logic?: JsonLogicTree) => {
             if (isEmpty(fields) || !logic) return '';

@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
 import moment from 'moment';
 
-import { Config, MuiConfig } from '@react-awesome-query-builder/mui';
+import { Config, Fields, MuiConfig } from '@react-awesome-query-builder/mui';
 
 import { useTheme } from '@mui/styles';
 import { Box } from '@mui/material';
@@ -27,7 +27,17 @@ const transformListValuesToOptions = (listValues: any) =>
               label: title,
           }));
 
-export const useTranslatedConfig = (): Config => {
+const getFieldByPath = (fields, path) => {
+    const parts = path.split('.');
+    let current = fields;
+    for (const part of parts) {
+        if (!current[part]) return null;
+        current = current[part].subfields || current[part];
+    }
+    return current;
+}
+
+export const useTranslatedConfig = (fields: Fields): Config => {
     const { formatMessage } = useSafeIntl();
     const theme = useTheme();
     const handleChangeMultiselect = useCallback(
@@ -39,6 +49,7 @@ export const useTranslatedConfig = (): Config => {
         },
         [],
     );
+
     return useMemo(
         () => ({
             ...MuiConfig,
@@ -544,7 +555,6 @@ export const useTranslatedConfig = (): Config => {
                     ...MuiConfig.settings.locale,
                     moment: moment.locale(),
                 },
-                // @ts-ignore
                 renderField: ({ items, setField, id, selectedKey }) => (
                     <Box display="inline-block" width="100%">
                         <Select
@@ -557,10 +567,8 @@ export const useTranslatedConfig = (): Config => {
                             }))}
                             onChange={value => {
                                 setField(value);
-                                console.log('Group field changed:', {
-                                    value,
-                                    id,
-                                });
+                                const fieldObj = getFieldByPath(fields, value);
+                                console.log('Selected field object:', fieldObj);
                             }}
                             value={selectedKey}
                         />

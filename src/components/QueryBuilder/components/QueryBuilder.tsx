@@ -58,7 +58,7 @@ export const QueryBuilder: FunctionComponent<Props> = ({
     operators,
     onChange,
 }) => {
-    const translatedConfig = useTranslatedConfig();
+    const translatedConfig = useTranslatedConfig(fields);
 
     const config: Config = useMemo(
         () => ({

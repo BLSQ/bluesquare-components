@@ -30,6 +30,13 @@ type Props = {
     onChange: (logic?: JsonLogicTree) => void;
     InfoPopper?: ReactNode;
     maxWidth?: MuiWidth;
+    onFieldChange?: (
+        fields: {
+            type: string;
+            field: string;
+            value: any;
+        }[],
+    ) => void;
 };
 
 const QueryBuilderInput: FunctionComponent<Props> = ({
@@ -43,6 +50,7 @@ const QueryBuilderInput: FunctionComponent<Props> = ({
     onChange,
     InfoPopper,
     maxWidth = 'lg',
+    onFieldChange,
 }) => {
     const { formatMessage } = useSafeIntl();
     const theme = useTheme();
@@ -102,6 +110,7 @@ const QueryBuilderInput: FunctionComponent<Props> = ({
                             logic={logic}
                             fields={fields}
                             onChange={handleChangeLogic}
+                            onFieldChange={onFieldChange}
                         />
                     </Box>
                 )}

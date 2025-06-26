@@ -29,6 +29,13 @@ type Props = {
     settings?: Settings;
     conjunctions?: Conjunctions;
     operators?: Operators;
+    onFieldChange?: (
+        fields: {
+            type: string;
+            field: string;
+            value: any;
+        }[],
+    ) => void;
     onChange: (
         // eslint-disable-next-line no-unused-vars
         jsonLogic: JsonLogicTree,
@@ -54,23 +61,27 @@ const getFieldByPath = (fields, path) => {
 
 // Utility to extract all selected fields from the tree
 const extractSelectedFields = (tree, fields) => {
-    const results: { field: string; value: any; fieldObj: any }[] = [];
+    const results: {
+        type: string;
+        field: string;
+        value: any;
+    }[] = [];
     const walk = (node, depth = 0) => {
         if (!node) return;
-        console.log(
-            `${' '.repeat(depth * 2)}Node type: ${node.type}, field: ${node.field}, value:`,
-            node.value,
-        );
-        if (node.type === 'rule' && node.field) {
-            const fieldObj = getFieldByPath(fields, node.field);
-            console.log(
-                `${' '.repeat(depth * 2)}  -> getFieldByPath(${node.field}):`,
-                fieldObj,
-            );
+        if (node.type === 'rule_group' && node.properties?.field) {
+            const fieldObj = getFieldByPath(fields, node.properties.field);
             results.push({
-                field: node.field,
-                value: node.value,
-                fieldObj,
+                type: 'rule_group',
+                field: fieldObj,
+                value: node.properties.field,
+            });
+        }
+        if (node.type === 'rule' && node.properties?.field) {
+            const fieldObj = getFieldByPath(fields, node.properties.field);
+            results.push({
+                type: 'rule',
+                field: fieldObj,
+                value: node.properties.field,
             });
         }
         if (node.children1) {
@@ -103,6 +114,7 @@ export const QueryBuilder: FunctionComponent<Props> = ({
     conjunctions,
     operators,
     onChange,
+    onFieldChange,
 }) => {
     const translatedConfig = useTranslatedConfig();
 
@@ -136,11 +148,15 @@ export const QueryBuilder: FunctionComponent<Props> = ({
     const handleChange = useCallback(
         (immutableTree, newConfig) => {
             setTree(immutableTree);
-            const selectedFields = extractSelectedFields(immutableTree, fields);
-            console.log('All selected fields:', selectedFields);
+            // Convert Immutable.js tree to plain JS object
+            const jsTree = immutableTree.toJS
+                ? immutableTree.toJS()
+                : immutableTree;
             onChange(QbUtils.jsonLogicFormat(immutableTree, newConfig));
+            const selectedFields = extractSelectedFields(jsTree, fields);
+            onFieldChange?.(selectedFields);
         },
-        [onChange, fields],
+        [onChange, fields, onFieldChange],
     );
 
     const renderBuilder = useCallback(

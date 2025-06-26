@@ -6,6 +6,11 @@ type Props = {
     settings?: Settings;
     conjunctions?: Conjunctions;
     operators?: Operators;
+    onFieldChange?: (fields: {
+        type: string;
+        field: string;
+        value: any;
+    }[]) => void;
     onChange: (jsonLogic: JsonLogicTree) => void;
 };
 /**

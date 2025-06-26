@@ -27,7 +27,20 @@ const transformListValuesToOptions = (listValues: any) =>
               label: title,
           }));
 
-const getFieldByPath = (fields, path) => fields[path] || null;
+const getFieldByPath = (fields, path) => {
+    const parts = path.split('.');
+    let current = fields;
+    for (let i = 0; i < parts.length; i += 1) {
+        if (!current) return null;
+        // If we're at the last part, return the field object if it exists
+        if (i === parts.length - 1 && current[parts[i]]) {
+            return current[parts[i]];
+        }
+        // Otherwise, go deeper into subfields
+        current = current[parts[i]] && current[parts[i]].subfields;
+    }
+    return null;
+};
 
 export const useTranslatedConfig = (fields: Fields): Config => {
     const { formatMessage } = useSafeIntl();

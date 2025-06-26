@@ -30,6 +30,7 @@ type Props = {
     onChange: (logic?: JsonLogicTree) => void;
     InfoPopper?: ReactNode;
     maxWidth?: MuiWidth;
+    onLogicUpdate?: (logic: JsonLogicTree) => void;
 };
 
 const QueryBuilderInput: FunctionComponent<Props> = ({
@@ -43,6 +44,7 @@ const QueryBuilderInput: FunctionComponent<Props> = ({
     onChange,
     InfoPopper,
     maxWidth = 'lg',
+    onLogicUpdate,
 }) => {
     const { formatMessage } = useSafeIntl();
     const theme = useTheme();
@@ -50,6 +52,7 @@ const QueryBuilderInput: FunctionComponent<Props> = ({
     const [tab, setTab] = useState<string>('query');
     const handleChangeLogic = (result: JsonLogicResult) => {
         setLogic(result?.logic);
+        onLogicUpdate?.(result?.logic as JsonLogicTree);
     };
     const handleConfirm = () => {
         closeDialog();

@@ -11,7 +11,6 @@ declare const modalWithButton: React.FunctionComponent<{
     fields: Fields;
     initialLogic?: JsonLogicTree | undefined;
     InfoPopper?: React.ReactNode;
-    onLogicUpdate?: ((logic: JsonLogicTree) => void) | undefined;
 } & {
     defaultOpen?: boolean;
     iconProps: {

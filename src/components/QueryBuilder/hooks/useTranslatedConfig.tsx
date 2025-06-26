@@ -39,7 +39,6 @@ export const useTranslatedConfig = (): Config => {
         },
         [],
     );
-    console.log('MuiConfig.widgets', MuiConfig.widgets);
     return useMemo(
         () => ({
             ...MuiConfig,
@@ -213,22 +212,32 @@ export const useTranslatedConfig = (): Config => {
                 select: {
                     ...MuiConfig.widgets.select,
                     // @ts-ignore
-                    factory: ({ setValue, value, field, listValues }) => (
-                        <Box display="inline-block" width="100%">
-                            <Select
-                                placeholder={formatMessage(
-                                    MESSAGES.selectValue,
-                                )}
-                                value={value}
-                                keyValue={`${field}`}
-                                multi={false}
-                                options={transformListValuesToOptions(
-                                    listValues,
-                                )}
-                                onChange={setValue}
-                            />
-                        </Box>
-                    ),
+                    factory: ({ setValue, value, field, listValues }) => {
+                        const handleChange = newValue => {
+                            setValue(newValue);
+                            console.log(' widget newValue', newValue);
+                            console.log(' widget field', field);
+                            // Your custom logic here
+                            // For example:
+                            // if (field === 'someGroupField') { ... }
+                        };
+                        return (
+                            <Box display="inline-block" width="100%">
+                                <Select
+                                    placeholder={formatMessage(
+                                        MESSAGES.selectValue,
+                                    )}
+                                    value={value}
+                                    keyValue={`${field}`}
+                                    multi={false}
+                                    options={transformListValuesToOptions(
+                                        listValues,
+                                    )}
+                                    onChange={handleChange}
+                                />
+                            </Box>
+                        );
+                    },
                 },
                 multiselect: {
                     ...MuiConfig.widgets.multiselect,
@@ -457,36 +466,63 @@ export const useTranslatedConfig = (): Config => {
                         //             label: formatMessage(MESSAGES.countEqual),
                         //         },
                         //         not_equal: {
-                        //             label: formatMessage(
-                        //                 MESSAGES.countNotEqual,
-                        //             ),
+                        //             label: formatMessage(MESSAGES.countNotEqual),
                         //         },
                         //         less: {
                         //             label: formatMessage(MESSAGES.countLess),
                         //         },
                         //         less_or_equal: {
-                        //             label: formatMessage(
-                        //                 MESSAGES.countLessOrEqual,
-                        //             ),
+                        //             label: formatMessage(MESSAGES.countLessOrEqual),
                         //         },
                         //         greater: {
                         //             label: formatMessage(MESSAGES.countGreater),
                         //         },
                         //         greater_or_equal: {
-                        //             label: formatMessage(
-                        //                 MESSAGES.countGreaterOrEqual,
-                        //             ),
+                        //             label: formatMessage(MESSAGES.countGreaterOrEqual),
                         //         },
                         //         between: {
                         //             label: formatMessage(MESSAGES.countBetween),
                         //         },
                         //         not_between: {
-                        //             label: formatMessage(
-                        //                 MESSAGES.countNotBetween,
-                        //             ),
+                        //             label: formatMessage(MESSAGES.countNotBetween),
                         //         },
                         //     },
                         // },
+                        select: {
+                            ...MuiConfig.widgets.select,
+                            // @ts-ignore
+                            factory: ({
+                                setValue,
+                                value,
+                                field,
+                                listValues,
+                            }) => {
+                                const handleChange = newValue => {
+                                    setValue(newValue);
+                                    console.log('newValue', newValue);
+                                    console.log('field', field);
+                                    // Your custom logic here
+                                    // For example:
+                                    // if (field === 'someGroupField') { ... }
+                                };
+                                return (
+                                    <Box display="inline-block" width="100%">
+                                        <Select
+                                            placeholder={formatMessage(
+                                                MESSAGES.selectValue,
+                                            )}
+                                            value={value}
+                                            keyValue={`${field}`}
+                                            multi={false}
+                                            options={transformListValuesToOptions(
+                                                listValues,
+                                            )}
+                                            onChange={handleChange}
+                                        />
+                                    </Box>
+                                );
+                            },
+                        },
                     },
                 },
                 currentDate: {

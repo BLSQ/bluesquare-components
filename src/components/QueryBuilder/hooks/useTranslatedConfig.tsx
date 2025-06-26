@@ -32,14 +32,13 @@ const getFieldByPath = (fields, path) => {
     let current = fields;
     for (let i = 0; i < parts.length; i += 1) {
         if (!current) return null;
-        // If we're at the last part, return the field object if it exists
-        if (i === parts.length - 1 && current[parts[i]]) {
-            return current[parts[i]];
+        current = current[parts[i]];
+        if (!current) return null;
+        if (i < parts.length - 1) {
+            current = current.subfields;
         }
-        // Otherwise, go deeper into subfields
-        current = current[parts[i]] && current[parts[i]].subfields;
     }
-    return null;
+    return current;
 };
 
 export const useTranslatedConfig = (fields: Fields): Config => {

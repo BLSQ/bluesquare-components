@@ -39,6 +39,7 @@ export const useTranslatedConfig = (): Config => {
         },
         [],
     );
+    console.log('MuiConfig.widgets', MuiConfig.widgets);
     return useMemo(
         () => ({
             ...MuiConfig,

@@ -557,7 +557,15 @@ export const useTranslatedConfig = (): Config => {
                             }))}
                             onChange={value => {
                                 setField(value);
-                                console.log('Group field changed:', value, id);
+                                const fieldObj = (items || []).find(
+                                    item => item.path === value,
+                                );
+                                // Example: log the full field object and its type
+                                console.log('Changed field:', fieldObj);
+                                console.log('Group field changed:', {
+                                    value,
+                                    selectedKey,
+                                });
                             }}
                             value={selectedKey}
                         />

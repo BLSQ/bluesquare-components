@@ -1,9 +1,10 @@
-export function Row({ row, rowProps, subComponent, sortBy, onRowClick, cellProps: userCellProps, }: {
+export function Row({ row, rowProps, subComponent, sortBy, onRowClick, expanded, cellProps: userCellProps, }: {
     row: any;
     rowProps: any;
     subComponent: any;
     sortBy: any;
     onRowClick: any;
+    expanded: any;
     cellProps: any;
 }): React.JSX.Element;
 export namespace Row {
@@ -11,6 +12,7 @@ export namespace Row {
         let subComponent: undefined;
         let sortBy: never[];
         let onRowClick: undefined;
+        let expanded: boolean;
         function cellProps(): void;
     }
     namespace propTypes {
@@ -22,6 +24,8 @@ export namespace Row {
         export { subComponent_1 as subComponent };
         let onRowClick_1: PropTypes.Requireable<object>;
         export { onRowClick_1 as onRowClick };
+        let expanded_1: PropTypes.Requireable<boolean>;
+        export { expanded_1 as expanded };
         let cellProps_1: PropTypes.Requireable<(...args: any[]) => any>;
         export { cellProps_1 as cellProps };
     }

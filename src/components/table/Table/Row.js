@@ -37,13 +37,16 @@ const Row = ({
     subComponent,
     sortBy,
     onRowClick,
+    expanded,
     cellProps: userCellProps,
 }) => {
     const classes = useStyles();
-    const [isExpanded, setIsExpanded] = useState(false);
+    const [isExpanded, setIsExpanded] = useState(expanded);
     useEffect(() => {
-        setIsExpanded(false);
-    }, [sortBy]);
+        if (isExpanded !== expanded) {
+            setIsExpanded(expanded);
+        }
+    }, [sortBy, expanded]);
     return (
         <>
             <TableRow
@@ -104,6 +107,7 @@ Row.defaultProps = {
     subComponent: undefined,
     sortBy: [],
     onRowClick: undefined,
+    expanded: false,
     cellProps: () => {},
 };
 
@@ -113,6 +117,7 @@ Row.propTypes = {
     rowProps: PropTypes.object.isRequired,
     subComponent: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
     onRowClick: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+    expanded: PropTypes.bool,
     cellProps: PropTypes.func,
 };
 

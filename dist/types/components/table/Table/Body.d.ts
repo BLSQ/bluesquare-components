@@ -1,4 +1,4 @@
-export function Body({ page, getTableBodyProps, prepareRow, subComponent, sortBy, onRowClick, rowProps: userRowProps, cellProps, }: {
+export function Body({ page, getTableBodyProps, prepareRow, subComponent, sortBy, onRowClick, rowProps: userRowProps, expanded, getObjectId, cellProps, }: {
     page: any;
     getTableBodyProps: any;
     prepareRow: any;
@@ -6,6 +6,8 @@ export function Body({ page, getTableBodyProps, prepareRow, subComponent, sortBy
     sortBy: any;
     onRowClick: any;
     rowProps: any;
+    expanded: any;
+    getObjectId: any;
     cellProps: any;
 }): React.JSX.Element;
 export namespace Body {
@@ -15,6 +17,8 @@ export namespace Body {
         let rowsPerPage: number;
         let subComponent: undefined;
         let onRowClick: undefined;
+        let expanded: {};
+        function getObjectId(obj: any): any;
         function rowProps(): void;
         function cellProps(): void;
     }
@@ -35,6 +39,10 @@ export namespace Body {
         export { rowProps_1 as rowProps };
         let cellProps_1: PropTypes.Requireable<(...args: any[]) => any>;
         export { cellProps_1 as cellProps };
+        let expanded_1: PropTypes.Requireable<object>;
+        export { expanded_1 as expanded };
+        let getObjectId_1: PropTypes.Requireable<(...args: any[]) => any>;
+        export { getObjectId_1 as getObjectId };
     }
 }
 import React from 'react';

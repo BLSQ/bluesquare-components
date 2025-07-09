@@ -109,6 +109,8 @@ export interface TableComponentProps {
     params?: Record<string, any>;
     count?: number;
     data: Record<string, any>[];
+    expanded: Record<any, boolean>;
+    getObjectId: (obj: any) => string;
     columns: Column[];
     baseUrl?: string;
     pages?: number;
@@ -117,7 +119,11 @@ export interface TableComponentProps {
     marginBottom?: boolean;
     multiSelect?: boolean;
     selectionActions?: any[];
-    setTableSelection?: (selectionType: string, items: any[], totalCount?: number) => any;
+    setTableSelection?: (
+        selectionType: string,
+        items: any[],
+        totalCount?: number,
+    ) => any;
     selection?: Record<string, any>;
     selectionActionMessage?: string;
     showPagination?: boolean;
@@ -153,7 +159,7 @@ export interface TableComponentProps {
     columnSelectorEnabled?: boolean;
     columnSelectorButtonDisabled?: boolean;
     columnSelectorButtonType?: 'button' | 'icon';
-    getIsSelectionDisabled?: (row:any) => boolean;  
+    getIsSelectionDisabled?: (row: any) => boolean;
     selectAllCount?: number;
 }
 
@@ -165,6 +171,8 @@ const TableComponent: React.FC<TableComponentProps> = props => {
             order: '-created_at',
         },
         count = 0,
+        expanded = {},
+        getObjectId = obj => obj.toString(),
         extraProps = { loading: false },
         paramsPrefix = '',
         redirectTo,
@@ -367,6 +375,8 @@ const TableComponent: React.FC<TableComponentProps> = props => {
                         />
                         <Body
                             page={page}
+                            expanded={expanded}
+                            getObjectId={getObjectId}
                             getTableBodyProps={getTableBodyProps}
                             prepareRow={prepareRow}
                             subComponent={extraProps.SubComponent}

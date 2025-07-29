@@ -25,7 +25,6 @@ export const NoTableData: FunctionComponent<Props> = ({
 }) => {
     const classes = useStyles();
     const { formatMessage } = useSafeIntl();
-    if (!loading) return null;
     return (
         <Box
             className={classes.box}
@@ -33,7 +32,7 @@ export const NoTableData: FunctionComponent<Props> = ({
             justifyContent="center"
             display="flex"
         >
-            {formatMessage(noDataMessage)}
+            {!loading && formatMessage(noDataMessage)}
         </Box>
     );
 };

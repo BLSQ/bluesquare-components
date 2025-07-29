@@ -1,20 +1,31 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FunctionComponent } from 'react';
 import Box from '@mui/material/Box';
 import { makeStyles } from '@mui/styles';
-import { FormattedMessage } from 'react-intl';
 
-import { MESSAGES } from './messages';
+import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { IntlMessage } from '../../../types/types';
 
 const useStyles = makeStyles(theme => ({
     box: {
         width: '100%',
         height: theme.spacing(10),
+        // @ts-ignore
         backgroundColor: theme.palette.gray.background,
     },
 }));
-const NoResult = ({ loading }) => {
+
+type Props = {
+    loading?: boolean;
+    noDataMessage: IntlMessage;
+};
+
+export const NoTableData: FunctionComponent<Props> = ({
+    noDataMessage,
+    loading = false,
+}) => {
     const classes = useStyles();
+    const { formatMessage } = useSafeIntl();
+    if (!loading) return null;
     return (
         <Box
             className={classes.box}
@@ -22,16 +33,7 @@ const NoResult = ({ loading }) => {
             justifyContent="center"
             display="flex"
         >
-            {!loading && <FormattedMessage {...MESSAGES.noDataText} />}
+            {formatMessage(noDataMessage)}
         </Box>
     );
 };
-NoResult.defaultProps = {
-    loading: false,
-};
-
-NoResult.propTypes = {
-    loading: PropTypes.bool,
-};
-
-export { NoResult };

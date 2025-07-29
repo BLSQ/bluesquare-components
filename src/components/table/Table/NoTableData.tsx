@@ -15,14 +15,10 @@ const useStyles = makeStyles(theme => ({
 }));
 
 type Props = {
-    loading?: boolean;
     noDataMessage: IntlMessage;
 };
 
-export const NoTableData: FunctionComponent<Props> = ({
-    noDataMessage,
-    loading = false,
-}) => {
+export const NoTableData: FunctionComponent<Props> = ({ noDataMessage }) => {
     const classes = useStyles();
     const { formatMessage } = useSafeIntl();
     return (
@@ -32,7 +28,7 @@ export const NoTableData: FunctionComponent<Props> = ({
             justifyContent="center"
             display="flex"
         >
-            {!loading && formatMessage(noDataMessage)}
+            {formatMessage(noDataMessage)}
         </Box>
     );
 };

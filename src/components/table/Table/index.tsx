@@ -387,10 +387,7 @@ const TableComponent: React.FC<TableComponentProps> = props => {
                     </MuiTable>
                 </TableContainer>
                 {page?.length === 0 && (
-                    <NoTableData
-                        loading={loading}
-                        noDataMessage={noDataMessage}
-                    />
+                    <NoTableData noDataMessage={noDataMessage} />
                 )}
                 {page?.length > 0 && showPagination && (
                     <Pagination

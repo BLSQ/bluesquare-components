@@ -4,6 +4,7 @@ import { makeStyles } from '@mui/styles';
 
 import { useSafeIntl } from '../../../utils/useSafeIntl';
 import { IntlMessage } from '../../../types/types';
+import { Typography } from '@mui/material';
 
 const useStyles = makeStyles(theme => ({
     box: {
@@ -32,7 +33,9 @@ export const NoTableData: FunctionComponent<Props> = ({
             justifyContent="center"
             display="flex"
         >
-            {displayMessage && formatMessage(noDataMessage)}
+            <Typography fontWeight="bold">
+                {displayMessage && formatMessage(noDataMessage)}
+            </Typography>
         </Box>
     );
 };

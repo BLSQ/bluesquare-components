@@ -1,5 +1,6 @@
 import React, { MouseEvent } from 'react';
 import { Column } from './types';
+import { IntlMessage } from '../../../types/types';
 export interface ColumnFromReactTable {
     columns?: ColumnFromReactTable[];
     id: string;
@@ -52,6 +53,7 @@ export interface TableComponentProps {
     columnSelectorButtonType?: 'button' | 'icon';
     getIsSelectionDisabled?: (row: any) => boolean;
     selectAllCount?: number;
+    noDataMessage?: IntlMessage;
 }
 declare const Table: React.NamedExoticComponent<TableComponentProps>;
 export { Table };

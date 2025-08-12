@@ -35,11 +35,13 @@ import { Body } from './Body';
 import { Count } from './Count';
 import { Footer } from './Footer';
 import { Head } from './Head';
-import { NoResult } from './NoResult';
+import { NoTableData } from './NoTableData';
 import { Pagination } from './Pagination';
 import { Select, getSelectionCol } from './Select';
 
 import { Column } from './types';
+import { IntlMessage } from '../../../types/types';
+import { MESSAGES } from './messages';
 
 /**
  * TableComponent component, no redux, no fetch, just displaying.
@@ -161,6 +163,7 @@ export interface TableComponentProps {
     columnSelectorButtonType?: 'button' | 'icon';
     getIsSelectionDisabled?: (row: any) => boolean;
     selectAllCount?: number;
+    noDataMessage?: IntlMessage;
 }
 
 const TableComponent: React.FC<TableComponentProps> = props => {
@@ -189,6 +192,7 @@ const TableComponent: React.FC<TableComponentProps> = props => {
         showPagination = true,
         showFooter = false,
         onTableParamsChange = () => null,
+        noDataMessage = MESSAGES.noDataText,
         defaultSorted = getOrderArray(DEFAULT_ORDER),
         resetPageToOne = '',
         elevation = 3,
@@ -388,7 +392,12 @@ const TableComponent: React.FC<TableComponentProps> = props => {
                         {showFooter && <Footer footerGroups={footerGroups} />}
                     </MuiTable>
                 </TableContainer>
-                {page?.length === 0 && <NoResult loading={loading} />}
+                {page?.length === 0 && (
+                    <NoTableData
+                        noDataMessage={noDataMessage}
+                        displayMessage={!loading}
+                    />
+                )}
                 {page?.length > 0 && showPagination && (
                     <Pagination
                         count={count}

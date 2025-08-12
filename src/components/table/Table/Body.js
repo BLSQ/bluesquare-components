@@ -12,6 +12,8 @@ const Body = ({
     sortBy,
     onRowClick,
     rowProps: userRowProps,
+    expanded,
+    getObjectId,
     cellProps,
 }) => (
     <TableBody {...getTableBodyProps}>
@@ -27,6 +29,7 @@ const Body = ({
                     sortBy={sortBy}
                     onRowClick={onRowClick}
                     cellProps={cellProps}
+                    expanded={expanded[getObjectId(row.original)]}
                 />
             );
         })}
@@ -39,6 +42,8 @@ Body.defaultProps = {
     rowsPerPage: 10,
     subComponent: undefined,
     onRowClick: undefined,
+    expanded: {},
+    getObjectId: obj => obj.toString(),
     rowProps: () => {},
     cellProps: () => {},
 };
@@ -53,6 +58,8 @@ Body.propTypes = {
     onRowClick: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
     rowProps: PropTypes.func,
     cellProps: PropTypes.func,
+    expanded: PropTypes.object,
+    getObjectId: PropTypes.func,
 };
 
 export { Body };

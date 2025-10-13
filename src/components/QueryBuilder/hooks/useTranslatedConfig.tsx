@@ -496,6 +496,8 @@ export const useTranslatedConfig = (): Config => {
                             operators: [
                                 'equal',
                                 'not_equal',
+                                'greater',
+                                'less',
                                 'greater_or_equal',
                                 'less_or_equal',
                             ],
@@ -512,6 +514,8 @@ export const useTranslatedConfig = (): Config => {
                             operators: [
                                 'equal',
                                 'not_equal',
+                                'greater',
+                                'less',
                                 'greater_or_equal',
                                 'less_or_equal',
                             ],

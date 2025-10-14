@@ -107,7 +107,14 @@
     ],
     "valid-typeof": "warn",
     "no-unused-expressions": "off",
-    "class-methods-use-this": "warn"
+    "class-methods-use-this": "warn",
+    "react/function-component-definition": [
+      "error",
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ]
   },
   "globals": {
     "describe": "readonly",

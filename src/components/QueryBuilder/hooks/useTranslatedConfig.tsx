@@ -493,14 +493,14 @@ export const useTranslatedConfig = (): Config => {
                     mainWidget: 'currentDate',
                     widgets: {
                         currentDate: {
-                            operators: [
-                                'equal',
-                                'not_equal',
-                                'greater',
-                                'less',
-                                'greater_or_equal',
-                                'less_or_equal',
-                            ],
+                            // operators: [
+                            //     'equal',
+                            //     'not_equal',
+                            //     'greater',
+                            //     'less',
+                            //     'greater_or_equal',
+                            //     'less_or_equal',
+                            // ],
                             widgetProps: {},
                             opProps: {},
                         },
@@ -511,14 +511,14 @@ export const useTranslatedConfig = (): Config => {
                     mainWidget: 'currentDatetime',
                     widgets: {
                         currentDatetime: {
-                            operators: [
-                                'equal',
-                                'not_equal',
-                                'greater',
-                                'less',
-                                'greater_or_equal',
-                                'less_or_equal',
-                            ],
+                            // operators: [
+                            //     'equal',
+                            //     'not_equal',
+                            //     'greater',
+                            //     'less',
+                            //     'greater_or_equal',
+                            //     'less_or_equal',
+                            // ],
                             widgetProps: {},
                             opProps: {},
                         },

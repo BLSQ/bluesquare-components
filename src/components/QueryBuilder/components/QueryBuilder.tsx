@@ -79,8 +79,6 @@ export const QueryBuilder: FunctionComponent<Props> = ({
         }),
         [fields, translatedConfig],
     );
-    console.log('config', config);
-    console.log('translatedConfig', translatedConfig);
     const [tree, setTree] = useState(
         QbUtils.checkTree(
             QbUtils.loadFromJsonLogic(logic, config) ||

@@ -11,7 +11,12 @@ import { MESSAGES } from './messages';
 import { useStyles } from '../styles';
 
 import { TextInput } from './TextInput';
-import { defaultRenderTags, getExtraProps, getOption } from './utils';
+import {
+    defaultRenderTags,
+    getExtraProps,
+    getOption,
+    defaultRenderOption,
+} from './utils';
 
 const SingleSelect = ({
     value,
@@ -40,11 +45,11 @@ const SingleSelect = ({
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
     //  Handle numeric 0 as value
-    const hasValue = Boolean(value) || value === 0
+    const hasValue = Boolean(value) || value === 0;
 
     const displayedErrors = useMemo(() => {
         const tempErrors = [...errors];
-        if(!freeSolo){
+        if (!freeSolo) {
             const missingValueError = !getOption(value, options);
             if (hasValue && !loading && missingValueError) {
                 tempErrors.push(formatMessage(MESSAGES.valueNotFound));
@@ -54,7 +59,7 @@ const SingleSelect = ({
     }, [value, options, errors, loading, hasValue]);
 
     const fixedValue = useMemo(
-        () => (hasValue ? getOption(value, options) ?? value : null),
+        () => (hasValue ? (getOption(value, options) ?? value) : null),
         [value, options, hasValue],
     );
 
@@ -99,7 +104,7 @@ const SingleSelect = ({
                         required={required}
                         onBlur={onBlur}
                         placeholder={placeholder}
-                        errors={ displayedErrors }
+                        errors={displayedErrors}
                         helperText={helperText}
                         loading={loading}
                         dataTestId={dataTestId}
@@ -110,11 +115,13 @@ const SingleSelect = ({
                     clearIndicator: classes.clearIndicator,
                     hasClearIcon: classes.hasClearIcon,
                 }}
-                renderOption={(props, option) => (
-                    <li {...props} key={`${props.id || option.value || option.id}`}>
-                        {extraProps.getOptionLabel(option)}
-                    </li>
-                )}
+                renderOption={(props, option) =>
+                    defaultRenderOption(
+                        props,
+                        option,
+                        extraProps.getOptionLabel,
+                    )
+                }
                 {...extraProps}
             />
         </Box>

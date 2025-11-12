@@ -9,3 +9,5 @@ export function getExtraProps(getOptionLabel: any, getOptionSelected: any, rende
 };
 export function getOption(value: any, options: any): any;
 export function getMultiOption(value: any, options: any, getOptionSelected: any): any;
+export function defaultRenderOption(props: any, option: any, getOptionLabel: any): React.JSX.Element;
+import React from 'react';

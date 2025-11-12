@@ -109,6 +109,7 @@ const MultiSelect = ({
                 disabled={disabled}
                 noOptionsText={formatMessage(noOptionsText)}
                 multiple
+                open
                 disableCloseOnSelect={shiftKeyIsDown}
                 id={keyValue}
                 disableClearable={!clearable}

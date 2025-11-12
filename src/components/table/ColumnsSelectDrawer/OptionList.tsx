@@ -22,7 +22,7 @@ const OptionListItem: React.FC<ListItemProps> = ({
 }) => {
     const classes = useStyles();
     const toggleHiddenProps = column.getToggleHiddenProps();
-
+    console.log('toggleHiddenProps', toggleHiddenProps);
     return (
         <ListItem className={classes.listItem}>
             {inView && (

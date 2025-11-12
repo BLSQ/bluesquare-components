@@ -59,6 +59,7 @@ import { HeaderRowIcon } from './components/table/HeaderRowIcon';
 import { InfoHeader } from './components/table/InfoHeader';
 import { SelectionSpeedDials } from './components/table/SelectionSpeedDials';
 import { Table } from './components/table/Table';
+import { ColumnsSelectGeneric } from './components/table/ColumnsSelectDrawer/ColumnSelectGeneric';
 import { Expander } from './components/table/Table/Expander';
 import { PageRowSelect } from './components/table/Table/PageRowSelect';
 import * as SnackBar from './constants/iaso/snackBars';
@@ -269,4 +270,5 @@ export {
     useSafeIntl,
     useSkipEffectOnMount,
     DndSelect,
+    ColumnsSelectGeneric,
 };

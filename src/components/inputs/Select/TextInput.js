@@ -9,6 +9,8 @@ import { useStyles } from '../styles';
 const TextInput = ({
     params,
     renderOption,
+    renderTags,
+    selectedOption,
     disabled,
     label,
     required,
@@ -25,7 +27,19 @@ const TextInput = ({
         ...params,
     };
     let inputExtraProps = {};
-    if (renderOption && params.inputProps.value) {
+
+    if (renderTags && selectedOption && selectedOption.color) {
+        const getTagProps = () => ({});
+        const tags = renderTags([selectedOption], getTagProps);
+        const chip = Array.isArray(tags) ? tags[0] : tags;
+        inputExtraProps = {
+            startAdornment: (
+                <div className={classes.startAdornment}>{chip}</div>
+            ),
+            style: { color: 'transparent' },
+        };
+        paramsCopy.inputProps.value = '';
+    } else if (renderOption && params.inputProps.value) {
         inputExtraProps = {
             startAdornment: (
                 <div className={classes.startAdornment}>
@@ -77,6 +91,8 @@ const TextInput = ({
 TextInput.defaultProps = {
     helperText: null,
     renderOption: null,
+    renderTags: null,
+    selectedOption: null,
     autoComplete: 'off',
     label: undefined,
     dataTestId: undefined,
@@ -85,6 +101,8 @@ TextInput.defaultProps = {
 
 TextInput.propTypes = {
     renderOption: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+    renderTags: PropTypes.func,
+    selectedOption: PropTypes.object,
     params: PropTypes.object.isRequired,
     disabled: PropTypes.bool.isRequired,
     label: PropTypes.string,

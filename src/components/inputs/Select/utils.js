@@ -92,10 +92,12 @@ export const defaultRenderOption = (props, option, getOptionLabel) => (
         {option.color ? (
             <Chip
                 label={getOptionLabel(option)}
-                style={{
+                sx={{
                     backgroundColor: option.color,
                     color: 'white',
+                    margin: 0,
                 }}
+                size="small"
             />
         ) : (
             getOptionLabel(option)

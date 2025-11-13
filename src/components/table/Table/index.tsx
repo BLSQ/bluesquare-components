@@ -316,6 +316,9 @@ const TableComponent: React.FC<TableComponentProps> = props => {
     }, [pageParam]);
 
     const rowsPerPage = parseInt(pageSize, 10);
+    const columnsSelectorColumns = columnSelectorUseExternalState
+        ? columns
+        : columnsFromUse;
     return (
         <Box mt={marginTop ? 4 : 0} mb={marginBottom ? 4 : 0}>
             <Select
@@ -330,11 +333,7 @@ const TableComponent: React.FC<TableComponentProps> = props => {
                 <Grid container justifyContent="flex-end">
                     <Box mb={2} mt={2}>
                         <ColumnsSelectGeneric
-                            columns={
-                                columnSelectorUseExternalState
-                                    ? columns
-                                    : columnsFromUse
-                            }
+                            columns={columnsSelectorColumns}
                             hiddenColumns={hiddenColumns}
                             disabled={columnSelectorButtonDisabled}
                             buttonType={columnSelectorButtonType}
@@ -349,11 +348,7 @@ const TableComponent: React.FC<TableComponentProps> = props => {
                 {columnSelectorEnabled &&
                     columnSelectorButtonType === 'icon' && (
                         <ColumnsSelectGeneric
-                            columns={
-                                columnSelectorUseExternalState
-                                    ? columns
-                                    : columnsFromUse
-                            }
+                            columns={columnsSelectorColumns}
                             hiddenColumns={hiddenColumns}
                             disabled={columnSelectorButtonDisabled}
                             buttonType={columnSelectorButtonType}

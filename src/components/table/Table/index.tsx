@@ -330,7 +330,11 @@ const TableComponent: React.FC<TableComponentProps> = props => {
                 <Grid container justifyContent="flex-end">
                     <Box mb={2} mt={2}>
                         <ColumnsSelectGeneric
-                            columns={columnsFromUse}
+                            columns={
+                                columnSelectorUseExternalState
+                                    ? columns
+                                    : columnsFromUse
+                            }
                             hiddenColumns={hiddenColumns}
                             disabled={columnSelectorButtonDisabled}
                             buttonType={columnSelectorButtonType}
@@ -345,7 +349,11 @@ const TableComponent: React.FC<TableComponentProps> = props => {
                 {columnSelectorEnabled &&
                     columnSelectorButtonType === 'icon' && (
                         <ColumnsSelectGeneric
-                            columns={columns}
+                            columns={
+                                columnSelectorUseExternalState
+                                    ? columns
+                                    : columnsFromUse
+                            }
                             hiddenColumns={hiddenColumns}
                             disabled={columnSelectorButtonDisabled}
                             buttonType={columnSelectorButtonType}

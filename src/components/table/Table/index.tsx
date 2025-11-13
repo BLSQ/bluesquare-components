@@ -4,7 +4,7 @@ import MuiTable from '@mui/material/Table';
 import TableContainer from '@mui/material/TableContainer';
 import { makeStyles } from '@mui/styles';
 import isEqual from 'lodash/isEqual';
-import React, { MouseEvent, useMemo } from 'react';
+import React, { MouseEvent, useMemo, useEffect } from 'react';
 
 import {
     usePagination,
@@ -244,6 +244,7 @@ const TableComponent: React.FC<TableComponentProps> = props => {
         gotoPage,
         setPageSize,
         setSortBy,
+        setHiddenColumns,
         page,
         columns: columnsFromUse,
         state: { pageSize, pageIndex, sortBy, hiddenColumns },
@@ -315,13 +316,41 @@ const TableComponent: React.FC<TableComponentProps> = props => {
         }
     }, [pageParam]);
 
+    // Sync hiddenColumns with columns isVisible property
+    useEffect(() => {
+        if (!columnSelectorUseExternalState) return;
+        const getHiddenColumnIds = (cols: any[]): string[] => {
+            const hiddenIds: string[] = [];
+            cols.forEach(col => {
+                if (col.isVisible === false) {
+                    const { id } = col;
+                    if (id) hiddenIds.push(String(id));
+                }
+                if (col.columns) {
+                    hiddenIds.push(...getHiddenColumnIds(col.columns));
+                }
+            });
+            return hiddenIds;
+        };
+
+        const columnsToHide = getHiddenColumnIds(columns);
+        const currentHidden = (hiddenColumns || []).map(String);
+
+        if (!isEqual([...currentHidden].sort(), [...columnsToHide].sort())) {
+            setHiddenColumns(columnsToHide);
+        }
+    }, [
+        columns,
+        hiddenColumns,
+        setHiddenColumns,
+        columnSelectorUseExternalState,
+    ]);
+
     const rowsPerPage = parseInt(pageSize, 10);
-    console.log('columnsFromUse', columnsFromUse);
-    // const columnsSelectorColumns = columnSelectorUseExternalState
-    //     ? columns
-    //     : columnsFromUse;
-    const columnsSelectorColumns = columnsFromUse;
-    console.log('columnsSelectorColumns', columnsSelectorColumns);
+    const columnsSelectorColumns = columnSelectorUseExternalState
+        ? columns
+        : columnsFromUse;
+
     return (
         <Box mt={marginTop ? 4 : 0} mb={marginBottom ? 4 : 0}>
             <Select

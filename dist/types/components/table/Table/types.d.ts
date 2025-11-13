@@ -20,6 +20,7 @@ export type Column = PartialBy<ColumnWithAccessor, 'accessor' | 'Header'> & {
     id?: string;
     width?: number;
     minWidth?: number;
+    isVisible?: boolean;
     maxWidth?: number;
     align?: 'left' | 'center' | 'right';
     sortable?: boolean;

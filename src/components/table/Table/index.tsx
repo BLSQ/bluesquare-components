@@ -345,11 +345,7 @@ const TableComponent: React.FC<TableComponentProps> = props => {
                 {columnSelectorEnabled &&
                     columnSelectorButtonType === 'icon' && (
                         <ColumnsSelectGeneric
-                            columns={
-                                columnSelectorUseExternalState
-                                    ? columns
-                                    : columnsFromUse
-                            }
+                            columns={columns}
                             hiddenColumns={hiddenColumns}
                             disabled={columnSelectorButtonDisabled}
                             buttonType={columnSelectorButtonType}

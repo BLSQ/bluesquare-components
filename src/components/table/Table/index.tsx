@@ -316,11 +316,9 @@ const TableComponent: React.FC<TableComponentProps> = props => {
     }, [pageParam]);
 
     const rowsPerPage = parseInt(pageSize, 10);
-    const columnsSelectorColumns = columnsFromUse;
-    console.log('columnsSelectorColumns', columnsSelectorColumns);
-    // const columnsSelectorColumns = columnSelectorUseExternalState
-    //     ? columns
-    //     : columnsFromUse;
+    const columnsSelectorColumns = columnSelectorUseExternalState
+        ? columns
+        : columnsFromUse;
     return (
         <Box mt={marginTop ? 4 : 0} mb={marginBottom ? 4 : 0}>
             <Select

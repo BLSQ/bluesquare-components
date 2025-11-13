@@ -1,26 +1,12 @@
 import React, { MouseEvent } from 'react';
 import { Column } from './types';
 import { IntlMessage } from '../../../types/types';
-export interface ColumnFromReactTable {
-    columns?: ColumnFromReactTable[];
-    id: string;
-    Header?: React.FC<any> | string;
-    accessor: string;
-    Cell?: React.FC<any>;
-    width?: number;
-    minWidth?: number;
-    maxWidth?: number;
-    align?: 'left' | 'center' | 'right';
-    sortable?: boolean;
-    label?: string;
-    getToggleHiddenProps: () => any;
-}
 export interface TableComponentProps {
     params?: Record<string, any>;
     count?: number;
     data: Record<string, any>[];
-    expanded: Record<any, boolean>;
-    getObjectId: (obj: any) => string;
+    expanded?: Record<any, boolean>;
+    getObjectId?: (obj: any) => string;
     columns: Column[];
     baseUrl?: string;
     pages?: number;
@@ -49,6 +35,7 @@ export interface TableComponentProps {
     paramsPrefix?: string;
     redirectTo?: (url: string, newParams: Record<string, string>) => void;
     columnSelectorEnabled?: boolean;
+    columnSelectorUseExternalState?: boolean;
     columnSelectorButtonDisabled?: boolean;
     columnSelectorButtonType?: 'button' | 'icon';
     getIsSelectionDisabled?: (row: any) => boolean;

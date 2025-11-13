@@ -17,16 +17,16 @@ import { IconButton as IconButtonComponent } from '../../buttons/IconButton';
 
 import { MESSAGES } from './messages';
 import { useSafeIntl } from '../../../utils/useSafeIntl';
-import { ColumnFromReactTable } from '../Table';
 import { useToggle } from '../../../utils/useToggle';
 import { OptionsList } from './OptionList';
 import { styles } from './styles';
+import { Column } from '../Table/types';
 
 // Weird error with overflowX property, but it matches the type in doc?
 // @ts-ignore
 export const useStyles = makeStyles(styles);
 
-const filterResults = (searchString, columns: ColumnFromReactTable[]) => {
+const filterResults = (searchString, columns: Column[]) => {
     if (!searchString) {
         return columns;
     }
@@ -42,7 +42,7 @@ const filterResults = (searchString, columns: ColumnFromReactTable[]) => {
 };
 
 type Props = {
-    columns: ColumnFromReactTable[];
+    columns: Column[];
     hiddenColumns: string[];
     minColumns?: number;
     disabled?: boolean;

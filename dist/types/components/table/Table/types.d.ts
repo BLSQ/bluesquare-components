@@ -1,21 +1,32 @@
-import { ReactElement } from 'react';
+import { ReactElement, ChangeEvent, MouseEvent, KeyboardEvent, CSSProperties } from 'react';
 import { PartialBy } from '../../../types/types';
 export type ColumnWithAccessor = {
     Header: string | ReactElement;
     accessor: string | ((row: Record<string, any>) => unknown);
     Cell?: (s: any) => ReactElement | string;
 };
+export type ColumnSelectorHiddenProps = {
+    checked: boolean;
+    onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+    onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
+    onKeyDown?: (event: KeyboardEvent<HTMLButtonElement>) => void;
+    onKeyUp?: (event: KeyboardEvent<HTMLButtonElement>) => void;
+    onKeyPress?: (event: KeyboardEvent<HTMLButtonElement>) => void;
+    style?: CSSProperties;
+    title?: string;
+};
 export type Column = PartialBy<ColumnWithAccessor, 'accessor' | 'Header'> & {
+    columns?: Column[];
     id?: string;
-    sortable?: boolean;
-    resizable?: boolean;
-    headerInfo?: string;
     width?: number;
-    class?: string;
     minWidth?: number;
     maxWidth?: number;
     align?: 'left' | 'center' | 'right';
-    columns?: Column[];
+    sortable?: boolean;
+    resizable?: boolean;
+    headerInfo?: string;
+    label?: string;
+    getToggleHiddenProps?: () => ColumnSelectorHiddenProps;
 };
 export type Pagination = {
     pages: number;

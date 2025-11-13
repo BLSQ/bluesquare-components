@@ -92,27 +92,12 @@ const useStyles = makeStyles(() => ({
     },
 }));
 
-export interface ColumnFromReactTable {
-    columns?: ColumnFromReactTable[];
-    id: string;
-    Header?: React.FC<any> | string;
-    accessor: string;
-    Cell?: React.FC<any>;
-    width?: number;
-    minWidth?: number;
-    maxWidth?: number;
-    align?: 'left' | 'center' | 'right';
-    sortable?: boolean;
-    label?: string; // for search
-    getToggleHiddenProps: () => any;
-}
-
 export interface TableComponentProps {
     params?: Record<string, any>;
     count?: number;
     data: Record<string, any>[];
-    expanded: Record<any, boolean>;
-    getObjectId: (obj: any) => string;
+    expanded?: Record<any, boolean>;
+    getObjectId?: (obj: any) => string;
     columns: Column[];
     baseUrl?: string;
     pages?: number;
@@ -159,6 +144,7 @@ export interface TableComponentProps {
     // eslint-disable-next-line no-unused-vars
     redirectTo?: (url: string, newParams: Record<string, string>) => void;
     columnSelectorEnabled?: boolean;
+    columnSelectorUseExternalState?: boolean;
     columnSelectorButtonDisabled?: boolean;
     columnSelectorButtonType?: 'button' | 'icon';
     getIsSelectionDisabled?: (row: any) => boolean;
@@ -200,6 +186,7 @@ const TableComponent: React.FC<TableComponentProps> = props => {
         rowProps = () => ({}),
         cellProps = () => ({}),
         columnSelectorEnabled = false,
+        columnSelectorUseExternalState = false,
         columnSelectorButtonDisabled = false,
         columnSelectorButtonType = 'icon',
         getIsSelectionDisabled = () => false,
@@ -358,7 +345,11 @@ const TableComponent: React.FC<TableComponentProps> = props => {
                 {columnSelectorEnabled &&
                     columnSelectorButtonType === 'icon' && (
                         <ColumnsSelectGeneric
-                            columns={columnsFromUse}
+                            columns={
+                                columnSelectorUseExternalState
+                                    ? columns
+                                    : columnsFromUse
+                            }
                             hiddenColumns={hiddenColumns}
                             disabled={columnSelectorButtonDisabled}
                             buttonType={columnSelectorButtonType}

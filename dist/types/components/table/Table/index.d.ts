@@ -38,6 +38,7 @@ export interface TableComponentProps {
     columnSelectorUseExternalState?: boolean;
     columnSelectorButtonDisabled?: boolean;
     columnSelectorButtonType?: 'button' | 'icon';
+    handleChangeVisibleColumns?: () => void;
     getIsSelectionDisabled?: (row: any) => boolean;
     selectAllCount?: number;
     noDataMessage?: IntlMessage;

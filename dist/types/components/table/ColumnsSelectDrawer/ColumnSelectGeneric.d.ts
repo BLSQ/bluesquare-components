@@ -7,6 +7,7 @@ type Props = {
     minColumns?: number;
     disabled?: boolean;
     buttonType?: 'button' | 'icon';
+    handleChangeVisibleColumns?: () => void;
 };
 declare const ColumnsSelectGeneric: React.FC<Props>;
 export { ColumnsSelectGeneric, Props };

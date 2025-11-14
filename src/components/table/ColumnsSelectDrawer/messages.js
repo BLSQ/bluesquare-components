@@ -17,5 +17,9 @@ const MESSAGES = defineMessages({
         id: 'blsq.table.columnSelect.tooltip',
         defaultMessage: 'Select visible columns',
     },
+    apply: {
+        id: 'blsq.table.columnSelect.apply',
+        defaultMessage: 'Apply',
+    },
 });
 export { MESSAGES };

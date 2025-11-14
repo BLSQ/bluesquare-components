@@ -147,6 +147,7 @@ export interface TableComponentProps {
     columnSelectorUseExternalState?: boolean;
     columnSelectorButtonDisabled?: boolean;
     columnSelectorButtonType?: 'button' | 'icon';
+    handleChangeVisibleColumns?: () => void;
     getIsSelectionDisabled?: (row: any) => boolean;
     selectAllCount?: number;
     noDataMessage?: IntlMessage;
@@ -191,6 +192,7 @@ const TableComponent: React.FC<TableComponentProps> = props => {
         columnSelectorButtonType = 'icon',
         getIsSelectionDisabled = () => false,
         selectAllCount = count,
+        handleChangeVisibleColumns,
     } = props;
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -369,6 +371,9 @@ const TableComponent: React.FC<TableComponentProps> = props => {
                             hiddenColumns={hiddenColumns}
                             disabled={columnSelectorButtonDisabled}
                             buttonType={columnSelectorButtonType}
+                            handleChangeVisibleColumns={
+                                handleChangeVisibleColumns
+                            }
                         />
                     </Box>
                 </Grid>
@@ -384,6 +389,9 @@ const TableComponent: React.FC<TableComponentProps> = props => {
                             hiddenColumns={hiddenColumns}
                             disabled={columnSelectorButtonDisabled}
                             buttonType={columnSelectorButtonType}
+                            handleChangeVisibleColumns={
+                                handleChangeVisibleColumns
+                            }
                         />
                     )}
             </Grid>

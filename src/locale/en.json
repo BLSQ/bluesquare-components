@@ -126,6 +126,7 @@
     "blsq.queryBuilder.valueSourcesPopupTitle": "Select value source",
     "blsq.queryBuilder.yes": "Yes",
     "blsq.select.label.loadingText": "Loading...",
+    "blsq.table.columnSelect.apply": "Apply",
     "blsq.table.columnSelect.tooltip": "Select visible columns",
     "blsq.table.details": "Details",
     "blsq.table.filter.search": "Search",

@@ -21,4 +21,10 @@ export namespace MESSAGES {
         let defaultMessage_3: string;
         export { defaultMessage_3 as defaultMessage };
     }
+    namespace apply {
+        let id_4: string;
+        export { id_4 as id };
+        let defaultMessage_4: string;
+        export { defaultMessage_4 as defaultMessage };
+    }
 }

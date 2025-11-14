@@ -47,6 +47,7 @@ type Props = {
     minColumns?: number;
     disabled?: boolean;
     buttonType?: 'button' | 'icon';
+    handleChangeVisibleColumns?: () => void;
 };
 
 const ColumnsSelectGeneric: React.FC<Props> = ({
@@ -55,6 +56,7 @@ const ColumnsSelectGeneric: React.FC<Props> = ({
     minColumns = 2,
     disabled = false,
     buttonType = 'icon',
+    handleChangeVisibleColumns,
 }) => {
     const classes = useStyles();
     const { formatMessage } = useSafeIntl();
@@ -138,6 +140,24 @@ const ColumnsSelectGeneric: React.FC<Props> = ({
                             minReached={minReached}
                         />
                     </div>
+                    <Box
+                        sx={{
+                            position: 'absolute',
+                            bottom: 0,
+                            right: 0,
+                            backgroundColor: 'white',
+                        }}
+                    >
+                        {handleChangeVisibleColumns && (
+                            <Button
+                                onClick={handleChangeVisibleColumns}
+                                variant="contained"
+                                color="primary"
+                            >
+                                {formatMessage(MESSAGES.apply)}
+                            </Button>
+                        )}
+                    </Box>
                 </Box>
             </Drawer>
         </>

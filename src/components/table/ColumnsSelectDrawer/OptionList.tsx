@@ -39,8 +39,6 @@ const OptionListItem: React.FC<ListItemProps> = ({
                         className={classes.switch}
                         {...toggleHiddenProps}
                     />
-
-                    {/* @ts-ignore */}
                     <ListItemText primary={column.Header} />
                 </>
             )}
@@ -63,7 +61,7 @@ export const OptionsList: React.FC<OptionListProps> = ({
 }) => (
     // If it has sub-columns make a section and call yourself recursively
     // The inview is to not calculate the column not present
-    <List>
+    <List sx={{ maxHeight: 'calc(100vh - 60px)' }}>
         {columns
             .filter(column => column.getToggleHiddenProps)
             .map(column => (

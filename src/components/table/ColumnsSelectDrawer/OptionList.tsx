@@ -38,6 +38,7 @@ const OptionListItem: React.FC<ListItemProps> = ({
                         }}
                         className={classes.switch}
                         {...toggleHiddenProps}
+                        checked={column.isVisible}
                     />
                     <ListItemText primary={column.Header} />
                 </>

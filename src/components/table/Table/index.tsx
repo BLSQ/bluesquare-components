@@ -337,7 +337,8 @@ const TableComponent: React.FC<TableComponentProps> = props => {
 
         const columnsToHide = getHiddenColumnIds(columns);
         const currentHidden = (hiddenColumns || []).map(String);
-
+        console.log('columnsToHide', columnsToHide);
+        console.log('columns', columns);
         if (!isEqual([...currentHidden].sort(), [...columnsToHide].sort())) {
             setHiddenColumns(columnsToHide);
         }

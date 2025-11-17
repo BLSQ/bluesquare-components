@@ -4,3 +4,4 @@ dist/stories
 lib
 temp
 dist/*.json
+.vscode

@@ -1,6 +1,8 @@
-export function TextInput({ params, renderOption, disabled, label, required, onBlur, errors, helperText, loading, autoComplete, placeholder, dataTestId, }: {
+export function TextInput({ params, renderOption, renderTags, selectedOption, disabled, label, required, onBlur, errors, helperText, loading, autoComplete, placeholder, dataTestId, }: {
     params: any;
     renderOption: any;
+    renderTags: any;
+    selectedOption: any;
     disabled: any;
     label: any;
     required: any;
@@ -16,6 +18,8 @@ export namespace TextInput {
     namespace defaultProps {
         let helperText: null;
         let renderOption: null;
+        let renderTags: null;
+        let selectedOption: null;
         let autoComplete: string;
         let label: undefined;
         let dataTestId: undefined;
@@ -24,6 +28,10 @@ export namespace TextInput {
     namespace propTypes {
         let renderOption_1: PropTypes.Requireable<object>;
         export { renderOption_1 as renderOption };
+        let renderTags_1: PropTypes.Requireable<(...args: any[]) => any>;
+        export { renderTags_1 as renderTags };
+        let selectedOption_1: PropTypes.Requireable<object>;
+        export { selectedOption_1 as selectedOption };
         export let params: PropTypes.Validator<object>;
         export let disabled: PropTypes.Validator<boolean>;
         let label_1: PropTypes.Requireable<string>;

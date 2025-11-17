@@ -81,10 +81,30 @@ export const getExtraProps = (
     return extraProps;
 };
 
-export const getOption = (value, options) =>{
-    return options.find(o => `${o.value}` === `${value}`);
-
-}
+export const getOption = (value, options) =>
+    options.find(o => `${o.value}` === `${value}`);
 
 export const getMultiOption = (value, options, getOptionSelected) =>
     options.find(option => getOptionSelected(option, value));
+
+export const defaultRenderOption = (props, option, getOptionLabel) => (
+    <li
+        {...props}
+        key={`${props.id || option.value || option.id}`}
+        style={option.color ? { paddingTop: 4, paddingBottom: 4 } : {}}
+    >
+        {option.color ? (
+            <Chip
+                label={getOptionLabel(option)}
+                sx={{
+                    backgroundColor: option.color,
+                    color: 'white',
+                    margin: 0,
+                }}
+                size="small"
+            />
+        ) : (
+            getOptionLabel(option)
+        )}
+    </li>
+);

@@ -19,8 +19,8 @@ export interface TableComponentProps {
     params?: Record<string, any>;
     count?: number;
     data: Record<string, any>[];
-    expanded: Record<any, boolean>;
-    getObjectId: (obj: any) => string;
+    expanded?: Record<any, boolean>;
+    getObjectId?: (obj: any) => string;
     columns: Column[];
     baseUrl?: string;
     pages?: number;

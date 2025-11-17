@@ -28,9 +28,8 @@ const TextInput = ({
     };
     let inputExtraProps = {};
 
-    if (renderTags && selectedOption && selectedOption.color) {
-        const getTagProps = () => ({});
-        const tags = renderTags([selectedOption], getTagProps);
+    if (selectedOption?.color) {
+        const tags = renderTags([selectedOption]);
         const chip = Array.isArray(tags) ? tags[0] : tags;
         inputExtraProps = {
             startAdornment: (

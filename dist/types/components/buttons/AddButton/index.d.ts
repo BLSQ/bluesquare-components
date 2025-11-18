@@ -14,12 +14,8 @@ declare const styledAddButton: React.JSXElementConstructor<Omit<Pick<Pick<{
     id: PropTypes.Requireable<string>;
     dataTestId: PropTypes.Requireable<string>;
     size: PropTypes.Requireable<string>;
-<<<<<<< HEAD
     disabled: PropTypes.Requireable<boolean>;
-}>, "disabled" | "size" | "id" | "message" | "dataTestId" | PropTypes.RequiredKeys<{
-=======
-}>, "id" | "size" | "message" | "dataTestId" | PropTypes.RequiredKeys<{
->>>>>>> GAPS-79_import_components_from_iaso
+}>, "disabled" | "id" | "size" | "message" | "dataTestId" | PropTypes.RequiredKeys<{
     classes: PropTypes.Validator<object>;
     onClick: PropTypes.Validator<(...args: any[]) => any>;
     message: PropTypes.Requireable<object>;
@@ -36,11 +32,7 @@ declare const styledAddButton: React.JSXElementConstructor<Omit<Pick<Pick<{
     size: PropTypes.Requireable<string>;
     disabled: PropTypes.Requireable<boolean>;
 }>> & {
-<<<<<<< HEAD
     disabled?: boolean | null | undefined;
-    size?: string | null | undefined;
-=======
->>>>>>> GAPS-79_import_components_from_iaso
     id?: string | null | undefined;
     size?: string | null | undefined;
     message?: object | null | undefined;

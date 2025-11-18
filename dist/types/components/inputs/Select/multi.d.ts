@@ -1,4 +1,4 @@
-export function MultiSelect({ value, keyValue, label, errors, onChange, options, onBlur, disabled, clearable, required, noOptionsText, getOptionLabel, getOptionSelected, loading, renderOption, renderTags, returnFullObject, helperText, loadingText, dataTestId, placeholder, useBuiltInErrors, }: {
+export function MultiSelect({ value, keyValue, label, errors, onChange, options, onBlur, disabled, clearable, required, noOptionsText, getOptionLabel, getOptionSelected, loading, renderOption, renderTags, returnFullObject, helperText, loadingText, dataTestId, placeholder, useBuiltInErrors, enableChipsOptions, }: {
     value: any;
     keyValue: any;
     label: any;
@@ -21,6 +21,7 @@ export function MultiSelect({ value, keyValue, label, errors, onChange, options,
     dataTestId: any;
     placeholder: any;
     useBuiltInErrors: any;
+    enableChipsOptions: any;
 }): React.JSX.Element;
 export namespace MultiSelect {
     namespace defaultProps {
@@ -49,6 +50,7 @@ export namespace MultiSelect {
         export let returnFullObject: boolean;
         export let dataTestId: undefined;
         export let useBuiltInErrors: boolean;
+        export let enableChipsOptions: boolean;
     }
     namespace propTypes {
         let errors_1: PropTypes.Requireable<(string | null | undefined)[]>;
@@ -90,6 +92,8 @@ export namespace MultiSelect {
         export { dataTestId_1 as dataTestId };
         let useBuiltInErrors_1: PropTypes.Requireable<boolean>;
         export { useBuiltInErrors_1 as useBuiltInErrors };
+        let enableChipsOptions_1: PropTypes.Requireable<boolean>;
+        export { enableChipsOptions_1 as enableChipsOptions };
     }
 }
 import React from 'react';

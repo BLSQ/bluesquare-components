@@ -127,6 +127,11 @@ import {
 } from './utils/tableUtils';
 import { TextArea } from './components/inputs/TextArea/TextArea';
 import { InputWithInfos } from './components/inputs/InputWithInfos/InputWithInfos';
+import {
+    useDebounce,
+    useDebouncedCallback,
+    useThrottledCallback,
+} from './utils/useDebounce';
 
 // Types
 export * from './components/QueryBuilder/types';
@@ -139,6 +144,12 @@ export * from './utils/fetchData';
 export * from './utils/intlUtils';
 
 export type { CommonStyles } from './styles/iaso/common';
+export type {
+    CallOptions,
+    ControlFunctions,
+    DebouncedState,
+    Options,
+} from './utils/useDebounce';
 
 export type {
     Field as QueryBuilderField,
@@ -269,4 +280,7 @@ export {
     useSafeIntl,
     useSkipEffectOnMount,
     DndSelect,
+    useDebounce,
+    useDebouncedCallback,
+    useThrottledCallback,
 };

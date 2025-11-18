@@ -90,7 +90,7 @@ export const getMultiOption = (value, options, getOptionSelected) =>
 export const defaultRenderOption = (props, option, getOptionLabel) => (
     <li
         {...props}
-        key={`${props.id || option.value || option.id}`}
+        key={`${props?.id || option?.value || option?.id}`}
         style={option.color ? { paddingTop: 4, paddingBottom: 4 } : {}}
     >
         {option.color ? (

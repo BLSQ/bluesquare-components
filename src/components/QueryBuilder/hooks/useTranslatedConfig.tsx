@@ -39,6 +39,7 @@ export const useTranslatedConfig = (): Config => {
         },
         [],
     );
+    //@ts-ignore
     return useMemo(
         () => ({
             ...MuiConfig,

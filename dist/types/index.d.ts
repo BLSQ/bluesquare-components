@@ -55,18 +55,18 @@ import { SelectionSpeedDials } from './components/table/SelectionSpeedDials';
 import { Table } from './components/table/Table';
 import { Expander } from './components/table/Table/Expander';
 import { PageRowSelect } from './components/table/Table/PageRowSelect';
-import * as SnackBar from './constants/iaso/snackBars';
+import * as SnackBar from './snackbars/snackBars';
 import * as IasoUiConstants from './constants/iaso/uiConstants';
 import { english, french } from './locale';
+import { injectIntl } from './localization/injectIntl';
+import { patchIntl } from './localization/patchIntl';
 import { commonStyles } from './styles/iaso/common';
 import { mapStyles } from './styles/iaso/map';
 import { mapPopupStyles } from './styles/iaso/mapPopup';
 import { rawTheme, theme } from './styles/iaso/theme';
-import { injectIntl } from './utils/injectIntl';
-import { patchIntl } from './utils/patchIntl';
 import { testTS } from './utils/test';
 import { useKeyPressListener } from './utils/useKeyPressListener';
-import { useSafeIntl } from './utils/useSafeIntl';
+import { useSafeIntl } from './localization/useSafeIntl';
 import { useSkipEffectOnMount } from './utils/useSkipEffectOnMount';
 import { LinkButton } from './Routing/LinkButton';
 import { LinkWithLocation } from './Routing/LinkWithLocation';
@@ -78,17 +78,49 @@ import { AlertModal } from './components/Modal/AlertModal/AlertModal';
 import { useHumanReadableJsonLogic } from './components/QueryBuilder/hooks/useHumanReadableJsonLogic';
 import { SortableList } from './components/Sortable/list';
 import { SortableTable } from './components/Sortable/table';
+<<<<<<< HEAD
 import { DndSelect } from './components/DndSelect';
 import { addPositionIndex, capitalize, formatThousand, removePositionIndex, substituteVars, truncateText } from './utils';
+=======
+import { makeApiHooks } from './api/apiHooks';
+import { blsqFetch, basePostRequest, postRequest, getRequest, getRequestImage, putRequest, patchRequest, optionsRequest, deleteRequest, ApiError } from './api/Api';
+import { addPositionIndex, capitalize, formatThousand, removePositionIndex, substituteVars, truncateText, waitFor } from './utils';
+>>>>>>> GAPS-79_import_components_from_iaso
 import { convertObjectToUrlParams, makeRedirectionUrl } from './Routing/utils';
 import { ExternalLink } from './Routing/ExternalLink';
 import { ExternalLinkIconButton } from './Routing/ExternalLinkIconButton';
+import { InputWithInfos } from './components/inputs/InputWithInfos/InputWithInfos';
 import { PhoneInput } from './components/inputs/PhoneInput/PhoneInput';
+import { TextArea } from './components/inputs/TextArea/TextArea';
 import { MENU_HEIGHT_WITHOUT_TABS, MENU_HEIGHT_WITH_TABS, SIDEBAR_WIDTH, textPlaceholder } from './constants/iaso/uiConstants';
 import { defaultSelectionActions, getColumnsHeadersInfos, getOrderArray, getParamsKey, getSimplifiedColumns, getSort, getTableParams, getTableUrl, selectionInitialState, setTableSelection, tableInitialResult } from './utils/tableUtils';
+<<<<<<< HEAD
 import { TextArea } from './components/inputs/TextArea/TextArea';
 import { InputWithInfos } from './components/inputs/InputWithInfos/InputWithInfos';
 import { useDebounce, useDebouncedCallback, useThrottledCallback } from './utils/useDebounce';
+=======
+import { usePageTitle } from './components/nav/usePageTitle';
+import { SidebarProvider, useSidebar } from './contexts/SideBarContext/SideBarContext';
+import { LocalizationProvider } from './localization/LocalizationProvider/LocalizationProvider';
+import { EventDispatcher } from './snackbars/EventDispatcher';
+import { PageError } from './components/PageError/PageError';
+import { TopBar } from './components/nav/TopBar/TopBar';
+import SnackBarButton from './snackbars/SnackBarButton';
+import { LocaleProvider, useLocale } from './localization/useLocale';
+import { buttonReloadMessageKey, errorSnackBar, formErrorMessageKey, formSuccessFullMessageKey, formWarningMessageKey, reloadPageMessageKey, reloadPageSnackBar, succesfullSnackBar, warningSnackBar } from './snackbars/snackBars';
+import { useSnackBars, useTranslateMessage } from './snackbars/useSnackBars';
+import SnackBarErrorMessage from './snackbars/SnackBarErrorMessage';
+import { FilterState, FilterStateParams, useCheckBoxFilter, useFilterState } from './utils/useFilterState';
+import { useObjectState } from './utils/useObjectState';
+import { useArrayState } from './utils/useArrayState';
+import { useTabs } from './utils/useTabs';
+import { cleanupParams } from './api/utils';
+import { CheckBoxSelectGroup } from './components/inputs/CheckBoxSelectGroup/CheckBoxSelectGroup';
+import { CheckBoxFilterItem } from './components/inputs/CheckBoxSelectGroup/CheckBoxFilterItem';
+import { FilesUploadContainer } from './components/inputs/FileUpload/FilesUploadContainer';
+import { useApiErrorValidation, useAPIErrorValidator, useTranslatedErrors } from './api/validation';
+import { Pagination } from './components/table/Table/Pagination';
+>>>>>>> GAPS-79_import_components_from_iaso
 export * from './components/QueryBuilder/types';
 export * from './components/Sortable/list/types';
 export * from './components/Sortable/types';
@@ -96,10 +128,16 @@ export * from './components/inputs/PhoneInput/types';
 export * from './components/table/Table/types';
 export * from './types/types';
 export * from './utils/fetchData';
-export * from './utils/intlUtils';
+export * from './localization/intlUtils';
+export * from './api/types';
+export { CheckBoxFilter, CheckBoxFilterArgs } from './utils/useFilterState';
 export type { CommonStyles } from './styles/iaso/common';
 export type { CallOptions, ControlFunctions, DebouncedState, Options, } from './utils/useDebounce';
 export type { Field as QueryBuilderField, Fields as QueryBuilderFields, } from '@react-awesome-query-builder/mui';
 export type { TableComponentProps } from './components/table/Table';
 export type { IconButtonBuiltInIcon } from './components/buttons/IconButton';
+<<<<<<< HEAD
 export { AddButton, AddComment, AlertModal, ArrayFieldInput, BackdropClickModal, BlockPlaceholder, Checkbox, ColumnsSelectDrawer, CommentWithThread, ConfirmCancelButtons, ConfirmCancelModal, CsvSvg, CustomInput, DHIS2Svg, DatePicker, DynamicSelect, DynamicTabs, EnrichedTreeItem, ErrorBoundary, ErrorBoundaryWithMessage, ExcellSvg, ExpandableItem, Expander, ExportButton, ExternalLink, ExternalLinkIconButton, FakeInput, FilesUpload, FormControl, FormattedNumber, HeaderRowIcon, IasoChipColors, IasoTreeView, IasoUiConstants, IconButton, InfoHeader, InputLabel, InputWithInfos, LazyImage, LinkButton, LinkWithLocation, LoadingSpinner, MENU_HEIGHT_WITHOUT_TABS, MENU_HEIGHT_WITH_TABS, NumberInput, OrgUnitSvg, PageRowSelect, PasswordInput, PdfSvg, PhoneInput, QueryBuilder, QueryBuilderInput, JsonLogicEditor, Radio, SIDEBAR_WIDTH, SearchInput, Select, SelectionSpeedDials, ShapeSvg, SimpleModal, SingleComment, SnackBar, SortableList, SortableTable, Table, TextArea, TextInput, TextSvg, TreeViewResultsCountSelect, TreeViewWithSearch, TruncatedTreeview, WordSvg, XmlSvg, addPositionIndex, baseRenderTagsWithTooltip, capitalize, commonStyles, convertObjectToUrlParams, defaultSelectionActions, english, formatThousand, french, getColumnsHeadersInfos, getOrderArray, getParamsKey, getSimplifiedColumns, getSort, getTableParams, getTableUrl, injectIntl, makeFullModal, makeRedirectionUrl, mapPopupStyles, mapStyles, patchIntl, rawTheme, removePositionIndex, renderTags, renderTagsWithTooltip, selectionInitialState, setTableSelection, substituteVars, tableInitialResult, testTS, textPlaceholder, theme, truncateText, useGoBack, useHumanReadableJsonLogic, useKeyPressListener, useParamsObject, useRedirectTo, useRedirectToReplace, useSafeIntl, useSkipEffectOnMount, DndSelect, useDebounce, useDebouncedCallback, useThrottledCallback, };
+=======
+export { AddButton, AddComment, AlertModal, ArrayFieldInput, BackdropClickModal, BlockPlaceholder, Checkbox, ColumnsSelectDrawer, CommentWithThread, ConfirmCancelButtons, ConfirmCancelModal, CsvSvg, CustomInput, DHIS2Svg, DatePicker, DynamicSelect, DynamicTabs, EnrichedTreeItem, ErrorBoundary, ErrorBoundaryWithMessage, ExcellSvg, ExpandableItem, Expander, ExportButton, ExternalLink, ExternalLinkIconButton, FakeInput, FilesUpload, FormControl, FormattedNumber, HeaderRowIcon, IasoChipColors, IasoTreeView, IasoUiConstants, IconButton, InfoHeader, InputLabel, InputWithInfos, LazyImage, LinkButton, LinkWithLocation, LoadingSpinner, MENU_HEIGHT_WITHOUT_TABS, MENU_HEIGHT_WITH_TABS, NumberInput, OrgUnitSvg, PageRowSelect, PasswordInput, PdfSvg, PhoneInput, QueryBuilder, QueryBuilderInput, Radio, SIDEBAR_WIDTH, SearchInput, Select, SelectionSpeedDials, ShapeSvg, SimpleModal, SingleComment, SnackBar, SortableList, SortableTable, Table, TextArea, TextInput, TextSvg, TreeViewResultsCountSelect, TreeViewWithSearch, TruncatedTreeview, WordSvg, XmlSvg, addPositionIndex, baseRenderTagsWithTooltip, capitalize, commonStyles, convertObjectToUrlParams, defaultSelectionActions, english, formatThousand, french, getColumnsHeadersInfos, getOrderArray, getParamsKey, getSimplifiedColumns, getSort, getTableParams, getTableUrl, injectIntl, makeFullModal, makeRedirectionUrl, mapPopupStyles, mapStyles, patchIntl, rawTheme, removePositionIndex, renderTags, renderTagsWithTooltip, selectionInitialState, setTableSelection, substituteVars, tableInitialResult, testTS, textPlaceholder, theme, truncateText, useGoBack, useHumanReadableJsonLogic, useKeyPressListener, useParamsObject, useRedirectTo, useRedirectToReplace, useSafeIntl, useSkipEffectOnMount, usePageTitle, SidebarProvider, useSidebar, LocalizationProvider, EventDispatcher, PageError, TopBar, SnackBarButton, makeApiHooks, blsqFetch, basePostRequest, postRequest, getRequest, getRequestImage, putRequest, patchRequest, optionsRequest, deleteRequest, ApiError, LocaleProvider, useLocale, warningSnackBar, reloadPageSnackBar, succesfullSnackBar, errorSnackBar, reloadPageMessageKey, buttonReloadMessageKey, formWarningMessageKey, formErrorMessageKey, formSuccessFullMessageKey, useSnackBars, useTranslateMessage, SnackBarErrorMessage, useFilterState, useObjectState, useArrayState, useTabs, cleanupParams, useCheckBoxFilter, FilterState, FilterStateParams, waitFor, CheckBoxFilterItem, CheckBoxSelectGroup, FilesUploadContainer, useApiErrorValidation, useAPIErrorValidator, useTranslatedErrors, Pagination, };
+>>>>>>> GAPS-79_import_components_from_iaso

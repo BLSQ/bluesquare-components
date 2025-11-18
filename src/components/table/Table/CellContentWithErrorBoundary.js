@@ -1,9 +1,9 @@
 import { Box } from '@mui/material';
 import { withStyles } from '@mui/styles';
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+import { injectIntl } from '../../../localization/injectIntl';
 import { MESSAGES } from './messages';
-import { injectIntl } from '../../../utils/injectIntl';
 
 const styles = theme => ({
     errorContainer: {

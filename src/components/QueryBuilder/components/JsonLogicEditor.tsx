@@ -4,7 +4,7 @@ import { makeStyles } from '@mui/styles';
 import { JsonLogicTree } from '@react-awesome-query-builder/mui';
 import classNames from 'classnames';
 
-import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { FormControl } from '../../inputs/FormControl';
 import { MESSAGES } from '../messages';
 

@@ -113,6 +113,7 @@ SelectCustom.defaultProps = {
     freeSolo: false,
     dataTestId: undefined,
     useBuiltInErrors: true,
+    enableChipsOptions: false,
 };
 
 SelectCustom.propTypes = {
@@ -175,6 +176,7 @@ SelectCustom.propTypes = {
     freeSolo: PropTypes.bool,
     dataTestId: PropTypes.string,
     useBuiltInErrors: PropTypes.bool,
+    enableChipsOptions: PropTypes.bool,
 };
 
 export {

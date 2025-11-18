@@ -101,6 +101,7 @@ declare namespace SelectCustom {
         export let freeSolo: boolean;
         export let dataTestId: undefined;
         export let useBuiltInErrors: boolean;
+        export let enableChipsOptions: boolean;
     }
     namespace propTypes {
         let multi_1: PropTypes.Requireable<boolean>;
@@ -148,6 +149,8 @@ declare namespace SelectCustom {
         export { dataTestId_1 as dataTestId };
         let useBuiltInErrors_1: PropTypes.Requireable<boolean>;
         export { useBuiltInErrors_1 as useBuiltInErrors };
+        let enableChipsOptions_1: PropTypes.Requireable<boolean>;
+        export { enableChipsOptions_1 as enableChipsOptions };
     }
 }
 import { baseRenderTagsWithTooltip } from './utils';

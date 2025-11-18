@@ -124,7 +124,10 @@ const MultiSelect = ({
                 );
             }
             return (
-                <li {...props} key={`${props.id || option.value || option.id}`}>
+                <li
+                    {...props}
+                    key={`${props?.id || option?.value || option?.id}`}
+                >
                     {extraProps.getOptionLabel(option)}
                 </li>
             );

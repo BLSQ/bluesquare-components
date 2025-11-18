@@ -42,6 +42,7 @@ type Props = {
     autoFormat?: boolean;
     countryCodeEditable?: boolean;
     dataTestId?: string;
+    variant?: 'filled' | 'outlined' | 'standard';
 };
 const getLocalization = (lang?: LangOptions) => {
     if (lang === 'en' || !lang) return undefined;
@@ -63,6 +64,7 @@ export const PhoneInput: FunctionComponent<Props> = props => {
         disabled,
         autoFormat = false,
         countryCodeEditable = false,
+        variant = 'standard',
         ...restProps
     } = props;
     const localization = getLocalization(lang);
@@ -90,6 +92,7 @@ export const PhoneInput: FunctionComponent<Props> = props => {
             country={country}
             countryCodeEditable={countryCodeEditable}
             placeholder={placeholder ?? formatMessage(MESSAGES.phoneNumber)}
+            variant={variant}
             {...restProps}
         />
     );

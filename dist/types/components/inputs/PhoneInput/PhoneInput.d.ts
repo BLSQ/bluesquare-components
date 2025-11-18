@@ -17,6 +17,7 @@ type Props = {
     autoFormat?: boolean;
     countryCodeEditable?: boolean;
     dataTestId?: string;
+    variant?: 'filled' | 'outlined' | 'standard';
 };
 export declare const PhoneInput: FunctionComponent<Props>;
 export {};

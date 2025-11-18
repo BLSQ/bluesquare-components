@@ -1,6 +1,6 @@
-import { isEqual } from 'lodash';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useRedirectTo, useRedirectToReplace } from '../Routing/redirections';
+import { isEqual } from 'lodash';
 import { useSearchParams } from 'react-router-dom';
 import { cleanupParams } from '../api/utils';
 

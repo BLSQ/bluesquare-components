@@ -43,6 +43,7 @@ const MultiSelect = ({
     dataTestId,
     placeholder,
     useBuiltInErrors,
+    enableChipsOptions,
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -113,6 +114,23 @@ const MultiSelect = ({
         },
         [onChange, returnFullObject],
     );
+    const renderOptionCallback = useCallback(
+        (props, option) => {
+            if (enableChipsOptions) {
+                return defaultRenderOption(
+                    props,
+                    option,
+                    extraProps.getOptionLabel,
+                );
+            }
+            return (
+                <li {...props} key={`${props.id || option.value || option.id}`}>
+                    {extraProps.getOptionLabel(option)}
+                </li>
+            );
+        },
+        [extraProps.getOptionLabel, enableChipsOptions],
+    );
     return (
         <Box>
             <Autocomplete
@@ -132,7 +150,7 @@ const MultiSelect = ({
                 renderInput={params => (
                     <TextInput
                         params={params}
-                        renderOption={renderOption}
+                        renderOption={renderOptionCallback}
                         disabled={disabled}
                         label={label}
                         required={required}
@@ -149,13 +167,7 @@ const MultiSelect = ({
                     clearIndicator: classes.clearIndicator,
                     hasClearIcon: classes.hasClearIcon,
                 }}
-                renderOption={(props, option) =>
-                    defaultRenderOption(
-                        props,
-                        option,
-                        extraProps.getOptionLabel,
-                    )
-                }
+                renderOption={renderOptionCallback}
                 {...extraProps}
             />
         </Box>
@@ -182,6 +194,7 @@ MultiSelect.defaultProps = {
     returnFullObject: false, // use this one if you pass array of objects as options and want an array of objects as sected items, not a string of id's
     dataTestId: undefined,
     useBuiltInErrors: true,
+    enableChipsOptions: false,
 };
 
 MultiSelect.propTypes = {
@@ -206,6 +219,7 @@ MultiSelect.propTypes = {
     returnFullObject: PropTypes.bool,
     dataTestId: PropTypes.string,
     useBuiltInErrors: PropTypes.bool,
+    enableChipsOptions: PropTypes.bool,
 };
 
 export { MultiSelect };

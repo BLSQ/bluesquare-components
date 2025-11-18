@@ -42,6 +42,7 @@ const SingleSelect = ({
     freeSolo,
     dataTestId,
     useBuiltInErrors,
+    enableChipsOptions,
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -78,6 +79,23 @@ const SingleSelect = ({
         (_, newInputValue) => freeSolo && onChange(newInputValue),
         [onChange, returnFullObject],
     );
+    const renderOptionCallback = useCallback(
+        (props, option) => {
+            if (enableChipsOptions) {
+                return defaultRenderOption(
+                    props,
+                    option,
+                    extraProps.getOptionLabel,
+                );
+            }
+            return (
+                <li {...props} key={`${props.id || option.value || option.id}`}>
+                    {extraProps.getOptionLabel(option)}
+                </li>
+            );
+        },
+        [extraProps.getOptionLabel, enableChipsOptions],
+    );
 
     return (
         <Box>
@@ -99,9 +117,11 @@ const SingleSelect = ({
                 renderInput={params => (
                     <TextInput
                         params={params}
-                        renderOption={renderOption}
-                        renderTags={renderTags}
-                        selectedOption={fixedValue}
+                        renderOption={renderOptionCallback}
+                        renderTags={enableChipsOptions ? renderTags : undefined}
+                        selectedOption={
+                            enableChipsOptions ? fixedValue : undefined
+                        }
                         disabled={disabled}
                         label={label}
                         required={required}
@@ -118,13 +138,7 @@ const SingleSelect = ({
                     clearIndicator: classes.clearIndicator,
                     hasClearIcon: classes.hasClearIcon,
                 }}
-                renderOption={(props, option) =>
-                    defaultRenderOption(
-                        props,
-                        option,
-                        extraProps.getOptionLabel,
-                    )
-                }
+                renderOption={renderOptionCallback}
                 {...extraProps}
             />
         </Box>
@@ -153,6 +167,7 @@ SingleSelect.defaultProps = {
     dataTestId: undefined,
     freeSolo: false,
     useBuiltInErrors: true,
+    enableChipsOptions: false,
 };
 
 SingleSelect.propTypes = {
@@ -179,6 +194,7 @@ SingleSelect.propTypes = {
     dataTestId: PropTypes.string,
     freeSolo: PropTypes.bool,
     useBuiltInErrors: PropTypes.bool,
+    enableChipsOptions: PropTypes.bool,
 };
 
 export { SingleSelect };

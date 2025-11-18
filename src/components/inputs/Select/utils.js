@@ -15,7 +15,7 @@ export const baseRenderTags = getLabel => (tagValue, getTagProps) =>
             <Chip
                 color="secondary"
                 style={{
-                    backgroundColor: option.color,
+                    backgroundColor: option?.color,
                     color: 'white',
                 }}
                 label={getLabel(option)}
@@ -40,7 +40,7 @@ export const baseRenderTagsWithTooltip =
                         <Chip
                             color="secondary"
                             style={{
-                                backgroundColor: option.color,
+                                backgroundColor: option?.color,
                                 color: 'white',
                             }}
                             label={getLabel(option)}
@@ -91,9 +91,9 @@ export const defaultRenderOption = (props, option, getOptionLabel) => (
     <li
         {...props}
         key={`${props?.id || option?.value || option?.id}`}
-        style={option.color ? { paddingTop: 4, paddingBottom: 4 } : {}}
+        style={option?.color ? { paddingTop: 4, paddingBottom: 4 } : {}}
     >
-        {option.color ? (
+        {option?.color ? (
             <Chip
                 label={getOptionLabel(option)}
                 sx={{

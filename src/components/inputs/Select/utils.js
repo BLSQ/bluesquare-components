@@ -59,7 +59,7 @@ export const getExtraProps = (
 ) => {
     const extraProps = {
         getOptionLabel:
-            getOptionLabel || (option => option?.label ?? option.toString()),
+            getOptionLabel || (option => option?.label ?? `${option}`),
         isOptionEqualToValue:
             getOptionSelected ||
             ((option, val) => {

@@ -3,11 +3,10 @@ import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
 import { FormHelperText, InputLabel } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import classnames from 'classnames';
-import { useDebounce } from 'use-debounce';
+import { useDebounce } from '../../../utils/useDebounce';
 import { useSkipEffectOnMount } from '../../../utils/useSkipEffectOnMount';
 import { FormControl } from '../FormControl';
 import { commonStyles } from '../../../styles/iaso/common';
-
 
 type Props = {
     value?: string;
@@ -18,7 +17,7 @@ type Props = {
     debounceTime?: number; // debounce time in ms
     disabled?: boolean;
     helperText?: string;
-    dataTestId?:string
+    dataTestId?: string;
 };
 
 const useStyles = makeStyles(theme => ({
@@ -78,7 +77,7 @@ export const TextArea: FunctionComponent<Props> = ({
     value,
     onChange,
     label,
-    dataTestId='textarea',
+    dataTestId = 'textarea',
     errors = [],
     required = false,
     debounceTime = 0,
@@ -88,8 +87,8 @@ export const TextArea: FunctionComponent<Props> = ({
     const classes: Record<string, string> = useStyles();
     const [focus, setFocus] = useState<boolean>(false);
     const hasErrors = errors.length > 0;
-    const prevValue = useRef<string|undefined>('');
-    const prevDebounced = useRef<string|undefined>('');
+    const prevValue = useRef<string | undefined>('');
+    const prevDebounced = useRef<string | undefined>('');
     const [textValue, setTextValue] = useState<string>(value ?? '');
     const [debouncedValue] = useDebounce(textValue, debounceTime);
 

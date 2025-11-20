@@ -6,7 +6,7 @@ import { Config, MuiConfig } from '@react-awesome-query-builder/mui';
 import { useTheme } from '@mui/styles';
 import { Box } from '@mui/material';
 
-import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { MESSAGES } from '../messages';
 import { apiDateFormat, apiDateTimeFormat } from '../constants';
 import { TextInput } from '../../inputs/TextInput';

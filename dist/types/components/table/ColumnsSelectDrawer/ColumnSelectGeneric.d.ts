@@ -1,6 +1,6 @@
 import React from 'react';
 import { ColumnFromReactTable } from '../Table';
-export declare const useStyles: (props?: any) => import("@mui/styles").ClassNameMap<"input" | "search" | "switch" | "list" | "toolbar" | "placeholder" | "root" | "listItem">;
+export declare const useStyles: (props?: any) => import("@mui/styles").ClassNameMap<"input" | "search" | "switch" | "list" | "placeholder" | "toolbar" | "root" | "listItem">;
 type Props = {
     columns: ColumnFromReactTable[];
     hiddenColumns: string[];

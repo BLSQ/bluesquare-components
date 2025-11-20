@@ -1,26 +1,26 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { InView } from 'react-intersection-observer';
+import ArrowBack from '@mui/icons-material/ArrowBack';
+import Close from '@mui/icons-material/Close';
 import {
+    Divider,
     Drawer,
     IconButton,
+    InputBase,
     List,
     ListItem,
     ListItemText,
-    Divider,
     Switch,
-    InputBase,
     Tooltip,
 } from '@mui/material';
 import { withStyles } from '@mui/styles';
-import Close from '@mui/icons-material/Close';
-import ArrowBack from '@mui/icons-material/ArrowBack';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { InView } from 'react-intersection-observer';
 
-import { IconButton as IconButtonComponent } from '../../buttons/IconButton';
 import { BlockPlaceholder } from '../../BlockPlaceholder';
+import { IconButton as IconButtonComponent } from '../../buttons/IconButton';
 
+import { injectIntl } from '../../../localization/injectIntl';
 import { MESSAGES } from './messages';
-import { injectIntl } from '../../../utils/injectIntl';
 import { styles } from './styles';
 
 const filterResults = (searchString, options) => {

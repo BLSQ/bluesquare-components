@@ -3,7 +3,7 @@ import { Box, Divider, Typography } from '@mui/material';
 import MESSAGES from './messages';
 
 import { ConfirmCancelModal } from '../ConfirmCancelModal';
-import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { IntlMessage } from '../../../types/types';
 
 type Props = {

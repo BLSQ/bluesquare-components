@@ -4,11 +4,8 @@ export const formWarningMessageKey = 'warning';
 export const buttonReloadMessageKey = 'reload';
 export const reloadPageMessageKey = 'reloadPage';
 
-export const success = (
-    messageKey = formSuccessFullMessageKey,
-    messageObject,
-) => ({
-    messageKey,
+export const succesfullSnackBar = (messageKey, messageObject) => ({
+    messageKey: messageKey ?? formSuccessFullMessageKey,
     messageObject,
     options: {
         variant: 'success',
@@ -16,12 +13,8 @@ export const success = (
     },
 });
 
-export const error = (
-    messageKey = formErrorMessageKey,
-    messageObject,
-    errorLog,
-) => ({
-    messageKey,
+export const errorSnackBar = (messageKey, messageObject, errorLog) => ({
+    messageKey: messageKey ?? formErrorMessageKey,
     messageObject,
     options: {
         variant: 'error',
@@ -31,12 +24,8 @@ export const error = (
     id: `${messageKey}-${Date.now()}`,
 });
 
-export const warning = (
-    messageKey = formWarningMessageKey,
-    messageObject,
-    id,
-) => ({
-    messageKey,
+export const warningSnackBar = (messageKey, messageObject, id) => ({
+    messageKey: messageKey ?? formWarningMessageKey,
     messageObject,
     options: {
         maxsnack: 1, // always display snackBar
@@ -46,7 +35,7 @@ export const warning = (
     id: id || messageKey,
 });
 
-export const reloadPage = (
+export const reloadPageSnackBar = (
     buttonMessageKey = buttonReloadMessageKey,
     messageKey = reloadPageMessageKey,
 ) => ({
@@ -58,5 +47,6 @@ export const reloadPage = (
         persist: true,
     },
     buttonMessageKey,
+    //@ts-ignore
     buttonAction: () => window.location.reload(true),
 });

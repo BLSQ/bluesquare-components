@@ -6,7 +6,7 @@ import 'react-phone-input-material-ui/lib/style.css';
 import fr from 'react-phone-input-material-ui/lang/fr.json';
 import pt from 'react-phone-input-material-ui/lang/pt.json';
 import classnames from 'classnames';
-import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 import MESSAGES from './messages';
 import { BaseCountryData, LangOptions } from './types';
 

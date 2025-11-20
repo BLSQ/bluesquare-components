@@ -15,7 +15,7 @@ import { FormattedMessage } from 'react-intl';
 
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import { rawTheme } from '../../styles/iaso/theme';
-import { useSafeIntl } from '../../utils/useSafeIntl';
+import { useSafeIntl } from '../../localization/useSafeIntl';
 import { LoadingSpinner } from '../LoadingSpinner';
 import { SearchInput } from '../inputs/SearchInput';
 import { TreeViewResultsCountSelect } from './TreeViewResultsCountSelect';
@@ -291,4 +291,3 @@ DynamicSelect.propTypes = {
 const dynamicSelect = withStyles(styles)(DynamicSelect);
 
 export { dynamicSelect as DynamicSelect };
-

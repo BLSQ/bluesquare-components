@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
 import React, { useCallback, useMemo } from 'react';
 
-import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 
 import { MESSAGES } from './messages';
 
@@ -41,6 +41,7 @@ const SingleSelect = ({
     placeholder,
     freeSolo,
     dataTestId,
+    useBuiltInErrors,
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -51,12 +52,12 @@ const SingleSelect = ({
         const tempErrors = [...errors];
         if (!freeSolo) {
             const missingValueError = !getOption(value, options);
-            if (hasValue && !loading && missingValueError) {
+            if (hasValue && !loading && missingValueError && useBuiltInErrors) {
                 tempErrors.push(formatMessage(MESSAGES.valueNotFound));
             }
         }
         return tempErrors;
-    }, [value, options, errors, loading, hasValue]);
+    }, [value, options, errors, loading, hasValue, useBuiltInErrors]);
 
     const fixedValue = useMemo(
         () => (hasValue ? (getOption(value, options) ?? value) : null),
@@ -151,6 +152,7 @@ SingleSelect.defaultProps = {
     placeholder: undefined,
     dataTestId: undefined,
     freeSolo: false,
+    useBuiltInErrors: true,
 };
 
 SingleSelect.propTypes = {
@@ -176,6 +178,7 @@ SingleSelect.propTypes = {
     placeholder: PropTypes.string,
     dataTestId: PropTypes.string,
     freeSolo: PropTypes.bool,
+    useBuiltInErrors: PropTypes.bool,
 };
 
 export { SingleSelect };

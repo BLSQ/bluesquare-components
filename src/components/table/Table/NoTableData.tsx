@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import Box from '@mui/material/Box';
 import { makeStyles } from '@mui/styles';
 
-import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { IntlMessage } from '../../../types/types';
 import { Typography } from '@mui/material';
 

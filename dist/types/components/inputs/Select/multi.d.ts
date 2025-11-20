@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-export function MultiSelect({ value, keyValue, label, errors, onChange, options, onBlur, disabled, clearable, required, noOptionsText, getOptionLabel, getOptionSelected, loading, renderOption, renderTags, returnFullObject, helperText, loadingText, dataTestId, placeholder, }: {
-=======
 export function MultiSelect({ value, keyValue, label, errors, onChange, options, onBlur, disabled, clearable, required, noOptionsText, getOptionLabel, getOptionSelected, loading, renderOption, renderTags, returnFullObject, helperText, loadingText, dataTestId, placeholder, useBuiltInErrors, }: {
->>>>>>> GAPS-79_import_components_from_iaso
     value: any;
     keyValue: any;
     label: any;

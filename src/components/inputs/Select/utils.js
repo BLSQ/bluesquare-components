@@ -1,6 +1,7 @@
 import React from 'react';
 import Chip from '@mui/material/Chip';
 import { Tooltip } from '@mui/material';
+import Color from 'color';
 
 export const defaultGetLabel = o => (o?.label ? o.label : '');
 
@@ -16,7 +17,7 @@ export const baseRenderTags = getLabel => (tagValue, getTagProps) =>
                 color="secondary"
                 style={{
                     backgroundColor: option.color,
-                    color: 'white',
+                    color: Color(option.color).isDark() ? 'white' : 'black',
                 }}
                 label={getLabel(option)}
                 {...getTagProps({ index })}
@@ -41,7 +42,9 @@ export const baseRenderTagsWithTooltip =
                             color="secondary"
                             style={{
                                 backgroundColor: option.color,
-                                color: 'white',
+                                color: Color(option.color).isDark()
+                                    ? 'white'
+                                    : 'black',
                             }}
                             label={getLabel(option)}
                             {...getTagProps({ index })}
@@ -98,7 +101,7 @@ export const defaultRenderOption = (props, option, getOptionLabel) => (
                 label={getOptionLabel(option)}
                 sx={{
                     backgroundColor: option.color,
-                    color: 'white',
+                    color: Color(option.color).isDark() ? 'white' : 'black',
                     margin: 0,
                 }}
                 size="small"

@@ -101,7 +101,11 @@ TextInput.defaultProps = {
 TextInput.propTypes = {
     renderOption: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
     renderTags: PropTypes.func,
-    selectedOption: PropTypes.object,
+    selectedOption: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.number,
+        PropTypes.string,
+    ]),
     params: PropTypes.object.isRequired,
     disabled: PropTypes.bool.isRequired,
     label: PropTypes.string,

@@ -14,7 +14,6 @@ import {
 } from 'react-table';
 
 import { Grid } from '@mui/material';
-import { useSafeIntl } from '../../../utils/useSafeIntl';
 
 import { DEFAULT_ORDER, DEFAULT_PAGE, DEFAULT_PAGE_SIZE } from './constants';
 
@@ -42,6 +41,7 @@ import { Select, getSelectionCol } from './Select';
 import { Column } from './types';
 import { IntlMessage } from '../../../types/types';
 import { MESSAGES } from './messages';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 
 /**
  * TableComponent component, no redux, no fetch, just displaying.

@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
+import React, { FunctionComponent, HTMLAttributeAnchorTarget } from 'react';
 import { SvgIconComponent } from '@mui/icons-material';
 import CachedRoundedIcon from '@mui/icons-material/CachedRounded';
 import CallMerge from '@mui/icons-material/CallMerge';
@@ -16,7 +17,6 @@ import Edit from '@mui/icons-material/Settings';
 import StopRoundedIcon from '@mui/icons-material/StopRounded';
 import { IconButton as MuiIconButton, Tooltip } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import React, { FunctionComponent, HTMLAttributeAnchorTarget } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { LinkWithLocation } from '../../../Routing/LinkWithLocation';
 import { commonStyles } from '../../../styles/iaso/common';
@@ -141,7 +141,7 @@ export const IconButton: FunctionComponent<Props> = ({
     target = '_self',
     download = false,
 }) => {
-    const classes: Record<string, string> = useStyles();
+    const classes: Record<string, string> = useStyles({});
     if (!onClick && !url) {
         console.error(
             'IconButtonComponent needs either the onClick or the url property',

@@ -6,7 +6,7 @@ import React, {
     FunctionComponent,
 } from 'react';
 
-import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { FormControl } from '../FormControl';
 import { InputLabel } from '../InputLabel';
 

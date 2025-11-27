@@ -112,6 +112,7 @@ SelectCustom.defaultProps = {
     placeholder: undefined,
     freeSolo: false,
     dataTestId: undefined,
+    useBuiltInErrors: true,
 };
 
 SelectCustom.propTypes = {
@@ -173,6 +174,7 @@ SelectCustom.propTypes = {
     placeholder: PropTypes.string,
     freeSolo: PropTypes.bool,
     dataTestId: PropTypes.string,
+    useBuiltInErrors: PropTypes.bool,
 };
 
 export {

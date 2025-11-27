@@ -4,3 +4,4 @@ export function formatThousand(number: any): any;
 export function truncateText(text: any, maxLength: any): string;
 export function addPositionIndex(array: any): any[];
 export function removePositionIndex(array: any): any[];
+export function waitFor(delay: any): Promise<any>;

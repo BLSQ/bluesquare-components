@@ -1,4 +1,4 @@
-export function SingleSelect({ value, keyValue, label, errors, onChange, options, onBlur, disabled, clearable, required, noOptionsText, getOptionLabel, getOptionSelected, loading, loadingText, renderOption, renderTags, returnFullObject, helperText, placeholder, freeSolo, dataTestId, }: {
+export function SingleSelect({ value, keyValue, label, errors, onChange, options, onBlur, disabled, clearable, required, noOptionsText, getOptionLabel, getOptionSelected, loading, loadingText, renderOption, renderTags, returnFullObject, helperText, placeholder, freeSolo, dataTestId, useBuiltInErrors, }: {
     value: any;
     keyValue: any;
     label: any;
@@ -21,6 +21,7 @@ export function SingleSelect({ value, keyValue, label, errors, onChange, options
     placeholder: any;
     freeSolo: any;
     dataTestId: any;
+    useBuiltInErrors: any;
 }): React.JSX.Element;
 export namespace SingleSelect {
     namespace defaultProps {
@@ -50,6 +51,7 @@ export namespace SingleSelect {
         export let placeholder: undefined;
         export let dataTestId: undefined;
         export let freeSolo: boolean;
+        export let useBuiltInErrors: boolean;
     }
     namespace propTypes {
         let errors_1: PropTypes.Requireable<(string | null | undefined)[]>;
@@ -93,6 +95,8 @@ export namespace SingleSelect {
         export { dataTestId_1 as dataTestId };
         let freeSolo_1: PropTypes.Requireable<boolean>;
         export { freeSolo_1 as freeSolo };
+        let useBuiltInErrors_1: PropTypes.Requireable<boolean>;
+        export { useBuiltInErrors_1 as useBuiltInErrors };
     }
 }
 import React from 'react';

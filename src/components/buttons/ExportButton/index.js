@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import CallMade from '@mui/icons-material/CallMade';
 import { Button } from '@mui/material';
 import { withStyles } from '@mui/styles';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { injectIntl } from '../../../localization/injectIntl.js';
 import { commonStyles } from '../../../styles/iaso/common.ts';
-import { injectIntl } from '../../../utils/injectIntl';
 import { MESSAGES } from './messages';
 
 const styles = theme => ({

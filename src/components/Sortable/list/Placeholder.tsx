@@ -3,7 +3,7 @@ import { defineMessages } from 'react-intl';
 
 import { makeStyles } from '@mui/styles';
 import { Box } from '@mui/material';
-import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 
 const MESSAGES = defineMessages({
     noResult: {

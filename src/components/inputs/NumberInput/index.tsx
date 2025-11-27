@@ -5,7 +5,7 @@ import React, {
 } from 'react';
 import { defineMessages } from 'react-intl';
 import { NumericFormat } from 'react-number-format';
-import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { CustomInput } from './Input';
 
 const MESSAGES = defineMessages({

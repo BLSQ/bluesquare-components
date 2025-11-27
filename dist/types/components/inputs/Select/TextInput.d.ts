@@ -30,7 +30,7 @@ export namespace TextInput {
         export { renderOption_1 as renderOption };
         let renderTags_1: PropTypes.Requireable<(...args: any[]) => any>;
         export { renderTags_1 as renderTags };
-        let selectedOption_1: PropTypes.Requireable<object>;
+        let selectedOption_1: PropTypes.Requireable<NonNullable<string | number | object | null | undefined>>;
         export { selectedOption_1 as selectedOption };
         export let params: PropTypes.Validator<object>;
         export let disabled: PropTypes.Validator<boolean>;

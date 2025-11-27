@@ -72,3 +72,8 @@ export const removePositionIndex = array => {
     }
     return tempArray;
 };
+
+// create timeout to simulate async call
+// credit https://stackoverflow.com/questions/51200626/using-a-settimeout-in-a-async-function
+export const waitFor = delay =>
+    new Promise(resolve => setTimeout(resolve, delay));

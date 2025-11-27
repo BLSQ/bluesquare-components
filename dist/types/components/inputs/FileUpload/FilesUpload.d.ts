@@ -1,5 +1,6 @@
 import { FunctionComponent } from 'react';
 import { Accept } from 'react-dropzone';
+import { SxProps } from '@mui/material';
 type Props = {
     multi?: boolean;
     onFilesSelect: (files: File[]) => void;
@@ -9,6 +10,8 @@ type Props = {
     required?: boolean;
     errors?: string[];
     disabled?: boolean;
+    sxInput?: SxProps;
+    sxText?: SxProps;
 };
 export declare const dragzoneStyle: (theme: any) => {
     outlined: {

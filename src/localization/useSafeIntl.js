@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useIntl } from 'react-intl';
-import { patchIntl } from './patchIntl';
+import { patchIntl } from '../localization/patchIntl';
 
 export const useSafeIntl = () => {
     const intl = useIntl();

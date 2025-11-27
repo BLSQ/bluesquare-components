@@ -15,7 +15,7 @@ import { InputLabel } from '../InputLabel';
 import { useStyles } from './styles';
 import { useSkipEffectOnMount } from '../../../utils/useSkipEffectOnMount';
 import { containsForbiddenCharacter } from '../../../utils/containsForbiddenChars';
-import { useSafeIntl } from '../../../utils/useSafeIntl';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { IntlFormatMessage } from '../../../types/types';
 
 import MESSAGES from './messages';
@@ -119,7 +119,7 @@ const SearchInput: FunctionComponent<Props> = ({
                 id={uid ? `search-${uid}` : `search-${keyValue}`}
                 value={localValue}
                 placeholder=""
-                onKeyPress={event => {
+                onKeyDown={event => {
                     if (
                         event.which === 13 ||
                         event.keyCode === 13 ||

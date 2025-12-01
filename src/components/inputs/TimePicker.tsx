@@ -23,18 +23,10 @@ export const TimePicker: FunctionComponent<Props> = ({
 }) => (
     <FormControl>
         <MuiTimePicker
-            renderInput={props => (
-                <TextField
-                    {...props}
-                    required={required}
-                    variant="outlined"
-                    InputLabelProps={{
-                        // className: classes.label,
-                        shrink: Boolean(value),
-                    }}
-                    helperText={null}
-                />
-            )}
+            slotProps={{textField:{variant:"outlined", required,InputLabelProps:{
+
+                shrink: Boolean(value),
+            }}}}
             ampm={false}
             disabled={disabled}
             label={label}

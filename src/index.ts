@@ -185,11 +185,6 @@ import { cleanupParams } from './api/utils';
 import { CheckBoxSelectGroup } from './components/inputs/CheckBoxSelectGroup/CheckBoxSelectGroup';
 import { CheckBoxFilterItem } from './components/inputs/CheckBoxSelectGroup/CheckBoxFilterItem';
 import { FilesUploadContainer } from './components/inputs/FileUpload/FilesUploadContainer';
-import {
-    useApiErrorValidation,
-    useAPIErrorValidator,
-    useTranslatedErrors,
-} from './api/validation';
 import { Pagination } from './components/table/Table/Pagination';
 
 // Types
@@ -389,8 +384,5 @@ export {
     CheckBoxFilterItem,
     CheckBoxSelectGroup,
     FilesUploadContainer,
-    useApiErrorValidation,
-    useAPIErrorValidator,
-    useTranslatedErrors,
     Pagination,
 };

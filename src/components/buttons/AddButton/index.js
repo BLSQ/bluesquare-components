@@ -15,11 +15,11 @@ const styles = theme => ({
 function AddButtonComponent({
     classes,
     onClick,
-    message,
-    id,
-    dataTestId,
-    size,
-    disabled,
+    message=MESSAGES.create,
+    id='',
+    dataTestId='',
+    size='medium',
+    disabled=false,
 }) {
     const intl = useSafeIntl();
     return (
@@ -38,13 +38,7 @@ function AddButtonComponent({
         </Button>
     );
 }
-AddButtonComponent.defaultProps = {
-    message: MESSAGES.create,
-    id: '',
-    dataTestId: '',
-    size: 'medium',
-    disabled: false,
-};
+
 AddButtonComponent.propTypes = {
     classes: PropTypes.object.isRequired,
     onClick: PropTypes.func.isRequired,

@@ -1,19 +1,13 @@
 export function PageSelect({ pageIndex, pages, onPageChange }: {
-    pageIndex: any;
-    pages: any;
+    pageIndex?: number | undefined;
+    pages?: number | undefined;
     onPageChange: any;
 }): React.JSX.Element;
 export namespace PageSelect {
-    namespace defaultProps {
-        let pages: number;
-        let pageIndex: number;
-    }
     namespace propTypes {
-        let pages_1: PropTypes.Requireable<number>;
-        export { pages_1 as pages };
-        let pageIndex_1: PropTypes.Requireable<number>;
-        export { pageIndex_1 as pageIndex };
-        export let onPageChange: PropTypes.Validator<(...args: any[]) => any>;
+        let pages: PropTypes.Requireable<number>;
+        let pageIndex: PropTypes.Requireable<number>;
+        let onPageChange: PropTypes.Validator<(...args: any[]) => any>;
     }
 }
 import React from 'react';

@@ -36,7 +36,7 @@ const adaptInputSize = length => {
     return 'XLInput';
 };
 
-const PageSelect = ({ pageIndex, pages, onPageChange }) => {
+const PageSelect = ({ pageIndex = 0, pages = 0, onPageChange }) => {
     const classes = useStyles();
     const [selectedPage, setSelectedPage] = useState(pageIndex);
     return (
@@ -80,11 +80,6 @@ const PageSelect = ({ pageIndex, pages, onPageChange }) => {
             </Box>
         </Box>
     );
-};
-
-PageSelect.defaultProps = {
-    pages: 0,
-    pageIndex: 0,
 };
 
 PageSelect.propTypes = {

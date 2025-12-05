@@ -9,15 +9,15 @@ import {
 } from '@mui/material';
 
 const RadioComponent = ({
-    options,
+    options = [],
     name,
-    onChange,
-    value,
-    label,
-    errors,
-    className,
-    required,
-    dataTestId,
+    onChange = () => { },
+    value = '',
+    label = '',
+    errors = [],
+    className = '',
+    required = false,
+    dataTestId = undefined,
 }) => (
     <FormControl
         component="fieldset"
@@ -50,16 +50,6 @@ const RadioComponent = ({
     </FormControl>
 );
 
-RadioComponent.defaultProps = {
-    options: [],
-    onChange: () => {},
-    value: '',
-    label: '',
-    errors: [],
-    className: '',
-    required: false,
-    dataTestId: undefined,
-};
 RadioComponent.propTypes = {
     options: PropTypes.array,
     name: PropTypes.string.isRequired,

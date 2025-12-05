@@ -5,10 +5,10 @@ import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import { useStyles } from './styles';
 
 const SelectionSpeedDials = ({
-    hidden,
-    actions,
+    hidden = false,
+    actions = [],
     selection,
-    reset,
+    reset = () => null,
     actionMessage,
 }) => {
     const classes = useStyles();
@@ -54,11 +54,6 @@ const SelectionSpeedDials = ({
     );
 };
 
-SelectionSpeedDials.defaultProps = {
-    hidden: false,
-    actions: [],
-    reset: () => null,
-};
 
 SelectionSpeedDials.propTypes = {
     hidden: PropTypes.bool,

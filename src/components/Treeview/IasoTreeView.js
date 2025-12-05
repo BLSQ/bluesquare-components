@@ -37,24 +37,24 @@ const styles = theme => ({
 const useStyles = makeStyles(styles);
 
 const IasoTreeView = ({
-    getChildrenData,
-    getRootData,
+    getChildrenData = () => { },
+    getRootData = () => { },
     label,
-    multiselect,
+    multiselect = false,
     expanded,
-    selected,
+    selected = undefined,
     onToggle,
-    toggleOnLabelClick,
-    onSelect,
-    onCheckBoxClick,
-    onLabelClick,
-    ticked,
-    parentsTicked,
-    scrollIntoView,
-    allowSelection,
+    toggleOnLabelClick = true,
+    onSelect = () => { },
+    onCheckBoxClick = () => { },
+    onLabelClick = () => { },
+    ticked = [],
+    parentsTicked = [],
+    scrollIntoView = null,
+    allowSelection = () => true,
     queryOptions = {},
     childrenQueryOptions = {},
-    dependency,
+    dependency = undefined,
 }) => {
     const classes = useStyles();
     const { formatMessage } = useSafeIntl();
@@ -166,24 +166,6 @@ IasoTreeView.propTypes = {
     queryOptions: object,
     childrenQueryOptions: object,
     dependency: any,
-};
-
-IasoTreeView.defaultProps = {
-    getChildrenData: () => {},
-    getRootData: () => {},
-    multiselect: false,
-    toggleOnLabelClick: true,
-    onSelect: () => {},
-    onCheckBoxClick: () => {},
-    onLabelClick: () => {},
-    selected: undefined,
-    ticked: [],
-    parentsTicked: [],
-    scrollIntoView: null,
-    allowSelection: () => true,
-    queryOptions: {},
-    childrenQueryOptions: {},
-    dependency: undefined,
 };
 
 export { IasoTreeView };

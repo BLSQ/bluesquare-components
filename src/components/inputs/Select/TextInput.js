@@ -8,19 +8,19 @@ import { useStyles } from '../styles';
 
 const TextInput = ({
     params,
-    renderOption,
-    renderTags,
-    selectedOption,
+    renderOption = null,
+    renderTags = null,
+    selectedOption = null,
     disabled,
-    label,
+    label = undefined,
     required,
     onBlur,
     errors,
-    helperText,
+    helperText = null,
     loading,
-    autoComplete,
-    placeholder,
-    dataTestId,
+    autoComplete = 'off',
+    placeholder = '',
+    dataTestId = undefined,
 }) => {
     const classes = useStyles();
     const paramsCopy = {
@@ -86,18 +86,6 @@ const TextInput = ({
         </FormControl>
     );
 };
-
-TextInput.defaultProps = {
-    helperText: null,
-    renderOption: null,
-    renderTags: null,
-    selectedOption: null,
-    autoComplete: 'off',
-    label: undefined,
-    dataTestId: undefined,
-    placeholder: '',
-};
-
 TextInput.propTypes = {
     renderOption: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
     renderTags: PropTypes.func,

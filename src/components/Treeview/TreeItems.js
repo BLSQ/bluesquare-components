@@ -27,10 +27,10 @@ const makeLabel = (child, handleClick = () => null) => (
 const TreeItems = ({
     items,
     initialItems,
-    disabled,
-    style,
+    disabled = false,
+    style = {},
     label,
-    onLabelClick,
+    onLabelClick = () => { },
 }) => {
     if (items.size === 0) return null;
     const nextItems = new Map(items);
@@ -74,12 +74,6 @@ TreeItems.propTypes = {
     style: PropTypes.object,
     label: PropTypes.func.isRequired,
     onLabelClick: PropTypes.func,
-};
-
-TreeItems.defaultProps = {
-    disabled: false,
-    style: {},
-    onLabelClick: () => {},
 };
 
 export default TreeItems;

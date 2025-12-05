@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Button } from './Button';
 import './header.css';
 
-export const Header = ({ user, onLogin, onLogout, onCreateAccount }) => (
+export const Header = ({ user = null, onLogin, onLogout, onCreateAccount }) => (
   <header>
     <div className="wrapper">
       <div>
@@ -47,6 +47,3 @@ Header.propTypes = {
   onCreateAccount: PropTypes.func.isRequired,
 };
 
-Header.defaultProps = {
-  user: null,
-};

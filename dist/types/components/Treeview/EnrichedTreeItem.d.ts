@@ -1,18 +1,18 @@
 export function EnrichedTreeItem({ label, id, fetchChildrenData, expanded, toggleOnLabelClick, onLabelClick, data, withCheckbox, ticked, parentsTicked, scrollIntoView, allowSelection, queryOptions, dependency, }: {
     label: any;
     id: any;
-    fetchChildrenData: any;
-    expanded: any;
-    toggleOnLabelClick: any;
-    onLabelClick: any;
+    fetchChildrenData?: (() => void) | undefined;
+    expanded?: never[] | undefined;
+    toggleOnLabelClick?: boolean | undefined;
+    onLabelClick?: (() => void) | undefined;
     data: any;
-    withCheckbox: any;
-    ticked: any;
-    parentsTicked: any;
-    scrollIntoView: any;
-    allowSelection: any;
+    withCheckbox?: boolean | undefined;
+    ticked?: never[] | undefined;
+    parentsTicked?: never[] | undefined;
+    scrollIntoView?: null | undefined;
+    allowSelection?: (() => boolean) | undefined;
     queryOptions?: {} | undefined;
-    dependency: any;
+    dependency?: undefined;
 }): React.JSX.Element;
 export namespace EnrichedTreeItem {
     namespace propTypes {
@@ -30,21 +30,6 @@ export namespace EnrichedTreeItem {
         export { func as allowSelection };
         export { object as queryOptions };
         export { any as dependency };
-    }
-    namespace defaultProps {
-        export function fetchChildrenData(): void;
-        let expanded_1: never[];
-        export { expanded_1 as expanded };
-        export let toggleOnLabelClick: boolean;
-        export function onLabelClick(): void;
-        export let withCheckbox: boolean;
-        let ticked_1: never[];
-        export { ticked_1 as ticked };
-        export let parentsTicked: never[];
-        export let scrollIntoView: null;
-        export function allowSelection(): boolean;
-        export let queryOptions: {};
-        export let dependency: undefined;
     }
 }
 import React from 'react';

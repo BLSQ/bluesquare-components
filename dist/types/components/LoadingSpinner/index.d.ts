@@ -1,6 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-declare const styledSpinner: React.JSXElementConstructor<Omit<Pick<PropTypes.InferProps<{
+declare const styledSpinner: React.JSXElementConstructor<Omit<Pick<{
+    classes: any;
+    size?: number | undefined;
+    transparent?: boolean | undefined;
+    fixed?: boolean | undefined;
+    absolute?: boolean | undefined;
+    padding?: number | undefined;
+}, "padding" | "size" | "fixed" | "transparent" | "absolute"> & Pick<PropTypes.InferProps<{
     /**
      * Adjust the size of the spinner
      */
@@ -16,11 +23,12 @@ declare const styledSpinner: React.JSXElementConstructor<Omit<Pick<PropTypes.Inf
      */
     padding: PropTypes.Requireable<number>;
     classes: PropTypes.Validator<object>;
-}>, "classes"> & {
-    padding?: number | null | undefined;
-    size?: number | null | undefined;
-    fixed?: boolean | null | undefined;
-    transparent?: boolean | null | undefined;
-    absolute?: boolean | null | undefined;
-} & {}, "classes"> & (import("@mui/styles").StyledComponentProps<any> | (import("@mui/styles").StyledComponentProps<any> & object))>;
+}>, "classes"> & Pick<{
+    classes: any;
+    size?: number | undefined;
+    transparent?: boolean | undefined;
+    fixed?: boolean | undefined;
+    absolute?: boolean | undefined;
+    padding?: number | undefined;
+}, never>, "classes"> & (import("@mui/styles").StyledComponentProps<any> | (import("@mui/styles").StyledComponentProps<any> & object))>;
 export { styledSpinner as LoadingSpinner };

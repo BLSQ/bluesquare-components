@@ -7,7 +7,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { MESSAGES } from './messages';
 
-const Expander = ({ isExpanded, setIsExpanded }) => {
+const Expander = ({ isExpanded = false, setIsExpanded = () => null }) => {
     const { formatMessage } = useSafeIntl();
     return isExpanded ? (
         <IconButton onClick={() => setIsExpanded(!isExpanded)}>
@@ -20,10 +20,6 @@ const Expander = ({ isExpanded, setIsExpanded }) => {
             </IconButton>
         </Tooltip>
     );
-};
-Expander.defaultProps = {
-    isExpanded: false,
-    setIsExpanded: () => null,
 };
 
 Expander.propTypes = {

@@ -2,10 +2,10 @@ export default TreeItems;
 declare function TreeItems({ items, initialItems, disabled, style, label, onLabelClick, }: {
     items: any;
     initialItems: any;
-    disabled: any;
-    style: any;
+    disabled?: boolean | undefined;
+    style?: {} | undefined;
     label: any;
-    onLabelClick: any;
+    onLabelClick?: (() => void) | undefined;
 }): React.JSX.Element | null;
 declare namespace TreeItems {
     namespace propTypes {
@@ -15,14 +15,6 @@ declare namespace TreeItems {
         let style: PropTypes.Requireable<object>;
         let label: PropTypes.Validator<(...args: any[]) => any>;
         let onLabelClick: PropTypes.Requireable<(...args: any[]) => any>;
-    }
-    namespace defaultProps {
-        let disabled_1: boolean;
-        export { disabled_1 as disabled };
-        let style_1: {};
-        export { style_1 as style };
-        export function onLabelClick_1(): void;
-        export { onLabelClick_1 as onLabelClick };
     }
 }
 import React from 'react';

@@ -4,7 +4,12 @@ import InputLabel from '@mui/material/InputLabel';
 import { useStyles } from './styles';
 
 /** @deprecated use InputLabel from @mui/material instead to avoid text alignment issues */
-function InputLabelComponent({ htmlFor, label, required, shrink, error }) {
+function InputLabelComponent({
+    htmlFor,
+    label = '',
+    required,
+    shrink = true,
+    error = false }) {
     const classes = useStyles();
     return (
         <InputLabel
@@ -22,11 +27,6 @@ function InputLabelComponent({ htmlFor, label, required, shrink, error }) {
         </InputLabel>
     );
 }
-InputLabelComponent.defaultProps = {
-    shrink: true,
-    error: false,
-    label: '',
-};
 InputLabelComponent.propTypes = {
     htmlFor: PropTypes.string.isRequired,
     label: PropTypes.string,

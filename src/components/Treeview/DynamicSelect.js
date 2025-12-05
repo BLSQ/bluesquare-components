@@ -103,14 +103,14 @@ const styles = theme => ({
 
 const DynamicSelect = ({
     classes,
-    onSelect,
-    minResultCount,
-    inputLabelObject,
-    withSearchButton,
+    onSelect = () => { },
+    minResultCount = 50,
+    inputLabelObject = MESSAGES.search,
+    withSearchButton = false,
     request,
     makeDropDownText,
-    toolTip,
-    dependency,
+    toolTip = null,
+    dependency = undefined,
 }) => {
     const { formatMessage } = useSafeIntl();
     const [searchValue, setSearchValue] = useState('');
@@ -265,15 +265,6 @@ const DynamicSelect = ({
             </ClickAwayListener>
         </Box>
     );
-};
-
-DynamicSelect.defaultProps = {
-    minResultCount: 50,
-    inputLabelObject: MESSAGES.search,
-    withSearchButton: false,
-    toolTip: null,
-    onSelect: () => {},
-    dependency: undefined,
 };
 
 DynamicSelect.propTypes = {

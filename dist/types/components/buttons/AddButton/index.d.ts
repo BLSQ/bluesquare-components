@@ -1,13 +1,16 @@
 export { styledAddButton as AddButton };
-declare const styledAddButton: React.JSXElementConstructor<Omit<Pick<Pick<{
+declare const styledAddButton: React.JSXElementConstructor<Omit<Pick<{
     classes: any;
     onClick: any;
-    message: any;
-    id: any;
-    dataTestId: any;
-    size: any;
-    disabled: any;
-}, never> & Pick<PropTypes.InferProps<{
+    message?: {
+        id: string;
+        defaultMessage: string;
+    } | undefined;
+    id?: string | undefined;
+    dataTestId?: string | undefined;
+    size?: string | undefined;
+    disabled?: boolean | undefined;
+}, "disabled" | "id" | "size" | "message" | "dataTestId"> & Pick<PropTypes.InferProps<{
     classes: PropTypes.Validator<object>;
     onClick: PropTypes.Validator<(...args: any[]) => any>;
     message: PropTypes.Requireable<object>;
@@ -15,7 +18,7 @@ declare const styledAddButton: React.JSXElementConstructor<Omit<Pick<Pick<{
     dataTestId: PropTypes.Requireable<string>;
     size: PropTypes.Requireable<string>;
     disabled: PropTypes.Requireable<boolean>;
-}>, "disabled" | "id" | "size" | "message" | "dataTestId" | PropTypes.RequiredKeys<{
+}>, PropTypes.RequiredKeys<{
     classes: PropTypes.Validator<object>;
     onClick: PropTypes.Validator<(...args: any[]) => any>;
     message: PropTypes.Requireable<object>;
@@ -23,20 +26,17 @@ declare const styledAddButton: React.JSXElementConstructor<Omit<Pick<Pick<{
     dataTestId: PropTypes.Requireable<string>;
     size: PropTypes.Requireable<string>;
     disabled: PropTypes.Requireable<boolean>;
-}>>, PropTypes.RequiredKeys<{
-    classes: PropTypes.Validator<object>;
-    onClick: PropTypes.Validator<(...args: any[]) => any>;
-    message: PropTypes.Requireable<object>;
-    id: PropTypes.Requireable<string>;
-    dataTestId: PropTypes.Requireable<string>;
-    size: PropTypes.Requireable<string>;
-    disabled: PropTypes.Requireable<boolean>;
-}>> & {
-    disabled?: boolean | null | undefined;
-    id?: string | null | undefined;
-    size?: string | null | undefined;
-    message?: object | null | undefined;
-    dataTestId?: string | null | undefined;
-} & {}, "classes"> & import("@mui/styles").StyledComponentProps<string> & object>;
+}>> & Pick<{
+    classes: any;
+    onClick: any;
+    message?: {
+        id: string;
+        defaultMessage: string;
+    } | undefined;
+    id?: string | undefined;
+    dataTestId?: string | undefined;
+    size?: string | undefined;
+    disabled?: boolean | undefined;
+}, never>, "classes"> & import("@mui/styles").StyledComponentProps<string> & object>;
 import PropTypes from 'prop-types';
 import React from 'react';

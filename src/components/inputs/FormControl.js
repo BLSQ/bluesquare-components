@@ -1,9 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { string } from 'prop-types';
 import FormControl from '@mui/material/FormControl';
 import { withStyles } from '@mui/styles';
 import { Typography, Box } from '@mui/material';
 import classNames from 'classnames';
+
+/** @type {string[]} */
+const defaultErrors = [];
 
 const styles = theme => ({
     formControl: {
@@ -30,7 +33,13 @@ const styles = theme => ({
     },
 });
 
-function FormControlComponent({ classes, children, errors, id, hideError }) {
+function FormControlComponent({
+    classes,
+    children,
+    errors = defaultErrors,
+    id = null,
+    hideError = false
+}) {
     const extraProps = {};
     if (id) {
         extraProps.id = id;
@@ -66,11 +75,6 @@ function FormControlComponent({ classes, children, errors, id, hideError }) {
         </FormControl>
     );
 }
-FormControlComponent.defaultProps = {
-    errors: [],
-    id: null,
-    hideError: false,
-};
 FormControlComponent.propTypes = {
     classes: PropTypes.object.isRequired,
     children: PropTypes.node.isRequired,

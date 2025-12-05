@@ -47,15 +47,15 @@ const useStyles = makeStyles(theme => ({
 const DatePicker = ({
     label,
     onChange,
-    currentDate,
+    currentDate = null,
     clearMessage,
-    required,
-    errors,
-    hideError,
-    disabled,
-    clearable,
-    minDate,
-    maxDate
+    required = false,
+    errors = [],
+    hideError = false,
+    disabled = false,
+    clearable = true,
+    minDate = undefined,
+    maxDate = undefined,
 }) => {
     const classes = useStyles();
     const [dateError, setDateError] = useState(null);
@@ -104,18 +104,6 @@ const DatePicker = ({
             )}
         </FormControl>
     );
-};
-
-DatePicker.defaultProps = {
-    currentDate: null,
-    required: false,
-    errors: [],
-    hideError: false,
-    disabled: false,
-    clearMessage: undefined,
-    clearable: true,
-    minDate: undefined,
-    maxDate: undefined
 };
 
 DatePicker.propTypes = {

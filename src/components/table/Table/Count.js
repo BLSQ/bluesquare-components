@@ -6,7 +6,7 @@ import { formatThousand } from '../../../utils';
 
 import { MESSAGES } from './messages';
 
-const Count = ({ count, selectCount }) => (
+const Count = ({ count = 0, selectCount = 0 }) => (
     <Box
         py={2}
         display="flex"
@@ -30,10 +30,6 @@ const Count = ({ count, selectCount }) => (
         )}
     </Box>
 );
-Count.defaultProps = {
-    count: 0,
-    selectCount: 0,
-};
 
 Count.propTypes = {
     count: PropTypes.number,

@@ -11,17 +11,17 @@ import { styles } from './styles';
 
 const PasswordInput = ({
     keyValue,
-    label,
-    errors,
-    required,
-    value,
-    disabled,
-    onChange,
-    multiline,
-    displayPassword,
+    label = '',
+    errors = [],
+    required = false,
+    value = '',
+    disabled = false,
+    onChange = () => { },
+    multiline = false,
+    displayPassword = false,
     classes,
-    autoComplete,
-    dataTestId,
+    autoComplete = 'new-password',
+    dataTestId = undefined,
 }) => {
     const hasErrors = errors.length >= 1;
     const [showPassword, setShowPassword] = useState(displayPassword);
@@ -70,19 +70,6 @@ const PasswordInput = ({
             </Tooltip>
         </FormControl>
     );
-};
-
-PasswordInput.defaultProps = {
-    value: '',
-    errors: [],
-    multiline: false,
-    disabled: false,
-    required: false,
-    onChange: () => {},
-    displayPassword: false,
-    label: '',
-    autoComplete: 'new-password',
-    dataTestId: undefined,
 };
 
 PasswordInput.propTypes = {

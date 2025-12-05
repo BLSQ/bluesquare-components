@@ -93,13 +93,31 @@ const getSelectionCol = (
     },
 });
 
+/**
+ * @typedef {Object} SelectionObject
+ * @property {Array} selectedItems
+ * @property {Array} unSelectedItems
+ * @property {boolean} selectAll
+ * @property {number} selectCount
+ */
+
+/**
+ * @param {Object} props
+ * @param {boolean} [props.multiSelect]
+ * @param {Array} [props.selectionActions]
+ * @param {(selectionType: string, items: Array<any>, totalCount?: number) => any} [props.setTableSelection]
+ * @param {SelectionObject|any} [props.selection]
+ * @param {string|null} [props.selectionActionMessage]
+ * @param {number} [props.selectAllCount]
+ */
+
 const Select = ({
-    multiSelect,
-    selectionActions,
-    setTableSelection,
-    selection,
-    selectionActionMessage,
-    selectAllCount,
+    multiSelect = false,
+    selectionActions = [],
+    setTableSelection = () => null,
+    selection = selectionInitialState,
+    selectionActionMessage = null,
+    selectAllCount = 0,
 }) => {
     const { formatMessage } = useSafeIntl();
 
@@ -124,15 +142,6 @@ const Select = ({
             }
         />
     );
-};
-
-Select.defaultProps = {
-    selectAllCount: 0,
-    multiSelect: false,
-    selectionActions: [],
-    selection: selectionInitialState,
-    setTableSelection: () => null,
-    selectionActionMessage: null,
 };
 
 Select.propTypes = {

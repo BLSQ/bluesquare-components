@@ -16,12 +16,6 @@ export namespace ErrorBoundary {
         let message: PropTypes.Requireable<string>;
         let className: PropTypes.Requireable<string>;
     }
-    namespace defaultProps {
-        let message_1: null;
-        export { message_1 as message };
-        let className_1: null;
-        export { className_1 as className };
-    }
 }
 import React from 'react';
 import PropTypes from 'prop-types';

@@ -14,8 +14,8 @@ const CommentText = ({
     hideOverflow,
     toggle,
     maxLength,
-    textExpand,
-    textCollapse,
+    textExpand = null,
+    textCollapse = null,
 }) => {
     const classes = useStyles();
     const intl = useSafeIntl();
@@ -58,13 +58,14 @@ CommentText.propTypes = {
     textCollapse: PropTypes.string,
 };
 
-CommentText.defaultProps = {
-    textExpand: null,
-    textCollapse: null,
-};
-
 // credit: https://codesandbox.io/s/comment-box-with-material-ui-10p3c?file=/src/index.js:2810-4030
-const Comment = ({ avatar, author, content, postingTime, classNames }) => {
+const Comment = ({
+    avatar = null,
+    author,
+    content,
+    postingTime = '',
+    classNames = null,
+}) => {
     const intl = useSafeIntl();
     const defaultClasses = useStyles();
     const [hideTextOverflow, setHideTextOverflow] = useState(
@@ -110,11 +111,6 @@ Comment.propTypes = {
     content: PropTypes.string.isRequired,
     postingTime: PropTypes.string,
     classNames: PropTypes.arrayOf(PropTypes.string),
-};
-Comment.defaultProps = {
-    avatar: null,
-    postingTime: '',
-    classNames: null,
 };
 
 export { Comment };

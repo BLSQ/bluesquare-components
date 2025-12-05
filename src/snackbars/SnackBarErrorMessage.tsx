@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export const SnackBarErrorMessage = ({ errorLog, id }) => {
+export const SnackBarErrorMessage = ({ errorLog = null, id = null }: { errorLog?: any, id?: any }) => {
     const classes = useStyles();
     const { formatMessage } = useSafeIntl();
     const { closeSnackbar } = useSnackbar();
@@ -88,10 +88,6 @@ export const SnackBarErrorMessage = ({ errorLog, id }) => {
     );
 };
 
-SnackBarErrorMessage.defaultProps = {
-    errorLog: null,
-    id: null,
-};
 SnackBarErrorMessage.propTypes = {
     errorLog: PropTypes.any,
     id: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),

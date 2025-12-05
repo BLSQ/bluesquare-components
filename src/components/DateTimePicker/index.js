@@ -28,13 +28,13 @@ const useStyles = makeStyles(theme => ({
 const DateTimePicker = ({
     label,
     onChange,
-    currentDate,
+    currentDate = null,
     clearMessage,
-    required,
-    errors,
-    hideError,
-    disabled,
-    clearable,
+    required = false,
+    errors = [],
+    hideError = false,
+    disabled = false,
+    clearable = true,
     maxTime,
     maxDateTime,
     maxDate,
@@ -94,22 +94,6 @@ const DateTimePicker = ({
             )}
         </FormControl>
     );
-};
-
-DateTimePicker.defaultProps = {
-    currentDate: null,
-    required: false,
-    errors: [],
-    hideError: false,
-    disabled: false,
-    clearMessage: undefined,
-    clearable: true,
-    maxTime:undefined,
-    maxDateTime:undefined,
-    maxDate:undefined,
-    minTime:undefined,
-    minDateTime:undefined,
-    minDate:undefined,
 };
 
 DateTimePicker.propTypes = {

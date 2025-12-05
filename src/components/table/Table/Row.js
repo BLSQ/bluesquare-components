@@ -6,6 +6,8 @@ import { makeStyles } from '@mui/styles';
 import classNames from 'classnames';
 import { CellContentWithErrorBoundary } from './CellContentWithErrorBoundary';
 
+const defaultCellProps = () => ({});
+
 const useStyles = makeStyles(theme => ({
     row: {
         '&:nth-of-type(odd)': {
@@ -34,11 +36,11 @@ const useStyles = makeStyles(theme => ({
 const Row = ({
     row,
     rowProps,
-    subComponent,
-    sortBy,
-    onRowClick,
-    expanded,
-    cellProps: userCellProps,
+    subComponent = undefined,
+    sortBy = [],
+    onRowClick = undefined,
+    expanded = false,
+    cellProps: userCellProps = defaultCellProps,
 }) => {
     const classes = useStyles();
     const [isExpanded, setIsExpanded] = useState(expanded);
@@ -101,14 +103,6 @@ const Row = ({
             )}
         </>
     );
-};
-
-Row.defaultProps = {
-    subComponent: undefined,
-    sortBy: [],
-    onRowClick: undefined,
-    expanded: false,
-    cellProps: () => {},
 };
 
 Row.propTypes = {

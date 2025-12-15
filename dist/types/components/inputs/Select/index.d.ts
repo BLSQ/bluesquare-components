@@ -70,7 +70,38 @@
  *   )}
  * />
  */
-declare function SelectCustom(props: any): React.JSX.Element;
+declare function SelectCustom({ multi, errors, keyValue, label, required, disabled, clearable, value, onBlur, loadingText, noOptionsText, helperText, options, loading, onChange, getOptionLabel, getOptionSelected, renderOption, renderTags, returnFullObject, placeholder, freeSolo, dataTestId, useBuiltInErrors, }: {
+    multi?: boolean | undefined;
+    errors?: never[] | undefined;
+    keyValue: any;
+    label: any;
+    required?: boolean | undefined;
+    disabled?: boolean | undefined;
+    clearable?: boolean | undefined;
+    value: any;
+    onBlur?: (() => void) | undefined;
+    loadingText?: {
+        id: string;
+        defaultMessage: string;
+    } | undefined;
+    noOptionsText?: {
+        id: string;
+        defaultMessage: string;
+    } | undefined;
+    helperText: any;
+    options?: never[] | undefined;
+    loading?: boolean | undefined;
+    onChange: any;
+    getOptionLabel?: null | undefined;
+    getOptionSelected?: null | undefined;
+    renderOption?: null | undefined;
+    renderTags?: ((tagValue: any, getTagProps: any) => any) | undefined;
+    returnFullObject?: boolean | undefined;
+    placeholder: any;
+    freeSolo?: boolean | undefined;
+    dataTestId: any;
+    useBuiltInErrors?: boolean | undefined;
+}): React.JSX.Element;
 declare namespace SelectCustom {
     namespace propTypes {
         let multi: PropTypes.Requireable<boolean>;

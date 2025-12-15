@@ -20,7 +20,7 @@ export function SingleSelect({ value, keyValue, label, errors, onChange, options
         id: string;
         defaultMessage: string;
     } | undefined;
-    renderOption: any;
+    renderOption?: null | undefined;
     renderTags?: ((tagValue: any, getTagProps: any) => any) | undefined;
     returnFullObject?: boolean | undefined;
     helperText?: undefined;

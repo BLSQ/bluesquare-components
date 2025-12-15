@@ -5,7 +5,7 @@ export function Row({ row, rowProps, subComponent, sortBy, onRowClick, expanded,
     sortBy?: never[] | undefined;
     onRowClick?: undefined;
     expanded?: boolean | undefined;
-    cellProps?: (() => {}) | undefined;
+    cellProps?: (() => void) | undefined;
 }): React.JSX.Element;
 export namespace Row {
     namespace propTypes {

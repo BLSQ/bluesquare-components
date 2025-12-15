@@ -83,36 +83,88 @@ import {
  *   )}
  * />
  */
-const SelectCustom = props => {
-    if (props.multi) {
-        return <MultiSelect {...props} />;
+const SelectCustom = ({
+    multi = false,
+    errors = [],
+    keyValue,
+    label,
+    required = false,
+    disabled = false,
+    clearable = true,
+    value,
+    onBlur = () => {},
+    loadingText = MESSAGES.loadingOptions,
+    noOptionsText = MESSAGES.noOptions,
+    helperText,
+    options = [],
+    loading = false,
+    onChange,
+    getOptionLabel = null,
+    getOptionSelected = null,
+    renderOption = null,
+    renderTags = defaultRenderTags,
+    returnFullObject = false,
+    placeholder,
+    freeSolo = false,
+    dataTestId,
+    useBuiltInErrors = true,
+}) => {
+    if (multi) {
+        return (
+            <MultiSelect
+                errors={errors}
+                keyValue={keyValue}
+                label={label}
+                required={required}
+                disabled={disabled}
+                clearable={clearable}
+                value={value}
+                onBlur={onBlur}
+                loadingText={loadingText}
+                noOptionsText={noOptionsText}
+                helperText={helperText}
+                options={options}
+                loading={loading}
+                onChange={onChange}
+                getOptionLabel={getOptionLabel}
+                getOptionSelected={getOptionSelected}
+                renderOption={renderOption}
+                renderTags={renderTags}
+                returnFullObject={returnFullObject}
+                placeholder={placeholder}
+                freeSolo={freeSolo}
+                dataTestId={dataTestId}
+                useBuiltInErrors={useBuiltInErrors}
+            />
+        );
     }
-    return <SingleSelect {...props} />;
-};
-
-SelectCustom.defaultProps = {
-    multi: false,
-    value: undefined,
-    errors: [],
-    label: undefined,
-    disabled: false,
-    clearable: true,
-    required: false,
-    loading: false,
-    options: [],
-    onBlur: () => {},
-    getOptionSelected: null,
-    getOptionLabel: null,
-    renderOption: null,
-    noOptionsText: MESSAGES.noOptions,
-    loadingText: MESSAGES.loadingOptions,
-    helperText: undefined,
-    renderTags: defaultRenderTags,
-    returnFullObject: false, // use this one if you pass array of objects as options and want an array of objects as sected items, not a string of id's
-    placeholder: undefined,
-    freeSolo: false,
-    dataTestId: undefined,
-    useBuiltInErrors: true,
+    return (
+        <SingleSelect
+            errors={errors}
+            keyValue={keyValue}
+            label={label}
+            required={required}
+            disabled={disabled}
+            clearable={clearable}
+            value={value}
+            onBlur={onBlur}
+            loadingText={loadingText}
+            noOptionsText={noOptionsText}
+            helperText={helperText}
+            options={options}
+            loading={loading}
+            onChange={onChange}
+            getOptionLabel={getOptionLabel}
+            getOptionSelected={getOptionSelected}
+            renderOption={renderOption}
+            renderTags={renderTags}
+            returnFullObject={returnFullObject}
+            placeholder={placeholder}
+            freeSolo={freeSolo}
+            dataTestId={dataTestId}
+            useBuiltInErrors={useBuiltInErrors}
+        />
+    );
 };
 
 SelectCustom.propTypes = {

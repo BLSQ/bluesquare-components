@@ -109,10 +109,62 @@ const SelectCustom = ({
     dataTestId,
     useBuiltInErrors = true,
 }) => {
-    if (allProps.multi) {
-        return <MultiSelect {...allProps} />;
+    if (multi) {
+        return (
+            <MultiSelect
+                errors={errors}
+                keyValue={keyValue}
+                label={label}
+                required={required}
+                disabled={disabled}
+                clearable={clearable}
+                value={value}
+                onBlur={onBlur}
+                loadingText={loadingText}
+                noOptionsText={noOptionsText}
+                helperText={helperText}
+                options={options}
+                loading={loading}
+                onChange={onChange}
+                getOptionLabel={getOptionLabel}
+                getOptionSelected={getOptionSelected}
+                renderOption={renderOption}
+                renderTags={renderTags}
+                returnFullObject={returnFullObject}
+                placeholder={placeholder}
+                freeSolo={freeSolo}
+                dataTestId={dataTestId}
+                useBuiltInErrors={useBuiltInErrors}
+            />
+        );
     }
-    return <SingleSelect {...allProps} />;
+    return (
+        <SingleSelect
+            errors={errors}
+            keyValue={keyValue}
+            label={label}
+            required={required}
+            disabled={disabled}
+            clearable={clearable}
+            value={value}
+            onBlur={onBlur}
+            loadingText={loadingText}
+            noOptionsText={noOptionsText}
+            helperText={helperText}
+            options={options}
+            loading={loading}
+            onChange={onChange}
+            getOptionLabel={getOptionLabel}
+            getOptionSelected={getOptionSelected}
+            renderOption={renderOption}
+            renderTags={renderTags}
+            returnFullObject={returnFullObject}
+            placeholder={placeholder}
+            freeSolo={freeSolo}
+            dataTestId={dataTestId}
+            useBuiltInErrors={useBuiltInErrors}
+        />
+    );
 };
 
 SelectCustom.propTypes = {

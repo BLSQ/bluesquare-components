@@ -305,7 +305,7 @@ export const useTranslatedConfig = (): Config => {
                             }}
                             label=""
                             currentDate={
-                                value ? moment(Number(value)) : undefined
+                                (value ? moment(Number(value)) : null) as any
                             }
                             clearMessage={MESSAGES.clear}
                             clearable={false}
@@ -328,7 +328,7 @@ export const useTranslatedConfig = (): Config => {
                             }}
                             label=""
                             currentDate={
-                                value ? moment(Number(value)) : undefined
+                                (value ? moment(Number(value)) : null) as any
                             }
                             clearMessage={MESSAGES.clear}
                             clearable={false}

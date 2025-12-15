@@ -14,9 +14,7 @@ const FakeComponent = props => {
     );
 };
 
-FakeComponent.defaultProps = {
-    ref: undefined,
-};
+
 
 FakeComponent.propTypes = {
     component: PropTypes.any.isRequired,

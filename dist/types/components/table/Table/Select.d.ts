@@ -1,3 +1,9 @@
+export type SelectionObject = {
+    selectedItems: any[];
+    unSelectedItems: any[];
+    selectAll: boolean;
+    selectCount: number;
+};
 export function getSelectionCol(selection: any, setTableSelection: any, count: any, formatMessage: any, getIsSelectionDisabled?: (row: any) => boolean): {
     Header: any;
     accessor: string;
@@ -14,37 +20,39 @@ export function onSelect({ isSelected, item, selection, setTableSelection, count
     setTableSelection: any;
     count: any;
 }): void;
+/**
+ * @typedef {Object} SelectionObject
+ * @property {Array} selectedItems
+ * @property {Array} unSelectedItems
+ * @property {boolean} selectAll
+ * @property {number} selectCount
+ */
+/**
+ * @param {Object} props
+ * @param {boolean} [props.multiSelect]
+ * @param {Array} [props.selectionActions]
+ * @param {(selectionType: string, items: Array<any>, totalCount?: number) => any} [props.setTableSelection]
+ * @param {SelectionObject|any} [props.selection]
+ * @param {string|null} [props.selectionActionMessage]
+ * @param {number} [props.selectAllCount]
+ */
 export function Select({ multiSelect, selectionActions, setTableSelection, selection, selectionActionMessage, selectAllCount, }: {
-    multiSelect: any;
-    selectionActions: any;
-    setTableSelection: any;
-    selection: any;
-    selectionActionMessage: any;
-    selectAllCount: any;
+    multiSelect?: boolean | undefined;
+    selectionActions?: any[] | undefined;
+    setTableSelection?: ((selectionType: string, items: Array<any>, totalCount?: number) => any) | undefined;
+    selection?: SelectionObject | any;
+    selectionActionMessage?: string | null | undefined;
+    selectAllCount?: number | undefined;
 }): React.JSX.Element;
 export namespace Select {
-    namespace defaultProps {
-        export let selectAllCount: number;
-        export let multiSelect: boolean;
-        export let selectionActions: never[];
-        export { selectionInitialState as selection };
-        export function setTableSelection(): null;
-        export let selectionActionMessage: null;
-    }
     namespace propTypes {
-        let selectAllCount_1: PropTypes.Requireable<number>;
-        export { selectAllCount_1 as selectAllCount };
-        let multiSelect_1: PropTypes.Requireable<boolean>;
-        export { multiSelect_1 as multiSelect };
-        let selectionActions_1: PropTypes.Requireable<any[]>;
-        export { selectionActions_1 as selectionActions };
-        let setTableSelection_1: PropTypes.Requireable<(...args: any[]) => any>;
-        export { setTableSelection_1 as setTableSelection };
-        export let selection: PropTypes.Requireable<object>;
-        let selectionActionMessage_1: PropTypes.Requireable<string>;
-        export { selectionActionMessage_1 as selectionActionMessage };
+        let selectAllCount: PropTypes.Requireable<number>;
+        let multiSelect: PropTypes.Requireable<boolean>;
+        let selectionActions: PropTypes.Requireable<any[]>;
+        let setTableSelection: PropTypes.Requireable<(...args: any[]) => any>;
+        let selection: PropTypes.Requireable<object>;
+        let selectionActionMessage: PropTypes.Requireable<string>;
     }
 }
 import React from 'react';
-import { selectionInitialState } from '../../../utils/tableUtils';
 import PropTypes from 'prop-types';

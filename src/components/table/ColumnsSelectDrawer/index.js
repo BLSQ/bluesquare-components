@@ -41,7 +41,7 @@ const ColumnsSelectDrawer = ({
     classes,
     options,
     setOptions,
-    minColumns,
+    minColumns = 2,
     intl: { formatMessage },
 }) => {
     const [state, setState] = React.useState({
@@ -128,7 +128,7 @@ const ColumnsSelectDrawer = ({
                                                         <Switch
                                                             disabled={
                                                                 activeOptionsCount ===
-                                                                    minColumns &&
+                                                                minColumns &&
                                                                 o.active
                                                             }
                                                             size="small"
@@ -171,9 +171,6 @@ const ColumnsSelectDrawer = ({
     );
 };
 
-ColumnsSelectDrawer.defaultProps = {
-    minColumns: 2,
-};
 
 ColumnsSelectDrawer.propTypes = {
     classes: PropTypes.object.isRequired,

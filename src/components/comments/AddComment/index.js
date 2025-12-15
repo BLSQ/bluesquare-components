@@ -6,15 +6,15 @@ import { MESSAGES } from './messages';
 import { useStyles } from './styles';
 
 const AddComment = ({
-    placeholder,
-    minRows,
-    maxRows,
-    onChange,
-    className,
-    buttonText,
-    onConfirm,
-    position,
-    inline,
+    placeholder = null,
+    minRows = 3,
+    maxRows = 5,
+    onChange = () => { },
+    className = null,
+    buttonText = null,
+    onConfirm = () => { },
+    position = '',
+    inline = true,
 }) => {
     const [comment, setComment] = useState('');
     const classes = useStyles();
@@ -73,16 +73,5 @@ AddComment.propTypes = {
     buttonText: PropTypes.string,
     position: PropTypes.string,
     inline: PropTypes.bool,
-};
-AddComment.defaultProps = {
-    placeholder: null,
-    minRows: 3,
-    maxRows: 5,
-    onChange: () => {},
-    className: null,
-    buttonText: null,
-    onConfirm: () => {},
-    position: '',
-    inline: true,
 };
 export { AddComment };

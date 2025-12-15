@@ -2,14 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Checkbox, FormControlLabel } from '@mui/material';
 
+/**
+ * We use JSDoc here to define the types for TypeScript, 
+ * specifically to ensure onChange is known to accept a boolean argument.
+ * * @param {Object} props
+ * @param {boolean} [props.value]
+ * @param {boolean} [props.disabled]
+ * @param {string} [props.label]
+ * @param {(checked: boolean) => void} [props.onChange]
+ * @param {string} props.keyValue
+ * @param {boolean} [props.required]
+ * @param {string} [props.dataTestId]
+ */
+
 const CheckboxComponent = ({
-    value,
-    disabled,
-    label,
-    onChange,
+    value = false,
+    disabled = false,
+    label = '',
+    onChange = () => { },
     keyValue,
-    required,
-    dataTestId,
+    required = false,
+    dataTestId = undefined,
 }) => (
     <FormControlLabel
         disabled={disabled}
@@ -27,15 +40,6 @@ const CheckboxComponent = ({
         label={`${label}${required ? '*' : ''}`}
     />
 );
-
-CheckboxComponent.defaultProps = {
-    value: false,
-    disabled: false,
-    required: false,
-    onChange: () => {},
-    label: '',
-    dataTestId: undefined,
-};
 
 CheckboxComponent.propTypes = {
     value: PropTypes.bool,

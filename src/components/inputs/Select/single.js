@@ -19,29 +19,29 @@ import {
 } from './utils';
 
 const SingleSelect = ({
-    value,
+    value = undefined,
     keyValue,
-    label,
-    errors,
+    label = undefined,
+    errors = [],
     onChange,
-    options,
-    onBlur,
-    disabled,
-    clearable,
-    required,
-    noOptionsText,
-    getOptionLabel,
-    getOptionSelected,
-    loading,
-    loadingText,
-    renderOption,
-    renderTags,
-    returnFullObject,
-    helperText,
-    placeholder,
-    freeSolo,
-    dataTestId,
-    useBuiltInErrors,
+    options = [],
+    onBlur = () => {},
+    disabled = false,
+    clearable = true,
+    required = false,
+    noOptionsText = MESSAGES.noOptions,
+    getOptionLabel = null,
+    getOptionSelected = null,
+    loading = false,
+    loadingText = MESSAGES.loadingOptions,
+    renderOption = null,
+    renderTags = defaultRenderTags,
+    returnFullObject = false, // use this one if you pass array of objects as options and want an array of objects as sected items, not a string of id's
+    helperText = undefined,
+    placeholder = undefined,
+    freeSolo = false,
+    dataTestId = undefined,
+    useBuiltInErrors = true,
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -129,30 +129,6 @@ const SingleSelect = ({
             />
         </Box>
     );
-};
-
-SingleSelect.defaultProps = {
-    value: undefined,
-    errors: [],
-    label: undefined,
-    disabled: false,
-    clearable: true,
-    required: false,
-    loading: false,
-    options: [],
-    onBlur: () => {},
-    getOptionSelected: null,
-    getOptionLabel: null,
-    renderOption: null,
-    noOptionsText: MESSAGES.noOptions,
-    loadingText: MESSAGES.loadingOptions,
-    helperText: undefined,
-    renderTags: defaultRenderTags,
-    returnFullObject: false, // use this one if you pass array of objects as options and want an array of objects as sected items, not a string of id's
-    placeholder: undefined,
-    dataTestId: undefined,
-    freeSolo: false,
-    useBuiltInErrors: true,
 };
 
 SingleSelect.propTypes = {

@@ -112,12 +112,5 @@ LazyImage.propTypes = {
     visibilitySensorProps: PropTypes.any,
 };
 
-LazyImage.defaultProps = {
-    children: undefined,
-    onError: undefined,
-    placeholder: undefined,
-    src: undefined,
-    visibilitySensorProps: undefined,
-};
 
 export { LazyImage };

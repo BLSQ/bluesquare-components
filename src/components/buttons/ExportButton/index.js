@@ -22,10 +22,10 @@ function ExportButtonComponent({
     classes,
     intl,
     onClick,
-    message,
-    isDisabled,
+    message = MESSAGES.export,
+    isDisabled = false,
     batchExport,
-    id,
+    id = '',
 }) {
     return batchExport ? (
         <Button
@@ -43,11 +43,6 @@ function ExportButtonComponent({
         <CallMade onClick={onClick} disabled={isDisabled} />
     );
 }
-ExportButtonComponent.defaultProps = {
-    message: MESSAGES.export,
-    isDisabled: false,
-    id: '',
-};
 ExportButtonComponent.propTypes = {
     intl: PropTypes.object.isRequired,
     classes: PropTypes.object.isRequired,

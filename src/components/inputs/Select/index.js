@@ -83,27 +83,32 @@ import {
  *   )}
  * />
  */
-const SelectCustom = props => {
-    const allProps = {
-        multi: false,
-        errors: [],
-        disabled: false,
-        clearable: true,
-        required: false,
-        loading: false,
-        options: [],
-        onBlur: () => {},
-        getOptionSelected: null,
-        getOptionLabel: null,
-        renderOption: null,
-        noOptionsText: MESSAGES.noOptions,
-        loadingText: MESSAGES.loadingOptions,
-        renderTags: defaultRenderTags,
-        returnFullObject: false,
-        freeSolo: false,
-        useBuiltInErrors: true,
-        ...props,
-    };
+const SelectCustom = ({
+    multi = false,
+    errors = [],
+    keyValue,
+    label,
+    required = false,
+    disabled = false,
+    clearable = true,
+    value,
+    onBlur = () => {},
+    loadingText = MESSAGES.loadingOptions,
+    noOptionsText = MESSAGES.noOptions,
+    helperText,
+    options = [],
+    loading = false,
+    onChange,
+    getOptionLabel = null,
+    getOptionSelected = null,
+    renderOption = null,
+    renderTags = defaultRenderTags,
+    returnFullObject = false,
+    placeholder,
+    freeSolo = false,
+    dataTestId,
+    useBuiltInErrors = true,
+}) => {
     if (allProps.multi) {
         return <MultiSelect {...allProps} />;
     }

@@ -124,9 +124,6 @@ const CommentWithThread = ({
                 content={comments[0].comment}
                 postingTime={comments[0].dateTime}
                 id={comments[0].id}
-            // onButtonClick={() => {
-            //     setIsExpanded(true);
-            // }}
             />
         );
     }

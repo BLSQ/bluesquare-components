@@ -6,7 +6,7 @@ import { makeStyles } from '@mui/styles';
 import classNames from 'classnames';
 import { CellContentWithErrorBoundary } from './CellContentWithErrorBoundary';
 
-const defaultCellProps = () => ({});
+const defaultCellProps = () => {};
 
 const useStyles = makeStyles(theme => ({
     row: {

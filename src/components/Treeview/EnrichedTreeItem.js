@@ -45,11 +45,11 @@ const useStyles = makeStyles(styles);
 const EnrichedTreeItem = ({
     label,
     id,
-    fetchChildrenData = () => { },
+    fetchChildrenData = () => { }, // fetchChildrenData(id)
     expanded = [],
     toggleOnLabelClick = true,
     onLabelClick = () => { },
-    data,
+    data, // additional data that can be passed up to the parent (eg org unit details)
     withCheckbox = false,
     ticked = [],
     parentsTicked = [],

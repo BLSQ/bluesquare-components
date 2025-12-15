@@ -25,7 +25,7 @@ const SingleSelect = ({
     errors = [],
     onChange,
     options = [],
-    onBlur = () => { },
+    onBlur = () => {},
     disabled = false,
     clearable = true,
     required = false,
@@ -34,9 +34,9 @@ const SingleSelect = ({
     getOptionSelected = null,
     loading = false,
     loadingText = MESSAGES.loadingOptions,
-    renderOption,
+    renderOption = null,
     renderTags = defaultRenderTags,
-    returnFullObject = false,
+    returnFullObject = false, // use this one if you pass array of objects as options and want an array of objects as sected items, not a string of id's
     helperText = undefined,
     placeholder = undefined,
     freeSolo = false,
@@ -130,7 +130,6 @@ const SingleSelect = ({
         </Box>
     );
 };
-
 
 SingleSelect.propTypes = {
     errors: PropTypes.arrayOf(PropTypes.string),

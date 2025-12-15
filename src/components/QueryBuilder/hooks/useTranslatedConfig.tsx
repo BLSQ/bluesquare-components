@@ -222,6 +222,8 @@ export const useTranslatedConfig = (): Config => {
                                 value={value}
                                 keyValue={`${field}`}
                                 multi={false}
+                                // Type error because Select component is JS
+                                // @ts-ignore
                                 options={transformListValuesToOptions(
                                     listValues,
                                 )}
@@ -243,6 +245,8 @@ export const useTranslatedConfig = (): Config => {
                                 value={value?.join(',') || ''}
                                 keyValue={`${field}`}
                                 multi
+                                // Type error because Select component is JS //
+                                //@ts-ignore
                                 options={transformListValuesToOptions(
                                     listValues,
                                 )}
@@ -301,7 +305,7 @@ export const useTranslatedConfig = (): Config => {
                             }}
                             label=""
                             currentDate={
-                                value ? moment(Number(value)) : undefined
+                                (value ? moment(Number(value)) : null) as any
                             }
                             clearMessage={MESSAGES.clear}
                             clearable={false}
@@ -324,7 +328,7 @@ export const useTranslatedConfig = (): Config => {
                             }}
                             label=""
                             currentDate={
-                                value ? moment(Number(value)) : undefined
+                                (value ? moment(Number(value)) : null) as any
                             }
                             clearMessage={MESSAGES.clear}
                             clearable={false}
@@ -560,7 +564,12 @@ export const useTranslatedConfig = (): Config => {
                             placeholder={formatMessage(MESSAGES.selectField)}
                             keyValue={`${id}`}
                             multi={false}
-                            options={(items || []).map(item => ({
+                            // Type error because Select component is JS
+                            // @ts-ignore
+                            options={(
+                                items ||
+                                ([] as { value: string; label: string }[])
+                            ).map(item => ({
                                 value: item.path,
                                 label: item.label,
                             }))}
@@ -577,7 +586,12 @@ export const useTranslatedConfig = (): Config => {
                             clearable={false}
                             keyValue={`${id}`}
                             multi={false}
-                            options={(items || []).map(item => ({
+                            // Type error because Select component is JS
+                            // @ts-ignore
+                            options={(
+                                items ||
+                                ([] as { value: string; label: string }[])
+                            ).map(item => ({
                                 value: item.key,
                                 label: item.label,
                             }))}

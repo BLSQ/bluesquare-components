@@ -21,28 +21,28 @@ import {
 } from './utils';
 
 const MultiSelect = ({
-    value,
+    value = undefined,
     keyValue,
-    label,
-    errors,
+    label = '',
+    errors = [],
     onChange,
-    options,
-    onBlur,
-    disabled,
-    clearable,
-    required,
-    noOptionsText,
-    getOptionLabel,
-    getOptionSelected,
-    loading,
-    renderOption,
-    renderTags,
-    returnFullObject,
-    helperText,
-    loadingText,
-    dataTestId,
+    options = [],
+    onBlur = () => { },
+    disabled = false,
+    clearable = true,
+    required = false,
+    noOptionsText = MESSAGES.noOptions,
+    getOptionLabel = null,
+    getOptionSelected = null,
+    loading = false,
+    renderOption = null,
+    renderTags = defaultRenderTags,
+    returnFullObject = false, // use this one if you pass array of objects as options and want an array of objects as sected items, not a string of id's
+    helperText = undefined,
+    loadingText = MESSAGES.loadingOptions,
+    dataTestId = undefined,
     placeholder,
-    useBuiltInErrors,
+    useBuiltInErrors = true,
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -160,28 +160,6 @@ const MultiSelect = ({
             />
         </Box>
     );
-};
-
-MultiSelect.defaultProps = {
-    value: undefined,
-    errors: [],
-    label: '',
-    disabled: false,
-    clearable: true,
-    required: false,
-    loading: false,
-    options: [],
-    onBlur: () => {},
-    getOptionSelected: null,
-    getOptionLabel: null,
-    renderOption: null,
-    loadingText: MESSAGES.loadingOptions,
-    noOptionsText: MESSAGES.noOptions,
-    helperText: undefined,
-    renderTags: defaultRenderTags,
-    returnFullObject: false, // use this one if you pass array of objects as options and want an array of objects as sected items, not a string of id's
-    dataTestId: undefined,
-    useBuiltInErrors: true,
 };
 
 MultiSelect.propTypes = {

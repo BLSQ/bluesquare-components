@@ -14,16 +14,16 @@ const useStyles = makeStyles(styles);
 
 const TextInput = ({
     keyValue,
-    label,
-    errors,
-    required,
-    value,
-    disabled,
-    onChange,
-    multiline,
-    autoComplete,
-    placeholder,
-    dataTestId,
+    label = undefined,
+    errors = [],
+    required = false,
+    value = '',
+    disabled = false,
+    onChange = () => { },
+    multiline = false,
+    autoComplete = 'off',
+    placeholder = undefined,
+    dataTestId = undefined,
 }) => {
     const hasErrors = errors.length >= 1;
     const classes = useStyles();
@@ -56,18 +56,6 @@ const TextInput = ({
     );
 };
 
-TextInput.defaultProps = {
-    value: '',
-    errors: [],
-    multiline: false,
-    disabled: false,
-    required: false,
-    onChange: () => {},
-    label: undefined,
-    autoComplete: 'off',
-    placeholder: undefined,
-    dataTestId: undefined,
-};
 
 TextInput.propTypes = {
     errors: PropTypes.arrayOf(PropTypes.string),

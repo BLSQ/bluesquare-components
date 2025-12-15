@@ -59,14 +59,14 @@ class ArrayFieldInput extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            fieldList: addPositionIndex(props.fieldList),
+            fieldList: addPositionIndex(props.fieldList || []),
         };
     }
 
     // eslint-disable-next-line camelcase
     UNSAFE_componentWillReceiveProps(newProps) {
         this.setState({
-            fieldList: addPositionIndex(newProps.fieldList),
+            fieldList: addPositionIndex(newProps.fieldList || []),
         });
     }
 
@@ -92,7 +92,7 @@ class ArrayFieldInput extends Component {
     }
 
     render() {
-        const { baseId, label, classes, autoComplete, dataTestId } = this.props;
+        const { baseId, classes, label = '', autoComplete = 'off', dataTestId } = this.props;
         const { fieldList } = this.state;
         const addFieldButtonDisabled =
             fieldList.length > 0 &&
@@ -157,12 +157,6 @@ class ArrayFieldInput extends Component {
         );
     }
 }
-ArrayFieldInput.defaultProps = {
-    fieldList: [],
-    label: '',
-    autoComplete: 'off',
-    dataTestId: undefined,
-};
 // TODO type/document classes prop
 ArrayFieldInput.propTypes = {
     fieldList: PropTypes.array,

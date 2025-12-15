@@ -83,36 +83,36 @@ import {
  *   )}
  * />
  */
-const SelectCustom = props => {
-    if (props.multi) {
-        return <MultiSelect {...props} />;
+const SelectCustom = ({
+    multi = false,
+    errors = [],
+    keyValue,
+    label,
+    required = false,
+    disabled = false,
+    clearable = true,
+    value,
+    onBlur = () => {},
+    loadingText = MESSAGES.loadingOptions,
+    noOptionsText = MESSAGES.noOptions,
+    helperText,
+    options = [],
+    loading = false,
+    onChange,
+    getOptionLabel = null,
+    getOptionSelected = null,
+    renderOption = null,
+    renderTags = defaultRenderTags,
+    returnFullObject = false,
+    placeholder,
+    freeSolo = false,
+    dataTestId,
+    useBuiltInErrors = true,
+}) => {
+    if (allProps.multi) {
+        return <MultiSelect {...allProps} />;
     }
-    return <SingleSelect {...props} />;
-};
-
-SelectCustom.defaultProps = {
-    multi: false,
-    value: undefined,
-    errors: [],
-    label: undefined,
-    disabled: false,
-    clearable: true,
-    required: false,
-    loading: false,
-    options: [],
-    onBlur: () => {},
-    getOptionSelected: null,
-    getOptionLabel: null,
-    renderOption: null,
-    noOptionsText: MESSAGES.noOptions,
-    loadingText: MESSAGES.loadingOptions,
-    helperText: undefined,
-    renderTags: defaultRenderTags,
-    returnFullObject: false, // use this one if you pass array of objects as options and want an array of objects as sected items, not a string of id's
-    placeholder: undefined,
-    freeSolo: false,
-    dataTestId: undefined,
-    useBuiltInErrors: true,
+    return <SingleSelect {...allProps} />;
 };
 
 SelectCustom.propTypes = {

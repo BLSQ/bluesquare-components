@@ -1,53 +1,35 @@
 export function TextInput({ params, renderOption, renderTags, selectedOption, disabled, label, required, onBlur, errors, helperText, loading, autoComplete, placeholder, dataTestId, }: {
     params: any;
-    renderOption: any;
-    renderTags: any;
-    selectedOption: any;
+    renderOption?: null | undefined;
+    renderTags?: null | undefined;
+    selectedOption?: null | undefined;
     disabled: any;
-    label: any;
+    label?: undefined;
     required: any;
     onBlur: any;
     errors: any;
-    helperText: any;
+    helperText?: null | undefined;
     loading: any;
-    autoComplete: any;
-    placeholder: any;
-    dataTestId: any;
+    autoComplete?: string | undefined;
+    placeholder?: string | undefined;
+    dataTestId?: undefined;
 }): React.JSX.Element;
 export namespace TextInput {
-    namespace defaultProps {
-        let helperText: null;
-        let renderOption: null;
-        let renderTags: null;
-        let selectedOption: null;
-        let autoComplete: string;
-        let label: undefined;
-        let dataTestId: undefined;
-        let placeholder: string;
-    }
     namespace propTypes {
-        let renderOption_1: PropTypes.Requireable<object>;
-        export { renderOption_1 as renderOption };
-        let renderTags_1: PropTypes.Requireable<(...args: any[]) => any>;
-        export { renderTags_1 as renderTags };
-        let selectedOption_1: PropTypes.Requireable<NonNullable<string | number | object | null | undefined>>;
-        export { selectedOption_1 as selectedOption };
-        export let params: PropTypes.Validator<object>;
-        export let disabled: PropTypes.Validator<boolean>;
-        let label_1: PropTypes.Requireable<string>;
-        export { label_1 as label };
-        export let required: PropTypes.Validator<boolean>;
-        export let onBlur: PropTypes.Validator<(...args: any[]) => any>;
-        export let errors: PropTypes.Validator<any[]>;
-        let helperText_1: PropTypes.Requireable<NonNullable<string | object | null | undefined>>;
-        export { helperText_1 as helperText };
-        export let loading: PropTypes.Validator<boolean>;
-        let autoComplete_1: PropTypes.Requireable<string>;
-        export { autoComplete_1 as autoComplete };
-        let placeholder_1: PropTypes.Requireable<string>;
-        export { placeholder_1 as placeholder };
-        let dataTestId_1: PropTypes.Requireable<string>;
-        export { dataTestId_1 as dataTestId };
+        let renderOption: PropTypes.Requireable<object>;
+        let renderTags: PropTypes.Requireable<(...args: any[]) => any>;
+        let selectedOption: PropTypes.Requireable<NonNullable<string | number | object | null | undefined>>;
+        let params: PropTypes.Validator<object>;
+        let disabled: PropTypes.Validator<boolean>;
+        let label: PropTypes.Requireable<string>;
+        let required: PropTypes.Validator<boolean>;
+        let onBlur: PropTypes.Validator<(...args: any[]) => any>;
+        let errors: PropTypes.Validator<any[]>;
+        let helperText: PropTypes.Requireable<NonNullable<string | object | null | undefined>>;
+        let loading: PropTypes.Validator<boolean>;
+        let autoComplete: PropTypes.Requireable<string>;
+        let placeholder: PropTypes.Requireable<string>;
+        let dataTestId: PropTypes.Requireable<string>;
     }
 }
 import React from 'react';

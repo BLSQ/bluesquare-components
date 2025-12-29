@@ -1,6 +1,7 @@
-export namespace MESSAGES {
-    namespace create {
-        let id: string;
-        let defaultMessage: string;
-    }
-}
+declare const MESSAGES: {
+    create: {
+        id: string;
+        defaultMessage: string;
+    };
+};
+export { MESSAGES };

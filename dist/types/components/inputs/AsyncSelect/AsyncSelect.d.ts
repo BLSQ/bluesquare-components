@@ -1,0 +1,23 @@
+import React, { FunctionComponent } from 'react';
+import { AutocompleteRenderGetTagProps } from '@mui/material/Autocomplete/Autocomplete';
+import { IntlMessage } from '../../../types/types';
+type Props = {
+    value: any;
+    label: IntlMessage;
+    loading?: boolean;
+    loadingText?: IntlMessage;
+    keyValue: string;
+    onChange: (keyValue: any, newValue: any | null) => void;
+    errors?: string[];
+    required?: boolean;
+    clearable?: boolean;
+    debounceTime?: number;
+    disabled?: boolean;
+    multi?: boolean;
+    helperText?: string;
+    minCharBeforeQuery?: number;
+    fetchOptions: (input: string) => Promise<any>;
+    renderTags?: (tag: any[], getTagProps: AutocompleteRenderGetTagProps) => React.ReactNode;
+};
+export declare const AsyncSelect: FunctionComponent<Props>;
+export {};

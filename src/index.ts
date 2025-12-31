@@ -186,6 +186,7 @@ import { CheckBoxSelectGroup } from './components/inputs/CheckBoxSelectGroup/Che
 import { CheckBoxFilterItem } from './components/inputs/CheckBoxSelectGroup/CheckBoxFilterItem';
 import { FilesUploadContainer } from './components/inputs/FileUpload/FilesUploadContainer';
 import { Pagination } from './components/table/Table/Pagination';
+import { AsyncSelect } from './components/inputs/AsyncSelect/AsyncSelect';
 
 // Types
 export * from './components/QueryBuilder/types';
@@ -221,6 +222,7 @@ export {
     AddComment,
     AlertModal,
     ArrayFieldInput,
+    AsyncSelect,
     BackdropClickModal,
     BlockPlaceholder,
     Checkbox,

@@ -191,6 +191,7 @@ import {
     useTranslatedErrors,
 } from './api/validation';
 import { Pagination } from './components/table/Table/Pagination';
+import { AsyncSelect } from './components/inputs/AsyncSelect/AsyncSelect';
 
 // Types
 export * from './components/QueryBuilder/types';
@@ -226,6 +227,7 @@ export {
     AddComment,
     AlertModal,
     ArrayFieldInput,
+    AsyncSelect,
     BackdropClickModal,
     BlockPlaceholder,
     Checkbox,

@@ -7,11 +7,6 @@ import { IconButton } from '../buttons/IconButton';
 import { FormControl } from '../inputs/FormControl';
 import { commonStyles } from '../../styles/iaso/common';
 import { IntlMessage } from '../../types/types';
-import {
-    DateTimeValidationError,
-    DateValidationError,
-    PickerChangeHandlerContext,
-} from '@mui/x-date-pickers';
 
 const useStyles = makeStyles(theme => ({
     ...commonStyles(theme),
@@ -49,10 +44,7 @@ const useStyles = makeStyles(theme => ({
 
 type Props = {
     label: string;
-    onChange: (
-        value: any,
-        context?: PickerChangeHandlerContext<DateValidationError>,
-    ) => void;
+    onChange: (value: any, context?: any) => void;
     currentDate?: string | Date;
     errors?: string[];
     clearMessage?: IntlMessage; //Displays when hovering over the clear icon
@@ -78,13 +70,12 @@ export const DatePicker: FunctionComponent<Props> = ({
     maxDate = undefined,
 }) => {
     const classes = useStyles();
-    const [dateError, setDateError] = useState<DateTimeValidationError | null>(
-        null,
-    );
+    const [dateError, setDateError] = useState<any | null>(null);
     const isOnError = errors.length > 0 || Boolean(dateError);
     return (
         <FormControl errors={errors} hideError={hideError}>
             <MuiDatePicker
+                // @ts-ignore
                 autoOk
                 disableToolbar
                 // with mui 5 InputLabelProps and InputProps can't be directly passed to the DatePicker
@@ -103,6 +94,7 @@ export const DatePicker: FunctionComponent<Props> = ({
                 KeyboardButtonProps={{
                     size: 'small',
                 }}
+                // @ts-ignore
                 keyboardIcon={<EventIcon size="small" />}
                 helperText={null}
                 format="DD/MM/YYYY" // This one need be set by user locale

@@ -20,6 +20,7 @@ const InputLabelComponent: FunctionComponent<Props> = ({
 }) => {
     const classes = useStyles();
     return (
+        // @ts-ignore
         <InputLabel
             name={htmlFor.replace('input-text-', '')}
             htmlFor={htmlFor}

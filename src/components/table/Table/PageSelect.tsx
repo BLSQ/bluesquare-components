@@ -24,7 +24,7 @@ const useStyles = makeStyles(() => ({
 
 const parseSelectedValue = value => {
     const parsedValue = parseInt(value, 10);
-    if (Number.isNaN(parsedValue)) return '';
+    if (Number.isNaN(parsedValue)) return 0;
     return parsedValue;
 };
 

@@ -35,7 +35,7 @@ type Props = {
         updatedSelectedData: any,
     ) => void;
     multiselect?: boolean;
-    preselected?: string | string[];
+    preselected?: string[];
     preexpanded?: Map<any, any>;
     selectedData?: Record<string, any> | Record<string, any>[];
     allowSelection?: (data: any) => boolean;
@@ -80,7 +80,7 @@ export const TreeViewWithSearch: FunctionComponent<Props> = ({
     const [parentsTicked, setParentsTicked] = useState(
         preexpanded ?? new Map(),
     );
-    const [scrollIntoView, setScrollIntoView] = useState(
+    const [scrollIntoView, setScrollIntoView] = useState<string | undefined>(
         !Array.isArray(preselected) ? preselected : undefined,
     );
 

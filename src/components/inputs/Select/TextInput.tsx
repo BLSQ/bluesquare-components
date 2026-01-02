@@ -45,7 +45,7 @@ export const TextInput: FunctionComponent<Props> = ({
         ...params,
     };
     let inputExtraProps = {};
-
+    //@ts-ignore
     if (selectedOption?.color) {
         const tags = renderTags([selectedOption], () => {});
         const chip = Array.isArray(tags) ? tags[0] : tags;

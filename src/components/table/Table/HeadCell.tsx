@@ -119,7 +119,7 @@ export const HeadCell: FunctionComponent<Props> = ({
                     <TableSortLabel
                         active={column.isSorted}
                         direction={direction}
-                        title={formatMessage(title)}
+                        title={formatMessage(title) as string}
                         classes={{
                             root: classes.sortLabel,
                             icon: classes.icon,

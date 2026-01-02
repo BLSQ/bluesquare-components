@@ -35,6 +35,7 @@ export const ExportButton: FunctionComponent<Props> = ({
     const classes: Record<string, string> = useStyles();
     const { formatMessage } = useSafeIntl();
     return batchExport ? (
+        // @ts-ignore
         <Button
             variant="contained"
             className={classes.button}
@@ -47,6 +48,7 @@ export const ExportButton: FunctionComponent<Props> = ({
             {formatMessage(message)}
         </Button>
     ) : (
+        //@ts-ignore
         <CallMade onClick={onClick} disabled={isDisabled} />
     );
 };

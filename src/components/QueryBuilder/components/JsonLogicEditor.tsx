@@ -46,7 +46,7 @@ export const JsonLogicEditor: FunctionComponent<Props> = ({
             JSON.parse(value);
             setErrors([]);
         } catch {
-            setErrors([formatMessage(MESSAGES.invalidJson)]);
+            setErrors([formatMessage(MESSAGES.invalidJson) as string]);
         }
     };
 

@@ -1,9 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
-import {
-    DateTimeValidationError,
-    DateTimePicker as MuiDateTimePicker,
-    PickerChangeHandlerContext,
-} from '@mui/x-date-pickers';
+import { DateTimePicker as MuiDateTimePicker } from '@mui/x-date-pickers';
 import EventIcon from '@mui/icons-material/Event';
 import { makeStyles } from '@mui/styles';
 import { TextField } from '@mui/material';
@@ -28,10 +24,7 @@ const useStyles = makeStyles(theme => ({
 
 type Props = {
     label: string;
-    onChange: (
-        value: any,
-        context?: PickerChangeHandlerContext<DateTimeValidationError>,
-    ) => void;
+    onChange: (value: any, context?: any) => void;
     currentDate?: string | Date;
     errors?: string[];
     clearMessage?: IntlMessage; //Displays when hovering over the clear icon
@@ -68,14 +61,13 @@ export const DateTimePicker: FunctionComponent<Props> = ({
     minDate,
 }) => {
     const classes: Record<string, string> = useStyles();
-    const [dateError, setDateError] = useState<DateTimeValidationError | null>(
-        null,
-    );
+    const [dateError, setDateError] = useState<any | null>(null);
     const isOnError = errors.length > 0 || Boolean(dateError);
 
     return (
         <FormControl errors={errors} hideError={hideError}>
             <MuiDateTimePicker
+                // @ts-ignore
                 autoOk
                 renderInput={props => <TextField {...props} />}
                 disableToolbar
@@ -90,6 +82,7 @@ export const DateTimePicker: FunctionComponent<Props> = ({
                 KeyboardButtonProps={{
                     size: 'small',
                 }}
+                // @ts-ignore
                 keyboardIcon={<EventIcon size="small" />}
                 InputProps={{
                     error: isOnError,

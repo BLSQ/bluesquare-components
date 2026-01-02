@@ -194,7 +194,6 @@ export const DynamicSelect: FunctionComponent<Props> = ({
                                 onChangeSearch(value);
                             }}
                             value={searchValue}
-                            type="search"
                             label={formatMessage(inputLabelObject) as string}
                             onEnterPressed={() => handleSearch()}
                         />
@@ -244,7 +243,7 @@ export const DynamicSelect: FunctionComponent<Props> = ({
                                     >
                                         <ListItemText
                                             primary={
-                                                <Typography type="body2">
+                                                <Typography variant="body2">
                                                     {makeDropDownText(element)}
                                                 </Typography>
                                             }

@@ -80,21 +80,23 @@ export const TablePaginationActions: FunctionComponent<Props> = ({
             alignItems="center"
             className={classes.root}
         >
+            {/* @ts-ignore */}
             <IconButton
                 className="pagination-first"
                 variant="outlined"
                 onClick={handleFirstPageButtonClick}
                 disabled={firstDisabled}
-                aria-label={formatMessage(MESSAGES.firstText)}
+                aria-label={formatMessage(MESSAGES.firstText ?? undefined)}
             >
                 <FirstPageIcon color={firstDisabled ? 'inherit' : 'primary'} />
             </IconButton>
+            {/* @ts-ignore */}
             <IconButton
                 className="pagination-previous"
                 variant="outlined"
                 onClick={handleBackButtonClick}
                 disabled={firstDisabled}
-                aria-label={formatMessage(MESSAGES.previousText)}
+                aria-label={formatMessage(MESSAGES.previousText) ?? undefined}
             >
                 <KeyboardArrowLeft
                     color={firstDisabled ? 'inherit' : 'primary'}
@@ -112,22 +114,24 @@ export const TablePaginationActions: FunctionComponent<Props> = ({
                 rowsPerPageOptions={rowsPerPageOptions}
                 selectRowsPerPage={selectRowsPerPage}
             />
+            {/* @ts-ignore */}
             <IconButton
                 className="pagination-next"
                 variant="outlined"
                 onClick={handleNextButtonClick}
                 disabled={lastDisabled}
-                aria-label={formatMessage(MESSAGES.nextText)}
+                aria-label={formatMessage(MESSAGES.nextText) ?? undefined}
             >
                 <KeyboardArrowRight
                     color={lastDisabled ? 'inherit' : 'primary'}
                 />
             </IconButton>
+            {/* @ts-ignore */}
             <IconButton
                 variant="outlined"
                 onClick={handleLastPageButtonClick}
                 disabled={lastDisabled}
-                aria-label={formatMessage(MESSAGES.lastText)}
+                aria-label={formatMessage(MESSAGES.lastText) ?? undefined}
                 className={classNames(
                     !countOnTop && classes.withCount,
                     'pagination-last',

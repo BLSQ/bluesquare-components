@@ -41,6 +41,7 @@ export const Pagination: FunctionComponent<Props> = ({
         <TablePagination
             classes={{
                 spacer: classes.spacer,
+                //@ts-ignore
                 caption: classes.caption,
                 input: classes.input,
             }}

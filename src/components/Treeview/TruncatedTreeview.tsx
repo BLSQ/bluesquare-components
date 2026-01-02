@@ -1,5 +1,4 @@
-import React, { useRef } from 'react';
-import { func, any, bool } from 'prop-types';
+import React, { FunctionComponent, ReactNode, useRef } from 'react';
 import { TreeView } from '@mui/x-tree-view';
 import { makeStyles } from '@mui/styles';
 import TreeItems from './TreeItems';
@@ -51,17 +50,28 @@ const styles = theme => ({
     },
 });
 const useStyles = makeStyles(styles);
-const TruncatedTreeview = ({
-    selectedItems = null,
+
+type Props = {
+    selectedItems: Map<string, Map<string, string>>; //{orgUnitId:{parentId:parentName}}
+    label: (value: any) => ReactNode;
+    redirect?: (id: any) => void;
+    disabled?: boolean;
+};
+
+export const TruncatedTreeview: FunctionComponent<Props> = ({
+    selectedItems,
     label,
     redirect = () => null,
     disabled = false,
 }) => {
     const style = useStyles();
-    const mouseDownTime = useRef();
+    const mouseDownTime = useRef<Date>();
     const onLabelClick = id => e => {
         e.preventDefault();
-        if (new Date() - mouseDownTime.current < 150) {
+        if (
+            mouseDownTime.current &&
+            new Date().getTime() - mouseDownTime.current.getTime() < 150
+        ) {
             redirect(id);
         }
     };
@@ -75,7 +85,10 @@ const TruncatedTreeview = ({
             disableSelection
             expanded={expanded}
             classes={{
-                root: expanded.length === 1 && style.removeIconContainer,
+                root:
+                    expanded.length === 1
+                        ? style.removeIconContainer
+                        : undefined,
             }}
             className={style.truncatedTreeview}
         >
@@ -90,13 +103,3 @@ const TruncatedTreeview = ({
         </TreeView>
     );
 };
-
-TruncatedTreeview.propTypes = {
-    // in fact a nested map : {orgUnitId:{parentId:parentName}}
-    selectedItems: any,
-    label: func.isRequired,
-    redirect: func,
-    disabled: bool,
-};
-
-export { TruncatedTreeview };

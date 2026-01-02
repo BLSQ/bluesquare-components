@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import {
     Box,
@@ -12,19 +11,13 @@ import {
 import Close from '@mui/icons-material//Close';
 import ArrowBack from '@mui/icons-material//ArrowBack';
 import ViewColumnIcon from '@mui/icons-material//ViewColumn';
-import { makeStyles } from '@mui/styles';
 import { IconButton as IconButtonComponent } from '../../buttons/IconButton';
-
 import { MESSAGES } from './messages';
 import { ColumnFromReactTable } from '../Table';
 import { useToggle } from '../../../utils/useToggle';
 import { OptionsList } from './OptionList';
-import { styles } from './styles';
+import { useStyles } from './styles';
 import { useSafeIntl } from '../../../localization/useSafeIntl';
-
-// Weird error with overflowX property, but it matches the type in doc?
-// @ts-ignore
-export const useStyles = makeStyles(styles);
 
 const filterResults = (searchString, columns: ColumnFromReactTable[]) => {
     if (!searchString) {
@@ -49,7 +42,7 @@ type Props = {
     buttonType?: 'button' | 'icon';
 };
 
-const ColumnsSelectGeneric: React.FC<Props> = ({
+export const ColumnsSelectGeneric: React.FC<Props> = ({
     columns,
     hiddenColumns,
     minColumns = 2,
@@ -112,11 +105,13 @@ const ColumnsSelectGeneric: React.FC<Props> = ({
                                 value={searchString}
                                 onChange={handleSearch()}
                                 className={classes.input}
-                                placeholder={formatMessage(MESSAGES.search)}
+                                placeholder={
+                                    formatMessage(MESSAGES.search) ?? undefined
+                                }
                                 inputProps={{
-                                    'aria-label': formatMessage(
-                                        MESSAGES.search,
-                                    ),
+                                    'aria-label':
+                                        formatMessage(MESSAGES.search) ??
+                                        undefined,
                                     className: classes.input,
                                 }}
                             />
@@ -143,5 +138,3 @@ const ColumnsSelectGeneric: React.FC<Props> = ({
         </>
     );
 };
-
-export { ColumnsSelectGeneric, Props };

@@ -6,12 +6,13 @@ import { EventDispatcher } from './EventDispatcher';
 import MESSAGES from './messages';
 import SnackBarButton from './SnackBarButton';
 import SnackBarErrorMessage from './SnackBarErrorMessage';
+import { IntlMessage } from '../types/types';
 
 type Notification = {
     key: string;
     messageKey: string;
     message?: any;
-    messageObject?: string | { id: string };
+    messageObject?: string | IntlMessage;
     buttonMessageKey?: string;
     buttonAction?: () => void;
     errorLog?: string;

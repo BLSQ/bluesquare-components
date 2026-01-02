@@ -1,3 +1,7 @@
-export { styled as HeaderRowIcon };
-declare const styled: React.JSXElementConstructor<any>;
-import React from 'react';
+import { FunctionComponent, ComponentType } from 'react';
+type Props = {
+    title: string;
+    IconComponent: ComponentType;
+};
+export declare const HeaderRowIcon: FunctionComponent<Props>;
+export {};

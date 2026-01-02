@@ -5,7 +5,7 @@ export const adaptMap = (value?: Map<any, any>): string[] | undefined => {
         .map(
             keys =>
                 keys
-                    .map(key => key.toString()) // [["entry1Key1"],["entry2Key1"]]. String conversion needed for Treeview
+                    .map((key: number) => key.toString()) // [["entry1Key1"],["entry2Key1"]]. String conversion needed for Treeview
                     .filter(
                         (key, _index, keyArray) =>
                             key !== keyArray[keyArray.length - 1],

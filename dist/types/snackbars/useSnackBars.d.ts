@@ -1,12 +1,11 @@
 import React from 'react';
 import { EventDispatcher } from './EventDispatcher';
+import { IntlMessage } from '../types/types';
 type Notification = {
     key: string;
     messageKey: string;
     message?: any;
-    messageObject?: string | {
-        id: string;
-    };
+    messageObject?: string | IntlMessage;
     buttonMessageKey?: string;
     buttonAction?: () => void;
     errorLog?: string;
@@ -16,6 +15,6 @@ type Notification = {
         action?: React.ReactNode;
     };
 };
-export declare const useTranslateMessage: () => (notification: Notification) => any;
+export declare const useTranslateMessage: () => (notification: Notification) => string | null;
 export declare const useSnackBars: (dispatcher: EventDispatcher) => void;
 export {};

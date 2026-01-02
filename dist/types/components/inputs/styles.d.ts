@@ -1,4 +1,4 @@
-export function styles(theme: any): {
+declare const styles: (theme: any) => {
     inputLabel: {
         color: string;
         paddingLeft: number;
@@ -23,4 +23,5 @@ export function styles(theme: any): {
         };
     };
 };
-export const useStyles: (props?: any) => import("@mui/styles").ClassNameMap<"inputLabel" | "shrink" | "popupIndicator" | "clearIndicator" | "hasClearIcon">;
+declare const useStyles: (props?: any) => import("@mui/styles").ClassNameMap<"inputLabel" | "shrink" | "popupIndicator" | "clearIndicator" | "hasClearIcon">;
+export { styles, useStyles };

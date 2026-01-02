@@ -1,4 +1,4 @@
-export function styles(theme: any): {
+declare const styles: (theme: any) => {
     commentRoot: {
         padding: string;
         margin: string;
@@ -41,4 +41,5 @@ export function styles(theme: any): {
         paddingLeft: string;
     };
 };
-export const useStyles: (props?: any) => import("@mui/styles").ClassNameMap<"button" | "commentRoot" | "commentAuthor" | "commentPostingTime" | "commentGrid" | "replyToComment" | "commentText" | "toggleCommentText" | "expandThread" | "childComment">;
+declare const useStyles: (props?: any) => import("@mui/styles").ClassNameMap<"button" | "commentRoot" | "commentAuthor" | "commentPostingTime" | "commentGrid" | "replyToComment" | "commentText" | "toggleCommentText" | "expandThread" | "childComment">;
+export { styles, useStyles };

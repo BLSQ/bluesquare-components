@@ -21,7 +21,7 @@ import { IntlFormatMessage } from '../../../types/types';
 import MESSAGES from './messages';
 
 type Props = {
-    uid: string;
+    uid?: string;
     label: string;
     keyValue: string;
     required?: boolean;
@@ -32,10 +32,10 @@ type Props = {
     onChange: (newValue: string) => void;
     // eslint-disable-next-line no-unused-vars
     onErrorChange?: (hasError: boolean) => void;
-    blockForbiddenChars: boolean;
+    blockForbiddenChars?: boolean;
     value: string;
     errors?: string[];
-    autoComplete: string;
+    autoComplete?: string;
     dataTestId?: string;
 };
 
@@ -51,7 +51,7 @@ const SearchInput: FunctionComponent<Props> = ({
     onChange,
     onErrorChange = () => null,
     errors = [],
-    autoComplete,
+    autoComplete = 'off',
     blockForbiddenChars = false,
     dataTestId,
 }) => {
@@ -93,7 +93,7 @@ const SearchInput: FunctionComponent<Props> = ({
             setHasTextSearchError(hasForbiddenChar);
 
             const newErrors = hasForbiddenChar
-                ? [formatMessage(MESSAGES.forbiddenChars)]
+                ? [formatMessage(MESSAGES.forbiddenChars) as string]
                 : [];
             setTextSearchErrors(newErrors);
         }

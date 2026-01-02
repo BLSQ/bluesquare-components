@@ -100,7 +100,7 @@ export const makeApiHooks = (
                         if (error.details.detail) {
                             errorMsg = error.details.detail;
                         } else if (!errorMsg) {
-                            errorMsg = formatMessage(MESSAGES.permissionError);
+                            errorMsg = MESSAGES.permissionError;
                         }
                     }
                     openSnackBar(errorSnackBar(undefined, errorMsg, error));

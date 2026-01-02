@@ -168,9 +168,11 @@ export const useTranslatedConfig = (): Config => {
                             keyValue={`${field}`}
                             onChange={setValue}
                             value={value}
-                            placeholder={formatMessage(
-                                MESSAGES.textPlaceholder,
-                            )}
+                            placeholder={
+                                formatMessage(
+                                    MESSAGES.textPlaceholder,
+                                ) as string
+                            }
                         />
                     ),
                 },
@@ -183,9 +185,11 @@ export const useTranslatedConfig = (): Config => {
                             onChange={setValue}
                             value={value}
                             multiline
-                            placeholder={formatMessage(
-                                MESSAGES.textareaPlaceholder,
-                            )}
+                            placeholder={
+                                formatMessage(
+                                    MESSAGES.textareaPlaceholder,
+                                ) as string
+                            }
                         />
                     ),
                 },
@@ -198,9 +202,11 @@ export const useTranslatedConfig = (): Config => {
                                 keyValue={`${field}`}
                                 onChange={setValue}
                                 value={value}
-                                placeholder={formatMessage(
-                                    MESSAGES.numberPlaceholder,
-                                )}
+                                placeholder={
+                                    formatMessage(
+                                        MESSAGES.numberPlaceholder,
+                                    ) as string
+                                }
                             />
                         </Box>
                     ),
@@ -216,9 +222,11 @@ export const useTranslatedConfig = (): Config => {
                     factory: ({ setValue, value, field, listValues }) => (
                         <Box display="inline-block" width="100%">
                             <Select
-                                placeholder={formatMessage(
-                                    MESSAGES.selectValue,
-                                )}
+                                placeholder={
+                                    formatMessage(
+                                        MESSAGES.selectValue,
+                                    ) as string
+                                }
                                 value={value}
                                 keyValue={`${field}`}
                                 multi={false}
@@ -239,9 +247,11 @@ export const useTranslatedConfig = (): Config => {
                     factory: ({ setValue, value, field, listValues }) => (
                         <Box display="inline-block" width="100%">
                             <Select
-                                placeholder={formatMessage(
-                                    MESSAGES.selectValues,
-                                )}
+                                placeholder={
+                                    formatMessage(
+                                        MESSAGES.selectValues,
+                                    ) as string
+                                }
                                 value={value?.join(',') || ''}
                                 keyValue={`${field}`}
                                 multi
@@ -561,7 +571,9 @@ export const useTranslatedConfig = (): Config => {
                 renderField: ({ items, setField, id, selectedKey }) => (
                     <Box display="inline-block" width="100%">
                         <Select
-                            placeholder={formatMessage(MESSAGES.selectField)}
+                            placeholder={
+                                formatMessage(MESSAGES.selectField) as string
+                            }
                             keyValue={`${id}`}
                             multi={false}
                             // Type error because Select component is JS
@@ -582,7 +594,9 @@ export const useTranslatedConfig = (): Config => {
                 renderOperator: ({ items, setField, id, selectedKey }) => (
                     <Box display="inline-block" width={150}>
                         <Select
-                            placeholder={formatMessage(MESSAGES.selectField)}
+                            placeholder={
+                                formatMessage(MESSAGES.selectField) as string
+                            }
                             clearable={false}
                             keyValue={`${id}`}
                             multi={false}

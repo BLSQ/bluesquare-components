@@ -1,12 +1,1 @@
-export function styles(): {
-    root: {
-        position: string;
-        top: number;
-        left: number;
-        width: string;
-        height: string;
-        display: string;
-        alignItems: string;
-        justifyContent: string;
-    };
-};
+export declare const useStyles: (props?: any) => import("@mui/styles").ClassNameMap<"root">;

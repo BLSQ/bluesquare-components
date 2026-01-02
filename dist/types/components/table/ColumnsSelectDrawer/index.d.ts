@@ -1,3 +1,8 @@
-export { styledAndTranslated as ColumnsSelectDrawer };
-declare const styledAndTranslated: React.JSXElementConstructor<any>;
-import React from 'react';
+import { FunctionComponent } from 'react';
+type Props = {
+    options: any;
+    setOptions: Function;
+    minColumns?: number;
+};
+export declare const ColumnsSelectDrawer: FunctionComponent<Props>;
+export {};

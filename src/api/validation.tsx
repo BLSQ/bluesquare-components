@@ -189,7 +189,7 @@ export const useTranslatedErrors = ({
             const errorKey = errors[keyValue];
             if (!errorKey) return [];
             const message = messages[errorKey as string]
-                ? formatMessage(messages[errorKey as string])
+                ? (formatMessage(messages[errorKey as string]) as string)
                 : (errorKey as string);
             return [message];
         },

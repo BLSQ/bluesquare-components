@@ -188,7 +188,7 @@ const TableComponent: React.FC<TableComponentProps> = props => {
         selectionActions = [],
         setTableSelection = () => null,
         selection = selectionInitialState,
-        selectionActionMessage = null,
+        selectionActionMessage,
         showPagination = true,
         showFooter = false,
         onTableParamsChange = () => null,

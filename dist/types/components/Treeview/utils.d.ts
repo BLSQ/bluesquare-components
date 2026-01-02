@@ -1,1 +1,1 @@
-export function adaptMap(value: any): any[] | null;
+export declare const adaptMap: (value?: Map<any, any>) => string[] | undefined;

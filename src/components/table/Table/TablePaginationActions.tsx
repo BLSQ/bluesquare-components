@@ -86,7 +86,7 @@ export const TablePaginationActions: FunctionComponent<Props> = ({
                 variant="outlined"
                 onClick={handleFirstPageButtonClick}
                 disabled={firstDisabled}
-                aria-label={formatMessage(MESSAGES.firstText ?? undefined)}
+                aria-label={formatMessage(MESSAGES.firstText)}
             >
                 <FirstPageIcon color={firstDisabled ? 'inherit' : 'primary'} />
             </IconButton>
@@ -96,7 +96,7 @@ export const TablePaginationActions: FunctionComponent<Props> = ({
                 variant="outlined"
                 onClick={handleBackButtonClick}
                 disabled={firstDisabled}
-                aria-label={formatMessage(MESSAGES.previousText) ?? undefined}
+                aria-label={formatMessage(MESSAGES.previousText)}
             >
                 <KeyboardArrowLeft
                     color={firstDisabled ? 'inherit' : 'primary'}
@@ -120,7 +120,7 @@ export const TablePaginationActions: FunctionComponent<Props> = ({
                 variant="outlined"
                 onClick={handleNextButtonClick}
                 disabled={lastDisabled}
-                aria-label={formatMessage(MESSAGES.nextText) ?? undefined}
+                aria-label={formatMessage(MESSAGES.nextText)}
             >
                 <KeyboardArrowRight
                     color={lastDisabled ? 'inherit' : 'primary'}
@@ -131,7 +131,7 @@ export const TablePaginationActions: FunctionComponent<Props> = ({
                 variant="outlined"
                 onClick={handleLastPageButtonClick}
                 disabled={lastDisabled}
-                aria-label={formatMessage(MESSAGES.lastText) ?? undefined}
+                aria-label={formatMessage(MESSAGES.lastText)}
                 className={classNames(
                     !countOnTop && classes.withCount,
                     'pagination-last',

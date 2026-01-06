@@ -105,9 +105,7 @@ export const ColumnsSelectGeneric: React.FC<Props> = ({
                                 value={searchString}
                                 onChange={handleSearch()}
                                 className={classes.input}
-                                placeholder={
-                                    formatMessage(MESSAGES.search) ?? undefined
-                                }
+                                placeholder={formatMessage(MESSAGES.search)}
                                 inputProps={{
                                     'aria-label':
                                         formatMessage(MESSAGES.search) ??

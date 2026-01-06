@@ -100,13 +100,11 @@ export const ColumnsSelectDrawer: FunctionComponent<Props> = ({
                                 value={state.searchString}
                                 onChange={handleSearch()}
                                 className={classes.input}
-                                placeholder={
-                                    formatMessage(MESSAGES.search) ?? undefined
-                                }
+                                placeholder={formatMessage(MESSAGES.search)}
                                 inputProps={{
-                                    'aria-label':
-                                        formatMessage(MESSAGES.search) ??
-                                        undefined,
+                                    'aria-label': formatMessage(
+                                        MESSAGES.search,
+                                    ),
                                     className: classes.input,
                                 }}
                             />

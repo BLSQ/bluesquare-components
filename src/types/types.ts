@@ -11,7 +11,7 @@ export type IntlFormatMessage = (
     message: IntlMessage,
     // eslint-disable-next-line no-unused-vars
     values?: Record<string, string | HTMLElement>,
-) => string | null;
+) => string | undefined;
 
 export type PatchIntlShape = Omit<IntlShape, 'formatMessage'> & {
     formatMessage: IntlFormatMessage;

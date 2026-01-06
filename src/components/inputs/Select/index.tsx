@@ -145,7 +145,7 @@ type Props = {
         getTagProps: AutocompleteRenderGetTagProps,
     ) => React.ReactNode;
     returnFullObject?: boolean;
-    placeholder?: string;
+    placeholder?: string | null;
     dataTestId?: string;
     freeSolo?: boolean;
     useBuiltInErrors?: boolean;
@@ -200,7 +200,7 @@ const SelectCustom: FunctionComponent<Props> = ({
                 renderOption={renderOption}
                 renderTags={renderTags}
                 returnFullObject={returnFullObject}
-                placeholder={placeholder}
+                placeholder={placeholder ?? undefined}
                 dataTestId={dataTestId}
                 useBuiltInErrors={useBuiltInErrors}
             />
@@ -227,7 +227,7 @@ const SelectCustom: FunctionComponent<Props> = ({
             renderOption={renderOption}
             renderTags={renderTags}
             returnFullObject={returnFullObject}
-            placeholder={placeholder}
+            placeholder={placeholder ?? undefined}
             freeSolo={freeSolo}
             dataTestId={dataTestId}
             useBuiltInErrors={useBuiltInErrors}

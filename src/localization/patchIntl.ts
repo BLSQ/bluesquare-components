@@ -1,9 +1,9 @@
 import { IntlShape } from 'react-intl';
-import { PatchIntlShape } from '../types/types';
+import { IntlMessage, PatchIntlShape } from '../types/types';
 
 export const patchIntl = (intl: IntlShape): PatchIntlShape => ({
     ...intl,
-    formatMessage: (message: { id: any }, value: any): string | null => {
+    formatMessage: (message: IntlMessage, value: any): string | undefined => {
         if (message && message.id) {
             return intl.formatMessage(message, value);
         }
@@ -12,6 +12,6 @@ export const patchIntl = (intl: IntlShape): PatchIntlShape => ({
             message,
         );
 
-        return null;
+        return undefined;
     },
 });

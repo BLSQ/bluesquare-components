@@ -35,12 +35,11 @@ export const ExportButton: FunctionComponent<Props> = ({
     const classes: Record<string, string> = useStyles();
     const { formatMessage } = useSafeIntl();
     return batchExport ? (
-        // @ts-ignore
         <Button
             variant="contained"
             className={classes.button}
             color="primary"
-            onClick={onClick as React.MouseEventHandler<HTMLAnchorElement>}
+            onClick={onClick as React.MouseEventHandler<HTMLButtonElement>}
             disabled={isDisabled}
             id={id}
         >
@@ -48,7 +47,6 @@ export const ExportButton: FunctionComponent<Props> = ({
             {formatMessage(message)}
         </Button>
     ) : (
-        //@ts-ignore
-        <CallMade onClick={onClick} disabled={isDisabled} />
+        <CallMade onClick={onClick} />
     );
 };

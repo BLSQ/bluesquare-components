@@ -15,6 +15,6 @@ type Notification = {
         action?: React.ReactNode;
     };
 };
-export declare const useTranslateMessage: () => (notification: Notification) => string | null;
+export declare const useTranslateMessage: () => (notification: Notification) => string | undefined;
 export declare const useSnackBars: (dispatcher: EventDispatcher) => void;
 export {};

@@ -129,7 +129,7 @@ type Props = {
      */
     renderTags?: (value: any[], getTagProps: AutocompleteRenderGetTagProps) => React.ReactNode;
     returnFullObject?: boolean;
-    placeholder?: string;
+    placeholder?: string | null;
     dataTestId?: string;
     freeSolo?: boolean;
     useBuiltInErrors?: boolean;

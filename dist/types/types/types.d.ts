@@ -4,7 +4,7 @@ export type IntlMessage = {
     defaultMessage: string;
     values?: Record<string, any>;
 };
-export type IntlFormatMessage = (message: IntlMessage, values?: Record<string, string | HTMLElement>) => string | null;
+export type IntlFormatMessage = (message: IntlMessage, values?: Record<string, string | HTMLElement>) => string | undefined;
 export type PatchIntlShape = Omit<IntlShape, 'formatMessage'> & {
     formatMessage: IntlFormatMessage;
 };

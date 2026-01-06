@@ -1,4 +1,4 @@
-export function styles(theme: any): {
+declare const styles: (theme: any) => {
     textAreaContainer: {
         width: string;
         marginTop: string;
@@ -28,4 +28,5 @@ export function styles(theme: any): {
         backgroundColor: string;
     };
 };
-export const useStyles: (props?: any) => import("@mui/styles").ClassNameMap<"button" | "center" | "left" | "right" | "textArea" | "textAreaContainer" | "commentConfirmButton">;
+declare const useStyles: (props?: any) => import("@mui/styles").ClassNameMap<"button" | "center" | "left" | "right" | "textArea" | "textAreaContainer" | "commentConfirmButton">;
+export { styles, useStyles };

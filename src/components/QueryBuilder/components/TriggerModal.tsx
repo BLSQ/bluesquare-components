@@ -26,7 +26,7 @@ export const TriggerModal: FunctionComponent<Props> = ({
             onClick={onClick}
             value={value}
             dataTestId={`open-query-builder-${dataTestId || 'default'}`}
-            label={formatMessage(label)}
+            label={formatMessage(label) as string}
             onClear={onClear}
             fixedHeight={false}
         />

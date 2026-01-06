@@ -1,9 +1,6 @@
-/* eslint-disable react/function-component-definition */
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
-import { withStyles } from '@mui/styles';
-
-import PropTypes from 'prop-types';
+import { makeStyles } from '@mui/styles';
 import classNames from 'classnames';
 
 const baseRoot = {
@@ -17,7 +14,7 @@ const baseRoot = {
     left: 0,
 };
 
-const styles = () => ({
+const useStyles = makeStyles({
     rootFixed: {
         ...baseRoot,
         position: 'fixed',
@@ -38,14 +35,22 @@ const styles = () => ({
     },
 });
 
-const LoadingSpinner = ({
-    classes,
+type Props = {
+    size?: number; //Adjust the size of the spinner
+    transparent?: boolean;
+    fixed?: boolean;
+    absolute?: boolean;
+    padding?: number;
+};
+
+export const LoadingSpinner: FunctionComponent<Props> = ({
     size = 40,
     transparent = false,
     fixed = true,
     absolute = false,
     padding = 0,
 }) => {
+    const classes: Record<string, string> = useStyles();
     return (
         <div
             style={{
@@ -62,24 +67,3 @@ const LoadingSpinner = ({
         </div>
     );
 };
-
-LoadingSpinner.propTypes = {
-    /**
-     * Adjust the size of the spinner
-     */
-    size: PropTypes.number,
-    /**
-     * I don't know what that does
-     */
-    transparent: PropTypes.bool,
-    fixed: PropTypes.bool,
-    absolute: PropTypes.bool,
-    /**
-     * add padding
-     */
-    padding: PropTypes.number,
-    classes: PropTypes.object.isRequired,
-};
-
-const styledSpinner = withStyles(styles as any)(LoadingSpinner);
-export { styledSpinner as LoadingSpinner };

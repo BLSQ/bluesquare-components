@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 type Props = {
-    uid: string;
+    uid?: string;
     label: string;
     keyValue: string;
     required?: boolean;
@@ -9,10 +9,10 @@ type Props = {
     onEnterPressed: () => void;
     onChange: (newValue: string) => void;
     onErrorChange?: (hasError: boolean) => void;
-    blockForbiddenChars: boolean;
+    blockForbiddenChars?: boolean;
     value: string;
     errors?: string[];
-    autoComplete: string;
+    autoComplete?: string;
     dataTestId?: string;
 };
 declare const SearchInput: FunctionComponent<Props>;

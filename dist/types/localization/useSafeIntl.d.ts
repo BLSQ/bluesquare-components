@@ -1,1 +1,1 @@
-export function useSafeIntl(): any;
+export declare const useSafeIntl: () => import("..").PatchIntlShape;

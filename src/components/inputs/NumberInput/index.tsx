@@ -93,15 +93,22 @@ export const NumberInput: FunctionComponent<Props> = ({
             } else if (newValueAsNumber > max) {
                 setFieldError(
                     keyValue,
-                    formatMessage(MESSAGES.max, { value: max }),
+                    formatMessage(MESSAGES.max, {
+                        value: max.toString(),
+                    }) as string,
                 );
             } else if (newValueAsNumber < min) {
                 setFieldError(
                     keyValue,
-                    formatMessage(MESSAGES.min, { value: min }),
+                    formatMessage(MESSAGES.min, {
+                        value: min.toString(),
+                    }) as string,
                 );
             } else if (Number.isNaN(newValueAsNumber) && required) {
-                setFieldError(keyValue, formatMessage(MESSAGES.invalid));
+                setFieldError(
+                    keyValue,
+                    formatMessage(MESSAGES.invalid) as string,
+                );
             }
         },
         [max, min, required, onChange, setFieldError, keyValue, formatMessage],

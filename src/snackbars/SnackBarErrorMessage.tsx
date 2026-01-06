@@ -1,9 +1,6 @@
 import { Button, Tooltip } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import React from 'react';
-
-import PropTypes from 'prop-types';
-
+import React, { FunctionComponent } from 'react';
 import { useSnackbar } from 'notistack';
 import { useSafeIntl } from '../localization/useSafeIntl';
 import { commonStyles } from '../styles/iaso/common';
@@ -27,7 +24,12 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export const SnackBarErrorMessage = ({ errorLog = null, id = null }: { errorLog?: any, id?: any }) => {
+type Props = { errorLog?: Record<string, any> | string; id?: any };
+
+export const SnackBarErrorMessage: FunctionComponent<Props> = ({
+    errorLog = null,
+    id = null,
+}) => {
     const classes = useStyles();
     const { formatMessage } = useSafeIntl();
     const { closeSnackbar } = useSnackbar();
@@ -36,10 +38,10 @@ export const SnackBarErrorMessage = ({ errorLog = null, id = null }: { errorLog?
     let errorMessage;
     if (typeof errorLog === 'string') {
         errorMessage = errorLog;
-    } else if (errorLog.name === 'ApiError' || errorLog.name === 'Error') {
+    } else if (errorLog?.name === 'ApiError' || errorLog?.name === 'Error') {
         // Bypass a strange bug in stringify that remove the message from Error
         errorMessage = JSON.stringify(
-            { ...errorLog, message: errorLog.message },
+            { ...errorLog, message: errorLog?.message },
             null,
             2,
         );
@@ -86,11 +88,6 @@ export const SnackBarErrorMessage = ({ errorLog = null, id = null }: { errorLog?
             />
         </>
     );
-};
-
-SnackBarErrorMessage.propTypes = {
-    errorLog: PropTypes.any,
-    id: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 };
 
 export default SnackBarErrorMessage;

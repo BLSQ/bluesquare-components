@@ -104,11 +104,8 @@ export const FilesUpload: FunctionComponent<Props> = ({
         },
     });
     const { formatMessage } = useSafeIntl();
-    const placeHolderText = placeholder ?? formatMessage(MESSAGES.files);
-    console.log(
-        'files',
-        files.map(file => file.name),
-    );
+    const placeHolderText =
+        placeholder ?? (formatMessage(MESSAGES.files) as string);
 
     const contentStyle = useCustomInputTextStyle();
 

@@ -155,7 +155,8 @@ export const AsyncSelect: FunctionComponent<Props> = ({
                         helperText={helperText}
                         placeholder={
                             inputValue.length < minCharBeforeQuery
-                                ? formatMessage(MESSAGES.noOptionsText)
+                                ? (formatMessage(MESSAGES.noOptionsText) ??
+                                  undefined)
                                 : undefined
                         }
                     />

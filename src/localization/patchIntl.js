@@ -11,6 +11,10 @@ const patchIntl = intl => ({
 
         return null;
     },
+    separators: {
+        decimal: intl.formatNumber(1.1).replace(/\d/g, '')[0] || '.',
+        thousand: intl.formatNumber(1000).replace(/\d/g, '')[0] || ',',
+    },
 });
 
 export { patchIntl };

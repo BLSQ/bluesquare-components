@@ -5,7 +5,6 @@ type Props = LinkProps & ButtonProps & {
     children: ReactNode;
     className?: string;
     buttonClassName?: string;
-    unstable_viewTransition?: any;
 };
 export declare const LinkButton: FunctionComponent<Props>;
 export {};

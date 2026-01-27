@@ -9,7 +9,6 @@ type Props = LinkProps &
         children: ReactNode;
         className?: string;
         buttonClassName?: string;
-        unstable_viewTransition?:any
     };
 
 export const LinkButton: FunctionComponent<Props> = props => {
@@ -20,7 +19,6 @@ export const LinkButton: FunctionComponent<Props> = props => {
         target,
         state,
         relative,
-        unstable_viewTransition,
         preventScrollReset,
         children,
         className,
@@ -36,7 +34,6 @@ export const LinkButton: FunctionComponent<Props> = props => {
             target={target}
             state={state}
             relative={relative}
-            unstable_viewTransition={unstable_viewTransition}
             preventScrollReset={preventScrollReset}
         >
             <Button

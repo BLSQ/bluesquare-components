@@ -47,7 +47,7 @@ const styles: SxStyles = {
         padding: 1,
         margin: 0,
         listStyleType: 'none',
-        backgroundColor: theme => theme.palette.gray.background,
+        backgroundColor: theme => theme.palette.grey['200Ò'],
     },
     draggablelist: {
         padding: 0,

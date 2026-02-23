@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import { DraggableAttributes } from '@dnd-kit/core';
 import { SyntheticListenerMap } from '@dnd-kit/core/dist/hooks/utilities';
 
+import { ListItem, SxProps } from '@mui/material';
 import { HandleProps } from './types';
 
 type Props = {
@@ -14,6 +15,7 @@ type Props = {
     // eslint-disable-next-line no-unused-vars
     children: (handleProps?: HandleProps) => ReactNode;
     handle?: boolean;
+    sx?: SxProps;
     isLast?: boolean;
 };
 const useStyles = makeStyles(theme => ({
@@ -44,6 +46,7 @@ export const SortableItem: FunctionComponent<Props> = ({
     handle,
     children,
     isLast = false,
+    sx,
 }) => {
     const classes = useStyles();
     const {
@@ -66,13 +69,14 @@ export const SortableItem: FunctionComponent<Props> = ({
 
     const elmProps = handle ? undefined : handleProps;
     return (
-        <li
+        <ListItem
             ref={setNodeRef}
             style={style}
             className={classNames(classes.item, isLast && classes.lastItem)}
+            sx={sx}
             {...elmProps}
         >
             {children(handle ? handleProps : undefined)}
-        </li>
+        </ListItem>
     );
 };

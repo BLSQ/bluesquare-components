@@ -54,6 +54,7 @@ const styles: SxStyles = {
         padding: 0,
         margin: 0,
         listStyleType: 'none',
+        cursor: 'grabbing',
     },
     draggableItem: {
         padding: 1,
@@ -80,7 +81,7 @@ export const SortableList: FunctionComponent<Props> = props => {
             props.listSx ? { ...styles.list, ...props.listSx } : styles.list,
         [props.listSx],
     );
-    const listItemSx: SxProps = useMemo(
+    const draggableItemSx: SxProps = useMemo(
         () =>
             props.listItemSx
                 ? { ...styles.draggableItem, ...props.listItemSx }
@@ -115,6 +116,7 @@ export const SortableList: FunctionComponent<Props> = props => {
                     collisionDetection={closestCenter}
                     onDragEnd={handleDragEnd}
                     onDragStart={({ active }) => {
+                        console.log('active', active);
                         setActiveItem(active);
                     }}
                     modifiers={[restrictToVerticalAxis]}
@@ -131,6 +133,7 @@ export const SortableList: FunctionComponent<Props> = props => {
                                     key={item.id}
                                     id={item.id}
                                     isLast={index + 1 === items.length}
+                                    sx={styles.listItem}
                                 >
                                     {handleProps => (
                                         <RenderItem
@@ -145,7 +148,7 @@ export const SortableList: FunctionComponent<Props> = props => {
                     </SortableContext>
                     <DragOverlay>
                         <List sx={styles.draggablelist}>
-                            <ListItem sx={listItemSx}>
+                            <ListItem sx={draggableItemSx}>
                                 <RenderItem item={activeItem} index={-1} />
                             </ListItem>
                         </List>

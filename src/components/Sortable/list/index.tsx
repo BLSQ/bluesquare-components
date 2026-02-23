@@ -107,6 +107,21 @@ export const SortableList: FunctionComponent<Props> = props => {
         [items, onChange],
     );
 
+    const handleDragStart = useCallback(
+        ({ active }) => {
+            console.log('active', active);
+            if (active && active.id) {
+                const matchingItem = items.find(
+                    (item: Item) => item.id === active.id,
+                );
+                if (matchingItem) {
+                    setActiveItem(matchingItem);
+                }
+            }
+        },
+        [setActiveItem, items],
+    );
+
     return (
         <>
             {items.length === 0 && <Placeholder />}
@@ -115,10 +130,7 @@ export const SortableList: FunctionComponent<Props> = props => {
                     sensors={sensors}
                     collisionDetection={closestCenter}
                     onDragEnd={handleDragEnd}
-                    onDragStart={({ active }) => {
-                        console.log('active', active);
-                        setActiveItem(active);
-                    }}
+                    onDragStart={handleDragStart}
                     modifiers={[restrictToVerticalAxis]}
                 >
                     <SortableContext

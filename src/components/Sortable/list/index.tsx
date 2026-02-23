@@ -47,7 +47,8 @@ const styles: SxStyles = {
         padding: 1,
         margin: 0,
         listStyleType: 'none',
-        backgroundColor: theme => theme.palette.grey['200Ò'],
+        cursor: 'grab',
+        backgroundColor: theme => theme.palette.grey['200'],
     },
     draggablelist: {
         padding: 0,
@@ -60,6 +61,7 @@ const styles: SxStyles = {
         border: theme => `1px solid ${theme.palette.grey['400']}`,
         borderRadius: 5,
         boxShadow: '-2px 8px 3px -3px rgba(0,0,0,0.15)',
+        cursor: 'grabbing',
     },
 };
 

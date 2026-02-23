@@ -1,0 +1,56 @@
+import moment from 'moment';
+import React, {
+    createContext,
+    useContext,
+    useEffect,
+    useMemo,
+    useState,
+} from 'react';
+import { LangOptions } from '../components/inputs/PhoneInput/types';
+import { longDateFormats } from './constants';
+
+const LocaleContext = createContext({
+    locale: moment.locale(),
+    setLocale: (_locale: LangOptions) => {
+        /* noop */
+    },
+});
+
+const updateMomentLocale = (newLocale: LangOptions) => {
+    moment.locale(newLocale);
+    moment.updateLocale(newLocale, {
+        longDateFormat: longDateFormats[newLocale],
+        week: {
+            dow: 1,
+        },
+    });
+};
+export const useLocale = () => useContext(LocaleContext);
+const defaultLanguage = 'en';
+export const LocaleProvider = ({ children }) => {
+    const [locale, setLocale] = useState<LangOptions>(defaultLanguage);
+
+    useEffect(() => {
+        updateMomentLocale(defaultLanguage);
+    }, []);
+
+    const value: {
+        locale: LangOptions;
+        setLocale: (newLocale: LangOptions) => void;
+    } = useMemo(
+        () => ({
+            locale,
+            setLocale: (newLocale: LangOptions) => {
+                updateMomentLocale(newLocale);
+                setLocale(newLocale);
+            },
+        }),
+        [locale],
+    );
+
+    return (
+        <LocaleContext.Provider value={value}>
+            {children}
+        </LocaleContext.Provider>
+    );
+};

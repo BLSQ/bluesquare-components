@@ -1,1 +1,0 @@
-export const testTS = (a:number, b:string) :string => `${b}-${a.toString()}`

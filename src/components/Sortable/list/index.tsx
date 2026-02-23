@@ -109,7 +109,6 @@ export const SortableList: FunctionComponent<Props> = props => {
 
     const handleDragStart = useCallback(
         ({ active }) => {
-            console.log('active', active);
             if (active && active.id) {
                 const matchingItem = items.find(
                     (item: Item) => item.id === active.id,
@@ -145,7 +144,7 @@ export const SortableList: FunctionComponent<Props> = props => {
                                     key={item.id}
                                     id={item.id}
                                     isLast={index + 1 === items.length}
-                                    sx={styles.listItem}
+                                    sx={props.listItemSx}
                                 >
                                     {handleProps => (
                                         <RenderItem

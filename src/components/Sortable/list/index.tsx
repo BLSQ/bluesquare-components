@@ -47,14 +47,12 @@ const styles: SxStyles = {
         padding: 1,
         margin: 0,
         listStyleType: 'none',
-        cursor: 'grab',
         backgroundColor: theme => theme.palette.grey['200'],
     },
     draggablelist: {
         padding: 0,
         margin: 0,
         listStyleType: 'none',
-        cursor: 'grabbing',
     },
     draggableItem: {
         padding: 1,
@@ -62,6 +60,11 @@ const styles: SxStyles = {
         border: theme => `1px solid ${theme.palette.grey['400']}`,
         borderRadius: 5,
         boxShadow: '-2px 8px 3px -3px rgba(0,0,0,0.15)',
+    },
+    grab: {
+        cursor: 'grab',
+    },
+    grabbing: {
         cursor: 'grabbing',
     },
 };
@@ -81,13 +84,22 @@ export const SortableList: FunctionComponent<Props> = props => {
             props.listSx ? { ...styles.list, ...props.listSx } : styles.list,
         [props.listSx],
     );
-    const draggableItemSx: SxProps = useMemo(
-        () =>
-            props.listItemSx
-                ? { ...styles.draggableItem, ...props.listItemSx }
-                : styles.draggableItem,
-        [props.listItemSx],
-    );
+
+    const listItemSx: SxProps = useMemo(() => {
+        const sxs = props.listItemSx
+            ? { ...styles.draggableItem, ...props.listItemSx }
+            : styles.draggableItem;
+
+        return disabled ? sxs : { ...sxs, ...styles.grab };
+    }, [props.listItemSx, disabled]);
+
+    const draggableItemSx: SxProps = useMemo(() => {
+        const sxs = props.listItemSx
+            ? { ...styles.draggableItem, ...props.listItemSx }
+            : styles.draggableItem;
+
+        return disabled ? sxs : { ...sxs, ...styles.grabbing };
+    }, [props.listItemSx, disabled]);
 
     const handleDragEnd = useCallback(
         (event: DragEndEvent) => {
@@ -144,7 +156,7 @@ export const SortableList: FunctionComponent<Props> = props => {
                                     key={item.id}
                                     id={item.id}
                                     isLast={index + 1 === items.length}
-                                    sx={props.listItemSx}
+                                    sx={listItemSx}
                                 >
                                     {handleProps => (
                                         <RenderItem

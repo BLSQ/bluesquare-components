@@ -85,13 +85,13 @@ export const SortableList: FunctionComponent<Props> = props => {
         [props.listSx],
     );
 
-    const listItemSx: SxProps = useMemo(() => {
-        const sxs = props.listItemSx
-            ? { ...styles.draggableItem, ...props.listItemSx }
-            : styles.draggableItem;
-
-        return disabled ? sxs : { ...sxs, ...styles.grab };
-    }, [props.listItemSx, disabled]);
+    const listItemSx: SxProps | undefined = useMemo(
+        () =>
+            disabled
+                ? props.listItemSx
+                : { ...props.listItemSx, ...styles.grab },
+        [props.listItemSx, disabled],
+    );
 
     const draggableItemSx: SxProps = useMemo(() => {
         const sxs = props.listItemSx

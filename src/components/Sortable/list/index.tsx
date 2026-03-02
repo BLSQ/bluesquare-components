@@ -73,7 +73,12 @@ export const SortableList: FunctionComponent<Props> = props => {
     const { items, onChange, handle = false, disabled, RenderItem } = props;
     const [activeItem, setActiveItem] = useState<Active | undefined>();
     const sensors = useSensors(
-        useSensor(PointerSensor),
+        useSensor(PointerSensor, {
+            activationConstraint: {
+                delay: 50,
+                tolerance: 5,
+            },
+        }),
         useSensor(KeyboardSensor, {
             coordinateGetter: sortableKeyboardCoordinates,
         }),

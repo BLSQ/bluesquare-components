@@ -40,6 +40,7 @@ type Props = {
     disabled?: boolean;
     listSx?: SxProps;
     listItemSx?: SxProps;
+    dragDelay?: number;
 };
 
 const styles: SxStyles = {
@@ -75,7 +76,7 @@ export const SortableList: FunctionComponent<Props> = props => {
     const sensors = useSensors(
         useSensor(PointerSensor, {
             activationConstraint: {
-                delay: 500,
+                delay: props.dragDelay ?? 0,
                 tolerance: 5,
             },
         }),

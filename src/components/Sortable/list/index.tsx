@@ -75,7 +75,7 @@ export const SortableList: FunctionComponent<Props> = props => {
     const sensors = useSensors(
         useSensor(PointerSensor, {
             activationConstraint: {
-                delay: 50,
+                delay: 500,
                 tolerance: 5,
             },
         }),

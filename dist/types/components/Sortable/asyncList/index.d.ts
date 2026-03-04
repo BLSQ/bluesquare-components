@@ -6,6 +6,7 @@ type Props = {
     listSx?: SxProps<Theme>;
     itemSx?: SxProps<Theme>;
     RenderItem: FunctionComponent<RenderAsyncListItemProps>;
+    showOverlay?: boolean;
     onDragEnd?: (arg0: {
         resume: () => void;
         abort: () => void;

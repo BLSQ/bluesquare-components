@@ -192,8 +192,8 @@ import { AsyncSortableList } from './components/Sortable/asyncList';
 
 // Types
 export * from './components/QueryBuilder/types';
-export * from './components/Sortable/list/types';
 export * from './components/Sortable/asyncList/types';
+export * from './components/Sortable/list/types';
 export * from './components/Sortable/types';
 export * from './components/inputs/PhoneInput/types';
 export * from './components/table/Table/types';

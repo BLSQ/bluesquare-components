@@ -172,12 +172,7 @@ import {
 } from './snackbars/snackBars';
 import { useSnackBars, useTranslateMessage } from './snackbars/useSnackBars';
 import SnackBarErrorMessage from './snackbars/SnackBarErrorMessage';
-import {
-    FilterState,
-    FilterStateParams,
-    useCheckBoxFilter,
-    useFilterState,
-} from './utils/useFilterState';
+import { useCheckBoxFilter, useFilterState } from './utils/useFilterState';
 import { useObjectState } from './utils/useObjectState';
 import { useArrayState } from './utils/useArrayState';
 import { useTabs } from './utils/useTabs';
@@ -203,7 +198,9 @@ export * from './types/types';
 export * from './utils/fetchData';
 export * from './localization/intlUtils';
 export * from './api/types';
-export { CheckBoxFilter, CheckBoxFilterArgs } from './utils/useFilterState';
+export type { CheckBoxFilterArgs } from './utils/useFilterState';
+export type { CheckBoxFilter } from './utils/useFilterState';
+export type { FilterState, FilterStateParams } from './utils/useFilterState';
 
 export type { CommonStyles } from './styles/iaso/common';
 export type {
@@ -385,8 +382,6 @@ export {
     useTabs,
     cleanupParams,
     useCheckBoxFilter,
-    FilterState,
-    FilterStateParams,
     waitFor,
     CheckBoxFilterItem,
     CheckBoxSelectGroup,

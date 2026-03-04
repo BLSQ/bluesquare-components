@@ -7,15 +7,15 @@ import classNames from 'classnames';
 import { DraggableAttributes } from '@dnd-kit/core';
 import { SyntheticListenerMap } from '@dnd-kit/core/dist/hooks/utilities';
 
-import { ListItem, SxProps } from '@mui/material';
+import { ListItem, SxProps, Theme } from '@mui/material';
 import { HandleProps } from './types';
 
 type Props = {
-    id: string;
+    id: string | number;
     // eslint-disable-next-line no-unused-vars
     children: (handleProps?: HandleProps) => ReactNode;
     handle?: boolean;
-    sx?: SxProps;
+    sx?: SxProps<Theme> | undefined;
     isLast?: boolean;
 };
 const useStyles = makeStyles(theme => ({

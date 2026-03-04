@@ -1,16 +1,16 @@
 import { FC, FunctionComponent } from 'react';
 import { SxProps, Theme } from '@mui/material';
-import { RenderProps } from './types';
+import { RenderAsyncListItemProps } from './types';
 type Props = {
     items: any[];
     listSx?: SxProps<Theme>;
     itemSx?: SxProps<Theme>;
-    RenderItem: FunctionComponent<RenderProps>;
+    RenderItem: FunctionComponent<RenderAsyncListItemProps>;
     onDragEnd?: (arg0: {
         resume: () => void;
         abort: () => void;
         items: any[];
     }) => void;
 };
-export declare const ScenarioRulesContainer: FC<Props>;
+export declare const AsyncSortableList: FC<Props>;
 export {};

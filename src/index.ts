@@ -188,10 +188,12 @@ import {
 import { Pagination } from './components/table/Table/Pagination';
 import { AsyncSelect } from './components/inputs/AsyncSelect/AsyncSelect';
 import { SortableItem } from './components/Sortable/list/Item';
+import { AsyncSortableList } from './components/Sortable/asyncList';
 
 // Types
 export * from './components/QueryBuilder/types';
 export * from './components/Sortable/list/types';
+export * from './components/Sortable/asyncList/types';
 export * from './components/Sortable/types';
 export * from './components/inputs/PhoneInput/types';
 export * from './components/table/Table/types';
@@ -289,6 +291,7 @@ export {
     // QueryBuilderListToReplace,
     SortableList,
     SortableItem,
+    AsyncSortableList,
     SortableTable,
     Table,
     TextArea,

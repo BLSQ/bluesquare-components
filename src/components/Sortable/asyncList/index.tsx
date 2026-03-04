@@ -4,13 +4,13 @@ import { DragDropProvider } from '@dnd-kit/react';
 import { List, SxProps, Theme } from '@mui/material';
 import { useOnDragEnd } from './useOnDragEnd';
 import { SortableListItem } from './SortableListItem';
-import { RenderProps } from './types';
+import { RenderAsyncListItemProps } from './types';
 
 type Props = {
     items: any[];
     listSx?: SxProps<Theme>;
     itemSx?: SxProps<Theme>;
-    RenderItem: FunctionComponent<RenderProps>;
+    RenderItem: FunctionComponent<RenderAsyncListItemProps>;
 
     onDragEnd?: (arg0: {
         resume: () => void;
@@ -19,7 +19,7 @@ type Props = {
     }) => void;
 };
 
-export const ScenarioRulesContainer: FC<Props> = ({
+export const AsyncSortableList: FC<Props> = ({
     items = [],
     listSx,
     itemSx,

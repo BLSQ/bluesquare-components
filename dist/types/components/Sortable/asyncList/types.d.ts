@@ -1,4 +1,4 @@
-export type RenderProps = {
+export type RenderAsyncListItemProps = {
     item: any;
     index: number;
 };

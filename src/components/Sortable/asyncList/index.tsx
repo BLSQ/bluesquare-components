@@ -52,11 +52,14 @@ export const AsyncSortableList = <T extends ItemType>({
             </List>
             {showOverlay && (
                 <DragOverlay>
-                    {source => (
-                        <ListItem sx={itemSx}>
-                            <RenderItem item={source.data.current} />
-                        </ListItem>
-                    )}
+                    {source => {
+                        console.log(source);
+                        return (
+                            <ListItem sx={itemSx}>
+                                <RenderItem item={source.data.current} />
+                            </ListItem>
+                        );
+                    }}
                 </DragOverlay>
             )}
         </DragDropProvider>

@@ -6,27 +6,31 @@ import { useOnDragEnd } from './useOnDragEnd';
 import { SortableListItem } from './SortableListItem';
 import { RenderAsyncListItemProps } from './types';
 
-type Props = {
-    items: any[];
+interface ItemType {
+    id: number | string;
+}
+
+type Props<T extends ItemType> = {
+    items: T[];
     listSx?: SxProps<Theme>;
     itemSx?: SxProps<Theme>;
-    RenderItem: FunctionComponent<RenderAsyncListItemProps>;
+    RenderItem: FunctionComponent<RenderAsyncListItemProps<T>>;
     showOverlay?: boolean;
     onDragEnd?: (arg0: {
         resume: () => void;
         abort: () => void;
-        items: any[];
+        items: T[];
     }) => void;
 };
 
-export const AsyncSortableList: FC<Props> = ({
+export const AsyncSortableList = <T extends ItemType>({
     items = [],
     listSx,
     itemSx,
     RenderItem,
     showOverlay = true,
     onDragEnd,
-}) => {
+}: Props<T>) => {
     const handleOnDragEnd = useOnDragEnd(items, onDragEnd);
 
     return (
@@ -50,7 +54,7 @@ export const AsyncSortableList: FC<Props> = ({
                 <DragOverlay>
                     {source => (
                         <ListItem sx={itemSx}>
-                            <RenderItem item={source} />
+                            <RenderItem item={source.data.current} />
                         </ListItem>
                     )}
                 </DragOverlay>

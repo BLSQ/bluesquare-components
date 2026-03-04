@@ -3,7 +3,7 @@ import { useSortable } from '@dnd-kit/react/sortable';
 import { ListItem, SxProps, Theme } from '@mui/material';
 
 type Props = {
-    id: number;
+    id: number | string;
     index: number;
     sx?: SxProps<Theme>;
     children: ReactNode;

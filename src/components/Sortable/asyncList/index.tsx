@@ -1,7 +1,7 @@
 import React, { FC, FunctionComponent } from 'react';
 import { RestrictToVerticalAxis } from '@dnd-kit/abstract/modifiers';
 import { DragDropProvider, DragOverlay } from '@dnd-kit/react';
-import { List, SxProps, Theme } from '@mui/material';
+import { List, ListItem, SxProps, Theme } from '@mui/material';
 import { useOnDragEnd } from './useOnDragEnd';
 import { SortableListItem } from './SortableListItem';
 import { RenderAsyncListItemProps } from './types';
@@ -42,13 +42,17 @@ export const AsyncSortableList: FC<Props> = ({
                         id={item.id ?? 0}
                         index={index}
                     >
-                        <RenderItem item={item} index={index} />
+                        <RenderItem item={item} />
                     </SortableListItem>
                 ))}
             </List>
             {showOverlay && (
                 <DragOverlay>
-                    {source => <RenderItem item={source} index={-1} />}
+                    {source => (
+                        <ListItem sx={itemSx}>
+                            <RenderItem item={source} />
+                        </ListItem>
+                    )}
                 </DragOverlay>
             )}
         </DragDropProvider>

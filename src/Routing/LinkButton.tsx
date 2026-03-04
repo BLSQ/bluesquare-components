@@ -31,7 +31,7 @@ export const LinkButton: FunctionComponent<Props> = props => {
             <Button
                 variant="contained"
                 color="primary"
-                // eslint-disable-next-line react/jsx-props-no-spreading
+                disabled
                 {...buttonProps}
                 className={buttonClassName}
                 onClick={() => null}

@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC } from 'react';
 import { SxProps, Theme } from '@mui/material';
 import { RenderAsyncListItemProps } from './types';
 interface ItemType {
@@ -8,13 +8,12 @@ type Props<T extends ItemType> = {
     items: T[];
     listSx?: SxProps<Theme>;
     itemSx?: SxProps<Theme>;
-    RenderItem: FunctionComponent<RenderAsyncListItemProps<T>>;
-    showOverlay?: boolean;
+    RenderItem: FC<RenderAsyncListItemProps<T>>;
     onDragEnd?: (arg0: {
         resume: () => void;
         abort: () => void;
         items: T[];
     }) => void;
 };
-export declare const AsyncSortableList: <T extends ItemType>({ items, listSx, itemSx, RenderItem, showOverlay, onDragEnd, }: Props<T>) => React.JSX.Element;
+export declare const AsyncSortableList: <T extends ItemType>(props: Props<T>) => React.ReactElement<Props<T>>;
 export {};

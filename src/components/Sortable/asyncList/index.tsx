@@ -1,7 +1,7 @@
-import React, { FC, FunctionComponent } from 'react';
+import React, { FC } from 'react';
 import { RestrictToVerticalAxis } from '@dnd-kit/abstract/modifiers';
-import { DragDropProvider, DragOverlay } from '@dnd-kit/react';
-import { List, ListItem, SxProps, Theme } from '@mui/material';
+import { DragDropProvider } from '@dnd-kit/react';
+import { List, SxProps, Theme } from '@mui/material';
 import { useOnDragEnd } from './useOnDragEnd';
 import { SortableListItem } from './SortableListItem';
 import { RenderAsyncListItemProps } from './types';
@@ -14,8 +14,7 @@ type Props<T extends ItemType> = {
     items: T[];
     listSx?: SxProps<Theme>;
     itemSx?: SxProps<Theme>;
-    RenderItem: FunctionComponent<RenderAsyncListItemProps<T>>;
-    showOverlay?: boolean;
+    RenderItem: FC<RenderAsyncListItemProps<T>>;
     onDragEnd?: (arg0: {
         resume: () => void;
         abort: () => void;
@@ -23,14 +22,15 @@ type Props<T extends ItemType> = {
     }) => void;
 };
 
-export const AsyncSortableList = <T extends ItemType>({
+export const AsyncSortableList: <T extends ItemType>(
+    props: Props<T>,
+) => React.ReactElement<Props<T>> = ({
     items = [],
     listSx,
     itemSx,
     RenderItem,
-    showOverlay = true,
     onDragEnd,
-}: Props<T>) => {
+}) => {
     const handleOnDragEnd = useOnDragEnd(items, onDragEnd);
 
     return (
@@ -50,18 +50,6 @@ export const AsyncSortableList = <T extends ItemType>({
                     </SortableListItem>
                 ))}
             </List>
-            {showOverlay && (
-                <DragOverlay>
-                    {source => {
-                        console.log(source);
-                        return (
-                            <ListItem sx={itemSx}>
-                                <RenderItem item={source.data.current} />
-                            </ListItem>
-                        );
-                    }}
-                </DragOverlay>
-            )}
         </DragDropProvider>
     );
 };

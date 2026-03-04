@@ -4,6 +4,7 @@ type Props = {
     id: number | string;
     index: number;
     sx?: SxProps<Theme>;
+    disabled?: boolean;
     children: ReactNode;
 };
 export declare const SortableListItem: FC<Props>;

@@ -45,6 +45,7 @@ export const AsyncSortableList: <T extends ItemType>(
                         key={item.id}
                         id={item.id ?? 0}
                         index={index}
+                        disabled={items.length === 1}
                     >
                         <RenderItem item={item} />
                     </SortableListItem>

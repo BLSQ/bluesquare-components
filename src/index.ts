@@ -187,6 +187,7 @@ import {
 } from './api/validation';
 import { Pagination } from './components/table/Table/Pagination';
 import { AsyncSelect } from './components/inputs/AsyncSelect/AsyncSelect';
+import { SortableItem } from './components/Sortable/list/Item';
 
 // Types
 export * from './components/QueryBuilder/types';
@@ -287,6 +288,7 @@ export {
     // IntlMessage,
     // QueryBuilderListToReplace,
     SortableList,
+    SortableItem,
     SortableTable,
     Table,
     TextArea,

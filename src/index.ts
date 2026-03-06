@@ -187,9 +187,12 @@ import {
 } from './api/validation';
 import { Pagination } from './components/table/Table/Pagination';
 import { AsyncSelect } from './components/inputs/AsyncSelect/AsyncSelect';
+import { SortableItem } from './components/Sortable/list/Item';
+import { AsyncSortableList } from './components/Sortable/asyncList';
 
 // Types
 export * from './components/QueryBuilder/types';
+export * from './components/Sortable/asyncList/types';
 export * from './components/Sortable/list/types';
 export * from './components/Sortable/types';
 export * from './components/inputs/PhoneInput/types';
@@ -287,6 +290,8 @@ export {
     // IntlMessage,
     // QueryBuilderListToReplace,
     SortableList,
+    SortableItem,
+    AsyncSortableList,
     SortableTable,
     Table,
     TextArea,

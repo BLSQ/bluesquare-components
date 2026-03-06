@@ -40,6 +40,8 @@ type Props = {
     disabled?: boolean;
     listSx?: SxProps;
     listItemSx?: SxProps;
+    dragDelay?: number;
+    disableKeyboard?: boolean;
 };
 
 const styles: SxStyles = {
@@ -72,11 +74,19 @@ const styles: SxStyles = {
 export const SortableList: FunctionComponent<Props> = props => {
     const { items, onChange, handle = false, disabled, RenderItem } = props;
     const [activeItem, setActiveItem] = useState<Active | undefined>();
+
+    const keyboardSensor = useSensor(KeyboardSensor, {
+        coordinateGetter: sortableKeyboardCoordinates,
+    });
+
     const sensors = useSensors(
-        useSensor(PointerSensor),
-        useSensor(KeyboardSensor, {
-            coordinateGetter: sortableKeyboardCoordinates,
+        useSensor(PointerSensor, {
+            activationConstraint: {
+                delay: props.dragDelay ?? 0,
+                tolerance: 5,
+            },
         }),
+        props.disableKeyboard ? undefined : keyboardSensor,
     );
 
     const listSx: SxProps = useMemo(

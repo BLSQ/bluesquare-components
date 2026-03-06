@@ -9,6 +9,8 @@ type Props = {
     disabled?: boolean;
     listSx?: SxProps;
     listItemSx?: SxProps;
+    dragDelay?: number;
+    disableKeyboard?: boolean;
 };
 export declare const SortableList: FunctionComponent<Props>;
 export {};

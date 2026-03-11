@@ -9,6 +9,7 @@ type Props<T extends ItemType> = {
     listSx?: SxProps<Theme>;
     itemSx?: SxProps<Theme>;
     RenderItem: FC<RenderAsyncListItemProps<T>>;
+    disabled?: boolean;
     onDragEnd?: (arg0: {
         resume: () => void;
         abort: () => void;

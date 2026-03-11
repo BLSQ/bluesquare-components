@@ -15,6 +15,7 @@ type Props<T extends ItemType> = {
     listSx?: SxProps<Theme>;
     itemSx?: SxProps<Theme>;
     RenderItem: FC<RenderAsyncListItemProps<T>>;
+    disabled?: boolean;
     onDragEnd?: (arg0: {
         resume: () => void;
         abort: () => void;
@@ -29,6 +30,7 @@ export const AsyncSortableList: <T extends ItemType>(
     listSx,
     itemSx,
     RenderItem,
+    disabled = false,
     onDragEnd,
 }) => {
     const handleOnDragEnd = useOnDragEnd(items, onDragEnd);
@@ -45,7 +47,7 @@ export const AsyncSortableList: <T extends ItemType>(
                         key={item.id}
                         id={item.id ?? 0}
                         index={index}
-                        disabled={items.length === 1}
+                        disabled={disabled || items.length === 1}
                     >
                         <RenderItem item={item} />
                     </SortableListItem>

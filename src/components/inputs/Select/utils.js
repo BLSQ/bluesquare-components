@@ -22,7 +22,7 @@ export const baseRenderTags = getLabel => (tagValue, getTagProps) =>
                         color: Color(option.color).isDark() ? 'white' : 'black',
                     }}
                     label={getLabel(option)}
-                    disabled={tagProps.disabled ?? false}
+                    disabled={tagProps.disabled}
                     {...tagProps}
                 />
             );
@@ -52,7 +52,7 @@ export const baseRenderTagsWithTooltip =
                                     : 'black',
                             }}
                             label={getLabel(option)}
-                            disabled={tagProps.disabled ?? false}
+                            disabled={tagProps.disabled}
                             {...tagProps}
                         />
                     </Tooltip>

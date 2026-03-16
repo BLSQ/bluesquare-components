@@ -13,7 +13,7 @@ export const useRenderTagsWithDisabled = (renderTags, disabled = false) =>
         (tagValue, getTagProps) =>
             renderTags(tagValue, params => ({
                 ...getTagProps(params),
-                disabled: disabled ?? false,
+                disabled: disabled ,
             })),
         [renderTags, disabled],
     );

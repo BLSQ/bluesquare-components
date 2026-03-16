@@ -19,6 +19,7 @@ import {
     getOption,
     defaultRenderOption,
 } from './utils';
+import { useRenderTagsWithDisabled } from './useRenderTagsWithDisabled';
 
 const MultiSelect = ({
     value = undefined,
@@ -55,6 +56,7 @@ const MultiSelect = ({
         return Array.isArray(value) ? value : value.split(',');
     }, [value, hasValue]);
 
+    const wrappedRenderTags = useRenderTagsWithDisabled(renderTags, disabled);
     const extraProps = getExtraProps(
         getOptionLabel,
         getOptionSelected,
@@ -128,7 +130,7 @@ const MultiSelect = ({
                 loading={loading}
                 loadingText={formatMessage(loadingText)}
                 clearIcon={<ClearIcon />}
-                renderTags={renderTags}
+                renderTags={wrappedRenderTags}
                 renderInput={params => (
                     <TextInput
                         params={params}

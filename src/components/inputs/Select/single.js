@@ -17,6 +17,7 @@ import {
     getOption,
     defaultRenderOption,
 } from './utils';
+import { useRenderTagsWithDisabled } from './useRenderTagsWithDisabled';
 
 const SingleSelect = ({
     value = undefined,
@@ -79,6 +80,8 @@ const SingleSelect = ({
         [onChange, returnFullObject],
     );
 
+    const wrappedRenderTags = useRenderTagsWithDisabled(renderTags, disabled);
+
     return (
         <Box>
             <Autocomplete
@@ -95,12 +98,12 @@ const SingleSelect = ({
                 loading={loading}
                 loadingText={formatMessage(loadingText)}
                 clearIcon={<ClearIcon />}
-                renderTags={renderTags}
+                renderTags={wrappedRenderTags}
                 renderInput={params => (
                     <TextInput
                         params={params}
                         renderOption={renderOption}
-                        renderTags={renderTags}
+                        renderTags={wrappedRenderTags}
                         selectedOption={fixedValue}
                         disabled={disabled}
                         label={label}

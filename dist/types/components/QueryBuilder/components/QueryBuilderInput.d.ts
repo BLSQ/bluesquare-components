@@ -13,11 +13,11 @@ declare const modalWithButton: React.FunctionComponent<{
     InfoPopper?: React.ReactNode;
 } & {
     defaultOpen?: boolean;
-    iconProps: {
+    iconProps?: {
         label: IntlMessage;
         value: string;
         dataTestId?: string | undefined;
         onClear: () => void;
-    };
+    } | undefined;
 }>;
 export { modalWithButton as QueryBuilderInput };

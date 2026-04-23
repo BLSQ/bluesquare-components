@@ -105,7 +105,7 @@
         "install": "^0.13.0",
         "lodash": "^4.17.15",
         "material-ui-confirm": "^3.0.5",
-        "npm": "^10.9.8",
+        "npm": "^11.0.0",
         "react-intersection-observer": "^8.26.1",
         "react-number-format": "^5.3.1",
         "react-phone-input-material-ui": "^2.18.1",

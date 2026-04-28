@@ -3,7 +3,7 @@ import { IntlMessage } from '../../types/types';
 type Props = {
     label: string;
     onChange: (value: any, context?: any) => void;
-    currentDate?: string | Date;
+    currentDate?: string | Date | null;
     errors?: string[];
     clearMessage?: IntlMessage;
     required?: boolean;

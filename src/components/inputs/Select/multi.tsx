@@ -48,6 +48,7 @@ type Props = {
     renderTags?: (
         value: any[],
         getTagProps: AutocompleteRenderGetTagProps,
+        ownerState?: unknown,
     ) => React.ReactNode;
     returnFullObject?: boolean;
     placeholder?: string;
@@ -178,7 +179,7 @@ export const MultiSelect: FunctionComponent<Props> = ({
                         helperText={helperText}
                         loading={loading}
                         dataTestId={dataTestId}
-                        placeholder={placeholder}
+                        placeholder={placeholder ?? undefined}
                     />
                 )}
                 classes={{

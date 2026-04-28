@@ -12,7 +12,7 @@ export const patchIntl = (intl: IntlShape): PatchIntlShape => ({
             message,
         );
 
-        return undefined;
+        return '';
     },
     separators: {
         decimal: intl.formatNumber(1.1).replace(/\d/g, '')[0] || '.',

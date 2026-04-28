@@ -19,7 +19,7 @@ type Props = {
     getOptionLabel?: any;
     getOptionSelected?: any;
     renderOption?: (props: Record<string, any>, option: Record<string, any>) => React.ReactNode;
-    renderTags?: (value: any[], getTagProps: AutocompleteRenderGetTagProps) => React.ReactNode;
+    renderTags?: (value: any[], getTagProps: AutocompleteRenderGetTagProps, ownerState?: unknown) => React.ReactNode;
     returnFullObject?: boolean;
     placeholder?: string;
     dataTestId?: string;

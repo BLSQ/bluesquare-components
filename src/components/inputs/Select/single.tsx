@@ -46,6 +46,7 @@ type Props = {
     renderTags?: (
         value: any[],
         getTagProps: AutocompleteRenderGetTagProps,
+        ownerState?: unknown,
     ) => React.ReactNode;
     returnFullObject?: boolean;
     placeholder?: string;

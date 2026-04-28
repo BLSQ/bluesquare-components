@@ -7,6 +7,10 @@ export type IntlMessage = {
 export type IntlFormatMessage = (message: IntlMessage, values?: Record<string, string | HTMLElement>) => string | undefined;
 export type PatchIntlShape = Omit<IntlShape, 'formatMessage'> & {
     formatMessage: IntlFormatMessage;
+    separators: {
+        decimal: string;
+        thousand: string;
+    };
 };
 export type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 export type Nullable<T> = T | null;

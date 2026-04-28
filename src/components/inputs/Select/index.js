@@ -108,37 +108,37 @@ const SelectCustom = ({
     freeSolo = false,
     dataTestId,
     useBuiltInErrors = true,
-}) => {
-    if (multi) {
-        return (
-            <MultiSelect
-                errors={errors}
-                keyValue={keyValue}
-                label={label}
-                required={required}
-                disabled={disabled}
-                clearable={clearable}
-                value={value}
-                onBlur={onBlur}
-                loadingText={loadingText}
-                noOptionsText={noOptionsText}
-                helperText={helperText}
-                options={options}
-                loading={loading}
-                onChange={onChange}
-                getOptionLabel={getOptionLabel}
-                getOptionSelected={getOptionSelected}
-                renderOption={renderOption}
-                renderTags={renderTags}
-                returnFullObject={returnFullObject}
-                placeholder={placeholder}
-                freeSolo={freeSolo}
-                dataTestId={dataTestId}
-                useBuiltInErrors={useBuiltInErrors}
-            />
-        );
-    }
-    return (
+    ...rest
+}) =>
+    multi ? (
+        <MultiSelect
+            errors={errors}
+            keyValue={keyValue}
+            label={label}
+            required={required}
+            disabled={disabled}
+            clearable={clearable}
+            value={value}
+            onBlur={onBlur}
+            loadingText={loadingText}
+            noOptionsText={noOptionsText}
+            helperText={helperText}
+            options={options}
+            loading={loading}
+            onChange={onChange}
+            getOptionLabel={getOptionLabel}
+            getOptionSelected={getOptionSelected}
+            renderOption={renderOption}
+            renderTags={renderTags}
+            returnFullObject={returnFullObject}
+            placeholder={placeholder}
+            freeSolo={freeSolo}
+            dataTestId={dataTestId}
+            useBuiltInErrors={useBuiltInErrors}
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            {...rest}
+        />
+    ) : (
         <SingleSelect
             errors={errors}
             keyValue={keyValue}
@@ -163,9 +163,10 @@ const SelectCustom = ({
             freeSolo={freeSolo}
             dataTestId={dataTestId}
             useBuiltInErrors={useBuiltInErrors}
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            {...rest}
         />
     );
-};
 
 SelectCustom.propTypes = {
     multi: PropTypes.bool,

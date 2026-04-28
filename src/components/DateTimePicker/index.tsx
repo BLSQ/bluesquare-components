@@ -6,6 +6,7 @@ import { IconButton } from '../buttons/IconButton';
 import { FormControl } from '../inputs/FormControl';
 import { commonStyles } from '../../styles/iaso/common';
 import { IntlMessage } from '../../types/types';
+import { toMomentValue } from '../../utils/toMomentValue';
 
 const useStyles = makeStyles(theme => ({
     ...commonStyles(theme),
@@ -24,16 +25,13 @@ const useStyles = makeStyles(theme => ({
 type Props = {
     label: string;
     onChange: (value: any, context?: any) => void;
-    currentDate?: string | Date;
+    currentDate?: string | Date | null;
     errors?: string[];
     clearMessage?: IntlMessage; //Displays when hovering over the clear icon
     required?: boolean;
     hideError?: boolean;
     disabled?: boolean;
     clearable?: boolean;
-    /** Use moment to pass these props
-     * https://github.com/mui/material-ui-pickers/issues/1506
-     */
     maxTime?: any;
     maxDateTime?: any;
     maxDate?: any;
@@ -62,6 +60,13 @@ export const DateTimePicker: FunctionComponent<Props> = ({
     const classes: Record<string, string> = useStyles();
     const [dateError, setDateError] = useState<any | null>(null);
     const isOnError = errors.length > 0 || Boolean(dateError);
+    const pickerValue = toMomentValue(currentDate);
+    const pickerMinDate = toMomentValue(minDate);
+    const pickerMinDateTime = toMomentValue(minDateTime);
+    const pickerMinTime = toMomentValue(minTime);
+    const pickerMaxDate = toMomentValue(maxDate);
+    const pickerMaxDateTime = toMomentValue(maxDateTime);
+    const pickerMaxTime = toMomentValue(maxTime);
 
     return (
         <FormControl errors={errors} hideError={hideError}>
@@ -87,15 +92,15 @@ export const DateTimePicker: FunctionComponent<Props> = ({
                 }}
                 format="DD/MM/YYYY HH:mm" // This one need be set by user locale
                 label={`${label}`}
-                value={currentDate}
+                value={pickerValue}
                 onChange={onChange}
                 onError={error => setDateError(error)}
-                minDate={minDate}
-                minDateTime={minDateTime}
-                minTime={minTime}
-                maxDate={maxDate}
-                maxDateTime={maxDateTime}
-                maxTime={maxTime}
+                minDate={pickerMinDate}
+                minDateTime={pickerMinDateTime}
+                minTime={pickerMinTime}
+                maxDate={pickerMaxDate}
+                maxDateTime={pickerMaxDateTime}
+                maxTime={pickerMaxTime}
             />
             {clearable && clearMessage && currentDate && (
                 <span className={classes.clearDateButton}>

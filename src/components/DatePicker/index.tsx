@@ -6,6 +6,7 @@ import { IconButton } from '../buttons/IconButton';
 import { FormControl } from '../inputs/FormControl';
 import { commonStyles } from '../../styles/iaso/common';
 import { IntlMessage } from '../../types/types';
+import { toMomentValue } from '../../utils/toMomentValue';
 
 const useStyles = makeStyles(theme => ({
     ...commonStyles(theme),
@@ -44,7 +45,7 @@ const useStyles = makeStyles(theme => ({
 type Props = {
     label: string;
     onChange: (value: any, context?: any) => void;
-    currentDate?: string | Date;
+    currentDate?: string | Date | null;
     errors?: string[];
     clearMessage?: IntlMessage; //Displays when hovering over the clear icon
     required?: boolean;
@@ -71,6 +72,9 @@ export const DatePicker: FunctionComponent<Props> = ({
     const classes = useStyles();
     const [dateError, setDateError] = useState<any | null>(null);
     const isOnError = errors.length > 0 || Boolean(dateError);
+    const pickerValue = toMomentValue(currentDate);
+    const pickerMinDate = toMomentValue(minDate);
+    const pickerMaxDate = toMomentValue(maxDate);
     return (
         <FormControl errors={errors} hideError={hideError}>
             <MuiDatePicker
@@ -94,11 +98,11 @@ export const DatePicker: FunctionComponent<Props> = ({
                 disabled={disabled}
                 format="DD/MM/YYYY" // This one need be set by user locale
                 label={`${label}`}
-                value={currentDate}
+                value={pickerValue}
                 onChange={onChange}
                 onError={error => setDateError(error)}
-                minDate={minDate}
-                maxDate={maxDate}
+                minDate={pickerMinDate}
+                maxDate={pickerMaxDate}
             />
             {clearable && clearMessage && currentDate && (
                 <span className={classes.clearDateButton}>

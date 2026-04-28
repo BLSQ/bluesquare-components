@@ -5,7 +5,6 @@ import { makeStyles } from '@mui/styles';
 import PropTypes from 'prop-types';
 import EventIcon from '@mui/icons-material/Event';
 
-import { TextField } from '@mui/material';
 import { IconButton } from '../buttons/IconButton';
 import { FormControl } from '../inputs/FormControl';
 
@@ -65,24 +64,22 @@ const DatePicker = ({
             <MuiDatePicker
                 autoOk
                 disableToolbar
-                // with mui 5 InputLabelProps and InputProps can't be directly passed to the DatePicker
-                renderInput={props => (
-                    <TextField
-                        {...props}
-                        InputLabelProps={{
+                slotProps={{
+                    textField: {
+                        InputLabelProps: {
                             error: isOnError,
                             shrink: Boolean(currentDate),
-                        }}
-                        required={required}
-                        error={isOnError}
-                    />
-                )}
+                        },
+                        required,
+                        error: isOnError,
+                        helperText: null,
+                    },
+                }}
                 disabled={disabled}
                 KeyboardButtonProps={{
                     size: 'small',
                 }}
                 keyboardIcon={<EventIcon size="small" />}
-                helperText={null}
                 format="DD/MM/YYYY" // This one need be set by user locale
                 label={`${label}`}
                 value={currentDate}

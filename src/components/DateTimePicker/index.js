@@ -5,7 +5,6 @@ import EventIcon from '@mui/icons-material/Event';
 import { makeStyles } from '@mui/styles';
 import PropTypes from 'prop-types';
 
-import { TextField } from '@mui/material';
 import { IconButton } from '../buttons/IconButton';
 import { FormControl } from '../inputs/FormControl';
 
@@ -51,24 +50,24 @@ const DateTimePicker = ({
         <FormControl errors={errors} hideError={hideError}>
             <MuiDateTimePicker
                 autoOk
-                renderInput={props => <TextField {...props} />}
                 disableToolbar
-                inputVariant="outlined"
-                required={required}
                 disabled={disabled}
-                InputLabelProps={{
-                    className: classes.label,
-                    shrink: Boolean(currentDate),
-                    error: isOnError,
+                slotProps={{
+                    textField: {
+                        InputLabelProps: {
+                            className: classes.label,
+                            shrink: Boolean(currentDate),
+                            error: isOnError,
+                        },
+                        required,
+                        error: isOnError,
+                        helperText: null,
+                    },
                 }}
                 KeyboardButtonProps={{
                     size: 'small',
                 }}
                 keyboardIcon={<EventIcon size="small" />}
-                InputProps={{
-                    error: isOnError,
-                }}
-                helperText={null}
                 format="DD/MM/YYYY HH:mm" // This one need be set by user locale
                 label={`${label}`}
                 value={currentDate}

@@ -2,7 +2,6 @@ import React, { FunctionComponent, useState } from 'react';
 import { DateTimePicker as MuiDateTimePicker } from '@mui/x-date-pickers';
 import EventIcon from '@mui/icons-material/Event';
 import { makeStyles } from '@mui/styles';
-import { TextField } from '@mui/material';
 import { IconButton } from '../buttons/IconButton';
 import { FormControl } from '../inputs/FormControl';
 import { commonStyles } from '../../styles/iaso/common';
@@ -69,25 +68,25 @@ export const DateTimePicker: FunctionComponent<Props> = ({
             <MuiDateTimePicker
                 // @ts-ignore
                 autoOk
-                renderInput={props => <TextField {...props} />}
                 disableToolbar
-                inputVariant="outlined"
-                required={required}
                 disabled={disabled}
-                InputLabelProps={{
-                    className: classes.label,
-                    shrink: Boolean(currentDate),
-                    error: isOnError,
+                slotProps={{
+                    textField: {
+                        InputLabelProps: {
+                            className: classes.label,
+                            shrink: Boolean(currentDate),
+                            error: isOnError,
+                        },
+                        required,
+                        error: isOnError,
+                        helperText: null,
+                    },
                 }}
                 KeyboardButtonProps={{
                     size: 'small',
                 }}
                 // @ts-ignore
                 keyboardIcon={<EventIcon size="small" />}
-                InputProps={{
-                    error: isOnError,
-                }}
-                helperText={null}
                 format="DD/MM/YYYY HH:mm" // This one need be set by user locale
                 label={`${label}`}
                 value={currentDate}

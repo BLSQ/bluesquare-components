@@ -2,7 +2,6 @@ import React, { FunctionComponent, useState } from 'react';
 import { DesktopDatePicker as MuiDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { makeStyles } from '@mui/styles';
 import EventIcon from '@mui/icons-material/Event';
-import { TextField } from '@mui/material';
 import { IconButton } from '../buttons/IconButton';
 import { FormControl } from '../inputs/FormControl';
 import { commonStyles } from '../../styles/iaso/common';
@@ -78,25 +77,23 @@ export const DatePicker: FunctionComponent<Props> = ({
                 // @ts-ignore
                 autoOk
                 disableToolbar
-                // with mui 5 InputLabelProps and InputProps can't be directly passed to the DatePicker
-                renderInput={props => (
-                    <TextField
-                        {...props}
-                        InputLabelProps={{
+                slotProps={{
+                    textField: {
+                        InputLabelProps: {
                             error: isOnError,
                             shrink: Boolean(currentDate),
-                        }}
-                        required={required}
-                        error={isOnError}
-                    />
-                )}
+                        },
+                        required,
+                        error: isOnError,
+                        helperText: null,
+                    },
+                }}
                 disabled={disabled}
                 KeyboardButtonProps={{
                     size: 'small',
                 }}
                 // @ts-ignore
                 keyboardIcon={<EventIcon size="small" />}
-                helperText={null}
                 format="DD/MM/YYYY" // This one need be set by user locale
                 label={`${label}`}
                 value={currentDate}

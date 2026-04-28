@@ -2,7 +2,6 @@ import React, { FunctionComponent } from 'react';
 
 import { TimePicker as MuiTimePicker } from '@mui/x-date-pickers';
 
-import { TextField } from '@mui/material';
 import { FormControl } from './FormControl';
 
 type Props = {
@@ -23,18 +22,16 @@ export const TimePicker: FunctionComponent<Props> = ({
 }) => (
     <FormControl>
         <MuiTimePicker
-            renderInput={props => (
-                <TextField
-                    {...props}
-                    required={required}
-                    variant="outlined"
-                    InputLabelProps={{
-                        // className: classes.label,
+            slotProps={{
+                textField: {
+                    variant: 'outlined',
+                    required,
+                    helperText: null,
+                    InputLabelProps: {
                         shrink: Boolean(value),
-                    }}
-                    helperText={null}
-                />
-            )}
+                    },
+                },
+            }}
             ampm={false}
             disabled={disabled}
             label={label}

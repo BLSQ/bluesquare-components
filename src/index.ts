@@ -172,12 +172,7 @@ import {
 } from './snackbars/snackBars';
 import { useSnackBars, useTranslateMessage } from './snackbars/useSnackBars';
 import SnackBarErrorMessage from './snackbars/SnackBarErrorMessage';
-import {
-    FilterState,
-    FilterStateParams,
-    useCheckBoxFilter,
-    useFilterState,
-} from './utils/useFilterState';
+import { useCheckBoxFilter, useFilterState } from './utils/useFilterState';
 import { useObjectState } from './utils/useObjectState';
 import { useArrayState } from './utils/useArrayState';
 import { useTabs } from './utils/useTabs';
@@ -185,16 +180,14 @@ import { cleanupParams } from './api/utils';
 import { CheckBoxSelectGroup } from './components/inputs/CheckBoxSelectGroup/CheckBoxSelectGroup';
 import { CheckBoxFilterItem } from './components/inputs/CheckBoxSelectGroup/CheckBoxFilterItem';
 import { FilesUploadContainer } from './components/inputs/FileUpload/FilesUploadContainer';
-import {
-    useApiErrorValidation,
-    useAPIErrorValidator,
-    useTranslatedErrors,
-} from './api/validation';
 import { Pagination } from './components/table/Table/Pagination';
 import { AsyncSelect } from './components/inputs/AsyncSelect/AsyncSelect';
+import { SortableItem } from './components/Sortable/list/Item';
+import { AsyncSortableList } from './components/Sortable/asyncList';
 
 // Types
 export * from './components/QueryBuilder/types';
+export * from './components/Sortable/asyncList/types';
 export * from './components/Sortable/list/types';
 export * from './components/Sortable/types';
 export * from './components/inputs/PhoneInput/types';
@@ -203,7 +196,9 @@ export * from './types/types';
 export * from './utils/fetchData';
 export * from './localization/intlUtils';
 export * from './api/types';
-export { CheckBoxFilter, CheckBoxFilterArgs } from './utils/useFilterState';
+export type { CheckBoxFilterArgs } from './utils/useFilterState';
+export type { CheckBoxFilter } from './utils/useFilterState';
+export type { FilterState, FilterStateParams } from './utils/useFilterState';
 
 export type { CommonStyles } from './styles/iaso/common';
 export type {
@@ -290,6 +285,8 @@ export {
     // IntlMessage,
     // QueryBuilderListToReplace,
     SortableList,
+    SortableItem,
+    AsyncSortableList,
     SortableTable,
     Table,
     TextArea,
@@ -385,14 +382,9 @@ export {
     useTabs,
     cleanupParams,
     useCheckBoxFilter,
-    FilterState,
-    FilterStateParams,
     waitFor,
     CheckBoxFilterItem,
     CheckBoxSelectGroup,
     FilesUploadContainer,
-    useApiErrorValidation,
-    useAPIErrorValidator,
-    useTranslatedErrors,
     Pagination,
 };

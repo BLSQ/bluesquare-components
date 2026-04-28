@@ -8,21 +8,25 @@ export const defaultGetLabel = o => (o?.label ? o.label : '');
 export const baseRenderTags = getLabel => (tagValue, getTagProps) =>
     tagValue
         .sort((a, b) =>
-            getLabel(a).localeCompare(b.label, undefined, {
+            getLabel(a).localeCompare(getLabel(b), undefined, {
                 sensitivity: 'accent',
             }),
         )
-        .map((option, index) => (
-            <Chip
-                color="secondary"
-                style={{
-                    backgroundColor: option.color,
-                    color: Color(option.color).isDark() ? 'white' : 'black',
-                }}
-                label={getLabel(option)}
-                {...getTagProps({ index })}
-            />
-        ));
+        .map((option, index) => {
+            const tagProps = getTagProps({ index });
+            return (
+                <Chip
+                    color="secondary"
+                    style={{
+                        backgroundColor: option.color,
+                        color: Color(option.color).isDark() ? 'white' : 'black',
+                    }}
+                    label={getLabel(option)}
+                    disabled={tagProps.disabled}
+                    {...tagProps}
+                />
+            );
+        });
 
 export const defaultRenderTags = baseRenderTags(defaultGetLabel);
 
@@ -35,6 +39,7 @@ export const baseRenderTagsWithTooltip =
                 }),
             )
             .map((option, index) => {
+                const tagProps = getTagProps({ index });
                 const title = getTooltipTitle(option);
                 return (
                     <Tooltip title={title} key={`${title}-${index}`}>
@@ -47,7 +52,8 @@ export const baseRenderTagsWithTooltip =
                                     : 'black',
                             }}
                             label={getLabel(option)}
-                            {...getTagProps({ index })}
+                            disabled={tagProps.disabled}
+                            {...tagProps}
                         />
                     </Tooltip>
                 );

@@ -22,6 +22,7 @@ import {
     defaultRenderOption,
 } from './utils';
 import { IntlMessage } from '../../../types/types';
+import { useRenderTagsWithDisabled } from './useRenderTagsWithDisabled';
 
 type Props = {
     keyValue: string;
@@ -90,6 +91,7 @@ export const MultiSelect: FunctionComponent<Props> = ({
         return Array.isArray(value) ? value : value.split(',');
     }, [value, hasValue]);
 
+    const wrappedRenderTags = useRenderTagsWithDisabled(renderTags, disabled);
     const extraProps = getExtraProps(
         getOptionLabel,
         getOptionSelected,
@@ -163,7 +165,7 @@ export const MultiSelect: FunctionComponent<Props> = ({
                 loading={loading}
                 loadingText={formatMessage(loadingText)}
                 clearIcon={<ClearIcon />}
-                renderTags={renderTags}
+                renderTags={wrappedRenderTags}
                 renderInput={params => (
                     <TextInput
                         params={params}

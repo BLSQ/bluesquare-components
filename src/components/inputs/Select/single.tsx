@@ -20,6 +20,7 @@ import {
 } from './utils';
 import { MESSAGES } from './messages';
 import { IntlMessage } from '../../../types/types';
+import { useRenderTagsWithDisabled } from './useRenderTagsWithDisabled';
 
 type Props = {
     keyValue: string;
@@ -116,6 +117,8 @@ export const SingleSelect: FunctionComponent<Props> = ({
         [onChange, returnFullObject],
     );
 
+    const wrappedRenderTags = useRenderTagsWithDisabled(renderTags, disabled);
+
     return (
         <Box>
             <Autocomplete
@@ -132,12 +135,12 @@ export const SingleSelect: FunctionComponent<Props> = ({
                 loading={loading}
                 loadingText={formatMessage(loadingText)}
                 clearIcon={<ClearIcon />}
-                renderTags={renderTags}
+                renderTags={wrappedRenderTags}
                 renderInput={params => (
                     <TextInput
                         params={params}
                         renderOption={renderOption}
-                        renderTags={renderTags}
+                        renderTags={wrappedRenderTags}
                         selectedOption={fixedValue}
                         disabled={disabled}
                         label={label}

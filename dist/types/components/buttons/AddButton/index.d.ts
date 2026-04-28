@@ -1,7 +1,8 @@
-export { styledAddButton as AddButton };
-declare const styledAddButton: React.JSXElementConstructor<Omit<Pick<Pick<{
-    classes: any;
+import { FunctionComponent } from 'react';
+import { IntlMessage } from '../../../types/types';
+type Props = {
     onClick: any;
+<<<<<<< HEAD
     message: any;
     id: any;
     dataTestId: any;
@@ -40,3 +41,15 @@ declare const styledAddButton: React.JSXElementConstructor<Omit<Pick<Pick<{
 } & {}, "classes"> & import("@mui/styles").StyledComponentProps<string> & object>;
 import PropTypes from 'prop-types';
 import React from 'react';
+=======
+    message?: IntlMessage;
+    id?: string;
+    dataTestId?: string;
+    size?: 'medium' | 'large' | 'small' | undefined;
+    variant?: 'text' | 'contained' | 'outlined';
+    disabled?: boolean;
+    color?: 'inherit' | 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning';
+};
+export declare const AddButton: FunctionComponent<Props>;
+export {};
+>>>>>>> IA-4640_safe_date_picker

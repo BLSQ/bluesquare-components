@@ -1,27 +1,30 @@
 export function TreeViewWithSearch({ label, getChildrenData, getRootData, toggleOnLabelClick, onSelect, minResultCount, inputLabelObject, withSearchButton, request, makeDropDownText, toolTip, parseNodeIds, onUpdate, multiselect, preselected, preexpanded, selectedData, allowSelection, dependency, childrenDependency, queryOptions, childrenQueryOptions, fetchDetails, }: {
     label: any;
-    getChildrenData: any;
-    getRootData: any;
-    toggleOnLabelClick: any;
-    onSelect: any;
-    minResultCount: any;
-    inputLabelObject: any;
-    withSearchButton: any;
+    getChildrenData?: (() => void) | undefined;
+    getRootData?: (() => void) | undefined;
+    toggleOnLabelClick?: boolean | undefined;
+    onSelect?: (() => void) | undefined;
+    minResultCount?: number | undefined;
+    inputLabelObject?: {
+        id: string;
+        defaultMessage: string;
+    } | undefined;
+    withSearchButton?: boolean | undefined;
     request: any;
     makeDropDownText: any;
-    toolTip: any;
+    toolTip?: null | undefined;
     parseNodeIds: any;
-    onUpdate: any;
-    multiselect: any;
-    preselected: any;
-    preexpanded: any;
-    selectedData: any;
-    allowSelection: any;
-    dependency: any;
-    childrenDependency: any;
+    onUpdate?: (() => void) | undefined;
+    multiselect?: boolean | undefined;
+    preselected?: null | undefined;
+    preexpanded?: null | undefined;
+    selectedData?: never[] | undefined;
+    allowSelection?: (() => boolean) | undefined;
+    dependency?: undefined;
+    childrenDependency?: undefined;
     queryOptions?: {} | undefined;
     childrenQueryOptions?: {} | undefined;
-    fetchDetails: any;
+    fetchDetails?: ((item: any) => any) | undefined;
 }): React.JSX.Element;
 export namespace TreeViewWithSearch {
     namespace propTypes {
@@ -48,32 +51,6 @@ export namespace TreeViewWithSearch {
         export { object as queryOptions };
         export { object as childrenQueryOptions };
         export { func as fetchDetails };
-    }
-    namespace defaultProps {
-        export function getChildrenData(): void;
-        export function getRootData(): void;
-        export let toggleOnLabelClick: boolean;
-        export function onSelect(): void;
-        export let minResultCount: number;
-        export let inputLabelObject: {
-            id: string;
-            defaultMessage: string;
-        };
-        export let withSearchButton: boolean;
-        export let toolTip: null;
-        export function onUpdate(): void;
-        export let multiselect: boolean;
-        let preselected_1: null;
-        export { preselected_1 as preselected };
-        export let preexpanded: null;
-        let selectedData_1: never[];
-        export { selectedData_1 as selectedData };
-        export function allowSelection(): boolean;
-        export let dependency: undefined;
-        export let childrenDependency: undefined;
-        export let queryOptions: {};
-        export let childrenQueryOptions: {};
-        export function fetchDetails(item: any): any;
     }
 }
 import React from 'react';

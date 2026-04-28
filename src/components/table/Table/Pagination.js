@@ -18,13 +18,13 @@ const useStyles = makeStyles(() => ({
     },
 }));
 const Pagination = ({
-    count,
-    rowsPerPage,
-    pageIndex,
+    count = 0,
+    rowsPerPage = 0,
+    pageIndex = 0,
     onTableParamsChange,
-    pages,
+    pages = 0,
     countOnTop,
-    selectCount,
+    selectCount = 0,
 }) => {
     const classes = useStyles();
     const displayedPageIndex = pageIndex + 1 > pages ? pages - 1 : pageIndex;
@@ -66,13 +66,6 @@ const Pagination = ({
             labelDisplayedRows={() => null}
         />
     );
-};
-Pagination.defaultProps = {
-    count: 0,
-    rowsPerPage: 0,
-    pageIndex: 0,
-    pages: 0,
-    selectCount: 0,
 };
 
 Pagination.propTypes = {

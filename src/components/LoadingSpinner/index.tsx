@@ -38,8 +38,14 @@ const styles = () => ({
     },
 });
 
-const LoadingSpinner = props => {
-    const { classes, size, transparent, fixed, absolute, padding } = props;
+const LoadingSpinner = ({
+    classes,
+    size = 40,
+    transparent = false,
+    fixed = true,
+    absolute = false,
+    padding = 0,
+}) => {
     return (
         <div
             style={{
@@ -55,13 +61,6 @@ const LoadingSpinner = props => {
             <CircularProgress size={size} />
         </div>
     );
-};
-LoadingSpinner.defaultProps = {
-    size: 40,
-    transparent: false,
-    fixed: true,
-    absolute: false,
-    padding: 0,
 };
 
 LoadingSpinner.propTypes = {

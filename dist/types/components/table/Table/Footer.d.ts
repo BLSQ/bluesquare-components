@@ -1,13 +1,9 @@
 export function Footer({ footerGroups }: {
-    footerGroups: any;
+    footerGroups?: never[] | undefined;
 }): React.JSX.Element;
 export namespace Footer {
-    namespace defaultProps {
-        let footerGroups: never[];
-    }
     namespace propTypes {
-        let footerGroups_1: PropTypes.Requireable<any[]>;
-        export { footerGroups_1 as footerGroups };
+        let footerGroups: PropTypes.Requireable<any[]>;
     }
 }
 import React from 'react';

@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
         padding: theme.spacing(1, 2),
     },
 }));
-const Footer = ({ footerGroups }) => {
+const Footer = ({ footerGroups = [] }) => {
     const classes = useStyles();
     return (
         <TableFooter>
@@ -40,10 +40,6 @@ const Footer = ({ footerGroups }) => {
             })}
         </TableFooter>
     );
-};
-
-Footer.defaultProps = {
-    footerGroups: [],
 };
 
 Footer.propTypes = {

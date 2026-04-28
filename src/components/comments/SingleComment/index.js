@@ -9,14 +9,14 @@ import { Comment } from '../Comment';
 
 // credit: https://codesandbox.io/s/comment-box-with-material-ui-10p3c?file=/src/index.js:2810-4030
 const SingleComment = ({
-    avatar,
+    avatar = null,
     author,
     content,
-    postingTime,
-    classNames,
-    actionText,
-    onAddComment,
-    id,
+    postingTime = '',
+    classNames = null,
+    actionText = null,
+    onAddComment = () => { },
+    id = null,
 }) => {
     const intl = useSafeIntl();
     const defaultClasses = useStyles();
@@ -66,14 +66,6 @@ SingleComment.propTypes = {
     actionText: PropTypes.string,
     onAddComment: PropTypes.func,
     id: PropTypes.number,
-};
-SingleComment.defaultProps = {
-    avatar: null,
-    postingTime: '',
-    classNames: null,
-    actionText: null,
-    onAddComment: () => {},
-    id: null,
 };
 
 export { SingleComment };

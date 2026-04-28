@@ -5,7 +5,14 @@ import './button.css';
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
+export const Button = ({
+    primary = false,
+    backgroundColor = null,
+    size = 'medium',
+    label,
+    onClick = undefined,
+    ...props
+}) => {
     const mode = primary
         ? 'storybook-button--primary'
         : 'storybook-button--secondary';
@@ -18,6 +25,7 @@ export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
                 mode,
             ].join(' ')}
             style={backgroundColor && { backgroundColor }}
+            onClick={onClick}
             {...props}
         >
             {label}
@@ -46,11 +54,4 @@ Button.propTypes = {
      * Optional click handler
      */
     onClick: PropTypes.func,
-};
-
-Button.defaultProps = {
-    backgroundColor: null,
-    primary: false,
-    size: 'medium',
-    onClick: undefined,
 };

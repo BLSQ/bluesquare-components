@@ -1,4 +1,9 @@
-import React, { FunctionComponent, useCallback, useState } from 'react';
+import React, {
+    FunctionComponent,
+    useCallback,
+    useMemo,
+    useState,
+} from 'react';
 import {
     DndContext,
     closestCenter,
@@ -10,7 +15,6 @@ import {
     DragOverlay,
     Active,
 } from '@dnd-kit/core';
-import { makeStyles } from '@mui/styles';
 import {
     arrayMove,
     SortableContext,
@@ -19,11 +23,13 @@ import {
 } from '@dnd-kit/sortable';
 import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
 
+import { List, ListItem, SxProps } from '@mui/material';
 import { SortableItem } from './Item';
 import { Placeholder } from './Placeholder';
 
 import { RenderProps } from './types';
 import { Item } from '../types';
+import { SxStyles } from '../../../styles/iaso/types';
 
 type Props = {
     items: any[];
@@ -32,41 +38,78 @@ type Props = {
     RenderItem: FunctionComponent<RenderProps>;
     handle?: boolean;
     disabled?: boolean;
+    listSx?: SxProps;
+    listItemSx?: SxProps;
+    dragDelay?: number;
+    disableKeyboard?: boolean;
 };
 
-const useStyles = makeStyles(theme => ({
+const styles: SxStyles = {
     list: {
-        padding: theme.spacing(1),
+        padding: 1,
         margin: 0,
         listStyleType: 'none',
-        // @ts-ignore
-        backgroundColor: theme.palette.gray.background,
+        backgroundColor: theme => theme.palette.grey['200'],
     },
     draggablelist: {
-        padding: theme.spacing(0),
+        padding: 0,
         margin: 0,
         listStyleType: 'none',
     },
     draggableItem: {
-        padding: theme.spacing(1),
-        backgroundColor: theme.palette.grey['200'],
-        // @ts-ignore
-        border: `1px solid ${theme.palette.grey['400']}`,
+        padding: 1,
+        backgroundColor: theme => theme.palette.grey['200'],
+        border: theme => `1px solid ${theme.palette.grey['400']}`,
         borderRadius: 5,
         boxShadow: '-2px 8px 3px -3px rgba(0,0,0,0.15)',
     },
-}));
+    grab: {
+        cursor: 'grab',
+    },
+    grabbing: {
+        cursor: 'grabbing',
+    },
+};
 
 export const SortableList: FunctionComponent<Props> = props => {
     const { items, onChange, handle = false, disabled, RenderItem } = props;
     const [activeItem, setActiveItem] = useState<Active | undefined>();
-    const classes = useStyles();
+
+    const keyboardSensor = useSensor(KeyboardSensor, {
+        coordinateGetter: sortableKeyboardCoordinates,
+    });
+
     const sensors = useSensors(
-        useSensor(PointerSensor),
-        useSensor(KeyboardSensor, {
-            coordinateGetter: sortableKeyboardCoordinates,
+        useSensor(PointerSensor, {
+            activationConstraint: {
+                delay: props.dragDelay ?? 0,
+                tolerance: 5,
+            },
         }),
+        props.disableKeyboard ? undefined : keyboardSensor,
     );
+
+    const listSx: SxProps = useMemo(
+        () =>
+            props.listSx ? { ...styles.list, ...props.listSx } : styles.list,
+        [props.listSx],
+    );
+
+    const listItemSx: SxProps | undefined = useMemo(
+        () =>
+            disabled
+                ? props.listItemSx
+                : { ...props.listItemSx, ...styles.grab },
+        [props.listItemSx, disabled],
+    );
+
+    const draggableItemSx: SxProps = useMemo(() => {
+        const sxs = props.listItemSx
+            ? { ...styles.draggableItem, ...props.listItemSx }
+            : styles.draggableItem;
+
+        return disabled ? sxs : { ...sxs, ...styles.grabbing };
+    }, [props.listItemSx, disabled]);
 
     const handleDragEnd = useCallback(
         (event: DragEndEvent) => {
@@ -86,6 +129,20 @@ export const SortableList: FunctionComponent<Props> = props => {
         [items, onChange],
     );
 
+    const handleDragStart = useCallback(
+        ({ active }) => {
+            if (active && active.id) {
+                const matchingItem = items.find(
+                    (item: Item) => item.id === active.id,
+                );
+                if (matchingItem) {
+                    setActiveItem(matchingItem);
+                }
+            }
+        },
+        [setActiveItem, items],
+    );
+
     return (
         <>
             {items.length === 0 && <Placeholder />}
@@ -94,9 +151,7 @@ export const SortableList: FunctionComponent<Props> = props => {
                     sensors={sensors}
                     collisionDetection={closestCenter}
                     onDragEnd={handleDragEnd}
-                    onDragStart={({ active }) => {
-                        setActiveItem(active);
-                    }}
+                    onDragStart={handleDragStart}
                     modifiers={[restrictToVerticalAxis]}
                 >
                     <SortableContext
@@ -104,13 +159,14 @@ export const SortableList: FunctionComponent<Props> = props => {
                         items={items}
                         strategy={verticalListSortingStrategy}
                     >
-                        <ul className={classes.list}>
+                        <List sx={listSx}>
                             {items.map((item, index) => (
                                 <SortableItem
                                     handle={handle}
                                     key={item.id}
                                     id={item.id}
                                     isLast={index + 1 === items.length}
+                                    sx={listItemSx}
                                 >
                                     {handleProps => (
                                         <RenderItem
@@ -121,14 +177,14 @@ export const SortableList: FunctionComponent<Props> = props => {
                                     )}
                                 </SortableItem>
                             ))}
-                        </ul>
+                        </List>
                     </SortableContext>
                     <DragOverlay>
-                        <ul className={classes.draggablelist}>
-                            <li className={classes.draggableItem}>
+                        <List sx={styles.draggablelist}>
+                            <ListItem sx={draggableItemSx}>
                                 <RenderItem item={activeItem} index={-1} />
-                            </li>
-                        </ul>
+                            </ListItem>
+                        </List>
                     </DragOverlay>
                 </DndContext>
             )}

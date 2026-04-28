@@ -1,51 +1,29 @@
 export function TextInput({ keyValue, label, errors, required, value, disabled, onChange, multiline, autoComplete, placeholder, dataTestId, }: {
     keyValue: any;
-    label: any;
-    errors: any;
-    required: any;
-    value: any;
-    disabled: any;
-    onChange: any;
-    multiline: any;
-    autoComplete: any;
-    placeholder: any;
-    dataTestId: any;
+    label?: undefined;
+    errors?: never[] | undefined;
+    required?: boolean | undefined;
+    value?: string | undefined;
+    disabled?: boolean | undefined;
+    onChange?: (() => void) | undefined;
+    multiline?: boolean | undefined;
+    autoComplete?: string | undefined;
+    placeholder?: undefined;
+    dataTestId?: undefined;
 }): React.JSX.Element;
 export namespace TextInput {
-    namespace defaultProps {
-        let value: string;
-        let errors: never[];
-        let multiline: boolean;
-        let disabled: boolean;
-        let required: boolean;
-        function onChange(): void;
-        let label: undefined;
-        let autoComplete: string;
-        let placeholder: undefined;
-        let dataTestId: undefined;
-    }
     namespace propTypes {
-        let errors_1: PropTypes.Requireable<(string | null | undefined)[]>;
-        export { errors_1 as errors };
-        export let keyValue: PropTypes.Validator<string>;
-        let label_1: PropTypes.Requireable<string>;
-        export { label_1 as label };
-        let required_1: PropTypes.Requireable<boolean>;
-        export { required_1 as required };
-        let disabled_1: PropTypes.Requireable<boolean>;
-        export { disabled_1 as disabled };
-        let multiline_1: PropTypes.Requireable<boolean>;
-        export { multiline_1 as multiline };
-        let value_1: PropTypes.Requireable<string>;
-        export { value_1 as value };
-        let onChange_1: PropTypes.Requireable<(...args: any[]) => any>;
-        export { onChange_1 as onChange };
-        let autoComplete_1: PropTypes.Requireable<string>;
-        export { autoComplete_1 as autoComplete };
-        let placeholder_1: PropTypes.Requireable<string>;
-        export { placeholder_1 as placeholder };
-        let dataTestId_1: PropTypes.Requireable<string>;
-        export { dataTestId_1 as dataTestId };
+        let errors: PropTypes.Requireable<(string | null | undefined)[]>;
+        let keyValue: PropTypes.Validator<string>;
+        let label: PropTypes.Requireable<string>;
+        let required: PropTypes.Requireable<boolean>;
+        let disabled: PropTypes.Requireable<boolean>;
+        let multiline: PropTypes.Requireable<boolean>;
+        let value: PropTypes.Requireable<string>;
+        let onChange: PropTypes.Requireable<(...args: any[]) => any>;
+        let autoComplete: PropTypes.Requireable<string>;
+        let placeholder: PropTypes.Requireable<string>;
+        let dataTestId: PropTypes.Requireable<string>;
     }
 }
 import React from 'react';

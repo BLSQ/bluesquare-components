@@ -1,22 +1,22 @@
 export function IasoTreeView({ getChildrenData, getRootData, label, multiselect, expanded, selected, onToggle, toggleOnLabelClick, onSelect, onCheckBoxClick, onLabelClick, ticked, parentsTicked, scrollIntoView, allowSelection, queryOptions, childrenQueryOptions, dependency, }: {
-    getChildrenData: any;
-    getRootData: any;
+    getChildrenData?: (() => void) | undefined;
+    getRootData?: (() => void) | undefined;
     label: any;
-    multiselect: any;
+    multiselect?: boolean | undefined;
     expanded: any;
-    selected: any;
+    selected?: undefined;
     onToggle: any;
-    toggleOnLabelClick: any;
-    onSelect: any;
-    onCheckBoxClick: any;
-    onLabelClick: any;
-    ticked: any;
-    parentsTicked: any;
-    scrollIntoView: any;
-    allowSelection: any;
+    toggleOnLabelClick?: boolean | undefined;
+    onSelect?: (() => void) | undefined;
+    onCheckBoxClick?: (() => void) | undefined;
+    onLabelClick?: (() => void) | undefined;
+    ticked?: never[] | undefined;
+    parentsTicked?: never[] | undefined;
+    scrollIntoView?: null | undefined;
+    allowSelection?: (() => boolean) | undefined;
     queryOptions?: {} | undefined;
     childrenQueryOptions?: {} | undefined;
-    dependency: any;
+    dependency?: undefined;
 }): React.JSX.Element;
 export namespace IasoTreeView {
     namespace propTypes {
@@ -38,25 +38,6 @@ export namespace IasoTreeView {
         export { object as queryOptions };
         export { object as childrenQueryOptions };
         export { any as dependency };
-    }
-    namespace defaultProps {
-        export function getChildrenData(): void;
-        export function getRootData(): void;
-        export let multiselect: boolean;
-        export let toggleOnLabelClick: boolean;
-        export function onSelect(): void;
-        export function onCheckBoxClick(): void;
-        export function onLabelClick(): void;
-        let selected_1: undefined;
-        export { selected_1 as selected };
-        let ticked_1: never[];
-        export { ticked_1 as ticked };
-        export let parentsTicked: never[];
-        export let scrollIntoView: null;
-        export function allowSelection(): boolean;
-        export let queryOptions: {};
-        export let childrenQueryOptions: {};
-        export let dependency: undefined;
     }
 }
 import React from 'react';

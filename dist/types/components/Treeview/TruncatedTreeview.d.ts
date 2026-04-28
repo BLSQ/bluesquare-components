@@ -1,8 +1,8 @@
-export function TruncatedTreeview({ selectedItems, label, redirect, disabled }: {
-    selectedItems: any;
+export function TruncatedTreeview({ selectedItems, label, redirect, disabled, }: {
+    selectedItems?: null | undefined;
     label: any;
-    redirect: any;
-    disabled: any;
+    redirect?: (() => null) | undefined;
+    disabled?: boolean | undefined;
 }): React.JSX.Element;
 export namespace TruncatedTreeview {
     namespace propTypes {
@@ -10,11 +10,6 @@ export namespace TruncatedTreeview {
         export let label: import("prop-types").Validator<(...args: any[]) => any>;
         export { func as redirect };
         export { bool as disabled };
-    }
-    namespace defaultProps {
-        let selectedItems: null;
-        function redirect(): null;
-        let disabled: boolean;
     }
 }
 import React from 'react';

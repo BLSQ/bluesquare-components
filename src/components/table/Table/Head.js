@@ -5,7 +5,15 @@ import TableRow from '@mui/material/TableRow';
 
 import { HeadCell } from './HeadCell';
 
-const Head = ({ headerGroups, setSortBy, multiSortEnabled, sortBy }) => (
+/**
+ * @param {Object} props
+ * @param {Array} [props.headerGroups]
+ * @param {(sort: any) => void} [props.setSortBy]
+ * @param {boolean} [props.multiSortEnabled]
+ * @param {Array} [props.sortBy]
+ */
+
+const Head = ({ headerGroups = [], setSortBy = () => null, multiSortEnabled, sortBy = [] }) => (
     <TableHead>
         {headerGroups.map(headerGroup => {
             const headerGroupProps = headerGroup.getHeaderGroupProps();
@@ -32,11 +40,6 @@ const Head = ({ headerGroups, setSortBy, multiSortEnabled, sortBy }) => (
         })}
     </TableHead>
 );
-Head.defaultProps = {
-    headerGroups: [],
-    sortBy: [],
-    setSortBy: () => null,
-};
 
 Head.propTypes = {
     headerGroups: PropTypes.array,

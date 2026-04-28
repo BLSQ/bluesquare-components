@@ -1,36 +1,34 @@
 export { CheckboxComponent as Checkbox };
+/**
+ * We use JSDoc here to define the types for TypeScript,
+ * specifically to ensure onChange is known to accept a boolean argument.
+ * * @param {Object} props
+ * @param {boolean} [props.value]
+ * @param {boolean} [props.disabled]
+ * @param {string} [props.label]
+ * @param {(checked: boolean) => void} [props.onChange]
+ * @param {string} props.keyValue
+ * @param {boolean} [props.required]
+ * @param {string} [props.dataTestId]
+ */
 declare function CheckboxComponent({ value, disabled, label, onChange, keyValue, required, dataTestId, }: {
-    value: any;
-    disabled: any;
-    label: any;
-    onChange: any;
-    keyValue: any;
-    required: any;
-    dataTestId: any;
+    value?: boolean | undefined;
+    disabled?: boolean | undefined;
+    label?: string | undefined;
+    onChange?: ((checked: boolean) => void) | undefined;
+    keyValue: string;
+    required?: boolean | undefined;
+    dataTestId?: string | undefined;
 }): React.JSX.Element;
 declare namespace CheckboxComponent {
-    namespace defaultProps {
-        let value: boolean;
-        let disabled: boolean;
-        let required: boolean;
-        function onChange(): void;
-        let label: string;
-        let dataTestId: undefined;
-    }
     namespace propTypes {
-        let value_1: PropTypes.Requireable<boolean>;
-        export { value_1 as value };
-        let disabled_1: PropTypes.Requireable<boolean>;
-        export { disabled_1 as disabled };
-        let required_1: PropTypes.Requireable<boolean>;
-        export { required_1 as required };
-        let label_1: PropTypes.Requireable<string>;
-        export { label_1 as label };
-        let dataTestId_1: PropTypes.Requireable<string>;
-        export { dataTestId_1 as dataTestId };
-        let onChange_1: PropTypes.Requireable<(...args: any[]) => any>;
-        export { onChange_1 as onChange };
-        export let keyValue: PropTypes.Validator<string>;
+        let value: PropTypes.Requireable<boolean>;
+        let disabled: PropTypes.Requireable<boolean>;
+        let required: PropTypes.Requireable<boolean>;
+        let label: PropTypes.Requireable<string>;
+        let dataTestId: PropTypes.Requireable<string>;
+        let onChange: PropTypes.Requireable<(...args: any[]) => any>;
+        let keyValue: PropTypes.Validator<string>;
     }
 }
 import React from 'react';

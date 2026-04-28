@@ -4,17 +4,35 @@ import TableBody from '@mui/material/TableBody';
 
 import { Row } from './Row';
 
+
+const defaultRowProps = () => { };
+const defaultGetObjectId = obj => obj.toString();
+
+/**
+ * @param {Object} props
+ * @param {Array} [props.page]
+ * @param {Function} props.getTableBodyProps
+ * @param {Function} props.prepareRow
+ * @param {any} [props.subComponent]
+ * @param {Array} [props.sortBy]
+ * @param {(row?: any, event?: any) => void} [props.onRowClick]
+ * @param {Function} [props.rowProps]
+ * @param {Object} [props.expanded]
+ * @param {Function} [props.getObjectId]
+ * @param {Function} [props.cellProps]
+ */
+
 const Body = ({
-    page,
+    page = [],
     getTableBodyProps,
     prepareRow,
-    subComponent,
-    sortBy,
-    onRowClick,
-    rowProps: userRowProps,
-    expanded,
-    getObjectId,
-    cellProps,
+    subComponent = undefined,
+    sortBy = [],
+    onRowClick = undefined,
+    rowProps: userRowProps = defaultRowProps,
+    expanded = {},
+    getObjectId = defaultGetObjectId,
+    cellProps = () => { },
 }) => (
     <TableBody {...getTableBodyProps}>
         {page.map(row => {
@@ -36,17 +54,6 @@ const Body = ({
     </TableBody>
 );
 
-Body.defaultProps = {
-    page: [],
-    sortBy: [],
-    rowsPerPage: 10,
-    subComponent: undefined,
-    onRowClick: undefined,
-    expanded: {},
-    getObjectId: obj => obj.toString(),
-    rowProps: () => {},
-    cellProps: () => {},
-};
 
 Body.propTypes = {
     page: PropTypes.array,

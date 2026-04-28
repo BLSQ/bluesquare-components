@@ -21,11 +21,11 @@ import { useChildrenData } from './requests';
 const styles = theme => ({
     treeItem: {
         '&.MuiTreeItem-root.Mui-selected > .MuiTreeItem-content .MuiTreeItem-label':
-            {
-                backgroundColor: theme.palette.primary.background,
-                alignItems: 'center',
-                color: theme.palette.primary.main,
-            },
+        {
+            backgroundColor: theme.palette.primary.background,
+            alignItems: 'center',
+            color: theme.palette.primary.main,
+        },
     },
     unselectableTreeItem: {
         '&.MuiTreeItem-root > .MuiTreeItem-content .MuiTreeItem-label': {
@@ -45,18 +45,18 @@ const useStyles = makeStyles(styles);
 const EnrichedTreeItem = ({
     label,
     id,
-    fetchChildrenData, // fetchChildrenData(id)
-    expanded,
-    toggleOnLabelClick,
-    onLabelClick,
+    fetchChildrenData = () => { }, // fetchChildrenData(id)
+    expanded = [],
+    toggleOnLabelClick = true,
+    onLabelClick = () => { },
     data, // additional data that can be passed up to the parent (eg org unit details)
-    withCheckbox,
-    ticked,
-    parentsTicked,
-    scrollIntoView,
-    allowSelection,
+    withCheckbox = false,
+    ticked = [],
+    parentsTicked = [],
+    scrollIntoView = null,
+    allowSelection = () => true,
     queryOptions = {},
-    dependency,
+    dependency = undefined,
 }) => {
     const classes = useStyles();
     const isExpanded = expanded.includes(id);
@@ -231,20 +231,6 @@ EnrichedTreeItem.propTypes = {
     allowSelection: func,
     queryOptions: object,
     dependency: any,
-};
-
-EnrichedTreeItem.defaultProps = {
-    fetchChildrenData: () => {},
-    expanded: [],
-    toggleOnLabelClick: true,
-    onLabelClick: () => {},
-    withCheckbox: false,
-    ticked: [],
-    parentsTicked: [],
-    scrollIntoView: null,
-    allowSelection: () => true,
-    queryOptions: {},
-    dependency: undefined,
 };
 
 export { EnrichedTreeItem };

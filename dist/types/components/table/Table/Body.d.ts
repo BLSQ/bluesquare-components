@@ -1,48 +1,41 @@
+/**
+ * @param {Object} props
+ * @param {Array} [props.page]
+ * @param {Function} props.getTableBodyProps
+ * @param {Function} props.prepareRow
+ * @param {any} [props.subComponent]
+ * @param {Array} [props.sortBy]
+ * @param {(row?: any, event?: any) => void} [props.onRowClick]
+ * @param {Function} [props.rowProps]
+ * @param {Object} [props.expanded]
+ * @param {Function} [props.getObjectId]
+ * @param {Function} [props.cellProps]
+ */
 export function Body({ page, getTableBodyProps, prepareRow, subComponent, sortBy, onRowClick, rowProps: userRowProps, expanded, getObjectId, cellProps, }: {
-    page: any;
-    getTableBodyProps: any;
-    prepareRow: any;
-    subComponent: any;
-    sortBy: any;
-    onRowClick: any;
-    rowProps: any;
-    expanded: any;
-    getObjectId: any;
-    cellProps: any;
+    page?: any[] | undefined;
+    getTableBodyProps: Function;
+    prepareRow: Function;
+    subComponent?: any;
+    sortBy?: any[] | undefined;
+    onRowClick?: ((row?: any, event?: any) => void) | undefined;
+    rowProps?: Function | undefined;
+    expanded?: any;
+    getObjectId?: Function | undefined;
+    cellProps?: Function | undefined;
 }): React.JSX.Element;
 export namespace Body {
-    namespace defaultProps {
-        let page: never[];
-        let sortBy: never[];
-        let rowsPerPage: number;
-        let subComponent: undefined;
-        let onRowClick: undefined;
-        let expanded: {};
-        function getObjectId(obj: any): any;
-        function rowProps(): void;
-        function cellProps(): void;
-    }
     namespace propTypes {
-        let page_1: PropTypes.Requireable<any[]>;
-        export { page_1 as page };
-        let sortBy_1: PropTypes.Requireable<any[]>;
-        export { sortBy_1 as sortBy };
-        export let getTableBodyProps: PropTypes.Validator<(...args: any[]) => any>;
-        export let prepareRow: PropTypes.Validator<(...args: any[]) => any>;
-        let rowsPerPage_1: PropTypes.Requireable<number>;
-        export { rowsPerPage_1 as rowsPerPage };
-        let subComponent_1: PropTypes.Requireable<object>;
-        export { subComponent_1 as subComponent };
-        let onRowClick_1: PropTypes.Requireable<object>;
-        export { onRowClick_1 as onRowClick };
-        let rowProps_1: PropTypes.Requireable<(...args: any[]) => any>;
-        export { rowProps_1 as rowProps };
-        let cellProps_1: PropTypes.Requireable<(...args: any[]) => any>;
-        export { cellProps_1 as cellProps };
-        let expanded_1: PropTypes.Requireable<object>;
-        export { expanded_1 as expanded };
-        let getObjectId_1: PropTypes.Requireable<(...args: any[]) => any>;
-        export { getObjectId_1 as getObjectId };
+        let page: PropTypes.Requireable<any[]>;
+        let sortBy: PropTypes.Requireable<any[]>;
+        let getTableBodyProps: PropTypes.Validator<(...args: any[]) => any>;
+        let prepareRow: PropTypes.Validator<(...args: any[]) => any>;
+        let rowsPerPage: PropTypes.Requireable<number>;
+        let subComponent: PropTypes.Requireable<object>;
+        let onRowClick: PropTypes.Requireable<object>;
+        let rowProps: PropTypes.Requireable<(...args: any[]) => any>;
+        let cellProps: PropTypes.Requireable<(...args: any[]) => any>;
+        let expanded: PropTypes.Requireable<object>;
+        let getObjectId: PropTypes.Requireable<(...args: any[]) => any>;
     }
 }
 import React from 'react';

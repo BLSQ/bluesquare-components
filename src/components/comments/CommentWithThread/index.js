@@ -9,10 +9,10 @@ import { Comment } from '../Comment';
 import { SingleComment } from '../SingleComment';
 
 const CommentWithThread = ({
-    comments,
-    actionText,
-    onAddComment,
-    parentId,
+    comments = [],
+    actionText = null,
+    onAddComment = () => { },
+    parentId = null,
 }) => {
     const classes = useStyles();
     const intl = useSafeIntl();
@@ -124,9 +124,6 @@ const CommentWithThread = ({
                 content={comments[0].comment}
                 postingTime={comments[0].dateTime}
                 id={comments[0].id}
-                // onButtonClick={() => {
-                //     setIsExpanded(true);
-                // }}
             />
         );
     }
@@ -142,12 +139,6 @@ CommentWithThread.propTypes = {
     actionText: PropTypes.string,
     onAddComment: PropTypes.func,
     parentId: PropTypes.number,
-};
-CommentWithThread.defaultProps = {
-    comments: [],
-    actionText: null,
-    onAddComment: () => {},
-    parentId: null,
 };
 
 export { CommentWithThread };

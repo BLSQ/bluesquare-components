@@ -1,5 +1,5 @@
 export function Page({ user, onLogin, onLogout, onCreateAccount }: {
-    user: any;
+    user?: null | undefined;
     onLogin: any;
     onLogout: any;
     onCreateAccount: any;
@@ -10,10 +10,6 @@ export namespace Page {
         let onLogin: PropTypes.Validator<(...args: any[]) => any>;
         let onLogout: PropTypes.Validator<(...args: any[]) => any>;
         let onCreateAccount: PropTypes.Validator<(...args: any[]) => any>;
-    }
-    namespace defaultProps {
-        let user_1: null;
-        export { user_1 as user };
     }
 }
 import React from 'react';

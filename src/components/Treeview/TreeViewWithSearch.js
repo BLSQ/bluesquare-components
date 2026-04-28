@@ -22,28 +22,28 @@ const formatInitialSelectedData = selectedData => {
 
 const TreeViewWithSearch = ({
     label,
-    getChildrenData,
-    getRootData,
-    toggleOnLabelClick,
-    onSelect,
-    minResultCount,
-    inputLabelObject,
-    withSearchButton,
+    getChildrenData = () => { },
+    getRootData = () => { },
+    toggleOnLabelClick = true,
+    onSelect = () => { },
+    minResultCount = 50,
+    inputLabelObject = MESSAGES.search,
+    withSearchButton = false,
     request,
     makeDropDownText,
-    toolTip,
+    toolTip = null,
     parseNodeIds,
-    onUpdate,
-    multiselect,
-    preselected, // TODO rename
-    preexpanded, // TODO rename
-    selectedData,
-    allowSelection,
-    dependency,
-    childrenDependency,
+    onUpdate = () => { },
+    multiselect = false,
+    preselected = null,
+    preexpanded = null,
+    selectedData = [],
+    allowSelection = () => true,
+    dependency = undefined,
+    childrenDependency = undefined,
     queryOptions = {},
     childrenQueryOptions = {},
-    fetchDetails,
+    fetchDetails = item => item,
 }) => {
     const [data, setData] = useState(formatInitialSelectedData(selectedData));
     const [selected, setSelected] = useState(
@@ -218,26 +218,5 @@ TreeViewWithSearch.propTypes = {
     fetchDetails: func,
 };
 
-TreeViewWithSearch.defaultProps = {
-    getChildrenData: () => {},
-    getRootData: () => {},
-    toggleOnLabelClick: true,
-    onSelect: () => {},
-    minResultCount: 50,
-    inputLabelObject: MESSAGES.search,
-    withSearchButton: false,
-    toolTip: null,
-    onUpdate: () => {},
-    multiselect: false,
-    preselected: null,
-    preexpanded: null,
-    selectedData: [],
-    allowSelection: () => true,
-    dependency: undefined,
-    childrenDependency: undefined,
-    queryOptions: {},
-    childrenQueryOptions: {},
-    fetchDetails: item => item,
-};
 
 export { TreeViewWithSearch };

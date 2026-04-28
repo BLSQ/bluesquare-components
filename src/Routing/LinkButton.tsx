@@ -4,12 +4,11 @@ import React, { FunctionComponent, ReactNode } from 'react';
 import { LinkProps } from 'react-router-dom';
 import { LinkWithLocation } from './LinkWithLocation';
 
-type Props = LinkProps &
-    ButtonProps & {
+type Props = LinkProps & { disabled?: boolean } & ButtonProps & {
         children: ReactNode;
         className?: string;
         buttonClassName?: string;
-        unstable_viewTransition?:any
+        unstable_viewTransition?: any;
     };
 
 export const LinkButton: FunctionComponent<Props> = props => {
@@ -20,13 +19,27 @@ export const LinkButton: FunctionComponent<Props> = props => {
         target,
         state,
         relative,
-        unstable_viewTransition,
         preventScrollReset,
         children,
         className,
         buttonClassName,
+        disabled = false,
         ...buttonProps
     } = props;
+    if (disabled) {
+        return (
+            <Button
+                variant="contained"
+                color="primary"
+                disabled
+                {...buttonProps}
+                className={buttonClassName}
+                onClick={() => null}
+            >
+                {children}
+            </Button>
+        );
+    }
     return (
         <LinkWithLocation
             className={className}
@@ -36,7 +49,6 @@ export const LinkButton: FunctionComponent<Props> = props => {
             target={target}
             state={state}
             relative={relative}
-            unstable_viewTransition={unstable_viewTransition}
             preventScrollReset={preventScrollReset}
         >
             <Button

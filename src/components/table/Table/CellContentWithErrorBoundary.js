@@ -28,7 +28,7 @@ class CellWithErrorBoundary_ extends React.Component {
 
     render() {
         const {
-            value,
+            value = undefined,
             children,
             classes,
             intl: { formatMessage },
@@ -48,9 +48,6 @@ class CellWithErrorBoundary_ extends React.Component {
     }
 }
 
-CellWithErrorBoundary_.defaultProps = {
-    value: undefined,
-};
 CellWithErrorBoundary_.propTypes = {
     value: PropTypes.any,
     intl: PropTypes.object.isRequired,

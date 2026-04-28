@@ -51,7 +51,12 @@ const styles = theme => ({
     },
 });
 const useStyles = makeStyles(styles);
-const TruncatedTreeview = ({ selectedItems, label, redirect, disabled }) => {
+const TruncatedTreeview = ({
+    selectedItems = null,
+    label,
+    redirect = () => null,
+    disabled = false,
+}) => {
     const style = useStyles();
     const mouseDownTime = useRef();
     const onLabelClick = id => e => {
@@ -92,11 +97,6 @@ TruncatedTreeview.propTypes = {
     label: func.isRequired,
     redirect: func,
     disabled: bool,
-};
-TruncatedTreeview.defaultProps = {
-    selectedItems: null,
-    redirect: () => null,
-    disabled: false,
 };
 
 export { TruncatedTreeview };

@@ -1,23 +1,22 @@
+/**
+ * @param {Object} props
+ * @param {Array} [props.headerGroups]
+ * @param {(sort: any) => void} [props.setSortBy]
+ * @param {boolean} [props.multiSortEnabled]
+ * @param {Array} [props.sortBy]
+ */
 export function Head({ headerGroups, setSortBy, multiSortEnabled, sortBy }: {
-    headerGroups: any;
-    setSortBy: any;
-    multiSortEnabled: any;
-    sortBy: any;
+    headerGroups?: any[] | undefined;
+    setSortBy?: ((sort: any) => void) | undefined;
+    multiSortEnabled?: boolean | undefined;
+    sortBy?: any[] | undefined;
 }): React.JSX.Element;
 export namespace Head {
-    namespace defaultProps {
-        let headerGroups: never[];
-        let sortBy: never[];
-        function setSortBy(): null;
-    }
     namespace propTypes {
-        let headerGroups_1: PropTypes.Requireable<any[]>;
-        export { headerGroups_1 as headerGroups };
-        let setSortBy_1: PropTypes.Requireable<(...args: any[]) => any>;
-        export { setSortBy_1 as setSortBy };
-        let sortBy_1: PropTypes.Requireable<any[]>;
-        export { sortBy_1 as sortBy };
-        export let multiSortEnabled: PropTypes.Validator<boolean>;
+        let headerGroups: PropTypes.Requireable<any[]>;
+        let setSortBy: PropTypes.Requireable<(...args: any[]) => any>;
+        let sortBy: PropTypes.Requireable<any[]>;
+        let multiSortEnabled: PropTypes.Validator<boolean>;
     }
 }
 import React from 'react';

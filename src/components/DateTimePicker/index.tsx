@@ -66,11 +66,14 @@ export const DateTimePicker: FunctionComponent<Props> = ({
     return (
         <FormControl errors={errors} hideError={hideError}>
             <MuiDateTimePicker
-                // @ts-ignore
-                autoOk
-                disableToolbar
                 disabled={disabled}
+                slots={{
+                    openPickerIcon: EventIcon,
+                }}
                 slotProps={{
+                    openPickerButton: {
+                        size: 'small',
+                    },
                     textField: {
                         InputLabelProps: {
                             className: classes.label,
@@ -82,11 +85,6 @@ export const DateTimePicker: FunctionComponent<Props> = ({
                         helperText: null,
                     },
                 }}
-                KeyboardButtonProps={{
-                    size: 'small',
-                }}
-                // @ts-ignore
-                keyboardIcon={<EventIcon size="small" />}
                 format="DD/MM/YYYY HH:mm" // This one need be set by user locale
                 label={`${label}`}
                 value={currentDate}

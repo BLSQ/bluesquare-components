@@ -74,10 +74,13 @@ export const DatePicker: FunctionComponent<Props> = ({
     return (
         <FormControl errors={errors} hideError={hideError}>
             <MuiDatePicker
-                // @ts-ignore
-                autoOk
-                disableToolbar
+                slots={{
+                    openPickerIcon: EventIcon,
+                }}
                 slotProps={{
+                    openPickerButton: {
+                        size: 'small',
+                    },
                     textField: {
                         InputLabelProps: {
                             error: isOnError,
@@ -89,11 +92,6 @@ export const DatePicker: FunctionComponent<Props> = ({
                     },
                 }}
                 disabled={disabled}
-                KeyboardButtonProps={{
-                    size: 'small',
-                }}
-                // @ts-ignore
-                keyboardIcon={<EventIcon size="small" />}
                 format="DD/MM/YYYY" // This one need be set by user locale
                 label={`${label}`}
                 value={currentDate}

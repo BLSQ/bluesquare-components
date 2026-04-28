@@ -88,7 +88,6 @@ export const DatePicker: FunctionComponent<Props> = ({
                     textField: {
                         InputLabelProps: {
                             error: isOnError,
-                            shrink: Boolean(currentDate),
                         },
                         required,
                         error: isOnError,

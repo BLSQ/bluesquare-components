@@ -15,6 +15,10 @@ export type IntlFormatMessage = (
 
 export type PatchIntlShape = Omit<IntlShape, 'formatMessage'> & {
     formatMessage: IntlFormatMessage;
+    separators: {
+        decimal: string;
+        thousand: string;
+    };
 };
 
 // Make selected properties of a type optional

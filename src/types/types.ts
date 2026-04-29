@@ -8,7 +8,7 @@ export type IntlMessage = {
 
 export type IntlFormatMessage = (
     // eslint-disable-next-line no-unused-vars
-    message: IntlMessage,
+    message: IntlMessage | undefined,
     // eslint-disable-next-line no-unused-vars
     values?: Record<string, string | HTMLElement>,
 ) => string;

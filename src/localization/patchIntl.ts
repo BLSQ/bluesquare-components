@@ -26,6 +26,6 @@ export const patchIntl = (intl: IntlShape): PatchIntlShape => ({
         if (key in messages) return intl.formatMessage(messages[key], value);
         console.warn(`No message found for key ${key}`);
 
-        return '';
+        return key;
     },
 });

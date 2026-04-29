@@ -11,6 +11,7 @@ export type PatchIntlShape = Omit<IntlShape, 'formatMessage'> & {
         decimal: string;
         thousand: string;
     };
+    formatNullishMessage: (key: string, messages: Record<string, IntlMessage>, values?: any) => string;
 };
 export type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 export type Nullable<T> = T | null;

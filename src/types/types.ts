@@ -19,6 +19,11 @@ export type PatchIntlShape = Omit<IntlShape, 'formatMessage'> & {
         decimal: string;
         thousand: string;
     };
+    formatNullishMessage: (
+        key: string,
+        messages: Record<string, IntlMessage>,
+        values?: any,
+    ) => string;
 };
 
 // Make selected properties of a type optional

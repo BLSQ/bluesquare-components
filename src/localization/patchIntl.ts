@@ -3,7 +3,7 @@ import { IntlMessage, PatchIntlShape } from '../types/types';
 
 export const patchIntl = (intl: IntlShape): PatchIntlShape => ({
     ...intl,
-    formatMessage: (message: IntlMessage, value: any): string => {
+    formatMessage: (message: IntlMessage | undefined, value: any): string => {
         if (message && message.id) {
             return intl.formatMessage(message, value);
         }

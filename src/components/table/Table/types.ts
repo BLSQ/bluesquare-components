@@ -23,7 +23,7 @@ export type Column = PartialBy<ColumnWithAccessor, 'accessor' | 'Header'> & {
     align?: 'left' | 'center' | 'right';
     columns?: Column[];
 };
-export type Pagination = {
+export type PaginationType = {
     pages: number;
     page: number;
     count: number;
@@ -32,7 +32,7 @@ export type Pagination = {
     has_previous: boolean;
 };
 
-export interface Paginated<T> extends Pagination {
+export interface Paginated<T> extends PaginationType {
     results: T[];
 }
 

@@ -1,7 +1,5 @@
 import React, { FunctionComponent } from 'react';
-
 import { TimePicker as MuiTimePicker } from '@mui/x-date-pickers';
-
 import { FormControl } from './FormControl';
 
 type Props = {

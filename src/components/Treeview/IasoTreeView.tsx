@@ -52,7 +52,7 @@ export const IasoTreeView: FunctionComponent<Props> = ({
     label,
     multiselect = false,
     expanded,
-    selected,
+    selected = undefined,
     onToggle,
     toggleOnLabelClick = true,
     onSelect = () => {},
@@ -63,7 +63,7 @@ export const IasoTreeView: FunctionComponent<Props> = ({
     allowSelection = () => true,
     queryOptions = {},
     childrenQueryOptions = {},
-    dependency,
+    dependency = undefined,
 }) => {
     const classes = useStyles();
     const { formatMessage } = useSafeIntl();

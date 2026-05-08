@@ -69,7 +69,7 @@ export const EnrichedTreeItem: FunctionComponent<Props> = ({
     scrollIntoView,
     allowSelection = () => true,
     queryOptions = {},
-    dependency,
+    dependency = undefined,
 }) => {
     const classes = useStyles();
     const isExpanded = expanded.includes(id);

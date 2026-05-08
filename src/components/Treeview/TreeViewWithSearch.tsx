@@ -57,7 +57,7 @@ export const TreeViewWithSearch: FunctionComponent<Props> = ({
     withSearchButton = false,
     request,
     makeDropDownText,
-    toolTip,
+    toolTip = null,
     parseNodeIds,
     onUpdate = () => {},
     multiselect = false,

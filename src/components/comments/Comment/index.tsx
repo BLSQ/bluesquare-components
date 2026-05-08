@@ -22,8 +22,8 @@ const CommentText: FunctionComponent<TextProps> = ({
     hideOverflow,
     toggle,
     maxLength,
-    textExpand,
-    textCollapse,
+    textExpand = null,
+    textCollapse = null,
 }) => {
     const classes = useStyles();
     const { formatMessage } = useSafeIntl();

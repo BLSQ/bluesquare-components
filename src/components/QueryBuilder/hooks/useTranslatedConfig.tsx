@@ -255,7 +255,7 @@ export const useTranslatedConfig = (): Config => {
                                 value={value?.join(',') || ''}
                                 keyValue={`${field}`}
                                 multi
-                                // Type error because Select component is JS //
+                                // Type error because Select component is JS
                                 //@ts-ignore
                                 options={transformListValuesToOptions(
                                     listValues,

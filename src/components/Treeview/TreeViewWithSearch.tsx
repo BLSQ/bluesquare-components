@@ -191,7 +191,7 @@ export const TreeViewWithSearch: FunctionComponent<Props> = ({
                 withSearchButton={withSearchButton}
                 request={request}
                 makeDropDownText={makeDropDownText}
-                toolTip={toolTip}
+                toolTip={toolTip ?? undefined}
                 dependency={childrenDependency}
             />
             <IasoTreeView

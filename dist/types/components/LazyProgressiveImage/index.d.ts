@@ -22,18 +22,4 @@ declare class LazyImage extends Component<Props, State> {
     loadImage(src: any): void;
     render(): React.JSX.Element;
 }
-<<<<<<< HEAD
 export { LazyImage };
-=======
-export namespace LazyImage {
-    namespace propTypes {
-        let children: PropTypes.Requireable<(...args: any[]) => any>;
-        let onError: PropTypes.Requireable<(...args: any[]) => any>;
-        let placeholder: PropTypes.Requireable<string>;
-        let src: PropTypes.Requireable<string>;
-        let visibilitySensorProps: PropTypes.Requireable<any>;
-    }
-}
-import React from 'react';
-import PropTypes from 'prop-types';
->>>>>>> main

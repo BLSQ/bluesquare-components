@@ -17,16 +17,4 @@ export declare class ErrorBoundary extends React.Component<Props, State> {
     componentDidCatch(error: any, errorInfo: any): void;
     render(): string | number | boolean | Iterable<React.ReactNode> | React.JSX.Element | null | undefined;
 }
-<<<<<<< HEAD
 export {};
-=======
-export namespace ErrorBoundary {
-    namespace propTypes {
-        let children: PropTypes.Validator<NonNullable<PropTypes.ReactNodeLike>>;
-        let message: PropTypes.Requireable<string>;
-        let className: PropTypes.Requireable<string>;
-    }
-}
-import React from 'react';
-import PropTypes from 'prop-types';
->>>>>>> main

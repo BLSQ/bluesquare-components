@@ -24,6 +24,7 @@ export const TimePicker: FunctionComponent<Props> = ({
                 textField: {
                     variant: 'outlined',
                     required,
+                    helperText: null,
                     InputLabelProps: {
                         shrink: Boolean(value),
                     },

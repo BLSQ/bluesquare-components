@@ -15,7 +15,7 @@ type FullModalProps<
     U extends ButtonComponentProps,
 > = ModalProps<T> & {
     defaultOpen?: boolean;
-    iconProps: ButtonProps<U>;
+    iconProps?: ButtonProps<U>;
 };
 
 export const makeFullModal =
@@ -24,7 +24,7 @@ export const makeFullModal =
         ButtonComponent: ComponentType<U>,
     ): FunctionComponent<FullModalProps<T, U>> =>
     (props: FullModalProps<T, U>) => {
-        const { iconProps, defaultOpen, ...modalProps } = props;
+        const { iconProps = {}, defaultOpen, ...modalProps } = props;
         const [openModal, setOpenModal] = useState<boolean>(
             defaultOpen ?? false,
         );

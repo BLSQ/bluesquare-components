@@ -1,14 +1,9 @@
-import { makeStyles } from '@mui/styles';
 import React from 'react';
 import { List, ListItem, ListItemText, Switch } from '@mui/material';
 import { InView } from 'react-intersection-observer';
-import { styles } from './styles';
+import { useStyles } from './styles';
 import { ColumnFromReactTable } from '../Table';
 import { BlockPlaceholder } from '../../BlockPlaceholder';
-
-// Weird error with overflowX property but it match the type in doc?
-// @ts-ignore
-const useStyles = makeStyles(styles);
 
 type ListItemProps = {
     inView;

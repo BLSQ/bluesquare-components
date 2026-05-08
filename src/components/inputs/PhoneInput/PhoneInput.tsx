@@ -71,8 +71,8 @@ export const PhoneInput: FunctionComponent<Props> = props => {
     return (
         <ReactPhoneInput
             component={TextField}
-            searchPlaceholder={formatMessage(MESSAGES.search)}
-            searchNotFound={formatMessage(MESSAGES.countryNotFound)}
+            searchPlaceholder={formatMessage(MESSAGES.search) as string}
+            searchNotFound={formatMessage(MESSAGES.countryNotFound) as string}
             localization={localization}
             onChange={(value, countryData) => {
                 const { dialCode, countryCode }: BaseCountryData = countryData;
@@ -89,7 +89,9 @@ export const PhoneInput: FunctionComponent<Props> = props => {
             containerClass={classnames(classes.dropdownMargin, className)}
             country={country}
             countryCodeEditable={countryCodeEditable}
-            placeholder={placeholder ?? formatMessage(MESSAGES.phoneNumber)}
+            placeholder={
+                placeholder ?? (formatMessage(MESSAGES.phoneNumber) as string)
+            }
             {...restProps}
         />
     );

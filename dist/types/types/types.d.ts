@@ -1,9 +1,18 @@
+import { IntlShape } from 'react-intl';
 export type IntlMessage = {
     id: string;
     defaultMessage: string;
     values?: Record<string, any>;
 };
-export type IntlFormatMessage = (message: IntlMessage, values?: Record<string, string | HTMLElement>) => string;
+export type IntlFormatMessage = (message: IntlMessage | undefined, values?: Record<string, string | HTMLElement>) => string;
+export type PatchIntlShape = Omit<IntlShape, 'formatMessage'> & {
+    formatMessage: IntlFormatMessage;
+    separators: {
+        decimal: string;
+        thousand: string;
+    };
+    formatNullishMessage: (key: string, messages: Record<string, IntlMessage>, values?: any) => string;
+};
 export type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 export type Nullable<T> = T | null;
 export type Optional<T> = T | undefined;

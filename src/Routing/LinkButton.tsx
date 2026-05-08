@@ -4,8 +4,7 @@ import React, { FunctionComponent, ReactNode } from 'react';
 import { LinkProps } from 'react-router-dom';
 import { LinkWithLocation } from './LinkWithLocation';
 
-type Props = LinkProps &
-    ButtonProps & {
+type Props = LinkProps & { disabled?: boolean } & ButtonProps & {
         children: ReactNode;
         className?: string;
         buttonClassName?: string;
@@ -23,8 +22,23 @@ export const LinkButton: FunctionComponent<Props> = props => {
         children,
         className,
         buttonClassName,
+        disabled = false,
         ...buttonProps
     } = props;
+    if (disabled) {
+        return (
+            <Button
+                variant="contained"
+                color="primary"
+                disabled
+                {...buttonProps}
+                className={buttonClassName}
+                onClick={() => null}
+            >
+                {children}
+            </Button>
+        );
+    }
     return (
         <LinkWithLocation
             className={className}

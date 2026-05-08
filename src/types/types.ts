@@ -1,3 +1,5 @@
+import { IntlShape } from 'react-intl';
+
 export type IntlMessage = {
     id: string;
     defaultMessage: string;
@@ -6,10 +8,24 @@ export type IntlMessage = {
 
 export type IntlFormatMessage = (
     // eslint-disable-next-line no-unused-vars
-    message: IntlMessage,
+    message: IntlMessage | undefined,
     // eslint-disable-next-line no-unused-vars
     values?: Record<string, string | HTMLElement>,
 ) => string;
+
+export type PatchIntlShape = Omit<IntlShape, 'formatMessage'> & {
+    formatMessage: IntlFormatMessage;
+    separators: {
+        decimal: string;
+        thousand: string;
+    };
+    formatNullishMessage: (
+        key: string,
+        messages: Record<string, IntlMessage>,
+        values?: any,
+    ) => string;
+};
+
 // Make selected properties of a type optional
 export type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 export type Nullable<T> = T | null;

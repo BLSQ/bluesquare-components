@@ -23,7 +23,7 @@ export const AddComment: FunctionComponent<Props> = ({
     maxRows = 5,
     onChange = () => {},
     className = '',
-    buttonText = '',
+    buttonText,
     onConfirm = () => {},
     position = '',
     inline = true,

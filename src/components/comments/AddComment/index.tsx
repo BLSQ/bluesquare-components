@@ -28,6 +28,10 @@ const styles: SxStyles = {
     left: { textAlign: 'left' },
     right: { textAlign: 'right' },
     center: { textAlign: 'center' },
+    buttonContainer: {
+        mb: theme => theme.spacing(2),
+        ml: 'auto',
+    },
 };
 
 export const AddComment: FunctionComponent<Props> = ({
@@ -81,13 +85,7 @@ export const AddComment: FunctionComponent<Props> = ({
                     autoFocus
                 />
             </Grid>
-            <Grid
-                item
-                sx={{
-                    marginBottom: '20px',
-                    marginLeft: 'auto',
-                }}
-            >
+            <Grid item sx={styles.buttonContainer}>
                 <Button
                     onClick={handleConfirm}
                     variant="contained"

@@ -1,16 +1,12 @@
 import { Theme } from '@mui/material/styles';
-import { CSSProperties } from '@mui/material/styles/createTypography';
+import { StyleRules } from '@mui/styles/withStyles';
 import {
     MENU_HEIGHT_WITH_TABS,
     MENU_HEIGHT_WITHOUT_TABS,
 } from '../../constants/iaso/uiConstants';
 import { mapStyles } from './map';
 
-export type CommonStyles = {
-    (theme: Theme): {
-        [key: string]: CSSProperties;
-    };
-};
+export type CommonStyles = (theme: Theme) => StyleRules;
 
 export const commonStyles: CommonStyles = theme => ({
     ...mapStyles(theme),

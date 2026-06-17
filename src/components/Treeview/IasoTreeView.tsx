@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ReactNode, useCallback } from 'react';
 import { Box, CircularProgress } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { TreeView } from '@mui/x-tree-view';
+import { SimpleTreeView } from '@mui/x-tree-view';
 import { useSafeIntl } from '../../localization/useSafeIntl';
 import { EnrichedTreeItem } from './EnrichedTreeItem';
 import { MESSAGES } from './messages';
@@ -116,39 +116,43 @@ export const IasoTreeView: FunctionComponent<Props> = ({
         ],
     );
     return (
-        <TreeView
+        <SimpleTreeView
             classes={
                 isFetching
                     ? { root: classes.isFetching }
                     : { root: classes.root }
             }
-            expanded={expanded}
-            selected={selected}
+            expandedItems={expanded}
+            selectedItems={selected}
             multiSelect={multiselect}
-            onNodeSelect={onNodeSelect}
-            onNodeToggle={onNodeToggle}
+            onSelectedItemsChange={onNodeSelect}
+            onExpandedItemsChange={onNodeToggle}
         >
             {rootData && makeChildren(rootData)}
             {rootData && !isFetching && rootData.length === 0 && (
                 <Box
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                    height={100}
+                    sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        height: 100,
+                    }}
                 >
                     {formatMessage(MESSAGES.noData)}
                 </Box>
             )}
             {isFetching && (
                 <Box
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                    height={100}
+                    sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        height: 100,
+                    }}
                 >
                     <CircularProgress />
                 </Box>
             )}
-        </TreeView>
+        </SimpleTreeView>
     );
 };

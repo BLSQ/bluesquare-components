@@ -71,16 +71,19 @@ export const TopBar: FunctionComponent<Props> = ({
             <Toolbar className={classes.root}>
                 <Grid
                     container
-                    justifyContent="space-between"
-                    alignItems="center"
                     direction="row"
+                    sx={{
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                    }}
                 >
                     <Grid
                         container
-                        item
                         direction="row"
-                        xs={7}
-                        alignItems="center"
+                        size={7}
+                        sx={{
+                            alignItems: 'center',
+                        }}
                     >
                         {!displayBackButton && displayMenuButton && (
                             <IconButton
@@ -106,15 +109,23 @@ export const TopBar: FunctionComponent<Props> = ({
                         )}
                         <Typography
                             variant="h6"
-                            color="inherit"
                             id="top-bar-title"
+                            sx={{
+                                color: 'inherit',
+                            }}
                         >
                             {title}
                         </Typography>
                     </Grid>
                     {/* TODO make this configurable, like input adornments */}
                     {RightEndComponent && (
-                        <Grid container item xs={5} justifyContent="flex-end">
+                        <Grid
+                            container
+                            size={5}
+                            sx={{
+                                justifyContent: 'flex-end',
+                            }}
+                        >
                             <RightEndComponent />
                         </Grid>
                     )}

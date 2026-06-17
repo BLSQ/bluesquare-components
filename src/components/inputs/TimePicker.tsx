@@ -25,8 +25,10 @@ export const TimePicker: FunctionComponent<Props> = ({
                     variant: 'outlined',
                     required,
                     helperText: null,
-                    InputLabelProps: {
-                        shrink: Boolean(value),
+                    slotProps: {
+                        inputLabel: {
+                            shrink: Boolean(value),
+                        },
                     },
                 },
             }}

@@ -195,7 +195,12 @@ export const useTranslatedConfig = (): Config => {
                     ...MuiConfig.widgets.number,
                     // @ts-ignore
                     factory: ({ setValue, value, field }) => (
-                        <Box display="inline-block" width="150px">
+                        <Box
+                            sx={{
+                                display: 'inline-block',
+                                width: '150px',
+                            }}
+                        >
                             <NumberInput
                                 keyValue={`${field}`}
                                 onChange={setValue}
@@ -218,7 +223,12 @@ export const useTranslatedConfig = (): Config => {
                     ...MuiConfig.widgets.select,
                     // @ts-ignore
                     factory: ({ setValue, value, field, listValues }) => (
-                        <Box display="inline-block" width="100%">
+                        <Box
+                            sx={{
+                                display: 'inline-block',
+                                width: '100%',
+                            }}
+                        >
                             <Select
                                 placeholder={
                                     formatMessage(
@@ -243,7 +253,12 @@ export const useTranslatedConfig = (): Config => {
                     valuePlaceholder: formatMessage(MESSAGES.selectValues),
                     // @ts-ignore
                     factory: ({ setValue, value, field, listValues }) => (
-                        <Box display="inline-block" width="100%">
+                        <Box
+                            sx={{
+                                display: 'inline-block',
+                                width: '100%',
+                            }}
+                        >
                             <Select
                                 placeholder={
                                     formatMessage(
@@ -368,7 +383,12 @@ export const useTranslatedConfig = (): Config => {
                     ],
                     // @ts-ignore
                     factory: ({ setValue, value }) => (
-                        <Box display="inline-block" width={150}>
+                        <Box
+                            sx={{
+                                display: 'inline-block',
+                                width: 150,
+                            }}
+                        >
                             <TimePicker
                                 value={value ? moment(value, 'HH:mm') : null}
                                 onChange={newValue =>
@@ -567,7 +587,12 @@ export const useTranslatedConfig = (): Config => {
                 },
                 // @ts-ignore
                 renderField: ({ items, setField, id, selectedKey }) => (
-                    <Box display="inline-block" width="100%">
+                    <Box
+                        sx={{
+                            display: 'inline-block',
+                            width: '100%',
+                        }}
+                    >
                         <Select
                             placeholder={
                                 formatMessage(MESSAGES.selectField) as string
@@ -590,7 +615,12 @@ export const useTranslatedConfig = (): Config => {
                 ),
                 // @ts-ignore
                 renderOperator: ({ items, setField, id, selectedKey }) => (
-                    <Box display="inline-block" width={150}>
+                    <Box
+                        sx={{
+                            display: 'inline-block',
+                            width: 150,
+                        }}
+                    >
                         <Select
                             placeholder={
                                 formatMessage(MESSAGES.selectField) as string

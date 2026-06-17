@@ -51,9 +51,14 @@ export const CheckBoxSelectGroup: FunctionComponent<Props> = ({
     }, [filterState.filters[keyValue]]);
 
     return (
-        <Grid container mb={2}>
+        <Grid
+            container
+            sx={{
+                mb: 2,
+            }}
+        >
             {title && (
-                <Grid item xs={12}>
+                <Grid size={12}>
                     <Typography variant="subtitle1">{title}</Typography>
                 </Grid>
             )}
@@ -61,7 +66,7 @@ export const CheckBoxSelectGroup: FunctionComponent<Props> = ({
             {(options ?? []).map((option, index) => {
                 if (showAll || index < defaultItemCount) {
                     return (
-                        <Grid item xs={12} key={option.value}>
+                        <Grid key={option.value} size={12}>
                             <CheckBoxFilterItem
                                 keyValue={keyValue}
                                 initialValue={(
@@ -80,7 +85,7 @@ export const CheckBoxSelectGroup: FunctionComponent<Props> = ({
             })}
             {!Boolean(filterState.filters[keyValue]) &&
                 (options?.length ?? 0) > defaultItemCount && (
-                    <Grid item xs={12}>
+                    <Grid size={12}>
                         <Box onClick={() => setShowAll(value => !value)}>
                             <Typography
                                 variant="subtitle2"

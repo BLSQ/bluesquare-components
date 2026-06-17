@@ -48,7 +48,7 @@ export const SelectionSpeedDials: FunctionComponent<Props> = ({
                                 ? action.icon(selection, reset)
                                 : action.icon
                         }
-                        tooltipTitle={action.label}
+                        title={action.label}
                         onClick={() =>
                             action.onClick
                                 ? action.onClick(selection)

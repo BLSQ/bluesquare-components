@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
-import ErrorOutline from '@mui/icons-material/ErrorOutline';
-import HelpOutline from '@mui/icons-material/HelpOutline';
+import ErrorOutline from '@mui/icons-material/ErrorOutlineOutlined';
+import HelpOutline from '@mui/icons-material/HelpOutlineOutlined';
 import NotAuthorized from '@mui/icons-material/NotInterested';
 import { Box, Container, Paper, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
@@ -25,25 +25,40 @@ export const PageError: FunctionComponent<Props> = ({
 }) => {
     const classes = useStyles();
     return (
-        <Box mt={5}>
+        <Box
+            sx={{
+                mt: 5,
+            }}
+        >
             <Container maxWidth="md">
                 <Paper>
                     <Box
-                        py={6}
-                        px={2}
-                        justifyContent="center"
-                        alignItems="center"
-                        display="flex"
-                        flexDirection="column"
+                        sx={{
+                            py: 6,
+                            px: 2,
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            display: 'flex',
+                            flexDirection: 'column',
+                        }}
                     >
-                        <Box pt={3}>
+                        <Box
+                            sx={{
+                                pt: 3,
+                            }}
+                        >
                             <Typography variant="h2" id="error-code">
                                 {errorCode}
                             </Typography>
                         </Box>
                         {errorCode === '401' && (
                             <>
-                                <Box pt={2} pb={2}>
+                                <Box
+                                    sx={{
+                                        pt: 2,
+                                        pb: 2,
+                                    }}
+                                >
                                     <Typography variant="h5">
                                         <FormattedMessage
                                             {...MESSAGES.notAuthenticated}
@@ -62,7 +77,12 @@ export const PageError: FunctionComponent<Props> = ({
                         )}
                         {errorCode === '403' && (
                             <>
-                                <Box pt={2} pb={2}>
+                                <Box
+                                    sx={{
+                                        pt: 2,
+                                        pb: 2,
+                                    }}
+                                >
                                     <Typography variant="h5">
                                         <FormattedMessage
                                             {...MESSAGES.unauthorized}
@@ -81,7 +101,12 @@ export const PageError: FunctionComponent<Props> = ({
                         )}
                         {errorCode === '404' && (
                             <>
-                                <Box pt={2} pb={2}>
+                                <Box
+                                    sx={{
+                                        pt: 2,
+                                        pb: 2,
+                                    }}
+                                >
                                     <Typography variant="h5">
                                         <FormattedMessage
                                             {...MESSAGES.notFound}
@@ -100,7 +125,12 @@ export const PageError: FunctionComponent<Props> = ({
                         )}
                         {errorCode === '500' && (
                             <>
-                                <Box pt={2} pb={2}>
+                                <Box
+                                    sx={{
+                                        pt: 2,
+                                        pb: 2,
+                                    }}
+                                >
                                     <Typography variant="h5">
                                         <FormattedMessage
                                             {...MESSAGES.labelError}

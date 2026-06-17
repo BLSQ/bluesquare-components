@@ -1,2 +1,2 @@
-export function useRenderTagsWithDisabled(renderTags: RenderTags, disabled?: boolean): RenderTags;
-export type RenderTags = (value: any[], getTagProps: import("@mui/material/Autocomplete").AutocompleteRenderGetTagProps, ownerState?: unknown) => import("react").ReactNode;
+export function useRenderTagsWithDisabled(renderTags: Function, disabled?: boolean): RenderValue;
+export type RenderValue = (value: any[], getItemProps: import("@mui/material/Autocomplete").AutocompleteRenderValueGetItemProps<true>, ownerState?: unknown) => import("react").ReactNode;

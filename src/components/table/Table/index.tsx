@@ -329,7 +329,12 @@ const TableComponent: React.FC<TableComponentProps> = props => {
 
     const rowsPerPage = parseInt(pageSize, 10);
     return (
-        <Box mt={marginTop ? 4 : 0} mb={marginBottom ? 4 : 0}>
+        <Box
+            sx={{
+                mt: marginTop ? 4 : 0,
+                mb: marginBottom ? 4 : 0,
+            }}
+        >
             <Select
                 selectAllCount={selectAllCount}
                 multiSelect={multiSelect}
@@ -339,8 +344,18 @@ const TableComponent: React.FC<TableComponentProps> = props => {
                 selectionActionMessage={selectionActionMessage}
             />
             {columnSelectorEnabled && columnSelectorButtonType === 'button' && (
-                <Grid container justifyContent="flex-end">
-                    <Box mb={2} mt={2}>
+                <Grid
+                    container
+                    sx={{
+                        justifyContent: 'flex-end',
+                    }}
+                >
+                    <Box
+                        sx={{
+                            mb: 2,
+                            mt: 2,
+                        }}
+                    >
                         <ColumnsSelectGeneric
                             columns={columnsFromUse}
                             hiddenColumns={hiddenColumns}
@@ -350,7 +365,12 @@ const TableComponent: React.FC<TableComponentProps> = props => {
                     </Box>
                 </Grid>
             )}
-            <Grid container justifyContent="flex-end">
+            <Grid
+                container
+                sx={{
+                    justifyContent: 'flex-end',
+                }}
+            >
                 {countOnTop && (
                     <Count count={count} selectCount={selection.selectCount} />
                 )}

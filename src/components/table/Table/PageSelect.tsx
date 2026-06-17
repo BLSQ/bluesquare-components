@@ -50,15 +50,21 @@ export const PageSelect: FunctionComponent<Props> = ({
     const [selectedPage, setSelectedPage] = useState(pageIndex);
     return (
         <Box
-            display="inline-flex"
-            justifyContent="center"
-            alignItems="center"
-            ml={8}
+            sx={{
+                display: 'inline-flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                ml: 8,
+            }}
         >
-            <Box display="inline-block" mr={1}>
+            <Box
+                sx={{
+                    display: 'inline-block',
+                    mr: 1,
+                }}
+            >
                 <FormattedMessage {...MESSAGES.pageText} />
             </Box>
-
             <TextField
                 className={classNames(
                     classes[adaptInputSize(selectedPage)],
@@ -80,11 +86,20 @@ export const PageSelect: FunctionComponent<Props> = ({
                     }
                 }}
             />
-            <Box display="inline-block" ml={1}>
+            <Box
+                sx={{
+                    display: 'inline-block',
+                    ml: 1,
+                }}
+            >
                 <FormattedMessage {...MESSAGES.ofText} />
             </Box>
-
-            <Box display="inline-block" ml={1}>
+            <Box
+                sx={{
+                    display: 'inline-block',
+                    ml: 1,
+                }}
+            >
                 {pages}
             </Box>
         </Box>

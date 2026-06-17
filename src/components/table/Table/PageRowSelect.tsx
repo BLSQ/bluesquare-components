@@ -32,10 +32,12 @@ export const PageRowSelect: FunctionComponent<Props> = ({
     };
     return (
         <Box
-            display="inline-flex"
-            justifyContent="center"
-            alignItems="center"
-            mr={8}
+            sx={{
+                display: 'inline-flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                mr: 8,
+            }}
         >
             <FormControl variant="outlined">
                 <Select

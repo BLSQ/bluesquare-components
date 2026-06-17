@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
-import { AutocompleteRenderGetTagProps } from '@mui/material/Autocomplete';
+import { AutocompleteRenderValueGetItemProps } from '@mui/material/Autocomplete';
 import { IntlMessage } from '../../../types/types';
 import { MESSAGES } from './messages';
 import { MultiSelect } from './multi';
@@ -142,7 +142,7 @@ type Props = {
      */
     renderTags?: (
         value: any[],
-        getTagProps: AutocompleteRenderGetTagProps,
+        getItemProps: AutocompleteRenderValueGetItemProps<true>,
         ownerState?: unknown,
     ) => React.ReactNode;
     returnFullObject?: boolean;

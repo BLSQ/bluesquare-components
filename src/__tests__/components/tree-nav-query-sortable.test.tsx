@@ -4,7 +4,7 @@ import {
     SortableContext,
     verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
-import { TreeView } from '@mui/x-tree-view';
+import { SimpleTreeView } from '@mui/x-tree-view';
 import type { Fields } from '@react-awesome-query-builder/mui';
 
 import { DynamicTabs } from '../../components/nav/DynamicTabs';
@@ -177,13 +177,13 @@ describe('tree, nav, query builder, and sortable components', () => {
 
     it('renders EnrichedTreeItem', () => {
         const { getByText } = renderWithProviders(
-            <TreeView defaultExpanded={[]}>
+            <SimpleTreeView defaultExpandedItems={[]}>
                 <EnrichedTreeItem
                     id="1"
                     label={data => data.name}
                     data={{ id: '1', name: 'Node', has_children: false }}
                 />
-            </TreeView>,
+            </SimpleTreeView>,
         );
         expect(getByText('Node')).toBeInTheDocument();
     });

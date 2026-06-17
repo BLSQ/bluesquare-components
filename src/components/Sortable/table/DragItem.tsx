@@ -49,7 +49,12 @@ export const DragItem: FunctionComponent<Props> = ({
                         )}
                     >
                         <TableCell align="center" className={classes.sortCell}>
-                            <Box px="3px" py="6px">
+                            <Box
+                                sx={{
+                                    px: '3px',
+                                    py: '6px',
+                                }}
+                            >
                                 <DragIndicatorIcon />
                             </Box>
                         </TableCell>

@@ -13,11 +13,18 @@ export const InfoHeader: FunctionComponent<Props> = ({ message, children }) => {
     return (
         <Box
             className={classes.root}
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
+            sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+            }}
         >
-            <Box display="inline" mr={1}>
+            <Box
+                sx={{
+                    display: 'inline',
+                    mr: 1,
+                }}
+            >
                 {children}
             </Box>
             <Tooltip

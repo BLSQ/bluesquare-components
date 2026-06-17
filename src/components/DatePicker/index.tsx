@@ -86,22 +86,24 @@ export const DatePicker: FunctionComponent<Props> = ({
                         size: 'small',
                     },
                     textField: {
-                        InputLabelProps: {
-                            error: isOnError,
-                        },
                         required,
                         error: isOnError,
                         helperText: null,
+                        slotProps: {
+                            inputLabel: {
+                                error: isOnError,
+                            },
+                        },
                     },
                 }}
                 disabled={disabled}
                 format="DD/MM/YYYY" // This one need be set by user locale
                 label={`${label}`}
-                value={pickerValue}
+                value={pickerValue ?? undefined}
                 onChange={onChange}
                 onError={error => setDateError(error)}
-                minDate={pickerMinDate}
-                maxDate={pickerMaxDate}
+                minDate={pickerMinDate ?? undefined}
+                maxDate={pickerMaxDate ?? undefined}
             />
             {clearable && clearMessage && currentDate && (
                 <span className={classes.clearDateButton}>

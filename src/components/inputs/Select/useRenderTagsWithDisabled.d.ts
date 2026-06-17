@@ -1,13 +1,13 @@
 import { ReactNode } from 'react';
-import { AutocompleteRenderGetTagProps } from '@mui/material/Autocomplete';
+import { AutocompleteRenderValueGetItemProps } from '@mui/material/Autocomplete';
 
-type RenderTags = (
+type RenderValue = (
     value: any[],
-    getTagProps: AutocompleteRenderGetTagProps,
+    getItemProps: AutocompleteRenderValueGetItemProps<true>,
     ownerState?: unknown,
 ) => ReactNode;
 
 export declare const useRenderTagsWithDisabled: (
-    renderTags: RenderTags,
+    renderValue: RenderValue,
     disabled?: boolean,
-) => RenderTags;
+) => RenderValue;

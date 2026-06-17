@@ -30,6 +30,16 @@ export default defineConfig({
         globals: true,
         environment: 'jsdom',
         setupFiles: ['./src/tests/setup.ts'],
+        server: {
+            deps: {
+                inline: [
+                    '@mui/material',
+                    '@mui/x-date-pickers',
+                    '@mui/x-tree-view',
+                    'react-transition-group',
+                ],
+            },
+        },
         coverage: {
             provider: 'v8',
             include: ['src/**/*.{js,jsx,ts,tsx}'],
@@ -88,6 +98,10 @@ export default defineConfig({
     resolve: {
         alias: {
             'bluesquare-components': path.resolve(__dirname, './src'),
+            'react-transition-group/TransitionGroupContext': path.resolve(
+                __dirname,
+                'node_modules/react-transition-group/cjs/TransitionGroupContext.js',
+            ),
         },
     },
 });

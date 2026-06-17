@@ -86,7 +86,12 @@ export const ColumnsSelectGeneric: React.FC<Props> = ({
                     size="medium"
                     id="ColumnsSelectDrawer-toggleDrawer"
                 >
-                    <Box mr={1} display="inline-flex">
+                    <Box
+                        sx={{
+                            mr: 1,
+                            display: 'inline-flex',
+                        }}
+                    >
                         <ViewColumnIcon />
                     </Box>
                     {formatMessage(MESSAGES.columnSelect)}

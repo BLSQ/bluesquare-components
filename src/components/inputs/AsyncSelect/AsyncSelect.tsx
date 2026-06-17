@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useMemo, useState } from 'react';
 import { Box, TextField } from '@mui/material';
 import Autocomplete from '@mui/material/Autocomplete';
-import { AutocompleteRenderGetTagProps } from '@mui/material/Autocomplete/Autocomplete';
+import { AutocompleteRenderValueGetItemProps } from '@mui/material/Autocomplete/Autocomplete';
 import { debounce } from '@mui/material/utils';
 import { isArray } from 'lodash';
 import { defineMessages } from 'react-intl';
@@ -38,7 +38,7 @@ type Props = {
     fetchOptions: (input: string) => Promise<any>;
     renderTags?: (
         tag: any[],
-        getTagProps: AutocompleteRenderGetTagProps,
+        getItemProps: AutocompleteRenderValueGetItemProps<true>,
     ) => React.ReactNode;
 };
 
@@ -159,7 +159,7 @@ export const AsyncSelect: FunctionComponent<Props> = ({
                         }
                     />
                 )}
-                renderTags={renderTags}
+                renderValue={multi ? renderTags : undefined}
                 multiple={multi}
                 disabled={disabled}
                 disableClearable={!clearable}

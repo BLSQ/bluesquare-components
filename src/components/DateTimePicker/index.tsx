@@ -80,26 +80,28 @@ export const DateTimePicker: FunctionComponent<Props> = ({
                         size: 'small',
                     },
                     textField: {
-                        InputLabelProps: {
-                            className: classes.label,
-                            error: isOnError,
-                        },
                         required,
                         error: isOnError,
                         helperText: null,
+                        slotProps: {
+                            inputLabel: {
+                                className: classes.label,
+                                error: isOnError,
+                            },
+                        },
                     },
                 }}
                 format="DD/MM/YYYY HH:mm" // This one need be set by user locale
                 label={`${label}`}
-                value={pickerValue}
+                value={pickerValue ?? undefined}
                 onChange={onChange}
                 onError={error => setDateError(error)}
-                minDate={pickerMinDate}
-                minDateTime={pickerMinDateTime}
-                minTime={pickerMinTime}
-                maxDate={pickerMaxDate}
-                maxDateTime={pickerMaxDateTime}
-                maxTime={pickerMaxTime}
+                minDate={pickerMinDate ?? undefined}
+                minDateTime={pickerMinDateTime ?? undefined}
+                minTime={pickerMinTime ?? undefined}
+                maxDate={pickerMaxDate ?? undefined}
+                maxDateTime={pickerMaxDateTime ?? undefined}
+                maxTime={pickerMaxTime ?? undefined}
             />
             {clearable && clearMessage && currentDate && (
                 <span className={classes.clearDateButton}>

@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode, useRef } from 'react';
 import { makeStyles } from '@mui/styles';
-import { TreeView } from '@mui/x-tree-view';
+import { SimpleTreeView } from '@mui/x-tree-view';
 import TreeItems from './TreeItems';
 
 const alignTailIcon = { display: 'flex', alignItems: 'center' };
@@ -78,12 +78,12 @@ export const TruncatedTreeview: FunctionComponent<Props> = ({
     const expanded =
         Array.from(selectedItems.keys()).map(item => item.toString()) ?? [];
     return (
-        <TreeView
+        <SimpleTreeView
             onMouseDown={() => {
                 mouseDownTime.current = new Date();
             }}
             disableSelection
-            expanded={expanded}
+            expandedItems={expanded}
             classes={{
                 root:
                     expanded.length === 1
@@ -100,6 +100,6 @@ export const TruncatedTreeview: FunctionComponent<Props> = ({
                 label={label}
                 onLabelClick={onLabelClick}
             />
-        </TreeView>
+        </SimpleTreeView>
     );
 };

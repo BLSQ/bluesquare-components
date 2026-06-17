@@ -78,7 +78,11 @@ export const FakeInput: FunctionComponent<Props> = ({
 }) => {
     const classes: Record<string, string> = useStyles();
     return (
-        <Box mt={2}>
+        <Box
+            sx={{
+                mt: 2,
+            }}
+        >
             <FormControl errors={errors}>
                 <InputLabel
                     shrink={Boolean(value)}

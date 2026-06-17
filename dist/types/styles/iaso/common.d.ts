@@ -1,8 +1,4 @@
 import { Theme } from '@mui/material/styles';
-import { CSSProperties } from '@mui/material/styles/createTypography';
-export type CommonStyles = {
-    (theme: Theme): {
-        [key: string]: CSSProperties;
-    };
-};
+import { StyleRules } from '@mui/styles/withStyles';
+export type CommonStyles = (theme: Theme) => StyleRules;
 export declare const commonStyles: CommonStyles;

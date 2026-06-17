@@ -169,8 +169,11 @@ export const EnrichedTreeItem: FunctionComponent<Props> = ({
                     isTicked,
                     isTickedParent,
                 )}
-                nodeId={id}
-                icon={<ArrowDropDownIcon style={{ fontSize: 'large' }} />}
+                itemId={id}
+                slots={{ icon: ArrowDropDownIcon }}
+                slotProps={{
+                    icon: { style: { fontSize: 'large' } },
+                }}
             />
         );
     }
@@ -191,11 +194,15 @@ export const EnrichedTreeItem: FunctionComponent<Props> = ({
                         isTickedParent,
                         handleLabelClick,
                     )}
-                    nodeId={id}
-                    collapseIcon={
-                        <ArrowDropDownIcon style={{ fontSize: '24px' }} />
-                    }
-                    expandIcon={<ArrowRightIcon style={{ fontSize: '24px' }} />}
+                    itemId={id}
+                    slots={{
+                        expandIcon: ArrowRightIcon,
+                        collapseIcon: ArrowDropDownIcon,
+                    }}
+                    slotProps={{
+                        expandIcon: { style: { fontSize: '24px' } },
+                        collapseIcon: { style: { fontSize: '24px' } },
+                    }}
                 >
                     {childrenData && isExpanded && makeSubTree(childrenData)}
                     {!isExpanded && <div />}
@@ -219,11 +226,15 @@ export const EnrichedTreeItem: FunctionComponent<Props> = ({
                     undefined,
                     handleLabelClick,
                 )}
-                nodeId={id}
-                collapseIcon={
-                    <ArrowDropDownIcon style={{ fontSize: '24px' }} />
-                }
-                expandIcon={<ArrowRightIcon style={{ fontSize: '24px' }} />}
+                itemId={id}
+                slots={{
+                    expandIcon: ArrowRightIcon,
+                    collapseIcon: ArrowDropDownIcon,
+                }}
+                slotProps={{
+                    expandIcon: { style: { fontSize: '24px' } },
+                    collapseIcon: { style: { fontSize: '24px' } },
+                }}
             />
         </div>
     );

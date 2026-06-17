@@ -6,7 +6,13 @@ import React, {
 } from 'react';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
-import { Collapse, ListItem, ListItemText, Typography } from '@mui/material';
+import {
+    Collapse,
+    ListItem,
+    ListItemButton,
+    ListItemText,
+    Typography,
+} from '@mui/material';
 
 type Props = {
     openOnMount?: boolean;
@@ -53,22 +59,22 @@ export const ExpandableItem: FunctionComponent<Props> = ({
     const [open, setOpen] = useState<boolean>(openOnMount);
     return (
         <>
-            <ListItem
-                style={{ backgroundColor }}
-                button
-                onClick={() => {
-                    setOpen(value => !value);
-                }}
-                disableRipple={preventCollapse}
-            >
-                <ListItemText>
-                    {/* @ts-ignore */}
-                    <Typography variant={titleVariant} color={titleColor}>
-                        {label}
-                    </Typography>
-                </ListItemText>
-                {(open || preventCollapse) && <ExpandLess />}
-                {!open && !preventCollapse && <ExpandMore />}
+            <ListItem disablePadding style={{ backgroundColor }}>
+                <ListItemButton
+                    onClick={() => {
+                        setOpen(value => !value);
+                    }}
+                    disableRipple={preventCollapse}
+                >
+                    <ListItemText>
+                        {/* @ts-ignore */}
+                        <Typography variant={titleVariant} color={titleColor}>
+                            {label}
+                        </Typography>
+                    </ListItemText>
+                    {(open || preventCollapse) && <ExpandLess />}
+                    {!open && !preventCollapse && <ExpandMore />}
+                </ListItemButton>
             </ListItem>
             <Collapse in={open || preventCollapse} timeout="auto" unmountOnExit>
                 {/* @ts-ignore */}

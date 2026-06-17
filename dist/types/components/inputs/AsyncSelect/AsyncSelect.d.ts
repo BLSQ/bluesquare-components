@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { AutocompleteRenderGetTagProps } from '@mui/material/Autocomplete/Autocomplete';
+import { AutocompleteRenderValueGetItemProps } from '@mui/material/Autocomplete/Autocomplete';
 import { IntlMessage } from '../../../types/types';
 type Props = {
     value: any;
@@ -17,7 +17,7 @@ type Props = {
     helperText?: string;
     minCharBeforeQuery?: number;
     fetchOptions: (input: string) => Promise<any>;
-    renderTags?: (tag: any[], getTagProps: AutocompleteRenderGetTagProps) => React.ReactNode;
+    renderTags?: (tag: any[], getItemProps: AutocompleteRenderValueGetItemProps<true>) => React.ReactNode;
 };
 export declare const AsyncSelect: FunctionComponent<Props>;
 export {};

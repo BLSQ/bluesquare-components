@@ -10,6 +10,7 @@
         "src/**/*.json",
         "src/**/*.test.ts",
         "src/**/*.test.tsx",
-        "src/__tests__/**"
+        "src/__tests__/**",
+        "src/tests/**"
     ]
 }

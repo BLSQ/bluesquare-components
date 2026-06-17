@@ -74,13 +74,19 @@ const QueryBuilderInput: FunctionComponent<Props> = ({
             id={id || ''}
             onClose={() => null}
         >
-            <Box position="relative">
+            <Box
+                sx={{
+                    position: 'relative',
+                }}
+            >
                 {/* allow to display an popper with informations about the fields used */}
                 {InfoPopper && (
                     <Box
-                        position="absolute"
-                        top={theme.spacing(-7)}
-                        right={theme.spacing(-3)}
+                        sx={{
+                            position: 'absolute',
+                            top: theme.spacing(-7),
+                            right: theme.spacing(-3),
+                        }}
                     >
                         {InfoPopper}
                     </Box>
@@ -96,7 +102,11 @@ const QueryBuilderInput: FunctionComponent<Props> = ({
                     <Tab value="json" label={formatMessage(MESSAGES.jsonTab)} />
                 </Tabs>
                 {tab === 'query' && (
-                    <Box mt={2}>
+                    <Box
+                        sx={{
+                            mt: 2,
+                        }}
+                    >
                         <QueryBuilder
                             logic={logic}
                             fields={fields}

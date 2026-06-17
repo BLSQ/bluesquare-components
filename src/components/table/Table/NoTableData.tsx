@@ -29,11 +29,17 @@ export const NoTableData: FunctionComponent<Props> = ({
     return (
         <Box
             className={classes.box}
-            alignItems="center"
-            justifyContent="center"
-            display="flex"
+            sx={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                display: 'flex',
+            }}
         >
-            <Typography fontWeight="bold">
+            <Typography
+                sx={{
+                    fontWeight: 'bold',
+                }}
+            >
                 {displayMessage && formatMessage(noDataMessage)}
             </Typography>
         </Box>

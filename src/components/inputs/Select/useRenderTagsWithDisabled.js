@@ -1,24 +1,24 @@
 import { useCallback } from 'react';
 
 /**
- * @typedef {(value: any[], getTagProps: import('@mui/material/Autocomplete').AutocompleteRenderGetTagProps, ownerState?: unknown) => import('react').ReactNode} RenderTags
+ * @typedef {(value: any[], getItemProps: import('@mui/material/Autocomplete').AutocompleteRenderValueGetItemProps<true>, ownerState?: unknown) => import('react').ReactNode} RenderValue
  */
 
 /**
- * Wraps renderTags to inject the Select's disabled state into getTagProps,
+ * Wraps renderTags/renderValue to inject the Select's disabled state into getItemProps,
  * so Chips receive disabled={true} when the whole Select is disabled.
  *
- * @param {RenderTags} renderTags - (tagValue, getTagProps) => ReactNode
+ * @param {Function} renderTags - (tagValue, getItemProps) => ReactNode
  * @param {boolean} [disabled=false] - Whether the Select is disabled
- * @returns {RenderTags} Wrapped renderTags with disabled injected
+ * @returns {RenderValue} Wrapped renderValue with disabled injected
  */
 export const useRenderTagsWithDisabled = (renderTags, disabled = false) =>
     useCallback(
-        (tagValue, getTagProps, ownerState) =>
+        (tagValue, getItemProps, ownerState) =>
             renderTags(
                 tagValue,
                 params => ({
-                    ...getTagProps(params),
+                    ...getItemProps(params),
                     disabled,
                 }),
                 ownerState,

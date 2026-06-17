@@ -87,11 +87,10 @@ export const Comment: FunctionComponent<Props> = ({
     )}  ${moment(postingTime).fromNow()}`;
     return (
         <Grid container wrap="nowrap" spacing={4}>
-            <Grid item>
+            <Grid>
                 <Avatar alt={author} src={avatar} />
             </Grid>
-
-            <Grid className={classes.commentGrid} item xs zeroMinWidth>
+            <Grid className={classes.commentGrid} size="grow">
                 <h4 className={classes.commentAuthor}>{author}</h4>
                 <CommentText
                     text={content}

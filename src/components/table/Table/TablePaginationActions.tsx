@@ -74,11 +74,13 @@ export const TablePaginationActions: FunctionComponent<Props> = ({
 
     return (
         <Box
-            py={2}
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
             className={classes.root}
+            sx={{
+                py: 2,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+            }}
         >
             {/* @ts-ignore */}
             <IconButton

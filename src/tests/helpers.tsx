@@ -1,7 +1,10 @@
 import React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
-import { StylesProvider } from '@mui/styles';
+import {
+    StylesProvider,
+    ThemeProvider as StylesThemeProvider,
+} from '@mui/styles';
 import { render, RenderOptions } from '@testing-library/react';
 import { SnackbarProvider } from 'notistack';
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -42,12 +45,14 @@ function TestProviders({
             <LocalizationProvider en={english} fr={french}>
                 <QueryClientProvider client={queryClient}>
                     <ThemeProvider theme={theme}>
-                        <StylesProvider injectFirst>
-                            <CssBaseline />
-                            <SnackbarProvider maxSnack={3}>
-                                {children}
-                            </SnackbarProvider>
-                        </StylesProvider>
+                        <StylesThemeProvider theme={theme}>
+                            <StylesProvider injectFirst>
+                                <CssBaseline />
+                                <SnackbarProvider maxSnack={3}>
+                                    {children}
+                                </SnackbarProvider>
+                            </StylesProvider>
+                        </StylesThemeProvider>
                     </ThemeProvider>
                 </QueryClientProvider>
             </LocalizationProvider>

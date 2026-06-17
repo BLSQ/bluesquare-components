@@ -15,16 +15,16 @@ export const InputWithInfos: FunctionComponent<Props> = ({
     const theme = useTheme();
     return (
         <Grid container spacing={1}>
-            <Grid item xs={11}>
-                {children}
-            </Grid>
-            <Grid item xs={1}>
+            <Grid size={11}>{children}</Grid>
+            <Grid size={1}>
                 <Tooltip title={infos} arrow>
                     <Box
-                        position="relative"
-                        top={theme.spacing(4)}
-                        display="flex"
-                        justifyContent="center"
+                        sx={{
+                            position: 'relative',
+                            top: theme.spacing(4),
+                            display: 'flex',
+                            justifyContent: 'center',
+                        }}
                     >
                         <InfoIcon
                             color="primary"

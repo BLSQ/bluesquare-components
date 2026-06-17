@@ -143,9 +143,11 @@ export const ColumnsSelectDrawer: FunctionComponent<Props> = ({
                                                                 o.index,
                                                             )}
                                                             color="primary"
-                                                            inputProps={{
-                                                                'aria-label':
-                                                                    o.label,
+                                                            slotProps={{
+                                                                input: {
+                                                                    'aria-label':
+                                                                        o.label,
+                                                                },
                                                             }}
                                                             className={
                                                                 classes.switch

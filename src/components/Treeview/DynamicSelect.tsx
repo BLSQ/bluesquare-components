@@ -12,6 +12,7 @@ import {
     Divider,
     List,
     ListItem,
+    ListItemButton,
     ListItemText,
     Typography,
 } from '@mui/material';
@@ -237,19 +238,26 @@ export const DynamicSelect: FunctionComponent<Props> = ({
                                 {searchResults.map(element => (
                                     <ListItem
                                         key={element.id}
-                                        button
-                                        onClick={() => handleSelect(element)}
+                                        disablePadding
                                         className="org-unit-item"
                                     >
-                                        <ListItemText
-                                            primary={
-                                                <Typography variant="body2">
-                                                    {makeDropDownText(element)}
-                                                </Typography>
+                                        <ListItemButton
+                                            onClick={() =>
+                                                handleSelect(element)
                                             }
-                                        />
-                                        {toolTip &&
-                                            toolTip(element, tooltipIcon)}
+                                        >
+                                            <ListItemText
+                                                primary={
+                                                    <Typography variant="body2">
+                                                        {makeDropDownText(
+                                                            element,
+                                                        )}
+                                                    </Typography>
+                                                }
+                                            />
+                                            {toolTip &&
+                                                toolTip(element, tooltipIcon)}
+                                        </ListItemButton>
                                     </ListItem>
                                 ))}
                             </List>

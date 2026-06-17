@@ -5,7 +5,7 @@ import Color from 'color';
 
 export const defaultGetLabel = o => (o?.label ? o.label : '');
 
-export const baseRenderTags = getLabel => (tagValue, getTagProps) =>
+export const baseRenderTags = getLabel => (tagValue, getItemProps) =>
     tagValue
         .sort((a, b) =>
             getLabel(a).localeCompare(getLabel(b), undefined, {
@@ -13,7 +13,7 @@ export const baseRenderTags = getLabel => (tagValue, getTagProps) =>
             }),
         )
         .map((option, index) => {
-            const tagProps = getTagProps({ index });
+            const tagProps = getItemProps({ index });
             return (
                 <Chip
                     // eslint-disable-next-line react/no-array-index-key
@@ -33,7 +33,7 @@ export const baseRenderTags = getLabel => (tagValue, getTagProps) =>
 export const defaultRenderTags = baseRenderTags(defaultGetLabel);
 
 export const baseRenderTagsWithTooltip =
-    getLabel => getTooltipTitle => (tagValue, getTagProps) =>
+    getLabel => getTooltipTitle => (tagValue, getItemProps) =>
         tagValue
             .sort((a, b) =>
                 getLabel(a).localeCompare(getLabel(b), undefined, {
@@ -41,7 +41,7 @@ export const baseRenderTagsWithTooltip =
                 }),
             )
             .map((option, index) => {
-                const tagProps = getTagProps({ index });
+                const tagProps = getItemProps({ index });
                 const title = getTooltipTitle(option);
                 return (
                     // eslint-disable-next-line react/no-array-index-key

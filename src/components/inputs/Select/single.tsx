@@ -6,7 +6,7 @@ import React, {
 } from 'react';
 import ClearIcon from '@mui/icons-material/Clear';
 import Autocomplete, {
-    AutocompleteRenderGetTagProps,
+    AutocompleteRenderValueGetItemProps,
 } from '@mui/material/Autocomplete';
 import Box from '@mui/material/Box';
 import { useSafeIntl } from '../../../localization/useSafeIntl';
@@ -45,7 +45,7 @@ type Props = {
     ) => React.ReactNode;
     renderTags?: (
         value: any[],
-        getTagProps: AutocompleteRenderGetTagProps,
+        getItemProps: AutocompleteRenderValueGetItemProps<true>,
         ownerState?: unknown,
     ) => React.ReactNode;
     returnFullObject?: boolean;
@@ -139,7 +139,6 @@ export const SingleSelect: FunctionComponent<Props> = ({
                 loading={loading}
                 loadingText={formatMessage(loadingText)}
                 clearIcon={<ClearIcon />}
-                renderTags={wrappedRenderTags}
                 renderInput={params => (
                     <TextInput
                         params={params}

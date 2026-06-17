@@ -51,7 +51,12 @@ export const JsonLogicEditor: FunctionComponent<Props> = ({
     };
 
     return (
-        <Box mt={2} mb={-2}>
+        <Box
+            sx={{
+                mt: 2,
+                mb: -2,
+            }}
+        >
             <FormControl errors={errors}>
                 <textarea
                     className={classNames(
@@ -62,7 +67,13 @@ export const JsonLogicEditor: FunctionComponent<Props> = ({
                     value={logic}
                 />
             </FormControl>
-            <Box mt={2} display="flex" justifyContent="flex-end">
+            <Box
+                sx={{
+                    mt: 2,
+                    display: 'flex',
+                    justifyContent: 'flex-end',
+                }}
+            >
                 <Button
                     disabled={
                         !logic ||

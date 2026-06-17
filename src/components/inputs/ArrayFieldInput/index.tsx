@@ -108,10 +108,10 @@ class ArrayFieldInput extends Component<Props, State> {
             fieldList[fieldList.length - 1].value === '';
         return (
             <Grid container spacing={0}>
-                <Grid item xs={1}>
+                <Grid size={1}>
                     <span className={classes.label}>{label}:</span>
                 </Grid>
-                <Grid item xs={11}>
+                <Grid size={11}>
                     <Box
                         id={`array-input-field-list-${baseId}`}
                         data-test={

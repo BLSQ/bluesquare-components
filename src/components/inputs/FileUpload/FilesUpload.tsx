@@ -54,10 +54,11 @@ const DragZone = () => {
         >
             <Grid
                 container
-                item
-                justifyContent="center"
-                alignItems="center"
                 style={{ height: '100%' }}
+                sx={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}
             >
                 <Typography className={classes.text}>
                     {formatMessage(MESSAGES.dropHere)}

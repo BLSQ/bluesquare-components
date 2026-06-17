@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useCallback, useState } from 'react';
-import { TextareaAutosize, Button, Grid } from '@mui/material';
+import { TextareaAutosize, Button, Stack, Box } from '@mui/material';
 import { textPlaceholder } from '../../../constants/iaso/uiConstants';
 import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { SxStyles } from '../../../styles/iaso/types';
@@ -57,15 +57,15 @@ export const AddComment: FunctionComponent<Props> = ({
         onChange(e.target.value);
     };
     return (
-        <Grid
-            container
+        <Stack
             direction={inline ? 'row' : 'column'}
-            alignItems="center"
             spacing={2}
-            sx={position ? styles[position] : null}
+            sx={{
+                alignItems: 'center',
+                ...(position ? styles[position] : {}),
+            }}
         >
-            <Grid
-                item
+            <Box
                 sx={{
                     width: '100%',
                     marginTop: '20px',
@@ -85,8 +85,8 @@ export const AddComment: FunctionComponent<Props> = ({
                     value={comment}
                     autoFocus
                 />
-            </Grid>
-            <Grid item sx={styles.buttonContainer}>
+            </Box>
+            <Box sx={styles.buttonContainer}>
                 <Button
                     onClick={handleConfirm}
                     variant="contained"
@@ -94,7 +94,7 @@ export const AddComment: FunctionComponent<Props> = ({
                 >
                     {buttonText ?? formatMessage(MESSAGES.confirmComment)}
                 </Button>
-            </Grid>
-        </Grid>
+            </Box>
+        </Stack>
     );
 };

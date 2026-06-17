@@ -1,5 +1,5 @@
 import React, { FunctionComponent, ReactNode } from 'react';
-import { AutocompleteRenderGetTagProps } from '@mui/material/Autocomplete';
+import { AutocompleteRenderValueGetItemProps } from '@mui/material/Autocomplete';
 import { IntlMessage } from '../../../types/types';
 type Props = {
     keyValue: string;
@@ -19,7 +19,7 @@ type Props = {
     getOptionLabel?: any;
     getOptionSelected?: any;
     renderOption?: (props: Record<string, any>, option: Record<string, any>) => React.ReactNode;
-    renderTags?: (value: any[], getTagProps: AutocompleteRenderGetTagProps, ownerState?: unknown) => React.ReactNode;
+    renderTags?: (value: any[], getItemProps: AutocompleteRenderValueGetItemProps<true>, ownerState?: unknown) => React.ReactNode;
     returnFullObject?: boolean;
     placeholder?: string;
     dataTestId?: string;

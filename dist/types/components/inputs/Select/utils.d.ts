@@ -1,9 +1,9 @@
 import React from 'react';
 export declare const defaultGetLabel: (o: any) => any;
-export declare const baseRenderTags: (getLabel: any) => (tagValue: any, getTagProps: any) => any;
-export declare const defaultRenderTags: (tagValue: any, getTagProps: any) => any;
-export declare const baseRenderTagsWithTooltip: (getLabel: any) => (getTooltipTitle: any) => (tagValue: any, getTagProps: any) => any;
-export declare const renderTagsWithTooltip: (getTooltipTitle: any) => (tagValue: any, getTagProps: any) => any;
+export declare const baseRenderTags: (getLabel: any) => (tagValue: any, getItemProps: any) => any;
+export declare const defaultRenderTags: (tagValue: any, getItemProps: any) => any;
+export declare const baseRenderTagsWithTooltip: (getLabel: any) => (getTooltipTitle: any) => (tagValue: any, getItemProps: any) => any;
+export declare const renderTagsWithTooltip: (getTooltipTitle: any) => (tagValue: any, getItemProps: any) => any;
 export declare const getExtraProps: (getOptionLabel: any, getOptionSelected: any, renderOption: any) => Record<string, any>;
 export declare const getOption: (value: any, options: any) => any;
 export declare const getMultiOption: (value: any, options: any, getOptionSelected: any) => any;

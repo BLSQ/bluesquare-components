@@ -59,10 +59,16 @@ const TreeItems: FunctionComponent<Props> = ({
         <TreeItem
             key={item[0].toString() + nextItems.size.toString()}
             className={className}
-            collapseIcon={<ArrowDropDownIcon style={{ fontSize: 'large' }} />}
-            expandIcon={<ArrowRightIcon style={{ fontSize: 'large' }} />}
+            slots={{
+                expandIcon: ArrowRightIcon,
+                collapseIcon: ArrowDropDownIcon,
+            }}
+            slotProps={{
+                expandIcon: { style: { fontSize: 'large' } },
+                collapseIcon: { style: { fontSize: 'large' } },
+            }}
             label={makeLabel(label(item[1]), () => onLabelClick(item[0]))}
-            nodeId={item[0]}
+            itemId={item[0]}
             disabled
         >
             {items.size >= 1 ? (

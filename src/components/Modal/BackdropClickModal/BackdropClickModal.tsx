@@ -45,7 +45,11 @@ export const BackdropClickModal: FunctionComponent<Props> = ({
         >
             <>
                 <Divider />
-                <Box mt={2}>
+                <Box
+                    sx={{
+                        mt: 2,
+                    }}
+                >
                     <Typography>
                         {formatMessage(MESSAGES.unsavedDataWillBeLost)}
                     </Typography>

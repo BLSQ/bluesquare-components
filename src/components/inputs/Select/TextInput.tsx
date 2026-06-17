@@ -41,28 +41,32 @@ export const TextInput: FunctionComponent<Props> = ({
     placeholder = '',
 }) => {
     const classes: Record<string, string> = useStyles();
-    const paramsCopy = {
-        ...params,
+    const htmlInputProps = {
+        ...params.slotProps?.htmlInput,
     };
-    let inputExtraProps = {};
+    let inputSlotProps = {
+        ...params.slotProps?.input,
+    };
     //@ts-ignore
     if (selectedOption?.color) {
         const tags = renderTags([selectedOption], () => {});
         const chip = Array.isArray(tags) ? tags[0] : tags;
-        inputExtraProps = {
+        inputSlotProps = {
+            ...inputSlotProps,
             startAdornment: (
                 <div className={classes.startAdornment}>{chip}</div>
             ),
             style: { color: 'transparent' },
         };
-        paramsCopy.inputProps.value = '';
-    } else if (renderOption && params.inputProps.value) {
-        inputExtraProps = {
+        htmlInputProps.value = '';
+    } else if (renderOption && htmlInputProps.value) {
+        inputSlotProps = {
+            ...inputSlotProps,
             startAdornment: (
                 <div className={classes.startAdornment}>
                     {renderOption(
                         {
-                            label: params.inputProps.value,
+                            label: htmlInputProps.value,
                         },
                         {},
                     )}
@@ -70,38 +74,47 @@ export const TextInput: FunctionComponent<Props> = ({
             ),
             style: { color: 'transparent' },
         };
-        paramsCopy.inputProps.value = '';
+        htmlInputProps.value = '';
     }
     return (
         <FormControl errors={errors}>
             <TextField
-                {...paramsCopy}
+                id={params.id}
+                disabled={disabled || params.disabled}
+                fullWidth={params.fullWidth}
+                size={params.size}
                 variant="outlined"
-                disabled={disabled}
                 label={label ? `${label}${required ? '*' : ''}` : undefined}
                 onBlur={onBlur}
                 error={errors.length > 0}
-                InputLabelProps={{
-                    classes: {
-                        shrink: classes.shrink,
-                    },
-                    className: classes.inputLabel,
-                }}
                 helperText={helperText}
-                InputProps={{
-                    ...params.InputProps,
-                    autoComplete,
-                    placeholder,
-                    'data-test': dataTestId,
-                    endAdornment: (
-                        <>
-                            {loading ? (
-                                <CircularProgress color="inherit" size={20} />
-                            ) : null}
-                            {params.InputProps.endAdornment}
-                        </>
-                    ),
-                    ...inputExtraProps,
+                slotProps={{
+                    inputLabel: {
+                        classes: {
+                            shrink: classes.shrink,
+                        },
+                        className: classes.inputLabel,
+                    },
+                    input: {
+                        ...inputSlotProps,
+                        autoComplete,
+                        placeholder,
+                        endAdornment: (
+                            <>
+                                {loading ? (
+                                    <CircularProgress
+                                        color="inherit"
+                                        size={20}
+                                    />
+                                ) : null}
+                                {params.slotProps?.input?.endAdornment}
+                            </>
+                        ),
+                    },
+                    htmlInput: {
+                        ...htmlInputProps,
+                        'data-test': dataTestId,
+                    },
                 }}
             />
         </FormControl>

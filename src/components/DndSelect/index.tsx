@@ -122,7 +122,7 @@ export const DndSelect: FunctionComponent<Props> = ({
     }, []);
 
     const renderTags = useCallback(
-        (currentValue: Option[], getTagProps: any) => (
+        (currentValue: Option[], getItemProps: any) => (
             <SortableContext
                 items={currentValue.map(item => `${keyValue}-${item.value}`)}
                 strategy={disableSortingStrategy}
@@ -133,7 +133,7 @@ export const DndSelect: FunctionComponent<Props> = ({
                             key={`${keyValue}-${option.value}`}
                             id={`${keyValue}-${option.value}`}
                             label={option.label}
-                            {...getTagProps({ index })}
+                            {...getItemProps({ index })}
                         />
                     ))}
                 </Box>
@@ -169,7 +169,7 @@ export const DndSelect: FunctionComponent<Props> = ({
                     />
                 )}
                 filterSelectedOptions
-                renderTags={renderTags}
+                renderValue={renderTags}
                 disabled={disabled}
             />
             {helperText && (

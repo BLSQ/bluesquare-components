@@ -38,7 +38,7 @@ const filterState = {
 };
 
 const tagValue = [{ label: 'Tag', value: '1', color: '#cccccc' }];
-const getTagProps = ({ index }: { index: number }) => ({ key: index });
+const getItemProps = ({ index }: { index: number }) => ({ key: index });
 
 describe('inputs', () => {
     it('renders Checkbox', () => {
@@ -216,7 +216,7 @@ describe('inputs', () => {
             (option: { label: string }) => option.label,
         )((option: { label: string }) => option.label);
         const { getByText } = renderWithProviders(
-            <>{renderFn(tagValue, getTagProps)}</>,
+            <>{renderFn(tagValue, getItemProps)}</>,
         );
         expect(getByText('Tag')).toBeInTheDocument();
     });
@@ -226,7 +226,7 @@ describe('inputs', () => {
             (option: { label: string }) => option.label,
         );
         const { getByText } = renderWithProviders(
-            <>{renderFn(tagValue, getTagProps)}</>,
+            <>{renderFn(tagValue, getItemProps)}</>,
         );
         expect(getByText('Tag')).toBeInTheDocument();
     });
@@ -236,7 +236,7 @@ describe('inputs', () => {
             (option: { label: string }) => option.label,
         );
         const { getByText } = renderWithProviders(
-            <>{renderFn(tagValue, getTagProps)}</>,
+            <>{renderFn(tagValue, getItemProps)}</>,
         );
         expect(getByText('Tag')).toBeInTheDocument();
     });

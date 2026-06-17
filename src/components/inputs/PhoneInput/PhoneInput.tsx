@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react';
 import { TextField } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import classnames from 'classnames';
 import ReactPhoneInput from 'react-phone-input-material-ui';
 import 'react-phone-input-material-ui/lib/style.css';
 import fr from 'react-phone-input-material-ui/lang/fr.json';
 import pt from 'react-phone-input-material-ui/lang/pt.json';
-import classnames from 'classnames';
 import { useSafeIntl } from '../../../localization/useSafeIntl';
 import MESSAGES from './messages';
 import { BaseCountryData, LangOptions } from './types';

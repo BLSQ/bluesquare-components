@@ -51,7 +51,7 @@ const styles = theme => ({
 });
 
 type Props = {
-    updateList: Function;
+    updateList: (fieldList: any[]) => void;
     baseId: any;
     classes: Record<string, string>;
     label?: string;

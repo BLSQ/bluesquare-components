@@ -34,7 +34,7 @@ const filterResults = (searchString, options) => {
 };
 type Props = {
     options: any;
-    setOptions: Function;
+    setOptions: (options: any) => void;
     minColumns?: number;
 };
 

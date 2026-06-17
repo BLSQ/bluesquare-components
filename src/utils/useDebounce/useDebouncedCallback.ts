@@ -308,11 +308,13 @@ export default function useDebouncedCallback<
         func.cancel = () => {
             const hadTimer = timerId.current;
             if (hadTimer) {
-                useRAF
-                    ? //@ts-ignore
-                      cancelAnimationFrame(timerId.current)
-                    : //@ts-ignore
-                      clearTimeout(timerId.current);
+                if (useRAF) {
+                    //@ts-ignore
+                    cancelAnimationFrame(timerId.current);
+                } else {
+                    //@ts-ignore
+                    clearTimeout(timerId.current);
+                }
             }
             lastInvokeTime.current = 0;
             //@ts-ignore

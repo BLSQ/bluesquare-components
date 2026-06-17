@@ -5,7 +5,7 @@ import { makeStyles } from '@mui/styles';
 import classNames from 'classnames';
 import { CellContentWithErrorBoundary } from './CellContentWithErrorBoundary';
 
-const defaultCellProps = () => {};
+const defaultCellProps = (): Record<string, any> => ({});
 
 const useStyles = makeStyles(theme => ({
     row: {
@@ -40,7 +40,7 @@ type Props = {
     subComponent?: any; //object or function
     onRowClick?: any; //object or function
     expanded?: boolean;
-    cellProps?: Function;
+    cellProps?: (cell: any) => Record<string, any>;
 };
 
 export const Row: FunctionComponent<Props> = ({
@@ -58,6 +58,7 @@ export const Row: FunctionComponent<Props> = ({
         if (isExpanded !== expanded) {
             setIsExpanded(expanded);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [sortBy, expanded]);
     return (
         <>

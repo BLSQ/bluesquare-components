@@ -119,6 +119,7 @@ export const MultiSelect: FunctionComponent<Props> = ({
             });
         }
         return tempErrors;
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [
         value,
         options,
@@ -137,6 +138,7 @@ export const MultiSelect: FunctionComponent<Props> = ({
             return valuesList.map(v => getOption(v, options)).filter(o => o);
         }
         return [];
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [options, hasValue, valuesList]);
 
     const handleChange = useCallback(

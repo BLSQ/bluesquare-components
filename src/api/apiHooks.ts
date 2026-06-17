@@ -12,7 +12,6 @@ import {
     useQuery,
     useQueryClient,
 } from 'react-query';
-import { useSafeIntl } from '../localization/useSafeIntl';
 import { EventDispatcher } from '../snackbars/EventDispatcher';
 import {
     errorSnackBar as defaultErrorSnackBar,
@@ -87,7 +86,6 @@ export const makeApiHooks = (
         } = msg => succesfullSnackBar(undefined, msg),
     ): UseMutationResult<Data, Error, Variables, Context> => {
         const queryClient = useQueryClient();
-        const { formatMessage } = useSafeIntl();
         const newOptions: Omit<
             UseMutationOptions<any, any, any, any>,
             'mutationFn'

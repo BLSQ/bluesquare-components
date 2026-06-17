@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo } from 'react';
+import React, { useEffect } from 'react';
 import { useSnackbar } from 'notistack';
 
 import { useSafeIntl } from '../localization/useSafeIntl';
@@ -89,5 +89,6 @@ export const useSnackBars = (dispatcher: EventDispatcher) => {
         return () => {
             dispatcher.removeEventListener('snackbar', handleSnackbarEvent);
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [enqueueSnackbar, translateMessage]);
 };

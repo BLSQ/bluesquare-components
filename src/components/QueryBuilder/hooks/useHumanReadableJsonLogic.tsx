@@ -57,12 +57,14 @@ const withListToReplace = (
 
     return initialQuery.split(term).map((substring, index) => {
         if (index % 2 === 0)
+            // eslint-disable-next-line react/no-array-index-key
             return <Fragment key={index}>{substring}</Fragment>;
         return (
             <span
                 style={{
                     color: getColor(substring, listToReplace),
                 }}
+                // eslint-disable-next-line react/no-array-index-key
                 key={index}
             >
                 {substring}

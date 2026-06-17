@@ -139,9 +139,9 @@ export interface TableComponentProps {
         event?: MouseEvent<HTMLElement>,
     ) => void;
 
-    rowProps?: (row?: any) => void;
+    rowProps?: (row: any) => Record<string, any>;
 
-    cellProps?: (row?: any) => void;
+    cellProps?: (cell: any) => Record<string, any>;
     extraProps?: {
         loading?: boolean;
         SubComponent?: React.FC<any>;
@@ -223,6 +223,7 @@ const TableComponent: React.FC<TableComponentProps> = props => {
             );
         }
         return getColumnsHeadersInfos(temp);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.columns, multiSelect, selection]);
 
     const data = useMemo(() => props.data, [props.data]);
@@ -244,6 +245,7 @@ const TableComponent: React.FC<TableComponentProps> = props => {
                 urlPageSize || extraProps?.defaultPageSize || DEFAULT_PAGE_SIZE,
             sortBy: urlSort || defaultSorted,
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     const {
         getTableProps,

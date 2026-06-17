@@ -171,6 +171,7 @@ export const TreeViewWithSearch: FunctionComponent<Props> = ({
             }
             setScrollIntoView(currentId);
         },
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         [
             parseNodeIds,
             onNodeSelect,

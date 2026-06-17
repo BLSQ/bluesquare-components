@@ -19,6 +19,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
         return { hasError: true, error };
     }
 
+    // eslint-disable-next-line class-methods-use-this
     componentDidCatch(error, errorInfo) {
         console.error('BOUNDARY ERROR', error, errorInfo);
     }

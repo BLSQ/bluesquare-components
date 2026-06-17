@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
 type Props = {
     rowsPerPage: number;
     rowsPerPageOptions: any[];
-    selectRowsPerPage: Function;
+    selectRowsPerPage: (rowsPerPage: number) => void;
 };
 
 export const PageRowSelect: FunctionComponent<Props> = ({

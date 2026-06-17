@@ -16,6 +16,8 @@ export const baseRenderTags = getLabel => (tagValue, getTagProps) =>
             const tagProps = getTagProps({ index });
             return (
                 <Chip
+                    // eslint-disable-next-line react/no-array-index-key
+                    key={`${getLabel(option)}-${index}`}
                     color="secondary"
                     style={{
                         backgroundColor: option.color,
@@ -42,6 +44,7 @@ export const baseRenderTagsWithTooltip =
                 const tagProps = getTagProps({ index });
                 const title = getTooltipTitle(option);
                 return (
+                    // eslint-disable-next-line react/no-array-index-key
                     <Tooltip title={title} key={`${title}-${index}`}>
                         <Chip
                             color="secondary"

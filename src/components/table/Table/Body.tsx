@@ -3,7 +3,7 @@ import TableBody from '@mui/material/TableBody';
 
 import { Row } from './Row';
 
-const defaultRowProps = () => {};
+const defaultRowProps = (): Record<string, any> => ({});
 const defaultGetObjectId = obj => obj.toString();
 
 /**
@@ -21,17 +21,17 @@ const defaultGetObjectId = obj => obj.toString();
  */
 
 type Props = {
-    getTableBodyProps: Function;
-    prepareRow: Function;
+    getTableBodyProps: () => Record<string, any>;
+    prepareRow: (row: any) => void;
     page?: any[];
     sortBy?: any[];
     rowsPerPage?: number;
-    subComponent?: Function | Record<string, any>;
+    subComponent?: any; //object or function
     onRowClick?: (row?: any, event?: any) => void;
-    rowProps?: Function;
-    cellProps?: Function;
+    rowProps?: (row: any) => Record<string, any>;
+    cellProps?: (cell: any) => Record<string, any>;
     expanded?: Record<string, any>;
-    getObjectId?: Function;
+    getObjectId?: (obj: any) => string;
 };
 
 export const Body: FunctionComponent<Props> = ({
@@ -44,7 +44,7 @@ export const Body: FunctionComponent<Props> = ({
     rowProps: userRowProps = defaultRowProps,
     expanded = {},
     getObjectId = defaultGetObjectId,
-    cellProps = () => {},
+    cellProps = (): Record<string, any> => ({}),
 }) => (
     <TableBody {...getTableBodyProps}>
         {page.map(row => {

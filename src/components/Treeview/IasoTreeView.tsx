@@ -102,6 +102,7 @@ export const IasoTreeView: FunctionComponent<Props> = ({
                 />
             ));
         },
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         [
             label,
             fetchChildrenData,

@@ -8,7 +8,7 @@ type Props = {
     actionMessage: string;
     hidden?: boolean;
     actions?: any[];
-    reset?: Function;
+    reset?: () => void;
 };
 
 export const SelectionSpeedDials: FunctionComponent<Props> = ({

@@ -84,6 +84,7 @@ const DynamicTabs: FunctionComponent<Props> = ({
             }
             onTabsDeleted(newParams);
         },
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         [onTabsDeleted, paramKey, params, tabParamKey],
     );
 
@@ -129,6 +130,7 @@ const DynamicTabs: FunctionComponent<Props> = ({
                         return (
                             <Tab
                                 className={classes.tab}
+                                // eslint-disable-next-line react/no-array-index-key
                                 key={currentTabIndex}
                                 value={currentTabIndex}
                                 label={

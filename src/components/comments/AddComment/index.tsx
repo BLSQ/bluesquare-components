@@ -50,6 +50,7 @@ export const AddComment: FunctionComponent<Props> = ({
     const handleConfirm = useCallback(() => {
         onConfirm(comment);
         setComment('');
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [comment]);
     const handleChange = e => {
         setComment(e.target.value);

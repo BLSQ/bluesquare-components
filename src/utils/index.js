@@ -11,6 +11,7 @@ export function substituteVars(obj, subs, transform = x => x) {
                 const match = value.match(/\$\{([a-zA-Z0-9_-]+)\}/);
                 if (match) {
                     const k = match[1];
+                    // eslint-disable-next-line no-prototype-builtins
                     if (!subs.hasOwnProperty(k)) {
                         console.warn(
                             'Cannot find match in substitudes for value:',

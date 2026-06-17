@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
-import { Accept } from 'react-dropzone';
 import { SxProps } from '@mui/material';
+import { Accept } from 'react-dropzone';
 type Props = {
     multi?: boolean;
     onFilesSelect: (files: File[]) => void;

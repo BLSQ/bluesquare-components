@@ -6,7 +6,7 @@ type Props = {
     subComponent?: any;
     onRowClick?: any;
     expanded?: boolean;
-    cellProps?: Function;
+    cellProps?: (cell: any) => Record<string, any>;
 };
 export declare const Row: FunctionComponent<Props>;
 export {};

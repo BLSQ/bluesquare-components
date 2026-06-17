@@ -1,6 +1,6 @@
 import React from 'react';
-import { EventDispatcher } from './EventDispatcher';
 import { IntlMessage } from '../types/types';
+import { EventDispatcher } from './EventDispatcher';
 type Notification = {
     key: string;
     messageKey: string;

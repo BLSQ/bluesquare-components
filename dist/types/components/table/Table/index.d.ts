@@ -1,6 +1,6 @@
 import React, { MouseEvent } from 'react';
-import { Column } from './types';
 import { IntlMessage } from '../../../types/types';
+import { Column } from './types';
 export interface ColumnFromReactTable {
     columns?: ColumnFromReactTable[];
     id: string;
@@ -39,8 +39,8 @@ export interface TableComponentProps {
     resetPageToOne?: string;
     elevation?: number;
     onRowClick?: (row?: any, event?: MouseEvent<HTMLElement>) => void;
-    rowProps?: (row?: any) => void;
-    cellProps?: (row?: any) => void;
+    rowProps?: (row: any) => Record<string, any>;
+    cellProps?: (cell: any) => Record<string, any>;
     extraProps?: {
         loading?: boolean;
         SubComponent?: React.FC<any>;

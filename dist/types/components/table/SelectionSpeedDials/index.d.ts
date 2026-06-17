@@ -4,7 +4,7 @@ type Props = {
     actionMessage: string;
     hidden?: boolean;
     actions?: any[];
-    reset?: Function;
+    reset?: () => void;
 };
 export declare const SelectionSpeedDials: FunctionComponent<Props>;
 export {};

@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ReactNode } from 'react';
-import { baseRenderTags, baseRenderTagsWithTooltip, renderTagsWithTooltip } from './utils';
-import { IntlMessage } from '../../../types/types';
 import { AutocompleteRenderGetTagProps } from '@mui/material/Autocomplete';
+import { IntlMessage } from '../../../types/types';
+import { baseRenderTags, baseRenderTagsWithTooltip, renderTagsWithTooltip } from './utils';
 /**
  * Select Component - A versatile dropdown selector with single and multi-select modes
  *

@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react';
 import { SvgIconComponent } from '@mui/icons-material';
-import { IntlMessage } from '../types/types';
 import { IconButtonBuiltInIcon } from '../components/buttons/IconButton';
+import { IntlMessage } from '../types/types';
 type Props = {
     url: string;
     tooltipMessage: IntlMessage;

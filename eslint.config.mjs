@@ -5,6 +5,7 @@ import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
 import typescriptEslint from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
+import vitest from '@vitest/eslint-plugin';
 import { defineConfig, globalIgnores } from 'eslint/config';
 import importPlugin from 'eslint-plugin-import';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
@@ -346,14 +347,28 @@ export default defineConfig([
         },
     },
     {
-        files: ['**/*.spec.js', '**/*.spec.ts', '**/*.spec.tsx'],
+        files: [
+            '**/*.test.tsx',
+            '**/*.test.ts',
+            '**/*.spec.js',
+            '**/*.spec.ts',
+            '**/*.spec.tsx',
+            '**/*.integration.test.tsx',
+            '**/*.integration.test.ts',
+            '**/*.a11y.test.tsx',
+            '**/*.a11y.test.ts',
+        ],
+        plugins: {
+            vitest,
+        },
+        rules: {
+            ...vitest.configs.recommended.rules,
+            'vitest/no-disabled-tests': 'off',
+        },
         languageOptions: {
             globals: {
-                ...globals.mocha,
-                shallow: 'readonly',
-                mount: 'readonly',
-                sinon: 'readonly',
-                render: 'readonly',
+                ...vitest.environments.env.globals,
+                ...globals.jest,
             },
         },
     },

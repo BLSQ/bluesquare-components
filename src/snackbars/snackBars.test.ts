@@ -30,4 +30,28 @@ describe('snackBars', () => {
     it('re-exports namespace helpers', () => {
         expect(SnackBar.warningSnackBar).toBe(warningSnackBar);
     });
+
+    it('builds snackbar payloads with expected variants', () => {
+        expect(warningSnackBar('warn', 'Watch out')).toMatchObject({
+            messageKey: 'warn',
+            messageObject: 'Watch out',
+            options: { variant: 'warning', persist: true },
+        });
+        expect(errorSnackBar('err', 'Failed', 'trace')).toMatchObject({
+            messageKey: 'err',
+            messageObject: 'Failed',
+            errorLog: 'trace',
+            options: { variant: 'error', persist: true },
+        });
+        expect(succesfullSnackBar('ok', 'Done')).toMatchObject({
+            messageKey: 'ok',
+            messageObject: 'Done',
+            options: { variant: 'success' },
+        });
+        expect(reloadPageSnackBar()).toMatchObject({
+            messageKey: reloadPageMessageKey,
+            type: 'reload',
+            options: { variant: 'warning', persist: true },
+        });
+    });
 });

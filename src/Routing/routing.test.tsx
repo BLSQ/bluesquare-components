@@ -5,7 +5,11 @@ import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { ExternalLink } from './ExternalLink';
 import { LinkButton } from './LinkButton';
 import { LinkWithLocation } from './LinkWithLocation';
-import { useGoBack, useRedirectTo } from './redirections';
+import {
+    useGoBack,
+    useRedirectTo,
+    useRedirectToReplace,
+} from './redirections';
 import { useParamsObject } from './useParamsObject';
 import { renderWithProviders } from '../tests/helpers';
 
@@ -37,12 +41,14 @@ describe('routing', () => {
         const { result } = renderHook(
             () => ({
                 redirect: useRedirectTo(),
+                redirectReplace: useRedirectToReplace(),
                 goBack: useGoBack(),
             }),
             { wrapper: routerWrapper },
         );
 
         expect(typeof result.current.redirect).toBe('function');
+        expect(typeof result.current.redirectReplace).toBe('function');
         expect(typeof result.current.goBack).toBe('function');
     });
 
@@ -58,7 +64,7 @@ describe('routing', () => {
 
     it('renders LinkButton', () => {
         const { getByRole } = renderWithProviders(
-            <LinkButton url="/forms">Forms</LinkButton>,
+            <LinkButton to="/forms">Forms</LinkButton>,
         );
         expect(getByRole('link', { name: 'Forms' })).toBeInTheDocument();
     });

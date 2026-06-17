@@ -1,10 +1,13 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { vi } from 'vitest';
 
 import { makeApiHooks } from '../../api/apiHooks';
+import { english, french } from '../../locale';
 import { useSidebar } from '../../contexts/SideBarContext/SideBarContext';
 import { injectIntl } from '../../localization/injectIntl';
+import { LocalizationProvider } from '../../localization/LocalizationProvider/LocalizationProvider';
 import { useSafeIntl } from '../../localization/useSafeIntl';
 import { EventDispatcher } from '../../snackbars/EventDispatcher';
 import SnackBarButton from '../../snackbars/SnackBarButton';
@@ -28,6 +31,15 @@ describe('localization, api, and snackbar utilities', () => {
 
         renderWithProviders(<IntlConsumer />);
         expect(screen.getByText('Hello')).toBeInTheDocument();
+    });
+
+    it('renders LocalizationProvider children', () => {
+        renderWithProviders(
+            <LocalizationProvider en={english} fr={french}>
+                <span>Localized child</span>
+            </LocalizationProvider>,
+        );
+        expect(screen.getByText('Localized child')).toBeInTheDocument();
     });
 
     it('makeApiHooks returns snackbar query hooks', () => {
@@ -75,6 +87,23 @@ describe('localization, api, and snackbar utilities', () => {
 
         renderWithProviders(<SidebarConsumer />, { withSidebar: true });
         expect(screen.getByText('closed')).toBeInTheDocument();
+    });
+
+    it('useSidebar toggles sidebar state', async () => {
+        const user = userEvent.setup();
+        const SidebarConsumer = () => {
+            const { isOpen, toggleSidebar } = useSidebar();
+            return (
+                <button type="button" onClick={toggleSidebar}>
+                    {isOpen ? 'open' : 'closed'}
+                </button>
+            );
+        };
+
+        renderWithProviders(<SidebarConsumer />, { withSidebar: true });
+        const button = screen.getByRole('button', { name: 'closed' });
+        await user.click(button);
+        expect(screen.getByRole('button', { name: 'open' })).toBeInTheDocument();
     });
 
     it('injectIntl wraps a component with intl', () => {

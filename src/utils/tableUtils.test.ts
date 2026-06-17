@@ -1,4 +1,5 @@
 import {
+    defaultSelectionActions,
     getColumnsHeadersInfos,
     getOrderArray,
     getParamsKey,
@@ -86,5 +87,28 @@ describe('tableUtils', () => {
             pages: 0,
             count: 0,
         });
+    });
+
+    it('builds default selection actions', () => {
+        const selectAll = vi.fn();
+        const unSelectAll = vi.fn();
+        const formatMessage = (msg: { defaultMessage: string }) =>
+            msg.defaultMessage;
+
+        const actions = defaultSelectionActions(
+            selectAll,
+            unSelectAll,
+            formatMessage,
+        );
+
+        expect(actions).toHaveLength(2);
+        expect(actions[0].label).toBe('Select all');
+        expect(actions[1].label).toBe('Unselect all');
+
+        actions[0].onClick();
+        actions[1].onClick();
+
+        expect(selectAll).toHaveBeenCalled();
+        expect(unSelectAll).toHaveBeenCalled();
     });
 });

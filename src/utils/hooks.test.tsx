@@ -3,7 +3,8 @@ import { renderHook, act } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { vi } from 'vitest';
 
-import { useDebouncedCallback } from './useDebounce';
+import useDebounce from './useDebounce/useDebounce';
+import { useDebouncedCallback, useThrottledCallback } from './useDebounce';
 import { useSkipEffectOnMount } from './useSkipEffectOnMount';
 import { useKeyPressListener } from './useKeyPressListener';
 import { useTabs } from './useTabs';
@@ -13,6 +14,28 @@ const routerWrapper = ({ children }: { children: React.ReactNode }) => (
 );
 
 describe('hooks', () => {
+    describe('useDebounce', () => {
+        it('debounces value updates', () => {
+            vi.useFakeTimers();
+            const { result, rerender } = renderHook(
+                ({ value }) => useDebounce(value, 200),
+                { initialProps: { value: 'a' } },
+            );
+
+            expect(result.current[0]).toBe('a');
+
+            rerender({ value: 'b' });
+            expect(result.current[0]).toBe('a');
+
+            act(() => {
+                vi.advanceTimersByTime(200);
+            });
+
+            expect(result.current[0]).toBe('b');
+            vi.useRealTimers();
+        });
+    });
+
     describe('useDebouncedCallback', () => {
         it('debounces function calls', () => {
             vi.useFakeTimers();
@@ -34,6 +57,25 @@ describe('hooks', () => {
 
             expect(callback).toHaveBeenCalledTimes(1);
             expect(callback).toHaveBeenCalledWith('b');
+            vi.useRealTimers();
+        });
+    });
+
+    describe('useThrottledCallback', () => {
+        it('invokes callback on the leading edge', () => {
+            vi.useFakeTimers();
+            const callback = vi.fn();
+            const { result } = renderHook(() =>
+                useThrottledCallback(callback, 200, { trailing: false }),
+            );
+
+            act(() => {
+                result.current('a');
+                result.current('b');
+            });
+
+            expect(callback).toHaveBeenCalledTimes(1);
+            expect(callback).toHaveBeenCalledWith('a');
             vi.useRealTimers();
         });
     });

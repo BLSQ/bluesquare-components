@@ -1,4 +1,15 @@
-import { ApiError, blsqFetch } from './Api';
+import {
+    ApiError,
+    basePostRequest,
+    blsqFetch,
+    deleteRequest,
+    getRequest,
+    getRequestImage,
+    optionsRequest,
+    patchRequest,
+    postRequest,
+    putRequest,
+} from './Api';
 
 describe('Api', () => {
     describe('ApiError', () => {
@@ -50,7 +61,6 @@ describe('Api', () => {
             );
             vi.stubGlobal('fetch', fetchMock);
 
-            const { getRequest } = await import('./Api');
             await expect(getRequest('/api/items')).resolves.toEqual({
                 items: [],
             });
@@ -64,7 +74,6 @@ describe('Api', () => {
                 );
             vi.stubGlobal('fetch', fetchMock);
 
-            const { postRequest } = await import('./Api');
             await expect(
                 postRequest('/api/items', { name: 'test' }),
             ).resolves.toEqual({
@@ -82,7 +91,6 @@ describe('Api', () => {
                 .mockResolvedValue(new Response(null, { status: 204 }));
             vi.stubGlobal('fetch', fetchMock);
 
-            const { basePostRequest } = await import('./Api');
             await expect(
                 basePostRequest('/api/items', { name: 'test' }),
             ).resolves.toBeNull();
@@ -96,7 +104,6 @@ describe('Api', () => {
             );
             vi.stubGlobal('fetch', fetchMock);
 
-            const { putRequest } = await import('./Api');
             await expect(
                 putRequest('/api/items/1', { name: 'updated' }),
             ).resolves.toEqual({
@@ -116,7 +123,6 @@ describe('Api', () => {
             );
             vi.stubGlobal('fetch', fetchMock);
 
-            const { patchRequest } = await import('./Api');
             await expect(
                 patchRequest('/api/items/1', { active: true }),
             ).resolves.toEqual({
@@ -134,7 +140,6 @@ describe('Api', () => {
                 .mockResolvedValue(new Response(null, { status: 204 }));
             vi.stubGlobal('fetch', fetchMock);
 
-            const { deleteRequest } = await import('./Api');
             await expect(deleteRequest('/api/items/1')).resolves.toBe(true);
             expect(fetchMock).toHaveBeenCalledWith(
                 '/api/items/1',
@@ -150,7 +155,6 @@ describe('Api', () => {
             );
             vi.stubGlobal('fetch', fetchMock);
 
-            const { optionsRequest } = await import('./Api');
             await expect(optionsRequest('/api/items')).resolves.toEqual({
                 methods: ['GET'],
             });
@@ -167,7 +171,6 @@ describe('Api', () => {
                 .mockResolvedValue(new Response(blob, { status: 200 }));
             vi.stubGlobal('fetch', fetchMock);
 
-            const { getRequestImage } = await import('./Api');
             const image = await getRequestImage('/api/image.png');
             expect(image.size).toBeGreaterThan(0);
         });

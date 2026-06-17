@@ -77,8 +77,7 @@ describe('tree, nav, query builder, and sortable components', () => {
         const { container } = renderWithProviders(
             <QueryBuilderInput
                 label={intlMsg('test.query', 'Query')}
-                isOpen
-                closeDialog={noop}
+                defaultOpen
                 fields={queryBuilderFields}
                 onChange={noop}
             />,
@@ -126,7 +125,7 @@ describe('tree, nav, query builder, and sortable components', () => {
     it('renders SortableTable', () => {
         const { container } = renderWithProviders(
             <SortableTable
-                items={[{ id: '1', name: 'Row' }]}
+                items={[{ id: '1' }]}
                 onChange={noop}
                 columns={tableColumns}
             />,

@@ -50,7 +50,9 @@ describe('routing', () => {
 
     it('renders ExternalLink', () => {
         const { getByText } = renderWithProviders(
-            <ExternalLink url="https://example.com">Example</ExternalLink>,
+            <ExternalLink url="https://example.com">
+                <span>Example</span>
+            </ExternalLink>,
         );
         expect(getByText('Example').closest('a')).toHaveAttribute(
             'href',

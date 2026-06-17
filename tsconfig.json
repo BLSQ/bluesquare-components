@@ -17,7 +17,7 @@
         "declaration": true,
         "declarationDir": "./dist/types/",
         "resolveJsonModule": true,
-        "types": ["vitest/globals", "@testing-library/jest-dom"]
+        "types": ["vitest/globals", "@testing-library/jest-dom", "node"]
     },
     "exclude": ["node_modules", "dist", "src/**/*.json"],
     "include": ["src/**/*"]

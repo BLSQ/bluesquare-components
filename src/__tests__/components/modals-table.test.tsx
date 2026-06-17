@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ComponentType } from 'react';
 import InfoIcon from '@mui/icons-material/Info';
 
 import { AddButton } from '../../components/buttons/AddButton';
@@ -25,7 +25,12 @@ const CloseButtons = ({ closeDialog }: { closeDialog: () => void }) => (
     </button>
 );
 
-const ModalWithButton = makeFullModal(SimpleModal, AddButton);
+const ModalWithButton = makeFullModal(
+    SimpleModal as ComponentType<
+        React.ComponentProps<typeof SimpleModal> & { isOpen: boolean }
+    >,
+    AddButton,
+);
 
 describe('modals and table', () => {
     it('renders AlertModal', () => {
@@ -97,7 +102,9 @@ describe('modals and table', () => {
     it('renders makeFullModal with SimpleModal and AddButton', () => {
         const { getByRole } = renderWithProviders(
             <ModalWithButton
+                defaultOpen
                 onClose={noop}
+                open
                 id="full-modal"
                 dataTestId="full-modal"
                 titleMessage="Full modal"

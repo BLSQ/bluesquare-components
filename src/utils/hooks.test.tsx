@@ -112,7 +112,7 @@ describe('hooks', () => {
 describe('useTabs', () => {
     it('updates the active tab', () => {
         const { result } = renderHook(
-            () => useTabs({ defaultTab: 'one' as const }),
+            () => useTabs<'one' | 'two'>({ defaultTab: 'one' }),
             { wrapper: routerWrapper },
         );
 

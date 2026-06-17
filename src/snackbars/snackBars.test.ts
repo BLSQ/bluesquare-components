@@ -32,7 +32,7 @@ describe('snackBars', () => {
     });
 
     it('builds snackbar payloads with expected variants', () => {
-        expect(warningSnackBar('warn', 'Watch out')).toMatchObject({
+        expect(warningSnackBar('warn', 'Watch out', 'warn')).toMatchObject({
             messageKey: 'warn',
             messageObject: 'Watch out',
             options: { variant: 'warning', persist: true },

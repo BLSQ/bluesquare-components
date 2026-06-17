@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useCallback, useState } from 'react';
 import { TextareaAutosize, Button, Grid } from '@mui/material';
-import { useSafeIntl } from '../../../localization/useSafeIntl';
-import { MESSAGES } from './messages';
 import { textPlaceholder } from '../../../constants/iaso/uiConstants';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { SxStyles } from '../../../styles/iaso/types';
+import { MESSAGES } from './messages';
 
 type Props = {
     placeholder?: string;

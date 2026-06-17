@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React, { ComponentType, FunctionComponent, useState } from 'react';
 
 type ModalComponentProps = { closeDialog: () => void; isOpen: boolean };

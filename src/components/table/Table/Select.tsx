@@ -1,14 +1,13 @@
+import React, { FunctionComponent, useCallback } from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import isEqual from 'lodash/isEqual';
-import React, { FunctionComponent, useCallback } from 'react';
 import { useSafeIntl } from '../../../localization/useSafeIntl';
-import { SelectionSpeedDials } from '../SelectionSpeedDials';
-import { MESSAGES } from './messages';
-
 import {
     defaultSelectionActions,
     selectionInitialState,
 } from '../../../utils/tableUtils';
+import { SelectionSpeedDials } from '../SelectionSpeedDials';
+import { MESSAGES } from './messages';
 
 const onSelect = ({
     isSelected,

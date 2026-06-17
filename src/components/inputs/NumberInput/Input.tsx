@@ -1,10 +1,10 @@
-import InfoIcon from '@mui/icons-material/Info';
-import { OutlinedInput, Tooltip } from '@mui/material';
 import React, {
     ChangeEvent,
     FocusEventHandler,
     FunctionComponent,
 } from 'react';
+import InfoIcon from '@mui/icons-material/Info';
+import { OutlinedInput, Tooltip } from '@mui/material';
 
 import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { FormControl } from '../FormControl';
@@ -38,10 +38,7 @@ type Props = {
     autoComplete?: string;
     min: number;
     max: number;
-    onChange: (
-        // eslint-disable-next-line no-unused-vars
-        event: ChangeEvent<HTMLInputElement>,
-    ) => void;
+    onChange: (event: ChangeEvent<HTMLInputElement>) => void;
     onBlur?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
     onFocus?:
         | FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>

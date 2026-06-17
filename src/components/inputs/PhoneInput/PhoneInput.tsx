@@ -1,6 +1,6 @@
+import React, { FunctionComponent } from 'react';
 import { TextField } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import React, { FunctionComponent } from 'react';
 import ReactPhoneInput from 'react-phone-input-material-ui';
 import 'react-phone-input-material-ui/lib/style.css';
 import fr from 'react-phone-input-material-ui/lang/fr.json';
@@ -33,7 +33,7 @@ type Props = {
     lang?: LangOptions;
     className?: string;
     value?: string | null; // See if we can manage undefined
-    // eslint-disable-next-line no-unused-vars
+
     onChange: (value: string, countryData?: BaseCountryData) => void;
     disabled?: boolean;
     required?: boolean;

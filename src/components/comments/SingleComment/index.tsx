@@ -1,10 +1,10 @@
 import React, { useState, useCallback, FunctionComponent } from 'react';
 import { Paper, Button } from '@mui/material';
 import { useSafeIntl } from '../../../localization/useSafeIntl';
-import { MESSAGES } from './messages';
-import { useStyles } from '../styles';
 import { AddComment } from '../AddComment';
 import { Comment } from '../Comment';
+import { useStyles } from '../styles';
+import { MESSAGES } from './messages';
 
 type Props = {
     avatar?: string;

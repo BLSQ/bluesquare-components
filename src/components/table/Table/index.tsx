@@ -1,10 +1,11 @@
+import React, { MouseEvent, useMemo } from 'react';
+import { Grid } from '@mui/material';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import MuiTable from '@mui/material/Table';
 import TableContainer from '@mui/material/TableContainer';
 import { makeStyles } from '@mui/styles';
 import isEqual from 'lodash/isEqual';
-import React, { MouseEvent, useMemo } from 'react';
 
 import {
     usePagination,
@@ -13,10 +14,8 @@ import {
     useTable,
 } from 'react-table';
 
-import { Grid } from '@mui/material';
-
-import { DEFAULT_ORDER, DEFAULT_PAGE, DEFAULT_PAGE_SIZE } from './constants';
-
+import { useSafeIntl } from '../../../localization/useSafeIntl';
+import { IntlMessage } from '../../../types/types';
 import {
     getColumnsHeadersInfos,
     getOrderArray,
@@ -25,23 +24,22 @@ import {
     getSort,
     selectionInitialState,
 } from '../../../utils/tableUtils';
-
 import { useKeyPressListener } from '../../../utils/useKeyPressListener';
+
 import { useSkipEffectOnMount } from '../../../utils/useSkipEffectOnMount';
 import { LoadingSpinner } from '../../LoadingSpinner/index';
 import { ColumnsSelectGeneric } from '../ColumnsSelectDrawer/ColumnSelectGeneric';
 import { Body } from './Body';
+import { DEFAULT_ORDER, DEFAULT_PAGE, DEFAULT_PAGE_SIZE } from './constants';
 import { Count } from './Count';
 import { Footer } from './Footer';
 import { Head } from './Head';
+import { MESSAGES } from './messages';
 import { NoTableData } from './NoTableData';
 import { Pagination } from './Pagination';
 import { Select, getSelectionCol } from './Select';
 
 import { Column } from './types';
-import { IntlMessage } from '../../../types/types';
-import { MESSAGES } from './messages';
-import { useSafeIntl } from '../../../localization/useSafeIntl';
 
 /**
  * TableComponent component, no redux, no fetch, just displaying.
@@ -130,20 +128,19 @@ export interface TableComponentProps {
     selectionActionMessage?: string;
     showPagination?: boolean;
     showFooter?: boolean;
-    // eslint-disable-next-line no-unused-vars
+
     onTableParamsChange?: (newParams: Record<string, string>) => void;
     defaultSorted?: any[];
     resetPageToOne?: string;
     elevation?: number;
     onRowClick?: (
-        // eslint-disable-next-line no-unused-vars
         row?: any,
-        // eslint-disable-next-line no-unused-vars
+
         event?: MouseEvent<HTMLElement>,
     ) => void;
-    // eslint-disable-next-line no-unused-vars
+
     rowProps?: (row?: any) => void;
-    // eslint-disable-next-line no-unused-vars
+
     cellProps?: (row?: any) => void;
     extraProps?: {
         loading?: boolean;
@@ -156,7 +153,7 @@ export interface TableComponentProps {
     >;
 
     paramsPrefix?: string;
-    // eslint-disable-next-line no-unused-vars
+
     redirectTo?: (url: string, newParams: Record<string, string>) => void;
     columnSelectorEnabled?: boolean;
     columnSelectorButtonDisabled?: boolean;

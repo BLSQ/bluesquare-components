@@ -1,3 +1,4 @@
+import React, { FunctionComponent } from 'react';
 import ArrowBack from '@mui/icons-material/ArrowBack';
 import Close from '@mui/icons-material/Close';
 import {
@@ -11,13 +12,12 @@ import {
     Switch,
     Tooltip,
 } from '@mui/material';
-import React, { FunctionComponent } from 'react';
 import { InView } from 'react-intersection-observer';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { BlockPlaceholder } from '../../BlockPlaceholder';
 import { IconButton as IconButtonComponent } from '../../buttons/IconButton';
 import { MESSAGES } from './messages';
 import { useStyles } from './styles';
-import { useSafeIntl } from '../../../localization/useSafeIntl';
 
 const filterResults = (searchString, options) => {
     let displayedOptions = [...options];

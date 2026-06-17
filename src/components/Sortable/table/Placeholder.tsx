@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
+import { Box, TableCell, TableRow } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { defineMessages } from 'react-intl';
 
-import { makeStyles } from '@mui/styles';
-import { Box, TableCell, TableRow } from '@mui/material';
 import { useSafeIntl } from '../../../localization/useSafeIntl';
 
 const MESSAGES = defineMessages({

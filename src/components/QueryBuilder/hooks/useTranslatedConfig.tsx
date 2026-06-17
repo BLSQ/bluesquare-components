@@ -1,20 +1,19 @@
 import React, { useCallback, useMemo } from 'react';
+
+import { Box } from '@mui/material';
+import { useTheme } from '@mui/styles';
+import { Config, MuiConfig } from '@react-awesome-query-builder/mui';
 import moment from 'moment';
 
-import { Config, MuiConfig } from '@react-awesome-query-builder/mui';
-
-import { useTheme } from '@mui/styles';
-import { Box } from '@mui/material';
-
 import { useSafeIntl } from '../../../localization/useSafeIntl';
-import { MESSAGES } from '../messages';
-import { apiDateFormat, apiDateTimeFormat } from '../constants';
-import { TextInput } from '../../inputs/TextInput';
-import { NumberInput } from '../../inputs/NumberInput';
-import { Select } from '../../inputs/Select';
-import { TimePicker } from '../../inputs/TimePicker';
 import { DatePicker } from '../../DatePicker';
 import { DateTimePicker } from '../../DateTimePicker';
+import { NumberInput } from '../../inputs/NumberInput';
+import { Select } from '../../inputs/Select';
+import { TextInput } from '../../inputs/TextInput';
+import { TimePicker } from '../../inputs/TimePicker';
+import { apiDateFormat, apiDateTimeFormat } from '../constants';
+import { MESSAGES } from '../messages';
 
 const transformListValuesToOptions = (listValues: any) =>
     Array.isArray(listValues)
@@ -31,7 +30,6 @@ export const useTranslatedConfig = (): Config => {
     const { formatMessage } = useSafeIntl();
     const theme = useTheme();
     const handleChangeMultiselect = useCallback(
-        // eslint-disable-next-line no-unused-vars
         (newValue: string[] | string, setValue: (value: string[]) => void) => {
             setValue(
                 Array.isArray(newValue) ? newValue : newValue?.split(',') || [],

@@ -1,6 +1,6 @@
 import moment from 'moment';
-import { FETCHING_ABORTED } from './constants';
 import { Nullable, Optional } from '../types/types';
+import { FETCHING_ABORTED } from './constants';
 import { PostArg } from './types';
 
 export class ApiError extends Error {

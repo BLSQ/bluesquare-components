@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React, { FunctionComponent, HTMLAttributeAnchorTarget } from 'react';
 import { SvgIconComponent } from '@mui/icons-material';
 import CachedRoundedIcon from '@mui/icons-material/CachedRounded';

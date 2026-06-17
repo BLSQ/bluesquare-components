@@ -3,10 +3,10 @@ import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
 import { FormHelperText, InputLabel } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import classnames from 'classnames';
+import { commonStyles } from '../../../styles/iaso/common';
 import { useDebounce } from '../../../utils/useDebounce';
 import { useSkipEffectOnMount } from '../../../utils/useSkipEffectOnMount';
 import { FormControl } from '../FormControl';
-import { commonStyles } from '../../../styles/iaso/common';
 
 type Props = {
     value?: string;

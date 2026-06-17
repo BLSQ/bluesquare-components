@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useMemo } from 'react';
-/* eslint-disable import/no-relative-packages */
+
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { LocalizationProvider as MuiLocaleProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { IntlProvider } from 'react-intl';

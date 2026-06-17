@@ -1,13 +1,13 @@
+import React, { FunctionComponent, useCallback, useState } from 'react';
 import Add from '@mui/icons-material/Add';
 import Remove from '@mui/icons-material/Clear';
 import { IconButton, Tab, Tabs, Tooltip } from '@mui/material';
 import Color from 'color';
-import React, { FunctionComponent, useCallback, useState } from 'react';
 
-import { formatThousand } from '../../../utils';
 import { useSafeIntl } from '../../../localization/useSafeIntl';
-
 import { IntlMessage } from '../../../types/types';
+import { formatThousand } from '../../../utils';
+
 import { useStyles } from './styles';
 
 type Count = {
@@ -25,11 +25,11 @@ type Props = {
     maxItems?: number;
     displayCounts?: boolean;
     counts?: Count[];
-    // eslint-disable-next-line no-unused-vars
+
     onTabsDeleted?: (newParams: Record<string, string>) => void;
-    // eslint-disable-next-line no-unused-vars
+
     onTabsAdded: (newParams: Record<string, string>) => void;
-    // eslint-disable-next-line no-unused-vars
+
     onTabChange?: (newParams: Record<string, string>) => void;
 };
 

@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { Button } from '@mui/material';
-import { MESSAGES } from './messages';
 import { useSafeIntl } from '../../../localization/useSafeIntl';
+import { MESSAGES } from './messages';
 
 type ButtonProps = { closeDialog: () => void };
 

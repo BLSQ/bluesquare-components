@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ReactNode } from 'react';
-import { CloseButton } from './CloseButton';
 import { IntlMessage } from '../../../types/types';
 import { SimpleModal } from '../SimpleModal';
+import { CloseButton } from './CloseButton';
 
 type Props = {
     children: ReactNode;

@@ -1,6 +1,6 @@
 import React from 'react';
-import Chip from '@mui/material/Chip';
 import { Tooltip } from '@mui/material';
+import Chip from '@mui/material/Chip';
 import Color from 'color';
 
 export const defaultGetLabel = o => (o?.label ? o.label : '');

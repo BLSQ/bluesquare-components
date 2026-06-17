@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react';
-import { Tooltip, Box } from '@mui/material';
 import InfoIcon from '@mui/icons-material/Info';
+import { Tooltip, Box } from '@mui/material';
 import { useStyles } from './styles';
 
 type Props = {

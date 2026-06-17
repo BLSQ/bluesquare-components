@@ -1,12 +1,12 @@
 import React, { FunctionComponent } from 'react';
-import { defineMessages } from 'react-intl';
-import classNames from 'classnames';
 
 import { Box, Typography, InputLabel } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { FormControl } from './FormControl';
+import classNames from 'classnames';
+import { defineMessages } from 'react-intl';
 
 import { IconButton as IconButtonComponent } from '../buttons/IconButton';
+import { FormControl } from './FormControl';
 
 type Props = {
     value: string;

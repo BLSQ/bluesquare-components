@@ -10,17 +10,17 @@ import Autocomplete, {
 } from '@mui/material/Autocomplete';
 import Box from '@mui/material/Box';
 import { useSafeIntl } from '../../../localization/useSafeIntl';
+import { IntlMessage } from '../../../types/types';
 import { useStyles } from '../styles';
+import { MESSAGES } from './messages';
 import { TextInput } from './TextInput';
+import { useRenderTagsWithDisabled } from './useRenderTagsWithDisabled';
 import {
     defaultRenderTags,
     getExtraProps,
     getOption,
     defaultRenderOption,
 } from './utils';
-import { MESSAGES } from './messages';
-import { IntlMessage } from '../../../types/types';
-import { useRenderTagsWithDisabled } from './useRenderTagsWithDisabled';
 
 type Props = {
     keyValue: string;

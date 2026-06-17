@@ -7,7 +7,7 @@ type Props = {
     value: any;
     required?: boolean;
     disabled?: boolean;
-    // eslint-disable-next-line no-unused-vars
+
     onChange: (newValue: any) => void;
 };
 

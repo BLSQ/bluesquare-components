@@ -47,8 +47,9 @@ export interface ControlFunctions<ReturnT> {
  * Subsequent calls to the debounced function return the result of the last func invocation.
  * Note, that if there are no previous invocations you will get undefined. You should check it in your code properly.
  */
-export interface DebouncedState<T extends (...args: any) => ReturnType<T>>
-    extends ControlFunctions<ReturnType<T>> {
+export interface DebouncedState<
+    T extends (...args: any) => ReturnType<T>,
+> extends ControlFunctions<ReturnType<T>> {
     (...args: Parameters<T>): ReturnType<T> | undefined;
 }
 

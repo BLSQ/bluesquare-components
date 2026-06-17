@@ -78,11 +78,14 @@ export const DndSelect: FunctionComponent<Props> = ({
         [onChange],
     );
 
-    const handleDragStart = useCallback((event: DragStartEvent) => {
-        if (event.active.id !== activeId) {
-            setActiveId(event.active.id as string);
-        }
-    }, [activeId]);
+    const handleDragStart = useCallback(
+        (event: DragStartEvent) => {
+            if (event.active.id !== activeId) {
+                setActiveId(event.active.id as string);
+            }
+        },
+        [activeId],
+    );
 
     const handleDragOver = useCallback(
         (event: DragOverEvent) => {
@@ -95,10 +98,17 @@ export const DndSelect: FunctionComponent<Props> = ({
                 const newIndex = value.findIndex(
                     item => `${keyValue}-${item.value}` === over.id,
                 );
-                if (oldIndex !== -1 && newIndex !== -1 && oldIndex !== newIndex) {
+                if (
+                    oldIndex !== -1 &&
+                    newIndex !== -1 &&
+                    oldIndex !== newIndex
+                ) {
                     const newOrder = arrayMove(value, oldIndex, newIndex);
                     const newValues = newOrder.map(item => item.value);
-                    if (JSON.stringify(newValues) !== JSON.stringify(value.map(item => item.value))) {
+                    if (
+                        JSON.stringify(newValues) !==
+                        JSON.stringify(value.map(item => item.value))
+                    ) {
                         onChange(newValues);
                     }
                 }

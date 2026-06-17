@@ -12,15 +12,15 @@ import {
     useQuery,
     useQueryClient,
 } from 'react-query';
-import { IntlMessage } from '../types/types';
 import { useSafeIntl } from '../localization/useSafeIntl';
+import { EventDispatcher } from '../snackbars/EventDispatcher';
 import {
     errorSnackBar as defaultErrorSnackBar,
     succesfullSnackBar as defaultSuccessSnackBar,
 } from '../snackbars/snackBars';
-import { SnackMutationDict, SnackQueryDict } from './types';
+import { IntlMessage } from '../types/types';
 import { MESSAGES } from './messages';
-import { EventDispatcher } from '../snackbars/EventDispatcher';
+import { SnackMutationDict, SnackQueryDict } from './types';
 
 /**
  *

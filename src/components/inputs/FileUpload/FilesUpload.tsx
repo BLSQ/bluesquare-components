@@ -1,20 +1,19 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React, { FunctionComponent, useCallback, useState } from 'react';
-import { Accept, useDropzone } from 'react-dropzone';
-import { makeStyles } from '@mui/styles';
 import AttachmentIcon from '@mui/icons-material/Attachment';
 import { Box, Grid, Paper, SxProps, Tooltip, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import { Accept, useDropzone } from 'react-dropzone';
 import { FormattedMessage } from 'react-intl';
 import { useSafeIntl } from '../../../localization/useSafeIntl';
-import MESSAGES from './messages';
 import {
     CustomInput,
     useCustomInputTextStyle,
 } from '../CustomInput/CustomInput';
+import MESSAGES from './messages';
 
 type Props = {
     multi?: boolean;
-    // eslint-disable-next-line no-unused-vars
+
     onFilesSelect: (files: File[]) => void;
     files: File[];
     accept?: Accept;

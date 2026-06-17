@@ -9,13 +9,10 @@ import {
 } from '@react-awesome-query-builder/mui';
 import isEmpty from 'lodash/isEmpty';
 
-import { useTranslatedConfig } from './useTranslatedConfig';
 import { QueryBuilderListToReplace } from '../types';
+import { useTranslatedConfig } from './useTranslatedConfig';
 
-type getHumanReadableJsonLogicReturnFn = (
-    // eslint-disable-next-line no-unused-vars
-    logic?: JsonLogicTree,
-) => ReactNode;
+type getHumanReadableJsonLogicReturnFn = (logic?: JsonLogicTree) => ReactNode;
 
 const queryValue: JsonGroup = { id: QbUtils.uuid(), type: 'group' };
 

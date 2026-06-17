@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ReactNode } from 'react';
+import { Typography, Box } from '@mui/material';
 import FormControl from '@mui/material/FormControl';
 import { makeStyles, withStyles } from '@mui/styles';
-import { Typography, Box } from '@mui/material';
 import classNames from 'classnames';
 
 const defaultErrors: string[] = [];

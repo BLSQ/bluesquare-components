@@ -1,12 +1,12 @@
 import React, { FunctionComponent, useState } from 'react';
-import { DateTimePicker as MuiDateTimePicker } from '@mui/x-date-pickers';
 import EventIcon from '@mui/icons-material/Event';
 import { makeStyles } from '@mui/styles';
-import { IconButton } from '../buttons/IconButton';
-import { FormControl } from '../inputs/FormControl';
+import { DateTimePicker as MuiDateTimePicker } from '@mui/x-date-pickers';
 import { commonStyles } from '../../styles/iaso/common';
 import { IntlMessage } from '../../types/types';
 import { toMomentValue } from '../../utils/toMomentValue';
+import { IconButton } from '../buttons/IconButton';
+import { FormControl } from '../inputs/FormControl';
 
 const useStyles = makeStyles(theme => ({
     ...commonStyles(theme),

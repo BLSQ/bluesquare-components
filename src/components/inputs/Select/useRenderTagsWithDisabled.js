@@ -15,9 +15,13 @@ import { useCallback } from 'react';
 export const useRenderTagsWithDisabled = (renderTags, disabled = false) =>
     useCallback(
         (tagValue, getTagProps, ownerState) =>
-            renderTags(tagValue, params => ({
-                ...getTagProps(params),
-                disabled,
-            }), ownerState),
+            renderTags(
+                tagValue,
+                params => ({
+                    ...getTagProps(params),
+                    disabled,
+                }),
+                ownerState,
+            ),
         [renderTags, disabled],
     );

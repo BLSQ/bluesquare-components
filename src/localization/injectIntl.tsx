@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { useIntl } from 'react-intl';
-import { patchIntl } from './patchIntl';
 import { PatchIntlShape } from '../types/types';
+import { patchIntl } from './patchIntl';
 
 type Props<P = Record<string, any>> = {
     component: React.ComponentType<

@@ -1,13 +1,13 @@
+import React, { ComponentClass, FunctionComponent, ReactNode } from 'react';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import MenuIcon from '@mui/icons-material/Menu';
 import { Grid, IconButton } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { makeStyles } from '@mui/styles';
-import React, { ComponentClass, FunctionComponent, ReactNode } from 'react';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import MenuIcon from '@mui/icons-material/Menu';
-import { usePageTitle } from '../usePageTitle';
 import { useSidebar } from '../../../contexts/SideBarContext/SideBarContext';
+import { usePageTitle } from '../usePageTitle';
 
 export const styles = theme => ({
     menuButton: {

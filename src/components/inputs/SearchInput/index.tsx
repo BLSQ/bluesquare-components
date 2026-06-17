@@ -6,19 +6,18 @@ import React, {
     useCallback,
 } from 'react';
 
-import { OutlinedInput } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import { OutlinedInput } from '@mui/material';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
+import { IntlFormatMessage } from '../../../types/types';
+import { containsForbiddenCharacter } from '../../../utils/containsForbiddenChars';
+import { useSkipEffectOnMount } from '../../../utils/useSkipEffectOnMount';
 import { IconButton as IconButtonComponent } from '../../buttons/IconButton';
 import { FormControl } from '../FormControl';
 import { InputLabel } from '../InputLabel';
 
-import { useStyles } from './styles';
-import { useSkipEffectOnMount } from '../../../utils/useSkipEffectOnMount';
-import { containsForbiddenCharacter } from '../../../utils/containsForbiddenChars';
-import { useSafeIntl } from '../../../localization/useSafeIntl';
-import { IntlFormatMessage } from '../../../types/types';
-
 import MESSAGES from './messages';
+import { useStyles } from './styles';
 
 type Props = {
     uid?: string;
@@ -28,9 +27,9 @@ type Props = {
     disabled?: boolean;
     clearable?: boolean;
     onEnterPressed: () => void;
-    // eslint-disable-next-line no-unused-vars
+
     onChange: (newValue: string) => void;
-    // eslint-disable-next-line no-unused-vars
+
     onErrorChange?: (hasError: boolean) => void;
     blockForbiddenChars?: boolean;
     value: string;

@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
-import TableFooter from '@mui/material/TableFooter';
 import TableCell from '@mui/material/TableCell';
+import TableFooter from '@mui/material/TableFooter';
 import TableRow from '@mui/material/TableRow';
 import { makeStyles } from '@mui/styles';
 

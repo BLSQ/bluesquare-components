@@ -26,7 +26,7 @@ const useStyles = makeStyles(styles);
 
 type Props = {
     initialLogic?: JsonLogicTree;
-    // eslint-disable-next-line no-unused-vars
+
     changeLogic: (newLogic: JsonLogicTree) => void;
 };
 

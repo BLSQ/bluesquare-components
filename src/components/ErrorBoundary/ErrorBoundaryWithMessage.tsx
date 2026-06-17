@@ -1,6 +1,6 @@
 import React from 'react';
-import { ErrorBoundary } from '.';
 import { useSafeIntl } from '../../localization/useSafeIntl';
+import { ErrorBoundary } from '.';
 
 export const ErrorBoundaryWithMessage = props => {
     const { formatMessage } = useSafeIntl();

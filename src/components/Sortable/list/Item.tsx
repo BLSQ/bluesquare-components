@@ -1,18 +1,17 @@
 import React, { ReactNode, FunctionComponent } from 'react';
-import { useSortable } from '@dnd-kit/sortable';
-import { makeStyles } from '@mui/styles';
-import { CSS, Transform } from '@dnd-kit/utilities';
-import classNames from 'classnames';
-
 import { DraggableAttributes } from '@dnd-kit/core';
 import { SyntheticListenerMap } from '@dnd-kit/core/dist/hooks/utilities';
-
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS, Transform } from '@dnd-kit/utilities';
 import { ListItem, SxProps, Theme } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import classNames from 'classnames';
+
 import { HandleProps } from './types';
 
 type Props = {
     id: string | number;
-    // eslint-disable-next-line no-unused-vars
+
     children: (handleProps?: HandleProps) => ReactNode;
     handle?: boolean;
     sx?: SxProps<Theme> | undefined;
@@ -35,7 +34,7 @@ const useStyles = makeStyles(theme => ({
 type UseSortable = {
     attributes: DraggableAttributes;
     listeners?: SyntheticListenerMap;
-    // eslint-disable-next-line no-unused-vars
+
     setNodeRef: (node: HTMLElement | null) => void;
     transform: Transform | null;
     transition: string | undefined;

@@ -5,9 +5,9 @@ import { AutocompleteRenderGetTagProps } from '@mui/material/Autocomplete/Autoco
 import { debounce } from '@mui/material/utils';
 import { isArray } from 'lodash';
 import { defineMessages } from 'react-intl';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { IntlMessage } from '../../../types/types';
 import { renderTags as defaultRenderTags } from '../Select';
-import { useSafeIntl } from '../../../localization/useSafeIntl';
 
 const MESSAGES = defineMessages({
     noOptionsText: {

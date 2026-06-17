@@ -2,8 +2,8 @@ import React, { FunctionComponent, useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { makeStyles } from '@mui/styles';
-import { FormattedMessage } from 'react-intl';
 import classNames from 'classnames';
+import { FormattedMessage } from 'react-intl';
 
 import { MESSAGES } from './messages';
 

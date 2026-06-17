@@ -1,12 +1,12 @@
 import React, { FunctionComponent, useState } from 'react';
-import { DesktopDatePicker as MuiDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
-import { makeStyles } from '@mui/styles';
 import EventIcon from '@mui/icons-material/Event';
-import { IconButton } from '../buttons/IconButton';
-import { FormControl } from '../inputs/FormControl';
+import { makeStyles } from '@mui/styles';
+import { DesktopDatePicker as MuiDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { commonStyles } from '../../styles/iaso/common';
 import { IntlMessage } from '../../types/types';
 import { toMomentValue } from '../../utils/toMomentValue';
+import { IconButton } from '../buttons/IconButton';
+import { FormControl } from '../inputs/FormControl';
 
 const useStyles = makeStyles(theme => ({
     ...commonStyles(theme),

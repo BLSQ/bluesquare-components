@@ -1,11 +1,11 @@
 import React, { FunctionComponent, useCallback, useState } from 'react';
 import { Divider, Paper, Button } from '@mui/material';
-import { useStyles } from '../styles';
-import { MESSAGES } from './messages';
 import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { AddComment } from '../AddComment';
 import { Comment } from '../Comment';
 import { SingleComment } from '../SingleComment';
+import { useStyles } from '../styles';
+import { MESSAGES } from './messages';
 
 type Props = {
     comments?: {

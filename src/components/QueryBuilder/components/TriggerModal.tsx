@@ -1,9 +1,8 @@
 import React, { FunctionComponent } from 'react';
 
 import { useSafeIntl } from '../../../localization/useSafeIntl';
-import { FakeInput } from '../../inputs/FakeInput';
-
 import { IntlMessage } from '../../../types/types';
+import { FakeInput } from '../../inputs/FakeInput';
 
 type Props = {
     label: IntlMessage;

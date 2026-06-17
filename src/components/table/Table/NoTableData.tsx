@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from 'react';
+import { Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import { makeStyles } from '@mui/styles';
 
 import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { IntlMessage } from '../../../types/types';
-import { Typography } from '@mui/material';
 
 const useStyles = makeStyles(theme => ({
     box: {

@@ -34,10 +34,7 @@ type Props = {
     autoComplete?: string;
     min?: number;
     max?: number;
-    onChange: (
-        // eslint-disable-next-line no-unused-vars
-        newValue: number | undefined,
-    ) => void;
+    onChange: (newValue: number | undefined) => void;
     onBlur?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
     onFocus?:
         | FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>
@@ -47,9 +44,8 @@ type Props = {
     decimalScale?: number;
     placeholder?: string;
     setFieldError?: (
-        // eslint-disable-next-line no-unused-vars
         keyValue: string,
-        // eslint-disable-next-line no-unused-vars
+
         message: string,
     ) => void;
     thousandsGroupStyle?: 'thousand' | 'lakh' | 'wan';

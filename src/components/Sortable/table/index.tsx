@@ -10,28 +10,27 @@ import {
     Active,
     DragOverlay,
 } from '@dnd-kit/core';
-import { makeStyles } from '@mui/styles';
-import { Table, TableBody } from '@mui/material';
+import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
 import {
     arrayMove,
     SortableContext,
     sortableKeyboardCoordinates,
     verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
-import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
+import { Table, TableBody } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
-import { SortableRow } from './Row';
+import { ColumnWithAccessor } from '../../table/Table/types';
+import { Item } from '../types';
 import { SortableCells } from './Cells';
 import { DragItem } from './DragItem';
 import { Head } from './Head';
 import { Placeholder } from './Placeholder';
-
-import { Item } from '../types';
-import { ColumnWithAccessor } from '../../table/Table/types';
+import { SortableRow } from './Row';
 
 type Props = {
     items: Item[];
-    // eslint-disable-next-line no-unused-vars
+
     onChange: (items: Item[]) => void;
     columns: ColumnWithAccessor[];
     disabled?: boolean;

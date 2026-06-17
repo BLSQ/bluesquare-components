@@ -1,7 +1,7 @@
 import React, { FunctionComponent, isValidElement } from 'react';
-import { makeStyles } from '@mui/styles';
 import TableCell from '@mui/material/TableCell';
 import TableSortLabel from '@mui/material/TableSortLabel';
+import { makeStyles } from '@mui/styles';
 import classNames from 'classnames';
 import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { MESSAGES } from './messages';

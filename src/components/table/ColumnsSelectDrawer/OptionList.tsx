@@ -1,9 +1,9 @@
 import React from 'react';
 import { List, ListItem, ListItemText, Switch } from '@mui/material';
 import { InView } from 'react-intersection-observer';
-import { useStyles } from './styles';
-import { ColumnFromReactTable } from '../Table';
 import { BlockPlaceholder } from '../../BlockPlaceholder';
+import { ColumnFromReactTable } from '../Table';
+import { useStyles } from './styles';
 
 type ListItemProps = {
     inView;

@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
-import { ClickAwayListener, SpeedDial, SpeedDialAction } from '@mui/material';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import { ClickAwayListener, SpeedDial, SpeedDialAction } from '@mui/material';
 import { useStyles } from './styles';
 
 type Props = {

@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React, {
     useState,
     FunctionComponent,
@@ -30,10 +29,7 @@ type Props = {
     settings?: Settings;
     conjunctions?: Conjunctions;
     operators?: Operators;
-    onChange: (
-        // eslint-disable-next-line no-unused-vars
-        jsonLogic: JsonLogicTree,
-    ) => void;
+    onChange: (jsonLogic: JsonLogicTree) => void;
 };
 
 const queryValue: JsonGroup = { id: QbUtils.uuid(), type: 'group' };

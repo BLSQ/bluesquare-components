@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from 'react';
 import { Box, Divider, Typography } from '@mui/material';
-import MESSAGES from './messages';
 
-import { ConfirmCancelModal } from '../ConfirmCancelModal';
 import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { IntlMessage } from '../../../types/types';
+import { ConfirmCancelModal } from '../ConfirmCancelModal';
+import MESSAGES from './messages';
 
 type Props = {
     onConfirm: () => void;

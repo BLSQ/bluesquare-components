@@ -1,14 +1,13 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React, { FunctionComponent, useCallback, useState } from 'react';
-import { Accept, useDropzone } from 'react-dropzone';
-import { makeStyles } from '@mui/styles';
 import { Grid, Paper, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import { Accept, useDropzone } from 'react-dropzone';
 import { useSafeIntl } from '../../../localization/useSafeIntl';
 import MESSAGES from './messages';
 
 type Props = {
     multi?: boolean;
-    // eslint-disable-next-line no-unused-vars
+
     onFilesSelect: (files: File[]) => void;
     files: File[];
     accept?: Accept;

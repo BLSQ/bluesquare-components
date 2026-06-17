@@ -1,12 +1,12 @@
-import { useSnackbar } from 'notistack';
 import React, { useCallback, useEffect, useMemo } from 'react';
+import { useSnackbar } from 'notistack';
 
 import { useSafeIntl } from '../localization/useSafeIntl';
+import { IntlMessage } from '../types/types';
 import { EventDispatcher } from './EventDispatcher';
 import MESSAGES from './messages';
 import SnackBarButton from './SnackBarButton';
 import SnackBarErrorMessage from './SnackBarErrorMessage';
-import { IntlMessage } from '../types/types';
 
 type Notification = {
     key: string;

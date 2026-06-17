@@ -2,9 +2,9 @@ import React, { FunctionComponent, useCallback, useState } from 'react';
 import { Avatar, Grid, Typography } from '@mui/material';
 import moment from 'moment';
 import { useSafeIntl } from '../../../localization/useSafeIntl';
-import { MESSAGES } from './messages';
-import { useStyles } from '../styles';
 import { truncateText } from '../../../utils';
+import { useStyles } from '../styles';
+import { MESSAGES } from './messages';
 
 const MAX_TEXT_LENGTH = 150;
 

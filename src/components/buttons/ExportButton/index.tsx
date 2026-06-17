@@ -2,10 +2,10 @@ import React, { FunctionComponent } from 'react';
 import CallMade from '@mui/icons-material/CallMade';
 import { Button } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { commonStyles } from '../../../styles/iaso/common';
-import { MESSAGES } from './messages';
 import { useSafeIntl } from '../../../localization/useSafeIntl';
+import { commonStyles } from '../../../styles/iaso/common';
 import { IntlMessage } from '../../../types/types';
+import { MESSAGES } from './messages';
 
 const useStyles = makeStyles(theme => ({
     ...commonStyles(theme),

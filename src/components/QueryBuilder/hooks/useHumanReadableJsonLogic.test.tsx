@@ -1,4 +1,3 @@
-import React from 'react';
 import { renderHook } from '@testing-library/react';
 
 import { TestWrapper } from '../../../tests/helpers';
@@ -9,10 +8,9 @@ describe('useHumanReadableJsonLogic', () => {
         const fields = {
             name: { label: 'Name', type: 'text' },
         };
-        const { result } = renderHook(
-            () => useHumanReadableJsonLogic(fields),
-            { wrapper: TestWrapper },
-        );
+        const { result } = renderHook(() => useHumanReadableJsonLogic(fields), {
+            wrapper: TestWrapper,
+        });
 
         expect(typeof result.current).toBe('function');
         expect(result.current()).toBe('');

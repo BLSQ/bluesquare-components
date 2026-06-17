@@ -158,11 +158,7 @@ describe('inputs', () => {
 
     it('renders InputLabel', () => {
         const { getByText } = renderWithProviders(
-            <InputLabel
-                htmlFor="test-input"
-                label="Label"
-                required={false}
-            />,
+            <InputLabel htmlFor="test-input" label="Label" required={false} />,
         );
         expect(getByText('Label')).toBeInTheDocument();
     });

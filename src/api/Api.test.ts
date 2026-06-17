@@ -15,9 +15,11 @@ describe('Api', () => {
 
     describe('blsqFetch', () => {
         it('returns successful responses', async () => {
-            const fetchMock = vi.fn().mockResolvedValue(
-                new Response(JSON.stringify({ ok: true }), { status: 200 }),
-            );
+            const fetchMock = vi
+                .fn()
+                .mockResolvedValue(
+                    new Response(JSON.stringify({ ok: true }), { status: 200 }),
+                );
             vi.stubGlobal('fetch', fetchMock);
 
             const response = await blsqFetch('/api/test');
@@ -42,7 +44,9 @@ describe('Api', () => {
     describe('HTTP helpers', () => {
         it('getRequest parses json responses', async () => {
             const fetchMock = vi.fn().mockResolvedValue(
-                new Response(JSON.stringify({ items: [] }), { status: 200 }),
+                new Response(JSON.stringify({ items: [] }), {
+                    status: 200,
+                }),
             );
             vi.stubGlobal('fetch', fetchMock);
 
@@ -53,13 +57,17 @@ describe('Api', () => {
         });
 
         it('postRequest sends json payloads', async () => {
-            const fetchMock = vi.fn().mockResolvedValue(
-                new Response(JSON.stringify({ id: 1 }), { status: 200 }),
-            );
+            const fetchMock = vi
+                .fn()
+                .mockResolvedValue(
+                    new Response(JSON.stringify({ id: 1 }), { status: 200 }),
+                );
             vi.stubGlobal('fetch', fetchMock);
 
             const { postRequest } = await import('./Api');
-            await expect(postRequest('/api/items', { name: 'test' })).resolves.toEqual({
+            await expect(
+                postRequest('/api/items', { name: 'test' }),
+            ).resolves.toEqual({
                 id: 1,
             });
             expect(fetchMock).toHaveBeenCalledWith(
@@ -69,23 +77,29 @@ describe('Api', () => {
         });
 
         it('basePostRequest returns null on 204 responses', async () => {
-            const fetchMock = vi.fn().mockResolvedValue(
-                new Response(null, { status: 204 }),
-            );
+            const fetchMock = vi
+                .fn()
+                .mockResolvedValue(new Response(null, { status: 204 }));
             vi.stubGlobal('fetch', fetchMock);
 
             const { basePostRequest } = await import('./Api');
-            await expect(basePostRequest('/api/items', { name: 'test' })).resolves.toBeNull();
+            await expect(
+                basePostRequest('/api/items', { name: 'test' }),
+            ).resolves.toBeNull();
         });
 
         it('putRequest sends PUT payloads', async () => {
             const fetchMock = vi.fn().mockResolvedValue(
-                new Response(JSON.stringify({ updated: true }), { status: 200 }),
+                new Response(JSON.stringify({ updated: true }), {
+                    status: 200,
+                }),
             );
             vi.stubGlobal('fetch', fetchMock);
 
             const { putRequest } = await import('./Api');
-            await expect(putRequest('/api/items/1', { name: 'updated' })).resolves.toEqual({
+            await expect(
+                putRequest('/api/items/1', { name: 'updated' }),
+            ).resolves.toEqual({
                 updated: true,
             });
             expect(fetchMock).toHaveBeenCalledWith(
@@ -96,12 +110,16 @@ describe('Api', () => {
 
         it('patchRequest sends PATCH payloads', async () => {
             const fetchMock = vi.fn().mockResolvedValue(
-                new Response(JSON.stringify({ patched: true }), { status: 200 }),
+                new Response(JSON.stringify({ patched: true }), {
+                    status: 200,
+                }),
             );
             vi.stubGlobal('fetch', fetchMock);
 
             const { patchRequest } = await import('./Api');
-            await expect(patchRequest('/api/items/1', { active: true })).resolves.toEqual({
+            await expect(
+                patchRequest('/api/items/1', { active: true }),
+            ).resolves.toEqual({
                 patched: true,
             });
             expect(fetchMock).toHaveBeenCalledWith(
@@ -111,9 +129,9 @@ describe('Api', () => {
         });
 
         it('deleteRequest sends DELETE requests', async () => {
-            const fetchMock = vi.fn().mockResolvedValue(
-                new Response(null, { status: 204 }),
-            );
+            const fetchMock = vi
+                .fn()
+                .mockResolvedValue(new Response(null, { status: 204 }));
             vi.stubGlobal('fetch', fetchMock);
 
             const { deleteRequest } = await import('./Api');
@@ -126,7 +144,9 @@ describe('Api', () => {
 
         it('optionsRequest sends OPTIONS requests', async () => {
             const fetchMock = vi.fn().mockResolvedValue(
-                new Response(JSON.stringify({ methods: ['GET'] }), { status: 200 }),
+                new Response(JSON.stringify({ methods: ['GET'] }), {
+                    status: 200,
+                }),
             );
             vi.stubGlobal('fetch', fetchMock);
 
@@ -142,9 +162,9 @@ describe('Api', () => {
 
         it('getRequestImage returns blob responses', async () => {
             const blob = new Blob(['image'], { type: 'image/png' });
-            const fetchMock = vi.fn().mockResolvedValue(
-                new Response(blob, { status: 200 }),
-            );
+            const fetchMock = vi
+                .fn()
+                .mockResolvedValue(new Response(blob, { status: 200 }));
             vi.stubGlobal('fetch', fetchMock);
 
             const { getRequestImage } = await import('./Api');

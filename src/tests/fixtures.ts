@@ -2,10 +2,7 @@ import type { IntlMessage } from '../types/types';
 
 export const noop = (): void => undefined;
 
-export const intlMsg = (
-    id: string,
-    defaultMessage: string,
-): IntlMessage => ({
+export const intlMsg = (id: string, defaultMessage: string): IntlMessage => ({
     id,
     defaultMessage,
 });

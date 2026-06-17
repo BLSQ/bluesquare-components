@@ -2,16 +2,12 @@ import React from 'react';
 import { renderHook } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 
+import { renderWithProviders } from '../tests/helpers';
 import { ExternalLink } from './ExternalLink';
 import { LinkButton } from './LinkButton';
 import { LinkWithLocation } from './LinkWithLocation';
-import {
-    useGoBack,
-    useRedirectTo,
-    useRedirectToReplace,
-} from './redirections';
+import { useGoBack, useRedirectTo, useRedirectToReplace } from './redirections';
 import { useParamsObject } from './useParamsObject';
-import { renderWithProviders } from '../tests/helpers';
 
 const routerWrapper = ({ children }: { children: React.ReactNode }) => (
     <MemoryRouter initialEntries={['/page/2/order/name']}>

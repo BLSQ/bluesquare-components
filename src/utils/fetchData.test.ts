@@ -11,6 +11,8 @@ describe('createUrl', () => {
     });
 
     it('skips empty values', () => {
-        expect(createUrl({ foo: '', bar: null, baz: undefined })).toBe('/charts');
+        expect(createUrl({ foo: '', bar: null, baz: undefined })).toBe(
+            '/charts',
+        );
     });
 });

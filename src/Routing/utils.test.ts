@@ -1,7 +1,4 @@
-import {
-    convertObjectToUrlParams,
-    makeRedirectionUrl,
-} from './utils';
+import { convertObjectToUrlParams, makeRedirectionUrl } from './utils';
 
 describe('Routing utils', () => {
     it('converts objects to url params', () => {

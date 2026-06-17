@@ -3,10 +3,10 @@ import { renderHook, act } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { vi } from 'vitest';
 
-import useDebounce from './useDebounce/useDebounce';
 import { useDebouncedCallback, useThrottledCallback } from './useDebounce';
-import { useSkipEffectOnMount } from './useSkipEffectOnMount';
+import useDebounce from './useDebounce/useDebounce';
 import { useKeyPressListener } from './useKeyPressListener';
+import { useSkipEffectOnMount } from './useSkipEffectOnMount';
 import { useTabs } from './useTabs';
 
 const routerWrapper = ({ children }: { children: React.ReactNode }) => (

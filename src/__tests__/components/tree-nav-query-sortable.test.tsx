@@ -29,11 +29,9 @@ const queryBuilderFields: Fields = {
     name: { label: 'Name', type: 'text' },
 };
 
-const SortableListItem = ({
-    item,
-}: {
-    item: { id: string };
-}) => <span>{item.id}</span>;
+const SortableListItem = ({ item }: { item: { id: string } }) => (
+    <span>{item.id}</span>
+);
 
 describe('tree, nav, query builder, and sortable components', () => {
     it('renders DynamicTabs', () => {
@@ -52,9 +50,12 @@ describe('tree, nav, query builder, and sortable components', () => {
     });
 
     it('renders TopBar with sidebar', () => {
-        const { getByText } = renderWithProviders(<TopBar title="Dashboard" />, {
-            withSidebar: true,
-        });
+        const { getByText } = renderWithProviders(
+            <TopBar title="Dashboard" />,
+            {
+                withSidebar: true,
+            },
+        );
         expect(getByText('Dashboard')).toBeInTheDocument();
     });
 
@@ -189,9 +190,7 @@ describe('tree, nav, query builder, and sortable components', () => {
     });
 
     it('renders TruncatedTreeview', () => {
-        const selectedItems = new Map([
-            ['1', new Map([['2', 'Parent']])],
-        ]);
+        const selectedItems = new Map([['1', new Map([['2', 'Parent']])]]);
         const { container } = renderWithProviders(
             <TruncatedTreeview
                 selectedItems={selectedItems}

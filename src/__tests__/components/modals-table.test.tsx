@@ -30,11 +30,7 @@ const ModalWithButton = makeFullModal(SimpleModal, AddButton);
 describe('modals and table', () => {
     it('renders AlertModal', () => {
         const { getByText } = renderWithProviders(
-            <AlertModal
-                isOpen
-                closeDialog={noop}
-                titleMessage="Alert"
-            >
+            <AlertModal isOpen closeDialog={noop} titleMessage="Alert">
                 <span>alert content</span>
             </AlertModal>,
         );
@@ -93,11 +89,7 @@ describe('modals and table', () => {
 
     it('renders BackdropClickModal', () => {
         const { getByRole } = renderWithProviders(
-            <BackdropClickModal
-                open
-                closeDialog={noop}
-                onConfirm={noop}
-            />,
+            <BackdropClickModal open closeDialog={noop} onConfirm={noop} />,
         );
         expect(getByRole('dialog')).toBeInTheDocument();
     });
@@ -172,10 +164,7 @@ describe('modals and table', () => {
 
     it('renders SelectionSpeedDials', () => {
         const { container } = renderWithProviders(
-            <SelectionSpeedDials
-                selection={{}}
-                actionMessage="Actions"
-            />,
+            <SelectionSpeedDials selection={{}} actionMessage="Actions" />,
         );
         expect(container).not.toBeEmptyDOMElement();
     });

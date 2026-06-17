@@ -7,11 +7,11 @@ import { SnackbarProvider } from 'notistack';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { MemoryRouter } from 'react-router-dom';
 
-import { english, french } from '../locale';
-import { LocaleProvider } from '../localization/useLocale';
-import { LocalizationProvider } from '../localization/LocalizationProvider/LocalizationProvider';
-import { theme } from '../styles/iaso/theme';
 import { SidebarProvider } from '../contexts/SideBarContext/SideBarContext';
+import { english, french } from '../locale';
+import { LocalizationProvider } from '../localization/LocalizationProvider/LocalizationProvider';
+import { LocaleProvider } from '../localization/useLocale';
+import { theme } from '../styles/iaso/theme';
 
 const createTestQueryClient = (): QueryClient =>
     new QueryClient({

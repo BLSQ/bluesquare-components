@@ -14,7 +14,9 @@ describe('constants', () => {
 
     it('exports ui constants', () => {
         expect(IasoUiConstants.MENU_HEIGHT_WITH_TABS).toBeDefined();
-        expect(MENU_HEIGHT_WITH_TABS).toBe(IasoUiConstants.MENU_HEIGHT_WITH_TABS);
+        expect(MENU_HEIGHT_WITH_TABS).toBe(
+            IasoUiConstants.MENU_HEIGHT_WITH_TABS,
+        );
         expect(MENU_HEIGHT_WITHOUT_TABS).toBeDefined();
         expect(SIDEBAR_WIDTH).toBeDefined();
         expect(textPlaceholder).toBeDefined();

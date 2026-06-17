@@ -11,9 +11,7 @@ import { renderWithProviders } from '../../tests/helpers';
 
 describe('buttons and comments', () => {
     it('renders AddButton', () => {
-        const { getByRole } = renderWithProviders(
-            <AddButton onClick={noop} />,
-        );
+        const { getByRole } = renderWithProviders(<AddButton onClick={noop} />);
         expect(getByRole('button')).toBeInTheDocument();
     });
 

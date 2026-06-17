@@ -41,9 +41,9 @@ describe('patchIntl', () => {
         const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
         const patched = patchIntl(createIntl());
 
-        expect(
-            patched.formatNullishMessage('missing.key', {}, undefined),
-        ).toBe('missing.key');
+        expect(patched.formatNullishMessage('missing.key', {}, undefined)).toBe(
+            'missing.key',
+        );
         warn.mockRestore();
     });
 });

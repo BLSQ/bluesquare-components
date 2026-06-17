@@ -4,8 +4,8 @@ import userEvent from '@testing-library/user-event';
 import { vi } from 'vitest';
 
 import { makeApiHooks } from '../../api/apiHooks';
-import { english, french } from '../../locale';
 import { useSidebar } from '../../contexts/SideBarContext/SideBarContext';
+import { english, french } from '../../locale';
 import { injectIntl } from '../../localization/injectIntl';
 import { LocalizationProvider } from '../../localization/LocalizationProvider/LocalizationProvider';
 import { useSafeIntl } from '../../localization/useSafeIntl';
@@ -74,9 +74,7 @@ describe('localization, api, and snackbar utilities', () => {
         const { getByRole } = renderWithProviders(
             <SnackBarErrorMessage errorLog="Something went wrong" />,
         );
-        expect(
-            getByRole('button', { name: 'Copy error' }),
-        ).toBeInTheDocument();
+        expect(getByRole('button', { name: 'Copy error' })).toBeInTheDocument();
     });
 
     it('useSidebar works with SidebarProvider', () => {
@@ -103,17 +101,21 @@ describe('localization, api, and snackbar utilities', () => {
         renderWithProviders(<SidebarConsumer />, { withSidebar: true });
         const button = screen.getByRole('button', { name: 'closed' });
         await user.click(button);
-        expect(screen.getByRole('button', { name: 'open' })).toBeInTheDocument();
+        expect(
+            screen.getByRole('button', { name: 'open' }),
+        ).toBeInTheDocument();
     });
 
     it('injectIntl wraps a component with intl', () => {
         const BaseComponent = ({
             intl,
         }: {
-            intl: { formatMessage: (msg: {
-                id: string;
-                defaultMessage: string;
-            }) => string };
+            intl: {
+                formatMessage: (msg: {
+                    id: string;
+                    defaultMessage: string;
+                }) => string;
+            };
         }) => (
             <span>
                 {intl.formatMessage({

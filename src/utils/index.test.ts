@@ -3,38 +3,11 @@ import {
     capitalize,
     formatThousand,
     removePositionIndex,
-    substituteVars,
     truncateText,
     waitFor,
 } from './index';
 
 describe('utils', () => {
-    describe('substituteVars', () => {
-        it('substitutes values in an object', () => {
-            const templateObj = {
-                foo: 11,
-                bar: '${a}',
-                baz: {
-                    x: '${y}',
-                },
-            };
-            const subs = {
-                a: 22,
-                y: 'hello',
-            };
-            const expectedObj = {
-                foo: 11,
-                bar: 22,
-                baz: {
-                    x: 'hello',
-                },
-            };
-            const newObj = substituteVars(templateObj, subs);
-            expect(newObj).toEqual(expectedObj);
-            expect(newObj).not.toBe(templateObj);
-        });
-    });
-
     describe('capitalize', () => {
         it('capitalizes each word', () => {
             expect(capitalize('hello world')).toBe('Hello World');

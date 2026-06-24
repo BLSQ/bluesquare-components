@@ -148,7 +148,6 @@ import {
     capitalize,
     formatThousand,
     removePositionIndex,
-    substituteVars,
     truncateText,
     waitFor,
 } from './utils';
@@ -324,7 +323,6 @@ export {
     renderTagsWithTooltip,
     selectionInitialState,
     setTableSelection,
-    substituteVars,
     tableInitialResult,
     testTS,
     textPlaceholder,

@@ -135,7 +135,6 @@ const namedExports = [
     'renderTagsWithTooltip',
     'selectionInitialState',
     'setTableSelection',
-    'substituteVars',
     'succesfullSnackBar',
     'tableInitialResult',
     'testTS',

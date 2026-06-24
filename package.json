@@ -11,6 +11,7 @@
     "typings": "./dist/types",
     "scripts": {
         "fix-lint": "eslint \"./src/**/*.{js,jsx,ts,tsx}\" --cache --fix",
+        "lint": "eslint \"./src/**/*.{js,jsx,ts,tsx}\"",
         "show-lint-problems": "eslint \"./src/**/*.{js,jsx,ts,tsx}\"",
         "test": "vitest --config vitest.config.ts --project unit --run",
         "test:watch": "vitest --config vitest.config.ts --project unit",

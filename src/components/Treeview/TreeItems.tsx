@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ReactNode } from 'react';
-import { TreeItem } from '@mui/x-tree-view';
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import { TreeItem } from '@mui/x-tree-view';
 
 const determineClassName = (items, nextItems, disabled, style) => {
     const baseClass = disabled ? `${style.disabled} ` : '';

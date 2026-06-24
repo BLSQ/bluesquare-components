@@ -10,17 +10,17 @@ import Autocomplete, {
 } from '@mui/material/Autocomplete';
 import Box from '@mui/material/Box';
 import { useSafeIntl } from '../../../localization/useSafeIntl';
+import { IntlMessage } from '../../../types/types';
 import { useStyles } from '../styles';
+import { MESSAGES } from './messages';
 import { TextInput } from './TextInput';
+import { useRenderTagsWithDisabled } from './useRenderTagsWithDisabled';
 import {
     defaultRenderTags,
     getExtraProps,
     getOption,
     defaultRenderOption,
 } from './utils';
-import { MESSAGES } from './messages';
-import { IntlMessage } from '../../../types/types';
-import { useRenderTagsWithDisabled } from './useRenderTagsWithDisabled';
 
 type Props = {
     keyValue: string;
@@ -96,6 +96,7 @@ export const SingleSelect: FunctionComponent<Props> = ({
             }
         }
         return tempErrors;
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value, options, errors, loading, hasValue, useBuiltInErrors]);
 
     const fixedValue = useMemo(
@@ -105,6 +106,7 @@ export const SingleSelect: FunctionComponent<Props> = ({
 
     const handleChange = useCallback(
         (_, newValue) => onChange(newValue?.value ?? null),
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         [onChange, returnFullObject],
     );
 
@@ -115,6 +117,7 @@ export const SingleSelect: FunctionComponent<Props> = ({
     );
     const handleInputChange = useCallback(
         (_, newInputValue) => freeSolo && onChange(newInputValue),
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         [onChange, returnFullObject],
     );
 

@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import Box from '@mui/material/Box';
-import MenuItem from '@mui/material/MenuItem';
-import { makeStyles } from '@mui/styles';
-import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import { makeStyles } from '@mui/styles';
 import classNames from 'classnames';
 import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { MESSAGES } from './messages';
@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
 type Props = {
     rowsPerPage: number;
     rowsPerPageOptions: any[];
-    selectRowsPerPage: Function;
+    selectRowsPerPage: (rowsPerPage: number) => void;
 };
 
 export const PageRowSelect: FunctionComponent<Props> = ({

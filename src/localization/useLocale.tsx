@@ -1,4 +1,3 @@
-import moment from 'moment';
 import React, {
     createContext,
     useContext,
@@ -6,6 +5,7 @@ import React, {
     useMemo,
     useState,
 } from 'react';
+import moment from 'moment';
 import { LangOptions } from '../components/inputs/PhoneInput/types';
 import { longDateFormats } from './constants';
 

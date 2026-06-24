@@ -5,11 +5,11 @@ import { MuiWidth } from '../../Modal/SimpleModal';
 declare const modalWithButton: React.FunctionComponent<{
     label: IntlMessage;
     id?: string | undefined;
-    onChange: (logic?: JsonLogicTree) => void;
     maxWidth?: MuiWidth | undefined;
+    onChange: (logic?: JsonLogicTree) => void;
     dataTestId?: string | undefined;
-    fields: Fields;
     initialLogic?: JsonLogicTree | undefined;
+    fields: Fields;
     InfoPopper?: React.ReactNode;
 } & {
     defaultOpen?: boolean;

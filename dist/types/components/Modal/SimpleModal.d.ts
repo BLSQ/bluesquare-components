@@ -1,4 +1,4 @@
-import { FunctionComponent, ReactNode } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 import { SxProps } from '@mui/material';
 import { IntlMessage } from '../../types/types';
 export type MuiWidth = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
@@ -17,11 +17,11 @@ export type SimpleDialogProps = {
     backdropClick?: boolean;
     sx?: SxProps;
     slotProps?: {
-        backdrop?: Function | Record<string, any>;
-        container?: Function | Record<string, any>;
-        paper?: Function | Record<string, any>;
-        root?: Function | Record<string, any>;
-        transition?: Function | Record<string, any>;
+        backdrop?: (event: React.MouseEvent<HTMLDivElement>) => void | Record<string, any>;
+        container?: (event: React.MouseEvent<HTMLDivElement>) => void | Record<string, any>;
+        paper?: (event: React.MouseEvent<HTMLDivElement>) => void | Record<string, any>;
+        root?: (event: React.MouseEvent<HTMLDivElement>) => void | Record<string, any>;
+        transition?: (event: React.MouseEvent<HTMLDivElement>) => void | Record<string, any>;
     };
 };
 export declare const SimpleModal: FunctionComponent<SimpleDialogProps>;

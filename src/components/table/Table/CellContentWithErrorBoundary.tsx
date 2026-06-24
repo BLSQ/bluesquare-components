@@ -1,9 +1,9 @@
+import React, { ReactNode } from 'react';
 import { Box } from '@mui/material';
 import { withStyles } from '@mui/styles';
-import React, { ReactNode } from 'react';
 import { injectIntl } from '../../../localization/injectIntl';
-import { MESSAGES } from './messages';
 import { PatchIntlShape } from '../../../types/types';
+import { MESSAGES } from './messages';
 
 const styles = theme => ({
     errorContainer: {

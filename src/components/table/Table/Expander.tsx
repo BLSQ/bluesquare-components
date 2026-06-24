@@ -1,7 +1,7 @@
 import React, { FunctionComponent, SetStateAction } from 'react';
-import { Tooltip, IconButton } from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { Tooltip, IconButton } from '@mui/material';
 import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { MESSAGES } from './messages';
 

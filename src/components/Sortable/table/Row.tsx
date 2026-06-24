@@ -1,7 +1,7 @@
 import React, { ReactNode, FunctionComponent } from 'react';
-import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 import { TableRow, IconButton, TableCell } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 

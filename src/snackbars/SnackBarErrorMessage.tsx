@@ -1,6 +1,6 @@
+import React, { FunctionComponent } from 'react';
 import { Button, Tooltip } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import React, { FunctionComponent } from 'react';
 import { useSnackbar } from 'notistack';
 import { useSafeIntl } from '../localization/useSafeIntl';
 import { commonStyles } from '../styles/iaso/common';

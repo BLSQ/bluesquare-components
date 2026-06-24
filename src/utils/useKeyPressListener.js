@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 // Shared ref to track active key listeners across all hook instances
 const activeKeys = new Set();
@@ -35,6 +35,7 @@ export const useKeyPressListener = key => {
                 document.removeEventListener('blur', disable);
             }
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [key, activeKeys, isEnabled]);
 
     return isEnabled;

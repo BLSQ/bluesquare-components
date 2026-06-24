@@ -9,13 +9,10 @@ import {
 } from '@react-awesome-query-builder/mui';
 import isEmpty from 'lodash/isEmpty';
 
-import { useTranslatedConfig } from './useTranslatedConfig';
 import { QueryBuilderListToReplace } from '../types';
+import { useTranslatedConfig } from './useTranslatedConfig';
 
-type getHumanReadableJsonLogicReturnFn = (
-    // eslint-disable-next-line no-unused-vars
-    logic?: JsonLogicTree,
-) => ReactNode;
+type getHumanReadableJsonLogicReturnFn = (logic?: JsonLogicTree) => ReactNode;
 
 const queryValue: JsonGroup = { id: QbUtils.uuid(), type: 'group' };
 
@@ -60,12 +57,14 @@ const withListToReplace = (
 
     return initialQuery.split(term).map((substring, index) => {
         if (index % 2 === 0)
+            // eslint-disable-next-line react/no-array-index-key
             return <Fragment key={index}>{substring}</Fragment>;
         return (
             <span
                 style={{
                     color: getColor(substring, listToReplace),
                 }}
+                // eslint-disable-next-line react/no-array-index-key
                 key={index}
             >
                 {substring}

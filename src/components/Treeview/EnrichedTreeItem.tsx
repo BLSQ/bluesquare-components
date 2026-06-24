@@ -1,10 +1,3 @@
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import CheckBoxIcon from '@mui/icons-material/CheckBox';
-import CheckBoxOutlineBlankOutlinedIcon from '@mui/icons-material/CheckBoxOutlineBlankOutlined';
-import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox';
-import { makeStyles } from '@mui/styles';
-import { TreeItem } from '@mui/x-tree-view';
 import React, {
     FunctionComponent,
     ReactNode,
@@ -12,6 +5,13 @@ import React, {
     useEffect,
     useRef,
 } from 'react';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import CheckBoxOutlineBlankOutlinedIcon from '@mui/icons-material/CheckBoxOutlineBlankOutlined';
+import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox';
+import { makeStyles } from '@mui/styles';
+import { TreeItem } from '@mui/x-tree-view';
 import { useChildrenData } from './requests';
 
 const styles = theme => ({

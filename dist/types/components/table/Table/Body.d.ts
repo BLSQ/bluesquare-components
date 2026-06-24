@@ -13,17 +13,17 @@ import { FunctionComponent } from 'react';
  * @param {Function} [props.cellProps]
  */
 type Props = {
-    getTableBodyProps: Function;
-    prepareRow: Function;
+    getTableBodyProps: () => Record<string, any>;
+    prepareRow: (row: any) => void;
     page?: any[];
     sortBy?: any[];
     rowsPerPage?: number;
-    subComponent?: Function | Record<string, any>;
+    subComponent?: any;
     onRowClick?: (row?: any, event?: any) => void;
-    rowProps?: Function;
-    cellProps?: Function;
+    rowProps?: (row: any) => Record<string, any>;
+    cellProps?: (cell: any) => Record<string, any>;
     expanded?: Record<string, any>;
-    getObjectId?: Function;
+    getObjectId?: (obj: any) => string;
 };
 export declare const Body: FunctionComponent<Props>;
 export {};

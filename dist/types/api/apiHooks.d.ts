@@ -1,7 +1,7 @@
 import { MutationFunction, QueryFunction, QueryKey, UseMutationOptions, UseMutationResult, UseQueryOptions, UseQueryResult } from 'react-query';
+import { EventDispatcher } from '../snackbars/EventDispatcher';
 import { IntlMessage } from '../types/types';
 import { SnackMutationDict, SnackQueryDict } from './types';
-import { EventDispatcher } from '../snackbars/EventDispatcher';
 /**
  *
  * @param dispatcher: singleton of EventDispatcher

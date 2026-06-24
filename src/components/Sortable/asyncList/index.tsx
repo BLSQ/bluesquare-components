@@ -2,9 +2,9 @@ import React, { FC } from 'react';
 import { RestrictToVerticalAxis } from '@dnd-kit/abstract/modifiers';
 import { DragDropProvider } from '@dnd-kit/react';
 import { List, SxProps, Theme } from '@mui/material';
-import { useOnDragEnd } from './useOnDragEnd';
 import { SortableListItem } from './SortableListItem';
 import { RenderAsyncListItemProps } from './types';
+import { useOnDragEnd } from './useOnDragEnd';
 
 interface ItemType {
     id: number | string;

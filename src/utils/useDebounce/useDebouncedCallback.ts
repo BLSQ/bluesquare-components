@@ -47,8 +47,9 @@ export interface ControlFunctions<ReturnT> {
  * Subsequent calls to the debounced function return the result of the last func invocation.
  * Note, that if there are no previous invocations you will get undefined. You should check it in your code properly.
  */
-export interface DebouncedState<T extends (...args: any) => ReturnType<T>>
-    extends ControlFunctions<ReturnType<T>> {
+export interface DebouncedState<
+    T extends (...args: any) => ReturnType<T>,
+> extends ControlFunctions<ReturnType<T>> {
     (...args: Parameters<T>): ReturnType<T> | undefined;
 }
 
@@ -307,11 +308,13 @@ export default function useDebouncedCallback<
         func.cancel = () => {
             const hadTimer = timerId.current;
             if (hadTimer) {
-                useRAF
-                    ? //@ts-ignore
-                      cancelAnimationFrame(timerId.current)
-                    : //@ts-ignore
-                      clearTimeout(timerId.current);
+                if (useRAF) {
+                    //@ts-ignore
+                    cancelAnimationFrame(timerId.current);
+                } else {
+                    //@ts-ignore
+                    clearTimeout(timerId.current);
+                }
             }
             lastInvokeTime.current = 0;
             //@ts-ignore

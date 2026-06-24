@@ -1,6 +1,5 @@
-/* eslint-disable camelcase */
-import { Button, ButtonProps } from '@mui/material';
 import React, { FunctionComponent, ReactNode } from 'react';
+import { Button, ButtonProps } from '@mui/material';
 import { LinkProps } from 'react-router-dom';
 import { LinkWithLocation } from './LinkWithLocation';
 
@@ -53,7 +52,6 @@ export const LinkButton: FunctionComponent<Props> = props => {
             <Button
                 variant="contained"
                 color="primary"
-                // eslint-disable-next-line react/jsx-props-no-spreading
                 {...buttonProps}
                 className={buttonClassName}
                 onClick={() => null}

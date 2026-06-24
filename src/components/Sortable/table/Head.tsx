@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
-import classNames from 'classnames';
 import { TableRow, TableHead, TableCell } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import classNames from 'classnames';
 import { Column } from '../../table/Table/types';
 
 type Props = {

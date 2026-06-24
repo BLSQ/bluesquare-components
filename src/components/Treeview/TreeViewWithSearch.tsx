@@ -4,11 +4,11 @@ import React, {
     useCallback,
     useState,
 } from 'react';
+import { IntlMessage } from '../../types/types';
 import { DynamicSelect } from './DynamicSelect';
 import { IasoTreeView } from './IasoTreeView';
 import { MESSAGES } from './messages';
 import { adaptMap } from './utils';
-import { IntlMessage } from '../../types/types';
 
 const formatInitialSelectedData = selectedData => {
     if (!selectedData) return [];
@@ -171,6 +171,7 @@ export const TreeViewWithSearch: FunctionComponent<Props> = ({
             }
             setScrollIntoView(currentId);
         },
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         [
             parseNodeIds,
             onNodeSelect,

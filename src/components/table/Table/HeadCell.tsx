@@ -1,7 +1,7 @@
 import React, { FunctionComponent, isValidElement } from 'react';
-import { makeStyles } from '@mui/styles';
 import TableCell from '@mui/material/TableCell';
 import TableSortLabel from '@mui/material/TableSortLabel';
+import { makeStyles } from '@mui/styles';
 import classNames from 'classnames';
 import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { MESSAGES } from './messages';
@@ -49,9 +49,9 @@ const useStyles = makeStyles(theme => ({
 type Props = {
     column: Record<string, any>;
     columnsProps: Record<string, any>;
-    setSortBy: Function;
+    setSortBy: (sort: { desc: boolean; id: any }[]) => void;
     multiSortEnabled: boolean;
-    sortBy: any[];
+    sortBy: { desc: boolean; id: any }[];
     isLastCell: boolean;
 };
 

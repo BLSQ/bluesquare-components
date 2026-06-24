@@ -4,6 +4,7 @@ import React, {
     useCallback,
     useState,
 } from 'react';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import {
     Box,
     Button,
@@ -16,15 +17,14 @@ import {
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { FormattedMessage } from 'react-intl';
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import { rawTheme } from '../../styles/iaso/theme';
 import { useSafeIntl } from '../../localization/useSafeIntl';
-import { LoadingSpinner } from '../LoadingSpinner';
-import { SearchInput } from '../inputs/SearchInput';
-import { TreeViewResultsCountSelect } from './TreeViewResultsCountSelect';
-import { useTreeviewSearch } from './requests';
-import { MESSAGES } from './messages';
+import { rawTheme } from '../../styles/iaso/theme';
 import { IntlMessage } from '../../types/types';
+import { SearchInput } from '../inputs/SearchInput';
+import { LoadingSpinner } from '../LoadingSpinner';
+import { MESSAGES } from './messages';
+import { useTreeviewSearch } from './requests';
+import { TreeViewResultsCountSelect } from './TreeViewResultsCountSelect';
 
 const useStyles = makeStyles(theme => ({
     root: {

@@ -1,14 +1,13 @@
+import React, { FunctionComponent, useCallback } from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import isEqual from 'lodash/isEqual';
-import React, { FunctionComponent, useCallback } from 'react';
 import { useSafeIntl } from '../../../localization/useSafeIntl';
-import { SelectionSpeedDials } from '../SelectionSpeedDials';
-import { MESSAGES } from './messages';
-
 import {
     defaultSelectionActions,
     selectionInitialState,
 } from '../../../utils/tableUtils';
+import { SelectionSpeedDials } from '../SelectionSpeedDials';
+import { MESSAGES } from './messages';
 
 const onSelect = ({
     isSelected,
@@ -58,7 +57,7 @@ const getSelectionCol = (
     setTableSelection,
     count,
     formatMessage,
-    getIsSelectionDisabled = row => false,
+    getIsSelectionDisabled = _row => false,
 ) => ({
     Header: formatMessage(MESSAGES.selection),
     accessor: 'selected',
@@ -76,6 +75,7 @@ const getSelectionCol = (
                     count,
                 });
             },
+            // eslint-disable-next-line react-hooks/exhaustive-deps
             [selection, setTableSelection, count, settings.cell.row.original],
         );
         const isDisabled = getIsSelectionDisabled(settings.cell.row.original);
@@ -115,7 +115,11 @@ type Props = {
     selectAllCount?: number;
     multiSelect?: boolean;
     selectionActions?: any[];
-    setTableSelection?: Function;
+    setTableSelection?: (
+        selectionType: string,
+        items?: any[],
+        totalCount?: number,
+    ) => void;
     selection?: object;
     selectionActionMessage?: string;
 };

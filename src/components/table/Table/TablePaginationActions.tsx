@@ -1,17 +1,17 @@
 import React, { FunctionComponent } from 'react';
-import { makeStyles } from '@mui/styles';
-import IconButton from '@mui/material/IconButton';
-import Box from '@mui/material/Box';
 import FirstPageIcon from '@mui/icons-material/FirstPage';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import LastPageIcon from '@mui/icons-material/LastPage';
+import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
+import { makeStyles } from '@mui/styles';
 import classNames from 'classnames';
 import { useSafeIntl } from '../../../localization/useSafeIntl';
-import { PageSelect } from './PageSelect';
-import { PageRowSelect } from './PageRowSelect';
 import { Count } from './Count';
 import { MESSAGES } from './messages';
+import { PageRowSelect } from './PageRowSelect';
+import { PageSelect } from './PageSelect';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -30,11 +30,11 @@ const useStyles = makeStyles(theme => ({
 type Props = {
     pages: number;
     count: number;
-    onPageChange: Function;
+    onPageChange: (page: number) => void;
     pageIndex: number;
     rowsPerPage: number;
     rowsPerPageOptions: any[];
-    selectRowsPerPage: Function;
+    selectRowsPerPage: (rowsPerPage: number) => void;
     countOnTop: boolean;
     selectCount: number;
 };

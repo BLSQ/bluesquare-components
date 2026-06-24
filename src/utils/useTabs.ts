@@ -5,8 +5,8 @@ import {
     useMemo,
     useState,
 } from 'react';
-import { Optional } from '../types/types';
 import { useRedirectToReplace } from '../Routing/redirections';
+import { Optional } from '../types/types';
 
 type UseTabsParams<T> = {
     params?: Record<string, Optional<string>>;

@@ -1,12 +1,11 @@
-/* eslint-disable camelcase */
 import { ReactElement } from 'react';
 import { PartialBy } from '../../../types/types';
 
 export type ColumnWithAccessor = {
     Header: string | ReactElement;
-    // eslint-disable-next-line no-unused-vars
+
     accessor: string | ((row: Record<string, any>) => unknown);
-    // eslint-disable-next-line no-unused-vars
+
     Cell?: (s: any) => ReactElement | string;
 };
 
@@ -58,5 +57,4 @@ export type Setting<T> = {
     row: Row<T>;
 };
 
-// eslint-disable-next-line no-unused-vars
 export type RenderCell = (settings: Record<string, any>) => ReactElement;

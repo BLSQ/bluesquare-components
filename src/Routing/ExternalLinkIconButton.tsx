@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from 'react';
 import { SvgIconComponent } from '@mui/icons-material';
-import { IntlMessage } from '../types/types';
 import {
     IconButton,
     IconButtonBuiltInIcon,
 } from '../components/buttons/IconButton';
+import { IntlMessage } from '../types/types';
 
 type Props = {
     url: string;

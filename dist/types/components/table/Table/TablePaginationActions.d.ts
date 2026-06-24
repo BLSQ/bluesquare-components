@@ -2,11 +2,11 @@ import { FunctionComponent } from 'react';
 type Props = {
     pages: number;
     count: number;
-    onPageChange: Function;
+    onPageChange: (page: number) => void;
     pageIndex: number;
     rowsPerPage: number;
     rowsPerPageOptions: any[];
-    selectRowsPerPage: Function;
+    selectRowsPerPage: (rowsPerPage: number) => void;
     countOnTop: boolean;
     selectCount: number;
 };

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
+import Add from '@mui/icons-material/Add';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { IconButton, Box, List, Grid } from '@mui/material';
-import { withStyles } from '@mui/styles';
+import Fab from '@mui/material/Fab';
 import ListItem from '@mui/material/ListItem';
 import OutlinedInput from '@mui/material/OutlinedInput';
-import Fab from '@mui/material/Fab';
-import DeleteIcon from '@mui/icons-material/Delete';
-import Add from '@mui/icons-material/Add';
-import { addPositionIndex, removePositionIndex } from '../../../utils/index';
+import { withStyles } from '@mui/styles';
 import { commonStyles } from '../../../styles/iaso/common';
+import { addPositionIndex, removePositionIndex } from '../../../utils/index';
 
 const styles = theme => ({
     ...commonStyles(theme),
@@ -51,7 +51,7 @@ const styles = theme => ({
 });
 
 type Props = {
-    updateList: Function;
+    updateList: (fieldList: any[]) => void;
     baseId: any;
     classes: Record<string, string>;
     label?: string;
@@ -67,7 +67,6 @@ class ArrayFieldInput extends Component<Props, State> {
         };
     }
 
-    // eslint-disable-next-line camelcase
     UNSAFE_componentWillReceiveProps(newProps) {
         this.setState({
             fieldList: addPositionIndex(newProps.fieldList || []),

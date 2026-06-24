@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react';
 import Add from '@mui/icons-material/Add';
 import { Button } from '@mui/material';
-import { commonStyles } from '../../../styles/iaso/common';
-import { useSafeIntl } from '../../../localization/useSafeIntl';
-import { MESSAGES } from './messages';
 import { makeStyles } from '@mui/styles';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
+import { commonStyles } from '../../../styles/iaso/common';
 import { IntlMessage } from '../../../types/types';
+import { MESSAGES } from './messages';
 
 const useStyles = makeStyles(theme => ({
     ...commonStyles(theme),

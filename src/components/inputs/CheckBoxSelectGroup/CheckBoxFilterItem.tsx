@@ -36,6 +36,7 @@ export const CheckBoxFilterItem: FunctionComponent<Props> = ({
     required = false,
     disabled = false,
 }) => {
+    const newValue = filterState.filters[keyValue];
     const handleChange = useCallback(
         (_, value) => {
             if (value) {
@@ -68,12 +69,8 @@ export const CheckBoxFilterItem: FunctionComponent<Props> = ({
                 );
             }
         },
-        [
-            option,
-            filterState.handleChange,
-            filterState.filters[keyValue],
-            keyValue,
-        ],
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        [option, filterState.handleChange, newValue, keyValue],
     );
 
     const { checkBoxValue, handleCheckboxChange } = useCheckBoxFilter({

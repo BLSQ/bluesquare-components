@@ -1,6 +1,6 @@
+import { useCallback } from 'react';
 import { arrayMove } from '@dnd-kit/helpers';
 import { isSortable } from '@dnd-kit/react/sortable';
-import { useCallback } from 'react';
 
 export const useOnDragEnd = <T>(
     items: T[],

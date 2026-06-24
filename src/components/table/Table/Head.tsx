@@ -13,7 +13,7 @@ import { HeadCell } from './HeadCell';
 
 type Props = {
     headerGroups?: any[];
-    setSortBy?: Function;
+    setSortBy?: (sort: { desc: boolean; id: any }[]) => void;
     sortBy?: any[];
     multiSortEnabled: boolean;
 };

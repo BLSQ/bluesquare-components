@@ -8,15 +8,14 @@ import {
 
 import { useSafeIntl } from '../../../localization/useSafeIntl';
 
+import { IntlMessage } from '../../../types/types';
 import { ConfirmCancelModal } from '../../Modal/ConfirmCancelModal';
 import { makeFullModal } from '../../Modal/ModalWithButton';
+import { MuiWidth } from '../../Modal/SimpleModal';
+import { MESSAGES } from '../messages';
+import { JsonLogicEditor } from './JsonLogicEditor';
 import { QueryBuilder } from './QueryBuilder';
 import { TriggerModal } from './TriggerModal';
-import { JsonLogicEditor } from './JsonLogicEditor';
-
-import { IntlMessage } from '../../../types/types';
-import { MESSAGES } from '../messages';
-import { MuiWidth } from '../../Modal/SimpleModal';
 
 type Props = {
     label: IntlMessage;
@@ -26,7 +25,7 @@ type Props = {
     closeDialog: () => void;
     initialLogic?: JsonLogicTree;
     fields: Fields;
-    // eslint-disable-next-line no-unused-vars
+
     onChange: (logic?: JsonLogicTree) => void;
     InfoPopper?: ReactNode;
     maxWidth?: MuiWidth;

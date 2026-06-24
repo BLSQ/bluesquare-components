@@ -1,19 +1,21 @@
-import ClearIcon from '@mui/icons-material/Clear';
-import Autocomplete, {
-    AutocompleteRenderGetTagProps,
-} from '@mui/material/Autocomplete';
-import Box from '@mui/material/Box';
 import React, {
     FunctionComponent,
     ReactNode,
     useCallback,
     useMemo,
 } from 'react';
-import { useKeyPressListener } from '../../../utils/useKeyPressListener';
+import ClearIcon from '@mui/icons-material/Clear';
+import Autocomplete, {
+    AutocompleteRenderGetTagProps,
+} from '@mui/material/Autocomplete';
+import Box from '@mui/material/Box';
 import { useSafeIntl } from '../../../localization/useSafeIntl';
-import { MESSAGES } from './messages';
+import { IntlMessage } from '../../../types/types';
+import { useKeyPressListener } from '../../../utils/useKeyPressListener';
 import { useStyles } from '../styles';
+import { MESSAGES } from './messages';
 import { TextInput } from './TextInput';
+import { useRenderTagsWithDisabled } from './useRenderTagsWithDisabled';
 import {
     defaultRenderTags,
     getExtraProps,
@@ -21,8 +23,6 @@ import {
     getOption,
     defaultRenderOption,
 } from './utils';
-import { IntlMessage } from '../../../types/types';
-import { useRenderTagsWithDisabled } from './useRenderTagsWithDisabled';
 
 type Props = {
     keyValue: string;
@@ -119,6 +119,7 @@ export const MultiSelect: FunctionComponent<Props> = ({
             });
         }
         return tempErrors;
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [
         value,
         options,
@@ -137,6 +138,7 @@ export const MultiSelect: FunctionComponent<Props> = ({
             return valuesList.map(v => getOption(v, options)).filter(o => o);
         }
         return [];
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [options, hasValue, valuesList]);
 
     const handleChange = useCallback(

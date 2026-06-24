@@ -2,9 +2,15 @@ import { FunctionComponent } from 'react';
 type Props = {
     column: Record<string, any>;
     columnsProps: Record<string, any>;
-    setSortBy: Function;
+    setSortBy: (sort: {
+        desc: boolean;
+        id: any;
+    }[]) => void;
     multiSortEnabled: boolean;
-    sortBy: any[];
+    sortBy: {
+        desc: boolean;
+        id: any;
+    }[];
     isLastCell: boolean;
 };
 export declare const HeadCell: FunctionComponent<Props>;

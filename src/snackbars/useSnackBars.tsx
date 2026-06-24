@@ -1,12 +1,12 @@
+import React, { useEffect } from 'react';
 import { useSnackbar } from 'notistack';
-import React, { useCallback, useEffect, useMemo } from 'react';
 
 import { useSafeIntl } from '../localization/useSafeIntl';
+import { IntlMessage } from '../types/types';
 import { EventDispatcher } from './EventDispatcher';
 import MESSAGES from './messages';
 import SnackBarButton from './SnackBarButton';
 import SnackBarErrorMessage from './SnackBarErrorMessage';
-import { IntlMessage } from '../types/types';
 
 type Notification = {
     key: string;
@@ -89,5 +89,6 @@ export const useSnackBars = (dispatcher: EventDispatcher) => {
         return () => {
             dispatcher.removeEventListener('snackbar', handleSnackbarEvent);
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [enqueueSnackbar, translateMessage]);
 };

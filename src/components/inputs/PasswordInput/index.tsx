@@ -1,9 +1,9 @@
 import React, { useState, FunctionComponent } from 'react';
-import { OutlinedInput, Tooltip, IconButton } from '@mui/material';
 import Edit from '@mui/icons-material/RemoveRedEye';
+import { OutlinedInput, Tooltip, IconButton } from '@mui/material';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { FormControl } from '../FormControl';
 import { InputLabel } from '../InputLabel';
-import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { MESSAGES } from './messages';
 import { useStyles } from './styles';
 

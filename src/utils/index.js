@@ -1,31 +1,3 @@
-export function substituteVars(obj, subs, transform = x => x) {
-    // Replace every occurence of a placeholder in a value of every property of the object.
-    // The syntax for the placeholder is `${<varname>}`
-    // An optional transform function can pretransform the substitute
-    // e.g. `{foo: "${bar}"} => {foo: "baz"}` if `subs = {bar: "baz"}`
-    // We use json.stringify -> json.parse to clone the object and replace values.
-    // See the test for a complete example.
-    return JSON.parse(
-        JSON.stringify(obj, (key, value) => {
-            if (typeof value === 'string') {
-                const match = value.match(/\$\{([a-zA-Z0-9_-]+)\}/);
-                if (match) {
-                    const k = match[1];
-                    if (!subs.hasOwnProperty(k)) {
-                        console.warn(
-                            'Cannot find match in substitudes for value:',
-                            value,
-                        );
-                    } else {
-                        return transform(subs[k]);
-                    }
-                }
-            }
-            return value;
-        }),
-    );
-}
-
 export const capitalize = (text, keepEndCase = false) =>
     text
         .split(' ')

@@ -15,25 +15,25 @@ import {
     DragOverlay,
     Active,
 } from '@dnd-kit/core';
+import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
 import {
     arrayMove,
     SortableContext,
     sortableKeyboardCoordinates,
     verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
-import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
 
 import { List, ListItem, SxProps } from '@mui/material';
+import { SxStyles } from '../../../styles/iaso/types';
+import { Item } from '../types';
 import { SortableItem } from './Item';
 import { Placeholder } from './Placeholder';
 
 import { RenderProps } from './types';
-import { Item } from '../types';
-import { SxStyles } from '../../../styles/iaso/types';
 
 type Props = {
     items: any[];
-    // eslint-disable-next-line no-unused-vars
+
     onChange: (items: any[]) => void;
     RenderItem: FunctionComponent<RenderProps>;
     handle?: boolean;

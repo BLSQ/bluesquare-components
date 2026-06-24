@@ -7,7 +7,7 @@ declare const onSelect: ({ isSelected, item, selection, setTableSelection, count
     count: any;
 }) => void;
 declare const isItemSelected: (item: any, selection: any, selector?: string) => boolean;
-declare const getSelectionCol: (selection: any, setTableSelection: any, count: any, formatMessage: any, getIsSelectionDisabled?: (row: any) => boolean) => {
+declare const getSelectionCol: (selection: any, setTableSelection: any, count: any, formatMessage: any, getIsSelectionDisabled?: (_row: any) => boolean) => {
     Header: any;
     accessor: string;
     id: string;
@@ -35,7 +35,7 @@ type Props = {
     selectAllCount?: number;
     multiSelect?: boolean;
     selectionActions?: any[];
-    setTableSelection?: Function;
+    setTableSelection?: (selectionType: string, items?: any[], totalCount?: number) => void;
     selection?: object;
     selectionActionMessage?: string;
 };

@@ -4,7 +4,7 @@ export function createUrl(params, url = '/charts') {
     Object.keys(params).forEach(key => {
         const value = params[key];
         if (value !== undefined && value !== null && value !== '') {
-            url += `/${key}/${value}`; // eslint-disable-line
+            url += `/${key}/${value}`;
         }
     });
     return url;

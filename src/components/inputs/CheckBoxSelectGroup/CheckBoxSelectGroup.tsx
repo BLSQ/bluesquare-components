@@ -47,6 +47,7 @@ export const CheckBoxSelectGroup: FunctionComponent<Props> = ({
         if (Boolean(filterState.filters[keyValue])) {
             setShowAll(true);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [filterState.filters[keyValue]]);
 
     return (
@@ -60,7 +61,7 @@ export const CheckBoxSelectGroup: FunctionComponent<Props> = ({
             {(options ?? []).map((option, index) => {
                 if (showAll || index < defaultItemCount) {
                     return (
-                        <Grid item xs={12}>
+                        <Grid item xs={12} key={option.value}>
                             <CheckBoxFilterItem
                                 keyValue={keyValue}
                                 initialValue={(

@@ -3,9 +3,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { makeRedirectionUrl } from './utils';
 
 export type RedirectFn = (
-    // eslint-disable-next-line no-unused-vars
     url: string,
-    // eslint-disable-next-line no-unused-vars
+
     params?: Record<string, string | undefined>,
 ) => void;
 

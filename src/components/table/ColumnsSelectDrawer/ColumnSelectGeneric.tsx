@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import ArrowBack from '@mui/icons-material//ArrowBack';
+import Close from '@mui/icons-material//Close';
+import ViewColumnIcon from '@mui/icons-material//ViewColumn';
 import {
     Box,
     Button,
@@ -8,16 +11,13 @@ import {
     InputBase,
     Tooltip,
 } from '@mui/material';
-import Close from '@mui/icons-material//Close';
-import ArrowBack from '@mui/icons-material//ArrowBack';
-import ViewColumnIcon from '@mui/icons-material//ViewColumn';
-import { IconButton as IconButtonComponent } from '../../buttons/IconButton';
-import { MESSAGES } from './messages';
-import { ColumnFromReactTable } from '../Table';
+import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { useToggle } from '../../../utils/useToggle';
+import { IconButton as IconButtonComponent } from '../../buttons/IconButton';
+import { ColumnFromReactTable } from '../Table';
+import { MESSAGES } from './messages';
 import { OptionsList } from './OptionList';
 import { useStyles } from './styles';
-import { useSafeIntl } from '../../../localization/useSafeIntl';
 
 const filterResults = (searchString, columns: ColumnFromReactTable[]) => {
     if (!searchString) {

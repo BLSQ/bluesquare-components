@@ -1,5 +1,7 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 
+import { AutocompleteRenderGetTagProps } from '@mui/material/Autocomplete';
+import { IntlMessage } from '../../../types/types';
 import { MESSAGES } from './messages';
 import { MultiSelect } from './multi';
 import { SingleSelect } from './single';
@@ -9,8 +11,6 @@ import {
     defaultRenderTags,
     renderTagsWithTooltip,
 } from './utils';
-import { IntlMessage } from '../../../types/types';
-import { AutocompleteRenderGetTagProps } from '@mui/material/Autocomplete';
 
 /**
  * Select Component - A versatile dropdown selector with single and multi-select modes
@@ -205,7 +205,6 @@ const SelectCustom: FunctionComponent<Props> = ({
             freeSolo={freeSolo}
             dataTestId={dataTestId}
             useBuiltInErrors={useBuiltInErrors}
-            // eslint-disable-next-line react/jsx-props-no-spreading
             {...rest}
         />
     ) : (
@@ -233,7 +232,6 @@ const SelectCustom: FunctionComponent<Props> = ({
             freeSolo={freeSolo}
             dataTestId={dataTestId}
             useBuiltInErrors={useBuiltInErrors}
-            // eslint-disable-next-line react/jsx-props-no-spreading
             {...rest}
         />
     );

@@ -7,7 +7,6 @@ import {
 import { mapStyles } from './map';
 
 export type CommonStyles = {
-    // eslint-disable-next-line no-unused-vars
     (theme: Theme): {
         [key: string]: CSSProperties;
     };

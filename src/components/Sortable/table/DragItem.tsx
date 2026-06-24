@@ -1,14 +1,14 @@
 import React, { FunctionComponent } from 'react';
-import { makeStyles } from '@mui/styles';
-import { Table, TableBody, TableRow, TableCell, Box } from '@mui/material';
-import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
-import classNames from 'classnames';
 import { Active } from '@dnd-kit/core';
+import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
+import { Table, TableBody, TableRow, TableCell, Box } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import classNames from 'classnames';
 
+import { ColumnWithAccessor } from '../../table/Table/types';
+import { Item } from '../types';
 import { SortableCells } from './Cells';
 import { Head } from './Head';
-import { Item } from '../types';
-import { ColumnWithAccessor } from '../../table/Table/types';
 
 type Props = {
     items: Item[];

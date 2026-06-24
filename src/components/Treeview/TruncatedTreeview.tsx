@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode, useRef } from 'react';
-import { TreeView } from '@mui/x-tree-view';
 import { makeStyles } from '@mui/styles';
+import { TreeView } from '@mui/x-tree-view';
 import TreeItems from './TreeItems';
 
 const alignTailIcon = { display: 'flex', alignItems: 'center' };

@@ -1,10 +1,10 @@
-import { FunctionComponent, HTMLAttributeAnchorTarget } from 'react';
+import React, { FunctionComponent, HTMLAttributeAnchorTarget } from 'react';
 import { SvgIconComponent } from '@mui/icons-material';
 import { IntlMessage } from '../../../types/types';
 export type IconButtonBuiltInIcon = 'delete' | 'filter-list' | 'call-merge' | 'remove-red-eye' | 'restore-from-trash' | 'edit' | 'history' | 'map' | 'xml' | 'dhis' | 'orgUnit' | 'refresh' | 'stop' | 'xls' | 'download' | 'globe' | 'clear' | 'clearAll';
 type Props = {
     size?: 'small' | 'medium' | 'large';
-    onClick?: () => void;
+    onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
     url?: string;
     disabled?: boolean;
     icon?: IconButtonBuiltInIcon;

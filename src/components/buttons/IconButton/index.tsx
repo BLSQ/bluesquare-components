@@ -107,7 +107,7 @@ export type IconButtonBuiltInIcon =
 
 type Props = {
     size?: 'small' | 'medium' | 'large';
-    onClick?: () => void;
+    onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
     url?: string;
     disabled?: boolean;
     icon?: IconButtonBuiltInIcon;

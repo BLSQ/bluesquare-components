@@ -139,6 +139,7 @@ export const AsyncSelect: FunctionComponent<Props> = ({
     const displayedOptions = useMemo(() => [...options], [options]);
     const shouldDisplayOptionsText =
         hasSearched && inputValue.length >= minCharBeforeQuery;
+    console.info('TEST ...:', shouldDisplayOptionsText);
     return (
         <Box>
             <Autocomplete

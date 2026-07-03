@@ -143,6 +143,8 @@ export const AsyncSelect: FunctionComponent<Props> = ({
     console.info('SHOW VALUES ...:', values);
     console.info('MULTI ...:', multi);
 
+    console.info('DISPLAYED OPTIONS ...:', displayedOptions);
+
     return (
         <Box>
             <Autocomplete
@@ -174,7 +176,7 @@ export const AsyncSelect: FunctionComponent<Props> = ({
                         : undefined
                 }
                 options={displayedOptions}
-                value={multi ? values : values.length > 0 && values[0]}
+                value={multi ? values : null}
                 getOptionLabel={option => option?.label ?? ''}
                 filterOptions={(x: any[]) => x}
                 autoComplete

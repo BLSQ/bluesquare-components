@@ -140,6 +140,9 @@ export const AsyncSelect: FunctionComponent<Props> = ({
     const shouldDisplayOptionsText =
         hasSearched && inputValue.length >= minCharBeforeQuery;
     console.info('TEST ...:', shouldDisplayOptionsText);
+    console.info('SHOW VALUES ...:', values);
+    console.info('MULTI ...:', multi);
+
     return (
         <Box>
             <Autocomplete

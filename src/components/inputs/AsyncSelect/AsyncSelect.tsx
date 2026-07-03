@@ -142,7 +142,6 @@ export const AsyncSelect: FunctionComponent<Props> = ({
     console.info('TEST ...:', shouldDisplayOptionsText);
     console.info('SHOW VALUES ...:', values);
     console.info('MULTI ...:', multi);
-
     console.info('DISPLAYED OPTIONS ...:', displayedOptions);
 
     return (

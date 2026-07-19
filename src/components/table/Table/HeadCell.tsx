@@ -25,7 +25,6 @@ const useStyles = makeStyles(theme => ({
         borderRight: `2px solid ${theme.palette.ligthGray.border}`,
         position: 'relative !important',
         overflow: 'hidden',
-        textAlign: 'center !important',
         backgroundColor: 'white !important',
     },
     lastHeaderCell: {
@@ -112,6 +111,9 @@ export const HeadCell: FunctionComponent<Props> = ({
                 classes.headerCell,
                 isLastCell && classes.lastHeaderCell,
             )}
+            // Follows the column's own alignment so a header sits over its cells, instead of the
+            // header being centred while a right-aligned column's values sit to the right.
+            align={column.align || 'left'}
             key={columnsProps.key}
         >
             {isSortable && (

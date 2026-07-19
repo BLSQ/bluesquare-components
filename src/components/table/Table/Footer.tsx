@@ -24,7 +24,7 @@ export const Footer: FunctionComponent<Props> = ({ footerGroups = [] }) => {
                     <TableRow {...footerGroupProps} key={footerGroupProps.key}>
                         {footerGroup.headers.map(column => {
                             const columnsProps = column.getFooterProps();
-                            const align = column.align || 'center';
+                            const align = column.align || 'left';
                             if (column.Footer && !column.placeholderOf) {
                                 return (
                                     <TableCell

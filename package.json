@@ -4,6 +4,11 @@
     "description": "reusable UI components for Bluesquare apps",
     "author": "Bluesquare",
     "license": "Apache-2.0",
+    "engines": {
+        "node": "22.18.0",
+        "npm": "11.13.0"
+    },
+    "packageManager": "npm@11.13.0",
     "main": "./dist/index.js",
     "files": [
         "dist"
@@ -49,9 +54,9 @@
         "eslint-plugin-prettier": "^5.4.0",
         "eslint-plugin-react": "^7.37.5",
         "eslint-plugin-react-hooks": "^5.2.0",
-        "globals": "^16.1.0",
         "fetch-mock": "^9.11.0",
         "file-loader": "^6.2.0",
+        "globals": "^16.1.0",
         "html-entities": "^2.5.2",
         "json-loader": "^0.5.7",
         "mini-css-extract-plugin": "^2.9.2",
@@ -102,10 +107,8 @@
         "@react-awesome-query-builder/mui": "^6.6.2",
         "babel-plugin-formatjs": "^10.3.18",
         "dayjs": "^1.11.10",
-        "install": "^0.13.0",
         "lodash": "^4.17.15",
         "material-ui-confirm": "^3.0.5",
-        "npm": "11.13.0",
         "react-intersection-observer": "^8.26.1",
         "react-number-format": "^5.3.1",
         "react-phone-input-material-ui": "^2.18.1",

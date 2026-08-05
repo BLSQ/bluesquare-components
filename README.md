@@ -3,12 +3,12 @@ A library of UI components to be used in [Bluesquare](https://www.bluesquarehub.
 
 ## Node.js and npm
 
-Pinned to the same versions as IASO (`node:22.18.0`, `npm@11.13.0`) via `package.json` (`engines` + `packageManager`), `.nvmrc`, and `.npmrc` (`engine-strict=true`).
+Pinned to the same versions as IASO (`node:22.18.0`, `npm@11.19.0`) via `package.json` (`engines` + `packageManager`), `.nvmrc`, and `.npmrc` (`engine-strict=true`).
 
 ```bash
 nvm install && nvm use   # or fnm/asdf
 corepack enable
-corepack prepare npm@11.13.0 --activate
+corepack prepare npm@11.19.0 --activate
 npm ci
 ```
 
@@ -47,17 +47,30 @@ run `npm i`, or `npm update bluesquare-components` to update to the latest versi
 
 ## Depend on the repository 
 
-In your application's `package.json`, add:
+In your application's `package.json`, add (IASO form):
 ```json
-"bluesquare-components":"git://github.com/BLSQ/bluesquare-components"
+"bluesquare-components": "github:BLSQ/bluesquare-components"
 ```
 
-run `npm i` to install, or `npm update bluesquare-components` to update to the latest version if you already depend on the package.
+To install or update to the latest `main` (consumers with `min-release-age=7` must bypass the cooldown for this git dependency):
 
-Be careful as the command below will work locally but cause authetication failure when run in Docker: 
-```json
-"bluesquare-components":"git://github.com/BLSQ/bluesquare-components.git#<commit-ish>"
+```bash
+npm install bluesquare-components@github:BLSQ/bluesquare-components --min-release-age=0
 ```
+
+Optional commit pin:
+
+```json
+"bluesquare-components": "github:BLSQ/bluesquare-components#<commit-sha>"
+```
+
+```bash
+npm install bluesquare-components@github:BLSQ/bluesquare-components#<commit-sha> --min-release-age=0
+```
+
+Do not use `npm update bluesquare-components` for the git dependency — it will not reliably refresh the repo and will hit the release-age gate during git prepare.
+
+Avoid `git://github.com/...` URLs (they may work locally but fail authentication in Docker/CI); prefer `github:BLSQ/bluesquare-components`.
 
 ## With Docker
 
@@ -79,7 +92,9 @@ To update the dependency:
 
 - Run `npm run build-local`
 - Build an image from the Dockerfile: `docker build --tag <library-name> .`
-- In your project, run `npm update bluesquare-components`
+- In your project, run `npm update bluesquare-components` (for a `file:` dependency)
+  or, for a `github:` dependency:
+  `npm install bluesquare-components@github:BLSQ/bluesquare-components --min-release-age=0`
 - Update your project's Docker image
 - Start the container
 

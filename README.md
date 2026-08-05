@@ -3,12 +3,12 @@ A library of UI components to be used in [Bluesquare](https://www.bluesquarehub.
 
 ## Node.js and npm
 
-Pinned to the same versions as IASO (`node:22.18.0`, `npm@11.13.0`) via `package.json` (`engines` + `packageManager`), `.nvmrc`, and `.npmrc` (`engine-strict=true`).
+Pinned to the same versions as IASO (`node:22.18.0`, `npm@11.19.0`) via `package.json` (`engines` + `packageManager`), `.nvmrc`, and `.npmrc` (`engine-strict=true`).
 
 ```bash
 nvm install && nvm use   # or fnm/asdf
 corepack enable
-corepack prepare npm@11.13.0 --activate
+corepack prepare npm@11.19.0 --activate
 npm ci
 ```
 

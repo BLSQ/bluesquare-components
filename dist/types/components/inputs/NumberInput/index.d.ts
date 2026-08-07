@@ -15,6 +15,7 @@ type Props = {
     onFocus?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement> | undefined;
     prefix?: string;
     suffix?: string;
+    currency?: string;
     decimalScale?: number;
     placeholder?: string;
     setFieldError?: (keyValue: string, message: string) => void;

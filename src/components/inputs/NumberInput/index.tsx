@@ -2,10 +2,12 @@ import React, {
     FocusEventHandler,
     FunctionComponent,
     useCallback,
+    useMemo,
 } from 'react';
 import { defineMessages } from 'react-intl';
 import { NumericFormat } from 'react-number-format';
 import { useSafeIntl } from '../../../localization/useSafeIntl';
+import { getCurrencyAffixes } from '../../../utils/currency';
 import { CustomInput } from './Input';
 
 const MESSAGES = defineMessages({
@@ -41,6 +43,7 @@ type Props = {
         | undefined;
     prefix?: string;
     suffix?: string;
+    currency?: string;
     decimalScale?: number;
     placeholder?: string;
     setFieldError?: (
@@ -71,6 +74,7 @@ export const NumberInput: FunctionComponent<Props> = ({
     max = Infinity,
     prefix = '',
     suffix = '',
+    currency,
     decimalScale = 10,
     setFieldError = () => null,
     thousandsGroupStyle = 'thousand',
@@ -109,12 +113,16 @@ export const NumberInput: FunctionComponent<Props> = ({
         },
         [max, min, required, onChange, setFieldError, keyValue, formatMessage],
     );
+    const currencyAffixes = useMemo(
+        () => (currency ? getCurrencyAffixes(currency) : undefined),
+        [currency],
+    );
     return (
         <NumericFormat
             value={value}
             disabled={disabled}
-            prefix={prefix}
-            suffix={suffix}
+            prefix={currencyAffixes?.prefix ?? prefix}
+            suffix={currencyAffixes?.suffix ?? suffix}
             customInput={CustomInput}
             onChange={() => null}
             autoComplete={autoComplete}

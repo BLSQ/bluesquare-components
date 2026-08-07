@@ -8,8 +8,8 @@ declare const modalWithButton: React.FunctionComponent<{
     maxWidth?: MuiWidth | undefined;
     onChange: (logic?: JsonLogicTree) => void;
     dataTestId?: string | undefined;
-    initialLogic?: JsonLogicTree | undefined;
     fields: Fields;
+    initialLogic?: JsonLogicTree | undefined;
     InfoPopper?: React.ReactNode;
 } & {
     defaultOpen?: boolean;

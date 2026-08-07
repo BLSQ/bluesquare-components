@@ -152,6 +152,12 @@ import {
     waitFor,
 } from './utils';
 import {
+    formatCurrencyAmount,
+    getCurrencyAffixes,
+    getCurrencyPosition,
+    getCurrencySymbol,
+} from './utils/currency';
+import {
     defaultSelectionActions,
     getColumnsHeadersInfos,
     getOrderArray,
@@ -214,6 +220,8 @@ export type {
 export type { TableComponentProps } from './components/table/Table';
 
 export type { IconButtonBuiltInIcon } from './components/buttons/IconButton';
+
+export type { CurrencyAffixPosition } from './utils/currency';
 
 export {
     AddButton,
@@ -302,9 +310,13 @@ export {
     convertObjectToUrlParams,
     defaultSelectionActions,
     english,
+    formatCurrencyAmount,
     formatThousand,
     french,
     getColumnsHeadersInfos,
+    getCurrencyAffixes,
+    getCurrencyPosition,
+    getCurrencySymbol,
     getOrderArray,
     getParamsKey,
     getSimplifiedColumns,

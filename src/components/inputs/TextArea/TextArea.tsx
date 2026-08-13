@@ -61,14 +61,11 @@ const useStyles = makeStyles(theme => ({
         },
     },
     errorText: { color: theme.palette.error.main },
-    // @ts-ignore
     disabledLabel: { backgroundColor: theme.palette.lightGray.background },
     disabledTextArea: {
         '&:hover': {
-            // @ts-ignore
             border: `1px solid rgba(0, 0, 0, 0.23)`,
         },
-        // @ts-ignore
         backgroundColor: theme.palette.lightGray.background,
     },
 }));

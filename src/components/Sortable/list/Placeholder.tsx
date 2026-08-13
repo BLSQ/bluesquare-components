@@ -15,7 +15,6 @@ const useStyles = makeStyles(theme => ({
     root: {
         padding: theme.spacing(2),
         textAlign: 'center',
-        // @ts-ignore
         backgroundColor: theme.palette.gray.background,
     },
 }));

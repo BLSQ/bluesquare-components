@@ -30,7 +30,6 @@ const useStyles = makeStyles(theme => ({
     input: {
         display: 'flex',
         alignItems: 'center',
-        // @ts-ignore
         border: `1px solid ${theme.palette.border.main}`,
         paddingTop: 12,
         paddingBottom: 12,
@@ -40,7 +39,6 @@ const useStyles = makeStyles(theme => ({
         minHeight: 56,
         cursor: 'pointer',
         '&:hover': {
-            // @ts-ignore
             borderColor: theme.palette.border.hover,
         },
     },
@@ -55,7 +53,6 @@ const useStyles = makeStyles(theme => ({
     },
     inputLabel: {
         backgroundColor: 'white',
-        // @ts-ignore
         color: theme.palette.mediumGray.main,
     },
     clear: {

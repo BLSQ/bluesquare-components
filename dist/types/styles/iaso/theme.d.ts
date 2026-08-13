@@ -1,72 +1,109 @@
-export const theme: import("@mui/material/styles").Theme;
-export namespace rawTheme {
-    namespace typography {
-        let useNextVariants: boolean;
+import type { Theme } from '@mui/material/styles';
+/** Shared shape for gray / lightGray palette entries. */
+export type GrayScalePalette = {
+    main: string;
+    border: string;
+    background: string;
+};
+export type MediumGrayPalette = {
+    main: string;
+    border: string;
+};
+export type BorderPalette = {
+    main: string;
+    hover: string;
+};
+export type YellowPalette = {
+    main: string;
+};
+declare module '@mui/material/styles' {
+    interface Palette {
+        gray: GrayScalePalette;
+        mediumGray: MediumGrayPalette;
+        lightGray: GrayScalePalette;
+        border: BorderPalette;
+        yellow: YellowPalette;
     }
-    let textColor: string;
-    namespace palette {
-        export namespace primary {
-            let main: string;
-            let secondary: string;
-            let background: string;
-        }
-        export namespace gray {
-            let main_1: string;
-            export { main_1 as main };
-            export let border: string;
-            let background_1: string;
-            export { background_1 as background };
-        }
-        export namespace mediumGray {
-            let main_2: string;
-            export { main_2 as main };
-            let border_1: string;
-            export { border_1 as border };
-        }
-        export namespace lightGray {
-            let main_3: string;
-            export { main_3 as main };
-            let border_2: string;
-            export { border_2 as border };
-            let background_2: string;
-            export { background_2 as background };
-        }
-        export namespace error {
-            let main_4: string;
-            export { main_4 as main };
-            let background_3: string;
-            export { background_3 as background };
-            export let backgroundHard: string;
-        }
-        export namespace success {
-            let main_5: string;
-            export { main_5 as main };
-            let background_4: string;
-            export { background_4 as background };
-        }
-        export namespace border_3 {
-            let main_6: string;
-            export { main_6 as main };
-            export let hover: string;
-        }
-        export { border_3 as border };
-        export namespace yellow {
-            let main_7: string;
-            export { main_7 as main };
-        }
+    interface PaletteOptions {
+        gray?: GrayScalePalette;
+        mediumGray?: MediumGrayPalette;
+        lightGray?: GrayScalePalette;
+        border?: BorderPalette;
+        yellow?: YellowPalette;
     }
-    namespace components {
-        namespace MuiInputBase {
-            namespace defaultProps {
-                let variant: string;
-            }
-        }
-        namespace MuiSelect {
-            export namespace defaultProps_1 {
-                let variant_1: string;
-                export { variant_1 as variant };
-            }
-            export { defaultProps_1 as defaultProps };
-        }
+    /** Extra fields used on primary / error / success in IASO themes. */
+    interface PaletteColor {
+        secondary?: string;
+        background?: string;
+        backgroundHard?: string;
+    }
+    interface SimplePaletteColorOptions {
+        secondary?: string;
+        background?: string;
+        backgroundHard?: string;
+    }
+    interface Theme {
+        textColor: string;
+    }
+    interface ThemeOptions {
+        textColor?: string;
     }
 }
+declare module '@mui/private-theming' {
+    interface DefaultTheme extends Theme {
+    }
+}
+export declare const rawTheme: {
+    readonly textColor: "#333";
+    readonly palette: {
+        readonly primary: {
+            readonly main: "#006699";
+            readonly secondary: "#0066cc";
+            readonly background: "#F5F5F5";
+        };
+        readonly gray: {
+            readonly main: "#666";
+            readonly border: "rgba(0,0,0,0.02)";
+            readonly background: "rgba(0,0,0,0.03)";
+        };
+        readonly mediumGray: {
+            readonly main: "#A2A2A2";
+            readonly border: "rgb(224, 224, 224)";
+        };
+        readonly lightGray: {
+            readonly main: "#F7F7F7";
+            readonly border: "rgba(0, 0, 0, 0.12)";
+            readonly background: "rgba(0, 0, 0, 0.012)";
+        };
+        readonly error: {
+            readonly main: "rgb(215, 25, 28)";
+            readonly background: "rgba(215, 25, 28, 0.2)";
+            readonly backgroundHard: "rgba(215, 25, 28, 0.7)";
+        };
+        readonly success: {
+            readonly main: "#4caf50";
+            readonly background: "rgba(76,175,80, 0.2)";
+        };
+        readonly border: {
+            readonly main: "rgba(0,0,0,0.23)";
+            readonly hover: "rgba(0,0,0,0.87)";
+        };
+        readonly yellow: {
+            readonly main: "#FFD835";
+        };
+    };
+    readonly components: {
+        readonly MuiTextField: {
+            readonly defaultProps: {
+                readonly variant: "outlined";
+            };
+        };
+        readonly MuiSelect: {
+            readonly defaultProps: {
+                readonly variant: "outlined";
+            };
+        };
+    };
+};
+declare const theme: Theme;
+export { theme };

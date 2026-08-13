@@ -46,7 +46,7 @@ const useStyles = makeStyles(theme => ({
     },
     listContainer: {
         //@ts-ignore
-        border: `1px solid ${theme.palette.ligthGray.border}`,
+        border: `1px solid ${theme.palette.lightGray.border}`,
         backgroundColor: 'white',
         borderBottomLeftRadius: theme.shape.borderRadius,
         borderBottomRightRadius: theme.shape.borderRadius,
@@ -61,7 +61,7 @@ const useStyles = makeStyles(theme => ({
     noResult: {
         backgroundColor: 'white',
         //@ts-ignore
-        border: `1px solid ${theme.palette.ligthGray.border}`,
+        border: `1px solid ${theme.palette.lightGray.border}`,
         borderBottomLeftRadius: theme.shape.borderRadius,
         borderBottomRightRadius: theme.shape.borderRadius,
         color: theme.palette.error.main,

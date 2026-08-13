@@ -19,7 +19,7 @@ type Props = {
 export const dragzoneStyle = theme => ({
     outlined: {
         border: `2px dashed ${theme.palette.mediumGray.main}`,
-        backgroundColor: theme.palette.ligthGray.main,
+        backgroundColor: theme.palette.lightGray.main,
         cursor: 'pointer',
     },
     text: {

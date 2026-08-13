@@ -34,7 +34,7 @@ const styles = theme => ({
     },
     placeholder: {
         height: 15,
-        backgroundColor: theme.palette.ligthGray.main,
+        backgroundColor: theme.palette.lightGray.main,
         borderRadius: 5,
         marginRight: theme.spacing(1),
         width: '50%',

@@ -23,7 +23,7 @@ export namespace rawTheme {
             let border_1: string;
             export { border_1 as border };
         }
-        export namespace ligthGray {
+        export namespace lightGray {
             let main_3: string;
             export { main_3 as main };
             let border_2: string;

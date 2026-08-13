@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     },
     headerCell: {
         // @ts-ignore
-        borderRight: `2px solid ${theme.palette.ligthGray.border}`,
+        borderRight: `2px solid ${theme.palette.lightGray.border}`,
         position: 'relative',
         overflow: 'hidden',
         textAlign: 'center',

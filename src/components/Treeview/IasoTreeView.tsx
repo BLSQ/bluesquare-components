@@ -10,14 +10,14 @@ import { useRootData } from './requests';
 const styles = theme => ({
     root: {
         color: theme.palette.gray.main,
-        backgroundColor: theme.palette.ligthGray.main,
+        backgroundColor: theme.palette.lightGray.main,
         borderRadius: '7px',
         maxHeight: '60vh',
         overflowY: 'scroll',
     },
     isFetching: {
         color: theme.palette.gray.main,
-        backgroundColor: theme.palette.ligthGray.main,
+        backgroundColor: theme.palette.lightGray.main,
         borderRadius: '7px',
         maxHeight: '60vh',
         overflowY: 'scroll',

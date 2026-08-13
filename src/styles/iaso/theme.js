@@ -20,7 +20,7 @@ const rawTheme = {
             main: '#A2A2A2',
             border: 'rgb(224, 224, 224)',
         },
-        ligthGray: {
+        lightGray: {
             main: '#F7F7F7',
             border: 'rgba(0, 0, 0, 0.12)',
             background: 'rgba(0, 0, 0, 0.012)',

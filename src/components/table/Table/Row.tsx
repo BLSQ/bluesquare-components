@@ -10,7 +10,6 @@ const defaultCellProps = (): Record<string, any> => ({});
 const useStyles = makeStyles(theme => ({
     row: {
         '&:nth-of-type(odd)': {
-            //@ts-ignore
             backgroundColor: theme.palette.gray.background,
         },
         '&:nth-of-type(even)': {

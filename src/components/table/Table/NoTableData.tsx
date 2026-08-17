@@ -10,7 +10,6 @@ const useStyles = makeStyles(theme => ({
     box: {
         width: '100%',
         height: theme.spacing(10),
-        // @ts-ignore
         backgroundColor: theme.palette.gray.background,
     },
 }));

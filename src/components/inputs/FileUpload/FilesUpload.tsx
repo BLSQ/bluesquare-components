@@ -35,7 +35,7 @@ export const dragzoneStyle = theme => ({
     outlined: {
         border: `2px dashed ${theme.palette.mediumGray.main}`,
         height: '100px',
-        backgroundColor: theme.palette.ligthGray.main,
+        backgroundColor: theme.palette.lightGray.main,
     },
     text: {
         color: theme.palette.mediumGray.main,

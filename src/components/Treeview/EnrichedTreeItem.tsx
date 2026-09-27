@@ -122,7 +122,12 @@ export const EnrichedTreeItem: FunctionComponent<Props> = ({
                     {makeIcon(hasCheckbox, hasBeenTicked, tickedParent)}
                 </span>
             )}
-            <span onClick={handleClick} tabIndex={0} role="button">
+            <span
+                onClick={handleClick}
+                tabIndex={0}
+                role="button"
+                style={{ fontWeight: hasBeenTicked ? 'bold' : undefined }}
+            >
                 {child}
             </span>
         </div>

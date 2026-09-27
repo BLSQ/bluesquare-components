@@ -101,6 +101,8 @@ export const EnrichedTreeItem: FunctionComponent<Props> = ({
         hasBeenTicked,
         tickedParent,
         handleClick: React.MouseEventHandler<HTMLSpanElement> = _ => null,
+        handleCheckboxClick: React.MouseEventHandler<HTMLSpanElement> = _ =>
+            null,
     ) => (
         <div
             style={{
@@ -109,7 +111,17 @@ export const EnrichedTreeItem: FunctionComponent<Props> = ({
                 verticalAlign: 'middle',
             }}
         >
-            {makeIcon(hasCheckbox, hasBeenTicked, tickedParent)}
+            {hasCheckbox && (
+                <span
+                    onClick={handleCheckboxClick}
+                    tabIndex={0}
+                    role="checkbox"
+                    aria-checked={hasBeenTicked || (tickedParent && 'mixed')}
+                    style={{ display: 'inline-flex', cursor: 'pointer' }}
+                >
+                    {makeIcon(hasCheckbox, hasBeenTicked, tickedParent)}
+                </span>
+            )}
             <span onClick={handleClick} tabIndex={0} role="button">
                 {child}
             </span>
@@ -121,9 +133,29 @@ export const EnrichedTreeItem: FunctionComponent<Props> = ({
             if (!toggleOnLabelClick) {
                 e.preventDefault();
             }
+            // With checkboxes, ticking is done via the checkbox only: clicking the
+            // label just lets MUI's TreeItem expand/collapse the node
+            if (withCheckbox) return;
             onLabelClick(id, data, isSelectable);
         },
-        [data, id, onLabelClick, toggleOnLabelClick, isSelectable],
+        [
+            data,
+            id,
+            onLabelClick,
+            toggleOnLabelClick,
+            isSelectable,
+            withCheckbox,
+        ],
+    );
+
+    // Ticking the checkbox must not expand/collapse the node: MUI's TreeItem toggles
+    // expansion on any click in its content, so stop the event before it gets there
+    const handleCheckboxClick = useCallback(
+        e => {
+            e.stopPropagation();
+            onLabelClick(id, data, isSelectable);
+        },
+        [data, id, onLabelClick, isSelectable],
     );
 
     useEffect(() => {
@@ -168,6 +200,8 @@ export const EnrichedTreeItem: FunctionComponent<Props> = ({
                     withCheckbox,
                     isTicked,
                     isTickedParent,
+                    handleLabelClick,
+                    handleCheckboxClick,
                 )}
                 nodeId={id}
                 icon={<ArrowDropDownIcon style={{ fontSize: 'large' }} />}
@@ -190,6 +224,7 @@ export const EnrichedTreeItem: FunctionComponent<Props> = ({
                         isTicked,
                         isTickedParent,
                         handleLabelClick,
+                        handleCheckboxClick,
                     )}
                     nodeId={id}
                     collapseIcon={
@@ -218,6 +253,7 @@ export const EnrichedTreeItem: FunctionComponent<Props> = ({
                     isTicked,
                     undefined,
                     handleLabelClick,
+                    handleCheckboxClick,
                 )}
                 nodeId={id}
                 collapseIcon={

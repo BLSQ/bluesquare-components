@@ -14,6 +14,9 @@ import { makeStyles } from '@mui/styles';
 import { TreeItem } from '@mui/x-tree-view';
 import { useChildrenData } from './requests';
 
+// Delay before a label click ticks a checkbox, to tell a single click from a double click
+const DOUBLE_CLICK_DELAY_MS = 250;
+
 const styles = theme => ({
     treeItem: {
         '&.MuiTreeItem-root.Mui-selected > .MuiTreeItem-content .MuiTreeItem-label':
@@ -137,17 +140,42 @@ export const EnrichedTreeItem: FunctionComponent<Props> = ({
         </div>
     );
 
+    const expandsOnDoubleClick = !toggleOnLabelClick && hasChildren;
+
+    // The delayed tick must use the latest callback, as onLabelClick depends on the ticked state
+    const selectItem = () => onLabelClick(id, data, isSelectable);
+    const selectItemRef = useRef(selectItem);
+    selectItemRef.current = selectItem;
+    const pendingTickRef = useRef<ReturnType<typeof setTimeout>>();
+    useEffect(() => () => clearTimeout(pendingTickRef.current), []);
+
     // Expansion on label click is filtered in IasoTreeView (see toggleOnLabelClick)
-    const handleLabelClick = useCallback(() => {
-        onLabelClick(id, data, isSelectable);
-    }, [data, id, onLabelClick, isSelectable]);
+    const handleLabelClick = useCallback(
+        e => {
+            clearTimeout(pendingTickRef.current);
+            // With checkboxes, wait to know whether this is a double click (which only
+            // expands) so the checkbox doesn't flicker. Selecting (single-select) is
+            // idempotent and needs no delay.
+            if (withCheckbox && expandsOnDoubleClick) {
+                if (e.detail === 1) {
+                    pendingTickRef.current = setTimeout(
+                        () => selectItemRef.current(),
+                        DOUBLE_CLICK_DELAY_MS,
+                    );
+                }
+                return;
+            }
+            selectItemRef.current();
+        },
+        [withCheckbox, expandsOnDoubleClick],
+    );
 
     // When a single click on the label doesn't expand, a double click does
     const handleLabelDoubleClick = useCallback(() => {
-        if (!toggleOnLabelClick && hasChildren) {
+        if (expandsOnDoubleClick) {
             onToggleNode(id);
         }
-    }, [toggleOnLabelClick, hasChildren, onToggleNode, id]);
+    }, [expandsOnDoubleClick, onToggleNode, id]);
 
     const preventTextSelectionOnDoubleClick = e => {
         if (e.detail > 1) e.preventDefault();

@@ -50,7 +50,7 @@ export const TreeViewWithSearch: FunctionComponent<Props> = ({
     label,
     getChildrenData = () => {},
     getRootData = () => {},
-    toggleOnLabelClick = true,
+    toggleOnLabelClick = false,
     onSelect = () => {},
     minResultCount = 50,
     inputLabelObject = MESSAGES.search,

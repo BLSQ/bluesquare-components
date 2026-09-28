@@ -46,6 +46,7 @@ type Props = {
     expanded?: string[];
     toggleOnLabelClick?: boolean;
     onLabelClick?: (item: any, data: any, isSelectable: boolean) => void;
+    onToggleNode?: (id: string) => void;
     withCheckbox?: boolean;
     ticked?: string | any[];
     parentsTicked?: string[];
@@ -60,8 +61,9 @@ export const EnrichedTreeItem: FunctionComponent<Props> = ({
     id,
     fetchChildrenData = () => {}, // fetchChildrenData(id)
     expanded = [],
-    toggleOnLabelClick = true,
+    toggleOnLabelClick = false,
     onLabelClick = () => {},
+    onToggleNode = () => {},
     data, // additional data that can be passed up to the parent (eg org unit details)
     withCheckbox = false,
     ticked = [],
@@ -124,6 +126,8 @@ export const EnrichedTreeItem: FunctionComponent<Props> = ({
             )}
             <span
                 onClick={handleClick}
+                onDoubleClick={handleLabelDoubleClick}
+                onMouseDown={preventTextSelectionOnDoubleClick}
                 tabIndex={0}
                 role="button"
                 style={{ fontWeight: hasBeenTicked ? 'bold' : undefined }}
@@ -133,25 +137,23 @@ export const EnrichedTreeItem: FunctionComponent<Props> = ({
         </div>
     );
 
-    const handleLabelClick = useCallback(
-        e => {
-            if (!toggleOnLabelClick) {
-                e.preventDefault();
-            }
-            // With checkboxes, ticking is done via the checkbox only: clicking the
-            // label just lets MUI's TreeItem expand/collapse the node
-            if (withCheckbox) return;
-            onLabelClick(id, data, isSelectable);
-        },
-        [
-            data,
-            id,
-            onLabelClick,
-            toggleOnLabelClick,
-            isSelectable,
-            withCheckbox,
-        ],
-    );
+    // Expansion on label click is filtered in IasoTreeView (see toggleOnLabelClick)
+    const handleLabelClick = useCallback(() => {
+        // With checkboxes, ticking is done via the checkbox only
+        if (withCheckbox) return;
+        onLabelClick(id, data, isSelectable);
+    }, [data, id, onLabelClick, isSelectable, withCheckbox]);
+
+    // When a single click on the label doesn't expand, a double click does
+    const handleLabelDoubleClick = useCallback(() => {
+        if (!toggleOnLabelClick && hasChildren) {
+            onToggleNode(id);
+        }
+    }, [toggleOnLabelClick, hasChildren, onToggleNode, id]);
+
+    const preventTextSelectionOnDoubleClick = e => {
+        if (e.detail > 1) e.preventDefault();
+    };
 
     // Ticking the checkbox must not expand/collapse the node: MUI's TreeItem toggles
     // expansion on any click in its content, so stop the event before it gets there
@@ -180,6 +182,7 @@ export const EnrichedTreeItem: FunctionComponent<Props> = ({
                 expanded={expanded}
                 toggleOnLabelClick={toggleOnLabelClick}
                 onLabelClick={onLabelClick}
+                onToggleNode={onToggleNode}
                 data={unit}
                 withCheckbox={withCheckbox}
                 ticked={ticked}

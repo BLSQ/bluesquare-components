@@ -139,10 +139,8 @@ export const EnrichedTreeItem: FunctionComponent<Props> = ({
 
     // Expansion on label click is filtered in IasoTreeView (see toggleOnLabelClick)
     const handleLabelClick = useCallback(() => {
-        // With checkboxes, ticking is done via the checkbox only
-        if (withCheckbox) return;
         onLabelClick(id, data, isSelectable);
-    }, [data, id, onLabelClick, isSelectable, withCheckbox]);
+    }, [data, id, onLabelClick, isSelectable]);
 
     // When a single click on the label doesn't expand, a double click does
     const handleLabelDoubleClick = useCallback(() => {

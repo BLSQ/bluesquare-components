@@ -7,6 +7,7 @@ type Props = {
     expanded?: string[];
     toggleOnLabelClick?: boolean;
     onLabelClick?: (item: any, data: any, isSelectable: boolean) => void;
+    onToggleNode?: (id: string) => void;
     withCheckbox?: boolean;
     ticked?: string | any[];
     parentsTicked?: string[];

@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ReactNode, useCallback } from 'react';
 import { Box, CircularProgress } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { TreeView } from '@mui/x-tree-view';
+import { TreeView, treeItemClasses } from '@mui/x-tree-view';
 import { useSafeIntl } from '../../localization/useSafeIntl';
 import { EnrichedTreeItem } from './EnrichedTreeItem';
 import { MESSAGES } from './messages';
@@ -54,7 +54,7 @@ export const IasoTreeView: FunctionComponent<Props> = ({
     expanded,
     selected = undefined,
     onToggle,
-    toggleOnLabelClick = true,
+    toggleOnLabelClick = false,
     onSelect = () => {},
     onLabelClick = () => {},
     ticked = [],
@@ -73,9 +73,28 @@ export const IasoTreeView: FunctionComponent<Props> = ({
         queryOptions,
         dependency,
     );
-    const onNodeToggle = (_event, nodeIds) => {
+    const onNodeToggle = (event, nodeIds) => {
+        // MUI's TreeItem toggles on any click in the item: unless toggleOnLabelClick,
+        // only clicks on the expand/collapse icon may toggle (keyboard toggling is kept)
+        if (
+            !toggleOnLabelClick &&
+            event?.type === 'click' &&
+            !event.target?.closest?.(`.${treeItemClasses.iconContainer}`)
+        ) {
+            return;
+        }
         onToggle(nodeIds);
     };
+    const onToggleNode = useCallback(
+        nodeId => {
+            onToggle(
+                expanded.includes(nodeId)
+                    ? expanded.filter(id => id !== nodeId)
+                    : [...expanded, nodeId],
+            );
+        },
+        [expanded, onToggle],
+    );
     const onNodeSelect = (_event, selection) => {
         onSelect(selection);
     };
@@ -93,6 +112,7 @@ export const IasoTreeView: FunctionComponent<Props> = ({
                     expanded={expanded}
                     toggleOnLabelClick={toggleOnLabelClick}
                     onLabelClick={onLabelClick}
+                    onToggleNode={onToggleNode}
                     withCheckbox={multiselect}
                     ticked={ticked}
                     parentsTicked={parentsTicked}
@@ -109,6 +129,7 @@ export const IasoTreeView: FunctionComponent<Props> = ({
             expanded,
             toggleOnLabelClick,
             onLabelClick,
+            onToggleNode,
             multiselect,
             ticked,
             parentsTicked,

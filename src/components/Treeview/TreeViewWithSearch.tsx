@@ -50,7 +50,7 @@ export const TreeViewWithSearch: FunctionComponent<Props> = ({
     label,
     getChildrenData = () => {},
     getRootData = () => {},
-    toggleOnLabelClick = true,
+    toggleOnLabelClick = false,
     onSelect = () => {},
     minResultCount = 50,
     inputLabelObject = MESSAGES.search,
@@ -164,6 +164,7 @@ export const TreeViewWithSearch: FunctionComponent<Props> = ({
                 const newParentsTicked = new Map();
                 newParentsTicked.set(currentId, ancestors);
                 onNodeSelect(currentId);
+                setTicked([currentId]);
                 setData([searchSelection]);
                 // We don't call it in multiselect because it will only be called on label click
                 // We use it here to auto select the search item selected

@@ -14,6 +14,9 @@ import { makeStyles } from '@mui/styles';
 import { TreeItem } from '@mui/x-tree-view';
 import { useChildrenData } from './requests';
 
+// Delay before a label click ticks a checkbox, to tell a single click from a double click
+const DOUBLE_CLICK_DELAY_MS = 250;
+
 const styles = theme => ({
     treeItem: {
         '&.MuiTreeItem-root.Mui-selected > .MuiTreeItem-content .MuiTreeItem-label':
@@ -46,6 +49,7 @@ type Props = {
     expanded?: string[];
     toggleOnLabelClick?: boolean;
     onLabelClick?: (item: any, data: any, isSelectable: boolean) => void;
+    onToggleNode?: (id: string) => void;
     withCheckbox?: boolean;
     ticked?: string | any[];
     parentsTicked?: string[];
@@ -60,8 +64,9 @@ export const EnrichedTreeItem: FunctionComponent<Props> = ({
     id,
     fetchChildrenData = () => {}, // fetchChildrenData(id)
     expanded = [],
-    toggleOnLabelClick = true,
+    toggleOnLabelClick = false,
     onLabelClick = () => {},
+    onToggleNode = () => {},
     data, // additional data that can be passed up to the parent (eg org unit details)
     withCheckbox = false,
     ticked = [],
@@ -101,6 +106,8 @@ export const EnrichedTreeItem: FunctionComponent<Props> = ({
         hasBeenTicked,
         tickedParent,
         handleClick: React.MouseEventHandler<HTMLSpanElement> = _ => null,
+        handleCheckboxClick: React.MouseEventHandler<HTMLSpanElement> = _ =>
+            null,
     ) => (
         <div
             style={{
@@ -109,21 +116,79 @@ export const EnrichedTreeItem: FunctionComponent<Props> = ({
                 verticalAlign: 'middle',
             }}
         >
-            {makeIcon(hasCheckbox, hasBeenTicked, tickedParent)}
-            <span onClick={handleClick} tabIndex={0} role="button">
+            {hasCheckbox && (
+                <span
+                    onClick={handleCheckboxClick}
+                    tabIndex={0}
+                    role="checkbox"
+                    aria-checked={hasBeenTicked || (tickedParent && 'mixed')}
+                    style={{ display: 'inline-flex', cursor: 'pointer' }}
+                >
+                    {makeIcon(hasCheckbox, hasBeenTicked, tickedParent)}
+                </span>
+            )}
+            <span
+                onClick={handleClick}
+                onDoubleClick={handleLabelDoubleClick}
+                onMouseDown={preventTextSelectionOnDoubleClick}
+                tabIndex={0}
+                role="button"
+                style={{ fontWeight: hasBeenTicked ? 'bold' : undefined }}
+            >
                 {child}
             </span>
         </div>
     );
 
+    const expandsOnDoubleClick = !toggleOnLabelClick && hasChildren;
+
+    // The delayed tick must use the latest callback, as onLabelClick depends on the ticked state
+    const selectItem = () => onLabelClick(id, data, isSelectable);
+    const selectItemRef = useRef(selectItem);
+    selectItemRef.current = selectItem;
+    const pendingTickRef = useRef<ReturnType<typeof setTimeout>>();
+    useEffect(() => () => clearTimeout(pendingTickRef.current), []);
+
+    // Expansion on label click is filtered in IasoTreeView (see toggleOnLabelClick)
     const handleLabelClick = useCallback(
         e => {
-            if (!toggleOnLabelClick) {
-                e.preventDefault();
+            clearTimeout(pendingTickRef.current);
+            // With checkboxes, wait to know whether this is a double click (which only
+            // expands) so the checkbox doesn't flicker. Selecting (single-select) is
+            // idempotent and needs no delay.
+            if (withCheckbox && expandsOnDoubleClick) {
+                if (e.detail === 1) {
+                    pendingTickRef.current = setTimeout(
+                        () => selectItemRef.current(),
+                        DOUBLE_CLICK_DELAY_MS,
+                    );
+                }
+                return;
             }
+            selectItemRef.current();
+        },
+        [withCheckbox, expandsOnDoubleClick],
+    );
+
+    // When a single click on the label doesn't expand, a double click does
+    const handleLabelDoubleClick = useCallback(() => {
+        if (expandsOnDoubleClick) {
+            onToggleNode(id);
+        }
+    }, [expandsOnDoubleClick, onToggleNode, id]);
+
+    const preventTextSelectionOnDoubleClick = e => {
+        if (e.detail > 1) e.preventDefault();
+    };
+
+    // Ticking the checkbox must not expand/collapse the node: MUI's TreeItem toggles
+    // expansion on any click in its content, so stop the event before it gets there
+    const handleCheckboxClick = useCallback(
+        e => {
+            e.stopPropagation();
             onLabelClick(id, data, isSelectable);
         },
-        [data, id, onLabelClick, toggleOnLabelClick, isSelectable],
+        [data, id, onLabelClick, isSelectable],
     );
 
     useEffect(() => {
@@ -143,6 +208,7 @@ export const EnrichedTreeItem: FunctionComponent<Props> = ({
                 expanded={expanded}
                 toggleOnLabelClick={toggleOnLabelClick}
                 onLabelClick={onLabelClick}
+                onToggleNode={onToggleNode}
                 data={unit}
                 withCheckbox={withCheckbox}
                 ticked={ticked}
@@ -168,6 +234,8 @@ export const EnrichedTreeItem: FunctionComponent<Props> = ({
                     withCheckbox,
                     isTicked,
                     isTickedParent,
+                    handleLabelClick,
+                    handleCheckboxClick,
                 )}
                 nodeId={id}
                 icon={<ArrowDropDownIcon style={{ fontSize: 'large' }} />}
@@ -190,6 +258,7 @@ export const EnrichedTreeItem: FunctionComponent<Props> = ({
                         isTicked,
                         isTickedParent,
                         handleLabelClick,
+                        handleCheckboxClick,
                     )}
                     nodeId={id}
                     collapseIcon={
@@ -218,6 +287,7 @@ export const EnrichedTreeItem: FunctionComponent<Props> = ({
                     isTicked,
                     undefined,
                     handleLabelClick,
+                    handleCheckboxClick,
                 )}
                 nodeId={id}
                 collapseIcon={

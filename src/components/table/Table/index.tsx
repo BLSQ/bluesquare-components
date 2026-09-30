@@ -20,7 +20,7 @@ import {
     getColumnsHeadersInfos,
     getOrderArray,
     getParamsKey,
-    getSimplifiedColumns,
+    sameColumns,
     getSort,
     selectionInitialState,
 } from '../../../utils/tableUtils';
@@ -274,7 +274,7 @@ const TableComponent: React.FC<TableComponentProps> = props => {
         useResizeColumns,
         usePagination,
     );
-    const handleTableParamsChange = (key, value) => {
+    const handleTableParamsChange = (key: string, value: any) => {
         const newParams = {
             ...params,
         };
@@ -414,11 +414,9 @@ const TableComponent: React.FC<TableComponentProps> = props => {
 };
 
 const Table = React.memo(TableComponent, (props, prevProps) => {
-    const newColumns = getSimplifiedColumns(props.columns);
-    const oldColumns = getSimplifiedColumns(prevProps.columns);
     const shouldRender = !(
         !isEqual(props.data, prevProps.data) ||
-        !isEqual(newColumns, oldColumns) ||
+        !sameColumns(props.columns, prevProps.columns) ||
         !isEqual(
             props.selection?.selectedItems,
             prevProps.selection?.selectedItems,

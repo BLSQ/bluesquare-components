@@ -7,45 +7,7 @@ import { Column } from '../components/table/Table/types';
 import { IntlFormatMessage } from '../types/types';
 import { capitalize } from './index';
 
-export const getTableUrl = (
-    urlKey: string,
-    params: Record<string, any>,
-    toExport = false,
-    exportType = 'csv',
-    asLocation = false,
-    asSmallDict = false,
-): string => {
-    let url = `/api/${urlKey}/?`;
-    const clonedParams = { ...params };
-
-    if (toExport) {
-        clonedParams[exportType] = true;
-    }
-
-    if (asLocation) {
-        clonedParams.asLocation = true;
-        clonedParams.limit = clonedParams.locationLimit;
-        delete clonedParams.page;
-    }
-
-    if (asSmallDict) {
-        clonedParams.limit = clonedParams.locationLimit;
-        delete clonedParams.page;
-    }
-
-    delete clonedParams.locationLimit;
-
-    const usedParams: string[] = [];
-    Object.keys(clonedParams).forEach(key => {
-        const value = clonedParams[key];
-        if (value && !usedParams.includes(key)) {
-            usedParams.push(key);
-            url += `&${key}=${value}`;
-        }
-    });
-
-    return url;
-};
+export { getTableUrl } from './tableUrl';
 
 const getOrderValue = (obj: { id: string; desc?: boolean }): string =>
     !obj.desc ? obj.id : `-${obj.id}`;

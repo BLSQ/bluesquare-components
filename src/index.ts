@@ -112,7 +112,12 @@ import {
     useRedirectToReplace,
 } from './Routing/redirections';
 import { useParamsObject } from './Routing/useParamsObject';
-import { convertObjectToUrlParams, makeRedirectionUrl } from './Routing/utils';
+import {
+    convertObjectToUrlParams,
+    decodeParamValue,
+    encodeParamValue,
+    makeRedirectionUrl,
+} from './Routing/utils';
 import { EventDispatcher } from './snackbars/EventDispatcher';
 import SnackBarButton from './snackbars/SnackBarButton';
 import SnackBarErrorMessage from './snackbars/SnackBarErrorMessage';
@@ -309,7 +314,9 @@ export {
     capitalize,
     commonStyles,
     convertObjectToUrlParams,
+    decodeParamValue,
     defaultSelectionActions,
+    encodeParamValue,
     english,
     formatCurrencyAmount,
     formatThousand,

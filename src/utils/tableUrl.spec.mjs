@@ -56,6 +56,24 @@ describe('getTableUrl', () => {
         );
     });
 
+    it('keeps json logic values readable by the backend', () => {
+        const jsonContent = JSON.stringify({
+            or: [
+                { '==': [{ var: 'id' }, '01211/sh/20/0008e'] },
+                { in: ['5%', { var: 'q' }] },
+                { '==': [{ var: 'q' }, 'a&b=c'] },
+                { '==': [{ var: 'phone' }, '+32 2 123'] },
+                { '==': [{ var: 'q' }, 'a#b?c\\d'] },
+                { '==': [{ var: 'q' }, 'Qualité "VIH/SIDA" {x}'] },
+            ],
+        });
+        const url = getTableUrl('instances', { jsonContent, page: 1 });
+        const params = new URL(url, 'http://localhost').searchParams;
+
+        assert.equal(params.get('jsonContent'), jsonContent, url);
+        assert.equal(params.get('page'), '1', url);
+    });
+
     it('adds the export flag and location limit', () => {
         assert.equal(
             getTableUrl(

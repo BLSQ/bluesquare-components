@@ -203,3 +203,99 @@ describe('getParamsFromPath', () => {
         );
     });
 });
+
+// Json logic queries as built by the query builder (entities / instances filters)
+const JSON_LOGICS = {
+    'nested some': {
+        and: [
+            { '==': [{ var: 'gender' }, 'F'] },
+            {
+                some: [
+                    { var: 'form_2' },
+                    { '==': [{ var: 'residence' }, 'Bujumbura'] },
+                ],
+            },
+        ],
+    },
+    'contains in a sub form': {
+        some: [
+            { var: 'form_1' },
+            { in: ['Beau', { var: 'responsable_fosa' }] },
+        ],
+    },
+    'is empty': {
+        '!': {
+            and: [
+                { '!=': [{ var: 'responsable_fosa' }, ''] },
+                { '!=': [{ var: 'responsable_fosa' }, null] },
+            ],
+        },
+    },
+    'numbers and dates': {
+        and: [
+            { '>=': [{ var: 'age__int__' }, 18] },
+            { '<': [{ var: 'visit_date' }, '2026-10-19'] },
+        ],
+    },
+    'values with special characters': {
+        or: [
+            { '==': [{ var: 'id' }, FILE_ACTIVE_ID] },
+            { in: ['5%', { var: 'q' }] },
+            { '==': [{ var: 'q' }, 'a&b=c'] },
+            { '==': [{ var: 'phone' }, '+32 2 123'] },
+            { '==': [{ var: 'q' }, 'a#b?c\\d'] },
+            { '==': [{ var: 'q' }, 'kc Ep ki%banguiste'] },
+            { '==': [{ var: 'q' }, 'Qualité "VIH/SIDA" {x}'] },
+        ],
+    },
+};
+const JSON_LOGIC_PARAMS = ['accountId', 'search', 'fieldsSearch', 'page'];
+
+// window.location.pathname after a reload: the browser percent-encodes
+// spaces, quotes, <>`{} and non-ascii characters (WHATWG path percent-encode set)
+const asBrowserPathname = path =>
+    path.replace(/[\x00-\x20"<>`{}]|[^\x00-\x7f]/gu, c =>
+        encodeURIComponent(c),
+    );
+
+const parseFieldsSearch = path =>
+    JSON.parse(
+        getParamsFromPath(path, ENTITIES_URL, JSON_LOGIC_PARAMS).fieldsSearch,
+    );
+
+describe('json logic params', () => {
+    Object.entries(JSON_LOGICS).forEach(([name, logic]) => {
+        const url = makeRedirectionUrl(ENTITIES_URL, {
+            accountId: 1,
+            search: 'a/b',
+            fieldsSearch: JSON.stringify(logic),
+            page: 2,
+        });
+
+        it(`${name}: round-trips through in-app navigation`, () => {
+            assert.deepEqual(
+                getParamsFromPath(url, ENTITIES_URL, JSON_LOGIC_PARAMS),
+                {
+                    accountId: '1',
+                    search: 'a/b',
+                    fieldsSearch: JSON.stringify(logic),
+                    page: '2',
+                },
+                url,
+            );
+        });
+
+        it(`${name}: round-trips after a page reload`, () => {
+            const reloaded = asBrowserPathname(url);
+            assert.deepEqual(parseFieldsSearch(reloaded), logic, reloaded);
+        });
+    });
+
+    it('parses an old url built without encoding', () => {
+        const logic = JSON_LOGICS['nested some'];
+        const oldUrl = asBrowserPathname(
+            `/entities/list/fieldsSearch/${JSON.stringify(logic)}/page/1`,
+        );
+        assert.deepEqual(parseFieldsSearch(oldUrl), logic, oldUrl);
+    });
+});

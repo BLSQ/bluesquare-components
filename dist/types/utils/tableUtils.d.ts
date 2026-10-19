@@ -4,7 +4,7 @@ import { IntlFormatMessage } from '../types/types';
 export declare const getTableUrl: (urlKey: string, params: Record<string, any>, toExport?: boolean, exportType?: string, asLocation?: boolean, asSmallDict?: boolean) => string;
 type SortList = {
     id: string;
-    desc: boolean;
+    desc?: boolean;
 }[];
 export declare const getSort: (sortList: SortList) => string;
 export declare const getOrderArray: (orders: string) => SortList;
@@ -43,5 +43,5 @@ export declare const tableInitialResult: {
 };
 export declare const getColumnsHeadersInfos: (columns: Column[]) => Column[];
 export declare const columnSnapshot: (columns: Column[]) => unknown[];
-export declare const sameColumns: (next: Column[], prev: Column[]) => any;
+export declare const sameColumns: (next: Column[], prev: Column[]) => boolean;
 export {};

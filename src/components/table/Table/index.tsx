@@ -8,6 +8,7 @@ import { makeStyles } from '@mui/styles';
 import isEqual from 'lodash/isEqual';
 
 import {
+    Column as ReactTableColumn,
     usePagination,
     useResizeColumns,
     useSortBy,
@@ -121,7 +122,7 @@ export interface TableComponentProps {
     selectionActions?: any[];
     setTableSelection?: (
         selectionType: string,
-        items: any[],
+        items?: any[],
         totalCount?: number,
     ) => any;
     selection?: Record<string, any>;
@@ -261,7 +262,10 @@ const TableComponent: React.FC<TableComponentProps> = props => {
         state: { pageSize, pageIndex, sortBy, hiddenColumns },
     } = useTable(
         {
-            columns,
+            // Local Column allows a missing or function accessor; react-table's Column does not.
+            columns: columns as unknown as ReactTableColumn<
+                Record<string, any>
+            >[],
             data,
             initialState,
             disableMultiSort: true,
@@ -299,11 +303,6 @@ const TableComponent: React.FC<TableComponentProps> = props => {
         onTableParamsChange(newParams);
     };
 
-    const tableProps = {
-        ...getTableProps(),
-        size: 'small',
-    };
-
     useSkipEffectOnMount(() => {
         gotoPage(0);
     }, [resetPageToOne]);
@@ -327,7 +326,8 @@ const TableComponent: React.FC<TableComponentProps> = props => {
         }
     }, [pageParam]);
 
-    const rowsPerPage = parseInt(pageSize, 10);
+    // URL params and the page-size select pass strings into setPageSize.
+    const rowsPerPage = parseInt(String(pageSize), 10);
     return (
         <Box mt={marginTop ? 4 : 0} mb={marginBottom ? 4 : 0}>
             <Select
@@ -342,8 +342,10 @@ const TableComponent: React.FC<TableComponentProps> = props => {
                 <Grid container justifyContent="flex-end">
                     <Box mb={2} mt={2}>
                         <ColumnsSelectGeneric
-                            columns={columnsFromUse}
-                            hiddenColumns={hiddenColumns}
+                            columns={
+                                columnsFromUse as unknown as ColumnFromReactTable[]
+                            }
+                            hiddenColumns={hiddenColumns ?? []}
                             disabled={columnSelectorButtonDisabled}
                             buttonType={columnSelectorButtonType}
                         />
@@ -357,8 +359,10 @@ const TableComponent: React.FC<TableComponentProps> = props => {
                 {columnSelectorEnabled &&
                     columnSelectorButtonType === 'icon' && (
                         <ColumnsSelectGeneric
-                            columns={columnsFromUse}
-                            hiddenColumns={hiddenColumns}
+                            columns={
+                                columnsFromUse as unknown as ColumnFromReactTable[]
+                            }
+                            hiddenColumns={hiddenColumns ?? []}
                             disabled={columnSelectorButtonDisabled}
                             buttonType={columnSelectorButtonType}
                         />
@@ -367,7 +371,7 @@ const TableComponent: React.FC<TableComponentProps> = props => {
             <Paper elevation={elevation} className={classes.paper}>
                 {loading && <LoadingSpinner absolute />}
                 <TableContainer className={classes.tableContainer}>
-                    <MuiTable {...tableProps} stickyHeader>
+                    <MuiTable {...getTableProps()} size="small" stickyHeader>
                         <Head
                             headerGroups={headerGroups}
                             setSortBy={newSort =>

@@ -21,7 +21,8 @@
         "compile": "npm run clean && NODE_ENV=production babel src --out-dir dist --copy-files --no-copy-ignored",
         "serve": "npm run clean && webpack --mode=production ",
         "build-local": "npm run compile && npm pack",
-        "build": "webpack"
+        "build": "webpack",
+        "test": "node --test \"src/**/*.spec.mjs\""
     },
     "repository": {
         "type": "git",

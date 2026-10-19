@@ -47,10 +47,10 @@ export const getTableUrl = (
     return url;
 };
 
-const getOrderValue = (obj: { id: string; desc: boolean }): string =>
+const getOrderValue = (obj: { id: string; desc?: boolean }): string =>
     !obj.desc ? obj.id : `-${obj.id}`;
 
-type SortList = { id: string; desc: boolean }[];
+type SortList = { id: string; desc?: boolean }[];
 export const getSort = (sortList: SortList): string => {
     let orderTemp: string = '';
     sortList.forEach((sort, index) => {

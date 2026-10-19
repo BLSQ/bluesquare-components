@@ -1,7 +1,7 @@
 import React from 'react';
 import { Column } from '../components/table/Table/types';
 import { IntlFormatMessage } from '../types/types';
-export declare const getTableUrl: (urlKey: string, params: Record<string, any>, toExport?: boolean, exportType?: string, asLocation?: boolean, asSmallDict?: boolean) => string;
+export { getTableUrl } from './tableUrl';
 type SortList = {
     id: string;
     desc?: boolean;
@@ -44,4 +44,3 @@ export declare const tableInitialResult: {
 export declare const getColumnsHeadersInfos: (columns: Column[]) => Column[];
 export declare const columnSnapshot: (columns: Column[]) => unknown[];
 export declare const sameColumns: (next: Column[], prev: Column[]) => boolean;
-export {};

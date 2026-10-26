@@ -1,80 +1,77 @@
 import React from 'react';
-import { Tooltip } from '@mui/material';
-import Chip from '@mui/material/Chip';
-import Color from 'color';
+import { AutocompleteRenderGetTagProps, Tooltip } from '@mui/material';
+import { ColorChip } from '../../chips/ColorChip';
+import { dropdownOption } from '.';
 
-export const defaultGetLabel = o => (o?.label ? o.label : '');
+export const defaultGetLabel = (o: dropdownOption) => (o?.label ? o.label : '');
 
-export const baseRenderTags = getLabel => (tagValue, getTagProps) =>
-    tagValue
-        .sort((a, b) =>
-            getLabel(a).localeCompare(getLabel(b), undefined, {
-                sensitivity: 'accent',
-            }),
-        )
-        .map((option, index) => {
-            const tagProps = getTagProps({ index });
-            return (
-                <Chip
-                    // eslint-disable-next-line react/no-array-index-key
-                    key={`${getLabel(option)}-${index}`}
-                    color="secondary"
-                    style={{
-                        backgroundColor: option.color,
-                        color: Color(option.color).isDark() ? 'white' : 'black',
-                    }}
-                    label={getLabel(option)}
-                    disabled={tagProps.disabled}
-                    {...tagProps}
-                />
-            );
-        });
+export const baseRenderTags =
+    (getLabel: (option: dropdownOption) => string) =>
+    (tagValue: dropdownOption[], getTagProps: AutocompleteRenderGetTagProps) =>
+        React.Children.toArray(
+            tagValue
+                .sort((a, b) =>
+                    getLabel(a).localeCompare(getLabel(b), undefined, {
+                        sensitivity: 'accent',
+                    }),
+                )
+                .map((option, index) => {
+                    const tagProps = getTagProps({ index });
+                    return (
+                        <ColorChip
+                            label={getLabel(option)}
+                            {...tagProps}
+                            color={option.color}
+                        />
+                    );
+                }),
+        );
 
 export const defaultRenderTags = baseRenderTags(defaultGetLabel);
 
 export const baseRenderTagsWithTooltip =
-    getLabel => getTooltipTitle => (tagValue, getTagProps) =>
-        tagValue
-            .sort((a, b) =>
-                getLabel(a).localeCompare(getLabel(b), undefined, {
-                    sensitivity: 'accent',
+    (getLabel: (option: dropdownOption) => string) =>
+    (getTooltipTitle: (option: dropdownOption) => string) =>
+    (tagValue: dropdownOption[], getTagProps: AutocompleteRenderGetTagProps) =>
+        React.Children.toArray(
+            tagValue
+                .sort((a, b) =>
+                    getLabel(a).localeCompare(getLabel(b), undefined, {
+                        sensitivity: 'accent',
+                    }),
+                )
+                .map((option, index) => {
+                    const tagProps = getTagProps({ index });
+                    const title = getTooltipTitle(option);
+                    return (
+                        <Tooltip title={title}>
+                            <ColorChip
+                                label={getLabel(option)}
+                                {...tagProps}
+                                color={option.color}
+                            />
+                        </Tooltip>
+                    );
                 }),
-            )
-            .map((option, index) => {
-                const tagProps = getTagProps({ index });
-                const title = getTooltipTitle(option);
-                return (
-                    // eslint-disable-next-line react/no-array-index-key
-                    <Tooltip title={title} key={`${title}-${index}`}>
-                        <Chip
-                            color="secondary"
-                            style={{
-                                backgroundColor: option.color,
-                                color: Color(option.color).isDark()
-                                    ? 'white'
-                                    : 'black',
-                            }}
-                            label={getLabel(option)}
-                            disabled={tagProps.disabled}
-                            {...tagProps}
-                        />
-                    </Tooltip>
-                );
-            });
+        );
 
 export const renderTagsWithTooltip = baseRenderTagsWithTooltip(defaultGetLabel);
 
 export const getExtraProps = (
-    getOptionLabel,
-    getOptionSelected,
-    renderOption,
+    getOptionLabel?: (option: any) => string,
+    getOptionSelected?: (option: any, value: any) => boolean,
+    renderOption?: (
+        props: Record<string, any>,
+        option: Record<string, any>,
+    ) => React.ReactNode,
 ) => {
     const extraProps: Record<string, any> = {
         getOptionLabel:
-            getOptionLabel || (option => option?.label ?? option.toString()),
+            getOptionLabel ||
+            ((option: dropdownOption) => option?.label ?? option.toString()),
         isOptionEqualToValue:
             getOptionSelected ||
-            ((option, val) => {
+            ((option: dropdownOption, val: any) => {
                 // Handle zero as value
                 if (val?.value || val?.value === 0) {
                     return `${option.value}` === `${val.value}`;
@@ -93,26 +90,30 @@ export const getExtraProps = (
     return extraProps;
 };
 
-export const getOption = (value, options) =>
+export const getOption = (value: any, options: dropdownOption[]) =>
     options.find(o => `${o.value}` === `${value}`);
 
-export const getMultiOption = (value, options, getOptionSelected) =>
+export const getMultiOption = (
+    value: any,
+    options: dropdownOption[],
+    getOptionSelected: (option: any, value: any) => boolean,
+): dropdownOption | 0 | undefined =>
     options.find(option => getOptionSelected(option, value));
 
-export const defaultRenderOption = (props, option, getOptionLabel) => (
+export const defaultRenderOption = (
+    props: Record<string, any>,
+    option: dropdownOption,
+    getOptionLabel: (option: dropdownOption) => string,
+) => (
     <li
         {...props}
         key={`${props.id || option.value || option.id}`}
         style={option.color ? { paddingTop: 4, paddingBottom: 4 } : {}}
     >
         {option.color ? (
-            <Chip
+            <ColorChip
                 label={getOptionLabel(option)}
-                sx={{
-                    backgroundColor: option.color,
-                    color: Color(option.color).isDark() ? 'white' : 'black',
-                    margin: 0,
-                }}
+                color={option.color}
                 size="small"
             />
         ) : (

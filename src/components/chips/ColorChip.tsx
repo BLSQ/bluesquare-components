@@ -3,7 +3,7 @@ import { Box, Chip, useTheme } from '@mui/material';
 import Color from 'color';
 
 type ColorChipProps = {
-    color?: string;
+    color?: OverridableStringUnion<'default' | 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning', ChipPropsColorOverrides> | undefined;
     label: string;
     size?: 'small' | 'medium';
 };

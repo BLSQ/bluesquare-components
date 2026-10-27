@@ -1,9 +1,23 @@
 import React from 'react';
 import { Box, Chip, useTheme } from '@mui/material';
+import { ChipPropsColorOverrides } from '@mui/material/Chip';
+import { OverridableStringUnion } from '@mui/types';
 import Color from 'color';
 
 type ColorChipProps = {
-    color?: OverridableStringUnion<'default' | 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning', ChipPropsColorOverrides> | undefined;
+    color?:
+        | OverridableStringUnion<
+              | 'default'
+              | 'primary'
+              | 'secondary'
+              | 'error'
+              | 'info'
+              | 'success'
+              | 'warning',
+              ChipPropsColorOverrides
+          >
+        | undefined
+        | string;
     label: string;
     size?: 'small' | 'medium';
 };

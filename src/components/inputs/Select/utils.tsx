@@ -3,11 +3,16 @@ import { AutocompleteRenderGetTagProps, Tooltip } from '@mui/material';
 import { ColorChip } from '../../chips/ColorChip';
 import { dropdownOption } from '.';
 
+/** Minimal option shape needed to render colored chips. */
+export type RenderTagOption = {
+    color?: string;
+};
+
 export const defaultGetLabel = (o: dropdownOption) => (o?.label ? o.label : '');
 
 export const baseRenderTags =
-    (getLabel: (option: dropdownOption) => string) =>
-    (tagValue: dropdownOption[], getTagProps: AutocompleteRenderGetTagProps) =>
+    <T extends RenderTagOption>(getLabel: (option: T) => string) =>
+    (tagValue: T[], getTagProps: AutocompleteRenderGetTagProps) =>
         React.Children.toArray(
             tagValue
                 .sort((a, b) =>
@@ -30,9 +35,9 @@ export const baseRenderTags =
 export const defaultRenderTags = baseRenderTags(defaultGetLabel);
 
 export const baseRenderTagsWithTooltip =
-    (getLabel: (option: dropdownOption) => string) =>
-    (getTooltipTitle: (option: dropdownOption) => string) =>
-    (tagValue: dropdownOption[], getTagProps: AutocompleteRenderGetTagProps) =>
+    <T extends RenderTagOption>(getLabel: (option: T) => string) =>
+    (getTooltipTitle: (option: T) => string) =>
+    (tagValue: T[], getTagProps: AutocompleteRenderGetTagProps) =>
         React.Children.toArray(
             tagValue
                 .sort((a, b) =>

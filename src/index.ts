@@ -16,6 +16,7 @@ import { BlockPlaceholder } from './components/BlockPlaceholder';
 import { AddButton } from './components/buttons/AddButton';
 import { ExportButton } from './components/buttons/ExportButton';
 import { IconButton } from './components/buttons/IconButton';
+import { ColorChip } from './components/chips/ColorChip';
 import { AddComment } from './components/comments/AddComment';
 import { CommentWithThread } from './components/comments/CommentWithThread';
 import { SingleComment } from './components/comments/SingleComment';
@@ -405,4 +406,5 @@ export {
     CheckBoxSelectGroup,
     FilesUploadContainer,
     Pagination,
+    ColorChip,
 };

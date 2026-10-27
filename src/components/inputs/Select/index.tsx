@@ -84,6 +84,14 @@ import {
  *   )}
  * />
  */
+
+export type dropdownOption = {
+    label?: string;
+    value?: string | number | null;
+    color?: string;
+    id?: string | number;
+};
+
 type Props = {
     keyValue: string;
     onChange: (value: any) => void;
@@ -97,7 +105,7 @@ type Props = {
     loadingText?: IntlMessage;
     noOptionsText?: IntlMessage;
     helperText?: ReactNode;
-    options?: any[];
+    options?: dropdownOption[];
     loading?: boolean;
     getOptionLabel?: any;
     getOptionSelected?: any;

@@ -75,7 +75,7 @@ export const Row: FunctionComponent<Props> = ({
             >
                 {row.cells.map(cell => {
                     const cellProps = cell.getCellProps(userCellProps(cell));
-                    const align = cell.column.align || 'center';
+                    const align = cell.column.align || 'left';
                     return (
                         <TableCell
                             {...cellProps}

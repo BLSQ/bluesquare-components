@@ -25,6 +25,13 @@ import { DndSelect } from './components/DndSelect';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { ErrorBoundaryWithMessage } from './components/ErrorBoundary/ErrorBoundaryWithMessage';
 import { ExpandableItem } from './components/ExpandableItem/ExpandableItem';
+import {
+    ActiveFiltersBar,
+    FilterField,
+    Filters,
+    FiltersDrawer,
+    FiltersPanel,
+} from './components/Filters';
 import { FormattedNumber } from './components/Formatted/FormattedNumber';
 import { ArrayFieldInput } from './components/inputs/ArrayFieldInput';
 import { AsyncSelect } from './components/inputs/AsyncSelect/AsyncSelect';
@@ -230,6 +237,35 @@ export type { IconButtonBuiltInIcon } from './components/buttons/IconButton';
 
 export type { CurrencyAffixPosition } from './utils/currency';
 
+export type {
+    ActiveFilter,
+    FilterFieldDescriptor,
+    FilterFieldGroup,
+    FilterFieldRenderContext,
+    FilterFieldType,
+    FilterLabel,
+    FilterOption,
+    FilterSection,
+    FilterValues,
+} from './components/Filters';
+export {
+    FILTER_MESSAGES,
+    areFilterValuesEqual,
+    countActiveFilters,
+    formatFilterValue,
+    getActiveFilters,
+    getClearedFilterValues,
+    getDateRangeBounds,
+    groupFilterFieldsBySection,
+    isEmptyFilterValue,
+    isFilterFieldActive,
+    removeFilterFromValues,
+    sanitizeFilterFields,
+    splitActiveFilters,
+    toValueArray,
+    validateFilterFields,
+} from './components/Filters';
+
 export {
     AddButton,
     AddComment,
@@ -255,6 +291,11 @@ export {
     ExcellSvg,
     ExpandableItem,
     Expander,
+    ActiveFiltersBar,
+    FilterField,
+    Filters,
+    FiltersDrawer,
+    FiltersPanel,
     ExportButton,
     ExternalLink,
     ExternalLinkIconButton,

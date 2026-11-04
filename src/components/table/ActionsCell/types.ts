@@ -31,7 +31,7 @@ type BaseAction = {
      * - `auto` (default): inline until `maxInline` is reached, then overflow menu
      * - `inline`: always inline (still spills to the menu if `maxInline` is exceeded)
      * - `menu`: always in the overflow menu
-     * Actions with `children` are always rendered in the menu (submenu).
+     * Actions with `children` are always rendered in the menu (expandable section).
      */
     placement?: ActionPlacement;
 };
@@ -67,7 +67,7 @@ export type ActionItem = BaseAction & {
     size?: ActionButtonSize;
     /** Per-action icon size. Overrides the cell-level `iconSize`. */
     iconSize?: ActionIconSize;
-    /** Nested actions, rendered as a submenu. One level is the norm, recursion is supported. */
+    /** Nested actions, rendered as an inline expandable section in the menu. One level is the norm, recursion is supported. */
     children?: TableAction[];
     /** Escape hatch for dialog/modal triggers etc. Used wherever the action is placed. */
     render?: (context: ActionRenderContext) => ReactNode;

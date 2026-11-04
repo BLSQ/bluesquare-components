@@ -10,7 +10,7 @@ import React, {
     useMemo,
     useState,
 } from 'react';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import {
     Box,
@@ -58,7 +58,6 @@ const styles: Record<string, SxProps<Theme>> = {
         color: 'error.main',
         '& .MuiListItemIcon-root': { color: 'error.main' },
     },
-    submenuPaper: { minWidth: 180 },
 };
 
 const resolveColor = (
@@ -85,6 +84,8 @@ const mergeSx = (...parts: (SxProps<Theme> | undefined)[]): SxProps<Theme> =>
 
 type MenuEntryProps = {
     entry: NormalizedTableAction;
+    /** Nesting level inside expandable sections (drives indentation). */
+    depth?: number;
     dense?: boolean;
     defaultColor?: ActionColor;
     defaultIconSize?: ActionIconSize;
@@ -93,10 +94,11 @@ type MenuEntryProps = {
     stopPropagation?: boolean;
 };
 
-const SubMenuItem: FunctionComponent<
+const ExpandableMenuItem: FunctionComponent<
     MenuEntryProps & { entry: NormalizedActionItem }
 > = ({
     entry: action,
+    depth = 0,
     dense,
     defaultColor,
     defaultIconSize,
@@ -104,29 +106,27 @@ const SubMenuItem: FunctionComponent<
     renderLabel,
     stopPropagation,
 }) => {
-    const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-    const open = Boolean(anchorEl);
+    const [expanded, setExpanded] = useState(false);
     const color = resolveColor(action, defaultColor);
-    const closeAll = useCallback(() => {
-        setAnchorEl(null);
-        closeMenu();
-    }, [closeMenu]);
+    const childrenId = `actions-cell-section-${action.key}`;
 
     return (
         <>
             <MenuItem
                 disabled={action.disabled}
                 dense={dense}
-                aria-haspopup="menu"
-                aria-expanded={open}
+                aria-haspopup="true"
+                aria-expanded={expanded}
+                aria-controls={childrenId}
                 data-test={
                     action.dataTestId ?? `actions-cell-submenu-${action.key}`
                 }
                 onClick={(event: MouseEvent<HTMLElement>) => {
                     if (stopPropagation) event.stopPropagation();
-                    setAnchorEl(event.currentTarget);
+                    setExpanded(previous => !previous);
                 }}
                 sx={mergeSx(
+                    depth > 0 ? { pl: 2 + depth * 2 } : undefined,
                     color
                         ? { color, '& .MuiListItemIcon-root': { color } }
                         : undefined,
@@ -145,38 +145,35 @@ const SubMenuItem: FunctionComponent<
                     primary={renderLabel(action.label)}
                     secondary={renderLabel(action.description) || undefined}
                 />
-                <ChevronRightIcon
+                <ExpandMoreIcon
                     fontSize="small"
-                    sx={{ ml: 2, color: 'action.active' }}
+                    sx={{
+                        ml: 2,
+                        color: 'action.active',
+                        transform: expanded ? 'rotate(180deg)' : 'none',
+                        transition: 'transform 0.2s',
+                    }}
                 />
             </MenuItem>
-            <Menu
-                anchorEl={anchorEl}
-                open={open}
-                onClose={() => setAnchorEl(null)}
-                anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-                transformOrigin={{ vertical: 'top', horizontal: 'left' }}
-                sx={{ pointerEvents: 'none' }}
-                slotProps={{
-                    paper: {
-                        sx: mergeSx(styles.submenuPaper),
-                        style: { pointerEvents: 'auto' },
-                    },
-                }}
-            >
-                {(action.children ?? []).map(child => (
-                    <MenuEntry
-                        key={child.key}
-                        entry={child}
-                        dense={dense}
-                        defaultColor={defaultColor}
-                        defaultIconSize={defaultIconSize}
-                        closeMenu={closeAll}
-                        renderLabel={renderLabel}
-                        stopPropagation={stopPropagation}
-                    />
-                ))}
-            </Menu>
+            {/* No Collapse wrapper: MenuItem (<li>) children must stay direct
+                children of the MenuList for semantics and keyboard navigation. */}
+            {expanded && (
+                <span id={childrenId} style={{ display: 'contents' }}>
+                    {(action.children ?? []).map(child => (
+                        <MenuEntry
+                            key={child.key}
+                            entry={child}
+                            depth={depth + 1}
+                            dense={dense}
+                            defaultColor={defaultColor}
+                            defaultIconSize={defaultIconSize}
+                            closeMenu={closeMenu}
+                            renderLabel={renderLabel}
+                            stopPropagation={stopPropagation}
+                        />
+                    ))}
+                </span>
+            )}
         </>
     );
 };
@@ -184,6 +181,7 @@ const SubMenuItem: FunctionComponent<
 const MenuEntry: FunctionComponent<MenuEntryProps> = props => {
     const {
         entry,
+        depth = 0,
         dense,
         defaultColor,
         defaultIconSize,
@@ -206,7 +204,7 @@ const MenuEntry: FunctionComponent<MenuEntryProps> = props => {
         return <>{custom({ action: entry, closeMenu, inMenu: true })}</>;
     }
     if (entry.children?.length) {
-        return <SubMenuItem {...props} entry={entry} />;
+        return <ExpandableMenuItem {...props} entry={entry} />;
     }
     const color = resolveColor(entry, defaultColor);
     return (
@@ -235,6 +233,7 @@ const MenuEntry: FunctionComponent<MenuEntryProps> = props => {
                 entry.onClick?.(event);
             }}
             sx={mergeSx(
+                depth > 0 ? { pl: 2 + depth * 2 } : undefined,
                 entry.danger ? styles.danger : undefined,
                 color && !entry.danger
                     ? { color, '& .MuiListItemIcon-root': { color } }
@@ -298,7 +297,7 @@ export type ActionsCellProps = {
 /**
  * Reusable table-cell actions: up to `maxInline` icons inline, the rest behind
  * a burger (⋮) menu. Menu entries support icons, colours (incl. `danger`),
- * descriptions, dividers, section headers, nested submenus, links, disabled
+ * descriptions, dividers, section headers, nested expandable sections, links, disabled
  * states and full custom rendering (dialog/modal triggers).
  *
  * ```tsx

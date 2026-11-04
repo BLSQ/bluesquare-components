@@ -40,7 +40,7 @@ export type ActionsCellProps = {
 /**
  * Reusable table-cell actions: up to `maxInline` icons inline, the rest behind
  * a burger (⋮) menu. Menu entries support icons, colours (incl. `danger`),
- * descriptions, dividers, section headers, nested submenus, links, disabled
+ * descriptions, dividers, section headers, nested expandable sections, links, disabled
  * states and full custom rendering (dialog/modal triggers).
  *
  * ```tsx

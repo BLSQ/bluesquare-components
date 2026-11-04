@@ -59,6 +59,7 @@ type Props = {
     showArrows?: boolean;
     showInfo?: boolean;
     step?: number;
+    hideError?: boolean;
 };
 
 const clamp = (value: number, min: number, max: number): number =>
@@ -106,6 +107,7 @@ export const NumberInput: FunctionComponent<Props> = ({
     showArrows = false,
     showInfo = true,
     step = 1,
+    hideError = false,
 }) => {
     const { formatMessage } = useSafeIntl();
     const handleChange = useCallback(
@@ -184,6 +186,7 @@ export const NumberInput: FunctionComponent<Props> = ({
             showInfo={showInfo}
             onIncrement={handleIncrement}
             onDecrement={handleDecrement}
+            hideError={hideError}
         />
     );
 };

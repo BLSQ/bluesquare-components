@@ -55,7 +55,29 @@ type Props = {
     thousandSeparator?: ',' | '.';
     decimalSeparator?: ',' | '.';
     dataTestId?: string;
+    size?: 'small' | 'medium';
+    showArrows?: boolean;
+    showInfo?: boolean;
+    step?: number;
 };
+
+const clamp = (value: number, min: number, max: number): number =>
+    Math.min(Math.max(value, min), max);
+
+const getSteppedValue = (
+    value: string | number,
+    step: number,
+    min: number,
+    max: number,
+): number => {
+    const currentValue = Number(value);
+    if (value === '' || value === null || Number.isNaN(currentValue)) {
+        return Number.isFinite(min) ? min : clamp(0, min, max);
+    }
+    const nextValue = Number((currentValue + step).toPrecision(15));
+    return clamp(nextValue, min, max);
+};
+
 export const NumberInput: FunctionComponent<Props> = ({
     keyValue,
     label,
@@ -80,6 +102,10 @@ export const NumberInput: FunctionComponent<Props> = ({
     thousandsGroupStyle = 'thousand',
     thousandSeparator = ',',
     decimalSeparator = '.',
+    size = 'medium',
+    showArrows = false,
+    showInfo = true,
+    step = 1,
 }) => {
     const { formatMessage } = useSafeIntl();
     const handleChange = useCallback(
@@ -113,6 +139,14 @@ export const NumberInput: FunctionComponent<Props> = ({
         },
         [max, min, required, onChange, setFieldError, keyValue, formatMessage],
     );
+    const handleIncrement = useCallback(
+        () => onChange(getSteppedValue(value, step, min, max)),
+        [onChange, value, step, min, max],
+    );
+    const handleDecrement = useCallback(
+        () => onChange(getSteppedValue(value, -step, min, max)),
+        [onChange, value, step, min, max],
+    );
     const currencyAffixes = useMemo(
         () => (currency ? getCurrencyAffixes(currency) : undefined),
         [currency],
@@ -145,6 +179,11 @@ export const NumberInput: FunctionComponent<Props> = ({
             thousandSeparator={thousandSeparator}
             decimalSeparator={decimalSeparator}
             data-test={dataTestId}
+            size={size}
+            showArrows={showArrows}
+            showInfo={showInfo}
+            onIncrement={handleIncrement}
+            onDecrement={handleDecrement}
         />
     );
 };

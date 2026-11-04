@@ -9,6 +9,14 @@ const MESSAGES = defineMessages({
         id: 'blsq.input.label.max',
         defaultMessage: 'Maximum',
     },
+    increment: {
+        id: 'blsq.numberInput.label.increment',
+        defaultMessage: 'Increment',
+    },
+    decrement: {
+        id: 'blsq.numberInput.label.decrement',
+        defaultMessage: 'Decrement',
+    },
 });
 
 export { MESSAGES };

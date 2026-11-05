@@ -14,9 +14,5 @@ type Props = {
     elevation?: number;
     sx?: SxProps;
 };
-/**
- * Short version of the filters for the main page (screenshots 1/2/4):
- * badge count, `Label: value` chips, `+N MORE`, CLEAR ALL.
- */
 export declare const ActiveFiltersBar: FunctionComponent<Props>;
 export {};

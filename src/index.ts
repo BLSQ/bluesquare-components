@@ -28,7 +28,6 @@ import { ExpandableItem } from './components/ExpandableItem/ExpandableItem';
 import {
     ActiveFiltersBar,
     FilterField,
-    Filters,
     FiltersDrawer,
     FiltersPanel,
 } from './components/Filters';
@@ -293,7 +292,6 @@ export {
     Expander,
     ActiveFiltersBar,
     FilterField,
-    Filters,
     FiltersDrawer,
     FiltersPanel,
     ExportButton,

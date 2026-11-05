@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode } from 'react';
+import { FunctionComponent, ReactNode } from 'react';
 import type { FilterField, FilterLabel, FilterSection, FilterValues } from './types';
 type Props = {
     fields: FilterField[];
@@ -14,15 +14,11 @@ type Props = {
     elevation?: number;
     drawerTitle?: FilterLabel;
     drawerChildren?: ReactNode;
-    open?: boolean;
-    onOpenChange?: (open: boolean) => void;
 };
 /**
- * Composition of {@link ActiveFiltersBar} + {@link FiltersDrawer}:
- * the drop-in replacement for hand-rolled filter grids.
- * For full control, use the two atoms separately.
+ * Wires {@link ActiveFiltersBar} to {@link FiltersDrawer}.
+ * `values` / `onApply` are the applied state; the drawer keeps a draft until APPLY.
+ * Chip removal and CLEAR ALL call `onRemoveFilter` / `onClearAll` when set, otherwise `onApply`.
  */
 export declare const FiltersPanel: FunctionComponent<Props>;
-/** @deprecated Use {@link FiltersPanel}. */
-export declare const Filters: React.FunctionComponent<Props>;
 export {};

@@ -5,14 +5,11 @@ type Props = {
     value: any;
     values: FilterValues;
     onChange: (key: string, value: any) => void;
-    /** e.g. pressing Enter in a search field applies the drawer. */
     onEnterPressed?: () => void;
 };
 /**
- * Renders one filter field with the matching bluesquare input.
- * Atomic and stateless: unknown types fall back to a text input,
- * `custom` delegates to `field.renderCustom` (org-unit tree, async
- * select, query builder… in the consuming app).
+ * Renders one `field` with the matching input. Unknown types fall back to text;
+ * `type: 'custom'` uses `field.renderCustom`.
  */
 export declare const FilterField: FunctionComponent<Props>;
 export {};

@@ -354,7 +354,12 @@ const TableComponent: React.FC<TableComponentProps> = props => {
             )}
             <Grid container justifyContent="flex-end">
                 {countOnTop && (
-                    <Count count={count} selectCount={selection.selectCount} />
+                    <Box pr={2}>
+                        <Count
+                            count={count}
+                            selectCount={selection.selectCount}
+                        />
+                    </Box>
                 )}
                 {columnSelectorEnabled &&
                     columnSelectorButtonType === 'icon' && (
@@ -371,7 +376,17 @@ const TableComponent: React.FC<TableComponentProps> = props => {
             <Paper elevation={elevation} className={classes.paper}>
                 {loading && <LoadingSpinner absolute />}
                 <TableContainer className={classes.tableContainer}>
-                    <MuiTable {...getTableProps()} size="small" stickyHeader>
+                    <MuiTable
+                        {...getTableProps()}
+                        size="small"
+                        stickyHeader
+                        sx={{
+                            borderTop: theme =>
+                                elevation === 0
+                                    ? `1px solid ${theme.palette.divider}`
+                                    : 'none',
+                        }}
+                    >
                         <Head
                             headerGroups={headerGroups}
                             setSortBy={newSort =>

@@ -27,6 +27,8 @@
     "blsq.numberInput.error.invalid": "Invalid number",
     "blsq.numberInput.error.max": "Input exceeds {value}",
     "blsq.numberInput.error.min": "Input is less than {value}",
+    "blsq.numberInput.label.decrement": "Decrement",
+    "blsq.numberInput.label.increment": "Increment",
     "blsq.phoneInput.countryNotFound": "Country not found",
     "blsq.phoneInput.phoneNumber": "Phone number",
     "blsq.queryBuilder.addCondition": "Add condition",

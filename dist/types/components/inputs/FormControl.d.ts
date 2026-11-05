@@ -4,6 +4,7 @@ type Props = {
     errors?: string[];
     id?: string | Record<string, any>;
     hideError?: boolean;
+    size?: 'small' | 'medium';
 };
 declare const FormControlComponent: FunctionComponent<Props>;
 export { FormControlComponent as FormControl };

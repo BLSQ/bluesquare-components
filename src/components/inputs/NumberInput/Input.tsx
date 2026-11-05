@@ -4,13 +4,31 @@ import React, {
     FunctionComponent,
 } from 'react';
 import InfoIcon from '@mui/icons-material/Info';
-import { OutlinedInput, Tooltip } from '@mui/material';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import {
+    IconButton,
+    InputAdornment,
+    OutlinedInput,
+    Stack,
+    Tooltip,
+} from '@mui/material';
 
 import { useSafeIntl } from '../../../localization/useSafeIntl';
 import { FormControl } from '../FormControl';
 import { InputLabel } from '../InputLabel';
 
 import { MESSAGES } from './messages';
+
+const styles = {
+    arrowButton: {
+        p: 0,
+        borderRadius: 0.5,
+    },
+    arrowIcon: {
+        fontSize: 16,
+    },
+};
 
 const useTooltipMessage = (min: number, max: number): string => {
     const { formatMessage } = useSafeIntl();
@@ -44,6 +62,50 @@ type Props = {
         | FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>
         | undefined;
     placeholder?: string;
+    size?: 'small' | 'medium';
+    showArrows?: boolean;
+    showInfo?: boolean;
+    onIncrement?: () => void;
+    onDecrement?: () => void;
+    hideError?: boolean;
+};
+
+type ArrowsProps = {
+    disabled: boolean;
+    onIncrement?: () => void;
+    onDecrement?: () => void;
+};
+
+const Arrows: FunctionComponent<ArrowsProps> = ({
+    disabled,
+    onIncrement,
+    onDecrement,
+}) => {
+    const { formatMessage } = useSafeIntl();
+    return (
+        <Stack>
+            <IconButton
+                aria-label={formatMessage(MESSAGES.increment)}
+                disabled={disabled}
+                onClick={onIncrement}
+                size="small"
+                sx={styles.arrowButton}
+                tabIndex={-1}
+            >
+                <KeyboardArrowUpIcon sx={styles.arrowIcon} />
+            </IconButton>
+            <IconButton
+                aria-label={formatMessage(MESSAGES.decrement)}
+                disabled={disabled}
+                onClick={onDecrement}
+                size="small"
+                sx={styles.arrowButton}
+                tabIndex={-1}
+            >
+                <KeyboardArrowDownIcon sx={styles.arrowIcon} />
+            </IconButton>
+        </Stack>
+    );
 };
 
 export const CustomInput: FunctionComponent<Props> = ({
@@ -61,18 +123,25 @@ export const CustomInput: FunctionComponent<Props> = ({
     min,
     max,
     placeholder,
+    size = 'medium',
+    showArrows = false,
+    showInfo = true,
+    onIncrement,
+    onDecrement,
+    hideError = false,
 }) => {
     const hasErrors = errors.length >= 1;
     const tooltipMessage = useTooltipMessage(min, max);
+    const hasTooltip = showInfo && tooltipMessage !== '';
     return (
-        <FormControl errors={errors}>
+        <FormControl errors={errors} size={size} hideError={hideError}>
             {label && (
                 <InputLabel
                     htmlFor={`input-text-${keyValue}`}
                     label={label}
                     required={required}
                     error={hasErrors}
-                    shrink={value !== ''}
+                    shrink={value !== '' || Boolean(placeholder)}
                 />
             )}
             <OutlinedInput
@@ -82,11 +151,23 @@ export const CustomInput: FunctionComponent<Props> = ({
                 id={`input-text-${keyValue}`}
                 value={value}
                 type="text"
+                size={size}
                 endAdornment={
-                    tooltipMessage !== '' && (
-                        <Tooltip title={tooltipMessage}>
-                            <InfoIcon color="action" />
-                        </Tooltip>
+                    (hasTooltip || showArrows) && (
+                        <InputAdornment position="end">
+                            {hasTooltip && (
+                                <Tooltip title={tooltipMessage}>
+                                    <InfoIcon color="action" />
+                                </Tooltip>
+                            )}
+                            {showArrows && (
+                                <Arrows
+                                    disabled={disabled}
+                                    onIncrement={onIncrement}
+                                    onDecrement={onDecrement}
+                                />
+                            )}
+                        </InputAdornment>
                     )
                 }
                 onChange={onChange}

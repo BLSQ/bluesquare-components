@@ -1,14 +1,24 @@
 import type {
+    ActionDivider,
     ActionItem,
+    ActionSection,
     CellAction,
     CellEntry,
     TableAction,
 } from './types';
 
-const isVisible = (
+const isPresent = (
     action: TableAction,
-): action is Exclude<TableAction, false | null | undefined> =>
-    Boolean(action) && !action.hidden;
+): action is ActionItem | ActionDivider | ActionSection =>
+    action != null && action !== false;
+
+const isDivider = (
+    action: ActionItem | ActionDivider | ActionSection,
+): action is ActionDivider => 'type' in action && action.type === 'divider';
+
+const isSection = (
+    action: ActionItem | ActionDivider | ActionSection,
+): action is ActionSection => 'type' in action && action.type === 'section';
 
 const isUsable = (action: ActionItem): boolean =>
     Boolean(action.onClick || action.href);
@@ -18,14 +28,14 @@ export const normalizeActions = (
 ): CellEntry[] => {
     const entries: CellEntry[] = [];
     actions.forEach((action, index) => {
-        if (!isVisible(action)) {
+        if (!isPresent(action) || action.hidden) {
             return;
         }
-        if (action.type === 'divider') {
+        if (isDivider(action)) {
             entries.push({ type: 'divider', key: `divider-${index}` });
             return;
         }
-        if (action.type === 'section') {
+        if (isSection(action)) {
             entries.push({ ...action, key: `section-${index}` });
             return;
         }

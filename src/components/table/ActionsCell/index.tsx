@@ -109,7 +109,7 @@ export const ActionsCell: FunctionComponent<ActionsCellProps> = ({
                     flexWrap: 'nowrap',
                     whiteSpace: 'nowrap',
                 },
-                ...(Array.isArray(sx) ? sx : [sx]),
+                ...(sx ? (Array.isArray(sx) ? sx : [sx]) : []),
             ]}
             data-test="actions-cell"
         >
@@ -236,6 +236,7 @@ const MenuEntry: FunctionComponent<{
         <MenuItem
             disabled={entry.disabled}
             dense
+            title={labelOf(entry.tooltip) || undefined}
             data-test={`actions-cell-menu-${entry.key}`}
             {...linkProps(entry)}
             onClick={(event: MouseEvent<HTMLElement>) => {
@@ -243,13 +244,10 @@ const MenuEntry: FunctionComponent<{
                 closeMenu();
                 entry.onClick?.(event);
             }}
-            sx={[
-                {
-                    color: actionColor,
-                    '& .MuiListItemIcon-root': { color: actionColor },
-                },
-                entry.sx,
-            ]}
+            sx={{
+                color: actionColor,
+                '& .MuiListItemIcon-root': { color: actionColor },
+            }}
         >
             {entry.icon && (
                 <ListItemIcon>

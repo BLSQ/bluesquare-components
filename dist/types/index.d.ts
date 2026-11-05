@@ -137,8 +137,7 @@ export type { Field as QueryBuilderField, Fields as QueryBuilderFields, } from '
 export type { TableComponentProps } from './components/table/Table';
 export type { IconButtonBuiltInIcon } from './components/buttons/IconButton';
 export type { ActionsCellProps } from './components/table/ActionsCell';
-export { normalizeActions, partitionActions, } from './components/table/ActionsCell/utils';
-export type { ActionButtonSize, ActionColor, ActionDivider, ActionHeader, ActionIconSize, ActionItem, ActionLabel, ActionPlacement, ActionRenderContext, NormalizedActionItem, NormalizedTableAction, PartitionedActions, TableAction, } from './components/table/ActionsCell/types';
+export type { ActionDivider, ActionItem, ActionLabel, ActionSection, TableAction, } from './components/table/ActionsCell/types';
 export type { CurrencyAffixPosition } from './utils/currency';
 export type { ActiveFilter, FilterFieldDescriptor, FilterFieldGroup, FilterFieldRenderContext, FilterFieldType, FilterLabel, FilterOption, FilterSection, FilterValues, } from './components/Filters';
 export { FILTER_MESSAGES, areFilterValuesEqual, countActiveFilters, formatFilterValue, getActiveFilters, getClearedFilterValues, getDateRangeBounds, groupFilterFieldsBySection, isEmptyFilterValue, isFilterFieldActive, removeFilterFromValues, sanitizeFilterFields, splitActiveFilters, toValueArray, validateFilterFields, } from './components/Filters';

@@ -82,6 +82,7 @@ export const TextInput: FunctionComponent<Props> = ({
                 onBlur={onBlur}
                 error={errors.length > 0}
                 InputLabelProps={{
+                    shrink: placeholder ? true : undefined,
                     classes: {
                         shrink: classes.shrink,
                     },

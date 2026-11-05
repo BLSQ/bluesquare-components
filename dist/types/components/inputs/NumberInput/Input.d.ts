@@ -14,6 +14,12 @@ type Props = {
     onBlur?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
     onFocus?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement> | undefined;
     placeholder?: string;
+    size?: 'small' | 'medium';
+    showArrows?: boolean;
+    showInfo?: boolean;
+    onIncrement?: () => void;
+    onDecrement?: () => void;
+    hideError?: boolean;
 };
 export declare const CustomInput: FunctionComponent<Props>;
 export {};

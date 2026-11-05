@@ -23,6 +23,11 @@ type Props = {
     thousandSeparator?: ',' | '.';
     decimalSeparator?: ',' | '.';
     dataTestId?: string;
+    size?: 'small' | 'medium';
+    showArrows?: boolean;
+    showInfo?: boolean;
+    step?: number;
+    hideError?: boolean;
 };
 export declare const NumberInput: FunctionComponent<Props>;
 export {};

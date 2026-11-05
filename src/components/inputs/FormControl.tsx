@@ -36,6 +36,7 @@ type Props = {
     errors?: string[];
     id?: string | Record<string, any>;
     hideError?: boolean;
+    size?: 'small' | 'medium';
 };
 
 const FormControlComponent: FunctionComponent<Props> = ({
@@ -43,6 +44,7 @@ const FormControlComponent: FunctionComponent<Props> = ({
     id,
     errors = defaultErrors,
     hideError = false,
+    size = 'medium',
 }) => {
     const classes: Record<string, string> = useStyles();
     const extraProps: any = id ? { id } : {};
@@ -51,6 +53,7 @@ const FormControlComponent: FunctionComponent<Props> = ({
         <FormControl
             className={classes.formControl}
             variant="outlined"
+            size={size}
             {...extraProps}
         >
             {children}

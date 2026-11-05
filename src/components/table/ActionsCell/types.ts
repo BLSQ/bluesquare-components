@@ -18,6 +18,7 @@ export type ActionItem = {
     size?: 'small' | 'medium' | 'large';
     iconSize?: 'small' | 'medium' | 'large' | 'inherit';
     menu?: boolean;
+    children?: TableAction[];
     sx?: SxProps<Theme>;
 };
 
@@ -40,7 +41,10 @@ export type TableAction =
     | null
     | undefined;
 
-export type CellAction = ActionItem & { type: 'action' };
+export type CellAction = Omit<ActionItem, 'children'> & {
+    type: 'action';
+    children?: CellEntry[];
+};
 export type CellDivider = { type: 'divider'; key: string };
 export type CellSection = ActionSection & { key: string };
 export type CellEntry = CellAction | CellDivider | CellSection;

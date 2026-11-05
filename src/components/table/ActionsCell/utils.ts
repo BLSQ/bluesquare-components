@@ -20,9 +20,6 @@ const isSection = (
     action: ActionItem | ActionDivider | ActionSection,
 ): action is ActionSection => 'type' in action && action.type === 'section';
 
-const isUsable = (action: ActionItem): boolean =>
-    Boolean(action.onClick || action.href);
-
 export const normalizeActions = (
     actions: readonly TableAction[],
 ): CellEntry[] => {
@@ -39,10 +36,17 @@ export const normalizeActions = (
             entries.push({ ...action, key: `section-${index}` });
             return;
         }
-        if (!isUsable(action)) {
+        const children = action.children
+            ? normalizeActions(action.children)
+            : undefined;
+        if (!action.onClick && !action.href && !children?.length) {
             return;
         }
-        entries.push({ ...action, type: 'action' });
+        entries.push({
+            ...action,
+            type: 'action',
+            children: children?.length ? children : undefined,
+        });
     });
 
     let list = entries;
@@ -75,7 +79,10 @@ export const partitionActions = (
 
     normalizeActions(actions).forEach(entry => {
         const canInline =
-            entry.type === 'action' && !entry.menu && Boolean(entry.icon);
+            entry.type === 'action' &&
+            !entry.menu &&
+            !entry.children?.length &&
+            Boolean(entry.icon);
         if (canInline && inline.length < cap) {
             inline.push(entry);
         } else {

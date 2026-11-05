@@ -8,6 +8,7 @@ import React, {
     useId,
     useState,
 } from 'react';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import {
     Box,
@@ -220,7 +221,8 @@ const MenuEntry: FunctionComponent<{
     iconSize?: 'small' | 'medium' | 'large' | 'inherit';
     labelOf: (label?: ActionLabel) => string;
     closeMenu: () => void;
-}> = ({ entry, color, iconSize, labelOf, closeMenu }) => {
+    inset?: boolean;
+}> = ({ entry, color, iconSize, labelOf, closeMenu, inset = false }) => {
     if (entry.type === 'divider') {
         return <Divider component="li" />;
     }
@@ -229,6 +231,17 @@ const MenuEntry: FunctionComponent<{
             <ListSubheader component="li" disableSticky>
                 {labelOf(entry.label)}
             </ListSubheader>
+        );
+    }
+    if (entry.children?.length) {
+        return (
+            <ExpandableMenuItem
+                entry={entry}
+                color={color}
+                iconSize={iconSize}
+                labelOf={labelOf}
+                closeMenu={closeMenu}
+            />
         );
     }
     const actionColor = entry.color ?? color;
@@ -245,6 +258,7 @@ const MenuEntry: FunctionComponent<{
                 entry.onClick?.(event);
             }}
             sx={{
+                pl: inset ? 4 : undefined,
                 color: actionColor,
                 '& .MuiListItemIcon-root': { color: actionColor },
             }}
@@ -256,5 +270,62 @@ const MenuEntry: FunctionComponent<{
             )}
             <ListItemText primary={labelOf(entry.label)} />
         </MenuItem>
+    );
+};
+
+const ExpandableMenuItem: FunctionComponent<{
+    entry: CellAction;
+    color?: string;
+    iconSize?: 'small' | 'medium' | 'large' | 'inherit';
+    labelOf: (label?: ActionLabel) => string;
+    closeMenu: () => void;
+}> = ({ entry, color, iconSize, labelOf, closeMenu }) => {
+    const [expanded, setExpanded] = useState(false);
+    const actionColor = entry.color ?? color;
+    return (
+        <>
+            <MenuItem
+                disabled={entry.disabled}
+                dense
+                aria-expanded={expanded}
+                data-test={`actions-cell-submenu-${entry.key}`}
+                onClick={(event: MouseEvent<HTMLElement>) => {
+                    event.stopPropagation();
+                    setExpanded(open => !open);
+                }}
+                sx={{
+                    color: actionColor,
+                    '& .MuiListItemIcon-root': { color: actionColor },
+                }}
+            >
+                {entry.icon && (
+                    <ListItemIcon>
+                        {withIconSize(entry.icon, entry.iconSize ?? iconSize)}
+                    </ListItemIcon>
+                )}
+                <ListItemText primary={labelOf(entry.label)} />
+                <ExpandMoreIcon
+                    fontSize="small"
+                    sx={{
+                        ml: 2,
+                        color: 'action.active',
+                        transform: expanded ? 'rotate(180deg)' : 'none',
+                        transition: 'transform 0.2s',
+                    }}
+                />
+            </MenuItem>
+            {expanded &&
+                entry.children?.map(child => (
+                    <MenuEntry
+                        key={child.key}
+                        entry={child}
+                        color={color}
+                        iconSize={iconSize}
+                        labelOf={labelOf}
+                        closeMenu={closeMenu}
+                        inset
+                    />
+                ))}
+        </>
     );
 };

@@ -60,6 +60,31 @@ describe('partitionActions', () => {
         );
     });
 
+    it('keeps items with children in the overflow', () => {
+        const { inline, menu } = partitionActions(
+            [
+                action('parent', {
+                    onClick: undefined,
+                    children: [action('child')],
+                }),
+                action('shown'),
+            ],
+            2,
+        );
+        assert.deepEqual(
+            inline.map(a => a.key),
+            ['shown'],
+        );
+        assert.deepEqual(
+            menu.map(a => a.key),
+            ['parent'],
+        );
+        assert.deepEqual(
+            menu[0].children.map(a => a.key),
+            ['child'],
+        );
+    });
+
     it('keeps menu:true items in the overflow', () => {
         const { inline, menu } = partitionActions(
             [action('overflow', { menu: true }), action('shown')],

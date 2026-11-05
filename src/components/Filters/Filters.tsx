@@ -24,14 +24,12 @@ type Props = {
     elevation?: number;
     drawerTitle?: FilterLabel;
     drawerChildren?: ReactNode;
-    open?: boolean;
-    onOpenChange?: (open: boolean) => void;
 };
 
 /**
- * Composition of {@link ActiveFiltersBar} + {@link FiltersDrawer}:
- * the drop-in replacement for hand-rolled filter grids.
- * For full control, use the two atoms separately.
+ * Wires {@link ActiveFiltersBar} to {@link FiltersDrawer}.
+ * `values` / `onApply` are the applied state; the drawer keeps a draft until APPLY.
+ * Chip removal and CLEAR ALL call `onRemoveFilter` / `onClearAll` when set, otherwise `onApply`.
  */
 export const FiltersPanel: FunctionComponent<Props> = ({
     fields,
@@ -44,15 +42,8 @@ export const FiltersPanel: FunctionComponent<Props> = ({
     elevation,
     drawerTitle,
     drawerChildren,
-    open: openProp,
-    onOpenChange,
 }) => {
-    const [openInternal, setOpenInternal] = useState(false);
-    const open = openProp ?? openInternal;
-    const setOpen = (next: boolean) => {
-        if (openProp === undefined) setOpenInternal(next);
-        onOpenChange?.(next);
-    };
+    const [open, setOpen] = useState(false);
     return (
         <>
             <ActiveFiltersBar
@@ -89,6 +80,3 @@ export const FiltersPanel: FunctionComponent<Props> = ({
         </>
     );
 };
-
-/** @deprecated Use {@link FiltersPanel}. */
-export const Filters = FiltersPanel;

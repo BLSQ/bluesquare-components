@@ -15,8 +15,10 @@ type Props = {
     children?: ReactNode;
 };
 /**
- * Right drawer from screenshot 3: grouped inputs, CLEAR / APPLY footer.
- * CLEAR only resets the draft; closing without APPLY discards it.
+ * Side panel for editing filters. `values` is the last applied set;
+ * everything typed here is a draft. APPLY commits via `onApply`,
+ * CLEAR empties the draft only, and closing the drawer throws the draft
+ * away so the page filters stay as they were.
  */
 export declare const FiltersDrawer: FunctionComponent<Props>;
 export {};

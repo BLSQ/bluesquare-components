@@ -1,4 +1,9 @@
-import React, { FunctionComponent, useMemo, useState } from 'react';
+import React, {
+    FunctionComponent,
+    useCallback,
+    useMemo,
+    useState,
+} from 'react';
 
 import FilterListIcon from '@mui/icons-material/FilterList';
 import {
@@ -14,7 +19,7 @@ import {
 import type { SxProps } from '@mui/material';
 
 import { useSafeIntl } from '../../localization/useSafeIntl';
-import { makeResolveLabel } from './label';
+import { useResolveLabel } from './label';
 import { MESSAGES } from './messages';
 import type { FilterField, FilterValues } from './types';
 import { getActiveFilters, splitActiveFilters } from './utils';
@@ -33,10 +38,6 @@ type Props = {
     sx?: SxProps;
 };
 
-/**
- * Short version of the filters for the main page (screenshots 1/2/4):
- * badge count, `Label: value` chips, `+N MORE`, CLEAR ALL.
- */
 export const ActiveFiltersBar: FunctionComponent<Props> = ({
     fields,
     values,
@@ -48,15 +49,14 @@ export const ActiveFiltersBar: FunctionComponent<Props> = ({
     sx,
 }) => {
     const { formatMessage } = useSafeIntl();
-    const resolve = makeResolveLabel(m => formatMessage(m) as string);
+    const resolveLabel = useResolveLabel();
     const [expanded, setExpanded] = useState(false);
     const active = useMemo(
         () =>
             getActiveFilters(fields, values, field =>
-                resolve(field.label, field.key),
+                resolveLabel(field.label, field.key),
             ),
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        [fields, values],
+        [fields, values, resolveLabel],
     );
     const { visible, hiddenCount } = splitActiveFilters(
         active,
@@ -65,6 +65,21 @@ export const ActiveFiltersBar: FunctionComponent<Props> = ({
     const hasActive = active.length > 0;
 
     const stop = (e: React.SyntheticEvent) => e.stopPropagation();
+    const toggleAllChips = useCallback(
+        (e: React.SyntheticEvent) => {
+            stop(e);
+            setExpanded(!expanded);
+        },
+        [expanded],
+    );
+    const handleClearAll = useCallback(
+        (e: React.SyntheticEvent) => {
+            stop(e);
+            onClearAll?.();
+        },
+        [onClearAll],
+    );
+
     return (
         <Paper
             elevation={elevation}
@@ -151,8 +166,7 @@ export const ActiveFiltersBar: FunctionComponent<Props> = ({
                         count: String(hiddenCount),
                     })}
                     onClick={e => {
-                        stop(e);
-                        setExpanded(true);
+                        toggleAllChips(e);
                     }}
                     data-test="active-filters-more"
                 />
@@ -163,8 +177,7 @@ export const ActiveFiltersBar: FunctionComponent<Props> = ({
                     variant="outlined"
                     label={formatMessage(MESSAGES.showLess)}
                     onClick={e => {
-                        stop(e);
-                        setExpanded(false);
+                        toggleAllChips(e);
                     }}
                 />
             )}
@@ -172,10 +185,7 @@ export const ActiveFiltersBar: FunctionComponent<Props> = ({
             {hasActive && onClearAll && (
                 <Button
                     size="small"
-                    onClick={e => {
-                        stop(e);
-                        onClearAll();
-                    }}
+                    onClick={handleClearAll}
                     data-test="active-filters-clear-all"
                 >
                     {formatMessage(MESSAGES.clearAll)}

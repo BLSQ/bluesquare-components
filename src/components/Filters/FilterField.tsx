@@ -11,7 +11,7 @@ import { SearchInput } from '../inputs/SearchInput';
 import { Select } from '../inputs/Select';
 import { TextArea } from '../inputs/TextArea/TextArea';
 import { TextInput } from '../inputs/TextInput';
-import { makeResolveLabel } from './label';
+import { useResolveLabel } from './label';
 import { MESSAGES } from './messages';
 import type { FilterField as FilterFieldType, FilterValues } from './types';
 import { getDateRangeBounds } from './utils';
@@ -21,15 +21,12 @@ type Props = {
     value: any;
     values: FilterValues;
     onChange: (key: string, value: any) => void;
-    /** e.g. pressing Enter in a search field applies the drawer. */
     onEnterPressed?: () => void;
 };
 
 /**
- * Renders one filter field with the matching bluesquare input.
- * Atomic and stateless: unknown types fall back to a text input,
- * `custom` delegates to `field.renderCustom` (org-unit tree, async
- * select, query builder… in the consuming app).
+ * Renders one `field` with the matching input. Unknown types fall back to text;
+ * `type: 'custom'` uses `field.renderCustom`.
  */
 export const FilterField: FunctionComponent<Props> = ({
     field,
@@ -39,8 +36,8 @@ export const FilterField: FunctionComponent<Props> = ({
     onEnterPressed,
 }) => {
     const { formatMessage } = useSafeIntl();
-    const resolve = makeResolveLabel(m => formatMessage(m) as string);
-    const label = resolve(field.label, field.key);
+    const resolveLabel = useResolveLabel();
+    const label = resolveLabel(field.label, field.key);
     const setValue = (newValue: any) => onChange(field.key, newValue);
     const type = field.type ?? 'text';
     const common = {
@@ -48,19 +45,6 @@ export const FilterField: FunctionComponent<Props> = ({
         required: field.required,
         dataTestId: field.dataTestId ?? `filter-${field.key}`,
     };
-
-    if (type === 'custom') {
-        return (
-            <>
-                {field.renderCustom?.({
-                    field,
-                    value,
-                    values,
-                    onChange: setValue,
-                }) ?? null}
-            </>
-        );
-    }
 
     switch (type) {
         case 'select':
@@ -165,7 +149,7 @@ export const FilterField: FunctionComponent<Props> = ({
                     <DatePicker
                         label={
                             field.fromLabel
-                                ? resolve(field.fromLabel)
+                                ? resolveLabel(field.fromLabel)
                                 : (formatMessage(MESSAGES.from, {
                                       label,
                                   }) as string)
@@ -180,7 +164,7 @@ export const FilterField: FunctionComponent<Props> = ({
                     <DatePicker
                         label={
                             field.toLabel
-                                ? resolve(field.toLabel)
+                                ? resolveLabel(field.toLabel)
                                 : (formatMessage(MESSAGES.until, {
                                       label,
                                   }) as string)
@@ -195,6 +179,17 @@ export const FilterField: FunctionComponent<Props> = ({
                 </Box>
             );
         }
+        case 'custom':
+            return (
+                <>
+                    {field.renderCustom?.({
+                        field,
+                        value,
+                        values,
+                        onChange: setValue,
+                    }) ?? null}
+                </>
+            );
         case 'email':
         case 'text':
         default:

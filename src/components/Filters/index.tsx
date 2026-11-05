@@ -1,6 +1,6 @@
 export { ActiveFiltersBar } from './ActiveFiltersBar';
 export { FilterField } from './FilterField';
-export { Filters, FiltersPanel } from './Filters';
+export { FiltersPanel } from './Filters';
 export { FiltersDrawer } from './FiltersDrawer';
 export { MESSAGES as FILTER_MESSAGES } from './messages';
 export type {

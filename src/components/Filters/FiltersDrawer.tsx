@@ -3,7 +3,6 @@ import React, {
     ReactNode,
     useEffect,
     useMemo,
-    useRef,
     useState,
 } from 'react';
 
@@ -20,7 +19,7 @@ import {
 
 import { useSafeIntl } from '../../localization/useSafeIntl';
 import { FilterField } from './FilterField';
-import { makeResolveLabel } from './label';
+import { useResolveLabel } from './label';
 import { MESSAGES } from './messages';
 import type {
     FilterField as FilterFieldType,
@@ -28,11 +27,16 @@ import type {
     FilterSection,
     FilterValues,
 } from './types';
-import {
-    getClearedFilterValues,
-    groupFilterFieldsBySection,
-    validateFilterFields,
-} from './utils';
+import { getClearedFilterValues, groupFilterFieldsBySection } from './utils';
+
+const styles = {
+    drawer: {
+        maxWidth: '90vw',
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%',
+    },
+};
 
 type Props = {
     open: boolean;
@@ -50,8 +54,10 @@ type Props = {
 };
 
 /**
- * Right drawer from screenshot 3: grouped inputs, CLEAR / APPLY footer.
- * CLEAR only resets the draft; closing without APPLY discards it.
+ * Side panel for editing filters. `values` is the last applied set;
+ * everything typed here is a draft. APPLY commits via `onApply`,
+ * CLEAR empties the draft only, and closing the drawer throws the draft
+ * away so the page filters stay as they were.
  */
 export const FiltersDrawer: FunctionComponent<Props> = ({
     open,
@@ -66,24 +72,12 @@ export const FiltersDrawer: FunctionComponent<Props> = ({
     children,
 }) => {
     const { formatMessage } = useSafeIntl();
-    const resolve = makeResolveLabel(m => formatMessage(m) as string);
+    const resolveLabel = useResolveLabel();
     const [draft, setDraft] = useState<FilterValues>(values ?? {});
-    const warnedRef = useRef(false);
 
     useEffect(() => {
         if (open) setDraft({ ...(values ?? {}) });
     }, [open, values]);
-
-    useEffect(() => {
-        if (process.env.NODE_ENV !== 'production' && !warnedRef.current) {
-            const issues = validateFilterFields(fields);
-            if (issues.length > 0) {
-                warnedRef.current = true;
-
-                console.warn('[blsq Filters]', ...issues);
-            }
-        }
-    }, [fields]);
 
     const groups = useMemo(
         () => groupFilterFieldsBySection(fields, draft, sections),
@@ -101,13 +95,7 @@ export const FiltersDrawer: FunctionComponent<Props> = ({
     return (
         <Drawer anchor={anchor} open={open} onClose={onClose}>
             <Box
-                sx={{
-                    width,
-                    maxWidth: '90vw',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: '100%',
-                }}
+                sx={{ ...styles.drawer, width }}
                 role="presentation"
                 data-test="filters-drawer"
             >
@@ -122,7 +110,7 @@ export const FiltersDrawer: FunctionComponent<Props> = ({
                     </Tooltip>
                     <Typography variant="h6">
                         {title
-                            ? resolve(title)
+                            ? resolveLabel(title)
                             : formatMessage(MESSAGES.filters)}
                     </Typography>
                 </Box>
@@ -136,7 +124,7 @@ export const FiltersDrawer: FunctionComponent<Props> = ({
                                     color="textSecondary"
                                     gutterBottom
                                 >
-                                    {resolve(group.label)}
+                                    {resolveLabel(group.label)}
                                 </Typography>
                             )}
                             <Box display="flex" flexDirection="column" gap={2}>

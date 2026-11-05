@@ -5,12 +5,13 @@ import { normalizeActions, partitionActions } from './utils.ts';
 const action = (key, extra = {}) => ({
     key,
     label: key,
+    icon: key,
     onClick: () => {},
     ...extra,
 });
 
 describe('normalizeActions', () => {
-    it('drops falsy, hidden and non-renderable entries', () => {
+    it('drops falsy, hidden and unused entries', () => {
         const result = normalizeActions([
             false,
             null,
@@ -25,35 +26,20 @@ describe('normalizeActions', () => {
         );
     });
 
-    it('collapses leading, trailing and doubled dividers, drops orphan headers', () => {
+    it('collapses leading, trailing and doubled dividers, drops empty sections', () => {
         const result = normalizeActions([
             { type: 'divider' },
-            { type: 'header', label: 'Section' },
+            { type: 'section', label: 'Section' },
             action('a'),
             { type: 'divider' },
             { type: 'divider' },
             action('b'),
             { type: 'divider' },
-            { type: 'header', label: 'Orphan' },
+            { type: 'section', label: 'Orphan' },
         ]);
         assert.deepEqual(
             result.map(a => a.type),
-            ['header', 'action', 'divider', 'action'],
-        );
-    });
-
-    it('keeps a header followed by an action and drops empty submenus', () => {
-        const result = normalizeActions([
-            { type: 'header', label: 'Section' },
-            action('a'),
-            action('parent', {
-                onClick: undefined,
-                children: [action('child', { hidden: true })],
-            }),
-        ]);
-        assert.deepEqual(
-            result.map(a => a.key),
-            ['header-0', 'a'],
+            ['section', 'action', 'divider', 'action'],
         );
     });
 });
@@ -74,53 +60,31 @@ describe('partitionActions', () => {
         );
     });
 
-    it('respects explicit placement and forces submenus into the menu', () => {
+    it('keeps menu:true items in the overflow', () => {
         const { inline, menu } = partitionActions(
-            [
-                action('menu-only', { placement: 'menu' }),
-                action('submenu', { children: [action('child')] }),
-                action('inline-only', { placement: 'inline' }),
-            ],
+            [action('overflow', { menu: true }), action('shown')],
             2,
         );
         assert.deepEqual(
             inline.map(a => a.key),
-            ['inline-only'],
+            ['shown'],
         );
         assert.deepEqual(
             menu.map(a => a.key),
-            ['menu-only', 'submenu'],
+            ['overflow'],
         );
     });
 
-    it('spills explicit inline actions beyond maxInline and honours maxInline=0', () => {
-        const spilled = partitionActions(
-            [
-                action('a', { placement: 'inline' }),
-                action('b', { placement: 'inline' }),
-            ],
-            1,
-        );
-        assert.deepEqual(
-            spilled.inline.map(a => a.key),
-            ['a'],
-        );
-        assert.deepEqual(
-            spilled.menu.map(a => a.key),
-            ['b'],
-        );
-
+    it('honours maxInline=0 and drops a menu that is only chrome', () => {
         const none = partitionActions([action('a'), action('b')], 0);
         assert.deepEqual(none.inline, []);
         assert.deepEqual(
             none.menu.map(a => a.key),
             ['a', 'b'],
         );
-    });
 
-    it('returns an empty menu when there is nothing to put in it', () => {
         const { inline, menu } = partitionActions(
-            [{ type: 'divider' }, action('a')],
+            [{ type: 'divider' }, { type: 'section', label: 'X' }, action('a')],
             2,
         );
         assert.deepEqual(

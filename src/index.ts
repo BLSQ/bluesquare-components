@@ -236,23 +236,11 @@ export type { TableComponentProps } from './components/table/Table';
 export type { IconButtonBuiltInIcon } from './components/buttons/IconButton';
 
 export type { ActionsCellProps } from './components/table/ActionsCell';
-export {
-    normalizeActions,
-    partitionActions,
-} from './components/table/ActionsCell/utils';
 export type {
-    ActionButtonSize,
-    ActionColor,
     ActionDivider,
-    ActionHeader,
-    ActionIconSize,
     ActionItem,
     ActionLabel,
-    ActionPlacement,
-    ActionRenderContext,
-    NormalizedActionItem,
-    NormalizedTableAction,
-    PartitionedActions,
+    ActionSection,
     TableAction,
 } from './components/table/ActionsCell/types';
 

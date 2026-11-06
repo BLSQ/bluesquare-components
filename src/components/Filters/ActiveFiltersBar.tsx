@@ -16,13 +16,36 @@ import {
     Tooltip,
     Typography,
 } from '@mui/material';
-import type { SxProps } from '@mui/material';
+import type { SxProps, Theme } from '@mui/material';
 
 import { useSafeIntl } from '../../localization/useSafeIntl';
 import { useResolveLabel } from './label';
 import { MESSAGES } from './messages';
 import type { FilterField, FilterValues } from './types';
 import { getActiveFilters, splitActiveFilters } from './utils';
+
+const styles = {
+    paper: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: 1,
+        flexWrap: 'wrap',
+        px: 1.5,
+        py: 1,
+    },
+    clickable: {
+        cursor: 'pointer',
+    },
+    chip: {
+        maxWidth: 240,
+        '& .MuiChip-label': {
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap',
+            display: 'block',
+        },
+    },
+};
 
 type Props = {
     fields: FilterField[];
@@ -35,7 +58,7 @@ type Props = {
     maxVisibleChips?: number;
     /** Paper elevation of the bar. Default: 1. */
     elevation?: number;
-    sx?: SxProps;
+    sx?: SxProps<Theme>;
 };
 
 export const ActiveFiltersBar: FunctionComponent<Props> = ({
@@ -80,20 +103,17 @@ export const ActiveFiltersBar: FunctionComponent<Props> = ({
         [onClearAll],
     );
 
+    const paperSx = [
+        styles.paper,
+        onOpenFilters ? styles.clickable : {},
+        sx,
+    ] as SxProps<Theme>;
+
     return (
         <Paper
             elevation={elevation}
             onClick={onOpenFilters}
-            sx={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 1,
-                flexWrap: 'wrap',
-                px: 1.5,
-                py: 1,
-                ...(onOpenFilters && { cursor: 'pointer' }),
-                ...sx,
-            }}
+            sx={paperSx}
             data-test="active-filters-bar"
         >
             <Tooltip
@@ -127,37 +147,41 @@ export const ActiveFiltersBar: FunctionComponent<Props> = ({
                         : MESSAGES.noActiveFilter,
                 )}
             </Typography>
-            {visible.map(filter => (
-                <Chip
-                    key={filter.key}
-                    size="small"
-                    onClick={stop}
-                    label={
-                        filter.displayValue
-                            ? `${filter.label}: ${filter.displayValue}`
-                            : filter.label
-                    }
-                    onDelete={
-                        onRemoveFilter
-                            ? () => onRemoveFilter(filter.key)
-                            : undefined
-                    }
-                    deleteIcon={
-                        onRemoveFilter ? (
-                            <span
-                                aria-label={
-                                    formatMessage(MESSAGES.removeFilter, {
-                                        label: filter.label,
-                                    }) as string
-                                }
-                            >
-                                ×
-                            </span>
-                        ) : undefined
-                    }
-                    data-test={`active-filter-${filter.key}`}
-                />
-            ))}
+            {visible.map(filter => {
+                const chipLabel = filter.displayValue
+                    ? `${filter.label}: ${filter.displayValue}`
+                    : filter.label;
+                return (
+                    <Tooltip key={filter.key} title={chipLabel}>
+                        <Chip
+                            size="small"
+                            onClick={stop}
+                            label={chipLabel}
+                            onDelete={
+                                onRemoveFilter
+                                    ? () => onRemoveFilter(filter.key)
+                                    : undefined
+                            }
+                            deleteIcon={
+                                onRemoveFilter ? (
+                                    <span
+                                        aria-label={
+                                            formatMessage(
+                                                MESSAGES.removeFilter,
+                                                { label: filter.label },
+                                            ) as string
+                                        }
+                                    >
+                                        ×
+                                    </span>
+                                ) : undefined
+                            }
+                            sx={styles.chip}
+                            data-test={`active-filter-${filter.key}`}
+                        />
+                    </Tooltip>
+                );
+            })}
             {hiddenCount > 0 && (
                 <Chip
                     size="small"

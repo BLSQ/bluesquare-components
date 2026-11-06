@@ -16,6 +16,7 @@ import { BlockPlaceholder } from './components/BlockPlaceholder';
 import { AddButton } from './components/buttons/AddButton';
 import { ExportButton } from './components/buttons/ExportButton';
 import { IconButton } from './components/buttons/IconButton';
+import { ChipList } from './components/ChipList';
 import { ColorChip } from './components/chips/ColorChip';
 import { AddComment } from './components/comments/AddComment';
 import { CommentWithThread } from './components/comments/CommentWithThread';
@@ -231,6 +232,7 @@ export type {
 } from '@react-awesome-query-builder/mui';
 
 export type { TableComponentProps } from './components/table/Table';
+export type { ChipListItem } from './components/ChipList';
 
 export type { IconButtonBuiltInIcon } from './components/buttons/IconButton';
 
@@ -446,4 +448,5 @@ export {
     FilesUploadContainer,
     Pagination,
     ColorChip,
+    ChipList,
 };

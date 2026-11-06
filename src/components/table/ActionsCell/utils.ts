@@ -69,6 +69,10 @@ export const normalizeActions = (
     return list;
 };
 
+/** Split actions into inline icon buttons and a ⋮ overflow menu.
+ *  Only leaf actions with an icon can be inline (no children, not `menu: true`),
+ *  up to `maxInline`. Everything else goes to the menu; a menu with no real
+ *  action (only dividers/sections) is dropped. */
 export const partitionActions = (
     actions: readonly TableAction[],
     maxInline = 2,

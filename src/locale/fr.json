@@ -130,6 +130,7 @@
     "blsq.queryBuilder.value": "Valeur",
     "blsq.queryBuilder.values": "Valeurs",
     "blsq.queryBuilder.valueSourcesPopupTitle": "Sélectionner la source de valeur",
+    "blsq.chipList.showLess": "Afficher moins",
     "blsq.filters.activeFilters": "Filtres actifs",
     "blsq.filters.apply": "APPLIQUER",
     "blsq.filters.clear": "EFFACER",

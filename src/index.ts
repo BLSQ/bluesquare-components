@@ -78,6 +78,7 @@ import { AsyncSortableList } from './components/Sortable/asyncList';
 import { SortableList } from './components/Sortable/list';
 import { SortableItem } from './components/Sortable/list/Item';
 import { SortableTable } from './components/Sortable/table';
+import { ActionsCell } from './components/table/ActionsCell';
 import { ColumnsSelectDrawer } from './components/table/ColumnsSelectDrawer';
 import { HeaderRowIcon } from './components/table/HeaderRowIcon';
 import { InfoHeader } from './components/table/InfoHeader';
@@ -236,6 +237,15 @@ export type { ChipListItem } from './components/ChipList';
 
 export type { IconButtonBuiltInIcon } from './components/buttons/IconButton';
 
+export type { ActionsCellProps } from './components/table/ActionsCell';
+export type {
+    ActionDivider,
+    ActionItem,
+    ActionLabel,
+    ActionSection,
+    TableAction,
+} from './components/table/ActionsCell/types';
+
 export type { CurrencyAffixPosition } from './utils/currency';
 
 export type {
@@ -268,6 +278,7 @@ export {
 } from './components/Filters';
 
 export {
+    ActionsCell,
     AddButton,
     AddComment,
     AlertModal,

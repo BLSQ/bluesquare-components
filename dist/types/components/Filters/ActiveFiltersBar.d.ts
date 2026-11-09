@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import type { SxProps } from '@mui/material';
+import type { SxProps, Theme } from '@mui/material';
 import type { FilterField, FilterValues } from './types';
 type Props = {
     fields: FilterField[];
@@ -12,7 +12,7 @@ type Props = {
     maxVisibleChips?: number;
     /** Paper elevation of the bar. Default: 1. */
     elevation?: number;
-    sx?: SxProps;
+    sx?: SxProps<Theme>;
 };
 export declare const ActiveFiltersBar: FunctionComponent<Props>;
 export {};

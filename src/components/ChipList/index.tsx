@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useState } from 'react';
-import { Box, Link } from '@mui/material';
+import { Box, Chip } from '@mui/material';
 import { useSafeIntl } from '../../localization/useSafeIntl';
+import { SxStyles } from '../../styles/iaso/types';
 import { ColorChip } from '../chips/ColorChip';
 import { ChipColor } from '../chips/utils';
 import { MESSAGES } from './messages';
@@ -18,6 +19,25 @@ type Props = {
     maxVisible?: number;
     /** Colour of every chip, unless an item sets its own. Default: grey. */
     color?: ChipColor;
+};
+
+const styles: SxStyles = {
+    list: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+        gap: 0.5,
+    },
+    overflowChip: {
+        backgroundColor: 'transparent',
+        borderColor: theme => theme.palette.grey['500'],
+        borderStyle: 'dashed',
+        borderWidth: 2,
+        color: 'text.primary',
+        '&:hover': {
+            backgroundColor: 'action.hover',
+        },
+    },
 };
 
 export const ChipList: FunctionComponent<Props> = ({
@@ -38,14 +58,7 @@ export const ChipList: FunctionComponent<Props> = ({
     };
 
     return (
-        <Box
-            sx={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                alignItems: 'center',
-                gap: 0.5,
-            }}
-        >
+        <Box sx={styles.list}>
             {visibleItems.map(item => (
                 <ColorChip
                     key={item.id}
@@ -55,19 +68,18 @@ export const ChipList: FunctionComponent<Props> = ({
                 />
             ))}
             {hiddenCount > 0 && (
-                <Link
-                    component="button"
-                    type="button"
-                    variant="body2"
+                <Chip
+                    size="small"
+                    variant="outlined"
                     onClick={toggle}
                     aria-expanded={expanded}
-                    color="primary"
-                    sx={{ ml: 0.5 }}
-                >
-                    {expanded
-                        ? formatMessage(MESSAGES.showLess)
-                        : `+${hiddenCount}`}
-                </Link>
+                    label={
+                        expanded
+                            ? formatMessage(MESSAGES.showLess)
+                            : `+${hiddenCount}`
+                    }
+                    sx={styles.overflowChip}
+                />
             )}
         </Box>
     );

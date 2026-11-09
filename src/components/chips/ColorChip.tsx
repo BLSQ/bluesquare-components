@@ -1,23 +1,10 @@
 import React from 'react';
 import { Box, Chip, useTheme } from '@mui/material';
-import { ChipPropsColorOverrides } from '@mui/material/Chip';
-import { OverridableStringUnion } from '@mui/types';
 import Color from 'color';
+import { ChipColor, resolveChipColor } from './utils';
 
 type ColorChipProps = {
-    color?:
-        | OverridableStringUnion<
-              | 'default'
-              | 'primary'
-              | 'secondary'
-              | 'error'
-              | 'info'
-              | 'success'
-              | 'warning',
-              ChipPropsColorOverrides
-          >
-        | undefined
-        | string;
+    color?: ChipColor;
     label: string;
     size?: 'small' | 'medium';
 };
@@ -28,7 +15,7 @@ export const ColorChip = ({
     ...props
 }: ColorChipProps) => {
     const theme = useTheme();
-    const usedColor = color ?? theme.palette.secondary.main;
+    const usedColor = resolveChipColor(theme, color);
     const backgroundColor = Color(usedColor).alpha(0.2).rgb().string();
     const base = Color(usedColor);
     const ink = base.darken(0.4);

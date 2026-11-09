@@ -1,8 +1,7 @@
 import React from 'react';
-import { ChipPropsColorOverrides } from '@mui/material/Chip';
-import { OverridableStringUnion } from '@mui/types';
+import { ChipColor } from './utils';
 type ColorChipProps = {
-    color?: OverridableStringUnion<'default' | 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning', ChipPropsColorOverrides> | undefined | string;
+    color?: ChipColor;
     label: string;
     size?: 'small' | 'medium';
 };

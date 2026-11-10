@@ -151,6 +151,7 @@
     "blsq.snackBar.copyError": "Copy error",
     "blsq.snackBar.error": "An error occurred while saving",
     "blsq.table.columnSelect.tooltip": "Select visible columns",
+    "blsq.table.columnSelect.title": "Columns",
     "blsq.table.details": "Details",
     "blsq.table.filter.search": "Search",
     "blsq.table.first": "First page",

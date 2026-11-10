@@ -12,6 +12,7 @@ type Props = {
     clearable?: boolean;
     minDate?: any;
     maxDate?: any;
+    id?: string;
 };
 export declare const DatePicker: FunctionComponent<Props>;
 export {};

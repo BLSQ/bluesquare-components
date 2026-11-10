@@ -9,6 +9,7 @@ type Props = {
     disabled?: boolean;
     helperText?: string;
     dataTestId?: string;
+    id?: string;
 };
 export declare const TextArea: FunctionComponent<Props>;
 export {};

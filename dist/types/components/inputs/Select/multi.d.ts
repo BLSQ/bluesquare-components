@@ -25,6 +25,7 @@ type Props = {
     dataTestId?: string;
     useBuiltInErrors?: boolean;
     freeSolo?: boolean;
+    id?: string;
 };
 export declare const MultiSelect: FunctionComponent<Props>;
 export {};

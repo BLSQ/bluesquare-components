@@ -27,6 +27,7 @@ const styles: SxStyles = {
         flexWrap: 'wrap',
         alignItems: 'center',
         gap: 0.5,
+        minWidth: 100,
     },
     // Last chip + expand/collapse stay together so "+N" never wraps alone.
     trailingGroup: {
@@ -60,9 +61,7 @@ export const ChipList: FunctionComponent<Props> = ({
     const hiddenCount = items.length - maxVisible;
     const visibleItems = expanded ? items : items.slice(0, maxVisible);
     const hasOverflow = hiddenCount > 0;
-    const leadingItems = hasOverflow
-        ? visibleItems.slice(0, -1)
-        : visibleItems;
+    const leadingItems = hasOverflow ? visibleItems.slice(0, -1) : visibleItems;
     const trailingItem = hasOverflow
         ? visibleItems[visibleItems.length - 1]
         : null;

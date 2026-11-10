@@ -206,6 +206,15 @@ export const ActiveFiltersBar: FunctionComponent<Props> = ({
                 />
             )}
             <Box flexGrow={1} />
+            {!hasActive && (
+                <Button
+                    size="small"
+                    onClick={onOpenFilters}
+                    data-test="active-filters-open-filters"
+                >
+                    {formatMessage(MESSAGES.addFilters)}
+                </Button>
+            )}
             {hasActive && onClearAll && (
                 <Button
                     size="small"

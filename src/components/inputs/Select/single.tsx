@@ -53,6 +53,7 @@ type Props = {
     dataTestId?: string;
     freeSolo?: boolean;
     useBuiltInErrors?: boolean;
+    id?: string;
 };
 
 export const SingleSelect: FunctionComponent<Props> = ({
@@ -79,6 +80,7 @@ export const SingleSelect: FunctionComponent<Props> = ({
     returnFullObject = false, // use this one if you pass array of objects as options and want an array of objects as sected items, not a string of id's
     freeSolo = false,
     useBuiltInErrors = true,
+    id,
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -131,7 +133,7 @@ export const SingleSelect: FunctionComponent<Props> = ({
                 onInputChange={handleInputChange}
                 noOptionsText={formatMessage(noOptionsText)}
                 multiple={false}
-                id={keyValue}
+                id={id ?? keyValue}
                 disableClearable={!clearable}
                 options={options}
                 value={fixedValue}

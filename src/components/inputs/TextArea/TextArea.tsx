@@ -18,6 +18,7 @@ type Props = {
     disabled?: boolean;
     helperText?: string;
     dataTestId?: string;
+    id?: string;
 };
 
 const useStyles = makeStyles(theme => ({
@@ -80,6 +81,7 @@ export const TextArea: FunctionComponent<Props> = ({
     debounceTime = 0,
     disabled = false,
     helperText = undefined,
+    id,
 }) => {
     const classes: Record<string, string> = useStyles();
     const [focus, setFocus] = useState<boolean>(false);
@@ -121,6 +123,7 @@ export const TextArea: FunctionComponent<Props> = ({
                 {label}
             </InputLabel>
             <textarea
+                id={id}
                 onFocus={() => setFocus(true)}
                 onBlur={() => setFocus(false)}
                 className={classnames(

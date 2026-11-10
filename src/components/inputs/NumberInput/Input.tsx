@@ -68,6 +68,7 @@ type Props = {
     onIncrement?: () => void;
     onDecrement?: () => void;
     hideError?: boolean;
+    id?: string;
 };
 
 type ArrowsProps = {
@@ -129,15 +130,17 @@ export const CustomInput: FunctionComponent<Props> = ({
     onIncrement,
     onDecrement,
     hideError = false,
+    id,
 }) => {
     const hasErrors = errors.length >= 1;
     const tooltipMessage = useTooltipMessage(min, max);
     const hasTooltip = showInfo && tooltipMessage !== '';
+    const inputId = id ?? `input-text-${keyValue}`;
     return (
         <FormControl errors={errors} size={size} hideError={hideError}>
             {label && (
                 <InputLabel
-                    htmlFor={`input-text-${keyValue}`}
+                    htmlFor={inputId}
                     label={label}
                     required={required}
                     error={hasErrors}
@@ -148,7 +151,7 @@ export const CustomInput: FunctionComponent<Props> = ({
                 autoComplete={autoComplete}
                 multiline={multiline}
                 disabled={disabled}
-                id={`input-text-${keyValue}`}
+                id={inputId}
                 value={value}
                 type="text"
                 size={size}

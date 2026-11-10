@@ -1,6 +1,7 @@
 import React, {
     FunctionComponent,
     ReactNode,
+    useCallback,
     useEffect,
     useMemo,
     useState,
@@ -28,6 +29,9 @@ import type {
     FilterValues,
 } from './types';
 import { getClearedFilterValues, groupFilterFieldsBySection } from './utils';
+
+/** Stable id assigned to the first drawer field so we can focus it on open. */
+export const FILTERS_DRAWER_FIRST_INPUT_ID = 'filters-drawer-first-input';
 
 const styles = {
     drawer: {
@@ -84,6 +88,10 @@ export const FiltersDrawer: FunctionComponent<Props> = ({
         [fields, draft, sections],
     );
 
+    const focusFirstInput = useCallback(() => {
+        document.getElementById(FILTERS_DRAWER_FIRST_INPUT_ID)?.focus();
+    }, []);
+
     const handleChange = (key: string, value: any) =>
         setDraft(prev => ({ ...prev, [key]: value }));
     const handleClear = () => setDraft(getClearedFilterValues(fields, draft));
@@ -93,7 +101,12 @@ export const FiltersDrawer: FunctionComponent<Props> = ({
     };
 
     return (
-        <Drawer anchor={anchor} open={open} onClose={onClose}>
+        <Drawer
+            anchor={anchor}
+            open={open}
+            onClose={onClose}
+            SlideProps={{ onEntered: focusFirstInput }}
+        >
             <Box
                 sx={{ ...styles.drawer, width }}
                 role="presentation"
@@ -128,7 +141,7 @@ export const FiltersDrawer: FunctionComponent<Props> = ({
                                 </Typography>
                             )}
                             <Box display="flex" flexDirection="column" gap={2}>
-                                {group.fields.map(field => (
+                                {group.fields.map((field, fieldIndex) => (
                                     <FilterField
                                         key={field.key}
                                         field={field}
@@ -136,6 +149,11 @@ export const FiltersDrawer: FunctionComponent<Props> = ({
                                         values={draft}
                                         onChange={handleChange}
                                         onEnterPressed={handleApply}
+                                        inputId={
+                                            groupIndex === 0 && fieldIndex === 0
+                                                ? FILTERS_DRAWER_FIRST_INPUT_ID
+                                                : undefined
+                                        }
                                     />
                                 ))}
                             </Box>

@@ -23,6 +23,7 @@ type Props = {
     autoComplete?: string;
     placeholder?: string;
     dataTestId?: string;
+    id?: string;
 };
 
 export const TextInput: FunctionComponent<Props> = ({
@@ -37,14 +38,16 @@ export const TextInput: FunctionComponent<Props> = ({
     autoComplete = 'off',
     placeholder = undefined,
     dataTestId = undefined,
+    id,
 }) => {
     const hasErrors = errors.length >= 1;
     const classes = useStyles();
+    const inputId = id ?? `input-text-${keyValue}`;
     return (
         <FormControl errors={errors}>
             {label && (
                 <InputLabel
-                    htmlFor={`input-text-${keyValue}`}
+                    htmlFor={inputId}
                     label={label}
                     required={required}
                     error={hasErrors}
@@ -57,7 +60,7 @@ export const TextInput: FunctionComponent<Props> = ({
                 autoComplete={autoComplete}
                 multiline={multiline}
                 disabled={disabled}
-                id={`input-text-${keyValue}`}
+                id={inputId}
                 value={value}
                 type="text"
                 onChange={event => onChange(event.target.value)}

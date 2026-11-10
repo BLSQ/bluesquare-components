@@ -39,6 +39,7 @@ export type FilterFieldRenderContext = {
     value: any;
     values: FilterValues;
     onChange: (value: any) => void;
+    inputId?: string;
 };
 
 export type FilterField = {

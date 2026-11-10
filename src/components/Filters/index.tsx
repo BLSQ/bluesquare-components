@@ -1,7 +1,7 @@
 export { ActiveFiltersBar } from './ActiveFiltersBar';
 export { FilterField } from './FilterField';
 export { FiltersPanel } from './Filters';
-export { FiltersDrawer } from './FiltersDrawer';
+export { FILTERS_DRAWER_FIRST_INPUT_ID, FiltersDrawer } from './FiltersDrawer';
 export { MESSAGES as FILTER_MESSAGES } from './messages';
 export type {
     ActiveFilter,

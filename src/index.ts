@@ -84,6 +84,7 @@ import { HeaderRowIcon } from './components/table/HeaderRowIcon';
 import { InfoHeader } from './components/table/InfoHeader';
 import { SelectionSpeedDials } from './components/table/SelectionSpeedDials';
 import { Table } from './components/table/Table';
+import { Count } from './components/table/Table/Count';
 import { Expander } from './components/table/Table/Expander';
 import { PageRowSelect } from './components/table/Table/PageRowSelect';
 import { Pagination } from './components/table/Table/Pagination';
@@ -460,4 +461,5 @@ export {
     Pagination,
     ColorChip,
     ChipList,
+    Count,
 };

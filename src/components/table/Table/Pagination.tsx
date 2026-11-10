@@ -24,6 +24,7 @@ type Props = {
     pageIndex: number;
     pages: number;
     selectCount: number;
+    showCount?: boolean;
 };
 
 export const Pagination: FunctionComponent<Props> = ({
@@ -34,6 +35,7 @@ export const Pagination: FunctionComponent<Props> = ({
     pages = 0,
     countOnTop,
     selectCount = 0,
+    showCount = true,
 }) => {
     const classes: Record<string, string> = useStyles();
     const displayedPageIndex = pageIndex + 1 > pages ? pages - 1 : pageIndex;
@@ -71,6 +73,7 @@ export const Pagination: FunctionComponent<Props> = ({
                     pages={pages}
                     countOnTop={countOnTop}
                     selectCount={selectCount}
+                    showCount={showCount}
                 />
             )}
             labelDisplayedRows={() => null}

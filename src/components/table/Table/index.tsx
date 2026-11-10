@@ -116,6 +116,7 @@ export interface TableComponentProps {
     baseUrl?: string;
     pages?: number;
     countOnTop?: boolean;
+    showCount?: boolean;
     marginTop?: boolean;
     marginBottom?: boolean;
     multiSelect?: boolean;
@@ -180,6 +181,7 @@ const TableComponent: React.FC<TableComponentProps> = props => {
         baseUrl = '',
         pages = 0,
         countOnTop = true,
+        showCount = true,
         marginTop = true,
         marginBottom = true,
         multiSelect = false,
@@ -353,7 +355,7 @@ const TableComponent: React.FC<TableComponentProps> = props => {
                 </Grid>
             )}
             <Grid container justifyContent="flex-end">
-                {countOnTop && (
+                {countOnTop && showCount && (
                     <Box pr={2}>
                         <Count
                             count={count}
@@ -376,17 +378,7 @@ const TableComponent: React.FC<TableComponentProps> = props => {
             <Paper elevation={elevation} className={classes.paper}>
                 {loading && <LoadingSpinner absolute />}
                 <TableContainer className={classes.tableContainer}>
-                    <MuiTable
-                        {...getTableProps()}
-                        size="small"
-                        stickyHeader
-                        sx={{
-                            borderTop: theme =>
-                                elevation === 0
-                                    ? `1px solid ${theme.palette.divider}`
-                                    : 'none',
-                        }}
-                    >
+                    <MuiTable {...getTableProps()} size="small" stickyHeader>
                         <Head
                             headerGroups={headerGroups}
                             setSortBy={newSort =>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { Box, Chip, useTheme } from '@mui/material';
 import Color from 'color';
 import { ChipColor, resolveChipColor } from './utils';
@@ -7,6 +7,9 @@ type ColorChipProps = {
     color?: ChipColor;
     label: string;
     size?: 'small' | 'medium';
+    icon?: ReactElement;
+    /** Native tooltip, e.g. the full value of a shortened label. */
+    title?: string;
 };
 
 export const ColorChip = ({

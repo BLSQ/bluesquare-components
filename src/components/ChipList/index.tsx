@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, ReactElement, useState } from 'react';
 import { Box, Chip, Tooltip } from '@mui/material';
 import { useSafeIntl } from '../../localization/useSafeIntl';
 import { SxStyles } from '../../styles/iaso/types';
@@ -11,6 +11,9 @@ export type ChipListItem = {
     label: string;
     /** Overrides the list's `color` for this chip. */
     color?: ChipColor;
+    /** Native tooltip of the chip, e.g. a code or more details. */
+    title?: string;
+    icon?: ReactElement;
 };
 
 type Props = {
@@ -82,6 +85,8 @@ export const ChipList: FunctionComponent<Props> = ({
                     key={item.id}
                     label={item.label}
                     color={item.color ?? color}
+                    title={item.title}
+                    icon={item.icon}
                     size="small"
                 />
             ))}
@@ -91,6 +96,8 @@ export const ChipList: FunctionComponent<Props> = ({
                         key={trailingItem.id}
                         label={trailingItem.label}
                         color={trailingItem.color ?? color}
+                        title={trailingItem.title}
+                        icon={trailingItem.icon}
                         size="small"
                     />
                     <Tooltip title={expanded ? '' : allLabels}>

@@ -1,10 +1,13 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, ReactElement } from 'react';
 import { ChipColor } from '../chips/utils';
 export type ChipListItem = {
     id: string | number;
     label: string;
     /** Overrides the list's `color` for this chip. */
     color?: ChipColor;
+    /** Native tooltip of the chip, e.g. a code or more details. */
+    title?: string;
+    icon?: ReactElement;
 };
 type Props = {
     items: ChipListItem[];

@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
-import { Box, Chip } from '@mui/material';
+import { Box, Chip, Tooltip } from '@mui/material';
 import { useSafeIntl } from '../../localization/useSafeIntl';
 import { SxStyles } from '../../styles/iaso/types';
 import { ColorChip } from '../chips/ColorChip';
@@ -72,6 +72,9 @@ export const ChipList: FunctionComponent<Props> = ({
         setExpanded(value => !value);
     };
 
+    // Hover preview of every label so users need not expand to read the list.
+    const allLabels = items.map(item => item.label).join(', ');
+
     return (
         <Box sx={styles.list}>
             {leadingItems.map(item => (
@@ -90,18 +93,21 @@ export const ChipList: FunctionComponent<Props> = ({
                         color={trailingItem.color ?? color}
                         size="small"
                     />
-                    <Chip
-                        size="small"
-                        variant="outlined"
-                        onClick={toggle}
-                        aria-expanded={expanded}
-                        label={
-                            expanded
-                                ? formatMessage(MESSAGES.showLess)
-                                : `+${hiddenCount}`
-                        }
-                        sx={styles.overflowChip}
-                    />
+                    <Tooltip title={expanded ? '' : allLabels}>
+                        <Chip
+                            size="small"
+                            variant="outlined"
+                            onClick={toggle}
+                            aria-expanded={expanded}
+                            aria-label={expanded ? undefined : allLabels}
+                            label={
+                                expanded
+                                    ? formatMessage(MESSAGES.showLess)
+                                    : `+${hiddenCount}`
+                            }
+                            sx={styles.overflowChip}
+                        />
+                    </Tooltip>
                 </Box>
             )}
         </Box>

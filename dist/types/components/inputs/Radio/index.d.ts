@@ -9,6 +9,7 @@ type Props = {
     className?: string;
     dataTestId?: string;
     required?: boolean;
+    id?: string;
 };
 declare const RadioComponent: FunctionComponent<Props>;
 export { RadioComponent as Radio };

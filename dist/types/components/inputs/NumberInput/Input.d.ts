@@ -20,6 +20,7 @@ type Props = {
     onIncrement?: () => void;
     onDecrement?: () => void;
     hideError?: boolean;
+    id?: string;
 };
 export declare const CustomInput: FunctionComponent<Props>;
 export {};

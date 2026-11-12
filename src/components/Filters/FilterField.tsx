@@ -22,6 +22,8 @@ type Props = {
     values: FilterValues;
     onChange: (key: string, value: any) => void;
     onEnterPressed?: () => void;
+    /** Optional DOM id for the rendered control (e.g. first drawer field). */
+    inputId?: string;
 };
 
 /**
@@ -34,6 +36,7 @@ export const FilterField: FunctionComponent<Props> = ({
     values,
     onChange,
     onEnterPressed,
+    inputId,
 }) => {
     const { formatMessage } = useSafeIntl();
     const resolveLabel = useResolveLabel();
@@ -44,6 +47,7 @@ export const FilterField: FunctionComponent<Props> = ({
         disabled: field.disabled,
         required: field.required,
         dataTestId: field.dataTestId ?? `filter-${field.key}`,
+        ...(inputId ? { id: inputId } : {}),
     };
 
     switch (type) {
@@ -130,6 +134,7 @@ export const FilterField: FunctionComponent<Props> = ({
         case 'date':
             return (
                 <DatePicker
+                    {...(inputId ? { id: inputId } : {})}
                     label={label}
                     currentDate={value ?? null}
                     errors={field.errors ?? []}
@@ -147,6 +152,7 @@ export const FilterField: FunctionComponent<Props> = ({
             return (
                 <Box display="flex" flexDirection="column" gap={2}>
                     <DatePicker
+                        {...(inputId ? { id: inputId } : {})}
                         label={
                             field.fromLabel
                                 ? resolveLabel(field.fromLabel)
@@ -187,6 +193,7 @@ export const FilterField: FunctionComponent<Props> = ({
                         value,
                         values,
                         onChange: setValue,
+                        inputId,
                     }) ?? null}
                 </>
             );

@@ -19,6 +19,7 @@ type Props = {
     dataTestId?: string;
     onChange?: (checked: boolean) => void;
     keyValue: string;
+    id?: string;
 };
 declare const CheckboxComponent: FunctionComponent<Props>;
 export { CheckboxComponent as Checkbox };

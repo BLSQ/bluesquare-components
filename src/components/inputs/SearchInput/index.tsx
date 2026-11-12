@@ -36,6 +36,7 @@ type Props = {
     errors?: string[];
     autoComplete?: string;
     dataTestId?: string;
+    id?: string;
 };
 
 const SearchInput: FunctionComponent<Props> = ({
@@ -53,6 +54,7 @@ const SearchInput: FunctionComponent<Props> = ({
     autoComplete = 'off',
     blockForbiddenChars = false,
     dataTestId,
+    id,
 }) => {
     const hasErrors = errors.length >= 1;
 
@@ -102,10 +104,12 @@ const SearchInput: FunctionComponent<Props> = ({
         onErrorChange(hasTextSearchError);
     }, [hasTextSearchError, onErrorChange]);
 
+    const inputId = id ?? (uid ? `search-${uid}` : `search-${keyValue}`);
+
     return (
         <FormControl errors={textSearchErrors}>
             <InputLabel
-                htmlFor={`search-${keyValue}`}
+                htmlFor={inputId}
                 label={label}
                 required={required}
                 shrink={value !== undefined && value !== null && value !== ''}
@@ -115,7 +119,7 @@ const SearchInput: FunctionComponent<Props> = ({
                 autoComplete={autoComplete}
                 disabled={disabled}
                 error={hasErrors || hasTextSearchError}
-                id={uid ? `search-${uid}` : `search-${keyValue}`}
+                id={inputId}
                 value={localValue}
                 placeholder=""
                 onKeyDown={event => {

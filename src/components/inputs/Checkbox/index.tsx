@@ -22,6 +22,7 @@ type Props = {
     dataTestId?: string;
     onChange?: (checked: boolean) => void;
     keyValue: string;
+    id?: string;
 };
 
 const CheckboxComponent: FunctionComponent<Props> = ({
@@ -32,12 +33,13 @@ const CheckboxComponent: FunctionComponent<Props> = ({
     keyValue,
     required = false,
     dataTestId = undefined,
+    id,
 }) => (
     <FormControlLabel
         disabled={disabled}
         control={
             <Checkbox
-                id={`check-box-${keyValue}`}
+                id={id ?? `check-box-${keyValue}`}
                 data-test={dataTestId}
                 color="primary"
                 checked={value === true}

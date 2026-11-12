@@ -1,5 +1,7 @@
 import { FunctionComponent, ReactNode } from 'react';
 import type { FilterField as FilterFieldType, FilterLabel, FilterSection, FilterValues } from './types';
+/** Stable id assigned to the first drawer field so we can focus it on open. */
+export declare const FILTERS_DRAWER_FIRST_INPUT_ID = "filters-drawer-first-input";
 type Props = {
     open: boolean;
     onClose: () => void;

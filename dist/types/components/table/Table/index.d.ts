@@ -25,6 +25,7 @@ export interface TableComponentProps {
     baseUrl?: string;
     pages?: number;
     countOnTop?: boolean;
+    showCount?: boolean;
     marginTop?: boolean;
     marginBottom?: boolean;
     multiSelect?: boolean;

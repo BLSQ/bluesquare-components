@@ -22,4 +22,8 @@ export const MESSAGES = defineMessages({
     },
     from: { id: 'blsq.filters.from', defaultMessage: '{label} from' },
     until: { id: 'blsq.filters.until', defaultMessage: '{label} until' },
+    addFilters: {
+        id: 'blsq.filters.addFilters',
+        defaultMessage: 'Add filters',
+    },
 });

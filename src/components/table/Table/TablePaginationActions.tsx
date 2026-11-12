@@ -37,6 +37,7 @@ type Props = {
     selectRowsPerPage: (rowsPerPage: number) => void;
     countOnTop: boolean;
     selectCount: number;
+    showCount?: boolean;
 };
 
 export const TablePaginationActions: FunctionComponent<Props> = ({
@@ -49,6 +50,7 @@ export const TablePaginationActions: FunctionComponent<Props> = ({
     selectRowsPerPage,
     countOnTop,
     selectCount,
+    showCount = true,
 }) => {
     const classes = useStyles();
 
@@ -133,13 +135,13 @@ export const TablePaginationActions: FunctionComponent<Props> = ({
                 disabled={lastDisabled}
                 aria-label={formatMessage(MESSAGES.lastText)}
                 className={classNames(
-                    !countOnTop && classes.withCount,
+                    !countOnTop && showCount && classes.withCount,
                     'pagination-last',
                 )}
             >
                 <LastPageIcon color={lastDisabled ? 'inherit' : 'primary'} />
             </IconButton>
-            {!countOnTop && (
+            {!countOnTop && showCount && (
                 <div className={classes.count}>
                     <Count count={count} selectCount={selectCount} />
                 </div>

@@ -6,6 +6,8 @@ type Props = {
     values: FilterValues;
     onChange: (key: string, value: any) => void;
     onEnterPressed?: () => void;
+    /** Optional DOM id for the rendered control (e.g. first drawer field). */
+    inputId?: string;
 };
 /**
  * Renders one `field` with the matching input. Unknown types fall back to text;

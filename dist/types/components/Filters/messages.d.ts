@@ -47,4 +47,8 @@ export declare const MESSAGES: {
         id: string;
         defaultMessage: string;
     };
+    addFilters: {
+        id: string;
+        defaultMessage: string;
+    };
 };

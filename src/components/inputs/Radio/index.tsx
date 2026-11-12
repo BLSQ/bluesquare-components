@@ -17,6 +17,7 @@ type Props = {
     className?: string;
     dataTestId?: string;
     required?: boolean;
+    id?: string;
 };
 
 const RadioComponent: FunctionComponent<Props> = ({
@@ -29,6 +30,7 @@ const RadioComponent: FunctionComponent<Props> = ({
     className = '',
     required = false,
     dataTestId = undefined,
+    id,
 }) => (
     <FormControl
         component="fieldset"
@@ -48,11 +50,16 @@ const RadioComponent: FunctionComponent<Props> = ({
             }}
             data-test={dataTestId}
         >
-            {options.map(o => (
+            {options.map((o, index) => (
                 <FormControlLabel
                     key={o.value}
                     value={o.value}
-                    control={<Radio color="primary" />}
+                    control={
+                        <Radio
+                            color="primary"
+                            id={index === 0 ? id : undefined}
+                        />
+                    }
                     label={o.label}
                     disabled={o.disabled}
                 />

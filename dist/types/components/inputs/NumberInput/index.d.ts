@@ -28,6 +28,7 @@ type Props = {
     showInfo?: boolean;
     step?: number;
     hideError?: boolean;
+    id?: string;
 };
 export declare const NumberInput: FunctionComponent<Props>;
 export {};

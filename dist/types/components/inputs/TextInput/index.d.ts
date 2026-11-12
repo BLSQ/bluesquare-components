@@ -11,6 +11,7 @@ type Props = {
     autoComplete?: string;
     placeholder?: string;
     dataTestId?: string;
+    id?: string;
 };
 export declare const TextInput: FunctionComponent<Props>;
 export {};

@@ -14,6 +14,7 @@ type Props = {
     errors?: string[];
     autoComplete?: string;
     dataTestId?: string;
+    id?: string;
 };
 declare const SearchInput: FunctionComponent<Props>;
 export { SearchInput };

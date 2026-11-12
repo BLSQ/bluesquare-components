@@ -27,6 +27,15 @@ const styles: SxStyles = {
         flexWrap: 'wrap',
         alignItems: 'center',
         gap: 0.5,
+        minWidth: 100,
+    },
+    // Last chip + expand/collapse stay together so "+N" never wraps alone.
+    trailingGroup: {
+        display: 'inline-flex',
+        flexWrap: 'nowrap',
+        alignItems: 'center',
+        gap: 0.5,
+        maxWidth: '100%',
     },
     overflowChip: {
         backgroundColor: 'transparent',
@@ -34,6 +43,7 @@ const styles: SxStyles = {
         borderStyle: 'dashed',
         borderWidth: 2,
         color: 'text.primary',
+        flexShrink: 0,
         '&:hover': {
             backgroundColor: 'action.hover',
         },
@@ -50,6 +60,11 @@ export const ChipList: FunctionComponent<Props> = ({
 
     const hiddenCount = items.length - maxVisible;
     const visibleItems = expanded ? items : items.slice(0, maxVisible);
+    const hasOverflow = hiddenCount > 0;
+    const leadingItems = hasOverflow ? visibleItems.slice(0, -1) : visibleItems;
+    const trailingItem = hasOverflow
+        ? visibleItems[visibleItems.length - 1]
+        : null;
 
     const toggle = (e: React.MouseEvent) => {
         // Don't trigger a click on the table row or card around the list.
@@ -59,7 +74,7 @@ export const ChipList: FunctionComponent<Props> = ({
 
     return (
         <Box sx={styles.list}>
-            {visibleItems.map(item => (
+            {leadingItems.map(item => (
                 <ColorChip
                     key={item.id}
                     label={item.label}
@@ -67,19 +82,27 @@ export const ChipList: FunctionComponent<Props> = ({
                     size="small"
                 />
             ))}
-            {hiddenCount > 0 && (
-                <Chip
-                    size="small"
-                    variant="outlined"
-                    onClick={toggle}
-                    aria-expanded={expanded}
-                    label={
-                        expanded
-                            ? formatMessage(MESSAGES.showLess)
-                            : `+${hiddenCount}`
-                    }
-                    sx={styles.overflowChip}
-                />
+            {trailingItem && (
+                <Box sx={styles.trailingGroup}>
+                    <ColorChip
+                        key={trailingItem.id}
+                        label={trailingItem.label}
+                        color={trailingItem.color ?? color}
+                        size="small"
+                    />
+                    <Chip
+                        size="small"
+                        variant="outlined"
+                        onClick={toggle}
+                        aria-expanded={expanded}
+                        label={
+                            expanded
+                                ? formatMessage(MESSAGES.showLess)
+                                : `+${hiddenCount}`
+                        }
+                        sx={styles.overflowChip}
+                    />
+                </Box>
             )}
         </Box>
     );

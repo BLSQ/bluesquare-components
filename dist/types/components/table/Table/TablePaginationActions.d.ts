@@ -9,6 +9,7 @@ type Props = {
     selectRowsPerPage: (rowsPerPage: number) => void;
     countOnTop: boolean;
     selectCount: number;
+    showCount?: boolean;
 };
 export declare const TablePaginationActions: FunctionComponent<Props>;
 export {};

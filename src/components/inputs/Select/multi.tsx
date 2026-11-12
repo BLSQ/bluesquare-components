@@ -55,6 +55,7 @@ type Props = {
     dataTestId?: string;
     useBuiltInErrors?: boolean;
     freeSolo?: boolean;
+    id?: string;
 };
 
 export const MultiSelect: FunctionComponent<Props> = ({
@@ -80,6 +81,7 @@ export const MultiSelect: FunctionComponent<Props> = ({
     dataTestId,
     placeholder,
     useBuiltInErrors = true,
+    id,
 }) => {
     const { formatMessage } = useSafeIntl();
     const classes = useStyles();
@@ -160,7 +162,7 @@ export const MultiSelect: FunctionComponent<Props> = ({
                 noOptionsText={formatMessage(noOptionsText)}
                 multiple
                 disableCloseOnSelect={shiftKeyIsDown}
-                id={keyValue}
+                id={id ?? keyValue}
                 disableClearable={!clearable}
                 options={options}
                 value={fixedValue}

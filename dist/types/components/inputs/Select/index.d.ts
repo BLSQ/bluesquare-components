@@ -140,6 +140,7 @@ type Props = {
     freeSolo?: boolean;
     useBuiltInErrors?: boolean;
     multi?: boolean;
+    id?: string;
 };
 declare const SelectCustom: FunctionComponent<Props>;
 export { SelectCustom as Select, baseRenderTagsWithTooltip, baseRenderTags as renderTags, renderTagsWithTooltip, };

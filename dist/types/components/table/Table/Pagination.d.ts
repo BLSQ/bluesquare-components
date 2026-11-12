@@ -7,6 +7,7 @@ type Props = {
     pageIndex: number;
     pages: number;
     selectCount: number;
+    showCount?: boolean;
 };
 export declare const Pagination: FunctionComponent<Props>;
 export {};

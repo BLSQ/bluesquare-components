@@ -54,6 +54,7 @@ type Props = {
     clearable?: boolean;
     minDate?: any;
     maxDate?: any;
+    id?: string;
 };
 
 export const DatePicker: FunctionComponent<Props> = ({
@@ -68,6 +69,7 @@ export const DatePicker: FunctionComponent<Props> = ({
     clearable = true,
     minDate = undefined,
     maxDate = undefined,
+    id,
 }) => {
     const classes = useStyles();
     const [dateError, setDateError] = useState<any | null>(null);
@@ -86,6 +88,7 @@ export const DatePicker: FunctionComponent<Props> = ({
                         size: 'small',
                     },
                     textField: {
+                        id,
                         InputLabelProps: {
                             error: isOnError,
                         },

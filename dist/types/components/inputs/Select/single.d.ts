@@ -25,6 +25,7 @@ type Props = {
     dataTestId?: string;
     freeSolo?: boolean;
     useBuiltInErrors?: boolean;
+    id?: string;
 };
 export declare const SingleSelect: FunctionComponent<Props>;
 export {};

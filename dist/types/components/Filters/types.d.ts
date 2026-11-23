@@ -46,6 +46,8 @@ export type FilterField = {
     returnFullObject?: boolean;
     renderTags?: (...args: any[]) => ReactNode;
     getOptionLabel?: (option: FilterOption) => string;
+    /** `search`: flag forbidden characters and block APPLY while present. */
+    blockForbiddenChars?: boolean;
     /** `daterange` bounds labels (default: `${label} from` / `${label} until`). */
     fromLabel?: FilterLabel;
     toLabel?: FilterLabel;

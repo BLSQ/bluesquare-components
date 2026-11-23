@@ -19,6 +19,7 @@ import {
 } from '@mui/material';
 
 import { useSafeIntl } from '../../localization/useSafeIntl';
+import { containsForbiddenCharacter } from '../../utils/containsForbiddenChars';
 import { FilterField } from './FilterField';
 import { useResolveLabel } from './label';
 import { MESSAGES } from './messages';
@@ -92,10 +93,22 @@ export const FiltersDrawer: FunctionComponent<Props> = ({
         document.getElementById(FILTERS_DRAWER_FIRST_INPUT_ID)?.focus();
     }, []);
 
+    const hasForbiddenChars = useMemo(
+        () =>
+            fields.some(
+                field =>
+                    field.blockForbiddenChars &&
+                    typeof draft[field.key] === 'string' &&
+                    containsForbiddenCharacter(draft[field.key]),
+            ),
+        [fields, draft],
+    );
+
     const handleChange = (key: string, value: any) =>
         setDraft(prev => ({ ...prev, [key]: value }));
     const handleClear = () => setDraft(getClearedFilterValues(fields, draft));
     const handleApply = () => {
+        if (hasForbiddenChars) return;
         onApply({ ...draft });
         onClose();
     };
@@ -179,6 +192,7 @@ export const FiltersDrawer: FunctionComponent<Props> = ({
                         variant="contained"
                         color="primary"
                         onClick={handleApply}
+                        disabled={hasForbiddenChars}
                         data-test="filters-apply"
                     >
                         {formatMessage(MESSAGES.apply)}

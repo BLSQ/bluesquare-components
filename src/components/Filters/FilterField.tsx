@@ -127,6 +127,7 @@ export const FilterField: FunctionComponent<Props> = ({
                     value={value ?? ''}
                     errors={field.errors ?? []}
                     clearable
+                    blockForbiddenChars={field.blockForbiddenChars}
                     onChange={setValue}
                     onEnterPressed={onEnterPressed ?? (() => {})}
                 />
@@ -164,7 +165,7 @@ export const FilterField: FunctionComponent<Props> = ({
                         errors={field.errors ?? []}
                         disabled={field.disabled}
                         minDate={field.minDate}
-                        maxDate={field.maxDate}
+                        maxDate={to || field.maxDate}
                         onChange={setBound('from')}
                     />
                     <DatePicker
@@ -178,7 +179,7 @@ export const FilterField: FunctionComponent<Props> = ({
                         currentDate={to ?? null}
                         errors={field.errors ?? []}
                         disabled={field.disabled}
-                        minDate={field.minDate}
+                        minDate={from || field.minDate}
                         maxDate={field.maxDate}
                         onChange={setBound('to')}
                     />
